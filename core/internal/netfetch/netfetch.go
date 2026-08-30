@@ -33,8 +33,24 @@ func (o Options) client() *http.Client {
 		transport.DialContext = func(ctx context.Context, network, addr string) (net.Conn, error) {
 			return dialer.DialContext(ctx, "tcp4", addr)
 		}
+	} else {
+		transport.DialContext = dialIPv4First(dialer)
 	}
 	return &http.Client{Transport: transport}
+}
+
+// dialIPv4First thử tcp4 trước: Go resolver mặc định hỏi A và AAAA rồi chờ cả
+// hai, nên trên mạng drop query AAAA (nhiều wifi công cộng) mọi request đều
+// timeout dù A trả lời tức thì. tcp4 chỉ tra A; lỗi thì mới fallback dual-stack.
+func dialIPv4First(dialer *net.Dialer) func(ctx context.Context, network, addr string) (net.Conn, error) {
+	return func(ctx context.Context, network, addr string) (net.Conn, error) {
+		if network == "tcp" {
+			if conn, err := dialer.DialContext(ctx, "tcp4", addr); err == nil {
+				return conn, nil
+			}
+		}
+		return dialer.DialContext(ctx, network, addr)
+	}
 }
 
 func (o Options) request(ctx context.Context, url string) (*http.Request, error) {
