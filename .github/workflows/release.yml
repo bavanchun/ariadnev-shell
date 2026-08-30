@@ -486,7 +486,7 @@ jobs:
       # Opt-in via notify_issues (Point release defaults it on). Skipped for
       # prereleases. Preview: scripts/notify-issues.sh <prev> <tag> --dry-run
       - name: Notify open issues to retest
-        if: ${{ inputs.notify_issues && !contains(env.TAG, '-rc') || contains(env.TAG, '-beta') || contains(env.TAG, '-alpha') }}
+        if: ${{ inputs.notify_issues && !(contains(env.TAG, '-rc') || contains(env.TAG, '-beta') || contains(env.TAG, '-alpha')) }}
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
