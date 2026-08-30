@@ -3,8 +3,8 @@ package main
 import (
 	"fmt"
 
-	"github.com/bavanchun/ariadnev-shell/core/internal/proto/wlr_output_management"
 	wlclient "github.com/AvengeMedia/dankgo/wayland/client"
+	"github.com/bavanchun/ariadnev-shell/core/internal/proto/wlr_output_management"
 )
 
 type randrOutput struct {

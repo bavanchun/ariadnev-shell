@@ -172,10 +172,10 @@ func (g *GentooDistribution) GetPackageMappingWithVariants(wm deps.WindowManager
 		"qtwayland":     {Name: "dev-qt/qtwayland", Repository: RepoTypeSystem},
 		"mesa":          {Name: "media-libs/mesa", Repository: RepoTypeSystem, UseFlags: "opengl vulkan"},
 
-		"quickshell":              g.getQuickshellMapping(variants["quickshell"]),
-		"matugen":                 {Name: "x11-misc/matugen", Repository: RepoTypeGURU, AcceptKeywords: archKeyword},
+		"quickshell":           g.getQuickshellMapping(variants["quickshell"]),
+		"matugen":              {Name: "x11-misc/matugen", Repository: RepoTypeGURU, AcceptKeywords: archKeyword},
 		"advs (AriadnevShell)": g.getAdvsMapping(),
-		"danksearch":              {Name: "gui-apps/danksearch", Repository: RepoTypeGURU, AcceptKeywords: archKeyword},
+		"danksearch":           {Name: "gui-apps/danksearch", Repository: RepoTypeGURU, AcceptKeywords: archKeyword},
 	}
 
 	switch wm {

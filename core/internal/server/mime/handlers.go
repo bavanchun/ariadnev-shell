@@ -3,9 +3,9 @@ package mime
 import (
 	"fmt"
 
+	"github.com/AvengeMedia/dankgo/ipc/params"
 	"github.com/bavanchun/ariadnev-shell/core/internal/desktop"
 	"github.com/bavanchun/ariadnev-shell/core/internal/server/models"
-	"github.com/AvengeMedia/dankgo/ipc/params"
 )
 
 type defaultResult struct {

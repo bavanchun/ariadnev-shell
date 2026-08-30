@@ -6,8 +6,8 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/bavanchun/ariadnev-shell/core/internal/log"
 	"github.com/Wifx/gonetworkmanager/v2"
+	"github.com/bavanchun/ariadnev-shell/core/internal/log"
 )
 
 func (b *NetworkManagerBackend) GetWiredConnections() ([]WiredConnection, error) {

@@ -5,11 +5,11 @@ import (
 	"math"
 	"sync"
 
+	"github.com/AvengeMedia/dankgo/wayland/client"
 	"github.com/bavanchun/ariadnev-shell/core/internal/log"
 	"github.com/bavanchun/ariadnev-shell/core/internal/proto/wlr_screencopy"
 	"github.com/bavanchun/ariadnev-shell/core/internal/proto/wp_color_management"
 	wlhelpers "github.com/bavanchun/ariadnev-shell/core/internal/wayland/client"
-	"github.com/AvengeMedia/dankgo/wayland/client"
 )
 
 type WaylandOutput struct {

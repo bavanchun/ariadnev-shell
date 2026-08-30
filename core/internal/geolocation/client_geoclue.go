@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"sync"
 
-	"github.com/bavanchun/ariadnev-shell/core/internal/log"
 	"github.com/AvengeMedia/dankgo/dbusutil"
 	"github.com/AvengeMedia/dankgo/syncmap"
+	"github.com/bavanchun/ariadnev-shell/core/internal/log"
 	"github.com/godbus/dbus/v5"
 )
 

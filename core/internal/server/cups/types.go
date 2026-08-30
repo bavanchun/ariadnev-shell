@@ -5,8 +5,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/bavanchun/ariadnev-shell/core/pkg/ipp"
 	"github.com/AvengeMedia/dankgo/syncmap"
+	"github.com/bavanchun/ariadnev-shell/core/pkg/ipp"
 )
 
 type CUPSState struct {

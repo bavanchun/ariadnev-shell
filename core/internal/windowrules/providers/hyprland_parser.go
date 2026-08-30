@@ -33,19 +33,19 @@ type HyprlandWindowRule struct {
 }
 
 type HyprlandRulesParser struct {
-	configDir        string
-	processedFiles   map[string]bool
-	rules            []HyprlandWindowRule
-	currentSource    string
+	configDir         string
+	processedFiles    map[string]bool
+	rules             []HyprlandWindowRule
+	currentSource     string
 	advsRulesExists   bool
 	advsPrimaryPath   string // advs/windowrules.lua preferred, else advs/windowrules.conf when present
 	advsRulesIncluded bool
-	includeCount     int
+	includeCount      int
 	advsIncludePos    int
 	rulesAfterADVS    int
 	advsProcessed     bool
-	configFormat     string
-	readOnly         bool
+	configFormat      string
+	readOnly          bool
 
 	requireLineInMain int    // hyprland.lua line (1-based) where require("advs.windowrules") occurs; else -1
 	primaryHyprLua    string // absolute path to ~/.config/hypr/hyprland.lua when that is the main config
@@ -56,7 +56,7 @@ func NewHyprlandRulesParser(configDir string) *HyprlandRulesParser {
 		configDir:         configDir,
 		processedFiles:    make(map[string]bool),
 		rules:             []HyprlandWindowRule{},
-		advsIncludePos:     -1,
+		advsIncludePos:    -1,
 		requireLineInMain: -1,
 	}
 }
@@ -306,7 +306,7 @@ func (p *HyprlandRulesParser) buildADVSStatus() *windowrules.ADVSRulesStatus {
 		Included:        p.advsRulesIncluded,
 		IncludePosition: p.advsIncludePos,
 		TotalIncludes:   p.includeCount,
-		RulesAfterADVS:   p.rulesAfterADVS,
+		RulesAfterADVS:  p.rulesAfterADVS,
 		ConfigFormat:    p.configFormat,
 		ReadOnly:        p.readOnly,
 	}
@@ -331,7 +331,7 @@ func (p *HyprlandRulesParser) buildADVSStatus() *windowrules.ADVSRulesStatus {
 }
 
 type HyprlandRulesParseResult struct {
-	Rules            []HyprlandWindowRule
+	Rules             []HyprlandWindowRule
 	ADVSRulesIncluded bool
 	ADVSStatus        *windowrules.ADVSRulesStatus
 }
@@ -343,7 +343,7 @@ func ParseHyprlandWindowRules(configDir string) (*HyprlandRulesParseResult, erro
 		return nil, err
 	}
 	return &HyprlandRulesParseResult{
-		Rules:            rules,
+		Rules:             rules,
 		ADVSRulesIncluded: parser.HasADVSRulesIncluded(),
 		ADVSStatus:        parser.buildADVSStatus(),
 	}, nil
@@ -447,9 +447,9 @@ func (p *HyprlandWritableProvider) GetRuleSet() (*windowrules.RuleSet, error) {
 		return nil, err
 	}
 	return &windowrules.RuleSet{
-		Title:            "Hyprland Window Rules",
-		Provider:         "hyprland",
-		Rules:            ConvertHyprlandRulesToWindowRules(result.Rules),
+		Title:             "Hyprland Window Rules",
+		Provider:          "hyprland",
+		Rules:             ConvertHyprlandRulesToWindowRules(result.Rules),
 		ADVSRulesIncluded: result.ADVSRulesIncluded,
 		ADVSStatus:        result.ADVSStatus,
 	}, nil

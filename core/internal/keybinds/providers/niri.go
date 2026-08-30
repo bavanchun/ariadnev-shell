@@ -14,9 +14,9 @@ import (
 )
 
 type NiriProvider struct {
-	configDir        string
+	configDir         string
 	advsBindsIncluded bool
-	parsed           bool
+	parsed            bool
 }
 
 type niriActionPart struct {
@@ -67,10 +67,10 @@ func (n *NiriProvider) GetCheatSheet() (*keybinds.CheatSheet, error) {
 	n.convertSection(result.Section, "", categorizedBinds, result.ConflictingConfigs)
 
 	sheet := &keybinds.CheatSheet{
-		Title:            "Niri Keybinds",
-		Provider:         n.Name(),
-		ModKey:           result.ModKey,
-		Binds:            categorizedBinds,
+		Title:             "Niri Keybinds",
+		Provider:          n.Name(),
+		ModKey:            result.ModKey,
+		Binds:             categorizedBinds,
 		ADVSBindsIncluded: result.ADVSBindsIncluded,
 	}
 
@@ -80,7 +80,7 @@ func (n *NiriProvider) GetCheatSheet() (*keybinds.CheatSheet, error) {
 			Included:        result.ADVSStatus.Included,
 			IncludePosition: result.ADVSStatus.IncludePosition,
 			TotalIncludes:   result.ADVSStatus.TotalIncludes,
-			BindsAfterADVS:   result.ADVSStatus.BindsAfterADVS,
+			BindsAfterADVS:  result.ADVSStatus.BindsAfterADVS,
 			Effective:       result.ADVSStatus.Effective,
 			OverriddenBy:    result.ADVSStatus.OverriddenBy,
 			StatusMessage:   result.ADVSStatus.StatusMessage,

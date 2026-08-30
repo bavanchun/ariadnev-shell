@@ -77,7 +77,7 @@ func parseMangoRulesFile(path, source string) []MangoWindowRule {
 }
 
 type MangoRulesParseResult struct {
-	Rules            []MangoWindowRule
+	Rules             []MangoWindowRule
 	ADVSRulesIncluded bool
 	ADVSStatus        *windowrules.ADVSRulesStatus
 }
@@ -92,7 +92,7 @@ func ParseMangoWindowRules(configDir string) (*MangoRulesParseResult, error) {
 
 	included := mangoADVSRulesIncluded(mainPath)
 	return &MangoRulesParseResult{
-		Rules:            rules,
+		Rules:             rules,
 		ADVSRulesIncluded: included,
 		ADVSStatus: &windowrules.ADVSRulesStatus{
 			Exists:        fileExists(overridePath),
@@ -241,9 +241,9 @@ func (p *MangoWritableProvider) GetRuleSet() (*windowrules.RuleSet, error) {
 		return nil, err
 	}
 	return &windowrules.RuleSet{
-		Title:            "Mango Window Rules",
-		Provider:         "mango",
-		Rules:            ConvertMangoRulesToWindowRules(result.Rules),
+		Title:             "Mango Window Rules",
+		Provider:          "mango",
+		Rules:             ConvertMangoRulesToWindowRules(result.Rules),
 		ADVSRulesIncluded: result.ADVSRulesIncluded,
 		ADVSStatus:        result.ADVSStatus,
 	}, nil

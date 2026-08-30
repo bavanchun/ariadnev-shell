@@ -900,8 +900,8 @@ func containsSubstr(items []string, substr string) bool {
 
 type pamTestEnv struct {
 	pamDir           string
-	advshellPath    string
-	advshellU2fPath string
+	advshellPath     string
+	advshellU2fPath  string
 	tmpDir           string
 	homeDir          string
 	availableModules map[string]bool
@@ -923,8 +923,8 @@ func newPamTestEnv(t *testing.T) *pamTestEnv {
 
 	return &pamTestEnv{
 		pamDir:           pamDir,
-		advshellPath:    filepath.Join(pamDir, "advshell"),
-		advshellU2fPath: filepath.Join(pamDir, "advshell-u2f"),
+		advshellPath:     filepath.Join(pamDir, "advshell"),
+		advshellU2fPath:  filepath.Join(pamDir, "advshell-u2f"),
 		tmpDir:           tmpDir,
 		homeDir:          homeDir,
 		availableModules: map[string]bool{},
@@ -933,12 +933,12 @@ func newPamTestEnv(t *testing.T) *pamTestEnv {
 
 func (e *pamTestEnv) deps(isNixOS bool) syncDeps {
 	return syncDeps{
-		pamDir:           e.pamDir,
+		pamDir:          e.pamDir,
 		advshellPath:    e.advshellPath,
 		advshellU2fPath: e.advshellU2fPath,
-		isNixOS:          func() bool { return isNixOS },
-		readFile:         os.ReadFile,
-		stat:             os.Stat,
+		isNixOS:         func() bool { return isNixOS },
+		readFile:        os.ReadFile,
+		stat:            os.Stat,
 		createTemp: func(_ string, pattern string) (*os.File, error) {
 			return os.CreateTemp(e.tmpDir, pattern)
 		},

@@ -34,18 +34,18 @@ type MangoWCParser struct {
 	readingLine        int
 	configDir          string
 	currentSource      string
-	advsBindsExists     bool
-	advsBindsIncluded   bool
+	advsBindsExists    bool
+	advsBindsIncluded  bool
 	includeCount       int
-	advsIncludePos      int
-	bindsAfterADVS      int
-	advsBindKeys        map[string]bool
+	advsIncludePos     int
+	bindsAfterADVS     int
+	advsBindKeys       map[string]bool
 	configBindKeys     map[string]bool
 	conflictingConfigs map[string]*MangoWCKeyBinding
 	bindMap            map[string]*MangoWCKeyBinding
 	bindOrder          []string
 	processedFiles     map[string]bool
-	advsProcessed       bool
+	advsProcessed      bool
 }
 
 func NewMangoWCParser(configDir string) *MangoWCParser {
@@ -53,8 +53,8 @@ func NewMangoWCParser(configDir string) *MangoWCParser {
 		contentLines:       []string{},
 		readingLine:        0,
 		configDir:          configDir,
-		advsIncludePos:      -1,
-		advsBindKeys:        make(map[string]bool),
+		advsIncludePos:     -1,
+		advsBindKeys:       make(map[string]bool),
 		configBindKeys:     make(map[string]bool),
 		conflictingConfigs: make(map[string]*MangoWCKeyBinding),
 		bindMap:            make(map[string]*MangoWCKeyBinding),
@@ -270,8 +270,8 @@ func ParseMangoWCKeys(path string) ([]MangoWCKeyBinding, error) {
 
 type MangoWCParseResult struct {
 	Keybinds           []MangoWCKeyBinding
-	ADVSBindsIncluded   bool
-	ADVSStatus          *MangoWCADVSStatus
+	ADVSBindsIncluded  bool
+	ADVSStatus         *MangoWCADVSStatus
 	ConflictingConfigs map[string]*MangoWCKeyBinding
 }
 
@@ -280,7 +280,7 @@ type MangoWCADVSStatus struct {
 	Included        bool
 	IncludePosition int
 	TotalIncludes   int
-	BindsAfterADVS   int
+	BindsAfterADVS  int
 	Effective       bool
 	OverriddenBy    int
 	StatusMessage   string
@@ -292,7 +292,7 @@ func (p *MangoWCParser) buildADVSStatus() *MangoWCADVSStatus {
 		Included:        p.advsBindsIncluded,
 		IncludePosition: p.advsIncludePos,
 		TotalIncludes:   p.includeCount,
-		BindsAfterADVS:   p.bindsAfterADVS,
+		BindsAfterADVS:  p.bindsAfterADVS,
 	}
 
 	switch {
@@ -576,8 +576,8 @@ func ParseMangoWCKeysWithADVS(path string) (*MangoWCParseResult, error) {
 
 	return &MangoWCParseResult{
 		Keybinds:           keybinds,
-		ADVSBindsIncluded:   parser.advsBindsIncluded,
-		ADVSStatus:          parser.buildADVSStatus(),
+		ADVSBindsIncluded:  parser.advsBindsIncluded,
+		ADVSStatus:         parser.buildADVSStatus(),
 		ConflictingConfigs: parser.conflictingConfigs,
 	}, nil
 }

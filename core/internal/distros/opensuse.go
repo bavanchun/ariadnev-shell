@@ -125,12 +125,12 @@ func (o *OpenSUSEDistribution) GetPackageMappingWithVariants(wm deps.WindowManag
 
 		// ADVS packages from OBS
 		"advs (AriadnevShell)": o.getAdvsMapping(variants["advs (AriadnevShell)"]),
-		"quickshell":              o.getQuickshellMapping(variants["quickshell"]),
-		"advs-greeter":             {Name: "advs-greeter", Repository: RepoTypeOBS, RepoURL: "home:bavanchun:ariadnev"},
-		"ghostty":                 {Name: "ghostty", Repository: RepoTypeOBS, RepoURL: "home:bavanchun:ariadnev"},
-		"matugen":                 {Name: "matugen", Repository: RepoTypeOBS, RepoURL: "home:bavanchun:ariadnev"},
-		"danksearch":              {Name: "danksearch", Repository: RepoTypeOBS, RepoURL: "home:bavanchun:ariadnev"},
-		"dankcalendar":            {Name: "dankcalendar-git", Repository: RepoTypeOBS, RepoURL: "home:bavanchun:ariadnev"},
+		"quickshell":           o.getQuickshellMapping(variants["quickshell"]),
+		"advs-greeter":         {Name: "advs-greeter", Repository: RepoTypeOBS, RepoURL: "home:bavanchun:ariadnev"},
+		"ghostty":              {Name: "ghostty", Repository: RepoTypeOBS, RepoURL: "home:bavanchun:ariadnev"},
+		"matugen":              {Name: "matugen", Repository: RepoTypeOBS, RepoURL: "home:bavanchun:ariadnev"},
+		"danksearch":           {Name: "danksearch", Repository: RepoTypeOBS, RepoURL: "home:bavanchun:ariadnev"},
+		"dankcalendar":         {Name: "dankcalendar-git", Repository: RepoTypeOBS, RepoURL: "home:bavanchun:ariadnev"},
 	}
 
 	switch wm {

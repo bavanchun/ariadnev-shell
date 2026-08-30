@@ -7,8 +7,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/bavanchun/ariadnev-shell/core/internal/server/loginctl"
 	"github.com/AvengeMedia/dankgo/syncmap"
+	"github.com/bavanchun/ariadnev-shell/core/internal/server/loginctl"
 )
 
 type activeSchedule struct {

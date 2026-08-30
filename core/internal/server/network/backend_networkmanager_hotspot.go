@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"sort"
 
+	"github.com/Wifx/gonetworkmanager/v2"
 	"github.com/bavanchun/ariadnev-shell/core/internal/errdefs"
 	"github.com/bavanchun/ariadnev-shell/core/internal/log"
-	"github.com/Wifx/gonetworkmanager/v2"
 )
 
 const (

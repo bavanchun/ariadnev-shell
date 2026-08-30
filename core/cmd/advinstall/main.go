@@ -29,7 +29,7 @@ var (
 	yes               bool
 	danksearch        bool
 	dankcalendar      bool
-	advsGreeter        bool
+	advsGreeter       bool
 )
 
 var rootCmd = &cobra.Command{
@@ -134,9 +134,9 @@ func runHeadless() error {
 		ReplaceConfigs:    replaceConfigs,
 		ReplaceConfigsAll: replaceConfigsAll,
 		Yes:               yes,
-		AdvSearch:        danksearch,
+		AdvSearch:         danksearch,
 		DankCalendar:      dankcalendar,
-		AdvsGreeter:        advsGreeter,
+		AdvsGreeter:       advsGreeter,
 	}
 
 	runner := headless.NewRunner(cfg)

@@ -5,10 +5,10 @@ import (
 	"sync"
 	"time"
 
+	"github.com/AvengeMedia/dankgo/syncmap"
 	"github.com/bavanchun/ariadnev-shell/core/internal/geolocation"
 	"github.com/bavanchun/ariadnev-shell/core/internal/server/loginctl"
 	"github.com/bavanchun/ariadnev-shell/core/internal/server/wayland"
-	"github.com/AvengeMedia/dankgo/syncmap"
 )
 
 const (

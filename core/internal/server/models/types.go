@@ -3,9 +3,9 @@ package models
 import (
 	"net"
 
-	"github.com/bavanchun/ariadnev-shell/core/internal/log"
 	"github.com/AvengeMedia/dankgo/ipc"
 	"github.com/AvengeMedia/dankgo/ipc/params"
+	"github.com/bavanchun/ariadnev-shell/core/internal/log"
 )
 
 type Conn = ipc.ConnWriter

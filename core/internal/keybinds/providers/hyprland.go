@@ -14,9 +14,9 @@ import (
 )
 
 type HyprlandProvider struct {
-	configPath       string
+	configPath        string
 	advsBindsIncluded bool
-	parsed           bool
+	parsed            bool
 }
 
 func NewHyprlandProvider(configPath string) *HyprlandProvider {
@@ -53,9 +53,9 @@ func (h *HyprlandProvider) GetCheatSheet() (*keybinds.CheatSheet, error) {
 	h.convertSection(result.Section, "", categorizedBinds, result.ConflictingConfigs, result.DefaultADVSKeys)
 
 	sheet := &keybinds.CheatSheet{
-		Title:            "Hyprland Keybinds",
-		Provider:         h.Name(),
-		Binds:            categorizedBinds,
+		Title:             "Hyprland Keybinds",
+		Provider:          h.Name(),
+		Binds:             categorizedBinds,
 		ADVSBindsIncluded: result.ADVSBindsIncluded,
 	}
 
@@ -65,7 +65,7 @@ func (h *HyprlandProvider) GetCheatSheet() (*keybinds.CheatSheet, error) {
 			Included:        result.ADVSStatus.Included,
 			IncludePosition: result.ADVSStatus.IncludePosition,
 			TotalIncludes:   result.ADVSStatus.TotalIncludes,
-			BindsAfterADVS:   result.ADVSStatus.BindsAfterADVS,
+			BindsAfterADVS:  result.ADVSStatus.BindsAfterADVS,
 			Effective:       result.ADVSStatus.Effective,
 			OverriddenBy:    result.ADVSStatus.OverriddenBy,
 			StatusMessage:   result.ADVSStatus.StatusMessage,

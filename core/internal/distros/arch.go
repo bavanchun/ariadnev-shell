@@ -213,18 +213,18 @@ func (a *ArchDistribution) GetPackageMapping(wm deps.WindowManager) map[string]P
 
 func (a *ArchDistribution) GetPackageMappingWithVariants(wm deps.WindowManager, variants map[string]deps.PackageVariant) map[string]PackageMapping {
 	packages := map[string]PackageMapping{
-		"advs (AriadnevShell)": a.getADVSMapping(variants["advs (AriadnevShell)"]),
-		"git":                     {Name: "git", Repository: RepoTypeSystem},
-		"quickshell":              a.getQuickshellMapping(variants["quickshell"]),
-		"advs-greeter":             a.getAriadnevGreeterMapping(variants["advs-greeter"]),
-		"matugen":                 a.getMatugenMapping(variants["matugen"]),
-		"ghostty":                 {Name: "ghostty", Repository: RepoTypeSystem},
-		"kitty":                   {Name: "kitty", Repository: RepoTypeSystem},
-		"alacritty":               {Name: "alacritty", Repository: RepoTypeSystem},
-		"xdg-desktop-portal-gtk":  {Name: "xdg-desktop-portal-gtk", Repository: RepoTypeSystem},
-		"accountsservice":         {Name: "accountsservice", Repository: RepoTypeSystem},
-		"danksearch":              a.getDanksearchMapping(variants["danksearch"]),
-		"dankcalendar":            a.getDankCalendarMapping(variants["dankcalendar"]),
+		"advs (AriadnevShell)":   a.getADVSMapping(variants["advs (AriadnevShell)"]),
+		"git":                    {Name: "git", Repository: RepoTypeSystem},
+		"quickshell":             a.getQuickshellMapping(variants["quickshell"]),
+		"advs-greeter":           a.getAriadnevGreeterMapping(variants["advs-greeter"]),
+		"matugen":                a.getMatugenMapping(variants["matugen"]),
+		"ghostty":                {Name: "ghostty", Repository: RepoTypeSystem},
+		"kitty":                  {Name: "kitty", Repository: RepoTypeSystem},
+		"alacritty":              {Name: "alacritty", Repository: RepoTypeSystem},
+		"xdg-desktop-portal-gtk": {Name: "xdg-desktop-portal-gtk", Repository: RepoTypeSystem},
+		"accountsservice":        {Name: "accountsservice", Repository: RepoTypeSystem},
+		"danksearch":             a.getDanksearchMapping(variants["danksearch"]),
+		"dankcalendar":           a.getDankCalendarMapping(variants["dankcalendar"]),
 	}
 
 	switch wm {

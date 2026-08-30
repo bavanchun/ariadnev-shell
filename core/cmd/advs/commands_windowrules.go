@@ -100,7 +100,7 @@ func init() {
 }
 
 type WindowRulesListResult struct {
-	Rules     []windowrules.WindowRule    `json:"rules"`
+	Rules      []windowrules.WindowRule     `json:"rules"`
 	ADVSStatus *windowrules.ADVSRulesStatus `json:"advsStatus,omitempty"`
 }
 

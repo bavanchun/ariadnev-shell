@@ -28,10 +28,10 @@ import (
 	_ "golang.org/x/image/tiff"
 	_ "golang.org/x/image/webp"
 
+	"github.com/AvengeMedia/dankgo/wlclipboard"
 	"github.com/bavanchun/ariadnev-shell/core/internal/clipboard"
 	"github.com/bavanchun/ariadnev-shell/core/internal/log"
 	"github.com/bavanchun/ariadnev-shell/core/internal/server/models"
-	"github.com/AvengeMedia/dankgo/wlclipboard"
 	"github.com/spf13/cobra"
 )
 

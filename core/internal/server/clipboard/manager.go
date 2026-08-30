@@ -29,13 +29,13 @@ import (
 
 	bolt "go.etcd.io/bbolt"
 
+	wlclient "github.com/AvengeMedia/dankgo/wayland/client"
+	"github.com/AvengeMedia/dankgo/wayland/ext_data_control"
+	"github.com/AvengeMedia/dankgo/wlclipboard"
 	clipboardstore "github.com/bavanchun/ariadnev-shell/core/internal/clipboard"
 	"github.com/bavanchun/ariadnev-shell/core/internal/log"
 	"github.com/bavanchun/ariadnev-shell/core/internal/proto/virtual_keyboard"
 	"github.com/bavanchun/ariadnev-shell/core/internal/server/wlcontext"
-	wlclient "github.com/AvengeMedia/dankgo/wayland/client"
-	"github.com/AvengeMedia/dankgo/wayland/ext_data_control"
-	"github.com/AvengeMedia/dankgo/wlclipboard"
 )
 
 var errEntryNotFound = errors.New("entry not found")

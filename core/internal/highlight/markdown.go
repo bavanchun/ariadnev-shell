@@ -3,9 +3,9 @@ package highlight
 import (
 	"bytes"
 
-	"github.com/bavanchun/ariadnev-shell/core/internal/highlight/lexers"
 	"github.com/alecthomas/chroma/v2"
 	"github.com/alecthomas/chroma/v2/formatters/html"
+	"github.com/bavanchun/ariadnev-shell/core/internal/highlight/lexers"
 	"github.com/yuin/goldmark"
 	"github.com/yuin/goldmark/ast"
 	"github.com/yuin/goldmark/renderer"

@@ -38,16 +38,16 @@ type NiriParser struct {
 	bindMap            map[string]*NiriKeyBinding
 	bindOrder          []string
 	currentSource      string
-	advsBindsIncluded   bool
-	advsBindsExists     bool
+	advsBindsIncluded  bool
+	advsBindsExists    bool
 	includeCount       int
-	advsIncludePos      int
-	bindsBeforeADVS     int
-	bindsAfterADVS      int
-	advsBindKeys        map[string]bool
+	advsIncludePos     int
+	bindsBeforeADVS    int
+	bindsAfterADVS     int
+	advsBindKeys       map[string]bool
 	configBindKeys     map[string]bool
-	advsProcessed       bool
-	advsBindMap         map[string]*NiriKeyBinding
+	advsProcessed      bool
+	advsBindMap        map[string]*NiriKeyBinding
 	conflictingConfigs map[string]*NiriKeyBinding
 }
 
@@ -243,10 +243,10 @@ func NewNiriParser(configDir string) *NiriParser {
 		bindMap:            make(map[string]*NiriKeyBinding),
 		bindOrder:          []string{},
 		currentSource:      "",
-		advsIncludePos:      -1,
-		advsBindKeys:        make(map[string]bool),
+		advsIncludePos:     -1,
+		advsBindKeys:       make(map[string]bool),
 		configBindKeys:     make(map[string]bool),
-		advsBindMap:         make(map[string]*NiriKeyBinding),
+		advsBindMap:        make(map[string]*NiriKeyBinding),
 		conflictingConfigs: make(map[string]*NiriKeyBinding),
 	}
 }
@@ -552,8 +552,8 @@ func (p *NiriParser) parseKeyCombo(combo string) ([]string, string) {
 type NiriParseResult struct {
 	Section            *NiriSection
 	ModKey             string
-	ADVSBindsIncluded   bool
-	ADVSStatus          *ADVSBindsStatusInfo
+	ADVSBindsIncluded  bool
+	ADVSStatus         *ADVSBindsStatusInfo
 	ConflictingConfigs map[string]*NiriKeyBinding
 }
 
@@ -562,7 +562,7 @@ type ADVSBindsStatusInfo struct {
 	Included        bool
 	IncludePosition int
 	TotalIncludes   int
-	BindsAfterADVS   int
+	BindsAfterADVS  int
 	Effective       bool
 	OverriddenBy    int
 	StatusMessage   string
@@ -574,7 +574,7 @@ func (p *NiriParser) buildADVSStatus() *ADVSBindsStatusInfo {
 		Included:        p.advsBindsIncluded,
 		IncludePosition: p.advsIncludePos,
 		TotalIncludes:   p.includeCount,
-		BindsAfterADVS:   p.bindsAfterADVS,
+		BindsAfterADVS:  p.bindsAfterADVS,
 	}
 
 	switch {
@@ -605,8 +605,8 @@ func ParseNiriKeys(configDir string) (*NiriParseResult, error) {
 	return &NiriParseResult{
 		Section:            section,
 		ModKey:             parser.modKey,
-		ADVSBindsIncluded:   parser.HasADVSBindsIncluded(),
-		ADVSStatus:          parser.buildADVSStatus(),
+		ADVSBindsIncluded:  parser.HasADVSBindsIncluded(),
+		ADVSStatus:         parser.buildADVSStatus(),
 		ConflictingConfigs: parser.conflictingConfigs,
 	}, nil
 }

@@ -74,15 +74,15 @@ type SyncAuthOptions struct {
 }
 
 type syncDeps struct {
-	pamDir           string
+	pamDir          string
 	advshellPath    string
 	advshellU2fPath string
-	isNixOS          func() bool
-	readFile         func(string) ([]byte, error)
-	stat             func(string) (os.FileInfo, error)
-	createTemp       func(string, string) (*os.File, error)
-	removeFile       func(string) error
-	runSudoCmd       func(string, string, ...string) error
+	isNixOS         func() bool
+	readFile        func(string) ([]byte, error)
+	stat            func(string) (os.FileInfo, error)
+	createTemp      func(string, string) (*os.File, error)
+	removeFile      func(string) error
+	runSudoCmd      func(string, string, ...string) error
 }
 
 type lockscreenPamIncludeDirective struct {
@@ -137,14 +137,14 @@ func (r lockscreenPamResolver) locate(target string) (string, error) {
 
 func defaultSyncDeps() syncDeps {
 	return syncDeps{
-		pamDir:           "/etc/pam.d",
+		pamDir:          "/etc/pam.d",
 		advshellPath:    AdvshellPamPath,
 		advshellU2fPath: AdvshellU2FPamPath,
-		isNixOS:          IsNixOS,
-		readFile:         os.ReadFile,
-		stat:             os.Stat,
-		createTemp:       os.CreateTemp,
-		removeFile:       os.Remove,
+		isNixOS:         IsNixOS,
+		readFile:        os.ReadFile,
+		stat:            os.Stat,
+		createTemp:      os.CreateTemp,
+		removeFile:      os.Remove,
 		runSudoCmd: func(password, command string, args ...string) error {
 			return privesc.Run(context.Background(), password, append([]string{command}, args...)...)
 		},

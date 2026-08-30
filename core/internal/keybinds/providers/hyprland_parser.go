@@ -41,20 +41,20 @@ type HyprlandParser struct {
 	readingLine        int
 	configDir          string
 	currentSource      string
-	advsBindsExists     bool
-	advsBindsIncluded   bool
+	advsBindsExists    bool
+	advsBindsIncluded  bool
 	includeCount       int
-	advsIncludePos      int
-	bindsAfterADVS      int
-	advsBindKeys        map[string]bool
+	advsIncludePos     int
+	bindsAfterADVS     int
+	advsBindKeys       map[string]bool
 	configBindKeys     map[string]bool
 	conflictingConfigs map[string]*HyprlandKeyBinding
 	bindMap            map[string]*HyprlandKeyBinding
 	bindOrder          []string
 	processedFiles     map[string]bool
-	advsProcessed       bool
+	advsProcessed      bool
 	removedKeys        map[string]bool // bare hl.unbind targets (negative overrides)
-	defaultADVSKeys     map[string]bool // keys present in advs/binds.{lua,conf}
+	defaultADVSKeys    map[string]bool // keys present in advs/binds.{lua,conf}
 	configFormat       string
 	readOnly           bool
 }
@@ -64,15 +64,15 @@ func NewHyprlandParser(configDir string) *HyprlandParser {
 		contentLines:       []string{},
 		readingLine:        0,
 		configDir:          configDir,
-		advsIncludePos:      -1,
-		advsBindKeys:        make(map[string]bool),
+		advsIncludePos:     -1,
+		advsBindKeys:       make(map[string]bool),
 		configBindKeys:     make(map[string]bool),
 		conflictingConfigs: make(map[string]*HyprlandKeyBinding),
 		bindMap:            make(map[string]*HyprlandKeyBinding),
 		bindOrder:          []string{},
 		processedFiles:     make(map[string]bool),
 		removedKeys:        make(map[string]bool),
-		defaultADVSKeys:     make(map[string]bool),
+		defaultADVSKeys:    make(map[string]bool),
 	}
 }
 
@@ -298,10 +298,10 @@ func ParseHyprlandKeys(path string) (*HyprlandSection, error) {
 
 type HyprlandParseResult struct {
 	Section            *HyprlandSection
-	ADVSBindsIncluded   bool
-	ADVSStatus          *HyprlandADVSStatus
+	ADVSBindsIncluded  bool
+	ADVSStatus         *HyprlandADVSStatus
 	ConflictingConfigs map[string]*HyprlandKeyBinding
-	DefaultADVSKeys     map[string]bool // keys with a ADVS default in binds.{lua,conf}
+	DefaultADVSKeys    map[string]bool // keys with a ADVS default in binds.{lua,conf}
 }
 
 type HyprlandADVSStatus struct {
@@ -309,7 +309,7 @@ type HyprlandADVSStatus struct {
 	Included        bool
 	IncludePosition int
 	TotalIncludes   int
-	BindsAfterADVS   int
+	BindsAfterADVS  int
 	Effective       bool
 	OverriddenBy    int
 	StatusMessage   string
@@ -323,7 +323,7 @@ func (p *HyprlandParser) buildADVSStatus() *HyprlandADVSStatus {
 		Included:        p.advsBindsIncluded,
 		IncludePosition: p.advsIncludePos,
 		TotalIncludes:   p.includeCount,
-		BindsAfterADVS:   p.bindsAfterADVS,
+		BindsAfterADVS:  p.bindsAfterADVS,
 		ConfigFormat:    p.configFormat,
 		ReadOnly:        p.readOnly,
 	}
@@ -839,10 +839,10 @@ func ParseHyprlandKeysWithADVS(path string) (*HyprlandParseResult, error) {
 
 	return &HyprlandParseResult{
 		Section:            section,
-		ADVSBindsIncluded:   parser.advsBindsIncluded,
-		ADVSStatus:          parser.buildADVSStatus(),
+		ADVSBindsIncluded:  parser.advsBindsIncluded,
+		ADVSStatus:         parser.buildADVSStatus(),
 		ConflictingConfigs: parser.conflictingConfigs,
-		DefaultADVSKeys:     parser.defaultADVSKeys,
+		DefaultADVSKeys:    parser.defaultADVSKeys,
 	}, nil
 }
 

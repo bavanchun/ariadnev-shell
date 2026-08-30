@@ -1,8 +1,8 @@
 package blur
 
 import (
-	wlhelpers "github.com/bavanchun/ariadnev-shell/core/internal/wayland/client"
 	client "github.com/AvengeMedia/dankgo/wayland/client"
+	wlhelpers "github.com/bavanchun/ariadnev-shell/core/internal/wayland/client"
 )
 
 const extBackgroundEffectInterface = "ext_background_effect_manager_v1"

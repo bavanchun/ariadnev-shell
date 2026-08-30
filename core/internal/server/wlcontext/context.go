@@ -7,9 +7,9 @@ import (
 	"sync"
 	"time"
 
+	wlclient "github.com/AvengeMedia/dankgo/wayland/client"
 	"github.com/bavanchun/ariadnev-shell/core/internal/errdefs"
 	"github.com/bavanchun/ariadnev-shell/core/internal/log"
-	wlclient "github.com/AvengeMedia/dankgo/wayland/client"
 )
 
 type WaylandContext interface {

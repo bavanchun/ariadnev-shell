@@ -14,9 +14,9 @@ import (
 )
 
 type MangoWCProvider struct {
-	configPath       string
+	configPath        string
 	advsBindsIncluded bool
-	parsed           bool
+	parsed            bool
 }
 
 func NewMangoWCProvider(configPath string) *MangoWCProvider {
@@ -57,9 +57,9 @@ func (m *MangoWCProvider) GetCheatSheet() (*keybinds.CheatSheet, error) {
 	}
 
 	sheet := &keybinds.CheatSheet{
-		Title:            "MangoWC Keybinds",
-		Provider:         m.Name(),
-		Binds:            categorizedBinds,
+		Title:             "MangoWC Keybinds",
+		Provider:          m.Name(),
+		Binds:             categorizedBinds,
 		ADVSBindsIncluded: result.ADVSBindsIncluded,
 	}
 
@@ -69,7 +69,7 @@ func (m *MangoWCProvider) GetCheatSheet() (*keybinds.CheatSheet, error) {
 			Included:        result.ADVSStatus.Included,
 			IncludePosition: result.ADVSStatus.IncludePosition,
 			TotalIncludes:   result.ADVSStatus.TotalIncludes,
-			BindsAfterADVS:   result.ADVSStatus.BindsAfterADVS,
+			BindsAfterADVS:  result.ADVSStatus.BindsAfterADVS,
 			Effective:       result.ADVSStatus.Effective,
 			OverriddenBy:    result.ADVSStatus.OverriddenBy,
 			StatusMessage:   result.ADVSStatus.StatusMessage,

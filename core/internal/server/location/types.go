@@ -3,8 +3,8 @@ package location
 import (
 	"sync"
 
-	"github.com/bavanchun/ariadnev-shell/core/internal/geolocation"
 	"github.com/AvengeMedia/dankgo/syncmap"
+	"github.com/bavanchun/ariadnev-shell/core/internal/geolocation"
 )
 
 type State struct {

@@ -6,8 +6,8 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/bavanchun/ariadnev-shell/core/internal/log"
 	"github.com/AvengeMedia/dankgo/dbusutil"
+	"github.com/bavanchun/ariadnev-shell/core/internal/log"
 	"github.com/godbus/dbus/v5"
 )
 

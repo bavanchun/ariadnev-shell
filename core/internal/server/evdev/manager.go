@@ -8,8 +8,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/bavanchun/ariadnev-shell/core/internal/log"
 	"github.com/AvengeMedia/dankgo/syncmap"
+	"github.com/bavanchun/ariadnev-shell/core/internal/log"
 	"github.com/fsnotify/fsnotify"
 	evdev "github.com/holoplot/go-evdev"
 )

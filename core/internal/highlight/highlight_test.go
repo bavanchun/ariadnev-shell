@@ -5,8 +5,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/bavanchun/ariadnev-shell/core/internal/highlight/styles"
 	"github.com/alecthomas/chroma/v2/formatters/html"
+	"github.com/bavanchun/ariadnev-shell/core/internal/highlight/styles"
 	"github.com/yuin/goldmark"
 )
 

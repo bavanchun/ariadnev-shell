@@ -75,13 +75,13 @@ type NiriWindowRule struct {
 }
 
 type NiriRulesParser struct {
-	configDir        string
-	processedFiles   map[string]bool
-	rules            []NiriWindowRule
-	currentSource    string
+	configDir         string
+	processedFiles    map[string]bool
+	rules             []NiriWindowRule
+	currentSource     string
 	advsRulesIncluded bool
 	advsRulesExists   bool
-	includeCount     int
+	includeCount      int
 	advsIncludePos    int
 	rulesAfterADVS    int
 	advsProcessed     bool
@@ -92,7 +92,7 @@ func NewNiriRulesParser(configDir string) *NiriRulesParser {
 		configDir:      configDir,
 		processedFiles: make(map[string]bool),
 		rules:          []NiriWindowRule{},
-		advsIncludePos:  -1,
+		advsIncludePos: -1,
 	}
 }
 
@@ -520,7 +520,7 @@ func (p *NiriRulesParser) buildADVSStatus() *windowrules.ADVSRulesStatus {
 		Included:        p.advsRulesIncluded,
 		IncludePosition: p.advsIncludePos,
 		TotalIncludes:   p.includeCount,
-		RulesAfterADVS:   p.rulesAfterADVS,
+		RulesAfterADVS:  p.rulesAfterADVS,
 	}
 
 	switch {
@@ -543,7 +543,7 @@ func (p *NiriRulesParser) buildADVSStatus() *windowrules.ADVSRulesStatus {
 }
 
 type NiriRulesParseResult struct {
-	Rules            []NiriWindowRule
+	Rules             []NiriWindowRule
 	ADVSRulesIncluded bool
 	ADVSStatus        *windowrules.ADVSRulesStatus
 }
@@ -555,7 +555,7 @@ func ParseNiriWindowRules(configDir string) (*NiriRulesParseResult, error) {
 		return nil, err
 	}
 	return &NiriRulesParseResult{
-		Rules:            rules,
+		Rules:             rules,
 		ADVSRulesIncluded: parser.HasADVSRulesIncluded(),
 		ADVSStatus:        parser.buildADVSStatus(),
 	}, nil
@@ -665,9 +665,9 @@ func (p *NiriWritableProvider) GetRuleSet() (*windowrules.RuleSet, error) {
 		return nil, err
 	}
 	return &windowrules.RuleSet{
-		Title:            "Niri Window Rules",
-		Provider:         "niri",
-		Rules:            ConvertNiriRulesToWindowRules(result.Rules),
+		Title:             "Niri Window Rules",
+		Provider:          "niri",
+		Rules:             ConvertNiriRulesToWindowRules(result.Rules),
 		ADVSRulesIncluded: result.ADVSRulesIncluded,
 		ADVSStatus:        result.ADVSStatus,
 	}, nil

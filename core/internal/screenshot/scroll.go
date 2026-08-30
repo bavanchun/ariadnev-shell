@@ -8,10 +8,10 @@ import (
 	"os/signal"
 	"time"
 
+	"github.com/AvengeMedia/dankgo/wayland/client"
 	"github.com/bavanchun/ariadnev-shell/core/internal/log"
 	"github.com/bavanchun/ariadnev-shell/core/internal/proto/wlr_layer_shell"
 	"github.com/bavanchun/ariadnev-shell/core/internal/proto/wlr_screencopy"
-	"github.com/AvengeMedia/dankgo/wayland/client"
 	"golang.org/x/sys/unix"
 )
 

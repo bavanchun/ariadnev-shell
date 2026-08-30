@@ -6,10 +6,10 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/bavanchun/ariadnev-shell/core/internal/errdefs"
-	"github.com/bavanchun/ariadnev-shell/core/internal/geolocation"
 	"github.com/AvengeMedia/dankgo/syncmap"
 	wlclient "github.com/AvengeMedia/dankgo/wayland/client"
+	"github.com/bavanchun/ariadnev-shell/core/internal/errdefs"
+	"github.com/bavanchun/ariadnev-shell/core/internal/geolocation"
 	"github.com/godbus/dbus/v5"
 )
 

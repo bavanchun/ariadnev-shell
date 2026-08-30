@@ -8,8 +8,8 @@ import (
 
 func TestModuleToRelPath(t *testing.T) {
 	tests := map[string]string{
-		"advs.binds":       filepath.Join("advs", "binds.lua"),
-		"advs/binds-user":  filepath.Join("advs", "binds-user.lua"),
+		"advs.binds":      filepath.Join("advs", "binds.lua"),
+		"advs/binds-user": filepath.Join("advs", "binds-user.lua"),
 		"awesome/anim":    filepath.Join("awesome", "anim.lua"),
 		"awesome.colors":  filepath.Join("awesome", "colors.lua"),
 		" awesome.binds ": filepath.Join("awesome", "binds.lua"),

@@ -21,7 +21,7 @@ type ADVSBindsStatus struct {
 	Included        bool   `json:"included"`
 	IncludePosition int    `json:"includePosition"`
 	TotalIncludes   int    `json:"totalIncludes"`
-	BindsAfterADVS   int    `json:"bindsAfterAdvs"`
+	BindsAfterADVS  int    `json:"bindsAfterAdvs"`
 	Effective       bool   `json:"effective"`
 	OverriddenBy    int    `json:"overriddenBy"`
 	StatusMessage   string `json:"statusMessage"`
@@ -30,12 +30,12 @@ type ADVSBindsStatus struct {
 }
 
 type CheatSheet struct {
-	Title            string               `json:"title"`
-	Provider         string               `json:"provider"`
-	ModKey           string               `json:"modKey,omitempty"`
-	Binds            map[string][]Keybind `json:"binds"`
+	Title             string               `json:"title"`
+	Provider          string               `json:"provider"`
+	ModKey            string               `json:"modKey,omitempty"`
+	Binds             map[string][]Keybind `json:"binds"`
 	ADVSBindsIncluded bool                 `json:"advsBindsIncluded"`
-	ADVSStatus        *ADVSBindsStatus      `json:"advsStatus,omitempty"`
+	ADVSStatus        *ADVSBindsStatus     `json:"advsStatus,omitempty"`
 }
 
 type Provider interface {

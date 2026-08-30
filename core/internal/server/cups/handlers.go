@@ -3,8 +3,8 @@ package cups
 import (
 	"fmt"
 
-	"github.com/bavanchun/ariadnev-shell/core/internal/server/models"
 	"github.com/AvengeMedia/dankgo/ipc/params"
+	"github.com/bavanchun/ariadnev-shell/core/internal/server/models"
 )
 
 type CUPSEvent struct {

@@ -17,7 +17,7 @@ type PluginInfo struct {
 	Featured     bool     `json:"featured,omitempty"`
 	Note         string   `json:"note,omitempty"`
 	HasUpdate    bool     `json:"hasUpdate,omitempty"`
-	RequiresADVS  string   `json:"requires_advs,omitempty"`
+	RequiresADVS string   `json:"requires_advs,omitempty"`
 	DiffURL      string   `json:"diffUrl,omitempty"`
 	Upvotes      int      `json:"upvotes,omitempty"`
 	Status       []string `json:"status,omitempty"`

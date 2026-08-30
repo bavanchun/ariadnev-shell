@@ -27,7 +27,7 @@ type Plugin struct {
 	Compositors  []string `json:"compositors"`
 	Distro       []string `json:"distro"`
 	Screenshot   string   `json:"screenshot,omitempty"`
-	RequiresADVS  string   `json:"requires_advs,omitempty"`
+	RequiresADVS string   `json:"requires_advs,omitempty"`
 	Featured     bool     `json:"featured,omitempty"`
 }
 

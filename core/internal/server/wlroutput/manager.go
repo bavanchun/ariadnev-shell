@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"time"
 
+	wlclient "github.com/AvengeMedia/dankgo/wayland/client"
 	"github.com/bavanchun/ariadnev-shell/core/internal/log"
 	"github.com/bavanchun/ariadnev-shell/core/internal/proto/wlr_output_management"
-	wlclient "github.com/AvengeMedia/dankgo/wayland/client"
 )
 
 func NewManager(display wlclient.WaylandDisplay) (*Manager, error) {

@@ -120,12 +120,12 @@ func (u *UbuntuDistribution) GetPackageMappingWithVariants(wm deps.WindowManager
 
 		// ADVS packages from PPAs
 		"advs (AriadnevShell)": u.getAdvsMapping(variants["advs (AriadnevShell)"]),
-		"quickshell":              u.getQuickshellMapping(variants["quickshell"]),
-		"advs-greeter":             {Name: "advs-greeter", Repository: RepoTypePPA, RepoURL: "ppa:bavanchun/ariadnev"},
-		"matugen":                 {Name: "matugen", Repository: RepoTypePPA, RepoURL: "ppa:bavanchun/ariadnev"},
-		"ghostty":                 {Name: "ghostty", Repository: RepoTypePPA, RepoURL: "ppa:bavanchun/ariadnev"},
-		"danksearch":              {Name: "danksearch", Repository: RepoTypePPA, RepoURL: "ppa:bavanchun/ariadnev"},
-		"dankcalendar":            {Name: "dankcalendar-git", Repository: RepoTypePPA, RepoURL: "ppa:bavanchun/ariadnev"},
+		"quickshell":           u.getQuickshellMapping(variants["quickshell"]),
+		"advs-greeter":         {Name: "advs-greeter", Repository: RepoTypePPA, RepoURL: "ppa:bavanchun/ariadnev"},
+		"matugen":              {Name: "matugen", Repository: RepoTypePPA, RepoURL: "ppa:bavanchun/ariadnev"},
+		"ghostty":              {Name: "ghostty", Repository: RepoTypePPA, RepoURL: "ppa:bavanchun/ariadnev"},
+		"danksearch":           {Name: "danksearch", Repository: RepoTypePPA, RepoURL: "ppa:bavanchun/ariadnev"},
+		"dankcalendar":         {Name: "dankcalendar-git", Repository: RepoTypePPA, RepoURL: "ppa:bavanchun/ariadnev"},
 	}
 
 	switch wm {

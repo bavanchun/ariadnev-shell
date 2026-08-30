@@ -5,9 +5,9 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/bavanchun/ariadnev-shell/core/internal/server/models"
 	"github.com/AvengeMedia/dankgo/ipc/params"
 	"github.com/AvengeMedia/dgop/gops"
+	"github.com/bavanchun/ariadnev-shell/core/internal/server/models"
 )
 
 const metaTimeout = 10 * time.Second

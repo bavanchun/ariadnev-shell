@@ -134,12 +134,12 @@ func (f *FedoraDistribution) GetPackageMappingWithVariants(wm deps.WindowManager
 		"accountsservice":        {Name: "accountsservice", Repository: RepoTypeSystem},
 
 		// COPR packages
-		"quickshell":              f.getQuickshellMapping(variants["quickshell"]),
-		"advs-greeter":             {Name: "advs-greeter", Repository: RepoTypeCOPR, RepoURL: "bavanchun/ariadnev"},
-		"matugen":                 {Name: "matugen", Repository: RepoTypeCOPR, RepoURL: "bavanchun/ariadnev"},
+		"quickshell":           f.getQuickshellMapping(variants["quickshell"]),
+		"advs-greeter":         {Name: "advs-greeter", Repository: RepoTypeCOPR, RepoURL: "bavanchun/ariadnev"},
+		"matugen":              {Name: "matugen", Repository: RepoTypeCOPR, RepoURL: "bavanchun/ariadnev"},
 		"advs (AriadnevShell)": f.getAdvsMapping(variants["advs (AriadnevShell)"]),
-		"danksearch":              {Name: "danksearch", Repository: RepoTypeCOPR, RepoURL: "bavanchun/ariadnev"},
-		"dankcalendar":            {Name: "dankcalendar-git", Repository: RepoTypeCOPR, RepoURL: "bavanchun/ariadnev"},
+		"danksearch":           {Name: "danksearch", Repository: RepoTypeCOPR, RepoURL: "bavanchun/ariadnev"},
+		"dankcalendar":         {Name: "dankcalendar-git", Repository: RepoTypeCOPR, RepoURL: "bavanchun/ariadnev"},
 	}
 
 	switch wm {

@@ -6,9 +6,9 @@ import (
 	"os"
 	"os/exec"
 
+	"github.com/AvengeMedia/dankgo/wayland/client"
 	"github.com/bavanchun/ariadnev-shell/core/internal/proto/wlr_output_management"
 	wlhelpers "github.com/bavanchun/ariadnev-shell/core/internal/wayland/client"
-	"github.com/AvengeMedia/dankgo/wayland/client"
 )
 
 type Compositor int

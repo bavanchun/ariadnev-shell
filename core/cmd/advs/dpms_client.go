@@ -5,8 +5,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/bavanchun/ariadnev-shell/core/internal/proto/wlr_output_power"
 	wlclient "github.com/AvengeMedia/dankgo/wayland/client"
+	"github.com/bavanchun/ariadnev-shell/core/internal/proto/wlr_output_power"
 )
 
 type cmd struct {

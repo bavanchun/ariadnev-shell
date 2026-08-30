@@ -5,11 +5,11 @@ import (
 	"fmt"
 	"os"
 
+	"github.com/AvengeMedia/dankgo/shellapp"
 	"github.com/bavanchun/ariadnev-shell/core/internal/config"
 	"github.com/bavanchun/ariadnev-shell/core/internal/log"
 	"github.com/bavanchun/ariadnev-shell/core/internal/server"
 	"github.com/bavanchun/ariadnev-shell/core/internal/shellembed"
-	"github.com/AvengeMedia/dankgo/shellapp"
 )
 
 var shellApp = shellapp.New(shellapp.Config{

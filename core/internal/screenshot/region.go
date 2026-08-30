@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"sync"
 
+	"github.com/AvengeMedia/dankgo/wayland/client"
 	"github.com/bavanchun/ariadnev-shell/core/internal/log"
 	"github.com/bavanchun/ariadnev-shell/core/internal/proto/keyboard_shortcuts_inhibit"
 	"github.com/bavanchun/ariadnev-shell/core/internal/proto/wlr_layer_shell"
@@ -11,7 +12,6 @@ import (
 	"github.com/bavanchun/ariadnev-shell/core/internal/proto/wp_cursor_shape"
 	"github.com/bavanchun/ariadnev-shell/core/internal/proto/wp_viewporter"
 	wlhelpers "github.com/bavanchun/ariadnev-shell/core/internal/wayland/client"
-	"github.com/AvengeMedia/dankgo/wayland/client"
 )
 
 type SelectionState struct {

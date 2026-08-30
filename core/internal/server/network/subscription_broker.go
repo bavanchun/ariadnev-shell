@@ -4,9 +4,9 @@ import (
 	"context"
 	"fmt"
 
+	"github.com/AvengeMedia/dankgo/syncmap"
 	"github.com/bavanchun/ariadnev-shell/core/internal/errdefs"
 	"github.com/bavanchun/ariadnev-shell/core/internal/log"
-	"github.com/AvengeMedia/dankgo/syncmap"
 )
 
 type SubscriptionBroker struct {

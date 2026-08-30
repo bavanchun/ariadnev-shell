@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"sort"
 
-	"github.com/bavanchun/ariadnev-shell/core/internal/log"
 	"github.com/Wifx/gonetworkmanager/v2"
+	"github.com/bavanchun/ariadnev-shell/core/internal/log"
 )
 
 func (b *NetworkManagerBackend) GetWiFiEnabled() (bool, error) {

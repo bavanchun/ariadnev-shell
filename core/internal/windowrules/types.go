@@ -87,7 +87,7 @@ type ADVSRulesStatus struct {
 	Included        bool   `json:"included"`
 	IncludePosition int    `json:"includePosition"`
 	TotalIncludes   int    `json:"totalIncludes"`
-	RulesAfterADVS   int    `json:"rulesAfterAdvs"`
+	RulesAfterADVS  int    `json:"rulesAfterAdvs"`
 	Effective       bool   `json:"effective"`
 	OverriddenBy    int    `json:"overriddenBy"`
 	StatusMessage   string `json:"statusMessage"`
@@ -96,10 +96,10 @@ type ADVSRulesStatus struct {
 }
 
 type RuleSet struct {
-	Title            string          `json:"title"`
-	Provider         string          `json:"provider"`
-	Rules            []WindowRule    `json:"rules"`
-	ADVSRulesIncluded bool            `json:"advsRulesIncluded"`
+	Title             string           `json:"title"`
+	Provider          string           `json:"provider"`
+	Rules             []WindowRule     `json:"rules"`
+	ADVSRulesIncluded bool             `json:"advsRulesIncluded"`
 	ADVSStatus        *ADVSRulesStatus `json:"advsStatus,omitempty"`
 }
 

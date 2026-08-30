@@ -355,9 +355,9 @@ func TestBuildDisabledItems(t *testing.T) {
 		name         string
 		includeDeps  []string
 		excludeDeps  []string
-		advSearch   bool
-		advCalendar bool
-		advsGreeter   bool
+		advSearch    bool
+		advCalendar  bool
+		advsGreeter  bool
 		allFeatures  bool
 		deps         []deps.Dependency // nil means use the shared fixture
 		wantErr      bool
@@ -420,39 +420,39 @@ func TestBuildDisabledItems(t *testing.T) {
 		},
 		{
 			name:         "danksearch flag enables it",
-			advSearch:   true,
+			advSearch:    true,
 			wantEnabled:  []string{"danksearch"},
 			wantDisabled: []string{"advs-greeter", "dankcalendar"},
 		},
 		{
 			name:         "dankcalendar flag enables it",
-			advCalendar: true,
+			advCalendar:  true,
 			wantEnabled:  []string{"dankcalendar"},
 			wantDisabled: []string{"advs-greeter", "danksearch"},
 		},
 		{
 			name:        "danksearch flag when unavailable errors",
-			advSearch:  true,
+			advSearch:   true,
 			deps:        []deps.Dependency{{Name: "niri", Status: deps.StatusInstalled, Required: true}},
 			wantErr:     true,
 			errContains: "--danksearch",
 		},
 		{
-			name:         "dankcalendar flag when unavailable errors",
+			name:        "dankcalendar flag when unavailable errors",
 			advCalendar: true,
-			deps:         []deps.Dependency{{Name: "niri", Status: deps.StatusInstalled, Required: true}},
-			wantErr:      true,
-			errContains:  "--dankcalendar",
+			deps:        []deps.Dependency{{Name: "niri", Status: deps.StatusInstalled, Required: true}},
+			wantErr:     true,
+			errContains: "--dankcalendar",
 		},
 		{
 			name:         "advs-greeter flag enables it",
-			advsGreeter:   true,
+			advsGreeter:  true,
 			wantEnabled:  []string{"advs-greeter"},
 			wantDisabled: []string{"danksearch", "dankcalendar"},
 		},
 		{
 			name:        "advs-greeter flag when unavailable errors",
-			advsGreeter:  true,
+			advsGreeter: true,
 			deps:        []deps.Dependency{{Name: "niri", Status: deps.StatusInstalled, Required: true}},
 			wantErr:     true,
 			errContains: "--advs-greeter",
@@ -476,9 +476,9 @@ func TestBuildDisabledItems(t *testing.T) {
 			r := NewRunner(Config{
 				IncludeDeps:  tt.includeDeps,
 				ExcludeDeps:  tt.excludeDeps,
-				AdvSearch:   tt.advSearch,
+				AdvSearch:    tt.advSearch,
 				DankCalendar: tt.advCalendar,
-				AdvsGreeter:   tt.advsGreeter,
+				AdvsGreeter:  tt.advsGreeter,
 				AllFeatures:  tt.allFeatures,
 			})
 			d := tt.deps

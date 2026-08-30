@@ -132,12 +132,12 @@ func (d *DebianDistribution) GetPackageMappingWithVariants(wm deps.WindowManager
 
 		// ADVS packages from OBS with variant support
 		"advs (AriadnevShell)": d.getAdvsMapping(variants["advs (AriadnevShell)"]),
-		"quickshell":              d.getQuickshellMapping(variants["quickshell"]),
-		"advs-greeter":             {Name: "advs-greeter", Repository: RepoTypeOBS, RepoURL: "home:bavanchun:ariadnev"},
-		"matugen":                 {Name: "matugen", Repository: RepoTypeOBS, RepoURL: "home:bavanchun:ariadnev"},
-		"ghostty":                 {Name: "ghostty", Repository: RepoTypeOBS, RepoURL: "home:bavanchun:ariadnev"},
-		"danksearch":              {Name: "danksearch", Repository: RepoTypeOBS, RepoURL: "home:bavanchun:ariadnev"},
-		"dankcalendar":            {Name: "dankcalendar-git", Repository: RepoTypeOBS, RepoURL: "home:bavanchun:ariadnev"},
+		"quickshell":           d.getQuickshellMapping(variants["quickshell"]),
+		"advs-greeter":         {Name: "advs-greeter", Repository: RepoTypeOBS, RepoURL: "home:bavanchun:ariadnev"},
+		"matugen":              {Name: "matugen", Repository: RepoTypeOBS, RepoURL: "home:bavanchun:ariadnev"},
+		"ghostty":              {Name: "ghostty", Repository: RepoTypeOBS, RepoURL: "home:bavanchun:ariadnev"},
+		"danksearch":           {Name: "danksearch", Repository: RepoTypeOBS, RepoURL: "home:bavanchun:ariadnev"},
+		"dankcalendar":         {Name: "dankcalendar-git", Repository: RepoTypeOBS, RepoURL: "home:bavanchun:ariadnev"},
 	}
 
 	if wm == deps.WindowManagerNiri {

@@ -8,11 +8,11 @@ import (
 	"strings"
 	"sync"
 
+	"github.com/alecthomas/chroma/v2"
+	"github.com/alecthomas/chroma/v2/formatters/html"
 	"github.com/bavanchun/ariadnev-shell/core/internal/highlight"
 	"github.com/bavanchun/ariadnev-shell/core/internal/highlight/lexers"
 	"github.com/bavanchun/ariadnev-shell/core/internal/highlight/styles"
-	"github.com/alecthomas/chroma/v2"
-	"github.com/alecthomas/chroma/v2/formatters/html"
 	"github.com/spf13/cobra"
 	"github.com/yuin/goldmark"
 	"github.com/yuin/goldmark/extension"

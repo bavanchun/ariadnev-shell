@@ -9,6 +9,9 @@ import (
 	"sync"
 	"time"
 
+	"github.com/AvengeMedia/dankgo/ipc"
+	"github.com/AvengeMedia/dankgo/paths"
+	"github.com/AvengeMedia/dankgo/syncmap"
 	"github.com/bavanchun/ariadnev-shell/core/internal/geolocation"
 	"github.com/bavanchun/ariadnev-shell/core/internal/log"
 	"github.com/bavanchun/ariadnev-shell/core/internal/matugen"
@@ -33,9 +36,6 @@ import (
 	"github.com/bavanchun/ariadnev-shell/core/internal/server/wayland"
 	"github.com/bavanchun/ariadnev-shell/core/internal/server/wlcontext"
 	"github.com/bavanchun/ariadnev-shell/core/internal/server/wlroutput"
-	"github.com/AvengeMedia/dankgo/ipc"
-	"github.com/AvengeMedia/dankgo/paths"
-	"github.com/AvengeMedia/dankgo/syncmap"
 )
 
 const APIVersion = 32

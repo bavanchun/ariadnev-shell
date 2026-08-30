@@ -3,8 +3,8 @@ package network
 import (
 	"testing"
 
-	mock_gonetworkmanager "github.com/bavanchun/ariadnev-shell/core/internal/mocks/github.com/Wifx/gonetworkmanager/v2"
 	"github.com/Wifx/gonetworkmanager/v2"
+	mock_gonetworkmanager "github.com/bavanchun/ariadnev-shell/core/internal/mocks/github.com/Wifx/gonetworkmanager/v2"
 	"github.com/stretchr/testify/assert"
 )
 

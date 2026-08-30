@@ -13,8 +13,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/bavanchun/ariadnev-shell/core/internal/log"
 	"github.com/Wifx/gonetworkmanager/v2"
+	"github.com/bavanchun/ariadnev-shell/core/internal/log"
 	"github.com/godbus/dbus/v5"
 )
 

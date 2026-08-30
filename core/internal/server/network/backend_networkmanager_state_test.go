@@ -3,9 +3,9 @@ package network
 import (
 	"testing"
 
+	"github.com/Wifx/gonetworkmanager/v2"
 	"github.com/bavanchun/ariadnev-shell/core/internal/errdefs"
 	mock_gonetworkmanager "github.com/bavanchun/ariadnev-shell/core/internal/mocks/github.com/Wifx/gonetworkmanager/v2"
-	"github.com/Wifx/gonetworkmanager/v2"
 	"github.com/stretchr/testify/assert"
 )
 

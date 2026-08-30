@@ -10,8 +10,8 @@ import (
 	"github.com/godbus/dbus/v5"
 	bolt "go.etcd.io/bbolt"
 
-	"github.com/bavanchun/ariadnev-shell/core/internal/server/wlcontext"
 	wlclient "github.com/AvengeMedia/dankgo/wayland/client"
+	"github.com/bavanchun/ariadnev-shell/core/internal/server/wlcontext"
 )
 
 const largeEntryBytes = 1 << 20
