@@ -478,7 +478,7 @@ jobs:
           body: ${{ steps.changelog.outputs.changelog }}
           files: _release_assets/**
           draft: false
-          prerelease: ${{ contains(env.TAG, '-') }}
+          prerelease: ${{ contains(env.TAG, '-rc') || contains(env.TAG, '-beta') || contains(env.TAG, '-alpha') }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -486,7 +486,7 @@ jobs:
       # Opt-in via notify_issues (Point release defaults it on). Skipped for
       # prereleases. Preview: scripts/notify-issues.sh <prev> <tag> --dry-run
       - name: Notify open issues to retest
-        if: ${{ inputs.notify_issues && !contains(env.TAG, '-') }}
+        if: ${{ inputs.notify_issues && !contains(env.TAG, '-rc') || contains(env.TAG, '-beta') || contains(env.TAG, '-alpha') }}
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
