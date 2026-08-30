@@ -107,7 +107,7 @@ Notification center with grouping, rich text support, and keyboard navigation.
 MPRIS player controls, calendar sync, weather widgets, and clipboard history with image previews.
 
 **Session Management**
-Lock screen, idle detection, auto-lock/suspend with separate AC/battery settings, and a settings front-end for [adv-greeter](https://github.com/AvengeMedia/dank-greeter).
+Lock screen, idle detection, auto-lock/suspend with separate AC/battery settings, and a settings front-end for [ariadnev-greeter](https://github.com/bavanchun/ariadnev-greeter).
 
 **Plugin System**
 Extend functionality with the [plugin registry](https://plugins.ariadnev.vchun.dev). ADVS keeps
@@ -148,7 +148,7 @@ advs plugins restore ~/plugins.lock.json
 
 ADVS is one piece of the suite. The rest lives in its own repos:
 
-- [adv-greeter](https://github.com/AvengeMedia/dank-greeter) - greetd login screen with the Adv Material aesthetic. The Greeter tab in ADVS settings is the front-end for it.
+- [ariadnev-greeter](https://github.com/bavanchun/ariadnev-greeter) - greetd login screen with the Adv Material aesthetic. The Greeter tab in ADVS settings is the front-end for it.
 - [dankcalendar](https://github.com/AvengeMedia/dankcalendar) - Local, Google, Microsoft, and CalDAV calendars for the adv desktop.
 - [dgop](https://github.com/AvengeMedia/dgop) - System monitoring TUI and Go library; its library powers the process list and dashboard widgets inside the advs daemon.
 - [dsearch](https://github.com/AvengeMedia/danksearch) - Fast file search that powers file results in the launcher.
