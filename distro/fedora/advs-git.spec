@@ -44,7 +44,7 @@ Requires:       advs-cli = %{epoch}:%{version}-%{release}
 
 # Core utilities (Recommended for ADVS functionality)
 Recommends:     cava
-Recommends:     advsearch
+Recommends:     danksearch
 Recommends:     matugen
 Recommends:     quickshell-git
 

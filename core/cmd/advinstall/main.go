@@ -27,8 +27,8 @@ var (
 	replaceConfigs    []string
 	replaceConfigsAll bool
 	yes               bool
-	advsearch        bool
-	advcalendar      bool
+	danksearch        bool
+	dankcalendar      bool
 	advsGreeter        bool
 )
 
@@ -54,14 +54,14 @@ func init() {
 	rootCmd.Flags().StringVar(&privescTool, "privesc", "", "Privilege escalation tool: sudo, doas, or run0 (default: autodetect)")
 	rootCmd.Flags().BoolVar(&gitAll, "git", false, "Install the git version of every dep that has one")
 	rootCmd.Flags().StringSliceVar(&gitDeps, "git-deps", []string{}, "Deps to install the git version of (e.g. niri,quickshell)")
-	rootCmd.Flags().BoolVar(&allFeatures, "all-features", false, "Enable all optional deps (advs-greeter, advsearch, advcalendar)")
+	rootCmd.Flags().BoolVar(&allFeatures, "all-features", false, "Enable all optional deps (advs-greeter, danksearch, dankcalendar)")
 	rootCmd.Flags().StringSliceVar(&includeDeps, "include-deps", []string{}, "Optional deps to enable (e.g. advs-greeter)")
 	rootCmd.Flags().StringSliceVar(&excludeDeps, "exclude-deps", []string{}, "Deps to skip during installation")
 	rootCmd.Flags().StringSliceVar(&replaceConfigs, "replace-configs", []string{}, "Deploy only named configs (e.g. niri,ghostty)")
 	rootCmd.Flags().BoolVar(&replaceConfigsAll, "replace-configs-all", false, "Deploy and replace all configurations")
 	rootCmd.Flags().BoolVarP(&yes, "yes", "y", false, "Auto-confirm all prompts")
-	rootCmd.Flags().BoolVar(&advsearch, "advsearch", false, "Install advsearch and enable its user indexing service")
-	rootCmd.Flags().BoolVar(&advcalendar, "advcalendar", false, "Install advcalendar")
+	rootCmd.Flags().BoolVar(&danksearch, "danksearch", false, "Install danksearch and enable its user indexing service")
+	rootCmd.Flags().BoolVar(&dankcalendar, "dankcalendar", false, "Install dankcalendar")
 	rootCmd.Flags().BoolVar(&advsGreeter, "advs-greeter", false, "Install advs-greeter")
 }
 
@@ -92,8 +92,8 @@ func runAdvinstall(cmd *cobra.Command, args []string) error {
 			"replace-configs",
 			"replace-configs-all",
 			"yes",
-			"advsearch",
-			"advcalendar",
+			"danksearch",
+			"dankcalendar",
 			"advs-greeter",
 		}
 		var set []string
@@ -134,8 +134,8 @@ func runHeadless() error {
 		ReplaceConfigs:    replaceConfigs,
 		ReplaceConfigsAll: replaceConfigsAll,
 		Yes:               yes,
-		AdvSearch:        advsearch,
-		AdvCalendar:      advcalendar,
+		AdvSearch:        danksearch,
+		DankCalendar:      dankcalendar,
 		AdvsGreeter:        advsGreeter,
 	}
 

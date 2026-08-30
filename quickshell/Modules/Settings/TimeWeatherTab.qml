@@ -140,14 +140,14 @@ Item {
 
                 SettingsDropdownRow {
                     tab: "time"
-                    tags: ["calendar", "backend", "daemon", "khal", "advcalendar", "events"]
+                    tags: ["calendar", "backend", "daemon", "khal", "dankcalendar", "events"]
                     settingKey: "calendarBackend"
                     text: I18n.tr("Calendar Backend")
                     description: {
                         const resolved = CalendarService.activeBackend;
                         switch (resolved) {
                         case "advcal":
-                            return I18n.tr("Using AdvCalendar%1", "calendar backend status").arg(CalendarService.isAdvActive && CalendarService.calendars.length > 0 ? "" : " (connecting…)");
+                            return I18n.tr("Using DankCalendar%1", "calendar backend status").arg(CalendarService.isAdvActive && CalendarService.calendars.length > 0 ? "" : " (connecting…)");
                         case "khal":
                             return I18n.tr("Using khal", "calendar backend status");
                         default:
@@ -155,7 +155,7 @@ Item {
                         }
                     }
                     readonly property var _backendValues: ["auto", "khal", "advcal"]
-                    readonly property var _backendLabels: [I18n.tr("Auto", "calendar backend option"), I18n.tr("khal", "calendar backend option"), I18n.tr("AdvCalendar", "calendar backend option")]
+                    readonly property var _backendLabels: [I18n.tr("Auto", "calendar backend option"), I18n.tr("khal", "calendar backend option"), I18n.tr("DankCalendar", "calendar backend option")]
                     options: _backendLabels
                     currentValue: _backendLabels[Math.max(0, _backendValues.indexOf(SettingsData.calendarBackend))]
                     onValueChanged: value => {

@@ -78,7 +78,7 @@ Custom IPC via unix socket (JSON API) for shell communication.
 - `advs brightness [list|set]` - Control display/monitor brightness
 - `advs color pick` - Native color picker (see below)
 - `advs update` - Update ADVS and dependencies (disabled in distro packages)
-- `advs greeter` - Deprecated; forwards to the standalone [advs-greeter](https://github.com/bavanchun/adv-greeter) binary
+- `advs greeter` - Deprecated; forwards to the standalone [advs-greeter](https://github.com/AvengeMedia/dank-greeter) binary
 
 ### Color Picker
 
@@ -172,10 +172,10 @@ sudo -v && curl -fsSL https://install.ariadnev.vchun.dev | sh -s -- -c niri -t g
 | `--privesc <sudo\|doas\|run0>` | | Privilege escalation tool (default: autodetect) |
 | `--git` | | Install the git version of every dependency that has one |
 | `--git-deps <name,...>` | | Install the git version of specific dependencies (e.g. `niri,quickshell`) |
-| `--all-features` | | Enable all optional dependencies (`advs-greeter`, `advsearch`, `advcalendar`) |
+| `--all-features` | | Enable all optional dependencies (`advs-greeter`, `danksearch`, `dankcalendar`) |
 | `--advs-greeter` | | Install advs-greeter |
-| `--advsearch` | | Install advsearch and enable its user indexing service |
-| `--advcalendar` | | Install advcalendar |
+| `--danksearch` | | Install danksearch and enable its user indexing service |
+| `--dankcalendar` | | Install dankcalendar |
 | `--include-deps <name,...>` | | Enable optional dependencies (e.g. `advs-greeter`) |
 | `--exclude-deps <name,...>` | | Skip specific dependencies |
 | `--replace-configs <name,...>` | | Replace specific configuration files (mutually exclusive with `--replace-configs-all`) |
@@ -184,7 +184,7 @@ sudo -v && curl -fsSL https://install.ariadnev.vchun.dev | sh -s -- -c niri -t g
 
 Headless mode requires `--yes` to proceed; without it, the installer exits with an error.
 Configuration files are not replaced by default unless `--replace-configs` or `--replace-configs-all` is specified.
-Optional packages (`advs-greeter`, `advsearch`, `advcalendar`) are disabled by default; enable them with their dedicated flags, `--include-deps`, or `--all-features`.
+Optional packages (`advs-greeter`, `danksearch`, `dankcalendar`) are disabled by default; enable them with their dedicated flags, `--include-deps`, or `--all-features`.
 
 When no flags are provided, `advinstall` launches the interactive TUI.
 
@@ -193,7 +193,7 @@ When no flags are provided, `advinstall` launches the interactive TUI.
 Headless mode activates when `--compositor` or `--term` is provided.
 
 - Both `--compositor` and `--term` are required; providing only one results in an error.
-- Headless-only flags (`--privesc`, `--git`, `--git-deps`, `--all-features`, `--include-deps`, `--exclude-deps`, `--replace-configs`, `--replace-configs-all`, `--yes`, `--advsearch`, `--advcalendar`, `--advs-greeter`) are rejected in TUI mode.
+- Headless-only flags (`--privesc`, `--git`, `--git-deps`, `--all-features`, `--include-deps`, `--exclude-deps`, `--replace-configs`, `--replace-configs-all`, `--yes`, `--danksearch`, `--dankcalendar`, `--advs-greeter`) are rejected in TUI mode.
 - Positional arguments are not accepted.
 
 ### Log file location

@@ -103,8 +103,8 @@ func (f *FedoraDistribution) DetectDependenciesWithTerminal(ctx context.Context,
 	}
 
 	dependencies = append(dependencies, f.detectMatugen())
-	dependencies = append(dependencies, f.detectAdvsearch())
-	dependencies = append(dependencies, f.detectAdvCalendar())
+	dependencies = append(dependencies, f.detectDanksearch())
+	dependencies = append(dependencies, f.detectDankCalendar())
 
 	return dependencies, nil
 }
@@ -138,8 +138,8 @@ func (f *FedoraDistribution) GetPackageMappingWithVariants(wm deps.WindowManager
 		"advs-greeter":             {Name: "advs-greeter", Repository: RepoTypeCOPR, RepoURL: "bavanchun/ariadnev"},
 		"matugen":                 {Name: "matugen", Repository: RepoTypeCOPR, RepoURL: "bavanchun/ariadnev"},
 		"advs (AriadnevShell)": f.getAdvsMapping(variants["advs (AriadnevShell)"]),
-		"advsearch":              {Name: "advsearch", Repository: RepoTypeCOPR, RepoURL: "bavanchun/ariadnev"},
-		"advcalendar":            {Name: "advcalendar-git", Repository: RepoTypeCOPR, RepoURL: "bavanchun/ariadnev"},
+		"danksearch":              {Name: "danksearch", Repository: RepoTypeCOPR, RepoURL: "bavanchun/ariadnev"},
+		"dankcalendar":            {Name: "dankcalendar-git", Repository: RepoTypeCOPR, RepoURL: "bavanchun/ariadnev"},
 	}
 
 	switch wm {

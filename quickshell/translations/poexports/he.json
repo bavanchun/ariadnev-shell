@@ -2324,14 +2324,14 @@
   "AdvBar": {
     "AdvBar": "Adv Bar"
   },
-  "AdvCalendar": {
-    "AdvCalendar": "AdvCalendar"
+  "DankCalendar": {
+    "DankCalendar": "DankCalendar"
   },
-  "AdvCalendar isn't installed": {
-    "AdvCalendar isn't installed": "AdvCalendar אינו מותקן"
+  "DankCalendar isn't installed": {
+    "DankCalendar isn't installed": "DankCalendar אינו מותקן"
   },
-  "AdvCalendar isn't running": {
-    "AdvCalendar isn't running": "AdvCalendar אינו פועל"
+  "DankCalendar isn't running": {
+    "DankCalendar isn't running": "DankCalendar אינו פועל"
   },
   "AriadnevShell is ready to use": {
     "AriadnevShell is ready to use": "AriadnevShell מוכן לשימוש"
@@ -3467,8 +3467,8 @@
   "File received from %1": {
     "File received from %1": "התקבל קובץ מ%1"
   },
-  "File search requires dsearch\nInstall from github.com/bavanchun/advsearch": {
-    "File search requires dsearch\nInstall from github.com/bavanchun/advsearch": "חיפוש קבצים הכלי dsearch נדרש כדי לבצע חיפוש של קבצים.\nהתקן/י אותו מ: github.com/morelazers/dsearch"
+  "File search requires dsearch\nInstall from github.com/AvengeMedia/danksearch": {
+    "File search requires dsearch\nInstall from github.com/AvengeMedia/danksearch": "חיפוש קבצים הכלי dsearch נדרש כדי לבצע חיפוש של קבצים.\nהתקן/י אותו מ: github.com/morelazers/dsearch"
   },
   "File search unavailable": {
     "File search unavailable": "חיפוש קבצים אינו זמין"
@@ -9104,8 +9104,8 @@
   "Uses the spotlight-bar IPC action and always opens the minimal bar.": {
     "Uses the spotlight-bar IPC action and always opens the minimal bar.": "משתמש בפעולת הIPC של spotlight-bar ותמיד פותח את הסרגל המינימלי."
   },
-  "Using AdvCalendar%1": {
-    "Using AdvCalendar%1": "משתמש בAdvCalendar%1"
+  "Using DankCalendar%1": {
+    "Using DankCalendar%1": "משתמש בDankCalendar%1"
   },
   "Using global monospace font from Settings → Personalization": {
     "Using global monospace font from Settings → Personalization": "משתמש בגופן ברוחב קבוע גלובלי מהגדרות ← התאמה אישית"

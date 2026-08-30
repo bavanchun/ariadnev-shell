@@ -2324,14 +2324,14 @@
   "AdvBar": {
     "AdvBar": "AdvBar"
   },
-  "AdvCalendar": {
-    "AdvCalendar": "AdvCalendar"
+  "DankCalendar": {
+    "DankCalendar": "DankCalendar"
   },
-  "AdvCalendar isn't installed": {
-    "AdvCalendar isn't installed": "O AdvCalendar não está instalado"
+  "DankCalendar isn't installed": {
+    "DankCalendar isn't installed": "O DankCalendar não está instalado"
   },
-  "AdvCalendar isn't running": {
-    "AdvCalendar isn't running": "O AdvCalendar não está em execução"
+  "DankCalendar isn't running": {
+    "DankCalendar isn't running": "O DankCalendar não está em execução"
   },
   "AriadnevShell is ready to use": {
     "AriadnevShell is ready to use": "AriadnevShell está pronto para uso"
@@ -3467,8 +3467,8 @@
   "File received from %1": {
     "File received from %1": "Arquivo recebido de %1"
   },
-  "File search requires dsearch\nInstall from github.com/bavanchun/advsearch": {
-    "File search requires dsearch\nInstall from github.com/bavanchun/advsearch": "Pesquisa de arquivo requer dsearch\nInstalar de github.com/morelazers/dsearch"
+  "File search requires dsearch\nInstall from github.com/AvengeMedia/danksearch": {
+    "File search requires dsearch\nInstall from github.com/AvengeMedia/danksearch": "Pesquisa de arquivo requer dsearch\nInstalar de github.com/morelazers/dsearch"
   },
   "File search unavailable": {
     "File search unavailable": "Pesquisa de arquivos indisponível"
@@ -9104,8 +9104,8 @@
   "Uses the spotlight-bar IPC action and always opens the minimal bar.": {
     "Uses the spotlight-bar IPC action and always opens the minimal bar.": "Usa a ação IPC da barra spotlight e sempre abre a barra mínima."
   },
-  "Using AdvCalendar%1": {
-    "Using AdvCalendar%1": "Usando AdvCalendar%1"
+  "Using DankCalendar%1": {
+    "Using DankCalendar%1": "Usando DankCalendar%1"
   },
   "Using global monospace font from Settings → Personalization": {
     "Using global monospace font from Settings → Personalization": "Usando a fonte monoespaçada global de Configurações → Personalização"

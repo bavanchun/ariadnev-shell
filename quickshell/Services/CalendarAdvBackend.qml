@@ -57,7 +57,7 @@ Item {
 
     Process {
         id: binaryCheck
-        command: ["sh", "-c", "if command -v dcal >/dev/null 2>&1; then echo dcal; elif command -v flatpak >/dev/null 2>&1 && flatpak info dev.vchun.ariadnev.advcalendar >/dev/null 2>&1; then echo flatpak; fi"]
+        command: ["sh", "-c", "if command -v dcal >/dev/null 2>&1; then echo dcal; elif command -v flatpak >/dev/null 2>&1 && flatpak info dev.vchun.ariadnev.dankcalendar >/dev/null 2>&1; then echo flatpak; fi"]
         running: false
         stdout: StdioCollector {
             onStreamFinished: {
@@ -70,7 +70,7 @@ Item {
     Process {
         id: discoverProcess
         running: false
-        command: ["sh", "-c", "s=\"${ADVCAL_SOCKET:-}\"; if [ -S \"$s\" ]; then echo \"$s\"; exit 0; fi; for f in \"${XDG_RUNTIME_DIR:-/tmp}\"/app/dev.vchun.ariadnev.advcalendar/advcal-*.sock; do if [ -S \"$f\" ]; then echo \"$f\"; exit 0; fi; done; for f in \"${XDG_RUNTIME_DIR:-/tmp}\"/advcal-*.sock /tmp/advcal-*.sock; do [ -S \"$f\" ] || continue; p=$(basename \"$f\" .sock); p=${p#advcal-}; if kill -0 \"$p\" 2>/dev/null; then echo \"$f\"; exit 0; fi; done"]
+        command: ["sh", "-c", "s=\"${ADVCAL_SOCKET:-}\"; if [ -S \"$s\" ]; then echo \"$s\"; exit 0; fi; for f in \"${XDG_RUNTIME_DIR:-/tmp}\"/app/dev.vchun.ariadnev.dankcalendar/advcal-*.sock; do if [ -S \"$f\" ]; then echo \"$f\"; exit 0; fi; done; for f in \"${XDG_RUNTIME_DIR:-/tmp}\"/advcal-*.sock /tmp/advcal-*.sock; do [ -S \"$f\" ] || continue; p=$(basename \"$f\" .sock); p=${p#advcal-}; if kill -0 \"$p\" 2>/dev/null; then echo \"$f\"; exit 0; fi; done"]
 
         stdout: StdioCollector {
             onStreamFinished: {
@@ -107,7 +107,7 @@ Item {
             Quickshell.execDetached(["dcal", "run", "-d", "--hidden"]);
             break;
         case "flatpak":
-            Quickshell.execDetached(["flatpak", "run", "dev.vchun.ariadnev.advcalendar", "run", "-d", "--hidden"]);
+            Quickshell.execDetached(["flatpak", "run", "dev.vchun.ariadnev.dankcalendar", "run", "-d", "--hidden"]);
             break;
         default:
             return;

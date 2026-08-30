@@ -607,7 +607,7 @@ File names match what ADVS ships in its own catalog (`es.json`, `pt.json`, `zh_C
 
 ### Central Translation via POEditor
 
-Plugins in the [plugin registry](https://github.com/bavanchun/advs-plugin-registry) can apply to join the central ADVS POEditor project — the same one community translators use for ADVS itself. Approved plugins get their strings translated alongside the shell, and finished translations come back to the plugin repo as PRs. See the registry's CONTRIBUTING guide for the application process.
+Plugins in the [plugin registry](https://github.com/AvengeMedia/dms-plugin-registry) can apply to join the central ADVS POEditor project — the same one community translators use for ADVS itself. Approved plugins get their strings translated alongside the shell, and finished translations come back to the plugin repo as PRs. See the registry's CONTRIBUTING guide for the application process.
 
 ## PluginService API
 

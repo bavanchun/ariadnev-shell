@@ -1043,8 +1043,8 @@ func checkOptionalDependencies() []checkResult {
 		{"matugen", "matugen", "Dynamic theming", true},
 		{"cava", "cava", "Audio visualizer", true},
 		{"khal", "khal", "Calendar events", false},
-		{"advsearch", "dsearch", "File search", false},
-		{"advcalendar", "dcal", "Calendar app", false},
+		{"danksearch", "dsearch", "File search", false},
+		{"dankcalendar", "dcal", "Calendar app", false},
 		{"fprintd", "fprintd-list", "Fingerprint auth", false},
 	}
 

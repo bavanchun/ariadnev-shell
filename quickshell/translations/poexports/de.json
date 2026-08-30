@@ -2324,14 +2324,14 @@
   "AdvBar": {
     "AdvBar": "AdvBar"
   },
-  "AdvCalendar": {
-    "AdvCalendar": "AdvCalendar"
+  "DankCalendar": {
+    "DankCalendar": "DankCalendar"
   },
-  "AdvCalendar isn't installed": {
-    "AdvCalendar isn't installed": "AdvCalendar ist nicht installiert"
+  "DankCalendar isn't installed": {
+    "DankCalendar isn't installed": "DankCalendar ist nicht installiert"
   },
-  "AdvCalendar isn't running": {
-    "AdvCalendar isn't running": "AdvCalendar läuft nicht"
+  "DankCalendar isn't running": {
+    "DankCalendar isn't running": "DankCalendar läuft nicht"
   },
   "AriadnevShell is ready to use": {
     "AriadnevShell is ready to use": "AriadnevShell ist einsatzbereit"
@@ -3467,8 +3467,8 @@
   "File received from %1": {
     "File received from %1": "Datei von %1 empfangen"
   },
-  "File search requires dsearch\nInstall from github.com/bavanchun/advsearch": {
-    "File search requires dsearch\nInstall from github.com/bavanchun/advsearch": "Dateisuche erfordert dsearch\nVon github.com/bavanchun/advsearch installieren"
+  "File search requires dsearch\nInstall from github.com/AvengeMedia/danksearch": {
+    "File search requires dsearch\nInstall from github.com/AvengeMedia/danksearch": "Dateisuche erfordert dsearch\nVon github.com/AvengeMedia/danksearch installieren"
   },
   "File search unavailable": {
     "File search unavailable": "Dateisuche nicht verfügbar"
@@ -9104,8 +9104,8 @@
   "Uses the spotlight-bar IPC action and always opens the minimal bar.": {
     "Uses the spotlight-bar IPC action and always opens the minimal bar.": "Verwendet die spotlight-bar IPC-Aktion und öffnet immer die minimale Leiste."
   },
-  "Using AdvCalendar%1": {
-    "Using AdvCalendar%1": "Verwendet AdvCalendar%1"
+  "Using DankCalendar%1": {
+    "Using DankCalendar%1": "Verwendet DankCalendar%1"
   },
   "Using global monospace font from Settings → Personalization": {
     "Using global monospace font from Settings → Personalization": "Verwendet globale Monospace-Schriftart aus Einstellungen → Personalisierung"

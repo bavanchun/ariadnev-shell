@@ -95,7 +95,7 @@ Wallpaper-based color schemes that automatically theme GTK, Qt, terminals, edito
 Real-time CPU, RAM, GPU metrics and temperatures built into the advs daemon (powered by [dgop](https://github.com/AvengeMedia/dgop)). Process list with search and management.
 
 **Powerful Launcher**
-Spotlight-style search for applications, files ([dsearch](https://github.com/bavanchun/advsearch)), emojis, running windows, calculator, and commands. Extensible with plugins.
+Spotlight-style search for applications, files ([dsearch](https://github.com/AvengeMedia/danksearch)), emojis, running windows, calculator, and commands. Extensible with plugins.
 
 **Control Center**
 Unified interface for network, Bluetooth, audio devices, display settings, and night mode.
@@ -107,7 +107,7 @@ Notification center with grouping, rich text support, and keyboard navigation.
 MPRIS player controls, calendar sync, weather widgets, and clipboard history with image previews.
 
 **Session Management**
-Lock screen, idle detection, auto-lock/suspend with separate AC/battery settings, and a settings front-end for [adv-greeter](https://github.com/bavanchun/adv-greeter).
+Lock screen, idle detection, auto-lock/suspend with separate AC/battery settings, and a settings front-end for [adv-greeter](https://github.com/AvengeMedia/dank-greeter).
 
 **Plugin System**
 Extend functionality with the [plugin registry](https://plugins.ariadnev.vchun.dev). ADVS keeps
@@ -148,11 +148,11 @@ advs plugins restore ~/plugins.lock.json
 
 ADVS is one piece of the suite. The rest lives in its own repos:
 
-- [adv-greeter](https://github.com/bavanchun/adv-greeter) - greetd login screen with the Adv Material aesthetic. The Greeter tab in ADVS settings is the front-end for it.
-- [advcalendar](https://github.com/bavanchun/advcalendar) - Local, Google, Microsoft, and CalDAV calendars for the adv desktop.
+- [adv-greeter](https://github.com/AvengeMedia/dank-greeter) - greetd login screen with the Adv Material aesthetic. The Greeter tab in ADVS settings is the front-end for it.
+- [dankcalendar](https://github.com/AvengeMedia/dankcalendar) - Local, Google, Microsoft, and CalDAV calendars for the adv desktop.
 - [dgop](https://github.com/AvengeMedia/dgop) - System monitoring TUI and Go library; its library powers the process list and dashboard widgets inside the advs daemon.
-- [dsearch](https://github.com/bavanchun/advsearch) - Fast file search that powers file results in the launcher.
-- [ariadnev-qml-common](https://github.com/bavanchun/ariadnev-qml-common) - Shared QML widgets and components used by ADVS, adv-greeter, and advcalendar.
+- [dsearch](https://github.com/AvengeMedia/danksearch) - Fast file search that powers file results in the launcher.
+- [ariadnev-qml-common](https://github.com/bavanchun/ariadnev-qml-common) - Shared QML widgets and components used by ADVS, adv-greeter, and dankcalendar.
 - [dankgo](https://github.com/AvengeMedia/dankgo) - Common Go modules behind the single binary apps.
 
 ## Development
@@ -199,7 +199,7 @@ Contributions welcome. Bug fixes, widgets, features, documentation, and plugins 
 3. Test thoroughly
 4. Open a pull request
 
-For documentation contributions, see [AdvLinux-Docs](https://github.com/bavanchun/AdvLinux-Docs).
+For documentation contributions, see [AdvLinux-Docs](https://github.com/AvengeMedia/DankLinux-Docs).
 
 ## Credits
 

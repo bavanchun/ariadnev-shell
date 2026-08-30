@@ -23,7 +23,7 @@ Requires:       dgop
 
 # Core utilities (Highly recommended for ADVS functionality)
 Recommends:     cava
-Recommends:     advsearch
+Recommends:     danksearch
 Recommends:     matugen
 Recommends:     NetworkManager
 Recommends:     qt6-multimedia-imports

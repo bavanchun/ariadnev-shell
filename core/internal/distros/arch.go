@@ -118,14 +118,14 @@ func (a *ArchDistribution) DetectDependenciesWithTerminal(ctx context.Context, w
 	}
 
 	dependencies = append(dependencies, a.detectMatugen())
-	dependencies = append(dependencies, a.detectAdvsearch())
-	dependencies = append(dependencies, a.detectAdvCalendar())
+	dependencies = append(dependencies, a.detectDanksearch())
+	dependencies = append(dependencies, a.detectDankCalendar())
 
 	return dependencies, nil
 }
 
-func (a *ArchDistribution) detectAdvsearch() deps.Dependency {
-	dep := a.BaseDistribution.detectAdvsearch()
+func (a *ArchDistribution) detectDanksearch() deps.Dependency {
+	dep := a.BaseDistribution.detectDanksearch()
 	dep.CanToggle = true
 	if a.packageInstalled("dsearch-git") {
 		dep.Variant = deps.VariantGit
@@ -133,10 +133,10 @@ func (a *ArchDistribution) detectAdvsearch() deps.Dependency {
 	return dep
 }
 
-func (a *ArchDistribution) detectAdvCalendar() deps.Dependency {
-	dep := a.BaseDistribution.detectAdvCalendar()
+func (a *ArchDistribution) detectDankCalendar() deps.Dependency {
+	dep := a.BaseDistribution.detectDankCalendar()
 	dep.CanToggle = true
-	if a.packageInstalled("advcalendar-git") {
+	if a.packageInstalled("dankcalendar-git") {
 		dep.Variant = deps.VariantGit
 	}
 	return dep
@@ -223,8 +223,8 @@ func (a *ArchDistribution) GetPackageMappingWithVariants(wm deps.WindowManager, 
 		"alacritty":               {Name: "alacritty", Repository: RepoTypeSystem},
 		"xdg-desktop-portal-gtk":  {Name: "xdg-desktop-portal-gtk", Repository: RepoTypeSystem},
 		"accountsservice":         {Name: "accountsservice", Repository: RepoTypeSystem},
-		"advsearch":              a.getAdvsearchMapping(variants["advsearch"]),
-		"advcalendar":            a.getAdvCalendarMapping(variants["advcalendar"]),
+		"danksearch":              a.getDanksearchMapping(variants["danksearch"]),
+		"dankcalendar":            a.getDankCalendarMapping(variants["dankcalendar"]),
 	}
 
 	switch wm {
@@ -279,18 +279,18 @@ func (a *ArchDistribution) getMatugenMapping(variant deps.PackageVariant) Packag
 	return PackageMapping{Name: "matugen", Repository: RepoTypeSystem}
 }
 
-func (a *ArchDistribution) getAdvsearchMapping(variant deps.PackageVariant) PackageMapping {
+func (a *ArchDistribution) getDanksearchMapping(variant deps.PackageVariant) PackageMapping {
 	if variant == deps.VariantGit {
 		return PackageMapping{Name: "dsearch-git", Repository: RepoTypeAUR}
 	}
 	return PackageMapping{Name: "dsearch-bin", Repository: RepoTypeAUR}
 }
 
-func (a *ArchDistribution) getAdvCalendarMapping(variant deps.PackageVariant) PackageMapping {
+func (a *ArchDistribution) getDankCalendarMapping(variant deps.PackageVariant) PackageMapping {
 	if variant == deps.VariantGit {
-		return PackageMapping{Name: "advcalendar-git", Repository: RepoTypeAUR}
+		return PackageMapping{Name: "dankcalendar-git", Repository: RepoTypeAUR}
 	}
-	return PackageMapping{Name: "advcalendar-bin", Repository: RepoTypeAUR}
+	return PackageMapping{Name: "dankcalendar-bin", Repository: RepoTypeAUR}
 }
 
 func (a *ArchDistribution) getAriadnevGreeterMapping(variant deps.PackageVariant) PackageMapping {

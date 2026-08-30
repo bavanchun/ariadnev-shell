@@ -2324,14 +2324,14 @@
   "AdvBar": {
     "AdvBar": "AdvBar"
   },
-  "AdvCalendar": {
-    "AdvCalendar": "AdvCalendar"
+  "DankCalendar": {
+    "DankCalendar": "DankCalendar"
   },
-  "AdvCalendar isn't installed": {
-    "AdvCalendar isn't installed": "AdvCalendar がインストールされていません"
+  "DankCalendar isn't installed": {
+    "DankCalendar isn't installed": "DankCalendar がインストールされていません"
   },
-  "AdvCalendar isn't running": {
-    "AdvCalendar isn't running": "AdvCalendar が実行されていません"
+  "DankCalendar isn't running": {
+    "DankCalendar isn't running": "DankCalendar が実行されていません"
   },
   "AriadnevShell is ready to use": {
     "AriadnevShell is ready to use": "AriadnevShell は使用可能です"
@@ -3467,8 +3467,8 @@
   "File received from %1": {
     "File received from %1": ""
   },
-  "File search requires dsearch\nInstall from github.com/bavanchun/advsearch": {
-    "File search requires dsearch\nInstall from github.com/bavanchun/advsearch": "ファイル検索には dsearch が必要です\ngithub.com/bavanchun/advsearch からインストールしてください"
+  "File search requires dsearch\nInstall from github.com/AvengeMedia/danksearch": {
+    "File search requires dsearch\nInstall from github.com/AvengeMedia/danksearch": "ファイル検索には dsearch が必要です\ngithub.com/AvengeMedia/danksearch からインストールしてください"
   },
   "File search unavailable": {
     "File search unavailable": "ファイル検索は利用できません"
@@ -9104,8 +9104,8 @@
   "Uses the spotlight-bar IPC action and always opens the minimal bar.": {
     "Uses the spotlight-bar IPC action and always opens the minimal bar.": "spotlight-bar IPC アクションを使い、常に最小バーを開きます。"
   },
-  "Using AdvCalendar%1": {
-    "Using AdvCalendar%1": "AdvCalendar%1 を使用中"
+  "Using DankCalendar%1": {
+    "Using DankCalendar%1": "DankCalendar%1 を使用中"
   },
   "Using global monospace font from Settings → Personalization": {
     "Using global monospace font from Settings → Personalization": "設定 → パーソナライズからグローバル等幅フォントを使用する"

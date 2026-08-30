@@ -74,7 +74,7 @@ Column {
                 }
 
                 StyledText {
-                    text: "Frame Mode, AdvCalendar, Spotlight, & more"
+                    text: "Frame Mode, DankCalendar, Spotlight, & more"
                     font.pixelSize: Theme.fontSizeMedium
                     color: Theme.surfaceVariantText
                 }
@@ -117,9 +117,9 @@ Column {
             ChangelogFeatureCard {
                 width: (parent.width - Theme.spacingS) / 2
                 iconName: "calendar_month"
-                title: "AdvCalendar"
+                title: "DankCalendar"
                 description: "Native calendar & events"
-                onClicked: Qt.openUrlExternally("https://github.com/bavanchun/advcalendar")
+                onClicked: Qt.openUrlExternally("https://github.com/AvengeMedia/dankcalendar")
             }
 
             ChangelogFeatureCard {

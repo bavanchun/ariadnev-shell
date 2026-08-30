@@ -45,8 +45,8 @@ type Config struct {
 	ReplaceConfigs    []string // specific configs to deploy (e.g. "niri", "ghostty")
 	ReplaceConfigsAll bool     // deploy/replace all configurations
 	Yes               bool
-	AdvSearch        bool // install advsearch and enable its user service
-	AdvCalendar      bool // install advcalendar
+	AdvSearch        bool // install danksearch and enable its user service
+	DankCalendar      bool // install dankcalendar
 	AdvsGreeter        bool // install advs-greeter
 }
 
@@ -248,16 +248,16 @@ func (r *Runner) Run() error {
 		}
 	}
 
-	// 9b. advsearch service setup (if advsearch was included)
-	if useSystemd && !disabledItems["advsearch"] && r.depExists(dependencies, "advsearch") {
-		fmt.Fprintln(os.Stdout, "Enabling advsearch service...")
+	// 9b. danksearch service setup (if danksearch was included)
+	if useSystemd && !disabledItems["danksearch"] && r.depExists(dependencies, "danksearch") {
+		fmt.Fprintln(os.Stdout, "Enabling danksearch service...")
 		logFunc := func(line string) {
 			r.log(line)
-			fmt.Fprintf(os.Stdout, "  advsearch: %s\n", line)
+			fmt.Fprintf(os.Stdout, "  danksearch: %s\n", line)
 		}
 		if err := distros.SetupDsearchService(context.Background(), logFunc); err != nil {
 			// Non-fatal, matching greeter behavior
-			fmt.Fprintf(os.Stderr, "Warning: advsearch service setup issue (non-fatal): %v\n", err)
+			fmt.Fprintf(os.Stderr, "Warning: danksearch service setup issue (non-fatal): %v\n", err)
 		}
 	}
 
@@ -392,16 +392,16 @@ func (r *Runner) buildDisabledItems(dependencies []deps.Dependency) (map[string]
 
 	// Dedicated flags resolve before include/exclude
 	if r.cfg.AdvSearch {
-		if !r.depExists(dependencies, "advsearch") {
-			return nil, fmt.Errorf("--advsearch: not available on this distribution")
+		if !r.depExists(dependencies, "danksearch") {
+			return nil, fmt.Errorf("--danksearch: not available on this distribution")
 		}
-		delete(disabledItems, "advsearch")
+		delete(disabledItems, "danksearch")
 	}
-	if r.cfg.AdvCalendar {
-		if !r.depExists(dependencies, "advcalendar") {
-			return nil, fmt.Errorf("--advcalendar: not available on this distribution")
+	if r.cfg.DankCalendar {
+		if !r.depExists(dependencies, "dankcalendar") {
+			return nil, fmt.Errorf("--dankcalendar: not available on this distribution")
 		}
-		delete(disabledItems, "advcalendar")
+		delete(disabledItems, "dankcalendar")
 	}
 	if r.cfg.AdvsGreeter {
 		if !r.depExists(dependencies, "advs-greeter") {

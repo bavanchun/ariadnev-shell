@@ -2324,14 +2324,14 @@
   "AdvBar": {
     "AdvBar": "AdvBar"
   },
-  "AdvCalendar": {
-    "AdvCalendar": ""
+  "DankCalendar": {
+    "DankCalendar": ""
   },
-  "AdvCalendar isn't installed": {
-    "AdvCalendar isn't installed": ""
+  "DankCalendar isn't installed": {
+    "DankCalendar isn't installed": ""
   },
-  "AdvCalendar isn't running": {
-    "AdvCalendar isn't running": ""
+  "DankCalendar isn't running": {
+    "DankCalendar isn't running": ""
   },
   "AriadnevShell is ready to use": {
     "AriadnevShell is ready to use": "AriadnevShell est prêt à l’emploi"
@@ -3467,8 +3467,8 @@
   "File received from %1": {
     "File received from %1": ""
   },
-  "File search requires dsearch\nInstall from github.com/bavanchun/advsearch": {
-    "File search requires dsearch\nInstall from github.com/bavanchun/advsearch": "La recherche de fichiers nécessite dsearch\nInstallez-le depuis github.com/morelazers/dsearch"
+  "File search requires dsearch\nInstall from github.com/AvengeMedia/danksearch": {
+    "File search requires dsearch\nInstall from github.com/AvengeMedia/danksearch": "La recherche de fichiers nécessite dsearch\nInstallez-le depuis github.com/morelazers/dsearch"
   },
   "File search unavailable": {
     "File search unavailable": ""
@@ -9104,8 +9104,8 @@
   "Uses the spotlight-bar IPC action and always opens the minimal bar.": {
     "Uses the spotlight-bar IPC action and always opens the minimal bar.": ""
   },
-  "Using AdvCalendar%1": {
-    "Using AdvCalendar%1": ""
+  "Using DankCalendar%1": {
+    "Using DankCalendar%1": ""
   },
   "Using global monospace font from Settings → Personalization": {
     "Using global monospace font from Settings → Personalization": ""

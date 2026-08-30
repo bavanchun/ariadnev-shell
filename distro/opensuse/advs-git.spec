@@ -20,7 +20,7 @@ Requires:       (quickshell-git or quickshell)
 Requires:       accountsservice
 
 Recommends:     cava
-Recommends:     advsearch
+Recommends:     danksearch
 Recommends:     matugen
 Recommends:     quickshell-git
 Recommends:     NetworkManager

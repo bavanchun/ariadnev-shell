@@ -2324,14 +2324,14 @@
   "AdvBar": {
     "AdvBar": "AdvBar"
   },
-  "AdvCalendar": {
-    "AdvCalendar": "AdvCalendar"
+  "DankCalendar": {
+    "DankCalendar": "DankCalendar"
   },
-  "AdvCalendar isn't installed": {
-    "AdvCalendar isn't installed": "AdvCalendar no está instalado"
+  "DankCalendar isn't installed": {
+    "DankCalendar isn't installed": "DankCalendar no está instalado"
   },
-  "AdvCalendar isn't running": {
-    "AdvCalendar isn't running": "AdvCalendar no está ejecutándose"
+  "DankCalendar isn't running": {
+    "DankCalendar isn't running": "DankCalendar no está ejecutándose"
   },
   "AriadnevShell is ready to use": {
     "AriadnevShell is ready to use": "AriadnevShell está listo para utilizarse"
@@ -3467,8 +3467,8 @@
   "File received from %1": {
     "File received from %1": "Archivo recibido de %1"
   },
-  "File search requires dsearch\nInstall from github.com/bavanchun/advsearch": {
-    "File search requires dsearch\nInstall from github.com/bavanchun/advsearch": "La búsqueda de archivos requiere dsearch\nInstalar desde github.com/bavanchun/advsearch"
+  "File search requires dsearch\nInstall from github.com/AvengeMedia/danksearch": {
+    "File search requires dsearch\nInstall from github.com/AvengeMedia/danksearch": "La búsqueda de archivos requiere dsearch\nInstalar desde github.com/AvengeMedia/danksearch"
   },
   "File search unavailable": {
     "File search unavailable": "Búsqueda de archivos no disponible"
@@ -9104,8 +9104,8 @@
   "Uses the spotlight-bar IPC action and always opens the minimal bar.": {
     "Uses the spotlight-bar IPC action and always opens the minimal bar.": "Usa la acción IPC de spotlight-bar y siempre abre la barra minimal."
   },
-  "Using AdvCalendar%1": {
-    "Using AdvCalendar%1": "Usando AdvCalendar%1"
+  "Using DankCalendar%1": {
+    "Using DankCalendar%1": "Usando DankCalendar%1"
   },
   "Using global monospace font from Settings → Personalization": {
     "Using global monospace font from Settings → Personalization": "Usando fuente monoespaciada global de Ajustes → Personalización"

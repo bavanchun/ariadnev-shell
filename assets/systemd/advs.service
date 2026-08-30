@@ -1,5 +1,5 @@
 [Unit]
-Description=Adv Material Shell (ADVS)
+Description=AriadnevShell (ADVS)
 PartOf=graphical-session.target
 After=graphical-session.target
 Requisite=graphical-session.target

@@ -1,5 +1,5 @@
 {
-  description = "Adv Material Shell";
+  description = "AriadnevShell";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -222,7 +222,7 @@
 
       nixosModules.default = self.nixosModules.adv-material-shell;
 
-      nixosModules.greeter = builtins.warn "adv-material-shell: the greeter moved to the adv-greeter repo; use `inputs.adv-greeter.nixosModules.default` and `programs.advs-greeter` (https://github.com/bavanchun/adv-greeter)" { };
+      nixosModules.greeter = builtins.warn "adv-material-shell: the greeter moved to the adv-greeter repo; use `inputs.adv-greeter.nixosModules.default` and `programs.advs-greeter` (https://github.com/AvengeMedia/dank-greeter)" { };
 
       nixosModules.advMaterialShell = builtins.warn "adv-material-shell: flake output `nixosModules.advMaterialShell` has been renamed to `nixosModules.adv-material-shell`" self.nixosModules.adv-material-shell;
 

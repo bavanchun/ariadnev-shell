@@ -79,8 +79,8 @@ func (u *UbuntuDistribution) DetectDependenciesWithTerminal(ctx context.Context,
 	}
 
 	dependencies = append(dependencies, u.detectMatugen())
-	dependencies = append(dependencies, u.detectAdvsearch())
-	dependencies = append(dependencies, u.detectAdvCalendar())
+	dependencies = append(dependencies, u.detectDanksearch())
+	dependencies = append(dependencies, u.detectDankCalendar())
 
 	return dependencies, nil
 }
@@ -124,8 +124,8 @@ func (u *UbuntuDistribution) GetPackageMappingWithVariants(wm deps.WindowManager
 		"advs-greeter":             {Name: "advs-greeter", Repository: RepoTypePPA, RepoURL: "ppa:bavanchun/ariadnev"},
 		"matugen":                 {Name: "matugen", Repository: RepoTypePPA, RepoURL: "ppa:bavanchun/ariadnev"},
 		"ghostty":                 {Name: "ghostty", Repository: RepoTypePPA, RepoURL: "ppa:bavanchun/ariadnev"},
-		"advsearch":              {Name: "advsearch", Repository: RepoTypePPA, RepoURL: "ppa:bavanchun/ariadnev"},
-		"advcalendar":            {Name: "advcalendar-git", Repository: RepoTypePPA, RepoURL: "ppa:bavanchun/ariadnev"},
+		"danksearch":              {Name: "danksearch", Repository: RepoTypePPA, RepoURL: "ppa:bavanchun/ariadnev"},
+		"dankcalendar":            {Name: "dankcalendar-git", Repository: RepoTypePPA, RepoURL: "ppa:bavanchun/ariadnev"},
 	}
 
 	switch wm {

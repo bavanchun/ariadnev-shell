@@ -226,8 +226,8 @@ advs-git)
 advs)
     GIT_REPO="bavanchun/ariadnev-shell"
     ;;
-advsearch)
-    GIT_REPO="bavanchun/advsearch"
+danksearch)
+    GIT_REPO="AvengeMedia/danksearch"
     ;;
 dgop)
     GIT_REPO="bavanchun/dgop"
@@ -498,13 +498,13 @@ fi
 # Handle packages that need pre-built binaries downloaded
 cd "$WORK_PACKAGE_DIR"
 case "$PACKAGE_NAME" in
-advsearch)
-    info "Downloading pre-built binaries for advsearch..."
+danksearch)
+    info "Downloading pre-built binaries for danksearch..."
     VERSION=$(dpkg-parsechangelog -S Version | sed 's/-[^-]*$//' | sed 's/ppa[0-9]*$//')
 
     if [ ! -f "dsearch-amd64" ]; then
         info "Downloading dsearch binary for amd64..."
-        if wget -O dsearch-amd64.gz "https://github.com/bavanchun/advsearch/releases/download/v${VERSION}/dsearch-linux-amd64.gz"; then
+        if wget -O dsearch-amd64.gz "https://github.com/AvengeMedia/danksearch/releases/download/v${VERSION}/dsearch-linux-amd64.gz"; then
             gunzip dsearch-amd64.gz
             chmod +x dsearch-amd64
             success "amd64 binary downloaded"
@@ -516,7 +516,7 @@ advsearch)
 
     if [ ! -f "dsearch-arm64" ]; then
         info "Downloading dsearch binary for arm64..."
-        if wget -O dsearch-arm64.gz "https://github.com/bavanchun/advsearch/releases/download/v${VERSION}/dsearch-linux-arm64.gz"; then
+        if wget -O dsearch-arm64.gz "https://github.com/AvengeMedia/danksearch/releases/download/v${VERSION}/dsearch-linux-arm64.gz"; then
             gunzip dsearch-arm64.gz
             chmod +x dsearch-arm64
             success "arm64 binary downloaded"

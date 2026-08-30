@@ -13,7 +13,7 @@ import (
 
 const (
 	OfficialName = "official"
-	officialURL  = "https://github.com/bavanchun/advs-plugin-registry.git"
+	officialURL  = "https://github.com/AvengeMedia/dms-plugin-registry.git"
 )
 
 // Source identifies a registry repository. Name doubles as the per-registry

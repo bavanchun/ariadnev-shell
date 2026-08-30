@@ -513,8 +513,8 @@ jobs:
           - dgop
           - dankgo
           - ariadnev-qml-common
-          - advcalendar
-          - advsearch
+          - dankcalendar
+          - danksearch
           - adv-greeter
     steps:
       - name: Create GitHub App token

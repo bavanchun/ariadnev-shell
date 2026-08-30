@@ -2324,14 +2324,14 @@
   "AdvBar": {
     "AdvBar": "AdvBar"
   },
-  "AdvCalendar": {
-    "AdvCalendar": "AdvCalendar"
+  "DankCalendar": {
+    "DankCalendar": "DankCalendar"
   },
-  "AdvCalendar isn't installed": {
-    "AdvCalendar isn't installed": "A AdvCalendar nincs telepítve"
+  "DankCalendar isn't installed": {
+    "DankCalendar isn't installed": "A DankCalendar nincs telepítve"
   },
-  "AdvCalendar isn't running": {
-    "AdvCalendar isn't running": "A AdvCalendar nem fut"
+  "DankCalendar isn't running": {
+    "DankCalendar isn't running": "A DankCalendar nem fut"
   },
   "AriadnevShell is ready to use": {
     "AriadnevShell is ready to use": "A AriadnevShell használatra kész"
@@ -3467,8 +3467,8 @@
   "File received from %1": {
     "File received from %1": "Fájl érkezett innen: %1"
   },
-  "File search requires dsearch\nInstall from github.com/bavanchun/advsearch": {
-    "File search requires dsearch\nInstall from github.com/bavanchun/advsearch": "A fájlkereséshez dsearch szükséges\nTelepítsd innen: github.com/bavanchun/advsearch"
+  "File search requires dsearch\nInstall from github.com/AvengeMedia/danksearch": {
+    "File search requires dsearch\nInstall from github.com/AvengeMedia/danksearch": "A fájlkereséshez dsearch szükséges\nTelepítsd innen: github.com/AvengeMedia/danksearch"
   },
   "File search unavailable": {
     "File search unavailable": "A fájlkeresés nem érhető el"
@@ -9104,8 +9104,8 @@
   "Uses the spotlight-bar IPC action and always opens the minimal bar.": {
     "Uses the spotlight-bar IPC action and always opens the minimal bar.": "A „spotlight-bar” IPC-műveletet használja, és mindig a minimális sávot nyitja meg."
   },
-  "Using AdvCalendar%1": {
-    "Using AdvCalendar%1": "AdvCalendar%1 használata"
+  "Using DankCalendar%1": {
+    "Using DankCalendar%1": "DankCalendar%1 használata"
   },
   "Using global monospace font from Settings → Personalization": {
     "Using global monospace font from Settings → Personalization": "A Beállítások → Személyre szabás menüpontban megadott globális rögzített szélességű betűtípus használata"

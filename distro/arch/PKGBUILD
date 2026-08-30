@@ -1,0 +1,56 @@
+# Maintainer: VChun <hoangbavan4478@gmail.com>
+pkgname=ariadnev-shell
+pkgver=1.6.0.ariadnev.1
+pkgrel=1
+pkgdesc="AriadnevShell (ADVS) — Wayland desktop shell built on Quickshell and Go"
+arch=('x86_64' 'aarch64')
+url="https://github.com/bavanchun/ariadnev-shell"
+license=('MIT')
+depends=('quickshell' 'dgop' 'accountsservice' 'hyprland')
+makedepends=('go' 'git')
+optdepends=(
+  'cava: audio visualizer'
+  'matugen: Material You theming from wallpaper'
+  'wtype: paste from clipboard history'
+  'cups-pk-helper: printer management'
+  'i2c-tools: external monitor brightness (DDC)'
+  'inter-font: default UI font'
+  'ttf-fira-code: default monospace font'
+)
+# Không đặt conflicts với dms-shell: hai package cài vào đường dẫn khác nhau
+# (/usr/bin/advs vs /usr/bin/dms, /usr/share/quickshell/{ariadnev,dms}) nên
+# cùng tồn tại được. Chỉ được BẬT một systemd unit tại một thời điểm, vì cả
+# hai đều giữ BusName=org.freedesktop.Notifications.
+# pkgver của Arch không được chứa dấu '-', nên tag git để riêng.
+_tag="v1.6.0-ariadnev.1"
+source=("$pkgname::git+$url.git#tag=$_tag"
+        "git+https://github.com/bavanchun/ariadnev-qml-common.git")
+sha256sums=('SKIP' 'SKIP')
+
+prepare() {
+  cd "$srcdir/$pkgname"
+  git submodule init
+  git config submodule.ariadnev-qml-common.url "$srcdir/ariadnev-qml-common"
+  git -c protocol.file.allow=always submodule update
+}
+
+build() {
+  cd "$srcdir/$pkgname"
+  export CGO_ENABLED=0
+  export GOFLAGS="-trimpath -mod=readonly -modcacherw"
+  make build
+}
+
+package() {
+  cd "$srcdir/$pkgname"
+  # install-systemd của Makefile ghi vào $HOME/.config/systemd/user — đúng cho
+  # cài tay, sai cho package. Bỏ target đó, tự đặt unit vào /usr/lib.
+  make PREFIX=/usr DESTDIR="$pkgdir" \
+       install-bin install-shell install-completions install-icon install-desktop
+
+  install -Dm644 assets/systemd/advs.service \
+    "$pkgdir/usr/lib/systemd/user/advs.service"
+
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+}

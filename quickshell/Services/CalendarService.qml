@@ -112,7 +112,7 @@ Singleton {
         return isAdvActive ? advBackend.defaultCalendar() : null;
     }
 
-    function launchAdvCalendar() {
+    function launchDankCalendar() {
         advBackend.launch();
     }
 

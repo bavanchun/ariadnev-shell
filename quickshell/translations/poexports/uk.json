@@ -2324,14 +2324,14 @@
   "AdvBar": {
     "AdvBar": "AdvBar"
   },
-  "AdvCalendar": {
-    "AdvCalendar": "AdvCalendar"
+  "DankCalendar": {
+    "DankCalendar": "DankCalendar"
   },
-  "AdvCalendar isn't installed": {
-    "AdvCalendar isn't installed": "AdvCalendar не встановлено"
+  "DankCalendar isn't installed": {
+    "DankCalendar isn't installed": "DankCalendar не встановлено"
   },
-  "AdvCalendar isn't running": {
-    "AdvCalendar isn't running": "AdvCalendar не запущено"
+  "DankCalendar isn't running": {
+    "DankCalendar isn't running": "DankCalendar не запущено"
   },
   "AriadnevShell is ready to use": {
     "AriadnevShell is ready to use": "AriadnevShell готовий до роботи"
@@ -3467,8 +3467,8 @@
   "File received from %1": {
     "File received from %1": "Файл отримано від %1"
   },
-  "File search requires dsearch\nInstall from github.com/bavanchun/advsearch": {
-    "File search requires dsearch\nInstall from github.com/bavanchun/advsearch": "Пошук файлів потребує dsearch\nВстановіть з github.com/bavanchun/advsearch"
+  "File search requires dsearch\nInstall from github.com/AvengeMedia/danksearch": {
+    "File search requires dsearch\nInstall from github.com/AvengeMedia/danksearch": "Пошук файлів потребує dsearch\nВстановіть з github.com/AvengeMedia/danksearch"
   },
   "File search unavailable": {
     "File search unavailable": "Пошук файлів недоступний"
@@ -9104,8 +9104,8 @@
   "Uses the spotlight-bar IPC action and always opens the minimal bar.": {
     "Uses the spotlight-bar IPC action and always opens the minimal bar.": "Використовує дію IPC панелі Spotlight і завжди відкриває мінімальну панель"
   },
-  "Using AdvCalendar%1": {
-    "Using AdvCalendar%1": "Використання AdvCalendar%1"
+  "Using DankCalendar%1": {
+    "Using DankCalendar%1": "Використання DankCalendar%1"
   },
   "Using global monospace font from Settings → Personalization": {
     "Using global monospace font from Settings → Personalization": "Використання глобального моноширинного шрифту з Налаштування → Персоналізація"

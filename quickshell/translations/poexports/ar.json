@@ -2324,14 +2324,14 @@
   "AdvBar": {
     "AdvBar": "AdvBar"
   },
-  "AdvCalendar": {
-    "AdvCalendar": "AdvCalendar"
+  "DankCalendar": {
+    "DankCalendar": "DankCalendar"
   },
-  "AdvCalendar isn't installed": {
-    "AdvCalendar isn't installed": "AdvCalendar غير مثبت"
+  "DankCalendar isn't installed": {
+    "DankCalendar isn't installed": "DankCalendar غير مثبت"
   },
-  "AdvCalendar isn't running": {
-    "AdvCalendar isn't running": "AdvCalendar لا يعمل"
+  "DankCalendar isn't running": {
+    "DankCalendar isn't running": "DankCalendar لا يعمل"
   },
   "AriadnevShell is ready to use": {
     "AriadnevShell is ready to use": "AriadnevShell جاهز للاستخدام"
@@ -3467,8 +3467,8 @@
   "File received from %1": {
     "File received from %1": "تم استلام الملف من %1"
   },
-  "File search requires dsearch\nInstall from github.com/bavanchun/advsearch": {
-    "File search requires dsearch\nInstall from github.com/bavanchun/advsearch": "يتطلب البحث عن الملفات dsearch\nقم بالتثبيت من github.com/bavanchun/advsearch"
+  "File search requires dsearch\nInstall from github.com/AvengeMedia/danksearch": {
+    "File search requires dsearch\nInstall from github.com/AvengeMedia/danksearch": "يتطلب البحث عن الملفات dsearch\nقم بالتثبيت من github.com/AvengeMedia/danksearch"
   },
   "File search unavailable": {
     "File search unavailable": "البحث عن الملفات غير متاح"
@@ -9104,8 +9104,8 @@
   "Uses the spotlight-bar IPC action and always opens the minimal bar.": {
     "Uses the spotlight-bar IPC action and always opens the minimal bar.": "يستخدم إجراء IPC لشريط spotlight ويفتح دائماً الشريط البسيط."
   },
-  "Using AdvCalendar%1": {
-    "Using AdvCalendar%1": "استخدام AdvCalendar%1"
+  "Using DankCalendar%1": {
+    "Using DankCalendar%1": "استخدام DankCalendar%1"
   },
   "Using global monospace font from Settings → Personalization": {
     "Using global monospace font from Settings → Personalization": "استخدام خط monospace العام من الإعدادات ← إضفاء الطابع الشخصي"

@@ -346,8 +346,8 @@ func TestBuildDisabledItems(t *testing.T) {
 		{Name: "ghostty", Status: deps.StatusMissing, Required: true},
 		{Name: "advs (AriadnevShell)", Status: deps.StatusInstalled, Required: true},
 		{Name: "advs-greeter", Status: deps.StatusMissing},
-		{Name: "advsearch", Status: deps.StatusMissing},
-		{Name: "advcalendar", Status: deps.StatusMissing},
+		{Name: "danksearch", Status: deps.StatusMissing},
+		{Name: "dankcalendar", Status: deps.StatusMissing},
 		{Name: "waybar", Status: deps.StatusMissing, Required: true},
 	}
 
@@ -367,19 +367,19 @@ func TestBuildDisabledItems(t *testing.T) {
 	}{
 		{
 			name:         "no flags set, optional deps disabled by default",
-			wantDisabled: []string{"advs-greeter", "advsearch", "advcalendar"},
+			wantDisabled: []string{"advs-greeter", "danksearch", "dankcalendar"},
 			wantEnabled:  []string{"niri", "ghostty", "waybar"},
 		},
 		{
 			name:         "include advs-greeter enables it",
 			includeDeps:  []string{"advs-greeter"},
 			wantEnabled:  []string{"advs-greeter"},
-			wantDisabled: []string{"advsearch", "advcalendar"},
+			wantDisabled: []string{"danksearch", "dankcalendar"},
 		},
 		{
 			name:         "exclude a regular dep",
 			excludeDeps:  []string{"waybar"},
-			wantDisabled: []string{"advs-greeter", "advsearch", "advcalendar", "waybar"},
+			wantDisabled: []string{"advs-greeter", "danksearch", "dankcalendar", "waybar"},
 		},
 		{
 			name:        "include unknown dep returns error",
@@ -409,7 +409,7 @@ func TestBuildDisabledItems(t *testing.T) {
 			name:         "whitespace entries are skipped",
 			includeDeps:  []string{"  ", "advs-greeter"},
 			wantEnabled:  []string{"advs-greeter"},
-			wantDisabled: []string{"advsearch", "advcalendar"},
+			wantDisabled: []string{"danksearch", "dankcalendar"},
 		},
 		{
 			name: "no optional deps present, nothing disabled by default",
@@ -419,36 +419,36 @@ func TestBuildDisabledItems(t *testing.T) {
 			wantEnabled: []string{"niri"},
 		},
 		{
-			name:         "advsearch flag enables it",
+			name:         "danksearch flag enables it",
 			advSearch:   true,
-			wantEnabled:  []string{"advsearch"},
-			wantDisabled: []string{"advs-greeter", "advcalendar"},
+			wantEnabled:  []string{"danksearch"},
+			wantDisabled: []string{"advs-greeter", "dankcalendar"},
 		},
 		{
-			name:         "advcalendar flag enables it",
+			name:         "dankcalendar flag enables it",
 			advCalendar: true,
-			wantEnabled:  []string{"advcalendar"},
-			wantDisabled: []string{"advs-greeter", "advsearch"},
+			wantEnabled:  []string{"dankcalendar"},
+			wantDisabled: []string{"advs-greeter", "danksearch"},
 		},
 		{
-			name:        "advsearch flag when unavailable errors",
+			name:        "danksearch flag when unavailable errors",
 			advSearch:  true,
 			deps:        []deps.Dependency{{Name: "niri", Status: deps.StatusInstalled, Required: true}},
 			wantErr:     true,
-			errContains: "--advsearch",
+			errContains: "--danksearch",
 		},
 		{
-			name:         "advcalendar flag when unavailable errors",
+			name:         "dankcalendar flag when unavailable errors",
 			advCalendar: true,
 			deps:         []deps.Dependency{{Name: "niri", Status: deps.StatusInstalled, Required: true}},
 			wantErr:      true,
-			errContains:  "--advcalendar",
+			errContains:  "--dankcalendar",
 		},
 		{
 			name:         "advs-greeter flag enables it",
 			advsGreeter:   true,
 			wantEnabled:  []string{"advs-greeter"},
-			wantDisabled: []string{"advsearch", "advcalendar"},
+			wantDisabled: []string{"danksearch", "dankcalendar"},
 		},
 		{
 			name:        "advs-greeter flag when unavailable errors",
@@ -460,14 +460,14 @@ func TestBuildDisabledItems(t *testing.T) {
 		{
 			name:        "all-features enables every optional dep",
 			allFeatures: true,
-			wantEnabled: []string{"advs-greeter", "advsearch", "advcalendar", "niri", "ghostty", "waybar"},
+			wantEnabled: []string{"advs-greeter", "danksearch", "dankcalendar", "niri", "ghostty", "waybar"},
 		},
 		{
 			name:         "all-features with exclude still disables the excluded dep",
 			allFeatures:  true,
-			excludeDeps:  []string{"advcalendar"},
-			wantEnabled:  []string{"advs-greeter", "advsearch"},
-			wantDisabled: []string{"advcalendar"},
+			excludeDeps:  []string{"dankcalendar"},
+			wantEnabled:  []string{"advs-greeter", "danksearch"},
+			wantDisabled: []string{"dankcalendar"},
 		},
 	}
 
@@ -477,7 +477,7 @@ func TestBuildDisabledItems(t *testing.T) {
 				IncludeDeps:  tt.includeDeps,
 				ExcludeDeps:  tt.excludeDeps,
 				AdvSearch:   tt.advSearch,
-				AdvCalendar: tt.advCalendar,
+				DankCalendar: tt.advCalendar,
 				AdvsGreeter:   tt.advsGreeter,
 				AllFeatures:  tt.allFeatures,
 			})

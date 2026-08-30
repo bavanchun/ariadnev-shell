@@ -2324,14 +2324,14 @@
   "AdvBar": {
     "AdvBar": "نوار دَنک"
   },
-  "AdvCalendar": {
-    "AdvCalendar": ""
+  "DankCalendar": {
+    "DankCalendar": ""
   },
-  "AdvCalendar isn't installed": {
-    "AdvCalendar isn't installed": ""
+  "DankCalendar isn't installed": {
+    "DankCalendar isn't installed": ""
   },
-  "AdvCalendar isn't running": {
-    "AdvCalendar isn't running": ""
+  "DankCalendar isn't running": {
+    "DankCalendar isn't running": ""
   },
   "AriadnevShell is ready to use": {
     "AriadnevShell is ready to use": "دَنک متریال شل آماده استفاده می‌باشد"
@@ -3467,8 +3467,8 @@
   "File received from %1": {
     "File received from %1": ""
   },
-  "File search requires dsearch\nInstall from github.com/bavanchun/advsearch": {
-    "File search requires dsearch\nInstall from github.com/bavanchun/advsearch": "جستجوی فایل به dsearch نیاز دارد\nاز github.com/morelazers/dsearch نصب کنید"
+  "File search requires dsearch\nInstall from github.com/AvengeMedia/danksearch": {
+    "File search requires dsearch\nInstall from github.com/AvengeMedia/danksearch": "جستجوی فایل به dsearch نیاز دارد\nاز github.com/morelazers/dsearch نصب کنید"
   },
   "File search unavailable": {
     "File search unavailable": "جستجوی فایل دردسترس نیست"
@@ -9104,8 +9104,8 @@
   "Uses the spotlight-bar IPC action and always opens the minimal bar.": {
     "Uses the spotlight-bar IPC action and always opens the minimal bar.": "از IPC اقدام نوار اسپات‌لایت استفاده می‌کند و همیشه نوار کمینه را باز می‌کند."
   },
-  "Using AdvCalendar%1": {
-    "Using AdvCalendar%1": ""
+  "Using DankCalendar%1": {
+    "Using DankCalendar%1": ""
   },
   "Using global monospace font from Settings → Personalization": {
     "Using global monospace font from Settings → Personalization": "استفاده از قلم monospace سراسری از تنظیمات ← شخصی‌سازی"

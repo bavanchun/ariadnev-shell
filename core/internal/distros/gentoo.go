@@ -117,7 +117,7 @@ func (g *GentooDistribution) DetectDependenciesWithTerminal(ctx context.Context,
 	}
 
 	dependencies = append(dependencies, g.detectMatugen())
-	dependencies = append(dependencies, g.detectAdvsearch())
+	dependencies = append(dependencies, g.detectDanksearch())
 
 	return dependencies, nil
 }
@@ -175,7 +175,7 @@ func (g *GentooDistribution) GetPackageMappingWithVariants(wm deps.WindowManager
 		"quickshell":              g.getQuickshellMapping(variants["quickshell"]),
 		"matugen":                 {Name: "x11-misc/matugen", Repository: RepoTypeGURU, AcceptKeywords: archKeyword},
 		"advs (AriadnevShell)": g.getAdvsMapping(),
-		"advsearch":              {Name: "gui-apps/advsearch", Repository: RepoTypeGURU, AcceptKeywords: archKeyword},
+		"danksearch":              {Name: "gui-apps/danksearch", Repository: RepoTypeGURU, AcceptKeywords: archKeyword},
 	}
 
 	switch wm {

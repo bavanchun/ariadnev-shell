@@ -2324,14 +2324,14 @@
   "AdvBar": {
     "AdvBar": "AdvBar"
   },
-  "AdvCalendar": {
-    "AdvCalendar": "AdvCalendar"
+  "DankCalendar": {
+    "DankCalendar": "DankCalendar"
   },
-  "AdvCalendar isn't installed": {
-    "AdvCalendar isn't installed": "AdvCalendar is niet geïnstalleerd"
+  "DankCalendar isn't installed": {
+    "DankCalendar isn't installed": "DankCalendar is niet geïnstalleerd"
   },
-  "AdvCalendar isn't running": {
-    "AdvCalendar isn't running": "AdvCalendar is niet actief"
+  "DankCalendar isn't running": {
+    "DankCalendar isn't running": "DankCalendar is niet actief"
   },
   "AriadnevShell is ready to use": {
     "AriadnevShell is ready to use": "AriadnevShell is klaar voor gebruik"
@@ -3467,8 +3467,8 @@
   "File received from %1": {
     "File received from %1": "Bestand ontvangen van %1"
   },
-  "File search requires dsearch\nInstall from github.com/bavanchun/advsearch": {
-    "File search requires dsearch\nInstall from github.com/bavanchun/advsearch": "Bestandszoeken vereist dsearch\nInstalleer via github.com/morelazers/dsearch"
+  "File search requires dsearch\nInstall from github.com/AvengeMedia/danksearch": {
+    "File search requires dsearch\nInstall from github.com/AvengeMedia/danksearch": "Bestandszoeken vereist dsearch\nInstalleer via github.com/morelazers/dsearch"
   },
   "File search unavailable": {
     "File search unavailable": "Bestandszoekfunctie niet beschikbaar"
@@ -9104,8 +9104,8 @@
   "Uses the spotlight-bar IPC action and always opens the minimal bar.": {
     "Uses the spotlight-bar IPC action and always opens the minimal bar.": "Gebruikt de spotlight-balk IPC-actie en opent altijd de minimale balk."
   },
-  "Using AdvCalendar%1": {
-    "Using AdvCalendar%1": "AdvCalendar%1 wordt gebruikt"
+  "Using DankCalendar%1": {
+    "Using DankCalendar%1": "DankCalendar%1 wordt gebruikt"
   },
   "Using global monospace font from Settings → Personalization": {
     "Using global monospace font from Settings → Personalization": "Gebruikt globaal monospace-lettertype uit Instellingen → Personalisatie"

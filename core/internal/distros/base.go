@@ -105,12 +105,12 @@ func (b *BaseDistribution) detectMatugen() deps.Dependency {
 	return b.detectCommand("matugen", "Material Design color generation tool")
 }
 
-func (b *BaseDistribution) detectAdvsearch() deps.Dependency {
-	return b.detectOptionalPackage("advsearch", "File indexing and search service", b.commandExists("dsearch") || b.commandExists("advsearch"))
+func (b *BaseDistribution) detectDanksearch() deps.Dependency {
+	return b.detectOptionalPackage("danksearch", "File indexing and search service", b.commandExists("dsearch") || b.commandExists("danksearch"))
 }
 
-func (b *BaseDistribution) detectAdvCalendar() deps.Dependency {
-	return b.detectOptionalPackage("advcalendar", "Calendar application", b.commandExists("dcal") || b.commandExists("advcalendar"))
+func (b *BaseDistribution) detectDankCalendar() deps.Dependency {
+	return b.detectOptionalPackage("dankcalendar", "Calendar application", b.commandExists("dcal") || b.commandExists("dankcalendar"))
 }
 
 func (b *BaseDistribution) detectADVS() deps.Dependency {

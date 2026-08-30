@@ -108,10 +108,10 @@ func (m Model) viewDependencyReview() string {
 			switch dep.Name {
 			case "advs-greeter":
 				note = m.styles.Subtle.Render(" (selection replaces your current display manager)")
-			case "advsearch":
+			case "danksearch":
 				note = m.styles.Subtle.Render(" (file search; enables dsearch.service)")
-			case "advcalendar":
-				note = m.styles.Subtle.Render(" (autostart managed in advcalendar settings)")
+			case "dankcalendar":
+				note = m.styles.Subtle.Render(" (autostart managed in dankcalendar settings)")
 			}
 
 			var line string
@@ -280,24 +280,24 @@ func (m Model) installPackages() tea.Cmd {
 							}
 						}
 
-						if m.useSystemdConfig() && m.optionalDepSelected("advsearch") {
+						if m.useSystemdConfig() && m.optionalDepSelected("danksearch") {
 							m.packageProgressChan <- packageInstallProgressMsg{
 								progress:  0.97,
-								step:      "Enabling advsearch service...",
+								step:      "Enabling danksearch service...",
 								logOutput: "Setting up dsearch.service...",
 							}
 							dsearchLogFunc := func(line string) {
 								m.packageProgressChan <- packageInstallProgressMsg{
 									progress:  0.97,
-									step:      "Enabling advsearch service...",
+									step:      "Enabling danksearch service...",
 									logOutput: line,
 								}
 							}
 							if err := distros.SetupDsearchService(context.Background(), dsearchLogFunc); err != nil {
 								m.packageProgressChan <- packageInstallProgressMsg{
 									progress:  0.98,
-									step:      "advsearch service warning",
-									logOutput: fmt.Sprintf("advsearch service setup warning (non-fatal): %v", err),
+									step:      "danksearch service warning",
+									logOutput: fmt.Sprintf("danksearch service setup warning (non-fatal): %v", err),
 								}
 							}
 						}

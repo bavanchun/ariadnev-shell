@@ -6,7 +6,7 @@ XBPS templates for AriadnevShell on [Void Linux](https://voidlinux.org).
 | --- | --- | --- |
 | `advs` | AriadnevShell | [`srcpkgs/advs/template`](srcpkgs/advs/template) |
 | `dgop` | bavanchun/dgop | maintained in the **ariadnev** repo (`distro/void/srcpkgs/dgop`) |
-| `advsearch` | bavanchun/advsearch | maintained in the **ariadnev** repo (`distro/void/srcpkgs/advsearch`) |
+| `danksearch` | AvengeMedia/danksearch | maintained in the **ariadnev** repo (`distro/void/srcpkgs/danksearch`) |
 
 All build from source.
 
@@ -63,7 +63,7 @@ The rest are optional, install whichever features you want:
 
 | Package | Enables |
 | --- | --- |
-| `advsearch` | launcher / filesystem search |
+| `danksearch` | launcher / filesystem search |
 | `cava` | audio visualiser widget |
 | `qt6-multimedia` | system sound feedback |
 | `qt6ct` | Qt app theming |
@@ -80,7 +80,7 @@ Inside a `void-packages` checkout (symlink or copy these `srcpkgs/<pkg>` dirs in
 ```sh
 # build the dependency packages first (advs requires dgop)
 ./xbps-src pkg dgop
-./xbps-src pkg advsearch
+./xbps-src pkg danksearch
 ./xbps-src pkg advs
 
 # lint (xlint ships in the xtools package)

@@ -2324,14 +2324,14 @@
   "AdvBar": {
     "AdvBar": "AdvBar"
   },
-  "AdvCalendar": {
-    "AdvCalendar": "AdvCalendar"
+  "DankCalendar": {
+    "DankCalendar": "DankCalendar"
   },
-  "AdvCalendar isn't installed": {
-    "AdvCalendar isn't installed": "AdvCalendar chưa được cài đặt"
+  "DankCalendar isn't installed": {
+    "DankCalendar isn't installed": "DankCalendar chưa được cài đặt"
   },
-  "AdvCalendar isn't running": {
-    "AdvCalendar isn't running": "AdvCalendar hiện không chạy"
+  "DankCalendar isn't running": {
+    "DankCalendar isn't running": "DankCalendar hiện không chạy"
   },
   "AriadnevShell is ready to use": {
     "AriadnevShell is ready to use": "AriadnevShell đã sẵn sàng sử dụng"
@@ -3467,8 +3467,8 @@
   "File received from %1": {
     "File received from %1": "Tệp nhận được từ %1"
   },
-  "File search requires dsearch\nInstall from github.com/bavanchun/advsearch": {
-    "File search requires dsearch\nInstall from github.com/bavanchun/advsearch": "Tìm kiếm tệp yêu cầu dsearch\nHãy cài đặt từ github.com/bavanchun/advsearch"
+  "File search requires dsearch\nInstall from github.com/AvengeMedia/danksearch": {
+    "File search requires dsearch\nInstall from github.com/AvengeMedia/danksearch": "Tìm kiếm tệp yêu cầu dsearch\nHãy cài đặt từ github.com/AvengeMedia/danksearch"
   },
   "File search unavailable": {
     "File search unavailable": "Tìm kiếm tệp không khả dụng"
@@ -9104,8 +9104,8 @@
   "Uses the spotlight-bar IPC action and always opens the minimal bar.": {
     "Uses the spotlight-bar IPC action and always opens the minimal bar.": "Sử dụng hành động IPC spotlight-bar và luôn mở thanh tối giản."
   },
-  "Using AdvCalendar%1": {
-    "Using AdvCalendar%1": "Đang sử dụng AdvCalendar%1"
+  "Using DankCalendar%1": {
+    "Using DankCalendar%1": "Đang sử dụng DankCalendar%1"
   },
   "Using global monospace font from Settings → Personalization": {
     "Using global monospace font from Settings → Personalization": "Sử dụng phông chữ đơn cách toàn cầu từ Cài đặt → Cá nhân hóa"

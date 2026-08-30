@@ -2324,14 +2324,14 @@
   "AdvBar": {
     "AdvBar": "AdvBar"
   },
-  "AdvCalendar": {
-    "AdvCalendar": "AdvCalendar"
+  "DankCalendar": {
+    "DankCalendar": "DankCalendar"
   },
-  "AdvCalendar isn't installed": {
-    "AdvCalendar isn't installed": "AdvCalendar ne estas instalita"
+  "DankCalendar isn't installed": {
+    "DankCalendar isn't installed": "DankCalendar ne estas instalita"
   },
-  "AdvCalendar isn't running": {
-    "AdvCalendar isn't running": "AdvCalendar ne funkcias"
+  "DankCalendar isn't running": {
+    "DankCalendar isn't running": "DankCalendar ne funkcias"
   },
   "AriadnevShell is ready to use": {
     "AriadnevShell is ready to use": "AriadnevShell pretas por uzo"
@@ -3467,8 +3467,8 @@
   "File received from %1": {
     "File received from %1": ""
   },
-  "File search requires dsearch\nInstall from github.com/bavanchun/advsearch": {
-    "File search requires dsearch\nInstall from github.com/bavanchun/advsearch": "Dosier-serĉado postulas dsearch\nInstalu el github.com/bavanchun/advsearch"
+  "File search requires dsearch\nInstall from github.com/AvengeMedia/danksearch": {
+    "File search requires dsearch\nInstall from github.com/AvengeMedia/danksearch": "Dosier-serĉado postulas dsearch\nInstalu el github.com/AvengeMedia/danksearch"
   },
   "File search unavailable": {
     "File search unavailable": "Dosiera serĉo ne disponebla"
@@ -9104,8 +9104,8 @@
   "Uses the spotlight-bar IPC action and always opens the minimal bar.": {
     "Uses the spotlight-bar IPC action and always opens the minimal bar.": "Uzas la agadon de spotlight-bar IPC kaj ĉiam malfermas la minimuman trinkejon."
   },
-  "Using AdvCalendar%1": {
-    "Using AdvCalendar%1": "Uzante AdvCalendar%1"
+  "Using DankCalendar%1": {
+    "Using DankCalendar%1": "Uzante DankCalendar%1"
   },
   "Using global monospace font from Settings → Personalization": {
     "Using global monospace font from Settings → Personalization": "Uzante tutmondan monospacan tiparon de Agordoj → Personigo"

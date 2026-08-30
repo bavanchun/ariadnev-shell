@@ -15,7 +15,7 @@ SYNC_STATE = REPO_ROOT / ".git" / "i18n_sync_state.json"
 
 # ariadnev-qml-common terms live in the same ADVS POEditor project (tagged
 # ariadnev-qml-common); their translations ship inside the submodule so every
-# consumer gets them with the pointer. advcalendar merges from this project.
+# consumer gets them with the pointer. dankcalendar merges from this project.
 COMMON_ROOT = REPO_ROOT.parent / "ariadnev-qml-common"
 COMMON_EN_JSON = COMMON_ROOT / "translations" / "en.json"
 COMMON_POEXPORTS_DIR = COMMON_ROOT / "AdvCommon" / "translations" / "poexports"

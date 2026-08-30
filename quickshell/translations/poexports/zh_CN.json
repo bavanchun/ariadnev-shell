@@ -2324,14 +2324,14 @@
   "AdvBar": {
     "AdvBar": "Adv 状态栏"
   },
-  "AdvCalendar": {
-    "AdvCalendar": "Adv 日历"
+  "DankCalendar": {
+    "DankCalendar": "Adv 日历"
   },
-  "AdvCalendar isn't installed": {
-    "AdvCalendar isn't installed": "Adv 日历未安装"
+  "DankCalendar isn't installed": {
+    "DankCalendar isn't installed": "Adv 日历未安装"
   },
-  "AdvCalendar isn't running": {
-    "AdvCalendar isn't running": "Adv 日历未运行"
+  "DankCalendar isn't running": {
+    "DankCalendar isn't running": "Adv 日历未运行"
   },
   "AriadnevShell is ready to use": {
     "AriadnevShell is ready to use": "AriadnevShell 现已可用"
@@ -3467,8 +3467,8 @@
   "File received from %1": {
     "File received from %1": "已从 %1 收到文件"
   },
-  "File search requires dsearch\nInstall from github.com/bavanchun/advsearch": {
-    "File search requires dsearch\nInstall from github.com/bavanchun/advsearch": "文件搜索需要 dsearch\n请从 github.com/bavanchun/advsearch 安装"
+  "File search requires dsearch\nInstall from github.com/AvengeMedia/danksearch": {
+    "File search requires dsearch\nInstall from github.com/AvengeMedia/danksearch": "文件搜索需要 dsearch\n请从 github.com/AvengeMedia/danksearch 安装"
   },
   "File search unavailable": {
     "File search unavailable": "文件搜索不可用"
@@ -9104,8 +9104,8 @@
   "Uses the spotlight-bar IPC action and always opens the minimal bar.": {
     "Uses the spotlight-bar IPC action and always opens the minimal bar.": "使用 spotlight-bar IPC 动作，并始终打开聚焦搜索栏"
   },
-  "Using AdvCalendar%1": {
-    "Using AdvCalendar%1": "使用 AdvCalendar %1"
+  "Using DankCalendar%1": {
+    "Using DankCalendar%1": "使用 DankCalendar %1"
   },
   "Using global monospace font from Settings → Personalization": {
     "Using global monospace font from Settings → Personalization": "正在使用「设置 → 个性化」中的全局等宽字体"

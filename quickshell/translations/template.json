@@ -5397,23 +5397,23 @@
     "comment": "greeter feature card title | greeter settings link"
   },
   {
-    "term": "AdvCalendar",
+    "term": "DankCalendar",
     "translation": "",
-    "context": "AdvCalendar",
+    "context": "DankCalendar",
     "reference": "",
     "comment": "calendar backend option"
   },
   {
-    "term": "AdvCalendar isn't installed",
+    "term": "DankCalendar isn't installed",
     "translation": "",
-    "context": "AdvCalendar isn't installed",
+    "context": "DankCalendar isn't installed",
     "reference": "",
     "comment": ""
   },
   {
-    "term": "AdvCalendar isn't running",
+    "term": "DankCalendar isn't running",
     "translation": "",
-    "context": "AdvCalendar isn't running",
+    "context": "DankCalendar isn't running",
     "reference": "",
     "comment": ""
   },
@@ -8008,9 +8008,9 @@
     "comment": "Phone Connect file share notification"
   },
   {
-    "term": "File search requires dsearch\nInstall from github.com/bavanchun/advsearch",
+    "term": "File search requires dsearch\nInstall from github.com/AvengeMedia/danksearch",
     "translation": "",
-    "context": "File search requires dsearch\nInstall from github.com/bavanchun/advsearch",
+    "context": "File search requires dsearch\nInstall from github.com/AvengeMedia/danksearch",
     "reference": "",
     "comment": ""
   },
@@ -21119,9 +21119,9 @@
     "comment": ""
   },
   {
-    "term": "Using AdvCalendar%1",
+    "term": "Using DankCalendar%1",
     "translation": "",
-    "context": "Using AdvCalendar%1",
+    "context": "Using DankCalendar%1",
     "reference": "",
     "comment": "calendar backend status"
   },

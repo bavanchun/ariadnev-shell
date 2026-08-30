@@ -7010,8 +7010,8 @@
     ]
   },
   {
-    "term": "AdvCalendar",
-    "context": "AdvCalendar",
+    "term": "DankCalendar",
+    "context": "DankCalendar",
     "reference": "Modules/Settings/TimeWeatherTab.qml:158",
     "comment": "calendar backend option",
     "tags": [
@@ -7019,8 +7019,8 @@
     ]
   },
   {
-    "term": "AdvCalendar isn't installed",
-    "context": "AdvCalendar isn't installed",
+    "term": "DankCalendar isn't installed",
+    "context": "DankCalendar isn't installed",
     "reference": "Modules/AdvDash/Overview/CalendarOverviewCard.qml:253",
     "comment": "",
     "tags": [
@@ -7028,8 +7028,8 @@
     ]
   },
   {
-    "term": "AdvCalendar isn't running",
-    "context": "AdvCalendar isn't running",
+    "term": "DankCalendar isn't running",
+    "context": "DankCalendar isn't running",
     "reference": "Modules/AdvDash/Overview/CalendarOverviewCard.qml:253",
     "comment": "",
     "tags": [
@@ -10397,8 +10397,8 @@
     ]
   },
   {
-    "term": "File search requires dsearch\nInstall from github.com/bavanchun/advsearch",
-    "context": "File search requires dsearch\nInstall from github.com/bavanchun/advsearch",
+    "term": "File search requires dsearch\nInstall from github.com/AvengeMedia/danksearch",
+    "context": "File search requires dsearch\nInstall from github.com/AvengeMedia/danksearch",
     "reference": "Modals/AdvLauncherV2/ResultsList.qml:551",
     "comment": "",
     "tags": [
@@ -27421,8 +27421,8 @@
     ]
   },
   {
-    "term": "Using AdvCalendar%1",
-    "context": "Using AdvCalendar%1",
+    "term": "Using DankCalendar%1",
+    "context": "Using DankCalendar%1",
     "reference": "Modules/Settings/TimeWeatherTab.qml:150",
     "comment": "calendar backend status",
     "tags": [

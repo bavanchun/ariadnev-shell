@@ -24,7 +24,7 @@ Requires:       advs-cli = %{version}-%{release}
 Requires:       dgop
 
 Recommends:     cava
-Recommends:     advsearch
+Recommends:     danksearch
 Recommends:     matugen
 Recommends:     NetworkManager
 Recommends:     qt6-qtmultimedia

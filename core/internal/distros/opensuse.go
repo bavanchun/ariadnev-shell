@@ -90,8 +90,8 @@ func (o *OpenSUSEDistribution) DetectDependenciesWithTerminal(ctx context.Contex
 	}
 
 	dependencies = append(dependencies, o.detectMatugen())
-	dependencies = append(dependencies, o.detectAdvsearch())
-	dependencies = append(dependencies, o.detectAdvCalendar())
+	dependencies = append(dependencies, o.detectDanksearch())
+	dependencies = append(dependencies, o.detectDankCalendar())
 
 	return dependencies, nil
 }
@@ -129,8 +129,8 @@ func (o *OpenSUSEDistribution) GetPackageMappingWithVariants(wm deps.WindowManag
 		"advs-greeter":             {Name: "advs-greeter", Repository: RepoTypeOBS, RepoURL: "home:bavanchun:ariadnev"},
 		"ghostty":                 {Name: "ghostty", Repository: RepoTypeOBS, RepoURL: "home:bavanchun:ariadnev"},
 		"matugen":                 {Name: "matugen", Repository: RepoTypeOBS, RepoURL: "home:bavanchun:ariadnev"},
-		"advsearch":              {Name: "advsearch", Repository: RepoTypeOBS, RepoURL: "home:bavanchun:ariadnev"},
-		"advcalendar":            {Name: "advcalendar-git", Repository: RepoTypeOBS, RepoURL: "home:bavanchun:ariadnev"},
+		"danksearch":              {Name: "danksearch", Repository: RepoTypeOBS, RepoURL: "home:bavanchun:ariadnev"},
+		"dankcalendar":            {Name: "dankcalendar-git", Repository: RepoTypeOBS, RepoURL: "home:bavanchun:ariadnev"},
 	}
 
 	switch wm {

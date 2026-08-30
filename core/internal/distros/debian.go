@@ -71,8 +71,8 @@ func (d *DebianDistribution) DetectDependenciesWithTerminal(ctx context.Context,
 	}
 
 	dependencies = append(dependencies, d.detectMatugen())
-	dependencies = append(dependencies, d.detectAdvsearch())
-	dependencies = append(dependencies, d.detectAdvCalendar())
+	dependencies = append(dependencies, d.detectDanksearch())
+	dependencies = append(dependencies, d.detectDankCalendar())
 
 	return dependencies, nil
 }
@@ -136,8 +136,8 @@ func (d *DebianDistribution) GetPackageMappingWithVariants(wm deps.WindowManager
 		"advs-greeter":             {Name: "advs-greeter", Repository: RepoTypeOBS, RepoURL: "home:bavanchun:ariadnev"},
 		"matugen":                 {Name: "matugen", Repository: RepoTypeOBS, RepoURL: "home:bavanchun:ariadnev"},
 		"ghostty":                 {Name: "ghostty", Repository: RepoTypeOBS, RepoURL: "home:bavanchun:ariadnev"},
-		"advsearch":              {Name: "advsearch", Repository: RepoTypeOBS, RepoURL: "home:bavanchun:ariadnev"},
-		"advcalendar":            {Name: "advcalendar-git", Repository: RepoTypeOBS, RepoURL: "home:bavanchun:ariadnev"},
+		"danksearch":              {Name: "danksearch", Repository: RepoTypeOBS, RepoURL: "home:bavanchun:ariadnev"},
+		"dankcalendar":            {Name: "dankcalendar-git", Repository: RepoTypeOBS, RepoURL: "home:bavanchun:ariadnev"},
 	}
 
 	if wm == deps.WindowManagerNiri {

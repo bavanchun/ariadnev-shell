@@ -83,8 +83,8 @@ func (v *VoidDistribution) DetectDependenciesWithTerminal(ctx context.Context, w
 	}
 
 	dependencies = append(dependencies, v.detectMatugen())
-	dependencies = append(dependencies, v.detectAdvsearch())
-	dependencies = append(dependencies, v.detectAdvCalendar())
+	dependencies = append(dependencies, v.detectDanksearch())
+	dependencies = append(dependencies, v.detectDankCalendar())
 
 	return dependencies, nil
 }
@@ -182,8 +182,8 @@ func (v *VoidDistribution) GetPackageMappingWithVariants(wm deps.WindowManager, 
 		"matugen":                 {Name: "matugen", Repository: RepoTypeSystem},
 		"advs (AriadnevShell)": v.getAdvsMapping(variants["advs (AriadnevShell)"]),
 		"advs-greeter":             {Name: "advs-greeter", Repository: RepoTypeXBPS, RepoURL: VoidADVSRepo},
-		"advsearch":              {Name: "advsearch", Repository: RepoTypeXBPS, RepoURL: VoidAdvLinuxRepo},
-		"advcalendar":            {Name: "advcalendar", Repository: RepoTypeXBPS, RepoURL: VoidAdvLinuxRepo},
+		"danksearch":              {Name: "danksearch", Repository: RepoTypeXBPS, RepoURL: VoidAdvLinuxRepo},
+		"dankcalendar":            {Name: "dankcalendar", Repository: RepoTypeXBPS, RepoURL: VoidAdvLinuxRepo},
 	}
 
 	switch wm {

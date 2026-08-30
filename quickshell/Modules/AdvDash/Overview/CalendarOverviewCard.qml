@@ -250,7 +250,7 @@ Rectangle {
                 StyledText {
                     width: parent.width - 16 - Theme.spacingS - (launchButton.visible ? launchButton.width + Theme.spacingS : 0)
                     anchors.verticalCenter: parent.verticalCenter
-                    text: (CalendarService && CalendarService.advBinaryExists) ? I18n.tr("AdvCalendar isn't running") : I18n.tr("AdvCalendar isn't installed")
+                    text: (CalendarService && CalendarService.advBinaryExists) ? I18n.tr("DankCalendar isn't running") : I18n.tr("DankCalendar isn't installed")
                     font.pixelSize: Theme.fontSizeSmall
                     color: Theme.surfaceText
                     horizontalAlignment: Text.AlignLeft
@@ -265,7 +265,7 @@ Rectangle {
                     buttonHeight: 26
                     backgroundColor: Theme.primary
                     textColor: Theme.primaryText
-                    onClicked: CalendarService.launchAdvCalendar()
+                    onClicked: CalendarService.launchDankCalendar()
                 }
             }
         }
