@@ -3,7 +3,7 @@ package tailscale
 import (
 	"fmt"
 
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/server/models"
+	"github.com/bavanchun/ariadnev-shell/core/internal/server/models"
 )
 
 // HandleRequest routes an IPC request to the appropriate handler.

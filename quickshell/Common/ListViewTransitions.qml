@@ -2,12 +2,12 @@ pragma Singleton
 
 import QtQuick
 import Quickshell
-import qs.DankCommon.Common as DankCommon
+import qs.AdvCommon.Common as AdvCommon
 
 Singleton {
-    readonly property bool enabled: DankCommon.ListViewTransitions.enabled
-    readonly property Transition add: DankCommon.ListViewTransitions.add
-    readonly property Transition remove: DankCommon.ListViewTransitions.remove
-    readonly property Transition displaced: DankCommon.ListViewTransitions.displaced
-    readonly property Transition move: DankCommon.ListViewTransitions.move
+    readonly property bool enabled: AdvCommon.ListViewTransitions.enabled
+    readonly property Transition add: AdvCommon.ListViewTransitions.add
+    readonly property Transition remove: AdvCommon.ListViewTransitions.remove
+    readonly property Transition displaced: AdvCommon.ListViewTransitions.displaced
+    readonly property Transition move: AdvCommon.ListViewTransitions.move
 }

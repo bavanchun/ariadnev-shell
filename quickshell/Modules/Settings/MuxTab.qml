@@ -9,7 +9,7 @@ Item {
 
     readonly property var muxTypeOptions: ["tmux", "zellij"]
 
-    DankFlickable {
+    AdvFlickable {
         anchors.fill: parent
         clip: true
         contentHeight: mainColumn.height + Theme.spacingXL
@@ -68,7 +68,7 @@ Item {
                         wrapMode: Text.WordWrap
                     }
 
-                    DankTextField {
+                    AdvTextField {
                         width: parent.width
                         text: SettingsData.muxCustomCommand
                         placeholderText: I18n.tr("Enter command or script path")
@@ -96,7 +96,7 @@ Item {
                         wrapMode: Text.WordWrap
                     }
 
-                    DankTextField {
+                    AdvTextField {
                         width: parent.width
                         text: SettingsData.muxSessionFilter
                         placeholderText: I18n.tr("e.g., scratch, /^tmp_.*/, build")

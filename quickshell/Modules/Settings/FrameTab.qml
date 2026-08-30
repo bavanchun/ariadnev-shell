@@ -15,7 +15,7 @@ Item {
     // Bar Inset Padding: resolve the "auto" sentinel (stored < 0) to the frame thickness for the slider display.
     readonly property int frameInsetPaddingDisplay: Math.round(SettingsData.frameBarContentGap)
 
-    DankFlickable {
+    AdvFlickable {
         anchors.fill: parent
         clip: true
         contentHeight: mainColumn.height + Theme.spacingXL
@@ -207,7 +207,7 @@ Item {
                         anchors.verticalCenter: parent.verticalCenter
                         spacing: Theme.spacingS
 
-                        DankIcon {
+                        AdvIcon {
                             name: "blur_on"
                             size: Theme.fontSizeMedium
                             color: Theme.primary

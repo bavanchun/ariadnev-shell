@@ -12,10 +12,10 @@ import (
 	"github.com/AvengeMedia/dankgo/wlclipboard"
 )
 
-const envServe = "_DMS_CLIPBOARD_SERVE"
-const envMime = "_DMS_CLIPBOARD_MIME"
-const envPasteOnce = "_DMS_CLIPBOARD_PASTE_ONCE"
-const envCacheFile = "_DMS_CLIPBOARD_CACHE"
+const envServe = "_ADVS_CLIPBOARD_SERVE"
+const envMime = "_ADVS_CLIPBOARD_MIME"
+const envPasteOnce = "_ADVS_CLIPBOARD_PASTE_ONCE"
+const envCacheFile = "_ADVS_CLIPBOARD_CACHE"
 
 // MaybeServeAndExit intercepts before cobra when re-exec'd as a clipboard
 // child. Reads source data into memory, deletes any cache file, then serves.
@@ -220,20 +220,20 @@ func createClipboardCacheFile() (*os.File, error) {
 	preferredDirs := []string{}
 
 	if cacheDir, err := os.UserCacheDir(); err == nil {
-		preferredDirs = append(preferredDirs, filepath.Join(cacheDir, "dms", "clipboard"))
+		preferredDirs = append(preferredDirs, filepath.Join(cacheDir, "advs", "clipboard"))
 	}
-	preferredDirs = append(preferredDirs, "/var/tmp/dms/clipboard")
+	preferredDirs = append(preferredDirs, "/var/tmp/advs/clipboard")
 
 	for _, dir := range preferredDirs {
 		if err := os.MkdirAll(dir, 0o700); err != nil {
 			continue
 		}
-		cachedData, err := os.CreateTemp(dir, "dms-clipboard-*")
+		cachedData, err := os.CreateTemp(dir, "advs-clipboard-*")
 		if err == nil {
 			return cachedData, nil
 		}
 	}
-	return os.CreateTemp("", "dms-clipboard-*")
+	return os.CreateTemp("", "advs-clipboard-*")
 }
 
 // serveOffers owns the Wayland selection until cancelled (or first paste when

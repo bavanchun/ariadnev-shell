@@ -10,7 +10,7 @@ import (
 	"github.com/godbus/dbus/v5"
 	bolt "go.etcd.io/bbolt"
 
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/server/wlcontext"
+	"github.com/bavanchun/ariadnev-shell/core/internal/server/wlcontext"
 	wlclient "github.com/AvengeMedia/dankgo/wayland/client"
 )
 
@@ -40,7 +40,7 @@ func getConfigPath() (string, error) {
 	if err != nil {
 		return "", err
 	}
-	return filepath.Join(configDir, "DankMaterialShell", "clsettings.json"), nil
+	return filepath.Join(configDir, "AriadnevShell", "clsettings.json"), nil
 }
 
 func LoadConfig() Config {

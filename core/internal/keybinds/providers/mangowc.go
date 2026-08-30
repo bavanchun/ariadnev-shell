@@ -8,14 +8,14 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/config"
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/keybinds"
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/utils"
+	"github.com/bavanchun/ariadnev-shell/core/internal/config"
+	"github.com/bavanchun/ariadnev-shell/core/internal/keybinds"
+	"github.com/bavanchun/ariadnev-shell/core/internal/utils"
 )
 
 type MangoWCProvider struct {
 	configPath       string
-	dmsBindsIncluded bool
+	advsBindsIncluded bool
 	parsed           bool
 }
 
@@ -41,12 +41,12 @@ func (m *MangoWCProvider) Name() string {
 }
 
 func (m *MangoWCProvider) GetCheatSheet() (*keybinds.CheatSheet, error) {
-	result, err := ParseMangoWCKeysWithDMS(m.configPath)
+	result, err := ParseMangoWCKeysWithADVS(m.configPath)
 	if err != nil {
 		return nil, fmt.Errorf("failed to parse mangowc config: %w", err)
 	}
 
-	m.dmsBindsIncluded = result.DMSBindsIncluded
+	m.advsBindsIncluded = result.ADVSBindsIncluded
 	m.parsed = true
 
 	categorizedBinds := make(map[string][]keybinds.Keybind)
@@ -60,38 +60,38 @@ func (m *MangoWCProvider) GetCheatSheet() (*keybinds.CheatSheet, error) {
 		Title:            "MangoWC Keybinds",
 		Provider:         m.Name(),
 		Binds:            categorizedBinds,
-		DMSBindsIncluded: result.DMSBindsIncluded,
+		ADVSBindsIncluded: result.ADVSBindsIncluded,
 	}
 
-	if result.DMSStatus != nil {
-		sheet.DMSStatus = &keybinds.DMSBindsStatus{
-			Exists:          result.DMSStatus.Exists,
-			Included:        result.DMSStatus.Included,
-			IncludePosition: result.DMSStatus.IncludePosition,
-			TotalIncludes:   result.DMSStatus.TotalIncludes,
-			BindsAfterDMS:   result.DMSStatus.BindsAfterDMS,
-			Effective:       result.DMSStatus.Effective,
-			OverriddenBy:    result.DMSStatus.OverriddenBy,
-			StatusMessage:   result.DMSStatus.StatusMessage,
+	if result.ADVSStatus != nil {
+		sheet.ADVSStatus = &keybinds.ADVSBindsStatus{
+			Exists:          result.ADVSStatus.Exists,
+			Included:        result.ADVSStatus.Included,
+			IncludePosition: result.ADVSStatus.IncludePosition,
+			TotalIncludes:   result.ADVSStatus.TotalIncludes,
+			BindsAfterADVS:   result.ADVSStatus.BindsAfterADVS,
+			Effective:       result.ADVSStatus.Effective,
+			OverriddenBy:    result.ADVSStatus.OverriddenBy,
+			StatusMessage:   result.ADVSStatus.StatusMessage,
 		}
 	}
 
 	return sheet, nil
 }
 
-func (m *MangoWCProvider) HasDMSBindsIncluded() bool {
+func (m *MangoWCProvider) HasADVSBindsIncluded() bool {
 	if m.parsed {
-		return m.dmsBindsIncluded
+		return m.advsBindsIncluded
 	}
 
-	result, err := ParseMangoWCKeysWithDMS(m.configPath)
+	result, err := ParseMangoWCKeysWithADVS(m.configPath)
 	if err != nil {
 		return false
 	}
 
-	m.dmsBindsIncluded = result.DMSBindsIncluded
+	m.advsBindsIncluded = result.ADVSBindsIncluded
 	m.parsed = true
-	return m.dmsBindsIncluded
+	return m.advsBindsIncluded
 }
 
 func (m *MangoWCProvider) categorizeByCommand(command string) string {
@@ -142,8 +142,8 @@ func (m *MangoWCProvider) convertKeybind(kb *MangoWCKeyBinding, conflicts map[st
 	}
 
 	source := "config"
-	if strings.Contains(kb.Source, "dms/binds.conf") || strings.Contains(kb.Source, "dms"+string(filepath.Separator)+"binds.conf") {
-		source = "dms-default"
+	if strings.Contains(kb.Source, "advs/binds.conf") || strings.Contains(kb.Source, "advs"+string(filepath.Separator)+"binds.conf") {
+		source = "advs-default"
 	}
 
 	bind := keybinds.Keybind{
@@ -153,7 +153,7 @@ func (m *MangoWCProvider) convertKeybind(kb *MangoWCKeyBinding, conflicts map[st
 		Source:      source,
 	}
 
-	if source == "dms-default" && conflicts != nil {
+	if source == "advs-default" && conflicts != nil {
 		normalizedKey := strings.ToLower(keyStr)
 		if conflictKb, ok := conflicts[normalizedKey]; ok {
 			bind.Conflict = &keybinds.Keybind{
@@ -185,9 +185,9 @@ func (m *MangoWCProvider) formatKey(kb *MangoWCKeyBinding) string {
 func (m *MangoWCProvider) GetOverridePath() string {
 	expanded, err := utils.ExpandPath(m.configPath)
 	if err != nil {
-		return filepath.Join(m.configPath, "dms", "binds.conf")
+		return filepath.Join(m.configPath, "advs", "binds.conf")
 	}
-	return filepath.Join(expanded, "dms", "binds.conf")
+	return filepath.Join(expanded, "advs", "binds.conf")
 }
 
 func (m *MangoWCProvider) validateAction(action string) error {
@@ -221,7 +221,7 @@ func (m *MangoWCProvider) SetBind(key, action, description string, options map[s
 	overridePath := m.GetOverridePath()
 
 	if err := os.MkdirAll(filepath.Dir(overridePath), 0o755); err != nil {
-		return fmt.Errorf("failed to create dms directory: %w", err)
+		return fmt.Errorf("failed to create advs directory: %w", err)
 	}
 
 	existingBinds, err := m.loadOverrideBinds()
@@ -404,7 +404,7 @@ func (m *MangoWCProvider) buildKeyString(mods, key string) string {
 
 func (m *MangoWCProvider) getBindSortPriority(action string) int {
 	switch {
-	case strings.HasPrefix(action, "spawn") && strings.Contains(action, "dms"):
+	case strings.HasPrefix(action, "spawn") && strings.Contains(action, "advs"):
 		return 0
 	case strings.Contains(action, "view") || strings.Contains(action, "tag"):
 		return 1
@@ -500,7 +500,7 @@ func (m *MangoWCProvider) shouldUseStockScaffold(content string) bool {
 	if strings.Contains(content, "gesturebind=") && strings.Contains(content, "# ===") {
 		return false
 	}
-	return !strings.Contains(content, "gesturebind=") && (strings.Count(content, "\nbind=")+strings.Count(content, "\nbindl=")+strings.Count(content, "\nbinds=")+strings.Count(content, "\nbindr=")+strings.Count(content, "\nbindp=") >= 10 || strings.Contains(content, "dms ipc call"))
+	return !strings.Contains(content, "gesturebind=") && (strings.Count(content, "\nbind=")+strings.Count(content, "\nbindl=")+strings.Count(content, "\nbinds=")+strings.Count(content, "\nbindr=")+strings.Count(content, "\nbindp=") >= 10 || strings.Contains(content, "advs ipc call"))
 }
 
 func (m *MangoWCProvider) stockBindsScaffold(binds map[string]*mangowcOverrideBind) string {
@@ -508,7 +508,7 @@ func (m *MangoWCProvider) stockBindsScaffold(binds map[string]*mangowcOverrideBi
 	for _, key := range []string{"super+t", "super+return"} {
 		if bind, ok := binds[key]; ok {
 			command, params := m.parseAction(bind.Action)
-			if command == "spawn" && strings.TrimSpace(params) != "" && !strings.Contains(params, "dms ") {
+			if command == "spawn" && strings.TrimSpace(params) != "" && !strings.Contains(params, "advs ") {
 				terminalCommand = params
 				break
 			}

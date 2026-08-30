@@ -1,3 +1,3 @@
-import qs.DankCommon.Modals.FileBrowser as DankCommon
+import qs.AdvCommon.Modals.FileBrowser as AdvCommon
 
-DankCommon.FileBrowserSidebar {}
+AdvCommon.FileBrowserSidebar {}

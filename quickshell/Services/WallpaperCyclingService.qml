@@ -23,12 +23,12 @@ Singleton {
         return false;
     }
     readonly property bool shouldPauseCycling: fullscreenShowing || SessionService.locked
-    readonly property bool serverSchedulingAvailable: DMSService.capabilities.includes("wallpaper")
+    readonly property bool serverSchedulingAvailable: ADVSService.capabilities.includes("wallpaper")
     property real lastCycleSeq: -1
     property var monitorProcesses: ({})
 
     Connections {
-        target: DMSService
+        target: ADVSService
 
         function onWallpaperCycleUpdate(data) {
             if (!data)
@@ -129,7 +129,7 @@ Singleton {
     function pushConfigToServer() {
         if (!serverSchedulingAvailable)
             return;
-        DMSService.sendRequest("wallpaper.setConfig", {
+        ADVSService.sendRequest("wallpaper.setConfig", {
             "config": buildServerConfig()
         }, null);
     }
@@ -226,7 +226,7 @@ Singleton {
     function resetScheduleAfterManual() {
         if (!serverSchedulingAvailable)
             return;
-        DMSService.sendRequest("wallpaper.trigger", {
+        ADVSService.sendRequest("wallpaper.trigger", {
             "target": ""
         }, null);
     }

@@ -42,7 +42,7 @@ Item {
         fontEnumerationTimer.start();
     }
 
-    DankFlickable {
+    AdvFlickable {
         anchors.fill: parent
         clip: true
         contentHeight: mainColumn.height + Theme.spacingXL
@@ -323,7 +323,7 @@ Item {
                         case 2:
                             return I18n.tr("Springs carry extra energy and visibly bounce before settling");
                         default:
-                            return I18n.tr("A slight natural settle, DMS default");
+                            return I18n.tr("A slight natural settle, ADVS default");
                         }
                     }
                     model: [I18n.tr("Smooth"), I18n.tr("Balanced"), I18n.tr("Playful")]

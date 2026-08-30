@@ -1,4 +1,4 @@
-/* BEGIN DMS OVERRIDE */
+/* BEGIN ADVS OVERRIDE */
 
 /*
 * GTK Colors
@@ -7823,4 +7823,4 @@ window.background:not(.solid-csd):not(.csd) > notebook > stack:not(:only-child) 
 @define-color sidebar_border_color @window_bg_color;
 @define-color sidebar_backdrop_color @window_bg_color;
 
-/* END DMS OVERRIDE */
+/* END ADVS OVERRIDE */

@@ -1,4 +1,4 @@
-[submodule "dank-qml-common"]
-	path = dank-qml-common
-	url = https://github.com/AvengeMedia/dank-qml-common.git
-	branch = master
+[submodule "ariadnev-qml-common"]
+	path = ariadnev-qml-common
+	url = https://github.com/bavanchun/ariadnev-qml-common.git
+	branch = main

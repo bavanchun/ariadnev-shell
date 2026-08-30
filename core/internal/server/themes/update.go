@@ -3,8 +3,8 @@ package themes
 import (
 	"fmt"
 
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/server/models"
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/themes"
+	"github.com/bavanchun/ariadnev-shell/core/internal/server/models"
+	"github.com/bavanchun/ariadnev-shell/core/internal/themes"
 )
 
 func HandleUpdate(conn *models.Conn, req models.Request) {

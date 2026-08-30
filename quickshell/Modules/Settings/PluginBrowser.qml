@@ -7,7 +7,7 @@ import qs.Modals.Common
 import qs.Services
 import qs.Widgets
 
-DankFloatingWindow {
+AdvFloatingWindow {
     id: root
 
     property var allPlugins: []
@@ -25,7 +25,7 @@ DankFloatingWindow {
     property var availableLetters: []
     property string detailPluginId: ""
 
-    readonly property string previewApiBase: "https://api.danklinux.com/previews/"
+    readonly property string previewApiBase: "https://api.ariadnev.vchun.dev/previews/"
     readonly property var detailPlugin: resolveDetailPlugin(detailPluginId, allPlugins)
     readonly property bool activeCategorySort: normalizedSortMode(SessionData.pluginBrowserSortMode) === "category"
     readonly property bool showCategoryFilters: activeCategorySort && categoryFilterOptions.length > 1
@@ -529,7 +529,7 @@ DankFloatingWindow {
 
     function installPlugin(pluginName, enableAfterInstall) {
         ToastService.showInfo(I18n.tr("Installing: %1", "installation progress").arg(pluginName));
-        DMSService.install(pluginName, response => {
+        ADVSService.install(pluginName, response => {
             if (response.error) {
                 ToastService.showError(I18n.tr("Install failed: %1", "installation error").arg(response.error));
                 return;
@@ -553,9 +553,9 @@ DankFloatingWindow {
 
     function refreshPlugins() {
         isLoading = true;
-        DMSService.listPlugins();
-        if (DMSService.apiVersion >= 8)
-            DMSService.listInstalled();
+        ADVSService.listPlugins();
+        if (ADVSService.apiVersion >= 8)
+            ADVSService.listInstalled();
     }
 
     function checkPendingInstall() {
@@ -566,7 +566,7 @@ DankFloatingWindow {
         PopoutService.pendingPluginInstall = "";
         urlInstallConfirm.showWithOptions({
             "title": I18n.tr("Install Plugin", "plugin installation dialog title"),
-            "message": I18n.tr("Install plugin '%1' from the DMS registry?", "plugin installation confirmation").arg(pluginId),
+            "message": I18n.tr("Install plugin '%1' from the ADVS registry?", "plugin installation confirmation").arg(pluginId),
             "confirmText": I18n.tr("Install", "install action button"),
             "cancelText": I18n.tr("Cancel"),
             "onConfirm": () => installPlugin(pluginId, true),
@@ -631,7 +631,7 @@ DankFloatingWindow {
     }
 
     Connections {
-        target: DMSService
+        target: ADVSService
 
         function onPluginsListReceived(plugins) {
             root.isLoading = false;
@@ -737,7 +737,7 @@ DankFloatingWindow {
                     anchors.left: parent.left
                     anchors.verticalCenter: parent.verticalCenter
 
-                    DankIcon {
+                    AdvIcon {
                         anchors.centerIn: parent
                         name: "store"
                         size: Theme.iconSize
@@ -765,7 +765,7 @@ DankFloatingWindow {
 
                     StyledText {
                         text: {
-                            const description = I18n.tr("Install plugins from the DMS plugin registry", "plugin browser description");
+                            const description = I18n.tr("Install plugins from the ADVS plugin registry", "plugin browser description");
                             if (root.isLoading || root.allPlugins.length === 0)
                                 return description;
                             return description + "  •  " + root.filteredPlugins.length + "/" + root.allPlugins.length;
@@ -784,7 +784,7 @@ DankFloatingWindow {
                     anchors.verticalCenter: parent.verticalCenter
                     spacing: Theme.spacingXS
 
-                    DankButton {
+                    AdvButton {
                         text: SessionData.showThirdPartyPlugins ? I18n.tr("Hide 3rd Party") : I18n.tr("Show 3rd Party")
                         iconName: SessionData.showThirdPartyPlugins ? "visibility_off" : "visibility"
                         height: 28
@@ -801,7 +801,7 @@ DankFloatingWindow {
                         }
                     }
 
-                    DankActionButton {
+                    AdvActionButton {
                         iconName: "refresh"
                         iconSize: 18
                         iconColor: Theme.primary
@@ -810,7 +810,7 @@ DankFloatingWindow {
                         onClicked: root.refreshPlugins()
                     }
 
-                    DankActionButton {
+                    AdvActionButton {
                         visible: windowControls.canMaximize
                         iconName: root.maximized ? "fullscreen_exit" : "fullscreen"
                         iconSize: Theme.iconSize - 2
@@ -819,7 +819,7 @@ DankFloatingWindow {
                         onClicked: windowControls.tryToggleMaximize()
                     }
 
-                    DankActionButton {
+                    AdvActionButton {
                         iconName: "close"
                         iconSize: Theme.iconSize - 2
                         iconColor: Theme.outline
@@ -829,7 +829,7 @@ DankFloatingWindow {
                 }
             }
 
-            DankTextField {
+            AdvTextField {
                 id: browserSearchField
                 anchors.left: parent.left
                 anchors.right: parent.right
@@ -904,7 +904,7 @@ DankFloatingWindow {
                             }
                         }
 
-                        DankRipple {
+                        AdvRipple {
                             id: chipRipple
                             cornerRadius: sortChip.radius
                             rippleColor: sortChip.selected ? Theme.primaryText : Theme.surfaceVariantText
@@ -915,7 +915,7 @@ DankFloatingWindow {
                             anchors.centerIn: parent
                             spacing: Theme.spacingXS
 
-                            DankIcon {
+                            AdvIcon {
                                 name: sortChip.modelData.toggle ? "download_done" : "check"
                                 size: 16
                                 anchors.verticalCenter: parent.verticalCenter
@@ -978,7 +978,7 @@ DankFloatingWindow {
                         Layout.alignment: Qt.AlignVCenter
                     }
 
-                    DankDropdown {
+                    AdvDropdown {
                         Layout.fillWidth: true
                         Layout.preferredHeight: 32
                         compactMode: true
@@ -1008,13 +1008,13 @@ DankFloatingWindow {
                     anchors.fill: parent
                     visible: root.isLoading
 
-                    DankSpinner {
+                    AdvSpinner {
                         anchors.centerIn: parent
                         running: root.isLoading
                     }
                 }
 
-                DankGridView {
+                AdvGridView {
                     id: pluginGrid
 
                     property int columns: Math.max(1, Math.floor(width / 300))
@@ -1038,7 +1038,7 @@ DankFloatingWindow {
                         required property int index
 
                         property bool isInstalled: modelData.installed || false
-                        property bool isCompatible: PluginService.checkPluginCompatibility(modelData.requires_dms)
+                        property bool isCompatible: PluginService.checkPluginCompatibility(modelData.requires_advs)
                         property bool isSelected: root.keyboardNavigationActive && index === root.selectedIndex
 
                         width: pluginGrid.cellWidth
@@ -1078,7 +1078,7 @@ DankFloatingWindow {
                                 onClicked: root.openPluginDetail(cardCell.modelData)
                             }
 
-                            DankRipple {
+                            AdvRipple {
                                 id: cardRipple
                                 cornerRadius: card.radius
                                 rippleColor: Theme.surfaceVariantText
@@ -1108,7 +1108,7 @@ DankFloatingWindow {
                                         visible: status === Image.Ready
                                     }
 
-                                    DankIcon {
+                                    AdvIcon {
                                         anchors.centerIn: parent
                                         name: cardCell.modelData.icon || "extension"
                                         size: Theme.iconSize + 12
@@ -1116,7 +1116,7 @@ DankFloatingWindow {
                                         visible: cardPreview.status !== Image.Ready
                                     }
 
-                                    DankSpinner {
+                                    AdvSpinner {
                                         anchors.centerIn: parent
                                         running: cardPreview.status === Image.Loading
                                         visible: running
@@ -1168,7 +1168,7 @@ DankFloatingWindow {
                                     width: parent.width
                                     spacing: Theme.spacingS
 
-                                    DankIcon {
+                                    AdvIcon {
                                         id: cardIcon
                                         name: cardCell.modelData.icon || "extension"
                                         size: Theme.iconSize - 4
@@ -1221,7 +1221,7 @@ DankFloatingWindow {
                                             }
                                         }
 
-                                        DankIcon {
+                                        AdvIcon {
                                             anchors.centerIn: parent
                                             size: 15
                                             name: {
@@ -1321,7 +1321,7 @@ DankFloatingWindow {
                     spacing: Theme.spacingS
                     visible: !root.isLoading && root.filteredPlugins.length === 0
 
-                    DankIcon {
+                    AdvIcon {
                         anchors.horizontalCenter: parent.horizontalCenter
                         name: "search_off"
                         size: Theme.iconSize + 16
@@ -1387,7 +1387,7 @@ DankFloatingWindow {
                     anchors.right: parent.right
                     height: 40
 
-                    DankActionButton {
+                    AdvActionButton {
                         id: detailBackButton
                         anchors.left: parent.left
                         anchors.verticalCenter: parent.verticalCenter
@@ -1397,7 +1397,7 @@ DankFloatingWindow {
                         onClicked: root.closePluginDetail()
                     }
 
-                    DankIcon {
+                    AdvIcon {
                         id: detailIcon
                         anchors.left: detailBackButton.right
                         anchors.leftMargin: Theme.spacingS
@@ -1427,7 +1427,7 @@ DankFloatingWindow {
                         property string buttonState: {
                             if (detailPane.plugin.installed)
                                 return "installed";
-                            if (!PluginService.checkPluginCompatibility(detailPane.plugin.requires_dms))
+                            if (!PluginService.checkPluginCompatibility(detailPane.plugin.requires_advs))
                                 return "incompatible";
                             return "available";
                         }
@@ -1464,7 +1464,7 @@ DankFloatingWindow {
                             anchors.centerIn: parent
                             spacing: Theme.spacingXS
 
-                            DankIcon {
+                            AdvIcon {
                                 name: {
                                     switch (detailInstallButton.buttonState) {
                                     case "installed":
@@ -1495,7 +1495,7 @@ DankFloatingWindow {
                                     case "installed":
                                         return I18n.tr("Installed", "installed status");
                                     case "incompatible":
-                                        return I18n.tr("Requires %1", "version requirement").arg(detailPane.plugin.requires_dms || "");
+                                        return I18n.tr("Requires %1", "version requirement").arg(detailPane.plugin.requires_advs || "");
                                     default:
                                         return I18n.tr("Install", "install action button");
                                     }
@@ -1528,7 +1528,7 @@ DankFloatingWindow {
                     }
                 }
 
-                DankFlickable {
+                AdvFlickable {
                     id: detailFlickable
                     anchors.top: detailHeader.bottom
                     anchors.topMargin: Theme.spacingM
@@ -1574,7 +1574,7 @@ DankFloatingWindow {
                                 }
                             }
 
-                            DankSpinner {
+                            AdvSpinner {
                                 anchors.centerIn: parent
                                 running: heroImage.status === Image.Loading
                                 visible: running
@@ -1585,7 +1585,7 @@ DankFloatingWindow {
                                 spacing: Theme.spacingXS
                                 visible: heroImage.imagePath.length === 0 || heroImage.status === Image.Error
 
-                                DankIcon {
+                                AdvIcon {
                                     anchors.horizontalCenter: parent.horizontalCenter
                                     name: "image_not_supported"
                                     size: Theme.iconSize + 8
@@ -1700,7 +1700,7 @@ DankFloatingWindow {
                             spacing: Theme.spacingS
                             visible: (detailPane.plugin.permissions || []).length > 0
 
-                            DankIcon {
+                            AdvIcon {
                                 name: "security"
                                 size: Theme.iconSize - 6
                                 color: Theme.surfaceVariantText
@@ -1727,7 +1727,7 @@ DankFloatingWindow {
                             spacing: Theme.spacingS
                             visible: (detailPane.plugin.dependencies || []).length > 0
 
-                            DankIcon {
+                            AdvIcon {
                                 name: "package_2"
                                 size: Theme.iconSize - 6
                                 color: Theme.surfaceVariantText
@@ -1786,7 +1786,7 @@ DankFloatingWindow {
                                             anchors.centerIn: parent
                                             spacing: Theme.spacingXXS
 
-                                            DankIcon {
+                                            AdvIcon {
                                                 name: "extension"
                                                 size: 12
                                                 color: Theme.primary
@@ -1823,7 +1823,7 @@ DankFloatingWindow {
         id: thirdPartyConfirmLoader
         active: false
 
-        DankFloatingWindow {
+        AdvFloatingWindow {
             id: thirdPartyConfirmModal
 
             parentWindow: root
@@ -1862,7 +1862,7 @@ DankFloatingWindow {
                         width: parent.width
                         spacing: Theme.spacingM
 
-                        DankIcon {
+                        AdvIcon {
                             name: "warning"
                             size: Theme.iconSize
                             color: Theme.warning
@@ -1882,7 +1882,7 @@ DankFloatingWindow {
                             height: 1
                         }
 
-                        DankActionButton {
+                        AdvActionButton {
                             id: closeConfirmBtn
                             iconName: "close"
                             iconSize: Theme.iconSize - 2
@@ -1894,7 +1894,7 @@ DankFloatingWindow {
 
                     StyledText {
                         width: parent.width
-                        text: I18n.tr("Third-party plugins are created by the community and are not officially supported by DankMaterialShell.\n\nThese plugins may pose security and privacy risks - install at your own risk.")
+                        text: I18n.tr("Third-party plugins are created by the community and are not officially supported by AriadnevShell.\n\nThese plugins may pose security and privacy risks - install at your own risk.")
                         font.pixelSize: Theme.fontSizeMedium
                         color: Theme.surfaceText
                         wrapMode: Text.WordWrap
@@ -1932,13 +1932,13 @@ DankFloatingWindow {
                         anchors.right: parent.right
                         spacing: Theme.spacingM
 
-                        DankButton {
+                        AdvButton {
                             text: I18n.tr("Cancel")
                             iconName: "close"
                             onClicked: thirdPartyConfirmModal.hide()
                         }
 
-                        DankButton {
+                        AdvButton {
                             text: I18n.tr("I Understand")
                             iconName: "check"
                             onClicked: {

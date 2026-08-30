@@ -119,7 +119,7 @@ Item {
     }
 
     function copyToClipboard(text) {
-        Quickshell.execDetached(["dms", "cl", "copy", text])
+        Quickshell.execDetached(["advs", "cl", "copy", text])
         showToast("Copied to clipboard: " + text)
     }
 

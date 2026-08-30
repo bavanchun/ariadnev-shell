@@ -13,15 +13,15 @@ type Keybind struct {
 	AllowInhibiting *bool    `json:"allowInhibiting,omitempty"` // nil=default(true), false=explicitly disabled
 	Repeat          *bool    `json:"repeat,omitempty"`          // nil=default(true), false=explicitly disabled
 	Conflict        *Keybind `json:"conflict,omitempty"`
-	HasDefault      bool     `json:"hasDefault,omitempty"` // override has a DMS default to revert to
+	HasDefault      bool     `json:"hasDefault,omitempty"` // override has a ADVS default to revert to
 }
 
-type DMSBindsStatus struct {
+type ADVSBindsStatus struct {
 	Exists          bool   `json:"exists"`
 	Included        bool   `json:"included"`
 	IncludePosition int    `json:"includePosition"`
 	TotalIncludes   int    `json:"totalIncludes"`
-	BindsAfterDMS   int    `json:"bindsAfterDms"`
+	BindsAfterADVS   int    `json:"bindsAfterAdvs"`
 	Effective       bool   `json:"effective"`
 	OverriddenBy    int    `json:"overriddenBy"`
 	StatusMessage   string `json:"statusMessage"`
@@ -34,8 +34,8 @@ type CheatSheet struct {
 	Provider         string               `json:"provider"`
 	ModKey           string               `json:"modKey,omitempty"`
 	Binds            map[string][]Keybind `json:"binds"`
-	DMSBindsIncluded bool                 `json:"dmsBindsIncluded"`
-	DMSStatus        *DMSBindsStatus      `json:"dmsStatus,omitempty"`
+	ADVSBindsIncluded bool                 `json:"advsBindsIncluded"`
+	ADVSStatus        *ADVSBindsStatus      `json:"advsStatus,omitempty"`
 }
 
 type Provider interface {
@@ -47,9 +47,9 @@ type WritableProvider interface {
 	Provider
 	SetBind(key, action, description string, options map[string]any) error
 	// RemoveBind removes the bind. Hyprland writes a negative override to
-	// dms/binds-user.lua; single-file providers delete the line.
+	// advs/binds-user.lua; single-file providers delete the line.
 	RemoveBind(key string) error
-	// ResetBind reverts a user override to its DMS default. On single-file
+	// ResetBind reverts a user override to its ADVS default. On single-file
 	// providers this aliases to RemoveBind.
 	ResetBind(key string) error
 	GetOverridePath() string

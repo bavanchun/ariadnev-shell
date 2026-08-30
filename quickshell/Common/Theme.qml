@@ -6,7 +6,7 @@ import QtQuick
 import Quickshell
 import Quickshell.Io
 import qs.Common
-import qs.DankCommon.Common as DankCommon
+import qs.AdvCommon.Common as AdvCommon
 import qs.Services
 import qs.Modules.Greetd
 import "StockThemes.js" as StockThemes
@@ -15,8 +15,8 @@ Singleton {
     id: root
     readonly property var log: Log.scoped("Theme")
 
-    readonly property string stateDir: Paths.strip(StandardPaths.writableLocation(StandardPaths.GenericCacheLocation).toString()) + "/DankMaterialShell"
-    readonly property bool envDisableMatugen: Quickshell.env("DMS_DISABLE_MATUGEN") === "1" || Quickshell.env("DMS_DISABLE_MATUGEN") === "true"
+    readonly property string stateDir: Paths.strip(StandardPaths.writableLocation(StandardPaths.GenericCacheLocation).toString()) + "/AriadnevShell"
+    readonly property bool envDisableMatugen: Quickshell.env("ADVS_DISABLE_MATUGEN") === "1" || Quickshell.env("ADVS_DISABLE_MATUGEN") === "true"
     readonly property string defaultFontFamily: "Inter Variable"
     readonly property string defaultMonoFontFamily: "Fira Code"
 
@@ -112,8 +112,8 @@ Singleton {
     signal screenTransitionNeeded
     signal themeGenerationStarting
 
-    readonly property var dank16: {
-        const raw = matugenColors?.dank16;
+    readonly property var adv16: {
+        const raw = matugenColors?.adv16;
         if (!raw)
             return null;
 
@@ -1144,25 +1144,25 @@ Singleton {
         if (typeof SessionData !== "undefined" && SessionData.isGreeterMode && typeof GreetdSettings !== "undefined") {
             return resolvedFontFamily(GreetdSettings.getEffectiveFontFamily());
         }
-        return typeof SettingsData !== "undefined" ? resolvedFontFamily(SettingsData.fontFamily) : DankCommon.Fonts.sans;
+        return typeof SettingsData !== "undefined" ? resolvedFontFamily(SettingsData.fontFamily) : AdvCommon.Fonts.sans;
     }
 
     property string monoFontFamily: {
         if (typeof SessionData !== "undefined" && SessionData.isGreeterMode && typeof GreetdSettings !== "undefined") {
             return resolvedMonoFontFamily(GreetdSettings.monoFontFamily);
         }
-        return typeof SettingsData !== "undefined" ? resolvedMonoFontFamily(SettingsData.monoFontFamily) : DankCommon.Fonts.mono;
+        return typeof SettingsData !== "undefined" ? resolvedMonoFontFamily(SettingsData.monoFontFamily) : AdvCommon.Fonts.mono;
     }
 
     function resolvedFontFamily(family) {
         if (family === defaultFontFamily)
-            return DankCommon.Fonts.sans;
+            return AdvCommon.Fonts.sans;
         return family;
     }
 
     function resolvedMonoFontFamily(family) {
         if (family === defaultMonoFontFamily)
-            return DankCommon.Fonts.mono;
+            return AdvCommon.Fonts.mono;
         return family;
     }
 
@@ -1488,13 +1488,13 @@ Singleton {
 
     function barTextSize(barThickness, fontScale, maximizeText) {
         const scale = barThickness / 48;
-        const dankBarScale = fontScale !== undefined ? fontScale : 1.0;
+        const advBarScale = fontScale !== undefined ? fontScale : 1.0;
         const maxScale = (maximizeText ?? false) ? 1.5 : 1.0;
         if (scale <= 0.75)
-            return Math.round(fontSizeSmall * 0.9 * dankBarScale * maxScale);
+            return Math.round(fontSizeSmall * 0.9 * advBarScale * maxScale);
         if (scale >= 1.25)
-            return Math.round(fontSizeMedium * dankBarScale * maxScale);
-        return Math.round(fontSizeSmall * dankBarScale * maxScale);
+            return Math.round(fontSizeMedium * advBarScale * maxScale);
+        return Math.round(fontSizeSmall * advBarScale * maxScale);
     }
 
     function getBatteryIcon(level, isCharging, batteryAvailable) {
@@ -1601,7 +1601,7 @@ Singleton {
         log.debug("Starting matugen worker");
         workerRunning = true;
 
-        const args = ["dms", "matugen", "queue", "--state-dir", stateDir, "--shell-dir", shellDir, "--config-dir", configDir, "--kind", desired.kind, "--value", desired.value, "--mode", desired.mode, "--icon-theme", desired.iconTheme, "--matugen-type", desired.matugenType,];
+        const args = ["advs", "matugen", "queue", "--state-dir", stateDir, "--shell-dir", shellDir, "--config-dir", configDir, "--kind", desired.kind, "--value", desired.value, "--mode", desired.mode, "--icon-theme", desired.iconTheme, "--matugen-type", desired.matugenType,];
 
         if (!desired.runUserTemplates) {
             args.push("--run-user-templates=false");
@@ -1621,7 +1621,7 @@ Singleton {
 
         if (typeof SettingsData !== "undefined") {
             const skipTemplates = [];
-            if (!SettingsData.runDmsMatugenTemplates) {
+            if (!SettingsData.runAdvsMatugenTemplates) {
                 skipTemplates.push("gtk", "nvim", "niri", "qt5ct", "qt6ct", "qtengine", "fcitx5", "firefox", "pywalfox", "zenbrowser", "vesktop", "vencord", "equibop", "ghostty", "kitty", "foot", "alacritty", "wezterm", "dgop", "kcolorscheme", "vscode", "emacs", "zed");
             } else {
                 if (!SettingsData.matugenTemplateGtk)
@@ -1947,7 +1947,7 @@ Singleton {
         });
 
         if (isQtengineActive) {
-            Proc.runCommand("qtengineApplier", [Proc.dmsBin, "matugen", "qtengine", "--config-dir", configDir], (output, exitCode) => {
+            Proc.runCommand("qtengineApplier", [Proc.advsBin, "matugen", "qtengine", "--config-dir", configDir], (output, exitCode) => {
                 qtengineFailed = exitCode !== 0;
                 finishApplyQtColors(exitCode === 0);
             });
@@ -2176,7 +2176,7 @@ Singleton {
         }
     }
 
-    readonly property string _greeterCacheDir: Quickshell.env("DMS_GREET_CFG_DIR") || "/var/cache/dms-greeter"
+    readonly property string _greeterCacheDir: Quickshell.env("ADVS_GREET_CFG_DIR") || "/var/cache/advs-greeter"
 
     property string greeterColorsBaseDir: root._greeterCacheDir
 
@@ -2198,7 +2198,7 @@ Singleton {
         path: {
             if (SessionData.isGreeterMode)
                 return root.greeterColorsBaseDir ? (root.greeterColorsBaseDir + "/colors.json") : "";
-            return stateDir + "/dms-colors.json";
+            return stateDir + "/advs-colors.json";
         }
         blockLoading: false
         watchChanges: !SessionData.isGreeterMode

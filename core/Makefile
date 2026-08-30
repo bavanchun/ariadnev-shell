@@ -1,7 +1,7 @@
-BINARY_NAME=dms
-BINARY_NAME_INSTALL=dankinstall
-SOURCE_DIR=cmd/dms
-SOURCE_DIR_INSTALL=cmd/dankinstall
+BINARY_NAME=advs
+BINARY_NAME_INSTALL=advinstall
+SOURCE_DIR=cmd/advs
+SOURCE_DIR_INSTALL=cmd/advinstall
 BUILD_DIR=bin
 SHELL_SRC=../quickshell
 EMBED_DIR=internal/shellembed/dist
@@ -32,7 +32,7 @@ else
 DIST_ARCHS = $(ARCH)
 endif
 
-.PHONY: all build sync-shell dankinstall dist clean install install-all install-dankinstall uninstall uninstall-all uninstall-dankinstall install-config uninstall-config test fmt vet deps print-version help
+.PHONY: all build sync-shell advinstall dist clean install install-all install-advinstall uninstall uninstall-all uninstall-advinstall install-config uninstall-config test fmt vet deps print-version help
 
 # Default target
 all: build
@@ -41,12 +41,12 @@ all: build
 # can bake it into the binary. Dev-only files are stripped; scripts/ is kept
 # minus its dev entries, since Theme.qml and BluetoothService.qml run
 # gtk.sh/qt.sh/bluez-card-profile.lua out of the resolved shell dir.
-# tar -h dereferences the DankCommon submodule symlink; go:embed rejects
+# tar -h dereferences the AdvCommon submodule symlink; go:embed rejects
 # symlinks. .qmlls.ini is excluded at copy time: it's a symlink into the
 # quickshell runtime VFS and dereferencing it fails whenever the shell isn't
 # running.
 sync-shell:
-	@test -e $(SHELL_SRC)/DankCommon/Widgets/DankIcon.qml || { echo "DankCommon missing: run git submodule update --init"; exit 1; }
+	@test -e $(SHELL_SRC)/AdvCommon/Widgets/AdvIcon.qml || { echo "AdvCommon missing: run git submodule update --init"; exit 1; }
 	@rm -rf $(EMBED_DIR)
 	@mkdir -p $(EMBED_DIR)
 	@tar -C $(SHELL_SRC) --exclude=.qmlls.ini -chf - . | tar -C $(EMBED_DIR) -xf -
@@ -56,16 +56,16 @@ sync-shell:
 	@rm -f $(EMBED_DIR)/scripts/i18nsync.py $(EMBED_DIR)/scripts/build-vscode-vsix.sh $(EMBED_DIR)/scripts/qmllint-entrypoints.sh
 	@rm -f $(EMBED_DIR)/scripts/spam-notifications.sh $(EMBED_DIR)/scripts/verify-notifications.sh
 	@rm -f $(EMBED_DIR)/translations/*.py $(EMBED_DIR)/translations/WORKFLOW.md
-	@cd $(EMBED_DIR) && find . -type f -print0 | LC_ALL=C sort -z | xargs -0 sha256sum | sha256sum | cut -c1-16 > .dankrev
+	@cd $(EMBED_DIR) && find . -type f -print0 | LC_ALL=C sort -z | xargs -0 sha256sum | sha256sum | cut -c1-16 > .advrev
 
-# Build the main binary (dms)
+# Build the main binary (advs)
 build: sync-shell
 	@echo "Building $(BINARY_NAME)..."
 	@mkdir -p $(BUILD_DIR)
 	CGO_ENABLED=0 $(GO) build -tags withshell $(BUILD_LDFLAGS) -o $(BUILD_DIR)/$(BINARY_NAME) ./$(SOURCE_DIR)
 	@echo "Build complete: $(BUILD_DIR)/$(BINARY_NAME)"
 
-dankinstall:
+advinstall:
 	@echo "Building $(BINARY_NAME_INSTALL)..."
 	@mkdir -p $(BUILD_DIR)
 	CGO_ENABLED=0 $(GO) build $(BUILD_LDFLAGS) -o $(BUILD_DIR)/$(BINARY_NAME_INSTALL) ./$(SOURCE_DIR_INSTALL)
@@ -84,7 +84,7 @@ dist: sync-shell
 	done
 	@echo "Distribution builds complete"
 
-build-all: build dankinstall
+build-all: build advinstall
 
 install:
 	@echo "Installing $(BINARY_NAME) to $(INSTALL_DIR)..."
@@ -98,7 +98,7 @@ install-all:
 	@install -D -m 755 $(BUILD_DIR)/$(BINARY_NAME_INSTALL) $(INSTALL_DIR)/$(BINARY_NAME_INSTALL)
 	@echo "Installation complete"
 
-install-dankinstall:
+install-advinstall:
 	@echo "Installing $(BINARY_NAME_INSTALL) to $(INSTALL_DIR)..."
 	@install -D -m 755 $(BUILD_DIR)/$(BINARY_NAME_INSTALL) $(INSTALL_DIR)/$(BINARY_NAME_INSTALL)
 	@echo "Installation complete"
@@ -115,7 +115,7 @@ uninstall-all:
 	@rm -f $(INSTALL_DIR)/$(BINARY_NAME_INSTALL)
 	@echo "Uninstall complete"
 
-uninstall-dankinstall:
+uninstall-advinstall:
 	@echo "Uninstalling $(BINARY_NAME_INSTALL) from $(INSTALL_DIR)..."
 	@rm -f $(INSTALL_DIR)/$(BINARY_NAME_INSTALL)
 	@echo "Uninstall complete"
@@ -164,19 +164,19 @@ print-version:
 
 help:
 	@echo "Available targets:"
-	@echo "  all                 - Build the main binary (dms) (default)"
-	@echo "  build               - Build the main binary (dms) with the embedded UI"
+	@echo "  all                 - Build the main binary (advs) (default)"
+	@echo "  build               - Build the main binary (advs) with the embedded UI"
 	@echo "  sync-shell          - Copy quickshell/ into the embed dir (runs before tagged builds)"
-	@echo "  dankinstall         - Build dankinstall binary"
-	@echo "  dist                - Build dms for linux/freebsd amd64/arm64 (no update/greeter)"
+	@echo "  advinstall         - Build advinstall binary"
+	@echo "  dist                - Build advs for linux/freebsd amd64/arm64 (no update/greeter)"
 	@echo "                        Use ARCH=amd64 or ARCH=arm64 and/or DIST_OSES=linux to narrow"
 	@echo "  build-all           - Build both binaries"
-	@echo "  install             - Install dms to $(INSTALL_DIR)"
-	@echo "  install-all         - Install both dms and dankinstall to $(INSTALL_DIR)"
-	@echo "  install-dankinstall - Install only dankinstall to $(INSTALL_DIR)"
-	@echo "  uninstall           - Remove dms from $(INSTALL_DIR)"
+	@echo "  install             - Install advs to $(INSTALL_DIR)"
+	@echo "  install-all         - Install both advs and advinstall to $(INSTALL_DIR)"
+	@echo "  install-advinstall - Install only advinstall to $(INSTALL_DIR)"
+	@echo "  uninstall           - Remove advs from $(INSTALL_DIR)"
 	@echo "  uninstall-all       - Remove both binaries from $(INSTALL_DIR)"
-	@echo "  uninstall-dankinstall - Remove only dankinstall from $(INSTALL_DIR)"
+	@echo "  uninstall-advinstall - Remove only advinstall from $(INSTALL_DIR)"
 	@echo "  clean               - Clean build artifacts"
 	@echo "  test                - Run tests"
 	@echo "  fmt                 - Format Go code"

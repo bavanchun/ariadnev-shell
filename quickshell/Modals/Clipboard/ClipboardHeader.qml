@@ -24,7 +24,7 @@ Item {
         anchors.verticalCenter: parent.verticalCenter
         spacing: Theme.spacingM
 
-        DankIcon {
+        AdvIcon {
             name: "content_paste"
             size: Theme.iconSize
             color: Theme.primary
@@ -45,7 +45,7 @@ Item {
         anchors.verticalCenter: parent.verticalCenter
         spacing: Theme.spacingS
 
-        DankActionButton {
+        AdvActionButton {
             iconName: "push_pin"
             iconSize: Theme.iconSize - 4
             iconColor: header.activeTab === "saved" ? Theme.primary : Theme.surfaceText
@@ -55,7 +55,7 @@ Item {
             onClicked: tabChanged(header.activeTab === "saved" ? "recents" : "saved")
         }
 
-        DankActionButton {
+        AdvActionButton {
             iconName: "info"
             iconSize: Theme.iconSize - 4
             iconColor: showKeyboardHints ? Theme.primary : Theme.surfaceText
@@ -63,7 +63,7 @@ Item {
             onClicked: keyboardHintsToggled()
         }
 
-        DankActionButton {
+        AdvActionButton {
             iconName: "delete_sweep"
             iconSize: Theme.iconSize
             iconColor: Theme.surfaceText
@@ -71,7 +71,7 @@ Item {
             onClicked: clearAllClicked()
         }
 
-        DankActionButton {
+        AdvActionButton {
             iconName: "close"
             iconSize: Theme.iconSize - 4
             iconColor: Theme.surfaceText

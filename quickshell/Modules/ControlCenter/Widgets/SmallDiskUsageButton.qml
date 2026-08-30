@@ -60,7 +60,7 @@ Rectangle {
         anchors.centerIn: parent
         spacing: Theme.spacingXS
 
-        DankIcon {
+        AdvIcon {
             anchors.verticalCenter: parent.verticalCenter
             name: "storage"
             size: Theme.iconSizeLarge
@@ -102,7 +102,7 @@ Rectangle {
         }
     }
 
-    DankRipple {
+    AdvRipple {
         id: ripple
         cornerRadius: root.radius
     }

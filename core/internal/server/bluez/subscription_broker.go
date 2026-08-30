@@ -4,7 +4,7 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/errdefs"
+	"github.com/bavanchun/ariadnev-shell/core/internal/errdefs"
 	"github.com/AvengeMedia/dankgo/syncmap"
 )
 

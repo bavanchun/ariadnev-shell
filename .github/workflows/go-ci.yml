@@ -54,17 +54,17 @@ jobs:
       - name: Test
         run: go test -v ./...
 
-      - name: Build dms
-        run: go build -v ./cmd/dms
+      - name: Build advs
+        run: go build -v ./cmd/advs
 
-      - name: Build dms (embedded shell)
+      - name: Build advs (embedded shell)
         run: make build
 
-      - name: Build dms (distropkg)
-        run: go build -v -tags 'distro_binary withshell' ./cmd/dms
+      - name: Build advs (distropkg)
+        run: go build -v -tags 'distro_binary withshell' ./cmd/advs
 
-      - name: Build dankinstall
-        run: go build -v ./cmd/dankinstall
+      - name: Build advinstall
+        run: go build -v ./cmd/advinstall
 
   build-freebsd:
     runs-on: ubuntu-latest
@@ -90,7 +90,7 @@ jobs:
           CGO_ENABLED: 0
         run: go build -v ./...
 
-      - name: Build dms (distropkg, embedded shell)
+      - name: Build advs (distropkg, embedded shell)
         run: |
           make sync-shell
-          GOOS=freebsd CGO_ENABLED=0 go build -v -tags 'distro_binary withshell' ./cmd/dms
+          GOOS=freebsd CGO_ENABLED=0 go build -v -tags 'distro_binary withshell' ./cmd/advs

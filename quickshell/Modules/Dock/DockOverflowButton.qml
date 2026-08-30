@@ -26,7 +26,7 @@ Item {
             }
         }
 
-        DankIcon {
+        AdvIcon {
             id: arrowIcon
             anchors.centerIn: parent
             size: actualIconSize * 0.6

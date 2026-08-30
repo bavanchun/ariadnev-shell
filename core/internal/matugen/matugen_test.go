@@ -8,8 +8,8 @@ import (
 	"testing"
 	"time"
 
-	mocks_utils "github.com/AvengeMedia/DankMaterialShell/core/internal/mocks/utils"
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/utils"
+	mocks_utils "github.com/bavanchun/ariadnev-shell/core/internal/mocks/utils"
+	"github.com/bavanchun/ariadnev-shell/core/internal/utils"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -438,7 +438,7 @@ func TestBuildMergedConfigColorsOnly(t *testing.T) {
 	}
 
 	content := string(output)
-	assert.Contains(t, content, "[templates.dank]")
+	assert.Contains(t, content, "[templates.adv]")
 	assert.Contains(t, content, "output_path = '"+opts.colorsStaging()+"'")
 	assert.NotContains(t, content, "[templates.gtk]")
 	assert.False(t, strings.Contains(content, "output_path = 'CONFIG_DIR/"), "colors-only config should not emit app template outputs")
@@ -457,7 +457,7 @@ func TestBuildMergedConfigSkipsMangowcWithoutActiveSession(t *testing.T) {
 	if err := os.WriteFile(filepath.Join(configsDir, "base.toml"), []byte("[config]\n"), 0o644); err != nil {
 		t.Fatalf("failed to write base config: %v", err)
 	}
-	mangowcConfig := "[templates.dmsmango]\ninput_path = 'in'\noutput_path = 'out'\n"
+	mangowcConfig := "[templates.advsmango]\ninput_path = 'in'\noutput_path = 'out'\n"
 	if err := os.WriteFile(filepath.Join(configsDir, "mangowc.toml"), []byte(mangowcConfig), 0o644); err != nil {
 		t.Fatalf("failed to write mangowc config: %v", err)
 	}
@@ -487,7 +487,7 @@ func TestBuildMergedConfigSkipsMangowcWithoutActiveSession(t *testing.T) {
 	if err != nil {
 		t.Fatalf("failed to read merged config: %v", err)
 	}
-	assert.NotContains(t, string(output), "[templates.dmsmango]")
+	assert.NotContains(t, string(output), "[templates.advsmango]")
 }
 
 func TestAppendConfigConfigDirExists(t *testing.T) {
@@ -585,7 +585,7 @@ func TestAppendFlatpakConfigRewritesOutputAndTemplateName(t *testing.T) {
 		t.Fatalf("failed to create config directory: %v", err)
 	}
 
-	config := "[templates.dmsvesktop]\ninput_path = 'SHELL_DIR/matugen/templates/vesktop.css'\noutput_path = 'CONFIG_DIR/vesktop/themes/dank-discord.css'\n"
+	config := "[templates.advsvesktop]\ninput_path = 'SHELL_DIR/matugen/templates/vesktop.css'\noutput_path = 'CONFIG_DIR/vesktop/themes/adv-discord.css'\n"
 	if err := os.WriteFile(filepath.Join(configDir, "vesktop.toml"), []byte(config), 0o644); err != nil {
 		t.Fatalf("failed to write config: %v", err)
 	}
@@ -611,8 +611,8 @@ func TestAppendFlatpakConfigRewritesOutputAndTemplateName(t *testing.T) {
 		t.Fatalf("failed to read output: %v", err)
 	}
 
-	assert.Contains(t, string(output), "[templates.dmsvesktop-flatpak]")
-	assert.Contains(t, string(output), "'/home/test/.var/app/dev.vencord.Vesktop/config/vesktop/themes/dank-discord.css'")
+	assert.Contains(t, string(output), "[templates.advsvesktop-flatpak]")
+	assert.Contains(t, string(output), "'/home/test/.var/app/dev.vencord.Vesktop/config/vesktop/themes/adv-discord.css'")
 }
 
 func TestQtengineActive(t *testing.T) {
@@ -753,7 +753,7 @@ func TestSyncQtengineConfig(t *testing.T) {
 			},
 		},
 		{
-			name:          "leaves a hand set colorScheme alone when DMS generated none",
+			name:          "leaves a hand set colorScheme alone when ADVS generated none",
 			existing:      existingConfig,
 			noColorScheme: true,
 			iconTheme:     "Papirus-Dark",
@@ -798,7 +798,7 @@ func TestSyncQtengineConfig(t *testing.T) {
 			path := QtengineConfigPath()
 			assert.Equal(t, filepath.Join(configDir, "qtengine", "config.json"), path)
 
-			scheme := filepath.Join(dataHome, "color-schemes", "DankMatugen.colors")
+			scheme := filepath.Join(dataHome, "color-schemes", "AdvMatugen.colors")
 			if !tc.noColorScheme {
 				if err := os.MkdirAll(filepath.Dir(scheme), 0o755); err != nil {
 					t.Fatalf("failed to create color-schemes dir: %v", err)
@@ -868,7 +868,7 @@ func TestSyncQtengineConfigAtUsesExplicitConfigDir(t *testing.T) {
 	t.Setenv("XDG_CONFIG_HOME", xdgConfigDir)
 	t.Setenv("XDG_DATA_HOME", dataHome)
 
-	scheme := filepath.Join(dataHome, "color-schemes", "DankMatugen.colors")
+	scheme := filepath.Join(dataHome, "color-schemes", "AdvMatugen.colors")
 	if err := os.MkdirAll(filepath.Dir(scheme), 0o755); err != nil {
 		t.Fatalf("failed to create color-schemes dir: %v", err)
 	}

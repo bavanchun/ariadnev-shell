@@ -4,28 +4,28 @@
   ...
 }:
 let
-  fakeDms = pkgs.writeShellScriptBin "dms" ''
-    printf '%s\n' "$@" > /tmp/dms-service-args
+  fakeAdvs = pkgs.writeShellScriptBin "advs" ''
+    printf '%s\n' "$@" > /tmp/advs-service-args
     exec ${pkgs.coreutils}/bin/sleep 300
   '';
 in
 pkgs.testers.runNixOSTest {
-  name = "dms-nixos-service-start-module";
+  name = "advs-nixos-service-start-module";
 
   nodes.machine = {
     imports = [
-      self.nixosModules.dank-material-shell
+      self.nixosModules.adv-material-shell
     ];
 
-    users.users.danklinux = {
+    users.users.ariadnev = {
       isNormalUser = true;
       linger = true;
       extraGroups = [ "wheel" ];
     };
 
-    programs.dank-material-shell = {
+    programs.adv-material-shell = {
       enable = true;
-      package = fakeDms;
+      package = fakeAdvs;
       systemd = {
         enable = true;
         target = "default.target";
@@ -39,10 +39,10 @@ pkgs.testers.runNixOSTest {
     machine.wait_for_unit("multi-user.target")
     machine.wait_for_unit("user@1000.service")
 
-    machine.succeed("systemctl --machine=danklinux@ --user start dms.service")
-    machine.wait_until_succeeds("systemctl --machine=danklinux@ --user is-active dms.service")
-    machine.wait_until_succeeds("test -f /tmp/dms-service-args")
-    machine.succeed("grep -Fx run /tmp/dms-service-args")
-    machine.succeed("grep -Fx -- --session /tmp/dms-service-args")
+    machine.succeed("systemctl --machine=ariadnev@ --user start advs.service")
+    machine.wait_until_succeeds("systemctl --machine=ariadnev@ --user is-active advs.service")
+    machine.wait_until_succeeds("test -f /tmp/advs-service-args")
+    machine.succeed("grep -Fx run /tmp/advs-service-args")
+    machine.succeed("grep -Fx -- --session /tmp/advs-service-args")
   '';
 }

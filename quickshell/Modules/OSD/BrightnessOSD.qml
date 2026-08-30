@@ -3,7 +3,7 @@ import qs.Common
 import qs.Services
 import qs.Widgets
 
-DankOSD {
+AdvOSD {
     id: root
 
     readonly property bool useVertical: isVerticalLayout
@@ -86,7 +86,7 @@ DankOSD {
                 anchors.horizontalCenter: parent.horizontalCenter
                 y: gap
 
-                DankIcon {
+                AdvIcon {
                     anchors.centerIn: parent
                     name: DisplayService.brightnessIconName(DisplayService.getCurrentDeviceInfo())
                     size: Theme.iconSize

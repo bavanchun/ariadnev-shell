@@ -3,7 +3,7 @@ import qs.Common
 import qs.Services
 import qs.Widgets
 
-DankOSD {
+AdvOSD {
     id: root
 
     readonly property bool useVertical: isVerticalLayout
@@ -106,7 +106,7 @@ DankOSD {
                 anchors.horizontalCenter: parent.horizontalCenter
                 y: gap
 
-                DankIcon {
+                AdvIcon {
                     anchors.centerIn: parent
                     name: AudioService.sink?.audio?.muted ? "volume_off" : "volume_up"
                     size: Theme.iconSize

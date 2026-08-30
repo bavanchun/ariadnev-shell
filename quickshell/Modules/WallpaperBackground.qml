@@ -212,7 +212,7 @@ Variants {
                 }
             }
 
-            // Theme changes repaint DankBackdrop but nothing else wakes the render loop
+            // Theme changes repaint AdvBackdrop but nothing else wakes the render loop
             Connections {
                 target: Theme
                 enabled: root.isColorSource || currentWallpaper.status === Image.Error
@@ -652,7 +652,7 @@ Variants {
                 active: !root.source || root.isColorSource || currentWallpaper.status === Image.Error
                 asynchronous: true
 
-                sourceComponent: DankBackdrop {
+                sourceComponent: AdvBackdrop {
                     screenName: modelData.name
                 }
             }

@@ -20,7 +20,7 @@ Item {
         NetworkService.removeRef();
     }
 
-    DankFlickable {
+    AdvFlickable {
         anchors.fill: parent
         clip: true
         contentHeight: mainColumn.height + Theme.spacingXL
@@ -130,7 +130,7 @@ Item {
                                             anchors.rightMargin: Theme.spacingS
                                             spacing: Theme.spacingS
 
-                                            DankIcon {
+                                            AdvIcon {
                                                 name: "lan"
                                                 size: 20
                                                 color: isConnected ? Theme.primary : Theme.surfaceText
@@ -204,7 +204,7 @@ Item {
                                                 color: ethExpandBtn.containsMouse ? Theme.surfacePressed : Theme.withAlpha(Theme.surfacePressed, 0)
                                                 visible: isConnected
 
-                                                DankIcon {
+                                                AdvIcon {
                                                     anchors.centerIn: parent
                                                     name: isExpanded ? "expand_less" : "expand_more"
                                                     size: 18
@@ -234,7 +234,7 @@ Item {
                                                 color: ethDisconnectBtn.containsMouse ? Theme.errorHover : Theme.withAlpha(Theme.errorHover, 0)
                                                 visible: isConnected
 
-                                                DankIcon {
+                                                AdvIcon {
                                                     anchors.centerIn: parent
                                                     name: "link_off"
                                                     size: 18
@@ -360,7 +360,7 @@ Item {
                                                     height: NetworkService.networkWiredInfoLoading ? 40 : 0
                                                     visible: NetworkService.networkWiredInfoLoading
 
-                                                    DankSpinner {
+                                                    AdvSpinner {
                                                         anchors.centerIn: parent
                                                         size: 20
                                                     }
@@ -413,7 +413,7 @@ Item {
                                     anchors.verticalCenter: parent.verticalCenter
                                     spacing: Theme.spacingS
 
-                                    DankIcon {
+                                    AdvIcon {
                                         name: "lan"
                                         size: 20
                                         color: modelData.isActive ? Theme.primary : Theme.surfaceText

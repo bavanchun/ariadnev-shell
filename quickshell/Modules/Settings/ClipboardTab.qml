@@ -216,7 +216,7 @@ Item {
     function loadConfig() {
         configLoaded = false;
         configError = false;
-        DMSService.sendRequest("clipboard.getConfig", null, response => {
+        ADVSService.sendRequest("clipboard.getConfig", null, response => {
             if (response.error) {
                 configError = true;
                 return;
@@ -230,7 +230,7 @@ Item {
         const params = {};
         params[key] = value;
         saving = true;
-        DMSService.sendRequest("clipboard.setConfig", params, response => {
+        ADVSService.sendRequest("clipboard.setConfig", params, response => {
             saving = false;
             if (response.error) {
                 ToastService.showError(I18n.tr("Failed to save clipboard setting"), response.error);
@@ -243,19 +243,19 @@ Item {
     }
 
     Component.onCompleted: {
-        if (DMSService.isConnected)
+        if (ADVSService.isConnected)
             loadConfig();
     }
 
     Connections {
-        target: DMSService
+        target: ADVSService
         function onIsConnectedChanged() {
-            if (DMSService.isConnected)
+            if (ADVSService.isConnected)
                 loadConfig();
         }
     }
 
-    DankFlickable {
+    AdvFlickable {
         anchors.fill: parent
         clip: true
         contentHeight: mainColumn.height + Theme.spacingXL
@@ -273,7 +273,7 @@ Item {
                 height: warningContent.implicitHeight + Theme.spacingM * 2
                 radius: Theme.cornerRadius
                 color: Theme.warningHover
-                visible: !DMSService.isConnected || configError
+                visible: !ADVSService.isConnected || configError
 
                 Row {
                     id: warningContent
@@ -281,7 +281,7 @@ Item {
                     anchors.margins: Theme.spacingM
                     spacing: Theme.spacingM
 
-                    DankIcon {
+                    AdvIcon {
                         name: "info"
                         size: Theme.iconSizeSmall
                         color: Theme.warning
@@ -290,7 +290,7 @@ Item {
 
                     StyledText {
                         font.pixelSize: Theme.fontSizeSmall
-                        text: !DMSService.isConnected ? I18n.tr("DMS service is not connected. Clipboard settings are unavailable.") : I18n.tr("Failed to load clipboard configuration.")
+                        text: !ADVSService.isConnected ? I18n.tr("ADVS service is not connected. Clipboard settings are unavailable.") : I18n.tr("Failed to load clipboard configuration.")
                         wrapMode: Text.WordWrap
                         width: parent.width - Theme.iconSizeSmall - Theme.spacingM
                         anchors.verticalCenter: parent.verticalCenter

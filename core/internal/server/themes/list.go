@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/server/models"
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/themes"
+	"github.com/bavanchun/ariadnev-shell/core/internal/server/models"
+	"github.com/bavanchun/ariadnev-shell/core/internal/themes"
 )
 
 func HandleList(conn *models.Conn, req models.Request) {
@@ -50,5 +50,5 @@ func HandleList(conn *models.Conn, req models.Request) {
 }
 
 func isFirstParty(author string) bool {
-	return strings.EqualFold(author, "Avenge Media") || strings.EqualFold(author, "AvengeMedia")
+	return strings.EqualFold(author, "Avenge Media") || strings.EqualFold(author, "bavanchun")
 }

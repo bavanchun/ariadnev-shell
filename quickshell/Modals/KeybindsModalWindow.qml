@@ -5,7 +5,7 @@ import qs.Modals
 import qs.Services
 import qs.Widgets
 
-DankFloatingWindow {
+AdvFloatingWindow {
     id: win
 
     property alias shouldBeVisible: win.visible
@@ -65,7 +65,7 @@ DankFloatingWindow {
                 anchors.verticalCenter: parent.verticalCenter
                 spacing: Theme.spacingM
 
-                DankIcon {
+                AdvIcon {
                     name: "keyboard"
                     size: Theme.iconSize
                     color: Theme.primary
@@ -87,7 +87,7 @@ DankFloatingWindow {
                 anchors.verticalCenter: parent.verticalCenter
                 spacing: Theme.spacingXS
 
-                DankActionButton {
+                AdvActionButton {
                     circular: false
                     iconName: "close_fullscreen"
                     iconSize: Theme.iconSize - 4
@@ -96,7 +96,7 @@ DankFloatingWindow {
                     onClicked: win.floatingToggleRequested()
                 }
 
-                DankActionButton {
+                AdvActionButton {
                     visible: windowControls.canMaximize
                     circular: false
                     iconName: win.maximized ? "fullscreen_exit" : "fullscreen"
@@ -105,7 +105,7 @@ DankFloatingWindow {
                     onClicked: windowControls.tryToggleMaximize()
                 }
 
-                DankActionButton {
+                AdvActionButton {
                     circular: false
                     iconName: "close"
                     iconSize: Theme.iconSize - 4

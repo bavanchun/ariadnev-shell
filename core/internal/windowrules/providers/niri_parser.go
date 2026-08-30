@@ -11,7 +11,7 @@ import (
 	"github.com/sblinch/kdl-go"
 	"github.com/sblinch/kdl-go/document"
 
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/windowrules"
+	"github.com/bavanchun/ariadnev-shell/core/internal/windowrules"
 )
 
 type NiriMatch struct {
@@ -79,12 +79,12 @@ type NiriRulesParser struct {
 	processedFiles   map[string]bool
 	rules            []NiriWindowRule
 	currentSource    string
-	dmsRulesIncluded bool
-	dmsRulesExists   bool
+	advsRulesIncluded bool
+	advsRulesExists   bool
 	includeCount     int
-	dmsIncludePos    int
-	rulesAfterDMS    int
-	dmsProcessed     bool
+	advsIncludePos    int
+	rulesAfterADVS    int
+	advsProcessed     bool
 }
 
 func NewNiriRulesParser(configDir string) *NiriRulesParser {
@@ -92,14 +92,14 @@ func NewNiriRulesParser(configDir string) *NiriRulesParser {
 		configDir:      configDir,
 		processedFiles: make(map[string]bool),
 		rules:          []NiriWindowRule{},
-		dmsIncludePos:  -1,
+		advsIncludePos:  -1,
 	}
 }
 
 func (p *NiriRulesParser) Parse() ([]NiriWindowRule, error) {
-	dmsRulesPath := filepath.Join(p.configDir, "dms", "windowrules.kdl")
-	if _, err := os.Stat(dmsRulesPath); err == nil {
-		p.dmsRulesExists = true
+	advsRulesPath := filepath.Join(p.configDir, "advs", "windowrules.kdl")
+	if _, err := os.Stat(advsRulesPath); err == nil {
+		p.advsRulesExists = true
 	}
 
 	configPath := filepath.Join(p.configDir, "config.kdl")
@@ -107,15 +107,15 @@ func (p *NiriRulesParser) Parse() ([]NiriWindowRule, error) {
 		return nil, err
 	}
 
-	if p.dmsRulesExists && !p.dmsProcessed {
-		p.parseDMSRulesDirectly(dmsRulesPath)
+	if p.advsRulesExists && !p.advsProcessed {
+		p.parseADVSRulesDirectly(advsRulesPath)
 	}
 
 	return p.rules, nil
 }
 
-func (p *NiriRulesParser) parseDMSRulesDirectly(dmsRulesPath string) {
-	data, err := os.ReadFile(dmsRulesPath)
+func (p *NiriRulesParser) parseADVSRulesDirectly(advsRulesPath string) {
+	data, err := os.ReadFile(advsRulesPath)
 	if err != nil {
 		return
 	}
@@ -126,10 +126,10 @@ func (p *NiriRulesParser) parseDMSRulesDirectly(dmsRulesPath string) {
 	}
 
 	prevSource := p.currentSource
-	p.currentSource = dmsRulesPath
-	p.processNodes(doc.Nodes, filepath.Dir(dmsRulesPath))
+	p.currentSource = advsRulesPath
+	p.processNodes(doc.Nodes, filepath.Dir(advsRulesPath))
 	p.currentSource = prevSource
-	p.dmsProcessed = true
+	p.advsProcessed = true
 }
 
 func (p *NiriRulesParser) parseFile(filePath string) error {
@@ -181,13 +181,13 @@ func (p *NiriRulesParser) handleInclude(node *document.Node, baseDir string) {
 	}
 
 	includePath := strings.Trim(node.Arguments[0].String(), "\"")
-	isDMSInclude := includePath == "dms/windowrules.kdl" || strings.HasSuffix(includePath, "/dms/windowrules.kdl")
+	isADVSInclude := includePath == "advs/windowrules.kdl" || strings.HasSuffix(includePath, "/advs/windowrules.kdl")
 
 	p.includeCount++
-	if isDMSInclude {
-		p.dmsRulesIncluded = true
-		p.dmsIncludePos = p.includeCount
-		p.dmsProcessed = true
+	if isADVSInclude {
+		p.advsRulesIncluded = true
+		p.advsIncludePos = p.includeCount
+		p.advsProcessed = true
 	}
 
 	fullPath := filepath.Join(baseDir, includePath)
@@ -510,33 +510,33 @@ func (p *NiriRulesParser) parseBoolArg(node *document.Node) bool {
 	return node.Arguments[0].ValueString() != "false"
 }
 
-func (p *NiriRulesParser) HasDMSRulesIncluded() bool {
-	return p.dmsRulesIncluded
+func (p *NiriRulesParser) HasADVSRulesIncluded() bool {
+	return p.advsRulesIncluded
 }
 
-func (p *NiriRulesParser) buildDMSStatus() *windowrules.DMSRulesStatus {
-	status := &windowrules.DMSRulesStatus{
-		Exists:          p.dmsRulesExists,
-		Included:        p.dmsRulesIncluded,
-		IncludePosition: p.dmsIncludePos,
+func (p *NiriRulesParser) buildADVSStatus() *windowrules.ADVSRulesStatus {
+	status := &windowrules.ADVSRulesStatus{
+		Exists:          p.advsRulesExists,
+		Included:        p.advsRulesIncluded,
+		IncludePosition: p.advsIncludePos,
 		TotalIncludes:   p.includeCount,
-		RulesAfterDMS:   p.rulesAfterDMS,
+		RulesAfterADVS:   p.rulesAfterADVS,
 	}
 
 	switch {
-	case !p.dmsRulesExists:
+	case !p.advsRulesExists:
 		status.Effective = false
-		status.StatusMessage = "dms/windowrules.kdl does not exist"
-	case !p.dmsRulesIncluded:
+		status.StatusMessage = "advs/windowrules.kdl does not exist"
+	case !p.advsRulesIncluded:
 		status.Effective = false
-		status.StatusMessage = "dms/windowrules.kdl is not included in config.kdl"
-	case p.rulesAfterDMS > 0:
+		status.StatusMessage = "advs/windowrules.kdl is not included in config.kdl"
+	case p.rulesAfterADVS > 0:
 		status.Effective = true
-		status.OverriddenBy = p.rulesAfterDMS
-		status.StatusMessage = "Some DMS rules may be overridden by config rules"
+		status.OverriddenBy = p.rulesAfterADVS
+		status.StatusMessage = "Some ADVS rules may be overridden by config rules"
 	default:
 		status.Effective = true
-		status.StatusMessage = "DMS window rules are active"
+		status.StatusMessage = "ADVS window rules are active"
 	}
 
 	return status
@@ -544,8 +544,8 @@ func (p *NiriRulesParser) buildDMSStatus() *windowrules.DMSRulesStatus {
 
 type NiriRulesParseResult struct {
 	Rules            []NiriWindowRule
-	DMSRulesIncluded bool
-	DMSStatus        *windowrules.DMSRulesStatus
+	ADVSRulesIncluded bool
+	ADVSStatus        *windowrules.ADVSRulesStatus
 }
 
 func ParseNiriWindowRules(configDir string) (*NiriRulesParseResult, error) {
@@ -556,8 +556,8 @@ func ParseNiriWindowRules(configDir string) (*NiriRulesParseResult, error) {
 	}
 	return &NiriRulesParseResult{
 		Rules:            rules,
-		DMSRulesIncluded: parser.HasDMSRulesIncluded(),
-		DMSStatus:        parser.buildDMSStatus(),
+		ADVSRulesIncluded: parser.HasADVSRulesIncluded(),
+		ADVSStatus:        parser.buildADVSStatus(),
 	}, nil
 }
 
@@ -656,7 +656,7 @@ func (p *NiriWritableProvider) Name() string {
 }
 
 func (p *NiriWritableProvider) GetOverridePath() string {
-	return filepath.Join(p.configDir, "dms", "windowrules.kdl")
+	return filepath.Join(p.configDir, "advs", "windowrules.kdl")
 }
 
 func (p *NiriWritableProvider) GetRuleSet() (*windowrules.RuleSet, error) {
@@ -668,13 +668,13 @@ func (p *NiriWritableProvider) GetRuleSet() (*windowrules.RuleSet, error) {
 		Title:            "Niri Window Rules",
 		Provider:         "niri",
 		Rules:            ConvertNiriRulesToWindowRules(result.Rules),
-		DMSRulesIncluded: result.DMSRulesIncluded,
-		DMSStatus:        result.DMSStatus,
+		ADVSRulesIncluded: result.ADVSRulesIncluded,
+		ADVSStatus:        result.ADVSStatus,
 	}, nil
 }
 
 func (p *NiriWritableProvider) SetRule(rule windowrules.WindowRule) error {
-	rules, err := p.LoadDMSRules()
+	rules, err := p.LoadADVSRules()
 	if err != nil {
 		rules = []windowrules.WindowRule{}
 	}
@@ -691,11 +691,11 @@ func (p *NiriWritableProvider) SetRule(rule windowrules.WindowRule) error {
 		rules = append(rules, rule)
 	}
 
-	return p.writeDMSRules(rules)
+	return p.writeADVSRules(rules)
 }
 
 func (p *NiriWritableProvider) RemoveRule(id string) error {
-	rules, err := p.LoadDMSRules()
+	rules, err := p.LoadADVSRules()
 	if err != nil {
 		return err
 	}
@@ -707,11 +707,11 @@ func (p *NiriWritableProvider) RemoveRule(id string) error {
 		}
 	}
 
-	return p.writeDMSRules(newRules)
+	return p.writeADVSRules(newRules)
 }
 
 func (p *NiriWritableProvider) ReorderRules(ids []string) error {
-	rules, err := p.LoadDMSRules()
+	rules, err := p.LoadADVSRules()
 	if err != nil {
 		return err
 	}
@@ -733,12 +733,12 @@ func (p *NiriWritableProvider) ReorderRules(ids []string) error {
 		newRules = append(newRules, r)
 	}
 
-	return p.writeDMSRules(newRules)
+	return p.writeADVSRules(newRules)
 }
 
 var niriMetaCommentRegex = regexp.MustCompile(`^//\s*@id=(\S*)\s*@name=(.*)$`)
 
-func (p *NiriWritableProvider) LoadDMSRules() ([]windowrules.WindowRule, error) {
+func (p *NiriWritableProvider) LoadADVSRules() ([]windowrules.WindowRule, error) {
 	rulesPath := p.GetOverridePath()
 	data, err := os.ReadFile(rulesPath)
 	if err != nil {
@@ -795,7 +795,7 @@ func (p *NiriWritableProvider) LoadDMSRules() ([]windowrules.WindowRule, error) 
 			name = metas[i].name
 		}
 		if id == "" {
-			id = fmt.Sprintf("dms_rule_%d", i)
+			id = fmt.Sprintf("advs_rule_%d", i)
 		}
 
 		wr := windowrules.WindowRule{
@@ -859,7 +859,7 @@ func (p *NiriWritableProvider) LoadDMSRules() ([]windowrules.WindowRule, error) 
 	return rules, nil
 }
 
-func (p *NiriWritableProvider) writeDMSRules(rules []windowrules.WindowRule) error {
+func (p *NiriWritableProvider) writeADVSRules(rules []windowrules.WindowRule) error {
 	rulesPath := p.GetOverridePath()
 
 	if err := os.MkdirAll(filepath.Dir(rulesPath), 0755); err != nil {
@@ -867,7 +867,7 @@ func (p *NiriWritableProvider) writeDMSRules(rules []windowrules.WindowRule) err
 	}
 
 	var lines []string
-	lines = append(lines, "// DMS Window Rules - Managed by DankMaterialShell")
+	lines = append(lines, "// ADVS Window Rules - Managed by AriadnevShell")
 	lines = append(lines, "// Do not edit manually - changes may be overwritten")
 	lines = append(lines, "")
 

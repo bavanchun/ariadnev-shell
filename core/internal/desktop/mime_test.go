@@ -104,22 +104,22 @@ MimeType=application/pdf;
 
 func TestSetDefaultBypassesMimeSupportCheck(t *testing.T) {
 	configHome, dataHome := setupFakeXDG(t)
-	writeFile(t, filepath.Join(dataHome, "applications", "dms-open.desktop"), `[Desktop Entry]
+	writeFile(t, filepath.Join(dataHome, "applications", "advs-open.desktop"), `[Desktop Entry]
 Type=Application
-Name=DMS
+Name=ADVS
 MimeType=x-scheme-handler/http;
 `)
 
-	if err := SetDefault("application/pdf", "dms-open.desktop"); err != nil {
+	if err := SetDefault("application/pdf", "advs-open.desktop"); err != nil {
 		t.Fatal(err)
 	}
 
-	if got := GetDefault("application/pdf"); got != "dms-open.desktop" {
-		t.Errorf("GetDefault = %q, want dms-open.desktop (native impl must not enforce MimeType= check)", got)
+	if got := GetDefault("application/pdf"); got != "advs-open.desktop" {
+		t.Errorf("GetDefault = %q, want advs-open.desktop (native impl must not enforce MimeType= check)", got)
 	}
 
 	data, _ := os.ReadFile(filepath.Join(configHome, "mimeapps.list"))
-	if !contains(string(data), "application/pdf=dms-open.desktop") {
+	if !contains(string(data), "application/pdf=advs-open.desktop") {
 		t.Errorf("mimeapps.list missing override:\n%s", string(data))
 	}
 }
@@ -143,9 +143,9 @@ application/javascript=editor.desktop;
 
 func TestSetDefaultsBatch(t *testing.T) {
 	configHome, dataHome := setupFakeXDG(t)
-	writeFile(t, filepath.Join(dataHome, "applications", "dms-open.desktop"), `[Desktop Entry]
+	writeFile(t, filepath.Join(dataHome, "applications", "advs-open.desktop"), `[Desktop Entry]
 Type=Application
-Name=DMS
+Name=ADVS
 MimeType=x-scheme-handler/http;
 `)
 
@@ -153,7 +153,7 @@ MimeType=x-scheme-handler/http;
 		"text/plain", "text/x-csrc", "text/x-python",
 		"text/x-shellscript", "application/json",
 	}
-	if err := SetDefaults(mimes, "dms-open.desktop"); err != nil {
+	if err := SetDefaults(mimes, "advs-open.desktop"); err != nil {
 		t.Fatal(err)
 	}
 
@@ -162,7 +162,7 @@ MimeType=x-scheme-handler/http;
 		t.Fatal(err)
 	}
 	for _, m := range mimes {
-		if !contains(string(data), m+"=dms-open.desktop") {
+		if !contains(string(data), m+"=advs-open.desktop") {
 			t.Errorf("missing %s default in mimeapps.list:\n%s", m, string(data))
 		}
 	}

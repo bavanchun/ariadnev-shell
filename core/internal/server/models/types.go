@@ -3,7 +3,7 @@ package models
 import (
 	"net"
 
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/log"
+	"github.com/bavanchun/ariadnev-shell/core/internal/log"
 	"github.com/AvengeMedia/dankgo/ipc"
 	"github.com/AvengeMedia/dankgo/ipc/params"
 )
@@ -34,7 +34,7 @@ type Response[T any] struct {
 }
 
 func RespondError(conn *Conn, id int, errMsg string) {
-	log.Errorf("DMS API Error: id=%d error=%s", id, errMsg)
+	log.Errorf("ADVS API Error: id=%d error=%s", id, errMsg)
 	_ = conn.WriteResponse(Response[any]{ID: id, Error: errMsg})
 }
 

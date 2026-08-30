@@ -194,7 +194,7 @@ SettingsCard {
         width: parent.width
         height: workspaceTabBar.height + Theme.spacingM
 
-        DankTabBar {
+        AdvTabBar {
             id: workspaceTabBar
             width: parent.width
             tabHeight: 44

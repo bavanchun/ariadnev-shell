@@ -9,7 +9,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/log"
+	"github.com/bavanchun/ariadnev-shell/core/internal/log"
 	"github.com/spf13/afero"
 )
 
@@ -40,7 +40,7 @@ func getPluginsDir() string {
 		log.Error("failed to get user config dir", "err", err)
 		return ""
 	}
-	path := filepath.Join(configDir, "DankMaterialShell", "plugins")
+	path := filepath.Join(configDir, "AriadnevShell", "plugins")
 	if resolved, err := filepath.EvalSymlinks(path); err == nil {
 		return resolved
 	}
@@ -56,7 +56,7 @@ func getPluginLockPath() string {
 		log.Error("failed to get user config dir", "err", err)
 		return ""
 	}
-	return filepath.Join(configDir, "DankMaterialShell", "plugins.lock.json")
+	return filepath.Join(configDir, "AriadnevShell", "plugins.lock.json")
 }
 
 func (m *Manager) IsInstalled(plugin Plugin) (bool, error) {
@@ -78,7 +78,7 @@ func (m *Manager) findInstalledPath(pluginID string) (string, error) {
 	}
 
 	// Check system plugins directory
-	systemDir := "/etc/xdg/quickshell/dms-plugins"
+	systemDir := "/etc/xdg/quickshell/ariadnev-plugins"
 	return m.findInDir(systemDir, pluginID)
 }
 
@@ -271,7 +271,7 @@ func (m *Manager) Update(plugin Plugin) error {
 		return fmt.Errorf("plugin not installed: %s", plugin.Name)
 	}
 
-	if strings.HasPrefix(pluginPath, "/etc/xdg/quickshell/dms-plugins") {
+	if strings.HasPrefix(pluginPath, "/etc/xdg/quickshell/ariadnev-plugins") {
 		return fmt.Errorf("cannot update system plugin: %s", plugin.Name)
 	}
 	if plugin.Repo == "" {
@@ -319,7 +319,7 @@ func (m *Manager) Uninstall(plugin Plugin) error {
 		return fmt.Errorf("plugin not installed: %s", plugin.Name)
 	}
 
-	if strings.HasPrefix(pluginPath, "/etc/xdg/quickshell/dms-plugins") {
+	if strings.HasPrefix(pluginPath, "/etc/xdg/quickshell/ariadnev-plugins") {
 		return fmt.Errorf("cannot uninstall system plugin: %s", plugin.Name)
 	}
 	updatedLock := lock.Clone()
@@ -430,7 +430,7 @@ func (m *Manager) ListInstalled() ([]string, error) {
 		}
 	}
 
-	systemPluginsDir := "/etc/xdg/quickshell/dms-plugins"
+	systemPluginsDir := "/etc/xdg/quickshell/ariadnev-plugins"
 	systemExists, err := afero.DirExists(m.fs, systemPluginsDir)
 	if err == nil && systemExists {
 		entries, err := afero.ReadDir(m.fs, systemPluginsDir)
@@ -498,7 +498,7 @@ func (m *Manager) UninstallByIDOrName(idOrName string) error {
 		return fmt.Errorf("plugin not found: %s", idOrName)
 	}
 
-	if strings.HasPrefix(pluginPath, "/etc/xdg/quickshell/dms-plugins") {
+	if strings.HasPrefix(pluginPath, "/etc/xdg/quickshell/ariadnev-plugins") {
 		return fmt.Errorf("cannot uninstall system plugin: %s", idOrName)
 	}
 	manifest := m.getPluginManifest(pluginPath)
@@ -540,7 +540,7 @@ func (m *Manager) UpdateByIDOrName(idOrName string) error {
 		return fmt.Errorf("plugin not found: %s", idOrName)
 	}
 
-	if strings.HasPrefix(pluginPath, "/etc/xdg/quickshell/dms-plugins") {
+	if strings.HasPrefix(pluginPath, "/etc/xdg/quickshell/ariadnev-plugins") {
 		return fmt.Errorf("cannot update system plugin: %s", idOrName)
 	}
 	manifest := m.getPluginManifest(pluginPath)
@@ -586,7 +586,7 @@ func (m *Manager) findInstalledPathByIDOrName(idOrName string) (string, error) {
 		return path, nil
 	}
 
-	systemDir := "/etc/xdg/quickshell/dms-plugins"
+	systemDir := "/etc/xdg/quickshell/ariadnev-plugins"
 	return m.findInDirByIDOrName(systemDir, idOrName)
 }
 
@@ -661,7 +661,7 @@ func (m *Manager) HasUpdates(pluginID string, plugin Plugin) (hasUpdates bool, d
 		return false, "", fmt.Errorf("plugin not installed: %s", pluginID)
 	}
 
-	if strings.HasPrefix(pluginPath, "/etc/xdg/quickshell/dms-plugins") {
+	if strings.HasPrefix(pluginPath, "/etc/xdg/quickshell/ariadnev-plugins") {
 		return false, "", nil
 	}
 

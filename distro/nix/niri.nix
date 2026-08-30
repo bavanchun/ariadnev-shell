@@ -3,16 +3,16 @@
   lib,
   ...
 }: let
-  cfg = config.programs.dank-material-shell;
+  cfg = config.programs.adv-material-shell;
 in {
   imports = [
-    ./dms-rename.nix
+    ./advs-rename.nix
   ];
 
-  options.programs.dank-material-shell = {
+  options.programs.adv-material-shell = {
     niri = {
-      enableKeybinds = lib.mkEnableOption "DankMaterialShell niri keybinds";
-      enableSpawn = lib.mkEnableOption "DankMaterialShell niri spawn-at-startup";
+      enableKeybinds = lib.mkEnableOption "AriadnevShell niri keybinds";
+      enableSpawn = lib.mkEnableOption "AriadnevShell niri spawn-at-startup";
       includes = {
         enable =
           (lib.mkEnableOption "includes for niri-flake")
@@ -22,7 +22,7 @@ in {
         override = lib.mkOption {
           type = lib.types.bool;
           description = ''
-            Whether DMS settings will be prioritized over settings defined in niri-flake or not
+            Whether ADVS settings will be prioritized over settings defined in niri-flake or not
           '';
           default = true;
           example = false;
@@ -38,7 +38,7 @@ in {
         filesToInclude = lib.mkOption {
           type = lib.types.listOf lib.types.str;
           description = ''
-            A list of dms-generated files to include
+            A list of advs-generated files to include
           '';
           default = [
             "alttab"
@@ -72,10 +72,10 @@ in {
       let
         cfg' = cfg.niri.includes;
 
-        withOriginalConfig = dmsFiles:
+        withOriginalConfig = advsFiles:
           if cfg'.override
-          then [cfg'.originalFileName] ++ dmsFiles
-          else dmsFiles ++ [cfg'.originalFileName];
+          then [cfg'.originalFileName] ++ advsFiles
+          else advsFiles ++ [cfg'.originalFileName];
 
         fixes = map (fix: "\n${fix}") (
           lib.optional (cfg'.enable && config.programs.niri.settings.layout.border.enable)
@@ -88,10 +88,10 @@ in {
         );
       in {
         niri-config.target = lib.mkForce "niri/${cfg'.originalFileName}.kdl";
-        niri-config-dms = {
+        niri-config-advs = {
           target = "niri/config.kdl";
           text = lib.pipe cfg'.filesToInclude [
-            (map (filename: "dms/${filename}"))
+            (map (filename: "advs/${filename}"))
             withOriginalConfig
             (map (filename: "include optional=true \"${filename}.kdl\""))
             (files: files ++ fixes)
@@ -104,70 +104,70 @@ in {
     programs.niri.settings = lib.mkMerge [
       (lib.mkIf cfg.niri.enableKeybinds {
         binds = with config.lib.niri.actions; let
-          dms-ipc = spawn "dms" "ipc";
+          advs-ipc = spawn "advs" "ipc";
         in
           {
             "Mod+Space" = {
-              action = dms-ipc "spotlight" "toggle";
+              action = advs-ipc "spotlight" "toggle";
               hotkey-overlay.title = "Toggle Application Launcher";
             };
             "Mod+N" = {
-              action = dms-ipc "notifications" "toggle";
+              action = advs-ipc "notifications" "toggle";
               hotkey-overlay.title = "Toggle Notification Center";
             };
             "Mod+Comma" = {
-              action = dms-ipc "settings" "toggle";
+              action = advs-ipc "settings" "toggle";
               hotkey-overlay.title = "Toggle Settings";
             };
             "Mod+P" = {
-              action = dms-ipc "notepad" "toggle";
+              action = advs-ipc "notepad" "toggle";
               hotkey-overlay.title = "Toggle Notepad";
             };
             "Super+Alt+L" = {
-              action = dms-ipc "lock" "lock";
+              action = advs-ipc "lock" "lock";
               hotkey-overlay.title = "Toggle Lock Screen";
             };
             "Mod+X" = {
-              action = dms-ipc "powermenu" "toggle";
+              action = advs-ipc "powermenu" "toggle";
               hotkey-overlay.title = "Toggle Power Menu";
             };
             "XF86AudioRaiseVolume" = {
               allow-when-locked = true;
-              action = dms-ipc "audio" "increment" "3";
+              action = advs-ipc "audio" "increment" "3";
             };
             "XF86AudioLowerVolume" = {
               allow-when-locked = true;
-              action = dms-ipc "audio" "decrement" "3";
+              action = advs-ipc "audio" "decrement" "3";
             };
             "XF86AudioMute" = {
               allow-when-locked = true;
-              action = dms-ipc "audio" "mute";
+              action = advs-ipc "audio" "mute";
             };
             "XF86AudioMicMute" = {
               allow-when-locked = true;
-              action = dms-ipc "audio" "micmute";
+              action = advs-ipc "audio" "micmute";
             };
             "XF86MonBrightnessUp" = {
               allow-when-locked = true;
-              action = dms-ipc "brightness" "increment" "5" "";
+              action = advs-ipc "brightness" "increment" "5" "";
             };
             "XF86MonBrightnessDown" = {
               allow-when-locked = true;
-              action = dms-ipc "brightness" "decrement" "5" "";
+              action = advs-ipc "brightness" "decrement" "5" "";
             };
             "Mod+Alt+N" = {
               allow-when-locked = true;
-              action = dms-ipc "night" "toggle";
+              action = advs-ipc "night" "toggle";
               hotkey-overlay.title = "Toggle Night Mode";
             };
             "Mod+V" = {
-              action = dms-ipc "clipboard" "toggle";
+              action = advs-ipc "clipboard" "toggle";
               hotkey-overlay.title = "Toggle Clipboard Manager";
             };
           }
           // lib.attrsets.optionalAttrs cfg.enableSystemMonitoring {
             "Mod+M" = {
-              action = dms-ipc "processlist" "toggle";
+              action = advs-ipc "processlist" "toggle";
               hotkey-overlay.title = "Toggle Process List";
             };
           };
@@ -177,7 +177,7 @@ in {
         spawn-at-startup = [
           {
             command = [
-              "dms"
+              "advs"
               "run"
             ];
           }

@@ -4,7 +4,7 @@ import qs.Common
 import qs.Services
 import qs.Widgets
 
-DankFloatingWindow {
+AdvFloatingWindow {
     id: root
 
     readonly property int modalWidth: 680
@@ -66,7 +66,7 @@ DankFloatingWindow {
                 anchors.verticalCenter: parent.verticalCenter
                 spacing: Theme.spacingXS
 
-                DankActionButton {
+                AdvActionButton {
                     visible: windowControls.canMaximize
                     iconName: root.maximized ? "fullscreen_exit" : "fullscreen"
                     iconSize: Theme.iconSize - 4
@@ -74,20 +74,20 @@ DankFloatingWindow {
                     onClicked: windowControls.tryToggleMaximize()
                 }
 
-                DankActionButton {
+                AdvActionButton {
                     iconName: "close"
                     iconSize: Theme.iconSize - 4
                     iconColor: Theme.surfaceText
                     onClicked: root.dismiss()
 
-                    DankTooltip {
+                    AdvTooltip {
                         text: i18n("Close")
                     }
                 }
             }
         }
 
-        DankFlickable {
+        AdvFlickable {
             anchors.left: parent.left
             anchors.right: parent.right
             anchors.top: headerRow.bottom
@@ -124,15 +124,15 @@ DankFloatingWindow {
                 anchors.centerIn: parent
                 spacing: Theme.spacingM
 
-                DankButton {
+                AdvButton {
                     text: i18n("Read Full Release Notes")
                     iconName: "open_in_new"
                     backgroundColor: Theme.surfaceContainerHighest
                     textColor: Theme.surfaceText
-                    onClicked: Qt.openUrlExternally("https://danklinux.com/blog/v1-5-release")
+                    onClicked: Qt.openUrlExternally("https://ariadnev.vchun.dev/blog/v1-5-release")
                 }
 
-                DankButton {
+                AdvButton {
                     text: i18n("Got It")
                     iconName: "check"
                     backgroundColor: Theme.primary

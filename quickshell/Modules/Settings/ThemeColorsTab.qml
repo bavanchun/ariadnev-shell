@@ -20,8 +20,8 @@ Item {
     readonly property bool frameModeActive: SettingsData.frameEnabled
     property var cachedIconThemes: SettingsData.availableIconThemes
     property var cachedCursorThemes: SettingsData.availableCursorThemes
-    readonly property bool matugenSmartCapable: Theme.matugenAvailable && DMSService.matugenSmartSupported
-    property var cachedMatugenSchemes: Theme.availableMatugenSchemes.filter(option => DMSService.matugenSmartSupported || option.value !== "scheme-smart").map(option => option.label)
+    readonly property bool matugenSmartCapable: Theme.matugenAvailable && ADVSService.matugenSmartSupported
+    property var cachedMatugenSchemes: Theme.availableMatugenSchemes.filter(option => ADVSService.matugenSmartSupported || option.value !== "scheme-smart").map(option => option.label)
     property var matugenSchemePreviews: ({})
     property string matugenPreviewSource: ""
     property string matugenPreviewImage: ""
@@ -84,40 +84,40 @@ Item {
                     "niri": {
                         "configName": "config.kdl",
                         "fragmentName": "cursor.kdl",
-                        "grepPattern": 'include.*"dms/cursor.kdl"',
-                        "includeLine": 'include "dms/cursor.kdl"'
+                        "grepPattern": 'include.*"advs/cursor.kdl"',
+                        "includeLine": 'include "advs/cursor.kdl"'
                     },
                     "hyprland": {
                         "configName": "hyprland.lua",
                         "fragmentName": "cursor.lua",
-                        "grepPattern": "dms.cursor",
-                        "includeLine": "require(\"dms.cursor\")"
+                        "grepPattern": "advs.cursor",
+                        "includeLine": "require(\"advs.cursor\")"
                     },
                     "mango": {
                         "configName": "config.conf",
                         "fragmentName": "cursor.conf",
-                        "grepPattern": "source.*dms/cursor.conf",
-                        "includeLine": "source=./dms/cursor.conf"
+                        "grepPattern": "source.*advs/cursor.conf",
+                        "includeLine": "source=./advs/cursor.conf"
                     }
                 }),
             "windowrules": ({
                     "niri": {
                         "configName": "config.kdl",
                         "fragmentName": "windowrules.kdl",
-                        "grepPattern": 'include.*"dms/windowrules.kdl"',
-                        "includeLine": 'include "dms/windowrules.kdl"'
+                        "grepPattern": 'include.*"advs/windowrules.kdl"',
+                        "includeLine": 'include "advs/windowrules.kdl"'
                     },
                     "hyprland": {
                         "configName": "hyprland.lua",
                         "fragmentName": "windowrules.lua",
-                        "grepPattern": "dms.windowrules",
-                        "includeLine": "require(\"dms.windowrules\")"
+                        "grepPattern": "advs.windowrules",
+                        "includeLine": "require(\"advs.windowrules\")"
                     },
                     "mango": {
                         "configName": "config.conf",
                         "fragmentName": "windowrules.conf",
-                        "grepPattern": "dms/windowrules.conf",
-                        "includeLine": "source=./dms/windowrules.conf"
+                        "grepPattern": "advs/windowrules.conf",
+                        "includeLine": "source=./advs/windowrules.conf"
                     }
                 })
         })
@@ -138,7 +138,7 @@ Item {
         const configDir = Paths.strip(StandardPaths.writableLocation(StandardPaths.ConfigLocation)) + "/" + CompositorService.compositor;
         return {
             "configFile": configDir + "/" + spec.configName,
-            "fragmentFile": configDir + "/dms/" + spec.fragmentName,
+            "fragmentFile": configDir + "/advs/" + spec.fragmentName,
             "grepPattern": spec.grepPattern,
             "includeLine": spec.includeLine
         };
@@ -152,7 +152,7 @@ Item {
         }
         const compositor = CompositorService.compositor;
         const compositorArg = (compositor === "mango") ? "mangowc" : compositor;
-        Proc.runCommand(procTag, [Proc.dmsBin, "config", "resolve-include", compositorArg, spec.fragmentName], (output, exitCode) => {
+        Proc.runCommand(procTag, [Proc.advsBin, "config", "resolve-include", compositorArg, spec.fragmentName], (output, exitCode) => {
             if (exitCode !== 0) {
                 onFinished(defaultIncludeStatus());
                 return;
@@ -183,7 +183,7 @@ Item {
 
     function fixInclude(includeKind, procTag, readOnly, onFinished) {
         if (readOnly) {
-            ToastService.showWarning(I18n.tr("Hyprland conf mode"), I18n.tr("This install is still using hyprland.conf. Run dms setup to migrate before changing these settings."), "dms setup", "hyprland-migration");
+            ToastService.showWarning(I18n.tr("Hyprland conf mode"), I18n.tr("This install is still using hyprland.conf. Run advs setup to migrate before changing these settings."), "advs setup", "hyprland-migration");
             onFinished(false);
             return;
         }
@@ -223,7 +223,7 @@ Item {
             if (CompositorService.isMango)
                 MangoService.reloadConfig();
             checkWindowRulesIncludeStatus();
-            CompositorService.applyDmsWindowFloatingRule();
+            CompositorService.applyAdvsWindowFloatingRule();
         });
     }
 
@@ -294,7 +294,7 @@ Item {
             return;
         matugenPreviewRequestKey = requestKey;
 
-        const args = [Proc.dmsBin, "matugen", "preview", "--source-color", sourceColor, "--contrast", contrast.toString()];
+        const args = [Proc.advsBin, "matugen", "preview", "--source-color", sourceColor, "--contrast", contrast.toString()];
         if (imagePath)
             args.push("--image", imagePath);
         Proc.runCommand("", args, (output, exitCode) => {
@@ -318,11 +318,11 @@ Item {
     Component.onCompleted: {
         SettingsData.detectAvailableIconThemes();
         SettingsData.detectAvailableCursorThemes();
-        if (DMSService.dmsAvailable)
-            DMSService.listInstalledThemes();
+        if (ADVSService.advsAvailable)
+            ADVSService.listInstalledThemes();
         if (PopoutService.pendingThemeInstall)
             Qt.callLater(() => showThemeBrowser());
-        Proc.runCommand("template-check", [Proc.dmsBin, "matugen", "check"], (output, exitCode) => {
+        Proc.runCommand("template-check", [Proc.advsBin, "matugen", "check"], (output, exitCode) => {
             if (exitCode !== 0)
                 return;
             try {
@@ -337,7 +337,7 @@ Item {
     }
 
     Connections {
-        target: DMSService
+        target: ADVSService
         function onInstalledThemesReceived(themes) {
             themeColorsTab.installedRegistryThemes = themes;
         }
@@ -396,7 +396,7 @@ Item {
             anchors.margins: Theme.spacingL
             spacing: Theme.spacingM
 
-            DankIcon {
+            AdvIcon {
                 name: "warning"
                 size: Theme.iconSize
                 color: Theme.primary
@@ -418,7 +418,7 @@ Item {
                 }
 
                 StyledText {
-                    text: includeWarningBox.showLegacy ? I18n.tr("This install is still using hyprland.conf. Run dms setup to migrate before changing these settings.") : I18n.tr("Click 'Setup' to create %1 and add include to your compositor config.").arg(includeWarningBox.fragmentPath)
+                    text: includeWarningBox.showLegacy ? I18n.tr("This install is still using hyprland.conf. Run advs setup to migrate before changing these settings.") : I18n.tr("Click 'Setup' to create %1 and add include to your compositor config.").arg(includeWarningBox.fragmentPath)
                     font.pixelSize: Theme.fontSizeSmall
                     color: Theme.surfaceVariantText
                     wrapMode: Text.WordWrap
@@ -427,7 +427,7 @@ Item {
                 }
             }
 
-            DankButton {
+            AdvButton {
                 id: includeFixButton
                 visible: !includeWarningBox.showLegacy && includeWarningBox.showSetup
                 text: includeWarningBox.fixing ? I18n.tr("Setting up...") : I18n.tr("Setup")
@@ -440,7 +440,7 @@ Item {
         }
     }
 
-    DankFlickable {
+    AdvFlickable {
         anchors.fill: parent
         clip: true
         contentHeight: mainColumn.height + Theme.spacingXL
@@ -494,7 +494,7 @@ Item {
                             if (Theme.currentTheme === Theme.dynamic)
                                 return I18n.tr("Material colors generated from wallpaper", "dynamic theme description");
                             if (Theme.currentThemeCategory === "registry")
-                                return I18n.tr("Color theme from DMS registry", "registry theme description");
+                                return I18n.tr("Color theme from ADVS registry", "registry theme description");
                             if (Theme.currentTheme === Theme.custom)
                                 return I18n.tr("Custom theme loaded from JSON file", "custom theme description");
                             return I18n.tr("Material Design inspired color themes", "generic theme description");
@@ -519,7 +519,7 @@ Item {
                         height: themeCategoryGroup.implicitHeight
                         clip: true
 
-                        DankButtonGroup {
+                        AdvButtonGroup {
                             id: themeCategoryGroup
                             anchors.horizontalCenter: parent.horizontalCenter
                             buttonPadding: parent.width < 420 ? Theme.spacingS : Theme.spacingL
@@ -537,7 +537,7 @@ Item {
                                 return 0;
                             }
 
-                            model: DMSService.dmsAvailable ? [I18n.tr("Generic", "theme category option"), I18n.tr("Auto", "theme category option"), I18n.tr("Custom", "theme category option"), I18n.tr("Browse", "theme category option")] : [I18n.tr("Generic", "theme category option"), I18n.tr("Auto", "theme category option"), I18n.tr("Custom", "theme category option")]
+                            model: ADVSService.advsAvailable ? [I18n.tr("Generic", "theme category option"), I18n.tr("Auto", "theme category option"), I18n.tr("Custom", "theme category option"), I18n.tr("Browse", "theme category option")] : [I18n.tr("Generic", "theme category option"), I18n.tr("Auto", "theme category option"), I18n.tr("Custom", "theme category option")]
                             currentIndex: pendingIndex >= 0 ? pendingIndex : computedIndex
                             selectionMode: "single"
                             onSelectionChanged: (index, selected) => {
@@ -686,7 +686,7 @@ Item {
                                     visible: Theme.wallpaperPath && Theme.wallpaperPath.startsWith("#")
                                 }
 
-                                DankIcon {
+                                AdvIcon {
                                     anchors.centerIn: parent
                                     name: (ToastService.wallpaperErrorStatus === "error" || ToastService.wallpaperErrorStatus === "matugen_missing") ? "error" : "palette"
                                     size: Theme.iconSizeLarge
@@ -737,7 +737,7 @@ Item {
                                 }
                             }
 
-                            DankActionButton {
+                            AdvActionButton {
                                 buttonSize: 36
                                 iconName: "download"
                                 iconSize: Theme.iconSize
@@ -814,7 +814,7 @@ Item {
                             width: parent.width
                             spacing: Theme.spacingM
 
-                            DankActionButton {
+                            AdvActionButton {
                                 buttonSize: 48
                                 iconName: "folder_open"
                                 iconSize: Theme.iconSize
@@ -874,7 +874,7 @@ Item {
                                     property var variants: modelData.variants || null
                                     property string selectedVariant: hasVariants ? SettingsData.getRegistryThemeVariant(modelData.id, variants?.default || "") : ""
                                     property string previewPath: {
-                                        const baseDir = Quickshell.env("HOME") + "/.config/DankMaterialShell/themes/" + (modelData.sourceDir || modelData.id);
+                                        const baseDir = Quickshell.env("HOME") + "/.config/AriadnevShell/themes/" + (modelData.sourceDir || modelData.id);
                                         const mode = Theme.isLightMode ? "light" : "dark";
                                         if (hasVariants && selectedVariant)
                                             return baseDir + "/preview-" + selectedVariant + "-" + mode + ".svg";
@@ -905,7 +905,7 @@ Item {
                                         mipmap: true
                                     }
 
-                                    DankIcon {
+                                    AdvIcon {
                                         anchors.centerIn: parent
                                         name: "palette"
                                         size: themeGrid.cardWidth < 120 ? 24 : 32
@@ -943,7 +943,7 @@ Item {
                                         color: Theme.primary
                                         visible: themeCard.isActive
 
-                                        DankIcon {
+                                        AdvIcon {
                                             anchors.centerIn: parent
                                             name: "check"
                                             size: themeGrid.cardWidth < 120 ? 10 : 14
@@ -980,7 +980,7 @@ Item {
                                         hoverEnabled: true
                                         cursorShape: Qt.PointingHandCursor
                                         onClicked: {
-                                            const themesDir = Quickshell.env("HOME") + "/.config/DankMaterialShell/themes";
+                                            const themesDir = Quickshell.env("HOME") + "/.config/AriadnevShell/themes";
                                             const themePath = themesDir + "/" + (modelData.sourceDir || modelData.id) + "/theme.json";
                                             SettingsData.set("customThemeFile", themePath);
                                             Theme.switchTheme("custom", true, true);
@@ -1005,7 +1005,7 @@ Item {
                                             }
                                         }
 
-                                        DankIcon {
+                                        AdvIcon {
                                             anchors.centerIn: parent
                                             name: "close"
                                             size: themeGrid.cardWidth < 120 ? 10 : 14
@@ -1019,13 +1019,13 @@ Item {
                                             cursorShape: Qt.PointingHandCursor
                                             onClicked: {
                                                 ToastService.showInfo(I18n.tr("Uninstalling: %1", "uninstallation progress").arg(modelData.name));
-                                                DMSService.uninstallTheme(modelData.id, response => {
+                                                ADVSService.uninstallTheme(modelData.id, response => {
                                                     if (response.error) {
                                                         ToastService.showError(I18n.tr("Uninstall failed: %1", "uninstallation error").arg(response.error));
                                                         return;
                                                     }
                                                     ToastService.showInfo(I18n.tr("Uninstalled: %1", "uninstallation success").arg(modelData.name));
-                                                    DMSService.listInstalledThemes();
+                                                    ADVSService.listInstalledThemes();
                                                 });
                                             }
                                         }
@@ -1044,7 +1044,7 @@ Item {
                             horizontalAlignment: Text.AlignHCenter
                         }
 
-                        DankButton {
+                        AdvButton {
                             text: I18n.tr("Browse Themes", "browse themes button")
                             iconName: "store"
                             anchors.horizontalCenter: parent.horizontalCenter
@@ -1150,7 +1150,7 @@ Item {
                             clip: true
                             visible: variantSelector.isMultiVariant && variantSelector.flavorOptions.length > 1
 
-                            DankButtonGroup {
+                            AdvButtonGroup {
                                 id: flavorButtonGroup
                                 anchors.horizontalCenter: parent.horizontalCenter
                                 property int _count: variantSelector.flavorNames.length
@@ -1261,7 +1261,7 @@ Item {
                             clip: true
                             visible: !variantSelector.isMultiVariant && variantSelector.variantNames.length > 0
 
-                            DankButtonGroup {
+                            AdvButtonGroup {
                                 id: variantButtonGroup
                                 anchors.horizontalCenter: parent.horizontalCenter
                                 property int _count: variantSelector.variantNames.length
@@ -1337,7 +1337,7 @@ Item {
                         }
                     }
 
-                    DankToggle {
+                    AdvToggle {
                         id: themeModeAutoToggle
                         width: parent.width
                         text: I18n.tr("Automatic Control")
@@ -1361,7 +1361,7 @@ Item {
                         spacing: Theme.spacingM
                         visible: SessionData.themeModeAutoEnabled
 
-                        DankToggle {
+                        AdvToggle {
                             width: parent.width
                             text: I18n.tr("Share Gamma Control Settings")
                             checked: SessionData.themeModeShareGammaSettings
@@ -1374,7 +1374,7 @@ Item {
                             width: parent.width
                             height: 45 + Theme.spacingM
 
-                            DankTabBar {
+                            AdvTabBar {
                                 id: themeModeTabBar
                                 width: 200
                                 height: 45
@@ -1457,7 +1457,7 @@ Item {
                                         verticalAlignment: Text.AlignVCenter
                                     }
 
-                                    DankDropdown {
+                                    AdvDropdown {
                                         dropdownWidth: 70
                                         currentValue: SessionData.themeModeStartHour.toString()
                                         options: {
@@ -1471,7 +1471,7 @@ Item {
                                         }
                                     }
 
-                                    DankDropdown {
+                                    AdvDropdown {
                                         dropdownWidth: 70
                                         currentValue: SessionData.themeModeStartMinute.toString().padStart(2, '0')
                                         options: {
@@ -1499,7 +1499,7 @@ Item {
                                         verticalAlignment: Text.AlignVCenter
                                     }
 
-                                    DankDropdown {
+                                    AdvDropdown {
                                         dropdownWidth: 70
                                         currentValue: SessionData.themeModeEndHour.toString()
                                         options: {
@@ -1513,7 +1513,7 @@ Item {
                                         }
                                     }
 
-                                    DankDropdown {
+                                    AdvDropdown {
                                         dropdownWidth: 70
                                         currentValue: SessionData.themeModeEndMinute.toString().padStart(2, '0')
                                         options: {
@@ -1605,7 +1605,7 @@ Item {
                                         anchors.horizontalCenter: parent.horizontalCenter
                                         spacing: Theme.spacingS
 
-                                        DankIcon {
+                                        AdvIcon {
                                             name: SessionData.isLightMode ? "light_mode" : "dark_mode"
                                             size: Theme.iconSize
                                             color: SessionData.isLightMode ? "#FFA726" : "#7E57C2"
@@ -1641,7 +1641,7 @@ Item {
                                         spacing: Theme.spacingS
                                         anchors.horizontalCenter: parent.horizontalCenter
 
-                                        DankIcon {
+                                        AdvIcon {
                                             name: "schedule"
                                             size: Theme.iconSize
                                             color: Theme.primary
@@ -1984,7 +1984,7 @@ Item {
                     tags: ["floating", "window", "opacity", "transparency"]
                     settingKey: "floatingWindowTransparency"
                     text: I18n.tr("Window Opacity")
-                    description: I18n.tr("Opacity of floating DMS windows like Settings, Notepad, and authentication prompts")
+                    description: I18n.tr("Opacity of floating ADVS windows like Settings, Notepad, and authentication prompts")
                     value: Math.round(Theme.floatingWindowTransparency * 100)
                     minimum: 0
                     maximum: 100
@@ -2045,25 +2045,25 @@ Item {
                 SettingsToggleRow {
                     tab: "theme"
                     tags: ["floating", "window", "tile", "tiling", "compositor", "rule", "niri", "hyprland", "mango"]
-                    settingKey: "dmsWindowsFloating"
+                    settingKey: "advsWindowsFloating"
                     text: I18n.tr("Open Windows Floating")
-                    description: I18n.tr("Open DMS windows floating instead of tiled")
+                    description: I18n.tr("Open ADVS windows floating instead of tiled")
                     visible: CompositorService.isNiri || CompositorService.isHyprland || CompositorService.isMango
-                    checked: SettingsData.dmsWindowsFloating ?? true
+                    checked: SettingsData.advsWindowsFloating ?? true
                     onToggled: checked => {
-                        SettingsData.set("dmsWindowsFloating", checked);
+                        SettingsData.set("advsWindowsFloating", checked);
                         if (checked)
                             themeColorsTab.checkWindowRulesIncludeStatus();
                     }
                 }
 
                 IncludeWarningBox {
-                    visibleCondition: (CompositorService.isNiri || CompositorService.isHyprland || CompositorService.isMango) && (SettingsData.dmsWindowsFloating ?? true)
+                    visibleCondition: (CompositorService.isNiri || CompositorService.isHyprland || CompositorService.isMango) && (SettingsData.advsWindowsFloating ?? true)
                     checking: themeColorsTab.checkingWindowRulesInclude
                     fixing: themeColorsTab.fixingWindowRulesInclude
                     includeReadOnly: themeColorsTab.windowRulesReadOnly
                     alreadyIncluded: themeColorsTab.windowRulesIncludeStatus.included
-                    fragmentPath: "dms/windowrules"
+                    fragmentPath: "advs/windowrules"
                     onSetup: themeColorsTab.fixWindowRulesInclude
                 }
             }
@@ -2096,7 +2096,7 @@ Item {
                         width: parent.width
                         spacing: Theme.spacingS
 
-                        DankIcon {
+                        AdvIcon {
                             name: "info"
                             size: Theme.iconSizeSmall
                             color: Theme.primary
@@ -2363,7 +2363,7 @@ Item {
                         fixing: themeColorsTab.fixingCursorInclude
                         includeReadOnly: themeColorsTab.cursorReadOnly
                         alreadyIncluded: themeColorsTab.cursorIncludeStatus.included
-                        fragmentPath: "dms/cursor"
+                        fragmentPath: "advs/cursor"
                         onSetup: themeColorsTab.fixCursorInclude
                     }
 
@@ -2516,7 +2516,7 @@ Item {
                     tags: ["icon", "theme", "system"]
                     settingKey: "iconTheme"
                     text: I18n.tr("Icon Theme")
-                    description: I18n.tr("DankShell & System Icons (requires restart)")
+                    description: I18n.tr("AdvShell & System Icons (requires restart)")
                     visible: !SettingsData.iconThemePerMode
                     currentValue: SettingsData.iconThemeDark
                     enableFuzzySearch: true
@@ -2534,7 +2534,7 @@ Item {
                     tags: ["icon", "theme", "system", "dark"]
                     settingKey: "iconThemeDark"
                     text: I18n.tr("Dark Mode Icon Theme")
-                    description: I18n.tr("DankShell & System Icons (requires restart)")
+                    description: I18n.tr("AdvShell & System Icons (requires restart)")
                     visible: SettingsData.iconThemePerMode
                     currentValue: SettingsData.iconThemeDark
                     enableFuzzySearch: true
@@ -2552,7 +2552,7 @@ Item {
                     tags: ["icon", "theme", "system", "light"]
                     settingKey: "iconThemeLight"
                     text: I18n.tr("Light Mode Icon Theme")
-                    description: I18n.tr("DankShell & System Icons (requires restart)")
+                    description: I18n.tr("AdvShell & System Icons (requires restart)")
                     visible: SettingsData.iconThemePerMode
                     currentValue: SettingsData.iconThemeLight
                     enableFuzzySearch: true
@@ -2588,12 +2588,12 @@ Item {
 
                 SettingsToggleRow {
                     tab: "theme"
-                    tags: ["matugen", "dms", "templates"]
-                    settingKey: "runDmsMatugenTemplates"
-                    text: I18n.tr("Run DMS Templates")
+                    tags: ["matugen", "advs", "templates"]
+                    settingKey: "runAdvsMatugenTemplates"
+                    text: I18n.tr("Run ADVS Templates")
                     description: ""
-                    checked: SettingsData.runDmsMatugenTemplates
-                    onToggled: checked => SettingsData.set("runDmsMatugenTemplates", checked)
+                    checked: SettingsData.runAdvsMatugenTemplates
+                    onToggled: checked => SettingsData.set("runAdvsMatugenTemplates", checked)
                 }
 
                 SettingsToggleRow {
@@ -2603,7 +2603,7 @@ Item {
                     text: "GTK"
                     description: getTemplateDescription("gtk", "")
                     descriptionColor: getTemplateDescriptionColor("gtk")
-                    visible: SettingsData.runDmsMatugenTemplates
+                    visible: SettingsData.runAdvsMatugenTemplates
                     checked: SettingsData.matugenTemplateGtk
                     onToggled: checked => SettingsData.set("matugenTemplateGtk", checked)
                 }
@@ -2615,7 +2615,7 @@ Item {
                     text: "niri"
                     description: getTemplateDescription("niri", "")
                     descriptionColor: getTemplateDescriptionColor("niri")
-                    visible: SettingsData.runDmsMatugenTemplates
+                    visible: SettingsData.runAdvsMatugenTemplates
                     checked: SettingsData.matugenTemplateNiri
                     onToggled: checked => SettingsData.set("matugenTemplateNiri", checked)
                 }
@@ -2627,7 +2627,7 @@ Item {
                     text: "Hyprland"
                     description: getTemplateDescription("hyprland", "")
                     descriptionColor: getTemplateDescriptionColor("hyprland")
-                    visible: SettingsData.runDmsMatugenTemplates
+                    visible: SettingsData.runAdvsMatugenTemplates
                     checked: SettingsData.matugenTemplateHyprland
                     onToggled: checked => SettingsData.set("matugenTemplateHyprland", checked)
                 }
@@ -2639,7 +2639,7 @@ Item {
                     text: "mangowc"
                     description: getTemplateDescription("mangowc", "")
                     descriptionColor: getTemplateDescriptionColor("mangowc")
-                    visible: SettingsData.runDmsMatugenTemplates
+                    visible: SettingsData.runAdvsMatugenTemplates
                     checked: SettingsData.matugenTemplateMangowc
                     onToggled: checked => SettingsData.set("matugenTemplateMangowc", checked)
                 }
@@ -2651,7 +2651,7 @@ Item {
                     text: "qt5ct"
                     description: getTemplateDescription("qt5ct", "")
                     descriptionColor: getTemplateDescriptionColor("qt5ct")
-                    visible: SettingsData.runDmsMatugenTemplates
+                    visible: SettingsData.runAdvsMatugenTemplates
                     checked: SettingsData.matugenTemplateQt5ct
                     onToggled: checked => SettingsData.set("matugenTemplateQt5ct", checked)
                 }
@@ -2663,7 +2663,7 @@ Item {
                     text: "qt6ct"
                     description: getTemplateDescription("qt6ct", "")
                     descriptionColor: getTemplateDescriptionColor("qt6ct")
-                    visible: SettingsData.runDmsMatugenTemplates
+                    visible: SettingsData.runAdvsMatugenTemplates
                     checked: SettingsData.matugenTemplateQt6ct
                     onToggled: checked => SettingsData.set("matugenTemplateQt6ct", checked)
                 }
@@ -2675,7 +2675,7 @@ Item {
                     text: "qtengine"
                     description: getTemplateDescription("qtengine", "")
                     descriptionColor: getTemplateDescriptionColor("qtengine")
-                    visible: SettingsData.runDmsMatugenTemplates
+                    visible: SettingsData.runAdvsMatugenTemplates
                     checked: SettingsData.matugenTemplateQtengine
                     onToggled: checked => SettingsData.set("matugenTemplateQtengine", checked)
                 }
@@ -2687,7 +2687,7 @@ Item {
                     text: "Fcitx5"
                     description: getTemplateDescription("fcitx5", "")
                     descriptionColor: getTemplateDescriptionColor("fcitx5")
-                    visible: SettingsData.runDmsMatugenTemplates
+                    visible: SettingsData.runAdvsMatugenTemplates
                     checked: SettingsData.matugenTemplateFcitx5
                     onToggled: checked => SettingsData.set("matugenTemplateFcitx5", checked)
                 }
@@ -2699,7 +2699,7 @@ Item {
                     text: "Firefox"
                     description: getTemplateDescription("firefox", "")
                     descriptionColor: getTemplateDescriptionColor("firefox")
-                    visible: SettingsData.runDmsMatugenTemplates
+                    visible: SettingsData.runAdvsMatugenTemplates
                     checked: SettingsData.matugenTemplateFirefox
                     onToggled: checked => SettingsData.set("matugenTemplateFirefox", checked)
                 }
@@ -2711,7 +2711,7 @@ Item {
                     text: "pywalfox"
                     description: getTemplateDescription("pywalfox", "")
                     descriptionColor: getTemplateDescriptionColor("pywalfox")
-                    visible: SettingsData.runDmsMatugenTemplates
+                    visible: SettingsData.runAdvsMatugenTemplates
                     checked: SettingsData.matugenTemplatePywalfox
                     onToggled: checked => SettingsData.set("matugenTemplatePywalfox", checked)
                 }
@@ -2723,7 +2723,7 @@ Item {
                     text: "zenbrowser"
                     description: getTemplateDescription("zenbrowser", "")
                     descriptionColor: getTemplateDescriptionColor("zenbrowser")
-                    visible: SettingsData.runDmsMatugenTemplates
+                    visible: SettingsData.runAdvsMatugenTemplates
                     checked: SettingsData.matugenTemplateZenBrowser
                     onToggled: checked => SettingsData.set("matugenTemplateZenBrowser", checked)
                 }
@@ -2735,7 +2735,7 @@ Item {
                     text: "vesktop"
                     description: getTemplateDescription("vesktop", "")
                     descriptionColor: getTemplateDescriptionColor("vesktop")
-                    visible: SettingsData.runDmsMatugenTemplates
+                    visible: SettingsData.runAdvsMatugenTemplates
                     checked: SettingsData.matugenTemplateVesktop
                     onToggled: checked => SettingsData.set("matugenTemplateVesktop", checked)
                 }
@@ -2747,7 +2747,7 @@ Item {
                     text: "vencord"
                     description: getTemplateDescription("vencord", "")
                     descriptionColor: getTemplateDescriptionColor("vencord")
-                    visible: SettingsData.runDmsMatugenTemplates
+                    visible: SettingsData.runAdvsMatugenTemplates
                     checked: SettingsData.matugenTemplateVencord
                     onToggled: checked => SettingsData.set("matugenTemplateVencord", checked)
                 }
@@ -2759,7 +2759,7 @@ Item {
                     text: "equibop"
                     description: getTemplateDescription("equibop", "")
                     descriptionColor: getTemplateDescriptionColor("equibop")
-                    visible: SettingsData.runDmsMatugenTemplates
+                    visible: SettingsData.runAdvsMatugenTemplates
                     checked: SettingsData.matugenTemplateEquibop
                     onToggled: checked => SettingsData.set("matugenTemplateEquibop", checked)
                 }
@@ -2771,7 +2771,7 @@ Item {
                     text: "Ghostty"
                     description: getTemplateDescription("ghostty", "")
                     descriptionColor: getTemplateDescriptionColor("ghostty")
-                    visible: SettingsData.runDmsMatugenTemplates
+                    visible: SettingsData.runAdvsMatugenTemplates
                     checked: SettingsData.matugenTemplateGhostty
                     onToggled: checked => SettingsData.set("matugenTemplateGhostty", checked)
                 }
@@ -2783,7 +2783,7 @@ Item {
                     text: "kitty"
                     description: getTemplateDescription("kitty", "")
                     descriptionColor: getTemplateDescriptionColor("kitty")
-                    visible: SettingsData.runDmsMatugenTemplates
+                    visible: SettingsData.runAdvsMatugenTemplates
                     checked: SettingsData.matugenTemplateKitty
                     onToggled: checked => SettingsData.set("matugenTemplateKitty", checked)
                 }
@@ -2795,7 +2795,7 @@ Item {
                     text: "foot"
                     description: getTemplateDescription("foot", "")
                     descriptionColor: getTemplateDescriptionColor("foot")
-                    visible: SettingsData.runDmsMatugenTemplates
+                    visible: SettingsData.runAdvsMatugenTemplates
                     checked: SettingsData.matugenTemplateFoot
                     onToggled: checked => SettingsData.set("matugenTemplateFoot", checked)
                 }
@@ -2810,9 +2810,9 @@ Item {
                     tags: ["matugen", "neovim", "terminal", "template"]
                     settingKey: "matugenTemplateNeovim"
                     text: "neovim"
-                    description: getTemplateDescription("nvim", I18n.tr("Required plugin: ") + "https://github.com/AvengeMedia/base46")
+                    description: getTemplateDescription("nvim", I18n.tr("Required plugin: ") + "https://github.com/bavanchun/base46")
                     descriptionColor: getTemplateDescriptionColor("nvim")
-                    visible: SettingsData.runDmsMatugenTemplates
+                    visible: SettingsData.runAdvsMatugenTemplates
                     checked: SettingsData.matugenTemplateNeovim
                     onToggled: checked => SettingsData.set("matugenTemplateNeovim", checked)
                 }
@@ -2886,7 +2886,7 @@ Item {
                 }
 
                 SettingsToggleRow {
-                    text: I18n.tr("Follow DMS background color")
+                    text: I18n.tr("Follow ADVS background color")
                     tags: ["matugen", "neovim", "terminal", "template"]
                     settingKey: "matugenTemplateNeovimSetBackground"
                     visible: neovimThemeToggle.visible && neovimThemeToggle.checked
@@ -2905,7 +2905,7 @@ Item {
                     text: "Alacritty"
                     description: getTemplateDescription("alacritty", "")
                     descriptionColor: getTemplateDescriptionColor("alacritty")
-                    visible: SettingsData.runDmsMatugenTemplates
+                    visible: SettingsData.runAdvsMatugenTemplates
                     checked: SettingsData.matugenTemplateAlacritty
                     onToggled: checked => SettingsData.set("matugenTemplateAlacritty", checked)
                 }
@@ -2917,7 +2917,7 @@ Item {
                     text: "WezTerm"
                     description: getTemplateDescription("wezterm", "")
                     descriptionColor: getTemplateDescriptionColor("wezterm")
-                    visible: SettingsData.runDmsMatugenTemplates
+                    visible: SettingsData.runAdvsMatugenTemplates
                     checked: SettingsData.matugenTemplateWezterm
                     onToggled: checked => SettingsData.set("matugenTemplateWezterm", checked)
                 }
@@ -2929,7 +2929,7 @@ Item {
                     text: "dgop"
                     description: getTemplateDescription("dgop", "")
                     descriptionColor: getTemplateDescriptionColor("dgop")
-                    visible: SettingsData.runDmsMatugenTemplates
+                    visible: SettingsData.runAdvsMatugenTemplates
                     checked: SettingsData.matugenTemplateDgop
                     onToggled: checked => SettingsData.set("matugenTemplateDgop", checked)
                 }
@@ -2941,7 +2941,7 @@ Item {
                     text: "KColorScheme"
                     description: getTemplateDescription("kcolorscheme", "")
                     descriptionColor: getTemplateDescriptionColor("kcolorscheme")
-                    visible: SettingsData.runDmsMatugenTemplates
+                    visible: SettingsData.runAdvsMatugenTemplates
                     checked: SettingsData.matugenTemplateKcolorscheme
                     onToggled: checked => SettingsData.set("matugenTemplateKcolorscheme", checked)
                 }
@@ -2951,9 +2951,9 @@ Item {
                     tags: ["matugen", "vscode", "code", "template"]
                     settingKey: "matugenTemplateVscode"
                     text: "VS Code"
-                    description: getTemplateDescription("vscode", I18n.tr("Requires the DMS Theme extension from the editor marketplace", "vscode matugen template description"))
+                    description: getTemplateDescription("vscode", I18n.tr("Requires the ADVS Theme extension from the editor marketplace", "vscode matugen template description"))
                     descriptionColor: getTemplateDescriptionColor("vscode")
-                    visible: SettingsData.runDmsMatugenTemplates
+                    visible: SettingsData.runAdvsMatugenTemplates
                     checked: SettingsData.matugenTemplateVscode
                     onToggled: checked => SettingsData.set("matugenTemplateVscode", checked)
                 }
@@ -2965,7 +2965,7 @@ Item {
                     text: "Emacs"
                     description: getTemplateDescription("emacs", "")
                     descriptionColor: getTemplateDescriptionColor("emacs")
-                    visible: SettingsData.runDmsMatugenTemplates
+                    visible: SettingsData.runAdvsMatugenTemplates
                     checked: SettingsData.matugenTemplateEmacs
                     onToggled: checked => SettingsData.set("matugenTemplateEmacs", checked)
                 }
@@ -2977,7 +2977,7 @@ Item {
                     text: "Zed"
                     description: getTemplateDescription("zed", "")
                     descriptionColor: getTemplateDescriptionColor("zed")
-                    visible: SettingsData.runDmsMatugenTemplates
+                    visible: SettingsData.runAdvsMatugenTemplates
                     checked: SettingsData.matugenTemplateZed
                     onToggled: checked => SettingsData.set("matugenTemplateZed", checked)
                 }
@@ -2994,7 +2994,7 @@ Item {
                     anchors.margins: Theme.spacingM
                     spacing: Theme.spacingM
 
-                    DankIcon {
+                    AdvIcon {
                         name: "info"
                         size: Theme.iconSizeSmall
                         color: Theme.warning
@@ -3034,7 +3034,7 @@ Item {
                             anchors.centerIn: parent
                             spacing: Theme.spacingS
 
-                            DankIcon {
+                            AdvIcon {
                                 name: "settings"
                                 size: 16
                                 color: Theme.primary
@@ -3068,7 +3068,7 @@ Item {
                             anchors.centerIn: parent
                             spacing: Theme.spacingS
 
-                            DankIcon {
+                            AdvIcon {
                                 name: "settings"
                                 size: 16
                                 color: Theme.primary
@@ -3094,7 +3094,7 @@ Item {
                 }
 
                 StyledText {
-                    text: I18n.tr('Generate baseline GTK3/4, QT5/QT6, or qtengine configurations to follow DMS colors (only qt6ct requires qt6ct-kde). Only needed once.<br /><br />It is recommended to configure %1 prior to applying GTK themes.').arg(`<a href="https://github.com/AvengeMedia/DankMaterialShell/blob/master/README.md#Theming" style="text-decoration:none; color:${Theme.primary};">adw-gtk3</a>`)
+                    text: I18n.tr('Generate baseline GTK3/4, QT5/QT6, or qtengine configurations to follow ADVS colors (only qt6ct requires qt6ct-kde). Only needed once.<br /><br />It is recommended to configure %1 prior to applying GTK themes.').arg(`<a href="https://github.com/bavanchun/ariadnev-shell/blob/master/README.md#Theming" style="text-decoration:none; color:${Theme.primary};">adw-gtk3</a>`)
                     textFormat: Text.RichText
                     linkColor: Theme.primary
                     onLinkActivated: url => Qt.openUrlExternally(url)
@@ -3147,7 +3147,7 @@ Item {
             fileExtensions: ["*.json"]
             allowStacking: true
             saveMode: true
-            defaultFileName: "dms-extracted-theme.json"
+            defaultFileName: "advs-extracted-theme.json"
 
             onFileSelected: path => {
                 saveExtractedTheme(pendingExtractJson, Paths.strip(path));

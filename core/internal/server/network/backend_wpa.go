@@ -10,7 +10,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/log"
+	"github.com/bavanchun/ariadnev-shell/core/internal/log"
 )
 
 // Default ctrl_interface directory on FreeBSD and minimal Linux setups; see

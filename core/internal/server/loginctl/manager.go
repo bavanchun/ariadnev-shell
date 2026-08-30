@@ -380,7 +380,7 @@ func (m *Manager) acquireSleepInhibitor() error {
 		return fmt.Errorf("manager object not available")
 	}
 
-	file, err := m.inhibit("sleep", "DankMaterialShell", "Lock before suspend", "delay")
+	file, err := m.inhibit("sleep", "AriadnevShell", "Lock before suspend", "delay")
 	if err != nil {
 		return err
 	}

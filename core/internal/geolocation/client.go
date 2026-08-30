@@ -1,6 +1,6 @@
 package geolocation
 
-import "github.com/AvengeMedia/DankMaterialShell/core/internal/log"
+import "github.com/bavanchun/ariadnev-shell/core/internal/log"
 
 func NewClient() Client {
 	geoclueClient, err := newGeoClueClient()

@@ -104,16 +104,16 @@ Scope {
     }
 
     FileView {
-        id: dankshellConfigWatcher
+        id: advshellConfigWatcher
 
-        path: "/etc/pam.d/dankshell"
+        path: "/etc/pam.d/advshell"
         printErrors: false
     }
 
     FileView {
         id: u2fConfigWatcher
 
-        path: "/etc/pam.d/dankshell-u2f"
+        path: "/etc/pam.d/advshell-u2f"
         watchChanges: true
         printErrors: false
     }
@@ -125,21 +125,21 @@ Scope {
         printErrors: false
     }
 
-    // Fallback stack written by `dms auth resolve-lock` when no managed
-    // /etc/pam.d/dankshell exists. See #2789.
+    // Fallback stack written by `advs auth resolve-lock` when no managed
+    // /etc/pam.d/advshell exists. See #2789.
     readonly property string userPamDir: Paths.strip(Paths.state) + "/pam"
 
     FileView {
         id: userPamWatcher
 
-        path: root.userPamDir + "/dankshell"
+        path: root.userPamDir + "/advshell"
         printErrors: false
     }
 
     Process {
         id: resolveUserPam
 
-        command: ["dms", "auth", "resolve-lock", "--quiet"]
+        command: ["advs", "auth", "resolve-lock", "--quiet"]
         running: false
         onExited: exitCode => {
             if (exitCode === 0)
@@ -163,10 +163,10 @@ Scope {
                 return SettingsData.lockPamPath.slice(SettingsData.lockPamPath.lastIndexOf("/") + 1);
             if (SettingsData.lockPamExternallyManaged)
                 return "login";
-            if (dankshellConfigWatcher.loaded)
-                return "dankshell";
+            if (advshellConfigWatcher.loaded)
+                return "advshell";
             if (userPamWatcher.loaded)
-                return "dankshell";
+                return "advshell";
             return "login";
         }
         configDirectory: {
@@ -176,7 +176,7 @@ Scope {
             }
             if (SettingsData.lockPamExternallyManaged)
                 return "/etc/pam.d";
-            if (dankshellConfigWatcher.loaded)
+            if (advshellConfigWatcher.loaded)
                 return "/etc/pam.d";
             if (userPamWatcher.loaded)
                 return root.userPamDir;
@@ -368,7 +368,7 @@ Scope {
         config: {
             if (root.customU2fPamActive)
                 return SettingsData.lockU2fPamPath.slice(SettingsData.lockU2fPamPath.lastIndexOf("/") + 1);
-            return u2fConfigWatcher.loaded ? "dankshell-u2f" : "u2f";
+            return u2fConfigWatcher.loaded ? "advshell-u2f" : "u2f";
         }
         configDirectory: {
             if (root.customU2fPamActive) {
@@ -508,7 +508,7 @@ Scope {
         root.attemptInfoMessages = [];
         root.lockoutAnnouncedThisAttempt = false;
         root.resetAuthFlows();
-        if (!SettingsData.lockPamExternallyManaged && !dankshellConfigWatcher.loaded && !userPamWatcher.loaded)
+        if (!SettingsData.lockPamExternallyManaged && !advshellConfigWatcher.loaded && !userPamWatcher.loaded)
             ensureUserPamConfig();
         // FileView cannot watch a path that does not exist yet; re-read so a
         // dedicated service created after startup is used on the next lock.

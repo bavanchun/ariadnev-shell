@@ -114,7 +114,7 @@ Singleton {
                         const mqUrl = "https://img.youtube.com/vi/" + videoId + "/mqdefault.jpg";
                         const tmpPath = filePath + ".tmp";
 
-                        Proc.runCommand(null, ["sh", "-c", dlCmd, Proc.dmsBin, tmpPath, maxresUrl, filePath], (maxOutput, maxExitCode) => {
+                        Proc.runCommand(null, ["sh", "-c", dlCmd, Proc.advsBin, tmpPath, maxresUrl, filePath], (maxOutput, maxExitCode) => {
                             if (_lastArtUrl !== targetUrl || _requestSerial !== requestSerial)
                                 return;
 
@@ -122,7 +122,7 @@ Singleton {
                                 _commit(localFileUrl, artKey, targetUrl);
                                 loading = false;
                             } else {
-                                Proc.runCommand(null, ["sh", "-c", dlCmd, Proc.dmsBin, tmpPath, mqUrl, filePath], (mqOutput, mqExitCode) => {
+                                Proc.runCommand(null, ["sh", "-c", dlCmd, Proc.advsBin, tmpPath, mqUrl, filePath], (mqOutput, mqExitCode) => {
                                     if (_lastArtUrl !== targetUrl || _requestSerial !== requestSerial)
                                         return;
 
@@ -133,7 +133,7 @@ Singleton {
                         }, 50, 15000);
                     } else {
                         const tmpPath = filePath + ".tmp";
-                        Proc.runCommand(null, ["sh", "-c", dlCmd, Proc.dmsBin, tmpPath, targetUrl, filePath], (dlOutput, dlExitCode) => {
+                        Proc.runCommand(null, ["sh", "-c", dlCmd, Proc.advsBin, tmpPath, targetUrl, filePath], (dlOutput, dlExitCode) => {
                             if (_lastArtUrl !== targetUrl || _requestSerial !== requestSerial)
                                 return;
 

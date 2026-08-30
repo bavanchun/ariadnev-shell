@@ -13,16 +13,16 @@ import (
 	"strings"
 	"time"
 
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/config"
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/deps"
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/netfetch"
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/privesc"
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/version"
+	"github.com/bavanchun/ariadnev-shell/core/internal/config"
+	"github.com/bavanchun/ariadnev-shell/core/internal/deps"
+	"github.com/bavanchun/ariadnev-shell/core/internal/netfetch"
+	"github.com/bavanchun/ariadnev-shell/core/internal/privesc"
+	"github.com/bavanchun/ariadnev-shell/core/internal/version"
 )
 
 const (
 	forceQuickshellGit = false
-	forceDMSGit        = false
+	forceADVSGit        = false
 )
 
 // BaseDistribution provides common functionality for all distributions
@@ -105,32 +105,32 @@ func (b *BaseDistribution) detectMatugen() deps.Dependency {
 	return b.detectCommand("matugen", "Material Design color generation tool")
 }
 
-func (b *BaseDistribution) detectDanksearch() deps.Dependency {
-	return b.detectOptionalPackage("danksearch", "File indexing and search service", b.commandExists("dsearch") || b.commandExists("danksearch"))
+func (b *BaseDistribution) detectAdvsearch() deps.Dependency {
+	return b.detectOptionalPackage("advsearch", "File indexing and search service", b.commandExists("dsearch") || b.commandExists("advsearch"))
 }
 
-func (b *BaseDistribution) detectDankCalendar() deps.Dependency {
-	return b.detectOptionalPackage("dankcalendar", "Calendar application", b.commandExists("dcal") || b.commandExists("dankcalendar"))
+func (b *BaseDistribution) detectAdvCalendar() deps.Dependency {
+	return b.detectOptionalPackage("advcalendar", "Calendar application", b.commandExists("dcal") || b.commandExists("advcalendar"))
 }
 
-func (b *BaseDistribution) detectDMS() deps.Dependency {
-	dmsPath := filepath.Join(os.Getenv("HOME"), ".config/quickshell/dms")
+func (b *BaseDistribution) detectADVS() deps.Dependency {
+	advsPath := filepath.Join(os.Getenv("HOME"), ".config/quickshell/ariadnev")
 
 	status := deps.StatusMissing
 	currentVersion := ""
 
-	if _, err := os.Stat(dmsPath); err == nil {
+	if _, err := os.Stat(advsPath); err == nil {
 		status = deps.StatusInstalled
 
 		// Only get current version, don't check for updates (lazy loading)
-		current, err := version.GetCurrentDMSVersion()
+		current, err := version.GetCurrentADVSVersion()
 		if err == nil {
 			currentVersion = current
 		}
 	}
 
 	dep := deps.Dependency{
-		Name:        "dms (DankMaterialShell)",
+		Name:        "advs (AriadnevShell)",
 		Status:      status,
 		Description: "Desktop Management System configuration",
 		Required:    true,
@@ -583,7 +583,7 @@ func (b *BaseDistribution) WriteEnvironmentConfig(terminal deps.Terminal) error 
 TERMINAL=%s
 `, terminalCmd)
 
-	envFile := filepath.Join(envDir, "90-dms.conf")
+	envFile := filepath.Join(envDir, "90-advs.conf")
 	if err := os.WriteFile(envFile, []byte(content), 0o644); err != nil {
 		return fmt.Errorf("failed to write environment config: %w", err)
 	}
@@ -592,15 +592,15 @@ TERMINAL=%s
 	return nil
 }
 
-func (b *BaseDistribution) EnableDMSService(ctx context.Context, wm deps.WindowManager) error {
+func (b *BaseDistribution) EnableADVSService(ctx context.Context, wm deps.WindowManager) error {
 	switch wm {
 	case deps.WindowManagerNiri:
-		if err := exec.CommandContext(ctx, "systemctl", "--user", "add-wants", "niri.service", "dms").Run(); err != nil {
-			b.log("Warning: failed to add dms as a want for niri.service")
+		if err := exec.CommandContext(ctx, "systemctl", "--user", "add-wants", "niri.service", "advs").Run(); err != nil {
+			b.log("Warning: failed to add advs as a want for niri.service")
 		}
 	case deps.WindowManagerHyprland:
-		if err := exec.CommandContext(ctx, "systemctl", "--user", "add-wants", "hyprland-session.target", "dms").Run(); err != nil {
-			b.log("Warning: failed to add dms as a want for hyprland-session.target")
+		if err := exec.CommandContext(ctx, "systemctl", "--user", "add-wants", "hyprland-session.target", "advs").Run(); err != nil {
+			b.log("Warning: failed to add advs as a want for hyprland-session.target")
 		}
 	}
 
@@ -626,9 +626,9 @@ func (b *BaseDistribution) WriteHyprlandSessionTarget() error {
 	return nil
 }
 
-// installDMSBinary installs the DMS binary from GitHub releases
-func (b *BaseDistribution) installDMSBinary(ctx context.Context, sudoPassword string, progressChan chan<- InstallProgressMsg) error {
-	b.log("Installing/updating DMS binary...")
+// installADVSBinary installs the ADVS binary from GitHub releases
+func (b *BaseDistribution) installADVSBinary(ctx context.Context, sudoPassword string, progressChan chan<- InstallProgressMsg) error {
+	b.log("Installing/updating ADVS binary...")
 
 	// Detect architecture
 	arch := runtime.GOARCH
@@ -636,78 +636,78 @@ func (b *BaseDistribution) installDMSBinary(ctx context.Context, sudoPassword st
 	case "amd64":
 	case "arm64":
 	default:
-		return fmt.Errorf("unsupported architecture for DMS: %s", arch)
+		return fmt.Errorf("unsupported architecture for ADVS: %s", arch)
 	}
 
 	progressChan <- InstallProgressMsg{
 		Phase:       PhaseConfiguration,
 		Progress:    0.80,
-		Step:        "Downloading DMS binary...",
+		Step:        "Downloading ADVS binary...",
 		IsComplete:  false,
-		CommandInfo: fmt.Sprintf("Downloading dms-%s.gz", arch),
+		CommandInfo: fmt.Sprintf("Downloading advs-%s.gz", arch),
 	}
 
 	version, err := netfetch.LatestReleaseTag(ctx)
 	if err != nil {
-		return fmt.Errorf("failed to get latest DMS version: %w", err)
+		return fmt.Errorf("failed to get latest ADVS version: %w", err)
 	}
 
 	homeDir, err := os.UserHomeDir()
 	if err != nil {
 		return fmt.Errorf("failed to get user home directory: %w", err)
 	}
-	tmpDir := filepath.Join(homeDir, ".cache", "dankinstall", "manual-builds")
+	tmpDir := filepath.Join(homeDir, ".cache", "advinstall", "manual-builds")
 	if err := os.MkdirAll(tmpDir, 0o755); err != nil {
 		return fmt.Errorf("failed to create temp directory: %w", err)
 	}
 	defer os.RemoveAll(tmpDir)
 
 	// Download the gzipped binary
-	downloadURL := fmt.Sprintf("https://github.com/AvengeMedia/DankMaterialShell/releases/download/%s/dms-cli-%s.gz", version, arch)
-	gzPath := filepath.Join(tmpDir, "dms.gz")
+	downloadURL := fmt.Sprintf("https://github.com/bavanchun/ariadnev-shell/releases/download/%s/advs-cli-%s.gz", version, arch)
+	gzPath := filepath.Join(tmpDir, "advs.gz")
 
 	if err := netfetch.ToFile(ctx, downloadURL, netfetch.Options{Timeout: 5 * time.Minute}, gzPath); err != nil {
-		return fmt.Errorf("failed to download DMS binary: %w", err)
+		return fmt.Errorf("failed to download ADVS binary: %w", err)
 	}
 
 	progressChan <- InstallProgressMsg{
 		Phase:       PhaseConfiguration,
 		Progress:    0.85,
-		Step:        "Extracting DMS binary...",
+		Step:        "Extracting ADVS binary...",
 		IsComplete:  false,
-		CommandInfo: "gunzip dms.gz",
+		CommandInfo: "gunzip advs.gz",
 	}
 
 	// Extract the binary
 	extractCmd := exec.CommandContext(ctx, "gunzip", gzPath)
 	if err := extractCmd.Run(); err != nil {
-		return fmt.Errorf("failed to extract DMS binary: %w", err)
+		return fmt.Errorf("failed to extract ADVS binary: %w", err)
 	}
 
-	binaryPath := filepath.Join(tmpDir, "dms")
+	binaryPath := filepath.Join(tmpDir, "advs")
 
 	// Make it executable
 	chmodCmd := exec.CommandContext(ctx, "chmod", "+x", binaryPath)
 	if err := chmodCmd.Run(); err != nil {
-		return fmt.Errorf("failed to make DMS binary executable: %w", err)
+		return fmt.Errorf("failed to make ADVS binary executable: %w", err)
 	}
 
 	progressChan <- InstallProgressMsg{
 		Phase:       PhaseConfiguration,
 		Progress:    0.88,
-		Step:        "Installing DMS to /usr/local/bin...",
+		Step:        "Installing ADVS to /usr/local/bin...",
 		IsComplete:  false,
 		NeedsSudo:   true,
-		CommandInfo: "sudo cp dms /usr/local/bin/",
+		CommandInfo: "sudo cp advs /usr/local/bin/",
 	}
 
 	// Install to /usr/local/bin
 	installCmd := privesc.ExecCommand(ctx, sudoPassword,
-		fmt.Sprintf("cp %s /usr/local/bin/dms", binaryPath))
+		fmt.Sprintf("cp %s /usr/local/bin/advs", binaryPath))
 	if err := installCmd.Run(); err != nil {
-		return fmt.Errorf("failed to install DMS binary: %w", err)
+		return fmt.Errorf("failed to install ADVS binary: %w", err)
 	}
 
-	b.log("DMS binary installed successfully")
+	b.log("ADVS binary installed successfully")
 	return nil
 }

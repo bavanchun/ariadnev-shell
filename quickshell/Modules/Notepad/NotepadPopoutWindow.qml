@@ -5,7 +5,7 @@ import qs.Services
 import qs.Widgets
 import qs.Modules.Notepad
 
-DankFloatingWindow {
+AdvFloatingWindow {
     id: win
 
     property alias shouldBeVisible: win.visible
@@ -63,7 +63,7 @@ DankFloatingWindow {
                 anchors.verticalCenter: parent.verticalCenter
                 spacing: Theme.spacingS
 
-                DankIcon {
+                AdvIcon {
                     name: "edit_note"
                     size: Theme.iconSize - 2
                     color: Theme.primary
@@ -85,7 +85,7 @@ DankFloatingWindow {
                 anchors.verticalCenter: parent.verticalCenter
                 spacing: Theme.spacingXS
 
-                DankActionButton {
+                AdvActionButton {
                     visible: windowControls.canMaximize
                     circular: false
                     iconName: win.maximized ? "fullscreen_exit" : "fullscreen"
@@ -94,7 +94,7 @@ DankFloatingWindow {
                     onClicked: windowControls.tryToggleMaximize()
                 }
 
-                DankActionButton {
+                AdvActionButton {
                     circular: false
                     iconName: "close"
                     iconSize: Theme.iconSize - 4

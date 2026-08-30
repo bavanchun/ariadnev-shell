@@ -59,7 +59,7 @@
       "wallpaper"
     ],
     "icon": "blur_on",
-    "description": "Enable compositor-targetable blur layer (namespace: dms:blurwallpaper). Requires manual niri configuration.",
+    "description": "Enable compositor-targetable blur layer (namespace: advs:blurwallpaper). Requires manual niri configuration.",
     "conditionKey": "isNiri"
   },
   {
@@ -147,7 +147,7 @@
       "targetable",
       "wallpaper"
     ],
-    "description": "Enable compositor-targetable blur layer (namespace: dms:blurwallpaper). Requires manual niri configuration."
+    "description": "Enable compositor-targetable blur layer (namespace: advs:blurwallpaper). Requires manual niri configuration."
   },
   {
     "section": "disableWallpaper",
@@ -466,7 +466,7 @@
       "calendar",
       "clock",
       "daemon",
-      "dankcalendar",
+      "advcalendar",
       "date",
       "day",
       "events",
@@ -792,7 +792,7 @@
     "section": "barAutoHide",
     "label": "Auto-hide",
     "tabIndex": 3,
-    "category": "Dank Bar",
+    "category": "Adv Bar",
     "keywords": [
       "auto",
       "auto-hide",
@@ -800,7 +800,7 @@
       "automatically",
       "away",
       "bar",
-      "dank",
+      "adv",
       "hide",
       "intellihide",
       "moves",
@@ -817,11 +817,11 @@
     "section": "barLengthPadding",
     "label": "Bar Length Padding",
     "tabIndex": 3,
-    "category": "Dank Bar",
+    "category": "Adv Bar",
     "keywords": [
       "bar",
       "both",
-      "dank",
+      "adv",
       "ends",
       "length",
       "padding",
@@ -840,14 +840,14 @@
     "section": "barClickThrough",
     "label": "Click Through",
     "tabIndex": 3,
-    "category": "Dank Bar",
+    "category": "Adv Bar",
     "keywords": [
       "bar",
       "behind",
       "click",
       "clicks",
       "clickthrough",
-      "dank",
+      "adv",
       "input",
       "mask",
       "mouse",
@@ -866,13 +866,13 @@
     "section": "barConfigurations",
     "label": "Configurations",
     "tabIndex": 3,
-    "category": "Dank Bar",
+    "category": "Adv Bar",
     "keywords": [
       "bar",
       "config",
       "configurations",
       "configure",
-      "dank",
+      "adv",
       "panel",
       "setup",
       "statusbar",
@@ -884,14 +884,14 @@
     "section": "barCornerStyle",
     "label": "Corner Style",
     "tabIndex": 3,
-    "category": "Dank Bar",
+    "category": "Adv Bar",
     "keywords": [
       "attached",
       "bar",
       "choose",
       "corner",
       "corners",
-      "dank",
+      "adv",
       "edge",
       "flush",
       "meets",
@@ -912,11 +912,11 @@
     "section": "barDisplay",
     "label": "Display Assignment",
     "tabIndex": 3,
-    "category": "Dank Bar",
+    "category": "Adv Bar",
     "keywords": [
       "assignment",
       "bar",
-      "dank",
+      "adv",
       "display",
       "monitor",
       "output",
@@ -931,10 +931,10 @@
     "section": "barEnable",
     "label": "Enable Island",
     "tabIndex": 3,
-    "category": "Dank Bar",
+    "category": "Adv Bar",
     "keywords": [
       "bar",
-      "dank",
+      "adv",
       "enable",
       "island",
       "panel",
@@ -946,10 +946,10 @@
     "section": "barExclusiveZone",
     "label": "Exclusive Zone Offset",
     "tabIndex": 3,
-    "category": "Dank Bar",
+    "category": "Adv Bar",
     "keywords": [
       "bar",
-      "dank",
+      "adv",
       "edge",
       "exclusive",
       "fine",
@@ -970,7 +970,7 @@
     "section": "barGothCorners",
     "label": "Goth Corners",
     "tabIndex": 3,
-    "category": "Dank Bar",
+    "category": "Adv Bar",
     "keywords": [
       "apply",
       "bar",
@@ -979,7 +979,7 @@
       "corners",
       "cutout",
       "cutouts",
-      "dank",
+      "adv",
       "goth",
       "inverse",
       "panel",
@@ -996,10 +996,10 @@
     "section": "barHideWhenWindowsOpen",
     "label": "Hide When Windows Open",
     "tabIndex": 3,
-    "category": "Dank Bar",
+    "category": "Adv Bar",
     "keywords": [
       "bar",
-      "dank",
+      "adv",
       "empty",
       "hide",
       "open",
@@ -1018,11 +1018,11 @@
     "section": "hoverPopouts",
     "label": "Hover Popouts",
     "tabIndex": 3,
-    "category": "Dank Bar",
+    "category": "Adv Bar",
     "keywords": [
       "another",
       "bar",
-      "dank",
+      "adv",
       "delay",
       "hover",
       "hovering",
@@ -1046,12 +1046,12 @@
     "section": "barManualVisibility",
     "label": "Manual Show/Hide",
     "tabIndex": 3,
-    "category": "Dank Bar",
+    "category": "Adv Bar",
     "keywords": [
       "auto-hide",
       "autohide",
       "bar",
-      "dank",
+      "adv",
       "hidden",
       "hide",
       "ipc",
@@ -1072,11 +1072,11 @@
     "section": "barMaximizeDetection",
     "label": "Maximize Detection",
     "tabIndex": 3,
-    "category": "Dank Bar",
+    "category": "Adv Bar",
     "keywords": [
       "bar",
       "border",
-      "dank",
+      "adv",
       "detection",
       "fullscreen",
       "gaps",
@@ -1096,11 +1096,11 @@
     "section": "barMaximizeWidgetIcons",
     "label": "Maximize Widget Icons",
     "tabIndex": 3,
-    "category": "Dank Bar",
+    "category": "Adv Bar",
     "keywords": [
       "available",
       "bar",
-      "dank",
+      "adv",
       "fill",
       "height",
       "icons",
@@ -1118,11 +1118,11 @@
     "section": "barMaximizeWidgetText",
     "label": "Maximize Widget Text",
     "tabIndex": 3,
-    "category": "Dank Bar",
+    "category": "Adv Bar",
     "keywords": [
       "available",
       "bar",
-      "dank",
+      "adv",
       "fill",
       "height",
       "maximize",
@@ -1140,11 +1140,11 @@
     "section": "barNoBackground",
     "label": "No Background",
     "tabIndex": 3,
-    "category": "Dank Bar",
+    "category": "Adv Bar",
     "keywords": [
       "background",
       "bar",
-      "dank",
+      "adv",
       "fully",
       "invisible",
       "make",
@@ -1160,10 +1160,10 @@
     "section": "barPosition",
     "label": "Position",
     "tabIndex": 3,
-    "category": "Dank Bar",
+    "category": "Adv Bar",
     "keywords": [
       "bar",
-      "dank",
+      "adv",
       "panel",
       "position",
       "statusbar",
@@ -1175,12 +1175,12 @@
     "section": "barRemoveWidgetPadding",
     "label": "Remove Widget Padding",
     "tabIndex": 3,
-    "category": "Dank Bar",
+    "category": "Adv Bar",
     "keywords": [
       "bar",
       "compact",
       "components",
-      "dank",
+      "adv",
       "inner",
       "modules",
       "padding",
@@ -1197,13 +1197,13 @@
     "section": "barScrollWheel",
     "label": "Scroll Wheel",
     "tabIndex": 3,
-    "category": "Dank Bar",
+    "category": "Adv Bar",
     "keywords": [
       "axis",
       "bar",
       "columns",
       "control",
-      "dank",
+      "adv",
       "desktop",
       "desktops",
       "panel",
@@ -1224,10 +1224,10 @@
     "section": "_tab_3",
     "label": "Settings",
     "tabIndex": 3,
-    "category": "Dank Bar",
+    "category": "Adv Bar",
     "keywords": [
       "bar",
-      "dank",
+      "adv",
       "panel",
       "settings",
       "statusbar",
@@ -1239,10 +1239,10 @@
     "section": "barOpenOnOverview",
     "label": "Show on Overview",
     "tabIndex": 3,
-    "category": "Dank Bar",
+    "category": "Adv Bar",
     "keywords": [
       "bar",
-      "dank",
+      "adv",
       "during",
       "frame",
       "niri",
@@ -1259,11 +1259,11 @@
     "section": "barSize",
     "label": "Size",
     "tabIndex": 3,
-    "category": "Dank Bar",
+    "category": "Adv Bar",
     "keywords": [
       "adjust",
       "bar",
-      "dank",
+      "adv",
       "height",
       "inner",
       "padding",
@@ -1280,12 +1280,12 @@
     "section": "barAutoHideStrict",
     "label": "Strict auto-hide",
     "tabIndex": 3,
-    "category": "Dank Bar",
+    "category": "Adv Bar",
     "keywords": [
       "auto",
       "autohide",
       "bar",
-      "dank",
+      "adv",
       "even",
       "hide",
       "leaves",
@@ -1305,10 +1305,10 @@
     "section": "barUseOverlayLayer",
     "label": "Use Overlay Layer",
     "tabIndex": 3,
-    "category": "Dank Bar",
+    "category": "Adv Bar",
     "keywords": [
       "bar",
-      "dank",
+      "adv",
       "fullscreen",
       "layer",
       "overlay",
@@ -1325,14 +1325,14 @@
     "section": "barVisibility",
     "label": "Visibility",
     "tabIndex": 3,
-    "category": "Dank Bar",
+    "category": "Adv Bar",
     "keywords": [
       "auto-hide",
       "autohide",
       "automatically",
       "away",
       "bar",
-      "dank",
+      "adv",
       "hidden",
       "hide",
       "intellihide",
@@ -1354,14 +1354,14 @@
     "section": "workspaceAppearance",
     "label": "Appearance",
     "tabIndex": 4,
-    "category": "Dank Bar",
+    "category": "Adv Bar",
     "keywords": [
       "appearance",
       "around",
       "bar",
       "color",
       "custom",
-      "dank",
+      "adv",
       "desktop",
       "focused",
       "indicator",
@@ -1381,10 +1381,10 @@
     "section": "workspaceDragReorder",
     "label": "Drag to Reorder",
     "tabIndex": 4,
-    "category": "Dank Bar",
+    "category": "Adv Bar",
     "keywords": [
       "bar",
-      "dank",
+      "adv",
       "desktop",
       "drag",
       "indicators",
@@ -1404,12 +1404,12 @@
     "section": "workspaceFocusedBorderEnabled",
     "label": "Focused Border",
     "tabIndex": 4,
-    "category": "Dank Bar",
+    "category": "Adv Bar",
     "keywords": [
       "around",
       "bar",
       "border",
-      "dank",
+      "adv",
       "desktop",
       "focused",
       "indicator",
@@ -1428,12 +1428,12 @@
     "section": "workspaceUnfocusedMonitorBorderEnabled",
     "label": "Focused Border",
     "tabIndex": 4,
-    "category": "Dank Bar",
+    "category": "Adv Bar",
     "keywords": [
       "around",
       "bar",
       "border",
-      "dank",
+      "adv",
       "desktop",
       "display",
       "focused",
@@ -1455,11 +1455,11 @@
     "section": "workspaceFollowFocus",
     "label": "Follow Monitor Focus",
     "tabIndex": 4,
-    "category": "Dank Bar",
+    "category": "Adv Bar",
     "keywords": [
       "bar",
       "currently",
-      "dank",
+      "adv",
       "desktop",
       "desktops",
       "focus",
@@ -1481,10 +1481,10 @@
     "section": "workspaceSettings",
     "label": "General",
     "tabIndex": 4,
-    "category": "Dank Bar",
+    "category": "Adv Bar",
     "keywords": [
       "bar",
-      "dank",
+      "adv",
       "desktop",
       "general",
       "index",
@@ -1507,14 +1507,14 @@
     "section": "groupActiveWorkspaceApps",
     "label": "Group Active Workspace",
     "tabIndex": 4,
-    "category": "Dank Bar",
+    "category": "Adv Bar",
     "keywords": [
       "active",
       "app",
       "application",
       "apps",
       "bar",
-      "dank",
+      "adv",
       "desktop",
       "focused",
       "group",
@@ -1534,14 +1534,14 @@
     "section": "groupWorkspaceApps",
     "label": "Group Workspace Apps",
     "tabIndex": 4,
-    "category": "Dank Bar",
+    "category": "Adv Bar",
     "keywords": [
       "app",
       "application",
       "apps",
       "bar",
       "collapse",
-      "dank",
+      "adv",
       "desktop",
       "desktops",
       "group",
@@ -1563,14 +1563,14 @@
     "section": "workspaceActiveAppHighlightEnabled",
     "label": "Highlight Active Workspace App",
     "tabIndex": 4,
-    "category": "Dank Bar",
+    "category": "Adv Bar",
     "keywords": [
       "active",
       "app",
       "apps",
       "bar",
       "currently",
-      "dank",
+      "adv",
       "day",
       "desktop",
       "focused",
@@ -1591,10 +1591,10 @@
     "section": "workspaceIcons",
     "label": "Named Workspace Icons",
     "tabIndex": 4,
-    "category": "Dank Bar",
+    "category": "Adv Bar",
     "keywords": [
       "bar",
-      "dank",
+      "adv",
       "desktop",
       "icons",
       "named",
@@ -1610,10 +1610,10 @@
     "section": "reverseScrolling",
     "label": "Reverse Scrolling Direction",
     "tabIndex": 4,
-    "category": "Dank Bar",
+    "category": "Adv Bar",
     "keywords": [
       "bar",
-      "dank",
+      "adv",
       "desktop",
       "direction",
       "over",
@@ -1635,7 +1635,7 @@
     "section": "workspaceUnfocusedMonitorSeparateAppearance",
     "label": "Separate Appearance for Unfocused Display(s)",
     "tabIndex": 4,
-    "category": "Dank Bar",
+    "category": "Adv Bar",
     "keywords": [
       "appearance",
       "bar",
@@ -1643,7 +1643,7 @@
       "colors",
       "colour",
       "colours",
-      "dank",
+      "adv",
       "desktop",
       "different",
       "display",
@@ -1673,11 +1673,11 @@
     "section": "dwlShowAllTags",
     "label": "Show All Tags",
     "tabIndex": 4,
-    "category": "Dank Bar",
+    "category": "Adv Bar",
     "keywords": [
       "all",
       "bar",
-      "dank",
+      "adv",
       "dwl",
       "occupied",
       "panel",
@@ -1694,12 +1694,12 @@
     "section": "showOccupiedWorkspacesOnly",
     "label": "Show Occupied Workspaces Only",
     "tabIndex": 4,
-    "category": "Dank Bar",
+    "category": "Adv Bar",
     "keywords": [
       "active",
       "bar",
       "contain",
-      "dank",
+      "adv",
       "desktop",
       "desktops",
       "display",
@@ -1723,14 +1723,14 @@
     "section": "showWorkspaceApps",
     "label": "Show Workspace Apps",
     "tabIndex": 4,
-    "category": "Dank Bar",
+    "category": "Adv Bar",
     "keywords": [
       "app",
       "application",
       "applications",
       "apps",
       "bar",
-      "dank",
+      "adv",
       "desktop",
       "display",
       "icons",
@@ -1753,10 +1753,10 @@
     "section": "showWorkspaceIndex",
     "label": "Workspace Index Numbers",
     "tabIndex": 4,
-    "category": "Dank Bar",
+    "category": "Adv Bar",
     "keywords": [
       "bar",
-      "dank",
+      "adv",
       "desktop",
       "index",
       "labels",
@@ -1776,11 +1776,11 @@
     "section": "showWorkspaceName",
     "label": "Workspace Names",
     "tabIndex": 4,
-    "category": "Dank Bar",
+    "category": "Adv Bar",
     "keywords": [
       "bar",
       "bars",
-      "dank",
+      "adv",
       "desktop",
       "first",
       "horizontal",
@@ -1803,12 +1803,12 @@
     "section": "showWorkspacePadding",
     "label": "Workspace Padding",
     "tabIndex": 4,
-    "category": "Dank Bar",
+    "category": "Adv Bar",
     "keywords": [
       "always",
       "available",
       "bar",
-      "dank",
+      "adv",
       "desktop",
       "desktops",
       "even",
@@ -1829,10 +1829,10 @@
     "section": "_tab_4",
     "label": "Workspaces",
     "tabIndex": 4,
-    "category": "Dank Bar",
+    "category": "Adv Bar",
     "keywords": [
       "bar",
-      "dank",
+      "adv",
       "desktop",
       "desktops",
       "panel",
@@ -2450,7 +2450,7 @@
     "section": "barBorder",
     "label": "Border",
     "tabIndex": 6,
-    "category": "Dank Bar",
+    "category": "Adv Bar",
     "keywords": [
       "appearance",
       "bar",
@@ -2458,7 +2458,7 @@
       "color",
       "colors",
       "colour",
-      "dank",
+      "adv",
       "hue",
       "look",
       "panel",
@@ -2475,12 +2475,12 @@
     "section": "barCorners",
     "label": "Corners & Background",
     "tabIndex": 6,
-    "category": "Dank Bar",
+    "category": "Adv Bar",
     "keywords": [
       "background",
       "bar",
       "corners",
-      "dank",
+      "adv",
       "fully",
       "invisible",
       "make",
@@ -2498,12 +2498,12 @@
   },
   {
     "section": "barAppearance",
-    "label": "Dank Bar",
+    "label": "Adv Bar",
     "tabIndex": 6,
-    "category": "Dank Bar",
+    "category": "Adv Bar",
     "keywords": [
       "bar",
-      "dank",
+      "adv",
       "panel",
       "statusbar",
       "taskbar",
@@ -2515,11 +2515,11 @@
     "section": "barShadowDirectionSource",
     "label": "Direction Source",
     "tabIndex": 6,
-    "category": "Dank Bar",
+    "category": "Adv Bar",
     "keywords": [
       "bar",
       "choose",
-      "dank",
+      "adv",
       "direction",
       "panel",
       "resolves",
@@ -2535,11 +2535,11 @@
     "section": "barFontScale",
     "label": "Font Scale",
     "tabIndex": 6,
-    "category": "Dank Bar",
+    "category": "Adv Bar",
     "keywords": [
       "bar",
-      "dank",
-      "dankbar",
+      "adv",
+      "advbar",
       "font",
       "independently",
       "panel",
@@ -2550,17 +2550,17 @@
       "topbar"
     ],
     "icon": "text_fields",
-    "description": "Scale DankBar font sizes independently"
+    "description": "Scale AdvBar font sizes independently"
   },
   {
     "section": "barIconScale",
     "label": "Icon Scale",
     "tabIndex": 6,
-    "category": "Dank Bar",
+    "category": "Adv Bar",
     "keywords": [
       "bar",
-      "dank",
-      "dankbar",
+      "adv",
+      "advbar",
       "icon",
       "independently",
       "panel",
@@ -2571,16 +2571,16 @@
       "topbar"
     ],
     "icon": "interests",
-    "description": "Scale DankBar icon sizes independently"
+    "description": "Scale AdvBar icon sizes independently"
   },
   {
     "section": "barShadowDirectionManual",
     "label": "Manual Direction",
     "tabIndex": 6,
-    "category": "Dank Bar",
+    "category": "Adv Bar",
     "keywords": [
       "bar",
-      "dank",
+      "adv",
       "direction",
       "fixed",
       "manual",
@@ -2596,10 +2596,10 @@
     "section": "barTransparency",
     "label": "Opacity",
     "tabIndex": 6,
-    "category": "Dank Bar",
+    "category": "Adv Bar",
     "keywords": [
       "bar",
-      "dank",
+      "adv",
       "opacity",
       "panel",
       "statusbar",
@@ -2611,10 +2611,10 @@
     "section": "_tab_6",
     "label": "Primary Bar",
     "tabIndex": 6,
-    "category": "Dank Bar",
+    "category": "Adv Bar",
     "keywords": [
       "bar",
-      "dank",
+      "adv",
       "panel",
       "primary",
       "statusbar",
@@ -2627,10 +2627,10 @@
     "section": "barShadow",
     "label": "Shadow Override",
     "tabIndex": 6,
-    "category": "Dank Bar",
+    "category": "Adv Bar",
     "keywords": [
       "bar",
-      "dank",
+      "adv",
       "global",
       "override",
       "panel",
@@ -2647,11 +2647,11 @@
     "section": "barSpacing",
     "label": "Spacing",
     "tabIndex": 6,
-    "category": "Dank Bar",
+    "category": "Adv Bar",
     "keywords": [
       "bar",
       "between",
-      "dank",
+      "adv",
       "edges",
       "exclusive",
       "gap",
@@ -2677,7 +2677,7 @@
     "section": "trayIconTint",
     "label": "System Tray Icon Tint",
     "tabIndex": 6,
-    "category": "Dank Bar",
+    "category": "Adv Bar",
     "keywords": [
       "applying",
       "bar",
@@ -2685,7 +2685,7 @@
       "color",
       "colour",
       "controls",
-      "dank",
+      "adv",
       "hue",
       "icon",
       "much",
@@ -2705,14 +2705,14 @@
     "section": "barWidgetOutline",
     "label": "Widget Outline",
     "tabIndex": 6,
-    "category": "Dank Bar",
+    "category": "Adv Bar",
     "keywords": [
       "appearance",
       "bar",
       "color",
       "colors",
       "colour",
-      "dank",
+      "adv",
       "hue",
       "look",
       "outline",
@@ -2744,7 +2744,7 @@
       "wireless"
     ],
     "icon": "wifi",
-    "conditionKey": "dmsConnected"
+    "conditionKey": "advsConnected"
   },
   {
     "section": "networkStatus",
@@ -2793,7 +2793,7 @@
     "icon": "edit"
   },
   {
-    "section": "dankLauncherV2Appearance",
+    "section": "advLauncherV2Appearance",
     "label": "Appearance",
     "tabIndex": 9,
     "category": "Launcher",
@@ -2816,7 +2816,7 @@
     "description": "Show mode tabs and keyboard hints at the bottom."
   },
   {
-    "section": "dankLauncherV2BorderEnabled",
+    "section": "advLauncherV2BorderEnabled",
     "label": "Border",
     "tabIndex": 9,
     "category": "Launcher",
@@ -2864,11 +2864,11 @@
   },
   {
     "section": "builtInPlugins",
-    "label": "DMS",
+    "label": "ADVS",
     "tabIndex": 9,
     "category": "Launcher",
     "keywords": [
-      "dms",
+      "advs",
       "drawer",
       "launcher",
       "menu",
@@ -2908,7 +2908,7 @@
       "app drawer",
       "app menu",
       "applications",
-      "dankisland",
+      "advisland",
       "default",
       "drawer",
       "full",
@@ -2929,7 +2929,7 @@
     "tabIndex": 9,
     "category": "Launcher",
     "keywords": [
-      "dankisland",
+      "advisland",
       "default",
       "drawer",
       "full",
@@ -2999,7 +2999,7 @@
     "icon": "visibility_off"
   },
   {
-    "section": "dankLauncherV2IncludeFilesInAll",
+    "section": "advLauncherV2IncludeFilesInAll",
     "label": "Include Files in All Tab",
     "tabIndex": 9,
     "category": "Launcher",
@@ -3021,7 +3021,7 @@
     "description": "Merge indexed file results into the All tab (requires dsearch)."
   },
   {
-    "section": "dankLauncherV2IncludeFoldersInAll",
+    "section": "advLauncherV2IncludeFoldersInAll",
     "label": "Include Folders in All Tab",
     "tabIndex": 9,
     "category": "Launcher",
@@ -3288,7 +3288,7 @@
     "description": "Include desktop actions (shortcuts) in search results."
   },
   {
-    "section": "dankLauncherV2ShowFooter",
+    "section": "advLauncherV2ShowFooter",
     "label": "Show Footer",
     "tabIndex": 9,
     "category": "Launcher",
@@ -3343,7 +3343,7 @@
     "description": "Show All, Apps, Files, and Plugins chips beside the Spotlight Bar input."
   },
   {
-    "section": "dankLauncherV2ShowSourceBadges",
+    "section": "advLauncherV2ShowSourceBadges",
     "label": "Show Package Source Badges",
     "tabIndex": 9,
     "category": "Launcher",
@@ -3481,7 +3481,7 @@
     ]
   },
   {
-    "section": "dankLauncherV2BorderThickness",
+    "section": "advLauncherV2BorderThickness",
     "label": "Thickness",
     "tabIndex": 9,
     "category": "Launcher",
@@ -3495,7 +3495,7 @@
     ]
   },
   {
-    "section": "dankLauncherV2UnloadOnClose",
+    "section": "advLauncherV2UnloadOnClose",
     "label": "Unload on Close",
     "tabIndex": 9,
     "category": "Launcher",
@@ -3881,7 +3881,7 @@
       "appearance",
       "colors",
       "colour",
-      "dankshell",
+      "advshell",
       "dark",
       "dark mode",
       "icon",
@@ -3894,7 +3894,7 @@
       "system",
       "theme"
     ],
-    "description": "DankShell & System Icons (requires restart)"
+    "description": "AdvShell & System Icons (requires restart)"
   },
   {
     "section": "matugenTemplateNeovimSettings",
@@ -4007,7 +4007,7 @@
   },
   {
     "section": "matugenTemplateNeovimSetBackground",
-    "label": "Follow DMS background color",
+    "label": "Follow ADVS background color",
     "tabIndex": 10,
     "category": "Theme & Colors",
     "keywords": [
@@ -4016,7 +4016,7 @@
       "color",
       "colors",
       "colour",
-      "dms",
+      "advs",
       "follow",
       "hue",
       "look",
@@ -4369,7 +4369,7 @@
       "appearance",
       "colors",
       "colour",
-      "dankshell",
+      "advshell",
       "day",
       "icon",
       "icons",
@@ -4382,7 +4382,7 @@
       "system",
       "theme"
     ],
-    "description": "DankShell & System Icons (requires restart)"
+    "description": "AdvShell & System Icons (requires restart)"
   },
   {
     "section": "matugenContrast",
@@ -4516,7 +4516,7 @@
     "conditionKey": "isMango"
   },
   {
-    "section": "dmsWindowsFloating",
+    "section": "advsWindowsFloating",
     "label": "Open Windows Floating",
     "tabIndex": 10,
     "category": "Theme & Colors",
@@ -4540,7 +4540,7 @@
       "window",
       "windows"
     ],
-    "description": "Open DMS windows floating instead of tiled",
+    "description": "Open ADVS windows floating instead of tiled",
     "conditionKey": "windowRulesCapable"
   },
   {
@@ -4570,14 +4570,14 @@
     "description": "Shadow elevation on popouts, OSDs, and dropdowns"
   },
   {
-    "section": "runDmsMatugenTemplates",
-    "label": "Run DMS Templates",
+    "section": "runAdvsMatugenTemplates",
+    "label": "Run ADVS Templates",
     "tabIndex": 10,
     "category": "Theme & Colors",
     "keywords": [
       "appearance",
       "colors",
-      "dms",
+      "advs",
       "look",
       "matugen",
       "run",
@@ -5041,7 +5041,7 @@
       "theme",
       "vscode"
     ],
-    "description": "Requires the DMS Theme extension from the editor marketplace"
+    "description": "Requires the ADVS Theme extension from the editor marketplace"
   },
   {
     "section": "matugenTemplateWezterm",
@@ -5137,7 +5137,7 @@
       "window",
       "windows"
     ],
-    "description": "Opacity of floating DMS windows like Settings, Notepad, and authentication prompts"
+    "description": "Opacity of floating ADVS windows like Settings, Notepad, and authentication prompts"
   },
   {
     "section": "matugenTemplateZed",
@@ -5702,7 +5702,7 @@
       "starts",
       "startup"
     ],
-    "description": "Automatically lock the screen when DMS starts"
+    "description": "Automatically lock the screen when ADVS starts"
   },
   {
     "section": "lockBeforeSuspend",
@@ -8618,11 +8618,11 @@
     "section": "_tab_22",
     "label": "Widgets",
     "tabIndex": 22,
-    "category": "Dank Bar",
+    "category": "Adv Bar",
     "keywords": [
       "bar",
       "components",
-      "dank",
+      "adv",
       "modules",
       "panel",
       "statusbar",
@@ -8730,7 +8730,7 @@
       "system"
     ],
     "icon": "content_paste",
-    "conditionKey": "dmsConnected"
+    "conditionKey": "advsConnected"
   },
   {
     "section": "clipboardEnterToPaste",
@@ -9001,7 +9001,7 @@
       "widgets"
     ],
     "icon": "widgets",
-    "conditionKey": "dmsConnected"
+    "conditionKey": "advsConnected"
   },
   {
     "section": "desktopWidgetsManage",
@@ -9143,7 +9143,7 @@
       "locale"
     ],
     "icon": "language",
-    "description": "Change the locale used by the DMS interface."
+    "description": "Change the locale used by the ADVS interface."
   },
   {
     "section": "_tab_30",
@@ -9218,7 +9218,7 @@
       "write"
     ],
     "icon": "fingerprint",
-    "description": "DMS removes its managed block from /etc/pam.d/greetd and stops write services",
+    "description": "ADVS removes its managed block from /etc/pam.d/greetd and stops write services",
     "conditionKey": "greeterAvailable"
   },
   {
@@ -9449,7 +9449,7 @@
       "system",
       "write"
     ],
-    "description": "DMS removes its managed block from /etc/pam.d/greetd and stops write services",
+    "description": "ADVS removes its managed block from /etc/pam.d/greetd and stops write services",
     "conditionKey": "greeterAvailable"
   },
   {
@@ -10121,7 +10121,7 @@
       "user",
       "users"
     ],
-    "description": "Add the new user to the %1 group so they can run dms-greeter sync --profile."
+    "description": "Add the new user to the %1 group so they can run advs-greeter sync --profile."
   },
   {
     "section": "createUser",
@@ -10452,7 +10452,7 @@
       "settings",
       "window"
     ],
-    "description": "Auto-close Niri overview when DMS launches or focuses a window."
+    "description": "Auto-close Niri overview when ADVS launches or focuses a window."
   },
   {
     "section": "hyprlandLayoutBarXrayEnabled",
@@ -10891,7 +10891,7 @@
       "window"
     ],
     "icon": "overview",
-    "description": "Auto-close Niri overview when DMS launches or focuses a window.",
+    "description": "Auto-close Niri overview when ADVS launches or focuses a window.",
     "conditionKey": "isNiri"
   },
   {
@@ -11558,12 +11558,12 @@
     "section": "_tab_43",
     "label": "Widgets & Notifications",
     "tabIndex": 43,
-    "category": "Dank Dash",
+    "category": "Adv Dash",
     "keywords": [
       "alert",
       "alerts",
       "components",
-      "dank",
+      "adv",
       "dash",
       "modules",
       "notif",
@@ -12179,16 +12179,16 @@
     "conditionKey": "isNiri"
   },
   {
-    "section": "dankIslandAppearance",
+    "section": "advIslandAppearance",
     "label": "Appearance",
     "tabIndex": 46,
-    "category": "Dank Island",
+    "category": "Adv Island",
     "keywords": [
       "activities",
       "appearance",
       "bright",
       "contrast",
-      "dank",
+      "adv",
       "dim",
       "draw",
       "dynamic island",
@@ -12203,17 +12203,17 @@
     "description": "Draw an outline and use the highest-contrast surface tone"
   },
   {
-    "section": "dankIslandSatelliteBackground",
+    "section": "advIslandSatelliteBackground",
     "label": "Background",
     "tabIndex": 46,
-    "category": "Dank Island",
+    "category": "Adv Island",
     "keywords": [
       "activities",
       "background",
       "behind",
       "chrome",
       "components",
-      "dank",
+      "adv",
       "draw",
       "dynamic island",
       "island",
@@ -12225,10 +12225,10 @@
     "description": "Draw an island-styled background behind satellite widgets"
   },
   {
-    "section": "dankIslandHomeStatusSlot",
+    "section": "advIslandHomeStatusSlot",
     "label": "Battery / Control Center",
     "tabIndex": 46,
-    "category": "Dank Island",
+    "category": "Adv Island",
     "keywords": [
       "activities",
       "battery",
@@ -12238,7 +12238,7 @@
       "compact",
       "control",
       "control center",
-      "dank",
+      "adv",
       "dynamic island",
       "gauge",
       "home",
@@ -12250,17 +12250,17 @@
     "description": "Battery gauge opens Control Center"
   },
   {
-    "section": "dankIslandInteraction",
+    "section": "advIslandInteraction",
     "label": "Behavior",
     "tabIndex": 46,
-    "category": "Dank Island",
+    "category": "Adv Island",
     "keywords": [
       "activities",
       "behavior",
       "click",
       "compact",
       "current",
-      "dank",
+      "adv",
       "dynamic island",
       "expand",
       "expands",
@@ -12277,10 +12277,10 @@
     "description": "Click expands only on an intentional press. Hybrid peeks the current compact face on hover"
   },
   {
-    "section": "dankIslandNotificationBadgeClearOnOpen",
+    "section": "advIslandNotificationBadgeClearOnOpen",
     "label": "Clear Badge on Open",
     "tabIndex": 46,
-    "category": "Dank Island",
+    "category": "Adv Island",
     "keywords": [
       "active",
       "activities",
@@ -12289,7 +12289,7 @@
       "badge",
       "clear",
       "clears",
-      "dank",
+      "adv",
       "dismiss",
       "dynamic island",
       "home",
@@ -12304,16 +12304,16 @@
     "description": "Clears the badge on open but keeps notifications active"
   },
   {
-    "section": "dankIslandHomeCompactTight",
+    "section": "advIslandHomeCompactTight",
     "label": "Compact Clock Pill",
     "tabIndex": 46,
-    "category": "Dank Island",
+    "category": "Adv Island",
     "keywords": [
       "activities",
       "both",
       "clock",
       "compact",
-      "dank",
+      "adv",
       "dynamic island",
       "height",
       "home",
@@ -12327,16 +12327,16 @@
     "description": "Compact home clock pill in both width and height"
   },
   {
-    "section": "dankIslandCompactHeight",
+    "section": "advIslandCompactHeight",
     "label": "Compact Island Height",
     "tabIndex": 46,
-    "category": "Dank Island",
+    "category": "Adv Island",
     "keywords": [
       "activities",
       "align",
       "compact",
       "components",
-      "dank",
+      "adv",
       "dynamic island",
       "height",
       "island",
@@ -12352,15 +12352,15 @@
     "description": "Resize the resting island to align with nearby widgets"
   },
   {
-    "section": "dankIslandSatelliteSwoopRadius",
+    "section": "advIslandSatelliteSwoopRadius",
     "label": "Corner Radius",
     "tabIndex": 46,
-    "category": "Dank Island",
+    "category": "Adv Island",
     "keywords": [
       "activities",
       "corner",
       "corners",
-      "dank",
+      "adv",
       "dynamic island",
       "goth",
       "island",
@@ -12373,15 +12373,15 @@
     ]
   },
   {
-    "section": "dankIslandInstance",
-    "label": "Dank Island - Beta",
+    "section": "advIslandInstance",
+    "label": "Adv Island - Beta",
     "tabIndex": 46,
-    "category": "Dank Island",
+    "category": "Adv Island",
     "keywords": [
       "activities",
       "bar",
       "beta",
-      "dank",
+      "adv",
       "dynamic island",
       "island",
       "media",
@@ -12391,17 +12391,17 @@
     "icon": "view_in_ar"
   },
   {
-    "section": "dankIslandNotificationExpand",
+    "section": "advIslandNotificationExpand",
     "label": "Expand Notifications",
     "tabIndex": 46,
-    "category": "Dank Island",
+    "category": "Adv Island",
     "keywords": [
       "activities",
       "alert",
       "alerts",
       "arrival",
       "click",
-      "dank",
+      "adv",
       "default",
       "dynamic island",
       "expand",
@@ -12415,16 +12415,16 @@
     "description": "Expand notifications by default instead of click or hover"
   },
   {
-    "section": "dankIslandInteractionMode",
+    "section": "advIslandInteractionMode",
     "label": "Expansion Mode",
     "tabIndex": 46,
-    "category": "Dank Island",
+    "category": "Adv Island",
     "keywords": [
       "activities",
       "click",
       "compact",
       "current",
-      "dank",
+      "adv",
       "dynamic island",
       "expand",
       "expands",
@@ -12442,15 +12442,15 @@
     "description": "Click expands only on an intentional press. Hybrid peeks the current compact face on hover"
   },
   {
-    "section": "dankIslandFloating",
+    "section": "advIslandFloating",
     "label": "Float",
     "tabIndex": 46,
-    "category": "Dank Island",
+    "category": "Adv Island",
     "keywords": [
       "above",
       "activities",
       "content",
-      "dank",
+      "adv",
       "dynamic island",
       "exclusive",
       "float",
@@ -12464,15 +12464,15 @@
     "description": "Floats above windows and other content"
   },
   {
-    "section": "dankIslandSatelliteGothCorners",
+    "section": "advIslandSatelliteGothCorners",
     "label": "Goth Corners",
     "tabIndex": 46,
-    "category": "Dank Island",
+    "category": "Adv Island",
     "keywords": [
       "activities",
       "background",
       "corners",
-      "dank",
+      "adv",
       "dynamic island",
       "edges",
       "goth",
@@ -12488,14 +12488,14 @@
     "description": "Sweep the background into the screen edges"
   },
   {
-    "section": "dankIslandHoverCloseDelay",
+    "section": "advIslandHoverCloseDelay",
     "label": "Hide Delay",
     "tabIndex": 46,
-    "category": "Dank Island",
+    "category": "Adv Island",
     "keywords": [
       "activities",
       "close",
-      "dank",
+      "adv",
       "delay",
       "dynamic island",
       "hide",
@@ -12505,16 +12505,16 @@
     ]
   },
   {
-    "section": "dankIslandHighContrast",
+    "section": "advIslandHighContrast",
     "label": "High Contrast",
     "tabIndex": 46,
-    "category": "Dank Island",
+    "category": "Adv Island",
     "keywords": [
       "accessibility",
       "activities",
       "appearance",
       "contrast",
-      "dank",
+      "adv",
       "draw",
       "dynamic island",
       "high",
@@ -12527,16 +12527,16 @@
     "description": "Draw an outline and use the highest-contrast surface tone"
   },
   {
-    "section": "dankIslandActivities",
+    "section": "advIslandActivities",
     "label": "Home Compact",
     "tabIndex": 46,
-    "category": "Dank Island",
+    "category": "Adv Island",
     "keywords": [
       "activities",
       "afk",
       "cava",
       "compact",
-      "dank",
+      "adv",
       "dynamic island",
       "home",
       "idle",
@@ -12554,14 +12554,14 @@
     "description": "Search when idle, visualizer when media is playing"
   },
   {
-    "section": "dankIslandHorizontalOffset",
+    "section": "advIslandHorizontalOffset",
     "label": "Horizontal Offset",
     "tabIndex": 46,
-    "category": "Dank Island",
+    "category": "Adv Island",
     "keywords": [
       "activities",
       "center",
-      "dank",
+      "adv",
       "display",
       "dynamic island",
       "horizontal",
@@ -12582,23 +12582,23 @@
     "section": "_tab_46",
     "label": "Island",
     "tabIndex": 46,
-    "category": "Dank Island",
+    "category": "Adv Island",
     "keywords": [
       "activities",
-      "dank",
+      "adv",
       "dynamic island",
       "island"
     ],
     "icon": "view_in_ar"
   },
   {
-    "section": "dankIslandSatelliteGap",
+    "section": "advIslandSatelliteGap",
     "label": "Island Gap",
     "tabIndex": 46,
-    "category": "Dank Island",
+    "category": "Adv Island",
     "keywords": [
       "activities",
-      "dank",
+      "adv",
       "dynamic island",
       "gap",
       "island",
@@ -12608,14 +12608,14 @@
     ]
   },
   {
-    "section": "dankIslandBarId",
+    "section": "advIslandBarId",
     "label": "Island Instance",
     "tabIndex": 46,
-    "category": "Dank Island",
+    "category": "Adv Island",
     "keywords": [
       "activities",
       "bar",
-      "dank",
+      "adv",
       "dynamic island",
       "instance",
       "island",
@@ -12625,17 +12625,17 @@
     ]
   },
   {
-    "section": "dankIslandMediaClockVisible",
+    "section": "advIslandMediaClockVisible",
     "label": "Keep Clock with Media",
     "tabIndex": 46,
-    "category": "Dank Island",
+    "category": "Adv Island",
     "keywords": [
       "activities",
       "beside",
       "clickable",
       "clock",
       "compact",
-      "dank",
+      "adv",
       "details",
       "dynamic island",
       "island",
@@ -12648,17 +12648,17 @@
     "description": "Show a clickable clock beside compact media details"
   },
   {
-    "section": "dankIslandBatteryStyle",
+    "section": "advIslandBatteryStyle",
     "label": "Material Battery Style",
     "tabIndex": 46,
-    "category": "Dank Island",
+    "category": "Adv Island",
     "keywords": [
       "activities",
       "appearance",
       "battery",
       "charge",
       "charging",
-      "dank",
+      "adv",
       "dynamic island",
       "gauge",
       "island",
@@ -12672,10 +12672,10 @@
     "description": "Solid material type or Outline"
   },
   {
-    "section": "dankIslandHomeMediaSlot",
+    "section": "advIslandHomeMediaSlot",
     "label": "Media / Launcher",
     "tabIndex": 46,
-    "category": "Dank Island",
+    "category": "Adv Island",
     "keywords": [
       "activities",
       "afk",
@@ -12684,7 +12684,7 @@
       "applications",
       "cava",
       "compact",
-      "dank",
+      "adv",
       "dynamic island",
       "home",
       "idle",
@@ -12702,17 +12702,17 @@
     "description": "Search when idle, visualizer when media is playing"
   },
   {
-    "section": "dankIslandMotion",
+    "section": "advIslandMotion",
     "label": "Motion & Accessibility",
     "tabIndex": 46,
-    "category": "Dank Island",
+    "category": "Adv Island",
     "keywords": [
       "accessibility",
       "activities",
       "animation",
       "apply",
       "changes",
-      "dank",
+      "adv",
       "dynamic island",
       "geometry",
       "immediately",
@@ -12727,17 +12727,17 @@
     "description": "Apply island geometry changes immediately without spring overshoot"
   },
   {
-    "section": "dankIslandNotifications",
+    "section": "advIslandNotifications",
     "label": "Notifications",
     "tabIndex": 46,
-    "category": "Dank Island",
+    "category": "Adv Island",
     "keywords": [
       "activities",
       "alert",
       "alerts",
       "arrival",
       "click",
-      "dank",
+      "adv",
       "default",
       "dynamic island",
       "expand",
@@ -12752,15 +12752,15 @@
     "description": "Expand notifications by default instead of click or hover"
   },
   {
-    "section": "dankIslandSatelliteTransparency",
+    "section": "advIslandSatelliteTransparency",
     "label": "Opacity",
     "tabIndex": 46,
-    "category": "Dank Island",
+    "category": "Adv Island",
     "keywords": [
       "activities",
       "background",
       "blur",
-      "dank",
+      "adv",
       "dynamic island",
       "island",
       "opacity",
@@ -12769,15 +12769,15 @@
     ]
   },
   {
-    "section": "dankIslandTransparency",
+    "section": "advIslandTransparency",
     "label": "Opacity",
     "tabIndex": 46,
-    "category": "Dank Island",
+    "category": "Adv Island",
     "keywords": [
       "activities",
       "appearance",
       "blur",
-      "dank",
+      "adv",
       "dynamic island",
       "island",
       "opacity",
@@ -12786,13 +12786,13 @@
     ]
   },
   {
-    "section": "dankIslandHoverOpenDelay",
+    "section": "advIslandHoverOpenDelay",
     "label": "Open Delay",
     "tabIndex": 46,
-    "category": "Dank Island",
+    "category": "Adv Island",
     "keywords": [
       "activities",
-      "dank",
+      "adv",
       "delay",
       "dynamic island",
       "hover",
@@ -12802,14 +12802,14 @@
     ]
   },
   {
-    "section": "dankIslandOuterGap",
+    "section": "advIslandOuterGap",
     "label": "Outer Gaps",
     "tabIndex": 46,
-    "category": "Dank Island",
+    "category": "Adv Island",
     "keywords": [
       "activities",
       "between",
-      "dank",
+      "adv",
       "display",
       "distance",
       "dynamic island",
@@ -12828,15 +12828,15 @@
     "description": "Distance between display edge and island"
   },
   {
-    "section": "dankIslandPalette",
+    "section": "advIslandPalette",
     "label": "Palette",
     "tabIndex": 46,
-    "category": "Dank Island",
+    "category": "Adv Island",
     "keywords": [
       "activities",
       "appearance",
       "bright",
-      "dank",
+      "adv",
       "dim",
       "dynamic island",
       "island",
@@ -12845,15 +12845,15 @@
     ]
   },
   {
-    "section": "dankIslandPlacement",
+    "section": "advIslandPlacement",
     "label": "Position",
     "tabIndex": 46,
-    "category": "Dank Island",
+    "category": "Adv Island",
     "keywords": [
       "above",
       "activities",
       "content",
-      "dank",
+      "adv",
       "dynamic island",
       "exclusive",
       "float",
@@ -12869,17 +12869,17 @@
     "description": "Floats above windows and other content"
   },
   {
-    "section": "dankIslandSatellitePosition",
+    "section": "advIslandSatellitePosition",
     "label": "Position",
     "tabIndex": 46,
-    "category": "Dank Island",
+    "category": "Adv Island",
     "keywords": [
       "activities",
       "align",
       "beside",
       "center",
       "components",
-      "dank",
+      "adv",
       "dynamic island",
       "edges",
       "island",
@@ -12897,17 +12897,17 @@
     "description": "Keep widgets beside the island or align them like a standalone bar"
   },
   {
-    "section": "dankIslandReducedMotion",
+    "section": "advIslandReducedMotion",
     "label": "Reduce Motion",
     "tabIndex": 46,
-    "category": "Dank Island",
+    "category": "Adv Island",
     "keywords": [
       "accessibility",
       "activities",
       "animation",
       "apply",
       "changes",
-      "dank",
+      "adv",
       "dynamic island",
       "geometry",
       "immediately",
@@ -12921,15 +12921,15 @@
     "description": "Apply island geometry changes immediately without spring overshoot"
   },
   {
-    "section": "dankIslandReserveHeight",
+    "section": "advIslandReserveHeight",
     "label": "Reserved Height",
     "tabIndex": 46,
-    "category": "Dank Island",
+    "category": "Adv Island",
     "keywords": [
       "activities",
       "clear",
       "compact",
-      "dank",
+      "adv",
       "dynamic island",
       "exclusive",
       "height",
@@ -12944,14 +12944,14 @@
     "description": "Space kept clear for compact island and satellites"
   },
   {
-    "section": "dankIslandSatellites",
+    "section": "advIslandSatellites",
     "label": "Satellite Widgets",
     "tabIndex": 46,
-    "category": "Dank Island",
+    "category": "Adv Island",
     "keywords": [
       "activities",
       "components",
-      "dank",
+      "adv",
       "dynamic island",
       "independent",
       "island",
@@ -12966,10 +12966,10 @@
     "description": "Place independent widgets to left and right of island"
   },
   {
-    "section": "dankIslandHomeNotificationBadge",
+    "section": "advIslandHomeNotificationBadge",
     "label": "Show Badge",
     "tabIndex": 46,
-    "category": "Dank Island",
+    "category": "Adv Island",
     "keywords": [
       "activities",
       "alert",
@@ -12977,7 +12977,7 @@
       "beside",
       "clock",
       "count",
-      "dank",
+      "adv",
       "dynamic island",
       "home",
       "island",
@@ -12992,14 +12992,14 @@
     "description": "Unread notification count beside the clock"
   },
   {
-    "section": "dankIslandSatellitesEnabled",
+    "section": "advIslandSatellitesEnabled",
     "label": "Show Satellite Widgets",
     "tabIndex": 46,
-    "category": "Dank Island",
+    "category": "Adv Island",
     "keywords": [
       "activities",
       "components",
-      "dank",
+      "adv",
       "dynamic island",
       "independent",
       "island",
@@ -13014,16 +13014,16 @@
     "description": "Place independent widgets to left and right of island"
   },
   {
-    "section": "dankIslandSpringDamping",
+    "section": "advIslandSpringDamping",
     "label": "Spring Damping",
     "tabIndex": 46,
-    "category": "Dank Island",
+    "category": "Adv Island",
     "keywords": [
       "activities",
       "animation",
       "bounce",
       "damping",
-      "dank",
+      "adv",
       "dynamic island",
       "higher",
       "island",
@@ -13036,14 +13036,14 @@
     "description": "Higher values settle island with less bounce"
   },
   {
-    "section": "dankIslandSpringMass",
+    "section": "advIslandSpringMass",
     "label": "Spring Mass",
     "tabIndex": 46,
-    "category": "Dank Island",
+    "category": "Adv Island",
     "keywords": [
       "activities",
       "animation",
-      "dank",
+      "adv",
       "dynamic island",
       "give",
       "higher",
@@ -13058,14 +13058,14 @@
     "description": "Higher percentages give island more inertia"
   },
   {
-    "section": "dankIslandSpringStiffness",
+    "section": "advIslandSpringStiffness",
     "label": "Spring Stiffness",
     "tabIndex": 46,
-    "category": "Dank Island",
+    "category": "Adv Island",
     "keywords": [
       "activities",
       "animation",
-      "dank",
+      "adv",
       "dynamic island",
       "higher",
       "island",
@@ -13082,14 +13082,14 @@
     "description": "Higher values pull island toward its target more strongly"
   },
   {
-    "section": "dankIslandUseOverlayLayer",
+    "section": "advIslandUseOverlayLayer",
     "label": "Use Overlay Layer",
     "tabIndex": 46,
-    "category": "Dank Island",
+    "category": "Adv Island",
     "keywords": [
       "activities",
       "apps",
-      "dank",
+      "adv",
       "dynamic island",
       "fullscreen",
       "island",
@@ -13104,17 +13104,17 @@
     "description": "Stage the Wayland overlay layer to remain visible over fullscreen apps"
   },
   {
-    "section": "dankIslandHomeWeatherSlot",
+    "section": "advIslandHomeWeatherSlot",
     "label": "Weather",
     "tabIndex": 46,
-    "category": "Dank Island",
+    "category": "Adv Island",
     "keywords": [
       "activities",
       "activity",
       "celsius",
       "climate",
       "compact",
-      "dank",
+      "adv",
       "dynamic island",
       "fahrenheit",
       "forecast",

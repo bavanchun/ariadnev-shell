@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"path/filepath"
 
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/log"
+	"github.com/bavanchun/ariadnev-shell/core/internal/log"
 	"github.com/godbus/dbus/v5"
 )
 
@@ -73,7 +73,7 @@ func SendNotification(result NotifyResult) uint32 {
 	call := obj.Call(
 		notifyInterface+".Notify",
 		0,
-		"DMS",
+		"ADVS",
 		uint32(0),
 		"",
 		summary,

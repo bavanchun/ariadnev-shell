@@ -12,7 +12,7 @@ Column {
     width: parent.width
     spacing: Theme.spacingM
 
-    DankToggle {
+    AdvToggle {
         id: ipLocationToggle
         width: parent.width
         text: I18n.tr("Use IP Location")
@@ -57,7 +57,7 @@ Column {
                     color: Theme.surfaceVariantText
                 }
 
-                DankTextField {
+                AdvTextField {
                     id: latitudeField
                     width: parent.width
                     height: 48
@@ -99,7 +99,7 @@ Column {
                     color: Theme.surfaceVariantText
                 }
 
-                DankTextField {
+                AdvTextField {
                     id: longitudeField
                     width: parent.width
                     height: 48
@@ -139,7 +139,7 @@ Column {
             font.weight: Font.Medium
         }
 
-        DankLocationSearch {
+        AdvLocationSearch {
             width: parent.width
             currentLocation: SessionData.nightModeLocationName
             onLocationSelected: (displayName, coordinates) => {

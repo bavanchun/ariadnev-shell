@@ -35,7 +35,7 @@ Singleton {
     readonly property bool helperAvailable: sysupdateAvailable && backends.length > 0
     readonly property bool useCustomCommand: SettingsData.updaterUseCustomCommand && (SettingsData.updaterCustomCommand || "").trim().length > 0
 
-    // Dont allow partial updates on arch, if they wanna break their system they can do it outside of DMS:
+    // Dont allow partial updates on arch, if they wanna break their system they can do it outside of ADVS:
     // https://wiki.archlinux.org/title/System_maintenance#Partial_upgrades_are_unsupported
     // AUR/Flatpak packages stay ignorable — holding those cannot break the repo dependency graph.
     readonly property bool systemHoldsAllowed: !["pacman", "paru", "yay"].includes(pkgManager)
@@ -47,12 +47,12 @@ Singleton {
     }
 
     Connections {
-        target: DMSService
+        target: ADVSService
         function onCapabilitiesReceived() {
             root.checkCapabilities();
         }
         function onConnectionStateChanged() {
-            if (DMSService.isConnected) {
+            if (ADVSService.isConnected) {
                 root.checkCapabilities();
             } else {
                 root.sysupdateAvailable = false;
@@ -82,19 +82,19 @@ Singleton {
     }
 
     Component.onCompleted: {
-        if (DMSService.dmsAvailable) {
+        if (ADVSService.advsAvailable) {
             checkCapabilities();
         }
         Qt.callLater(() => root._maybeStartupCheck());
     }
 
     function checkCapabilities() {
-        if (!DMSService.capabilities || !Array.isArray(DMSService.capabilities)) {
+        if (!ADVSService.capabilities || !Array.isArray(ADVSService.capabilities)) {
             sysupdateAvailable = false;
             Qt.callLater(() => root._maybeStartupCheck());
             return;
         }
-        const has = DMSService.capabilities.includes("sysupdate");
+        const has = ADVSService.capabilities.includes("sysupdate");
         if (has && !sysupdateAvailable) {
             sysupdateAvailable = true;
             requestState();
@@ -109,10 +109,10 @@ Singleton {
     }
 
     function requestState() {
-        if (!DMSService.isConnected || !sysupdateAvailable) {
+        if (!ADVSService.isConnected || !sysupdateAvailable) {
             return;
         }
-        DMSService.sysupdateGetState(resp => {
+        ADVSService.sysupdateGetState(resp => {
             if (resp && resp.result) {
                 _applyState(resp.result);
             }
@@ -197,7 +197,7 @@ Singleton {
     }
 
     function checkForUpdates() {
-        DMSService.sysupdateRefresh(false, null);
+        ADVSService.sysupdateRefresh(false, null);
     }
 
     function runUpdates(opts) {
@@ -210,15 +210,15 @@ Singleton {
                 params.terminalArgs = termArgs.split(/\s+/);
             }
         }
-        DMSService.sysupdateUpgrade(params, null);
+        ADVSService.sysupdateUpgrade(params, null);
     }
 
     function cancelUpdates() {
-        DMSService.sysupdateCancel(null);
+        ADVSService.sysupdateCancel(null);
     }
 
     function setInterval(seconds) {
-        DMSService.sysupdateSetInterval(seconds, null);
+        ADVSService.sysupdateSetInterval(seconds, null);
     }
 
     property bool _startupCheckDone: false
@@ -232,7 +232,7 @@ Singleton {
             return;
         if (_startupCheckDone)
             return;
-        if (!DMSService.isConnected || !sysupdateAvailable)
+        if (!ADVSService.isConnected || !sysupdateAvailable)
             return;
         _startupCheckDone = true;
         Qt.callLater(() => root.checkForUpdates());
@@ -255,9 +255,9 @@ Singleton {
         }
         _acquired = want;
         if (want) {
-            DMSService.sysupdateAcquire(null);
+            ADVSService.sysupdateAcquire(null);
             return;
         }
-        DMSService.sysupdateRelease(null);
+        ADVSService.sysupdateRelease(null);
     }
 }

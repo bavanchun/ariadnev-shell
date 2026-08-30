@@ -3,8 +3,8 @@ package plugins
 import (
 	"fmt"
 
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/plugins"
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/server/models"
+	"github.com/bavanchun/ariadnev-shell/core/internal/plugins"
+	"github.com/bavanchun/ariadnev-shell/core/internal/server/models"
 )
 
 func HandleUpdate(conn *models.Conn, req models.Request) {

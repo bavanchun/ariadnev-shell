@@ -314,8 +314,8 @@
   "A separate minimal launcher action that works in Standalone, Separate Frame Mode, and Connected Frame Mode.": {
     "A separate minimal launcher action that works in Standalone, Separate Frame Mode, and Connected Frame Mode.": "Окремий мінімальний запуск, який працює в автономному режимі, режимах окремого та підключеного фреймів"
   },
-  "A slight natural settle, DMS default": {
-    "A slight natural settle, DMS default": ""
+  "A slight natural settle, ADVS default": {
+    "A slight natural settle, ADVS default": ""
   },
   "A user with that name already exists.": {
     "A user with that name already exists.": "Користувач з таким ім'ям вже існує"
@@ -336,7 +336,7 @@
     "Aborted": "Перервано"
   },
   "About": {
-    "About": "Про DMS"
+    "About": "Про ADVS"
   },
   "Acceleration Profile": {
     "Acceleration Profile": "Профіль прискорення"
@@ -380,8 +380,8 @@
   "Activate Greeter": {
     "Activate Greeter": "Активувати екран входу"
   },
-  "Activate the DMS greeter? A terminal will open for sudo authentication. Run Sync after activation to apply your settings.": {
-    "Activate the DMS greeter? A terminal will open for sudo authentication. Run Sync after activation to apply your settings.": "Активувати екран входу DMS? Відкриється термінал для sudo-автентифікації. Після активації запустіть синхронізацію, щоб застосувати налаштування"
+  "Activate the ADVS greeter? A terminal will open for sudo authentication. Run Sync after activation to apply your settings.": {
+    "Activate the ADVS greeter? A terminal will open for sudo authentication. Run Sync after activation to apply your settings.": "Активувати екран входу ADVS? Відкриється термінал для sudo-автентифікації. Після активації запустіть синхронізацію, щоб застосувати налаштування"
   },
   "Activates immediately": {
     "Activates immediately": "Активується негайно"
@@ -428,11 +428,11 @@
   "Add \"%1\" to the %2 group?": {
     "Add \"%1\" to the %2 group?": "Додати «%1» до групи %2?"
   },
-  "Add \"%1\" to the %2 group? They must log out and back in, then run dms greeter sync --profile to publish their login-screen theme.": {
-    "Add \"%1\" to the %2 group? They must log out and back in, then run dms greeter sync --profile to publish their login-screen theme.": "Додати «%1» до групи %2? Користувач має вийти та знову увійти в систему, а потім виконати 'dms greeter sync --profile' для публікації теми екрана входу"
+  "Add \"%1\" to the %2 group? They must log out and back in, then run advs greeter sync --profile to publish their login-screen theme.": {
+    "Add \"%1\" to the %2 group? They must log out and back in, then run advs greeter sync --profile to publish their login-screen theme.": "Додати «%1» до групи %2? Користувач має вийти та знову увійти в систему, а потім виконати 'advs greeter sync --profile' для публікації теми екрана входу"
   },
-  "Add \"%1\" to the %2 group? They must log out and back in, then run dms-greeter sync --profile to publish their login-screen theme.": {
-    "Add \"%1\" to the %2 group? They must log out and back in, then run dms-greeter sync --profile to publish their login-screen theme.": "Додати «%1» до групи %2? Користувач має вийти з системи та увійти знову, а потім запустити 'dms-greeter sync --profile', щоб опублікувати тему екрана входу"
+  "Add \"%1\" to the %2 group? They must log out and back in, then run advs-greeter sync --profile to publish their login-screen theme.": {
+    "Add \"%1\" to the %2 group? They must log out and back in, then run advs-greeter sync --profile to publish their login-screen theme.": "Додати «%1» до групи %2? Користувач має вийти з системи та увійти знову, а потім запустити 'advs-greeter sync --profile', щоб опублікувати тему екрана входу"
   },
   "Add Bar": {
     "Add Bar": "Додати панель"
@@ -482,11 +482,11 @@
   "Add notes": {
     "Add notes": "Додати нотатки"
   },
-  "Add the new user to the %1 group so they can run dms greeter sync --profile.": {
-    "Add the new user to the %1 group so they can run dms greeter sync --profile.": "Додайте нового користувача до групи %1, щоб він міг запустити 'dms greeter sync --profile'"
+  "Add the new user to the %1 group so they can run advs greeter sync --profile.": {
+    "Add the new user to the %1 group so they can run advs greeter sync --profile.": "Додайте нового користувача до групи %1, щоб він міг запустити 'advs greeter sync --profile'"
   },
-  "Add the new user to the %1 group so they can run dms-greeter sync --profile.": {
-    "Add the new user to the %1 group so they can run dms-greeter sync --profile.": "Додайте нового користувача до групи %1, щоб він міг запустити 'dms-greeter sync --profile'"
+  "Add the new user to the %1 group so they can run advs-greeter sync --profile.": {
+    "Add the new user to the %1 group so they can run advs-greeter sync --profile.": "Додайте нового користувача до групи %1, щоб він міг запустити 'advs-greeter sync --profile'"
   },
   "Add the new user to the %1 group so they can use sudo.": {
     "Add the new user to the %1 group so they can use sudo.": "Додайте нового користувача до групи %1, щоб він міг використовувати sudo"
@@ -905,8 +905,8 @@
   "Auto-Hide Timeout": {
     "Auto-Hide Timeout": "Тайм-аут приховування"
   },
-  "Auto-close Niri overview when DMS launches or focuses a window.": {
-    "Auto-close Niri overview when DMS launches or focuses a window.": "Автоматично закривати огляд Niri, коли DMS запускає або фокусує вікно"
+  "Auto-close Niri overview when ADVS launches or focuses a window.": {
+    "Auto-close Niri overview when ADVS launches or focuses a window.": "Автоматично закривати огляд Niri, коли ADVS запускає або фокусує вікно"
   },
   "Auto-close Niri overview when launching apps.": {
     "Auto-close Niri overview when launching apps.": "Автоматично закривати огляд Niri при запуску програм"
@@ -977,8 +977,8 @@
   "Automatically lock after": {
     "Automatically lock after": "Автоматично блокувати через"
   },
-  "Automatically lock the screen when DMS starts": {
-    "Automatically lock the screen when DMS starts": "Автоматично блокувати екран при запуску DMS"
+  "Automatically lock the screen when ADVS starts": {
+    "Automatically lock the screen when ADVS starts": "Автоматично блокувати екран при запуску ADVS"
   },
   "Automatically lock the screen when the system prepares to suspend": {
     "Automatically lock the screen when the system prepares to suspend": "Автоматично блокувати екран перед переходом у режим сну"
@@ -1415,8 +1415,8 @@
   "Center Section": {
     "Center Section": "Центральна секція"
   },
-  "Center Section - Reserved by Dank Island": {
-    "Center Section - Reserved by Dank Island": ""
+  "Center Section - Reserved by Adv Island": {
+    "Center Section - Reserved by Adv Island": ""
   },
   "Center Single Column": {
     "Center Single Column": "Центрувати одну колонку"
@@ -1433,8 +1433,8 @@
   "Change Volume": {
     "Change Volume": "Змінити гучність"
   },
-  "Change the locale used by the DMS interface.": {
-    "Change the locale used by the DMS interface.": "Змінити локаль, що використовується інтерфейсом DMS"
+  "Change the locale used by the ADVS interface.": {
+    "Change the locale used by the ADVS interface.": "Змінити локаль, що використовується інтерфейсом ADVS"
   },
   "Change the locale used for date and time formatting, independent of the interface language.": {
     "Change the locale used for date and time formatting, independent of the interface language.": "Змінити локаль для форматування дати та часу незалежно від мови інтерфейсу"
@@ -1529,8 +1529,8 @@
   "Choose neutral or accent-colored widget text": {
     "Choose neutral or accent-colored widget text": "Оберіть нейтральний або акцентний колір тексту віджета"
   },
-  "Choose the logo displayed on the launcher button in DankBar": {
-    "Choose the logo displayed on the launcher button in DankBar": "Оберіть логотип, що відображатиметься на кнопці запуску в DankBar"
+  "Choose the logo displayed on the launcher button in AdvBar": {
+    "Choose the logo displayed on the launcher button in AdvBar": "Оберіть логотип, що відображатиметься на кнопці запуску в AdvBar"
   },
   "Choose wallpaper folder": {
     "Choose wallpaper folder": "Оберіть папку зі шпалерами"
@@ -1742,8 +1742,8 @@
   "Color theme for syntax highlighting. %1 themes available.": {
     "Color theme for syntax highlighting. %1 themes available.": "Кольорова тема для підсвічування синтаксису. Доступно %1 тем"
   },
-  "Color theme from DMS registry": {
-    "Color theme from DMS registry": "Кольорова тема з реєстру DMS"
+  "Color theme from ADVS registry": {
+    "Color theme from ADVS registry": "Кольорова тема з реєстру ADVS"
   },
   "Colorful": {
     "Colorful": "Різнокольоровий"
@@ -1853,8 +1853,8 @@
   "Configure which displays show \"%1": {
     "Configure which displays show \"%1\"": "Налаштуйте, які дисплеї показуватимуть «%1»"
   },
-  "Configure which displays show Dank Island as \"%1": {
-    "Configure which displays show Dank Island as \"%1\"": ""
+  "Configure which displays show Adv Island as \"%1": {
+    "Configure which displays show Adv Island as \"%1\"": ""
   },
   "Configure which displays show shell components": {
     "Configure which displays show shell components": "Налаштуйте, на яких дисплеях відображатимуться компоненти оболонки"
@@ -1982,8 +1982,8 @@
   "Convenience options for the login screen": {
     "Convenience options for the login screen": "Опції зручності для екрана входу"
   },
-  "Convert to DMS": {
-    "Convert to DMS": "Конвертувати в DMS"
+  "Convert to ADVS": {
+    "Convert to ADVS": "Конвертувати в ADVS"
   },
   "Cooldown": {
     "Cooldown": "Затримка"
@@ -2258,41 +2258,41 @@
   "DEMO MODE - Click anywhere to exit": {
     "DEMO MODE - Click anywhere to exit": "ДЕМО-РЕЖИМ - Натисніть будь-де для виходу"
   },
-  "DMS Chooser": {
-    "DMS Chooser": "Вибір DMS"
+  "ADVS Chooser": {
+    "ADVS Chooser": "Вибір ADVS"
   },
-  "DMS Plugin Manager Unavailable": {
-    "DMS Plugin Manager Unavailable": "Менеджер плагінів DMS недоступний"
+  "ADVS Plugin Manager Unavailable": {
+    "ADVS Plugin Manager Unavailable": "Менеджер плагінів ADVS недоступний"
   },
-  "DMS Settings": {
-    "DMS Settings": "Налаштування DMS"
+  "ADVS Settings": {
+    "ADVS Settings": "Налаштування ADVS"
   },
-  "DMS Settings writes Lua keybinds. Add the DMS include so edits apply.": {
-    "DMS Settings writes Lua keybinds. Add the DMS include so edits apply.": "Налаштування DMS записують гарячі клавіші Lua. Додайте dms-include, щоб зміни застосувалися"
+  "ADVS Settings writes Lua keybinds. Add the ADVS include so edits apply.": {
+    "ADVS Settings writes Lua keybinds. Add the ADVS include so edits apply.": "Налаштування ADVS записують гарячі клавіші Lua. Додайте advs-include, щоб зміни застосувалися"
   },
-  "DMS Shortcuts": {
-    "DMS Shortcuts": "Ярлики DMS"
+  "ADVS Shortcuts": {
+    "ADVS Shortcuts": "Ярлики ADVS"
   },
-  "DMS is a highly customizable modern desktop shell with a %1 inspired design.<br/><br/>It is built with %2, a QT6 framework for building desktop shells, and %3, a statically typed, compiled programming language.": {
-    "DMS is a highly customizable modern desktop shell with a %1 inspired design.<br/><br/>It is built with %2, a QT6 framework for building desktop shells, and %3, a statically typed, compiled programming language.": "DMS — це сучасна оболонка робочого столу з широкими можливостями налаштування та дизайном, натхненним %1<br/><br/>Вона побудована за допомогою %2 (фреймворк QT6 для створення оболонок робочого столу) та %3 (статично типізована компільована мова програмування)"
+  "ADVS is a highly customizable modern desktop shell with a %1 inspired design.<br/><br/>It is built with %2, a QT6 framework for building desktop shells, and %3, a statically typed, compiled programming language.": {
+    "ADVS is a highly customizable modern desktop shell with a %1 inspired design.<br/><br/>It is built with %2, a QT6 framework for building desktop shells, and %3, a statically typed, compiled programming language.": "ADVS — це сучасна оболонка робочого столу з широкими можливостями налаштування та дизайном, натхненним %1<br/><br/>Вона побудована за допомогою %2 (фреймворк QT6 для створення оболонок робочого столу) та %3 (статично типізована компільована мова програмування)"
   },
-  "DMS out of date": {
-    "DMS out of date": "Версія DMS застаріла"
+  "ADVS out of date": {
+    "ADVS out of date": "Версія ADVS застаріла"
   },
-  "DMS removes its managed block from /etc/pam.d/greetd and stops write services": {
-    "DMS removes its managed block from /etc/pam.d/greetd and stops write services": "DMS видаляє свій керований блок з /etc/pam.d/greetd та зупиняє служби запису"
+  "ADVS removes its managed block from /etc/pam.d/greetd and stops write services": {
+    "ADVS removes its managed block from /etc/pam.d/greetd and stops write services": "ADVS видаляє свій керований блок з /etc/pam.d/greetd та зупиняє служби запису"
   },
-  "DMS server is outdated (API v%1, expected v%2)": {
-    "DMS server is outdated (API v%1, expected v%2)": "Сервер DMS застарів (API v%1, очікується v%2)"
+  "ADVS server is outdated (API v%1, expected v%2)": {
+    "ADVS server is outdated (API v%1, expected v%2)": "Сервер ADVS застарів (API v%1, очікується v%2)"
   },
-  "DMS service is not connected. Clipboard settings are unavailable.": {
-    "DMS service is not connected. Clipboard settings are unavailable.": "Служба DMS не підключена. Налаштування буфера обміну недоступні"
+  "ADVS service is not connected. Clipboard settings are unavailable.": {
+    "ADVS service is not connected. Clipboard settings are unavailable.": "Служба ADVS не підключена. Налаштування буфера обміну недоступні"
   },
-  "DMS shell actions (launcher, clipboard, etc.)": {
-    "DMS shell actions (launcher, clipboard, etc.)": "Дії оболонки DMS (запуск, буфер обміну тощо)"
+  "ADVS shell actions (launcher, clipboard, etc.)": {
+    "ADVS shell actions (launcher, clipboard, etc.)": "Дії оболонки ADVS (запуск, буфер обміну тощо)"
   },
-  "DMS_SOCKET not available": {
-    "DMS_SOCKET not available": "DMS_SOCKET недоступний"
+  "ADVS_SOCKET not available": {
+    "ADVS_SOCKET not available": "ADVS_SOCKET недоступний"
   },
   "Daily": {
     "Daily": "Щодня"
@@ -2303,41 +2303,41 @@
   "Damped springs settle straight to their target with no overshoot": {
     "Damped springs settle straight to their target with no overshoot": ""
   },
-  "Dank": {
-    "Dank": "Dank"
+  "Adv": {
+    "Adv": "Adv"
   },
-  "Dank Bar": {
-    "Dank Bar": "Панель Dank"
+  "Adv Bar": {
+    "Adv Bar": "Панель Adv"
   },
-  "Dank Bar Xray": {
-    "Dank Bar Xray": "Dank Bar Xray"
+  "Adv Bar Xray": {
+    "Adv Bar Xray": "Adv Bar Xray"
   },
-  "Dank Dash": {
-    "Dank Dash": "Dank Dash"
+  "Adv Dash": {
+    "Adv Dash": "Adv Dash"
   },
-  "Dank Island - Beta": {
-    "Dank Island - Beta": ""
+  "Adv Island - Beta": {
+    "Adv Island - Beta": ""
   },
-  "Dank Island instance": {
-    "Dank Island instance": ""
+  "Adv Island instance": {
+    "Adv Island instance": ""
   },
-  "DankBar": {
-    "DankBar": "DankBar"
+  "AdvBar": {
+    "AdvBar": "AdvBar"
   },
-  "DankCalendar": {
-    "DankCalendar": "DankCalendar"
+  "AdvCalendar": {
+    "AdvCalendar": "AdvCalendar"
   },
-  "DankCalendar isn't installed": {
-    "DankCalendar isn't installed": "DankCalendar не встановлено"
+  "AdvCalendar isn't installed": {
+    "AdvCalendar isn't installed": "AdvCalendar не встановлено"
   },
-  "DankCalendar isn't running": {
-    "DankCalendar isn't running": "DankCalendar не запущено"
+  "AdvCalendar isn't running": {
+    "AdvCalendar isn't running": "AdvCalendar не запущено"
   },
-  "DankMaterialShell is ready to use": {
-    "DankMaterialShell is ready to use": "DankMaterialShell готовий до роботи"
+  "AriadnevShell is ready to use": {
+    "AriadnevShell is ready to use": "AriadnevShell готовий до роботи"
   },
-  "DankShell & System Icons (requires restart)": {
-    "DankShell & System Icons (requires restart)": "Значки DankShell та системні (потребує перезапуску)"
+  "AdvShell & System Icons (requires restart)": {
+    "AdvShell & System Icons (requires restart)": "Значки AdvShell та системні (потребує перезапуску)"
   },
   "Dark Mode": {
     "Dark Mode": "Темний режим"
@@ -2423,8 +2423,8 @@
   "Default Width (%)": {
     "Default Width (%)": "Типова ширина (%)"
   },
-  "Default launcher shortcuts open a native launcher activity inside Dank Island. Spotlight is used when the focused screen has no DankIsland.": {
-    "Default launcher shortcuts open a native launcher activity inside Dank Island. Spotlight is used when the focused screen has no DankIsland.": ""
+  "Default launcher shortcuts open a native launcher activity inside Adv Island. Spotlight is used when the focused screen has no AdvIsland.": {
+    "Default launcher shortcuts open a native launcher activity inside Adv Island. Spotlight is used when the focused screen has no AdvIsland.": ""
   },
   "Default launcher shortcuts open the full launcher with mode tabs, grid view, and action panel.": {
     "Default launcher shortcuts open the full launcher with mode tabs, grid view, and action panel.": "Типові ярлики запуску відкривають повний запускач з вкладками режимів, сіткою та панеллю дій"
@@ -2789,8 +2789,8 @@
   "Drop here": {
     "Drop here": "Скиньте сюди"
   },
-  "Drop your override for %1 so the DMS default action re-applies?": {
-    "Drop your override for %1 so the DMS default action re-applies?": "Скинути переозначення для %1, щоб знову застосувалася дія за замовчуванням DMS?"
+  "Drop your override for %1 so the ADVS default action re-applies?": {
+    "Drop your override for %1 so the ADVS default action re-applies?": "Скинути переозначення для %1, щоб знову застосувалася дія за замовчуванням ADVS?"
   },
   "Duplicate": {
     "Duplicate": "Дублікат"
@@ -2939,8 +2939,8 @@
   "Enable a custom override below to set per-bar shadow intensity, opacity, and color.": {
     "Enable a custom override below to set per-bar shadow intensity, opacity, and color.": "Увімкніть власне переозначення нижче, щоб встановити інтенсивність, прозорість та колір тіні для кожної панелі"
   },
-  "Enable compositor-targetable blur layer (namespace: dms:blurwallpaper). Requires manual niri configuration.": {
-    "Enable compositor-targetable blur layer (namespace: dms:blurwallpaper). Requires manual niri configuration.": "Увімкнути шар розмиття для композитора (простір імен: dms:blurwallpaper). Потребує ручного налаштування Niri"
+  "Enable compositor-targetable blur layer (namespace: advs:blurwallpaper). Requires manual niri configuration.": {
+    "Enable compositor-targetable blur layer (namespace: advs:blurwallpaper). Requires manual niri configuration.": "Увімкнути шар розмиття для композитора (простір імен: advs:blurwallpaper). Потребує ручного налаштування Niri"
   },
   "Enable fingerprint at login": {
     "Enable fingerprint at login": "Дозволити відбиток пальця при вході"
@@ -2948,8 +2948,8 @@
   "Enable fingerprint authentication": {
     "Enable fingerprint authentication": "Дозволити автентифікацію за відбитком пальця"
   },
-  "Enable fingerprint or security key for DMS Greeter": {
-    "Enable fingerprint or security key for DMS Greeter": "Дозволити відбиток пальця або ключ безпеки для екрана входу DMS"
+  "Enable fingerprint or security key for ADVS Greeter": {
+    "Enable fingerprint or security key for ADVS Greeter": "Дозволити відбиток пальця або ключ безпеки для екрана входу ADVS"
   },
   "Enable loginctl lock integration": {
     "Enable loginctl lock integration": "Увімкнути інтеграцію з блокуванням loginctl"
@@ -3317,11 +3317,11 @@
   "Failed to ring device": {
     "Failed to ring device": "Не вдалося викликати пристрій (дзвінок)"
   },
-  "Failed to run 'dms greeter status'. Ensure DMS is installed and dms is in PATH.": {
-    "Failed to run 'dms greeter status'. Ensure DMS is installed and dms is in PATH.": "Не вдалося виконати 'dms greeter status'. Переконайтеся, що DMS встановлено і dms додано до PATH"
+  "Failed to run 'advs greeter status'. Ensure ADVS is installed and advs is in PATH.": {
+    "Failed to run 'advs greeter status'. Ensure ADVS is installed and advs is in PATH.": "Не вдалося виконати 'advs greeter status'. Переконайтеся, що ADVS встановлено і advs додано до PATH"
   },
-  "Failed to run 'dms-greeter status'. Ensure the dms-greeter package is installed.": {
-    "Failed to run 'dms-greeter status'. Ensure the dms-greeter package is installed.": "Не вдалося запустити 'dms-greeter status'. Переконайтеся, що пакет dms-greeter встановлено"
+  "Failed to run 'advs-greeter status'. Ensure the advs-greeter package is installed.": {
+    "Failed to run 'advs-greeter status'. Ensure the advs-greeter package is installed.": "Не вдалося запустити 'advs-greeter status'. Переконайтеся, що пакет advs-greeter встановлено"
   },
   "Failed to save VPN credentials": {
     "Failed to save VPN credentials": "Не вдалося зберегти облікові дані VPN"
@@ -3467,8 +3467,8 @@
   "File received from %1": {
     "File received from %1": "Файл отримано від %1"
   },
-  "File search requires dsearch\nInstall from github.com/AvengeMedia/danksearch": {
-    "File search requires dsearch\nInstall from github.com/AvengeMedia/danksearch": "Пошук файлів потребує dsearch\nВстановіть з github.com/AvengeMedia/danksearch"
+  "File search requires dsearch\nInstall from github.com/bavanchun/advsearch": {
+    "File search requires dsearch\nInstall from github.com/bavanchun/advsearch": "Пошук файлів потребує dsearch\nВстановіть з github.com/bavanchun/advsearch"
   },
   "File search unavailable": {
     "File search unavailable": "Пошук файлів недоступний"
@@ -3626,8 +3626,8 @@
   "Folders": {
     "Folders": "Папки"
   },
-  "Follow DMS background color": {
-    "Follow DMS background color": "Слідувати за кольором фону DMS"
+  "Follow ADVS background color": {
+    "Follow ADVS background color": "Слідувати за кольором фону ADVS"
   },
   "Follow Monitor Focus": {
     "Follow Monitor Focus": "Слідувати за фокусом монітора"
@@ -3824,8 +3824,8 @@
   "Gamma Control": {
     "Gamma Control": "Керування гамою"
   },
-  "Gamma control not available. Requires DMS API v6+.": {
-    "Gamma control not available. Requires DMS API v6+.": "Керування гамою недоступне. Потрібен DMS API v6+ або новіше"
+  "Gamma control not available. Requires ADVS API v6+.": {
+    "Gamma control not available. Requires ADVS API v6+.": "Керування гамою недоступне. Потрібен ADVS API v6+ або новіше"
   },
   "Gap between the end widgets and the bar ends (0 = edge-to-edge)": {
     "Gap between the end widgets and the bar ends (0 = edge-to-edge)": "Проміжок між кінцевими віджетами та краями панелі (0 = від краю до краю)"
@@ -3839,11 +3839,11 @@
   "Generate Override": {
     "Generate Override": "Створити override"
   },
-  "Generate baseline GTK3/4 or QT5/QT6 (requires qt6ct-kde) configurations to follow DMS colors. Only needed once.<br /><br />It is recommended to configure %1 prior to applying GTK themes.": {
-    "Generate baseline GTK3/4 or QT5/QT6 (requires qt6ct-kde) configurations to follow DMS colors. Only needed once.<br /><br />It is recommended to configure %1 prior to applying GTK themes.": "Створити базові конфігурації GTK3/4 або QT5/QT6 (потрібен qt6ct-kde), щоб вони відповідали кольорам DMS. Потрібно виконати лише один раз<br/><br/>Рекомендується налаштувати %1 перед застосуванням тем GTK"
+  "Generate baseline GTK3/4 or QT5/QT6 (requires qt6ct-kde) configurations to follow ADVS colors. Only needed once.<br /><br />It is recommended to configure %1 prior to applying GTK themes.": {
+    "Generate baseline GTK3/4 or QT5/QT6 (requires qt6ct-kde) configurations to follow ADVS colors. Only needed once.<br /><br />It is recommended to configure %1 prior to applying GTK themes.": "Створити базові конфігурації GTK3/4 або QT5/QT6 (потрібен qt6ct-kde), щоб вони відповідали кольорам ADVS. Потрібно виконати лише один раз<br/><br/>Рекомендується налаштувати %1 перед застосуванням тем GTK"
   },
-  "Generate baseline GTK3/4, QT5/QT6, or qtengine configurations to follow DMS colors (only qt6ct requires qt6ct-kde). Only needed once.<br /><br />It is recommended to configure %1 prior to applying GTK themes.": {
-    "Generate baseline GTK3/4, QT5/QT6, or qtengine configurations to follow DMS colors (only qt6ct requires qt6ct-kde). Only needed once.<br /><br />It is recommended to configure %1 prior to applying GTK themes.": "Згенерувати базові конфігурації GTK3/4, QT5/QT6 або qtengine, щоб відповідати кольорам DMS (лише qt6ct потребує qt6ct-kde). Потрібно лише один раз<br /><br />Рекомендовано налаштувати %1 перед застосуванням GTK-тем"
+  "Generate baseline GTK3/4, QT5/QT6, or qtengine configurations to follow ADVS colors (only qt6ct requires qt6ct-kde). Only needed once.<br /><br />It is recommended to configure %1 prior to applying GTK themes.": {
+    "Generate baseline GTK3/4, QT5/QT6, or qtengine configurations to follow ADVS colors (only qt6ct requires qt6ct-kde). Only needed once.<br /><br />It is recommended to configure %1 prior to applying GTK themes.": "Згенерувати базові конфігурації GTK3/4, QT5/QT6 або qtengine, щоб відповідати кольорам ADVS (лише qt6ct потребує qt6ct-kde). Потрібно лише один раз<br /><br />Рекомендовано налаштувати %1 перед застосуванням GTK-тем"
   },
   "Generic": {
     "Generic": "Загальний"
@@ -3914,11 +3914,11 @@
   "Greeter font": {
     "Greeter font": "Шрифт екрану входу"
   },
-  "Greeter group members can sync their login-screen theme with dms greeter sync --profile after logging out and back in.": {
-    "Greeter group members can sync their login-screen theme with dms greeter sync --profile after logging out and back in.": "Члени групи greeter можуть синхронізувати тему екрана входу за допомогою 'dms greeter sync --profile' після виходу та повторного входу"
+  "Greeter group members can sync their login-screen theme with advs greeter sync --profile after logging out and back in.": {
+    "Greeter group members can sync their login-screen theme with advs greeter sync --profile after logging out and back in.": "Члени групи greeter можуть синхронізувати тему екрана входу за допомогою 'advs greeter sync --profile' після виходу та повторного входу"
   },
-  "Greeter group members can sync their login-screen theme with dms-greeter sync --profile after logging out and back in.": {
-    "Greeter group members can sync their login-screen theme with dms-greeter sync --profile after logging out and back in.": "Учасники групи вітального екрана можуть синхронізувати тему екрана входу за допомогою 'dms-greeter sync --profile' після виходу та повторного входу в систему"
+  "Greeter group members can sync their login-screen theme with advs-greeter sync --profile after logging out and back in.": {
+    "Greeter group members can sync their login-screen theme with advs-greeter sync --profile after logging out and back in.": "Учасники групи вітального екрана можуть синхронізувати тему екрана входу за допомогою 'advs-greeter sync --profile' після виходу та повторного входу в систему"
   },
   "Greeter group:": {
     "Greeter group:": "Група екрану входу:"
@@ -4262,8 +4262,8 @@
   "Icon Theme": {
     "Icon Theme": "Тема іконок"
   },
-  "Icon theme changed outside DMS; switched to System Default": {
-    "Icon theme changed outside DMS; switched to System Default": "Тема іконок була змінена поза DMS; переключено на системну за замовчуванням"
+  "Icon theme changed outside ADVS; switched to System Default": {
+    "Icon theme changed outside ADVS; switched to System Default": "Тема іконок була змінена поза ADVS; переключено на системну за замовчуванням"
   },
   "Identical alerts show as one popup instead of stacking": {
     "Identical alerts show as one popup instead of stacking": "Ідентичні сповіщення відображаються як одне спливаюче вікно замість стопки"
@@ -4286,8 +4286,8 @@
   "Idle Settings": {
     "Idle Settings": "Налаштування бездіяльності"
   },
-  "If autostart app icons don't appear in the system tray, generate a systemd override to ensure DMS starts before autostart apps": {
-    "If autostart app icons don't appear in the system tray, generate a systemd override to ensure DMS starts before autostart apps": "Якщо іконки автозапуску не з'являються в системному лотку, створіть systemd override, щоб DMS запускався перед ними"
+  "If autostart app icons don't appear in the system tray, generate a systemd override to ensure ADVS starts before autostart apps": {
+    "If autostart app icons don't appear in the system tray, generate a systemd override to ensure ADVS starts before autostart apps": "Якщо іконки автозапуску не з'являються в системному лотку, створіть systemd override, щоб ADVS запускався перед ними"
   },
   "If the field is hidden, it will appear as soon as a key is pressed.": {
     "If the field is hidden, it will appear as soon as a key is pressed.": "Якщо поле приховане, воно з'явиться, щойно буде натиснуто клавішу"
@@ -4427,8 +4427,8 @@
   "Install Theme": {
     "Install Theme": "Встановити тему"
   },
-  "Install color themes from the DMS theme registry": {
-    "Install color themes from the DMS theme registry": "Встановити кольорові теми з реєстру тем DMS"
+  "Install color themes from the ADVS theme registry": {
+    "Install color themes from the ADVS theme registry": "Встановити кольорові теми з реєстру тем ADVS"
   },
   "Install complete. Greeter has been installed.": {
     "Install complete. Greeter has been installed.": "Встановлення завершено.  Екран входу встановлено"
@@ -4442,17 +4442,17 @@
   "Install matugen package for dynamic theming": {
     "Install matugen package for dynamic theming": "Встановіть пакет matugen для динамічного темизації"
   },
-  "Install plugin '%1' from the DMS registry?": {
-    "Install plugin '%1' from the DMS registry?": "Встановити плагін '%1' з реєстру DMS?"
+  "Install plugin '%1' from the ADVS registry?": {
+    "Install plugin '%1' from the ADVS registry?": "Встановити плагін '%1' з реєстру ADVS?"
   },
-  "Install plugins from the DMS plugin registry": {
-    "Install plugins from the DMS plugin registry": "Встановити плагіни з реєстру плагінів DMS"
+  "Install plugins from the ADVS plugin registry": {
+    "Install plugins from the ADVS plugin registry": "Встановити плагіни з реєстру плагінів ADVS"
   },
-  "Install the DMS greeter? A terminal will open for sudo authentication.": {
-    "Install the DMS greeter? A terminal will open for sudo authentication.": "Встановити DMS greeter? Відкриється термінал для sudo-автентифікації"
+  "Install the ADVS greeter? A terminal will open for sudo authentication.": {
+    "Install the ADVS greeter? A terminal will open for sudo authentication.": "Встановити ADVS greeter? Відкриється термінал для sudo-автентифікації"
   },
-  "Install theme '%1' from the DMS registry?": {
-    "Install theme '%1' from the DMS registry?": "Встановити тему «%1» з реєстру DMS?"
+  "Install theme '%1' from the ADVS registry?": {
+    "Install theme '%1' from the ADVS registry?": "Встановити тему «%1» з реєстру ADVS?"
   },
   "Installation and PAM setup are documented in the ": {
     "Installation and PAM setup are documented in the ": "Інструкції зі встановлення та налаштування PAM описані в "
@@ -4886,8 +4886,8 @@
   "Make the bar background fully transparent": {
     "Make the bar background fully transparent": "Зробити фон панелі повністю прозорим"
   },
-  "Manage and configure plugins for extending DMS functionality": {
-    "Manage and configure plugins for extending DMS functionality": "Керувати та налаштовувати плагіни для розширення функціональності DMS"
+  "Manage and configure plugins for extending ADVS functionality": {
+    "Manage and configure plugins for extending ADVS functionality": "Керувати та налаштовувати плагіни для розширення функціональності ADVS"
   },
   "Manage up to 4 independent bar configurations. Each bar has its own position, widgets, styling, and display assignment.": {
     "Manage up to 4 independent bar configurations. Each bar has its own position, widgets, styling, and display assignment.": "Керуйте до 4 незалежними конфігураціями панелей. Кожна панель має власну позицію, віджети, стиль та призначення дисплея"
@@ -4991,8 +4991,8 @@
   "Material inspired shadows and elevation on modals, popouts, and dialogs": {
     "Material inspired shadows and elevation on modals, popouts, and dialogs": "Тіні та підняття у стилі Material для модальних вікон, спливаючих елементів та діалогів"
   },
-  "Material: Material Design 3 Expressive bezier curves. The DMS default feel.": {
-    "Material: Material Design 3 Expressive bezier curves. The DMS default feel.": "Material: Експресивні криві Безьє Material Design 3. Типове відчуття DMS"
+  "Material: Material Design 3 Expressive bezier curves. The ADVS default feel.": {
+    "Material: Material Design 3 Expressive bezier curves. The ADVS default feel.": "Material: Експресивні криві Безьє Material Design 3. Типове відчуття ADVS"
   },
   "Matugen Contrast": {
     "Matugen Contrast": "Контраст Matugen"
@@ -5405,8 +5405,8 @@
   "Night mode & gamma": {
     "Night mode & gamma": "Нічний режим та гамма"
   },
-  "Night mode failed: DMS gamma control not available": {
-    "Night mode failed: DMS gamma control not available": "Помилка нічного режиму: керування гаммою DMS недоступне"
+  "Night mode failed: ADVS gamma control not available": {
+    "Night mode failed: ADVS gamma control not available": "Помилка нічного режиму: керування гаммою ADVS недоступне"
   },
   "Niri Integration": {
     "Niri Integration": "Інтеграція з Niri"
@@ -5435,8 +5435,8 @@
   "No Border": {
     "No Border": "Без межі"
   },
-  "No DMS shortcuts configured": {
-    "No DMS shortcuts configured": "Ярлики DMS не налаштовані"
+  "No ADVS shortcuts configured": {
+    "No ADVS shortcuts configured": "Ярлики ADVS не налаштовані"
   },
   "No Dim": {
     "No Dim": "Без затемнення"
@@ -5903,8 +5903,8 @@
   "Opacity of cards and nested surfaces inside floating windows": {
     "Opacity of cards and nested surfaces inside floating windows": "Прозорість карток та вкладених поверхонь всередині плаваючих вікон"
   },
-  "Opacity of floating DMS windows like Settings, Notepad, and authentication prompts": {
-    "Opacity of floating DMS windows like Settings, Notepad, and authentication prompts": "Прозорість плаваючих вікон DMS, таких як Налаштування, Блокнот та запити автентифікації"
+  "Opacity of floating ADVS windows like Settings, Notepad, and authentication prompts": {
+    "Opacity of floating ADVS windows like Settings, Notepad, and authentication prompts": "Прозорість плаваючих вікон ADVS, таких як Налаштування, Блокнот та запити автентифікації"
   },
   "Opacity of foreground cards and nested surfaces on shell panels": {
     "Opacity of foreground cards and nested surfaces on shell panels": "Прозорість карток переднього плану та вкладених поверхонь на панелях оболонки"
@@ -5918,8 +5918,8 @@
   "Open App": {
     "Open App": "Відкрити програму"
   },
-  "Open DMS windows floating instead of tiled": {
-    "Open DMS windows floating instead of tiled": "Відкривати вікна DMS як плаваючі замість плиточних"
+  "Open ADVS windows floating instead of tiled": {
+    "Open ADVS windows floating instead of tiled": "Відкривати вікна ADVS як плаваючі замість плиточних"
   },
   "Open Delay": {
     "Open Delay": "Затримка відкриття"
@@ -6839,8 +6839,8 @@
   "Remove the shortcut %1?": {
     "Remove the shortcut %1?": "Видалити ярлик %1?"
   },
-  "Remove the shortcut %1? An unbind entry will be saved to dms/binds-user.lua so it stays removed across DMS updates.": {
-    "Remove the shortcut %1? An unbind entry will be saved to dms/binds-user.lua so it stays removed across DMS updates.": "Видалити ярлик %1? Запис про розв'язку буде збережено в dms/binds-user.lua, щоб він залишався видаленим після оновлень DMS"
+  "Remove the shortcut %1? An unbind entry will be saved to advs/binds-user.lua so it stays removed across ADVS updates.": {
+    "Remove the shortcut %1? An unbind entry will be saved to advs/binds-user.lua so it stays removed across ADVS updates.": "Видалити ярлик %1? Запис про розв'язку буде збережено в advs/binds-user.lua, щоб він залишався видаленим після оновлень ADVS"
   },
   "Removed administrator privileges": {
     "Removed administrator privileges": "Права адміністратора видалено"
@@ -6893,11 +6893,11 @@
   "Requires 'dgop' tool": {
     "Requires 'dgop' tool": "Потрібен інструмент 'dgop'"
   },
-  "Requires DMS %1": {
-    "Requires DMS %1": "Потребує DMS %1"
+  "Requires ADVS %1": {
+    "Requires ADVS %1": "Потребує ADVS %1"
   },
-  "Requires DMS server with sysupdate capability": {
-    "Requires DMS server with sysupdate capability": "Потребує сервера DMS з можливістю системного оновлення"
+  "Requires ADVS server with sysupdate capability": {
+    "Requires ADVS server with sysupdate capability": "Потребує сервера ADVS з можливістю системного оновлення"
   },
   "Requires MangoWC compositor": {
     "Requires MangoWC compositor": "Потребує композитора MangoWC"
@@ -6905,8 +6905,8 @@
   "Requires a newer version of Quickshell": {
     "Requires a newer version of Quickshell": "Потрібна новіша версія Quickshell"
   },
-  "Requires greetd, dms-greeter, and your user in the greeter group (plus fprintd/pam_fprintd for fingerprint, pam_u2f for security keys).": {
-    "Requires greetd, dms-greeter, and your user in the greeter group (plus fprintd/pam_fprintd for fingerprint, pam_u2f for security keys).": "Потрібні greetd, dms-greeter та додавання користувача до групи greeter (а також fprintd/pam_fprintd для відбитків, pam_u2f для ключів безпеки)"
+  "Requires greetd, advs-greeter, and your user in the greeter group (plus fprintd/pam_fprintd for fingerprint, pam_u2f for security keys).": {
+    "Requires greetd, advs-greeter, and your user in the greeter group (plus fprintd/pam_fprintd for fingerprint, pam_u2f for security keys).": "Потрібні greetd, advs-greeter та додавання користувача до групи greeter (а також fprintd/pam_fprintd для відбитків, pam_u2f для ключів безпеки)"
   },
   "Requires night mode support": {
     "Requires night mode support": "Потребує підтримки нічного режиму"
@@ -6914,8 +6914,8 @@
   "Requires remembering the last user and session. Enable those options first.": {
     "Requires remembering the last user and session. Enable those options first.": "Потребує запам'ятовування останнього користувача та сесії. Спочатку увімкніть ці опції"
   },
-  "Requires the DMS Theme extension from the editor marketplace": {
-    "Requires the DMS Theme extension from the editor marketplace": "Потребує розширення DMS Theme з маркетплейсу редактора"
+  "Requires the ADVS Theme extension from the editor marketplace": {
+    "Requires the ADVS Theme extension from the editor marketplace": "Потребує розширення ADVS Theme з маркетплейсу редактора"
   },
   "Reserved Height": {
     "Reserved Height": ""
@@ -6953,11 +6953,11 @@
   "Resolution, position, scale": {
     "Resolution, position, scale": "Роздільна здатність, позиція, масштаб"
   },
-  "Restart DMS": {
-    "Restart DMS": "Перезапустити DMS"
+  "Restart ADVS": {
+    "Restart ADVS": "Перезапустити ADVS"
   },
-  "Restart the DankMaterialShell": {
-    "Restart the DankMaterialShell": "Перезапустити DankMaterialShell"
+  "Restart the AriadnevShell": {
+    "Restart the AriadnevShell": "Перезапустити AriadnevShell"
   },
   "Restart userspace without rebooting the kernel, requires systemd": {
     "Restart userspace without rebooting the kernel, requires systemd": "Перезапустити користувацький простір без перезавантаження ядра (потрібен systemd)"
@@ -7052,14 +7052,14 @@
   "Rules (%1)": {
     "Rules (%1)": "Правила (%1)"
   },
-  "Rules found in your compositor config. These are read-only here, use Convert to DMS to make an editable copy.": {
-    "Rules found in your compositor config. These are read-only here, use Convert to DMS to make an editable copy.": "Правила знайдено в конфігурації вашого композитора. Тут вони доступні лише для читання; використовуйте «Convert to DMS», щоб створити копію, яку можна редагувати"
+  "Rules found in your compositor config. These are read-only here, use Convert to ADVS to make an editable copy.": {
+    "Rules found in your compositor config. These are read-only here, use Convert to ADVS to make an editable copy.": "Правила знайдено в конфігурації вашого композитора. Тут вони доступні лише для читання; використовуйте «Convert to ADVS», щоб створити копію, яку можна редагувати"
   },
   "Run Again": {
     "Run Again": "Запустити знову"
   },
-  "Run DMS Templates": {
-    "Run DMS Templates": "Запустити шаблони DMS"
+  "Run ADVS Templates": {
+    "Run ADVS Templates": "Запустити шаблони ADVS"
   },
   "Run User Templates": {
     "Run User Templates": "Запускати шаблони користувача"
@@ -7172,11 +7172,11 @@
   "Scale": {
     "Scale": "Масштаб"
   },
-  "Scale DankBar font sizes independently": {
-    "Scale DankBar font sizes independently": "Масштабувати розміри шрифтів DankBar незалежно"
+  "Scale AdvBar font sizes independently": {
+    "Scale AdvBar font sizes independently": "Масштабувати розміри шрифтів AdvBar незалежно"
   },
-  "Scale DankBar icon sizes independently": {
-    "Scale DankBar icon sizes independently": "Масштабувати розміри іконок DankBar незалежно"
+  "Scale AdvBar icon sizes independently": {
+    "Scale AdvBar icon sizes independently": "Масштабувати розміри іконок AdvBar незалежно"
   },
   "Scale all font sizes throughout the shell": {
     "Scale all font sizes throughout the shell": "Масштабувати всі розміри шрифтів в оболонці"
@@ -7721,8 +7721,8 @@
   "Show Remaining Time": {
     "Show Remaining Time": "Показувати час, що залишився"
   },
-  "Show Restart DMS": {
-    "Show Restart DMS": "Показувати перезапуск DMS"
+  "Show Restart ADVS": {
+    "Show Restart ADVS": "Показувати перезапуск ADVS"
   },
   "Show Satellite Widgets": {
     "Show Satellite Widgets": ""
@@ -7976,8 +7976,8 @@
   "Solid material type or Outline": {
     "Solid material type or Outline": ""
   },
-  "Some plugins require a newer version of DMS:": {
-    "Some plugins require a newer version of DMS:": "Деяким плагінам потрібна новіша версія DMS:"
+  "Some plugins require a newer version of ADVS:": {
+    "Some plugins require a newer version of ADVS:": "Деяким плагінам потрібна новіша версія ADVS:"
   },
   "Some settings are managed by the island": {
     "Some settings are managed by the island": ""
@@ -8075,14 +8075,14 @@
   "Standard": {
     "Standard": "Стандарт"
   },
-  "Standard: Classic Material Design 3 — panels rise from below with a subtle scale. The DMS default.": {
-    "Standard: Classic Material Design 3 — panels rise from below with a subtle scale. The DMS default.": "Стандарт: Класичний Material Design 3 — панелі піднімаються знизу з легким масштабуванням. Типово у DMS"
+  "Standard: Classic Material Design 3 — panels rise from below with a subtle scale. The ADVS default.": {
+    "Standard: Classic Material Design 3 — panels rise from below with a subtle scale. The ADVS default.": "Стандарт: Класичний Material Design 3 — панелі піднімаються знизу з легким масштабуванням. Типово у ADVS"
   },
   "Start": {
     "Start": "Запустити"
   },
-  "Start DankConnect, KDE Connect, or Valent to use this plugin": {
-    "Start DankConnect, KDE Connect, or Valent to use this plugin": "Запустіть DankConnect, KDE Connect або Valent, щоб використовувати цей плагін"
+  "Start AdvConnect, KDE Connect, or Valent to use this plugin": {
+    "Start AdvConnect, KDE Connect, or Valent to use this plugin": "Запустіть AdvConnect, KDE Connect або Valent, щоб використовувати цей плагін"
   },
   "Start Hotspot?": {
     "Start Hotspot?": "Запустити точку доступу?"
@@ -8243,11 +8243,11 @@
   "Sync Position Across Screens": {
     "Sync Position Across Screens": "Синхронізувати позицію між екранами"
   },
-  "Sync applies your theme and settings to the login screen. Shared users should run dms greeter sync --profile instead of a primary user sync.": {
-    "Sync applies your theme and settings to the login screen. Shared users should run dms greeter sync --profile instead of a primary user sync.": "Синхронізація застосовує вашу тему та налаштування до екрана входу. Спільним користувачам слід використовувати 'dms greeter sync --profile' замість синхронізації основного користувача"
+  "Sync applies your theme and settings to the login screen. Shared users should run advs greeter sync --profile instead of a primary user sync.": {
+    "Sync applies your theme and settings to the login screen. Shared users should run advs greeter sync --profile instead of a primary user sync.": "Синхронізація застосовує вашу тему та налаштування до екрана входу. Спільним користувачам слід використовувати 'advs greeter sync --profile' замість синхронізації основного користувача"
   },
-  "Sync applies your theme and settings to the login screen. Shared users should run dms-greeter sync --profile instead of a primary user sync.": {
-    "Sync applies your theme and settings to the login screen. Shared users should run dms-greeter sync --profile instead of a primary user sync.": "Синхронізація застосовує вашу тему та налаштування до екрана входу. Спільні користувачі мають запускати 'dms-greeter sync --profile' замість синхронізації основного користувача"
+  "Sync applies your theme and settings to the login screen. Shared users should run advs-greeter sync --profile instead of a primary user sync.": {
+    "Sync applies your theme and settings to the login screen. Shared users should run advs-greeter sync --profile instead of a primary user sync.": "Синхронізація застосовує вашу тему та налаштування до екрана входу. Спільні користувачі мають запускати 'advs-greeter sync --profile' замість синхронізації основного користувача"
   },
   "Sync completed successfully.": {
     "Sync completed successfully.": "Синхронізацію успішно завершено"
@@ -8363,14 +8363,14 @@
   "Terminal additional parameters": {
     "Terminal additional parameters": "Додаткові параметри терміналу"
   },
-  "Terminal fallback failed. Install a supported terminal emulator or run 'dms auth sync' manually.": {
-    "Terminal fallback failed. Install a supported terminal emulator or run 'dms auth sync' manually.": "Резервний запуск термінала не вдався. Встановіть підтримуваний емулятор термінала або запустіть 'dms auth sync' вручну"
+  "Terminal fallback failed. Install a supported terminal emulator or run 'advs auth sync' manually.": {
+    "Terminal fallback failed. Install a supported terminal emulator or run 'advs auth sync' manually.": "Резервний запуск термінала не вдався. Встановіть підтримуваний емулятор термінала або запустіть 'advs auth sync' вручну"
   },
-  "Terminal fallback failed. Install one of the supported terminal emulators or run 'dms greeter sync' manually.": {
-    "Terminal fallback failed. Install one of the supported terminal emulators or run 'dms greeter sync' manually.": "Резервний запуск термінала не вдався. Встановіть один із підтримуваних емуляторів термінала або запустіть 'dms greeter sync' вручну"
+  "Terminal fallback failed. Install one of the supported terminal emulators or run 'advs greeter sync' manually.": {
+    "Terminal fallback failed. Install one of the supported terminal emulators or run 'advs greeter sync' manually.": "Резервний запуск термінала не вдався. Встановіть один із підтримуваних емуляторів термінала або запустіть 'advs greeter sync' вручну"
   },
-  "Terminal fallback failed. Install one of the supported terminal emulators or run 'dms-greeter sync' manually.": {
-    "Terminal fallback failed. Install one of the supported terminal emulators or run 'dms-greeter sync' manually.": "Невдалий запуск резервного терміналу. Встановіть один із підтримуваних емуляторів термінала або запустіть 'dms-greeter sync' вручну"
+  "Terminal fallback failed. Install one of the supported terminal emulators or run 'advs-greeter sync' manually.": {
+    "Terminal fallback failed. Install one of the supported terminal emulators or run 'advs-greeter sync' manually.": "Невдалий запуск резервного терміналу. Встановіть один із підтримуваних емуляторів термінала або запустіть 'advs-greeter sync' вручну"
   },
   "Terminal fallback opened. Complete authentication there; it will close automatically when done.": {
     "Terminal fallback opened. Complete authentication there; it will close automatically when done.": "Відкрито резервний термінал. Завершіть автентифікацію там; він закриється автоматично після завершення"
@@ -8414,8 +8414,8 @@
   "The 'dgop' tool is required for system monitoring.\nPlease install dgop to use this feature.": {
     "The 'dgop' tool is required for system monitoring.\nPlease install dgop to use this feature.": "Для моніторингу системи потрібен dgop.\nБудь ласка, встановіть його, щоб використовувати цю функцію"
   },
-  "The DMS_SOCKET environment variable is not set or the socket is unavailable. Automated plugin management requires the DMS_SOCKET.": {
-    "The DMS_SOCKET environment variable is not set or the socket is unavailable. Automated plugin management requires the DMS_SOCKET.": "Змінна середовища DMS_SOCKET не встановлена або сокет недоступний. Для автоматичного керування плагінами потрібен DMS_SOCKET"
+  "The ADVS_SOCKET environment variable is not set or the socket is unavailable. Automated plugin management requires the ADVS_SOCKET.": {
+    "The ADVS_SOCKET environment variable is not set or the socket is unavailable. Automated plugin management requires the ADVS_SOCKET.": "Змінна середовища ADVS_SOCKET не встановлена або сокет недоступний. Для автоматичного керування плагінами потрібен ADVS_SOCKET"
   },
   "The Island anchors to the top or bottom edge": {
     "The Island anchors to the top or bottom edge": ""
@@ -8435,8 +8435,8 @@
   "The custom command used when attaching to sessions (receives the session name as the first argument)": {
     "The custom command used when attaching to sessions (receives the session name as the first argument)": "Спеціальна команда, що використовується при підключенні до сесій (отримує назву сесії як перший аргумент)"
   },
-  "The greeter bundled with DMS is active (archinstall setup). It keeps working as is, but syncing theme and settings needs the standalone greeter. Install greetd-dms-greeter-bin from the AUR, then run Sync to migrate the login screen.": {
-    "The greeter bundled with DMS is active (archinstall setup). It keeps working as is, but syncing theme and settings needs the standalone greeter. Install greetd-dms-greeter-bin from the AUR, then run Sync to migrate the login screen.": ""
+  "The greeter bundled with ADVS is active (archinstall setup). It keeps working as is, but syncing theme and settings needs the standalone greeter. Install greetd-advs-greeter-bin from the AUR, then run Sync to migrate the login screen.": {
+    "The greeter bundled with ADVS is active (archinstall setup). It keeps working as is, but syncing theme and settings needs the standalone greeter. Install greetd-advs-greeter-bin from the AUR, then run Sync to migrate the login screen.": ""
   },
   "The island draws its own surface": {
     "The island draws its own surface": ""
@@ -8489,8 +8489,8 @@
   "Third-Party Plugin Warning": {
     "Third-Party Plugin Warning": "Попередження про плагін стороннього розробника"
   },
-  "Third-party plugins are created by the community and are not officially supported by DankMaterialShell.\n\nThese plugins may pose security and privacy risks - install at your own risk.": {
-    "Third-party plugins are created by the community and are not officially supported by DankMaterialShell.\n\nThese plugins may pose security and privacy risks - install at your own risk.": "Сторонні плагіни створені спільнотою і офіційно не підтримуються DankMaterialShell\n\nЦі плагіни можуть становити ризик для безпеки та конфіденційності — встановлюйте на свій власний страх і ризик"
+  "Third-party plugins are created by the community and are not officially supported by AriadnevShell.\n\nThese plugins may pose security and privacy risks - install at your own risk.": {
+    "Third-party plugins are created by the community and are not officially supported by AriadnevShell.\n\nThese plugins may pose security and privacy risks - install at your own risk.": "Сторонні плагіни створені спільнотою і офіційно не підтримуються AriadnevShell\n\nЦі плагіни можуть становити ризик для безпеки та конфіденційності — встановлюйте на свій власний страх і ризик"
   },
   "This bind is overridden by config.kdl": {
     "This bind is overridden by config.kdl": "Ця прив'язка перевизначена у config.kdl"
@@ -8498,8 +8498,8 @@
   "This device": {
     "This device": "Цей пристрій"
   },
-  "This install is still using hyprland.conf. Run dms setup to migrate before changing these settings.": {
-    "This install is still using hyprland.conf. Run dms setup to migrate before changing these settings.": "Ця установка все ще використовує hyprland.conf. Запустіть 'dms setup' для міграції перед зміною цих налаштувань"
+  "This install is still using hyprland.conf. Run advs setup to migrate before changing these settings.": {
+    "This install is still using hyprland.conf. Run advs setup to migrate before changing these settings.": "Ця установка все ще використовує hyprland.conf. Запустіть 'advs setup' для міграції перед зміною цих налаштувань"
   },
   "This may take a few seconds": {
     "This may take a few seconds": "Це може зайняти кілька секунд"
@@ -8612,8 +8612,8 @@
   "To update, run the following command:": {
     "To update, run the following command:": "Щоб оновити, виконайте таку команду:"
   },
-  "To use this DMS bind, remove or change the keybind in your config.kdl": {
-    "To use this DMS bind, remove or change the keybind in your config.kdl": "Щоб використовувати цю прив'язку DMS, видаліть або змініть комбінацію клавіш у вашому config.kdl"
+  "To use this ADVS bind, remove or change the keybind in your config.kdl": {
+    "To use this ADVS bind, remove or change the keybind in your config.kdl": "Щоб використовувати цю прив'язку ADVS, видаліть або змініть комбінацію клавіш у вашому config.kdl"
   },
   "Toast": {
     "Toast": "Спливаюче повідомлення"
@@ -8813,8 +8813,8 @@
   "Uninstall failed: %1": {
     "Uninstall failed: %1": "Помилка видалення: %1"
   },
-  "Uninstall the DMS greeter? This will remove configuration and restore your previous display manager. A terminal will open for sudo authentication.": {
-    "Uninstall the DMS greeter? This will remove configuration and restore your previous display manager. A terminal will open for sudo authentication.": "Видалити DMS greeter? Це видалить конфігурацію та відновить ваш попередній менеджер дисплеїв. Відкриється термінал для sudo-автентифікації"
+  "Uninstall the ADVS greeter? This will remove configuration and restore your previous display manager. A terminal will open for sudo authentication.": {
+    "Uninstall the ADVS greeter? This will remove configuration and restore your previous display manager. A terminal will open for sudo authentication.": "Видалити ADVS greeter? Це видалить конфігурацію та відновить ваш попередній менеджер дисплеїв. Відкриється термінал для sudo-автентифікації"
   },
   "Uninstalled: %1": {
     "Uninstalled: %1": "Видалено: %1"
@@ -9104,8 +9104,8 @@
   "Uses the spotlight-bar IPC action and always opens the minimal bar.": {
     "Uses the spotlight-bar IPC action and always opens the minimal bar.": "Використовує дію IPC панелі Spotlight і завжди відкриває мінімальну панель"
   },
-  "Using DankCalendar%1": {
-    "Using DankCalendar%1": "Використання DankCalendar%1"
+  "Using AdvCalendar%1": {
+    "Using AdvCalendar%1": "Використання AdvCalendar%1"
   },
   "Using global monospace font from Settings → Personalization": {
     "Using global monospace font from Settings → Personalization": "Використання глобального моноширинного шрифту з Налаштування → Персоналізація"
@@ -9287,8 +9287,8 @@
   "Welcome": {
     "Welcome": "Вітаємо"
   },
-  "Welcome to DankMaterialShell": {
-    "Welcome to DankMaterialShell": "Ласкаво просимо до DankMaterialShell"
+  "Welcome to AriadnevShell": {
+    "Welcome to AriadnevShell": "Ласкаво просимо до AriadnevShell"
   },
   "When clicking a dock window in a Hyprland special workspace, bring that special workspace back before focusing the window": {
     "When clicking a dock window in a Hyprland special workspace, bring that special workspace back before focusing the window": "При натисканні на вікно доку в спеціальному робочому просторі Hyprland, спочатку повернути цей простір, а потім фокусувати вікно"
@@ -9575,8 +9575,8 @@
   "display rotation option": {
     "Normal": "Нормальний"
   },
-  "dms-greeter is not installed. Install the dms-greeter package to manage the greeter.": {
-    "dms-greeter is not installed. Install the dms-greeter package to manage the greeter.": ""
+  "advs-greeter is not installed. Install the advs-greeter package to manage the greeter.": {
+    "advs-greeter is not installed. Install the advs-greeter package to manage the greeter.": ""
   },
   "e.g. /usr/bin/my-script --flag": {
     "e.g. /usr/bin/my-script --flag": "напр. /usr/bin/my-script --flag"
@@ -9620,8 +9620,8 @@
   "loginctl activate failed (exit %1)": {
     "loginctl activate failed (exit %1)": "Помилка активації loginctl (вихід %1)"
   },
-  "loginctl not available - lock integration requires DMS socket connection": {
-    "loginctl not available - lock integration requires DMS socket connection": "loginctl недоступний — інтеграція блокування потребує з'єднання через DMS-сокет"
+  "loginctl not available - lock integration requires ADVS socket connection": {
+    "loginctl not available - lock integration requires ADVS socket connection": "loginctl недоступний — інтеграція блокування потребує з'єднання через ADVS-сокет"
   },
   "mango: config reloaded": {
     "mango: config reloaded": "mango: конфігурацію перезавантажено"
@@ -9662,8 +9662,8 @@
   "niri shortcuts config": {
     "niri shortcuts config": "Конфігурація гарячих клавіш Niri"
   },
-  "niri/dms Discord": {
-    "niri/dms Discord": "Discord Niri/DMS"
+  "niri/advs Discord": {
+    "niri/advs Discord": "Discord Niri/ADVS"
   },
   "niri: config reloaded": {
     "niri: config reloaded": "Niri: конфігурацію перезавантажено"
@@ -9740,8 +9740,8 @@
   "up": {
     "up": "вгору"
   },
-  "update dms for NM integration.": {
-    "update dms for NM integration.": "Оновіть DMS для інтеграції з NetworkManager"
+  "update advs for NM integration.": {
+    "update advs for NM integration.": "Оновіть ADVS для інтеграції з NetworkManager"
   },
   "useradd failed (exit %1)": {
     "useradd failed (exit %1)": "Помилка useradd (вихід %1)"

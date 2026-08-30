@@ -1,0 +1,21 @@
+[Unit]
+Description=Adv Material Shell (ADVS)
+PartOf=graphical-session.target
+After=graphical-session.target
+Requisite=graphical-session.target
+
+[Service]
+Type=dbus
+BusName=org.freedesktop.Notifications
+ExecStart=/usr/bin/advs run --session
+ExecReload=/bin/kill -USR1 $MAINPID
+LimitNOFILE=16384
+Restart=on-failure
+RestartForceExitStatus=TEMPFAIL
+SuccessExitStatus=TEMPFAIL
+RestartSec=1.23
+TimeoutStartSec=90s
+TimeoutStopSec=10
+
+[Install]
+WantedBy=graphical-session.target

@@ -17,7 +17,7 @@ Singleton {
 
     readonly property int settingsConfigVersion: 16
 
-    readonly property bool isGreeterMode: Quickshell.env("DMS_RUN_GREETER") === "1" || Quickshell.env("DMS_RUN_GREETER") === "true"
+    readonly property bool isGreeterMode: Quickshell.env("ADVS_RUN_GREETER") === "1" || Quickshell.env("ADVS_RUN_GREETER") === "true"
 
     enum Position {
         Top,
@@ -78,7 +78,7 @@ Singleton {
     readonly property string _homeUrl: StandardPaths.writableLocation(StandardPaths.HomeLocation)
     readonly property string _configUrl: StandardPaths.writableLocation(StandardPaths.ConfigLocation)
     readonly property string _configDir: Paths.strip(_configUrl)
-    readonly property string pluginSettingsPath: _configDir + "/DankMaterialShell/plugin_settings.json"
+    readonly property string pluginSettingsPath: _configDir + "/AriadnevShell/plugin_settings.json"
     readonly property bool qtengineActive: Quickshell.env("QT_QPA_PLATFORMTHEME") === "qtengine" || Quickshell.env("QT_QPA_PLATFORMTHEME_QT6") === "qtengine"
 
     property bool _loading: false
@@ -158,9 +158,9 @@ Singleton {
         });
     }
 
-    property alias dankBarLeftWidgetsModel: leftWidgetsModel
-    property alias dankBarCenterWidgetsModel: centerWidgetsModel
-    property alias dankBarRightWidgetsModel: rightWidgetsModel
+    property alias advBarLeftWidgetsModel: leftWidgetsModel
+    property alias advBarCenterWidgetsModel: centerWidgetsModel
+    property alias advBarRightWidgetsModel: rightWidgetsModel
 
     property string currentThemeName: "purple"
     property string currentThemeCategory: "generic"
@@ -177,7 +177,7 @@ Singleton {
     property real floatingWindowTransparency: 1.0
     property bool floatingWindowForegroundLayers: true
     property real floatingWindowForegroundTransparency: 1.0
-    property bool dmsWindowsFloating: true
+    property bool advsWindowsFloating: true
     property string widgetBackgroundColor: "sch"
     property string widgetBackgroundCustomColor: "#6750A4"
     property real widgetBackgroundCustomStrength: 0.50
@@ -567,15 +567,15 @@ Singleton {
     onAppDrawerSectionViewModesChanged: saveSettings()
     property bool niriOverviewOverlayEnabled: true
     property string niriOverviewLauncherStyle: "full"
-    property string dankLauncherV2Size: "compact"
-    property bool dankLauncherV2ShowSourceBadges: true
-    property bool dankLauncherV2BorderEnabled: false
-    property int dankLauncherV2BorderThickness: 2
-    property string dankLauncherV2BorderColor: "primary"
-    property bool dankLauncherV2ShowFooter: true
-    property bool dankLauncherV2UnloadOnClose: false
-    property bool dankLauncherV2IncludeFilesInAll: false
-    property bool dankLauncherV2IncludeFoldersInAll: false
+    property string advLauncherV2Size: "compact"
+    property bool advLauncherV2ShowSourceBadges: true
+    property bool advLauncherV2BorderEnabled: false
+    property int advLauncherV2BorderThickness: 2
+    property string advLauncherV2BorderColor: "primary"
+    property bool advLauncherV2ShowFooter: true
+    property bool advLauncherV2UnloadOnClose: false
+    property bool advLauncherV2IncludeFilesInAll: false
+    property bool advLauncherV2IncludeFoldersInAll: false
     property bool launcherUseOverlayLayer: false
     property string launcherStyle: "full"
     property bool spotlightBarShowModeChips: false
@@ -718,7 +718,7 @@ Singleton {
     property string monoFontFamily: "Fira Code"
     property int fontWeight: Font.Normal
     property real fontScale: 1.0
-    property real dankBarFontScale: 1.0
+    property real advBarFontScale: 1.0
     property int textRenderType: SettingsData.TextRenderType.Qt
     property int textRenderQuality: SettingsData.TextRenderQuality.Default
 
@@ -829,7 +829,7 @@ Singleton {
     property string muxCustomCommand: ""
     property string muxSessionFilter: ""
 
-    property bool runDmsMatugenTemplates: true
+    property bool runAdvsMatugenTemplates: true
     property bool matugenTemplateGtk: true
     property bool matugenTemplateNiri: true
     property bool matugenTemplateHyprland: true
@@ -980,50 +980,50 @@ Singleton {
     property var notificationRules: []
     property bool notificationDndAllowCritical: true
     property bool notificationFocusedMonitor: false
-    // Names the bar config rendered as Dank Island instead of a DankBar. Empty = no island.
-    property string dankIslandBarId: ""
-    readonly property var islandBarConfig: dankIslandBarId ? (barConfigs.find(cfg => cfg.id === dankIslandBarId) || null) : null
-    readonly property bool dankIslandEnabled: !!islandBarConfig && (islandBarConfig.enabled ?? false)
-    readonly property int dankIslandPosition: islandBarConfig?.position ?? SettingsData.Position.Top
-    readonly property string dankIslandEdge: dankIslandPosition === SettingsData.Position.Bottom ? "bottom" : "top"
-    readonly property int dankIslandReservedStripHeight: {
-        const reserve = Math.max(24, Math.min(128, dankIslandReserveHeight));
-        const compact = Math.max(24, Math.min(72, dankIslandCompactHeight));
-        const gap = Math.max(0, Math.min(48, dankIslandOuterGap));
+    // Names the bar config rendered as Adv Island instead of a AdvBar. Empty = no island.
+    property string advIslandBarId: ""
+    readonly property var islandBarConfig: advIslandBarId ? (barConfigs.find(cfg => cfg.id === advIslandBarId) || null) : null
+    readonly property bool advIslandEnabled: !!islandBarConfig && (islandBarConfig.enabled ?? false)
+    readonly property int advIslandPosition: islandBarConfig?.position ?? SettingsData.Position.Top
+    readonly property string advIslandEdge: advIslandPosition === SettingsData.Position.Bottom ? "bottom" : "top"
+    readonly property int advIslandReservedStripHeight: {
+        const reserve = Math.max(24, Math.min(128, advIslandReserveHeight));
+        const compact = Math.max(24, Math.min(72, advIslandCompactHeight));
+        const gap = Math.max(0, Math.min(48, advIslandOuterGap));
         return Math.max(reserve, gap + compact);
     }
-    property bool dankIslandFloating: false
-    property bool dankIslandUseOverlayLayer: false
-    property int dankIslandReserveHeight: 40
-    property int dankIslandCompactHeight: 38
-    property int dankIslandOuterGap: 4
-    property int dankIslandHorizontalOffset: 0
-    property string dankIslandInteractionMode: "hybrid"
-    property int dankIslandHoverOpenDelay: 150
-    property int dankIslandHoverCloseDelay: 150
-    property string dankIslandPalette: "default"
-    property real dankIslandTransparency: 1
-    property bool dankIslandHighContrast: false
-    property bool dankIslandMediaClockVisible: true
-    property bool dankIslandHomeNotificationBadge: true
-    property bool dankIslandNotificationBadgeClearOnOpen: false
-    property bool dankIslandNotificationExpand: false
-    property string dankIslandHomeMediaSlot: "left"
-    property string dankIslandHomeStatusSlot: "hidden"
-    property string dankIslandHomeWeatherSlot: "hidden"
-    property bool dankIslandHomeCompactTight: false
-    property string dankIslandBatteryStyle: "solid"
-    property bool dankIslandSatellitesEnabled: true
-    property string dankIslandSatellitePosition: "edges"
-    property int dankIslandSatelliteGap: 12
-    property bool dankIslandSatelliteBackground: false
-    property bool dankIslandSatelliteGothCorners: true
-    property real dankIslandSatelliteTransparency: 1
-    property int dankIslandSatelliteSwoopRadius: 24
-    property bool dankIslandReducedMotion: false
-    property real dankIslandSpringStiffness: 560
-    property real dankIslandSpringDamping: 37
-    property real dankIslandSpringMass: 1
+    property bool advIslandFloating: false
+    property bool advIslandUseOverlayLayer: false
+    property int advIslandReserveHeight: 40
+    property int advIslandCompactHeight: 38
+    property int advIslandOuterGap: 4
+    property int advIslandHorizontalOffset: 0
+    property string advIslandInteractionMode: "hybrid"
+    property int advIslandHoverOpenDelay: 150
+    property int advIslandHoverCloseDelay: 150
+    property string advIslandPalette: "default"
+    property real advIslandTransparency: 1
+    property bool advIslandHighContrast: false
+    property bool advIslandMediaClockVisible: true
+    property bool advIslandHomeNotificationBadge: true
+    property bool advIslandNotificationBadgeClearOnOpen: false
+    property bool advIslandNotificationExpand: false
+    property string advIslandHomeMediaSlot: "left"
+    property string advIslandHomeStatusSlot: "hidden"
+    property string advIslandHomeWeatherSlot: "hidden"
+    property bool advIslandHomeCompactTight: false
+    property string advIslandBatteryStyle: "solid"
+    property bool advIslandSatellitesEnabled: true
+    property string advIslandSatellitePosition: "edges"
+    property int advIslandSatelliteGap: 12
+    property bool advIslandSatelliteBackground: false
+    property bool advIslandSatelliteGothCorners: true
+    property real advIslandSatelliteTransparency: 1
+    property int advIslandSatelliteSwoopRadius: 24
+    property bool advIslandReducedMotion: false
+    property real advIslandSpringStiffness: 560
+    property real advIslandSpringDamping: 37
+    property real advIslandSpringMass: 1
 
     property bool osdAlwaysShowValue: false
     property int osdPosition: SettingsData.Position.BottomCenter
@@ -1350,7 +1350,7 @@ Singleton {
         saveSettings();
     }
 
-    signal forceDankBarLayoutRefresh
+    signal forceAdvBarLayoutRefresh
     signal forceDockLayoutRefresh
     signal widgetDataChanged
     signal workspaceIconsUpdated
@@ -1449,7 +1449,7 @@ Singleton {
             if (platform === SessionData.lastAppliedIconTheme || platform === root.iconThemeDark || platform === root.iconThemeLight)
                 return;
             root.setIconThemeUnmanaged();
-            ToastService.showWarning(I18n.tr("Icon theme changed outside DMS; switched to System Default", "shown when an external tool overrides the icon theme DMS applied"));
+            ToastService.showWarning(I18n.tr("Icon theme changed outside ADVS; switched to System Default", "shown when an external tool overrides the icon theme ADVS applied"));
         });
     }
 
@@ -1520,7 +1520,7 @@ Singleton {
             return;
         SessionData.lastAppliedIconTheme = gtkThemeName;
         SessionData.saveSettings();
-        if (typeof DMSService !== "undefined" && DMSService.apiVersion >= 3 && typeof PortalService !== "undefined") {
+        if (typeof ADVSService !== "undefined" && ADVSService.apiVersion >= 3 && typeof PortalService !== "undefined") {
             PortalService.setSystemIconTheme(gtkThemeName);
         }
 
@@ -1586,9 +1586,9 @@ Singleton {
 
         Quickshell.execDetached(["sh", "-lc", script]);
 
-        if (!qtengineActive || !runDmsMatugenTemplates || !matugenTemplateQtengine)
+        if (!qtengineActive || !runAdvsMatugenTemplates || !matugenTemplateQtengine)
             return;
-        Proc.runCommand("updateQtengineIconTheme", [Proc.dmsBin, "matugen", "qtengine", "--icon-theme", qtThemeName], () => {});
+        Proc.runCommand("updateQtengineIconTheme", [Proc.advsBin, "matugen", "qtengine", "--icon-theme", qtThemeName], () => {});
     }
 
     function scheduleAuthApply() {
@@ -1651,13 +1651,13 @@ Singleton {
         })
 
     function set(key, value) {
-        if (key === "dankIslandInteractionMode" && value !== "click" && value !== "hybrid")
+        if (key === "advIslandInteractionMode" && value !== "click" && value !== "hybrid")
             value = "hybrid";
         Spec.set(root, key, value, saveSettings, _hooks);
-        if (key === "dankIslandBarId" && value && frameEnabled)
+        if (key === "advIslandBarId" && value && frameEnabled)
             set("frameEnabled", false);
-        if (key === "frameEnabled" && value && dankIslandBarId)
-            set("dankIslandBarId", "");
+        if (key === "frameEnabled" && value && advIslandBarId)
+            set("advIslandBarId", "");
     }
 
     function loadSettings() {
@@ -1712,8 +1712,8 @@ Singleton {
             Store.parse(root, obj);
 
             // set() enforces this pair, but a hand-edited settings.json bypasses set() entirely.
-            if (frameEnabled && dankIslandBarId)
-                dankIslandBarId = "";
+            if (frameEnabled && advIslandBarId)
+                advIslandBarId = "";
 
             if (obj?.directionalAnimationMode === 3 && frameMode !== "connected")
                 frameMode = "connected";
@@ -2246,8 +2246,8 @@ Singleton {
 
         // The island is not a bar, but it is chrome: popouts still have to clear its strip.
         if (!isIslandBarConfig(barConfig)) {
-            const islandTop = dankIslandEdgeOffset(screen, "top");
-            const islandBottom = dankIslandEdgeOffset(screen, "bottom");
+            const islandTop = advIslandEdgeOffset(screen, "top");
+            const islandBottom = advIslandEdgeOffset(screen, "bottom");
             if (islandTop > 0)
                 topBar = Math.max(topBar, islandTop);
             if (islandBottom > 0)
@@ -2398,7 +2398,7 @@ Singleton {
     }
 
     function setBarIpcReveal(barId, revealed) {
-        if (!barId || barId === dankIslandBarId)
+        if (!barId || barId === advIslandBarId)
             return;
         const nextRevealed = !!revealed;
         if (!!barIpcRevealStates[barId] === nextRevealed)
@@ -2452,8 +2452,8 @@ Singleton {
             return;
         const configs = barConfigs.filter(cfg => cfg.id !== barId);
         barConfigs = configs;
-        if (dankIslandBarId === barId)
-            dankIslandBarId = "";
+        if (advIslandBarId === barId)
+            advIslandBarId = "";
         if (connectedFrameBarStyleBackups?.[barId] !== undefined) {
             const nextBackups = JSON.parse(JSON.stringify(connectedFrameBarStyleBackups || {}));
             delete nextBackups[barId];
@@ -2463,7 +2463,7 @@ Singleton {
         updateBarConfigs();
     }
 
-    // Bar-kind instances only. The island reserves its own edge via dankIslandOwnsEdge.
+    // Bar-kind instances only. The island reserves its own edge via advIslandOwnsEdge.
     function getEnabledBarConfigs() {
         return barConfigs.filter(cfg => cfg.enabled && !isIslandBarConfig(cfg));
     }
@@ -2632,7 +2632,7 @@ Singleton {
     }
 
     function isIslandBarConfig(bc) {
-        return !!bc && !!dankIslandBarId && bc.id === dankIslandBarId;
+        return !!bc && !!advIslandBarId && bc.id === advIslandBarId;
     }
 
     function getIslandScreens() {
@@ -2642,22 +2642,22 @@ Singleton {
         return Quickshell.screens.filter(screen => barConfigCoversScreen(cfg, screen));
     }
 
-    function dankIslandCoversScreen(screen) {
+    function advIslandCoversScreen(screen) {
         const cfg = islandBarConfig;
         return !!screen && !!cfg && (cfg.enabled ?? false) && barConfigCoversScreen(cfg, screen);
     }
 
-    function dankIslandOwnsEdge(screen, edge) {
-        return dankIslandCoversScreen(screen) && dankIslandEdge === edge;
+    function advIslandOwnsEdge(screen, edge) {
+        return advIslandCoversScreen(screen) && advIslandEdge === edge;
     }
 
     // Painted strip thickness on `edge`, including when floating drops the exclusive zone.
-    function dankIslandEdgeOffset(screen, edge) {
-        return dankIslandOwnsEdge(screen, edge) ? dankIslandReservedStripHeight : 0;
+    function advIslandEdgeOffset(screen, edge) {
+        return advIslandOwnsEdge(screen, edge) ? advIslandReservedStripHeight : 0;
     }
 
-    function dankIslandIsSoleBarForScreen(screen) {
-        return dankIslandCoversScreen(screen) && getActiveBarEdgesForScreen(screen).length === 0;
+    function advIslandIsSoleBarForScreen(screen) {
+        return advIslandCoversScreen(screen) && getActiveBarEdgesForScreen(screen).length === 0;
     }
 
     function getActiveBarEdgesForScreen(screen) {
@@ -2672,7 +2672,7 @@ Singleton {
                 continue;
             if (isIslandBarConfig(bc))
                 continue;
-            if (dankIslandOwnsEdge(screen, positionToSide(bc.position ?? SettingsData.Position.Top)))
+            if (advIslandOwnsEdge(screen, positionToSide(bc.position ?? SettingsData.Position.Top)))
                 continue;
             switch (bc.position ?? 0) {
             case SettingsData.Position.Top:
@@ -2704,7 +2704,7 @@ Singleton {
                 continue;
             if (isIslandBarConfig(bc))
                 continue;
-            if (dankIslandOwnsEdge(screen, positionToSide(bc.position ?? SettingsData.Position.Top)))
+            if (advIslandOwnsEdge(screen, positionToSide(bc.position ?? SettingsData.Position.Top)))
                 continue;
             switch (bc.position ?? 0) {
             case SettingsData.Position.Top:
@@ -2924,22 +2924,22 @@ Singleton {
         // -1 matches no Position, so island-only setups have no dock conflict.
         const barPos = defaultBar ? (defaultBar.position ?? SettingsData.Position.Top) : -1;
         if (position === SettingsData.Position.Bottom && barPos === SettingsData.Position.Bottom && showDock) {
-            setDankBarPosition(SettingsData.Position.Top);
+            setAdvBarPosition(SettingsData.Position.Top);
         }
         if (position === SettingsData.Position.Top && barPos === SettingsData.Position.Top && showDock) {
-            setDankBarPosition(SettingsData.Position.Bottom);
+            setAdvBarPosition(SettingsData.Position.Bottom);
         }
         if (position === SettingsData.Position.Left && barPos === SettingsData.Position.Left && showDock) {
-            setDankBarPosition(SettingsData.Position.Right);
+            setAdvBarPosition(SettingsData.Position.Right);
         }
         if (position === SettingsData.Position.Right && barPos === SettingsData.Position.Right && showDock) {
-            setDankBarPosition(SettingsData.Position.Left);
+            setAdvBarPosition(SettingsData.Position.Left);
         }
         saveSettings();
         Qt.callLater(() => forceDockLayoutRefresh());
     }
 
-    function setDankBarPosition(position) {
+    function setAdvBarPosition(position) {
         const defaultBar = getPrimaryBarConfig();
         if (!defaultBar)
             return;
@@ -2964,7 +2964,7 @@ Singleton {
         });
     }
 
-    function setDankBarLeftWidgets(order) {
+    function setAdvBarLeftWidgets(order) {
         const defaultBar = getPrimaryBarConfig();
         if (defaultBar) {
             updateBarConfig(defaultBar.id, {
@@ -2974,7 +2974,7 @@ Singleton {
         }
     }
 
-    function setDankBarCenterWidgets(order) {
+    function setAdvBarCenterWidgets(order) {
         const defaultBar = getPrimaryBarConfig();
         if (defaultBar) {
             updateBarConfig(defaultBar.id, {
@@ -2984,7 +2984,7 @@ Singleton {
         }
     }
 
-    function setDankBarRightWidgets(order) {
+    function setAdvBarRightWidgets(order) {
         const defaultBar = getPrimaryBarConfig();
         if (defaultBar) {
             updateBarConfig(defaultBar.id, {
@@ -3358,7 +3358,7 @@ Singleton {
     FileView {
         id: settingsFile
 
-        path: isGreeterMode ? "" : StandardPaths.writableLocation(StandardPaths.ConfigLocation) + "/DankMaterialShell/settings.json"
+        path: isGreeterMode ? "" : StandardPaths.writableLocation(StandardPaths.ConfigLocation) + "/AriadnevShell/settings.json"
         blockLoading: true
         blockWrites: true
         atomicWrites: true

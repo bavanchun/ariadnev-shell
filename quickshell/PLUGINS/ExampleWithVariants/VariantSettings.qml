@@ -64,7 +64,7 @@ PluginSettings {
                         color: Theme.surfaceVariantText
                     }
 
-                    DankTextField {
+                    AdvTextField {
                         id: nameField
                         width: parent.width
                         placeholderText: "Variant Name"
@@ -81,7 +81,7 @@ PluginSettings {
                         color: Theme.surfaceVariantText
                     }
 
-                    DankTextField {
+                    AdvTextField {
                         id: iconField
                         width: parent.width
                         placeholderText: "star"
@@ -98,7 +98,7 @@ PluginSettings {
                         color: Theme.surfaceVariantText
                     }
 
-                    DankTextField {
+                    AdvTextField {
                         id: textField
                         width: parent.width
                         placeholderText: "Display Text"
@@ -106,7 +106,7 @@ PluginSettings {
                 }
             }
 
-            DankButton {
+            AdvButton {
                 text: "Create Variant"
                 iconName: "add"
                 onClicked: {
@@ -178,7 +178,7 @@ PluginSettings {
                             height: Theme.iconSize
                             anchors.verticalCenter: parent.verticalCenter
 
-                            DankIcon {
+                            AdvIcon {
                                 anchors.centerIn: parent
                                 name: model.icon || "widgets"
                                 size: Theme.iconSize
@@ -219,7 +219,7 @@ PluginSettings {
                             color: deleteArea.containsMouse ? Theme.error : Theme.withAlpha(Theme.error, 0)
                             anchors.verticalCenter: parent.verticalCenter
 
-                            DankIcon {
+                            AdvIcon {
                                 anchors.centerIn: parent
                                 name: "delete"
                                 size: 16
@@ -273,7 +273,7 @@ PluginSettings {
             Row {
                 spacing: Theme.spacingM
 
-                DankIcon {
+                AdvIcon {
                     name: "info"
                     size: Theme.iconSize
                     color: Theme.primary

@@ -3,8 +3,8 @@ package registries
 import (
 	"fmt"
 
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/registries"
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/server/models"
+	"github.com/bavanchun/ariadnev-shell/core/internal/registries"
+	"github.com/bavanchun/ariadnev-shell/core/internal/server/models"
 	"github.com/spf13/afero"
 )
 

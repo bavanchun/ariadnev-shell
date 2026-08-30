@@ -7,8 +7,8 @@ import (
 	"runtime"
 	"strings"
 
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/deps"
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/privesc"
+	"github.com/bavanchun/ariadnev-shell/core/internal/deps"
+	"github.com/bavanchun/ariadnev-shell/core/internal/privesc"
 )
 
 var GentooGlobalUseFlags = []string{
@@ -93,7 +93,7 @@ func (g *GentooDistribution) DetectDependencies(ctx context.Context, wm deps.Win
 func (g *GentooDistribution) DetectDependenciesWithTerminal(ctx context.Context, wm deps.WindowManager, terminal deps.Terminal) ([]deps.Dependency, error) {
 	var dependencies []deps.Dependency
 
-	dependencies = append(dependencies, g.detectDMS())
+	dependencies = append(dependencies, g.detectADVS())
 
 	dependencies = append(dependencies, g.detectSpecificTerminal(terminal))
 
@@ -117,7 +117,7 @@ func (g *GentooDistribution) DetectDependenciesWithTerminal(ctx context.Context,
 	}
 
 	dependencies = append(dependencies, g.detectMatugen())
-	dependencies = append(dependencies, g.detectDanksearch())
+	dependencies = append(dependencies, g.detectAdvsearch())
 
 	return dependencies, nil
 }
@@ -126,15 +126,15 @@ func (g *GentooDistribution) detectXDGPortal() deps.Dependency {
 	return g.detectPackage("xdg-desktop-portal-gtk", "Desktop integration portal for GTK", g.packageInstalled("sys-apps/xdg-desktop-portal-gtk"))
 }
 
-func (g *GentooDistribution) detectDMS() deps.Dependency {
+func (g *GentooDistribution) detectADVS() deps.Dependency {
 	dep := deps.Dependency{
-		Name:        "dms (DankMaterialShell)",
+		Name:        "advs (AriadnevShell)",
 		Status:      deps.StatusMissing,
 		Description: "Desktop Management System configuration",
 		Required:    true,
 		CanToggle:   false,
 	}
-	if g.packageInstalled("gui-apps/dankmaterialshell") {
+	if g.packageInstalled("gui-apps/advmaterialshell") {
 		dep.Status = deps.StatusInstalled
 	}
 	return dep
@@ -174,8 +174,8 @@ func (g *GentooDistribution) GetPackageMappingWithVariants(wm deps.WindowManager
 
 		"quickshell":              g.getQuickshellMapping(variants["quickshell"]),
 		"matugen":                 {Name: "x11-misc/matugen", Repository: RepoTypeGURU, AcceptKeywords: archKeyword},
-		"dms (DankMaterialShell)": g.getDmsMapping(),
-		"danksearch":              {Name: "gui-apps/danksearch", Repository: RepoTypeGURU, AcceptKeywords: archKeyword},
+		"advs (AriadnevShell)": g.getAdvsMapping(),
+		"advsearch":              {Name: "gui-apps/advsearch", Repository: RepoTypeGURU, AcceptKeywords: archKeyword},
 	}
 
 	switch wm {
@@ -199,8 +199,8 @@ func (g *GentooDistribution) getQuickshellMapping(_ deps.PackageVariant) Package
 	return PackageMapping{Name: "gui-apps/quickshell", Repository: RepoTypeGURU, UseFlags: "breakpad jemalloc sockets wayland layer-shell session-lock toplevel-management screencopy X pipewire tray mpris pam hyprland hyprland-global-shortcuts hyprland-focus-grab i3 i3-ipc bluetooth", AcceptKeywords: "**"}
 }
 
-func (g *GentooDistribution) getDmsMapping() PackageMapping {
-	return PackageMapping{Name: "gui-apps/dankmaterialshell", Repository: RepoTypeGURU, AcceptKeywords: g.getArchKeyword()}
+func (g *GentooDistribution) getAdvsMapping() PackageMapping {
+	return PackageMapping{Name: "gui-apps/advmaterialshell", Repository: RepoTypeGURU, AcceptKeywords: g.getArchKeyword()}
 }
 
 func (g *GentooDistribution) getHyprlandMapping(_ deps.PackageVariant) PackageMapping {
@@ -439,8 +439,8 @@ func (g *GentooDistribution) InstallPackages(ctx context.Context, dependencies [
 		g.log(fmt.Sprintf("Warning: failed to write window manager config: %v", err))
 	}
 
-	if err := g.EnableDMSService(ctx, wm); err != nil {
-		g.log(fmt.Sprintf("Warning: failed to enable dms service: %v", err))
+	if err := g.EnableADVSService(ctx, wm); err != nil {
+		g.log(fmt.Sprintf("Warning: failed to enable advs service: %v", err))
 	}
 
 	progressChan <- InstallProgressMsg{
@@ -551,12 +551,12 @@ func (g *GentooDistribution) setPackageUseFlags(ctx context.Context, packageName
 	useFlagLine := fmt.Sprintf("%s %s", packageName, useFlags)
 
 	checkExistingCmd := exec.CommandContext(ctx, "bash", "-c",
-		fmt.Sprintf("grep -q '^%s ' %s/danklinux 2>/dev/null", packageName, packageUseDir))
+		fmt.Sprintf("grep -q '^%s ' %s/ariadnev 2>/dev/null", packageName, packageUseDir))
 	if checkExistingCmd.Run() == nil {
 		g.log(fmt.Sprintf("Updating USE flags for %s from existing entry", packageName))
 		escapedPkg := strings.ReplaceAll(packageName, "/", "\\/")
 		replaceCmd := privesc.ExecCommand(ctx, sudoPassword,
-			fmt.Sprintf("sed -i '/^%s /d' %s/danklinux; exit_code=$?; exit $exit_code", escapedPkg, packageUseDir))
+			fmt.Sprintf("sed -i '/^%s /d' %s/ariadnev; exit_code=$?; exit $exit_code", escapedPkg, packageUseDir))
 		if output, err := replaceCmd.CombinedOutput(); err != nil {
 			g.log(fmt.Sprintf("sed delete output: %s", string(output)))
 			return fmt.Errorf("failed to remove old USE flags: %w", err)
@@ -564,7 +564,7 @@ func (g *GentooDistribution) setPackageUseFlags(ctx context.Context, packageName
 	}
 
 	appendCmd := privesc.ExecCommand(ctx, sudoPassword,
-		fmt.Sprintf("bash -c \"echo '%s' >> %s/danklinux\"", useFlagLine, packageUseDir))
+		fmt.Sprintf("bash -c \"echo '%s' >> %s/ariadnev\"", useFlagLine, packageUseDir))
 
 	output, err := appendCmd.CombinedOutput()
 	if err != nil {
@@ -663,12 +663,12 @@ func (g *GentooDistribution) setPackageAcceptKeywords(ctx context.Context, packa
 	keywordLine := fmt.Sprintf("%s %s", packageName, keywords)
 
 	checkExistingCmd := exec.CommandContext(ctx, "bash", "-c",
-		fmt.Sprintf("grep -q '^%s ' %s/danklinux 2>/dev/null", packageName, acceptKeywordsDir))
+		fmt.Sprintf("grep -q '^%s ' %s/ariadnev 2>/dev/null", packageName, acceptKeywordsDir))
 	if checkExistingCmd.Run() == nil {
 		g.log(fmt.Sprintf("Updating accept keywords for %s from existing entry", packageName))
 		escapedPkg := strings.ReplaceAll(packageName, "/", "\\/")
 		replaceCmd := privesc.ExecCommand(ctx, sudoPassword,
-			fmt.Sprintf("sed -i '/^%s /d' %s/danklinux; exit_code=$?; exit $exit_code", escapedPkg, acceptKeywordsDir))
+			fmt.Sprintf("sed -i '/^%s /d' %s/ariadnev; exit_code=$?; exit $exit_code", escapedPkg, acceptKeywordsDir))
 		if output, err := replaceCmd.CombinedOutput(); err != nil {
 			g.log(fmt.Sprintf("sed delete output: %s", string(output)))
 			return fmt.Errorf("failed to remove old accept keywords: %w", err)
@@ -676,7 +676,7 @@ func (g *GentooDistribution) setPackageAcceptKeywords(ctx context.Context, packa
 	}
 
 	appendCmd := privesc.ExecCommand(ctx, sudoPassword,
-		fmt.Sprintf("bash -c \"echo '%s' >> %s/danklinux\"", keywordLine, acceptKeywordsDir))
+		fmt.Sprintf("bash -c \"echo '%s' >> %s/ariadnev\"", keywordLine, acceptKeywordsDir))
 
 	output, err := appendCmd.CombinedOutput()
 	if err != nil {

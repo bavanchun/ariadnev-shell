@@ -6,8 +6,8 @@ import (
 	"os/exec"
 	"strings"
 
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/deps"
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/privesc"
+	"github.com/bavanchun/ariadnev-shell/core/internal/deps"
+	"github.com/bavanchun/ariadnev-shell/core/internal/privesc"
 )
 
 func init() {
@@ -69,8 +69,8 @@ func (f *FedoraDistribution) DetectDependencies(ctx context.Context, wm deps.Win
 func (f *FedoraDistribution) DetectDependenciesWithTerminal(ctx context.Context, wm deps.WindowManager, terminal deps.Terminal) ([]deps.Dependency, error) {
 	var dependencies []deps.Dependency
 
-	// DMS at the top (shell is prominent)
-	dependencies = append(dependencies, f.detectDMS())
+	// ADVS at the top (shell is prominent)
+	dependencies = append(dependencies, f.detectADVS())
 
 	// Terminal with choice support
 	dependencies = append(dependencies, f.detectSpecificTerminal(terminal))
@@ -83,7 +83,7 @@ func (f *FedoraDistribution) DetectDependenciesWithTerminal(ctx context.Context,
 	}
 	dependencies = append(dependencies, wmDep)
 	dependencies = append(dependencies, f.detectQuickshell())
-	dependencies = append(dependencies, f.detectDMSGreeter())
+	dependencies = append(dependencies, f.detectAriadnevGreeter())
 	dependencies = append(dependencies, f.detectXDGPortal())
 	dependencies = append(dependencies, f.detectAccountsService())
 
@@ -103,8 +103,8 @@ func (f *FedoraDistribution) DetectDependenciesWithTerminal(ctx context.Context,
 	}
 
 	dependencies = append(dependencies, f.detectMatugen())
-	dependencies = append(dependencies, f.detectDanksearch())
-	dependencies = append(dependencies, f.detectDankCalendar())
+	dependencies = append(dependencies, f.detectAdvsearch())
+	dependencies = append(dependencies, f.detectAdvCalendar())
 
 	return dependencies, nil
 }
@@ -127,7 +127,7 @@ func (f *FedoraDistribution) GetPackageMappingWithVariants(wm deps.WindowManager
 	packages := map[string]PackageMapping{
 		// Standard DNF packages
 		"git":                    {Name: "git", Repository: RepoTypeSystem},
-		"ghostty":                {Name: "ghostty", Repository: RepoTypeCOPR, RepoURL: "avengemedia/danklinux"},
+		"ghostty":                {Name: "ghostty", Repository: RepoTypeCOPR, RepoURL: "bavanchun/ariadnev"},
 		"kitty":                  {Name: "kitty", Repository: RepoTypeSystem},
 		"alacritty":              {Name: "alacritty", Repository: RepoTypeSystem},
 		"xdg-desktop-portal-gtk": {Name: "xdg-desktop-portal-gtk", Repository: RepoTypeSystem},
@@ -135,11 +135,11 @@ func (f *FedoraDistribution) GetPackageMappingWithVariants(wm deps.WindowManager
 
 		// COPR packages
 		"quickshell":              f.getQuickshellMapping(variants["quickshell"]),
-		"dms-greeter":             {Name: "dms-greeter", Repository: RepoTypeCOPR, RepoURL: "avengemedia/danklinux"},
-		"matugen":                 {Name: "matugen", Repository: RepoTypeCOPR, RepoURL: "avengemedia/danklinux"},
-		"dms (DankMaterialShell)": f.getDmsMapping(variants["dms (DankMaterialShell)"]),
-		"danksearch":              {Name: "danksearch", Repository: RepoTypeCOPR, RepoURL: "avengemedia/danklinux"},
-		"dankcalendar":            {Name: "dankcalendar-git", Repository: RepoTypeCOPR, RepoURL: "avengemedia/danklinux"},
+		"advs-greeter":             {Name: "advs-greeter", Repository: RepoTypeCOPR, RepoURL: "bavanchun/ariadnev"},
+		"matugen":                 {Name: "matugen", Repository: RepoTypeCOPR, RepoURL: "bavanchun/ariadnev"},
+		"advs (AriadnevShell)": f.getAdvsMapping(variants["advs (AriadnevShell)"]),
+		"advsearch":              {Name: "advsearch", Repository: RepoTypeCOPR, RepoURL: "bavanchun/ariadnev"},
+		"advcalendar":            {Name: "advcalendar-git", Repository: RepoTypeCOPR, RepoURL: "bavanchun/ariadnev"},
 	}
 
 	switch wm {
@@ -161,16 +161,16 @@ func (f *FedoraDistribution) GetPackageMappingWithVariants(wm deps.WindowManager
 
 func (f *FedoraDistribution) getQuickshellMapping(variant deps.PackageVariant) PackageMapping {
 	if forceQuickshellGit || variant == deps.VariantGit {
-		return PackageMapping{Name: "quickshell-git", Repository: RepoTypeCOPR, RepoURL: "avengemedia/danklinux"}
+		return PackageMapping{Name: "quickshell-git", Repository: RepoTypeCOPR, RepoURL: "bavanchun/ariadnev"}
 	}
-	return PackageMapping{Name: "quickshell", Repository: RepoTypeCOPR, RepoURL: "avengemedia/danklinux"}
+	return PackageMapping{Name: "quickshell", Repository: RepoTypeCOPR, RepoURL: "bavanchun/ariadnev"}
 }
 
-func (f *FedoraDistribution) getDmsMapping(variant deps.PackageVariant) PackageMapping {
+func (f *FedoraDistribution) getAdvsMapping(variant deps.PackageVariant) PackageMapping {
 	if variant == deps.VariantGit {
-		return PackageMapping{Name: "dms", Repository: RepoTypeCOPR, RepoURL: "avengemedia/dms-git"}
+		return PackageMapping{Name: "advs", Repository: RepoTypeCOPR, RepoURL: "bavanchun/ariadnev-shell-git"}
 	}
-	return PackageMapping{Name: "dms", Repository: RepoTypeCOPR, RepoURL: "avengemedia/dms"}
+	return PackageMapping{Name: "advs", Repository: RepoTypeCOPR, RepoURL: "bavanchun/advs"}
 }
 
 func (f *FedoraDistribution) getHyprlandMapping(_ deps.PackageVariant) PackageMapping {
@@ -212,8 +212,8 @@ func (f *FedoraDistribution) detectAccountsService() deps.Dependency {
 	}
 }
 
-func (f *FedoraDistribution) detectDMSGreeter() deps.Dependency {
-	return f.detectOptionalPackage("dms-greeter", "DankMaterialShell greetd greeter", f.packageInstalled("dms-greeter"))
+func (f *FedoraDistribution) detectAriadnevGreeter() deps.Dependency {
+	return f.detectOptionalPackage("advs-greeter", "AriadnevShell greetd greeter", f.packageInstalled("advs-greeter"))
 }
 
 func (f *FedoraDistribution) getPrerequisites() []string {
@@ -390,8 +390,8 @@ func (f *FedoraDistribution) InstallPackages(ctx context.Context, dependencies [
 		f.log(fmt.Sprintf("Warning: failed to write window manager config: %v", err))
 	}
 
-	if err := f.EnableDMSService(ctx, wm); err != nil {
-		f.log(fmt.Sprintf("Warning: failed to enable dms service: %v", err))
+	if err := f.EnableADVSService(ctx, wm); err != nil {
+		f.log(fmt.Sprintf("Warning: failed to enable advs service: %v", err))
 	}
 
 	// Phase 7: Complete

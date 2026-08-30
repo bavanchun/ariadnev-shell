@@ -20,7 +20,7 @@ Item {
         NetworkService.removeRef();
     }
 
-    DankFlickable {
+    AdvFlickable {
         anchors.fill: parent
         clip: true
         contentHeight: mainColumn.height + Theme.spacingXL
@@ -162,7 +162,7 @@ Item {
                             height: 1
                         }
 
-                        DankButtonGroup {
+                        AdvButtonGroup {
                             id: preferenceButtons
 
                             readonly property var preferenceValues: {

@@ -21,7 +21,7 @@ StyledRect {
         anchors.margins: Theme.spacingM
         spacing: Theme.spacingXS
 
-        DankIcon {
+        AdvIcon {
             name: "warning"
             size: 16
             color: Theme.warning

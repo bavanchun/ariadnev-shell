@@ -38,7 +38,7 @@ Rectangle {
         anchors.rightMargin: Theme.spacingM
         spacing: Theme.spacingM
 
-        DankIcon {
+        AdvIcon {
             name: root.deviceType === "input" ? "mic" : "speaker"
             size: Theme.iconSize
             color: Theme.surfaceText
@@ -116,7 +116,7 @@ Rectangle {
             anchors.verticalCenter: parent.verticalCenter
             spacing: Theme.spacingS
 
-            DankActionButton {
+            AdvActionButton {
                 id: resetButton
                 visible: root.hasCustomAlias
                 buttonSize: 36
@@ -130,7 +130,7 @@ Rectangle {
                 }
             }
 
-            DankActionButton {
+            AdvActionButton {
                 id: hideButton
                 visible: root.showHideButton
                 buttonSize: 36
@@ -144,7 +144,7 @@ Rectangle {
                 }
             }
 
-            DankActionButton {
+            AdvActionButton {
                 id: editButton
                 buttonSize: 36
                 iconName: "edit"

@@ -17,7 +17,7 @@ Singleton {
     readonly property bool available: adapter !== null
     readonly property bool enabled: (adapter && adapter.enabled) ?? false
     readonly property bool discovering: (adapter && adapter.discovering) ?? false
-    readonly property bool dbusBridgeAvailable: DMSService.isConnected && DMSService.capabilities.includes("dbus")
+    readonly property bool dbusBridgeAvailable: ADVSService.isConnected && ADVSService.capabilities.includes("dbus")
     property bool wpexecAvailable: false
     property bool wpexecChecked: false
     property var pendingCodecActions: []
@@ -30,7 +30,7 @@ Singleton {
     readonly property string cardProfileScript: Quickshell.shellDir + "/scripts/bluez-card-profile.lua"
     readonly property bool codecControlAvailable: wpexecChecked && wpexecAvailable
     readonly property var devices: adapter ? adapter.devices : null
-    readonly property bool enhancedPairingAvailable: DMSService.dmsAvailable && DMSService.apiVersion >= 9 && DMSService.capabilities.includes("bluetooth")
+    readonly property bool enhancedPairingAvailable: ADVSService.advsAvailable && ADVSService.apiVersion >= 9 && ADVSService.capabilities.includes("bluetooth")
     readonly property bool connected: {
         if (!adapter || !adapter.devices) {
             return false;
@@ -82,8 +82,8 @@ Singleton {
     }
 
     function setBluetoothEnabled(enabled) {
-        if (DMSService.isConnected && DMSService.capabilities.includes("bluetooth")) {
-            DMSService.sendRequest("bluetooth.setPowered", {
+        if (ADVSService.isConnected && ADVSService.capabilities.includes("bluetooth")) {
+            ADVSService.sendRequest("bluetooth.setPowered", {
                 "powered": enabled,
                 "adapter": adapter?.dbusPath ?? ""
             }, response => {
@@ -98,7 +98,7 @@ Singleton {
     }
 
     Connections {
-        target: DMSService
+        target: ADVSService
 
         function onConnectionStateChanged() {
             root._codecSignalsSubscribed = false;
@@ -131,9 +131,9 @@ Singleton {
         if (!dbusBridgeAvailable || _codecSignalsSubscribed)
             return;
         _codecSignalsSubscribed = true;
-        DMSService.dbusSubscribe("system", bluezService, "", objectManagerIface, "InterfacesAdded", null);
-        DMSService.dbusSubscribe("system", bluezService, "", objectManagerIface, "InterfacesRemoved", null);
-        DMSService.dbusSubscribe("system", bluezService, "", propertiesIface, "PropertiesChanged", null);
+        ADVSService.dbusSubscribe("system", bluezService, "", objectManagerIface, "InterfacesAdded", null);
+        ADVSService.dbusSubscribe("system", bluezService, "", objectManagerIface, "InterfacesRemoved", null);
+        ADVSService.dbusSubscribe("system", bluezService, "", propertiesIface, "PropertiesChanged", null);
     }
 
     function handleCodecDbusSignal(data) {
@@ -225,7 +225,7 @@ Singleton {
             return;
         }
 
-        DMSService.dbusCall("system", bluezService, "/", objectManagerIface, "GetManagedObjects", [], response => {
+        ADVSService.dbusCall("system", bluezService, "/", objectManagerIface, "GetManagedObjects", [], response => {
             if (response.error) {
                 callback([], "");
                 return;
@@ -397,10 +397,10 @@ Singleton {
             return;
         }
 
-        // The DMS backend actually implements a bluez agent, so we can pair anything
+        // The ADVS backend actually implements a bluez agent, so we can pair anything
         if (enhancedPairingAvailable) {
             const devicePath = getDevicePath(device);
-            DMSService.bluetoothPair(devicePath, callback);
+            ADVSService.bluetoothPair(devicePath, callback);
             return;
         }
 

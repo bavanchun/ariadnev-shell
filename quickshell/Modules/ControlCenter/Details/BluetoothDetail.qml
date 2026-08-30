@@ -125,7 +125,7 @@ Rectangle {
             height: parent.height
         }
 
-        DankDropdown {
+        AdvDropdown {
             id: adapterDropdown
 
             function adapterLabel(adapter) {
@@ -171,7 +171,7 @@ Rectangle {
                 anchors.centerIn: parent
                 spacing: Theme.spacingXS
 
-                DankIcon {
+                AdvIcon {
                     name: scanButton.isDiscovering ? "stop" : "bluetooth_searching"
                     size: 18
                     color: scanButton.adapterEnabled ? Theme.primary : Theme.surfaceVariantText
@@ -187,7 +187,7 @@ Rectangle {
                 }
             }
 
-            DankRipple {
+            AdvRipple {
                 id: scanRipple
                 cornerRadius: scanButton.radius
             }
@@ -208,7 +208,7 @@ Rectangle {
         }
     }
 
-    DankFlickable {
+    AdvFlickable {
         id: bluetoothContent
         anchors.top: headerRow.bottom
         anchors.left: parent.left
@@ -312,7 +312,7 @@ Rectangle {
                         anchors.leftMargin: Theme.spacingM
                         spacing: Theme.spacingS
 
-                        DankIcon {
+                        AdvIcon {
                             name: BluetoothService.getDeviceIcon(pairedDelegate.modelData)
                             size: Theme.iconSize - 4
                             anchors.verticalCenter: parent.verticalCenter
@@ -400,7 +400,7 @@ Rectangle {
                             anchors.centerIn: parent
                             spacing: Theme.spacingXS
 
-                            DankIcon {
+                            AdvIcon {
                                 name: "push_pin"
                                 size: 16
                                 color: pairedDelegate.isPinned ? Theme.primary : Theme.surfaceText
@@ -442,7 +442,7 @@ Rectangle {
                         }
                     }
 
-                    DankActionButton {
+                    AdvActionButton {
                         id: pairedOptionsButton
                         anchors.right: parent.right
                         anchors.rightMargin: Theme.spacingS
@@ -459,7 +459,7 @@ Rectangle {
                         }
                     }
 
-                    DankRipple {
+                    AdvRipple {
                         id: deviceRipple
                         cornerRadius: pairedDelegate.radius
                     }
@@ -497,7 +497,7 @@ Rectangle {
                 height: 80
                 visible: (BluetoothService.adapter?.discovering ?? false) && availableRepeater.count === 0
 
-                DankIcon {
+                AdvIcon {
                     anchors.centerIn: parent
                     name: "sync"
                     size: 24
@@ -556,7 +556,7 @@ Rectangle {
                         anchors.leftMargin: Theme.spacingM
                         spacing: Theme.spacingS
 
-                        DankIcon {
+                        AdvIcon {
                             name: BluetoothService.getDeviceIcon(availableDelegate.modelData)
                             size: Theme.iconSize - 4
                             color: Theme.surfaceText
@@ -617,7 +617,7 @@ Rectangle {
                         font.weight: Font.Medium
                     }
 
-                    DankRipple {
+                    AdvRipple {
                         id: availableRipple
                         cornerRadius: availableDelegate.radius
                     }
@@ -776,7 +776,7 @@ Rectangle {
                 }
 
                 const devicePath = BluetoothService.getDevicePath(bluetoothContextMenu.currentDevice);
-                DMSService.bluetoothRemove(devicePath, response => {
+                ADVSService.bluetoothRemove(devicePath, response => {
                     if (!response.error)
                         return;
                     ToastService.showError(I18n.tr("Failed to remove device"), response.error);
@@ -786,7 +786,7 @@ Rectangle {
     }
 
     Connections {
-        target: DMSService
+        target: ADVSService
 
         function onBluetoothPairingRequest(data) {
             const modal = PopoutService.ensureBluetoothPairingModal();

@@ -1,6 +1,6 @@
 # Hyprland Lua Migration
 
-Hyprland 0.55 moved configuration toward Lua. DMS now follows that path for new
+Hyprland 0.55 moved configuration toward Lua. ADVS now follows that path for new
 Hyprland setup and migration.
 
 This guide covers what changes, where files live, and how to check that your
@@ -8,50 +8,50 @@ session is using the new config.
 
 ## Quick Summary
 
-DMS now deploys Hyprland as:
+ADVS now deploys Hyprland as:
 
 ```text
 ~/.config/hypr/hyprland.lua
-~/.config/hypr/dms/*.lua
+~/.config/hypr/advs/*.lua
 ```
 
 The old hyprlang files are moved out of the active config tree:
 
 ```text
 ~/.config/hypr/hyprland.conf
-~/.config/hypr/dms/*.conf
+~/.config/hypr/advs/*.conf
 ```
 
 Backups are stored here:
 
 ```text
-~/.config/hypr/.dms-backups/<timestamp>/
+~/.config/hypr/.advs-backups/<timestamp>/
 ```
 
-## What `dms setup` Does
+## What `advs setup` Does
 
-When Hyprland is selected, `dms setup` writes a Lua main config and DMS Lua
+When Hyprland is selected, `advs setup` writes a Lua main config and ADVS Lua
 fragments.
 
 | File | Purpose |
 | --- | --- |
 | `hyprland.lua` | Main Hyprland config. |
-| `dms/colors.lua` | Theme colors. |
-| `dms/outputs.lua` | Monitors and display settings. |
-| `dms/layout.lua` | Layout, gaps, borders, and decoration. |
-| `dms/cursor.lua` | Cursor settings. |
-| `dms/binds.lua` | DMS-managed default shortcuts. |
-| `dms/binds-user.lua` | User shortcut overrides. |
-| `dms/windowrules.lua` | Window rules. |
+| `advs/colors.lua` | Theme colors. |
+| `advs/outputs.lua` | Monitors and display settings. |
+| `advs/layout.lua` | Layout, gaps, borders, and decoration. |
+| `advs/cursor.lua` | Cursor settings. |
+| `advs/binds.lua` | ADVS-managed default shortcuts. |
+| `advs/binds-user.lua` | User shortcut overrides. |
+| `advs/windowrules.lua` | Window rules. |
 
-`dms/binds.lua` is managed by DMS and may be refreshed by setup. Put custom
-keyboard shortcuts in `dms/binds-user.lua`, or use the Keyboard Shortcuts page in
-DMS Settings.
+`advs/binds.lua` is managed by ADVS and may be refreshed by setup. Put custom
+keyboard shortcuts in `advs/binds-user.lua`, or use the Keyboard Shortcuts page in
+ADVS Settings.
 
 Stock configs include a 3-finger horizontal touchpad gesture for workspace
-switching (`hl.gesture` in `dms/binds.lua`) and basic touchpad settings
+switching (`hl.gesture` in `advs/binds.lua`) and basic touchpad settings
 (`tap_to_click`, `natural_scroll` in `hyprland.lua`). To customize or disable
-gestures, add your own `hl.gesture(...)` lines to `dms/binds-user.lua`, or unset
+gestures, add your own `hl.gesture(...)` lines to `advs/binds-user.lua`, or unset
 a stock gesture with `action = "unset"` matching the original fingers,
 direction, and modifiers.
 
@@ -59,49 +59,49 @@ Most other existing non-empty Lua fragments are preserved.
 
 ## Legacy Config Migration
 
-During migration, DMS moves legacy active files into the backup folder so
+During migration, ADVS moves legacy active files into the backup folder so
 Hyprland does not see both config formats at once.
 
-DMS also migrates legacy `monitor = ...` lines from `hyprland.conf` into
-`dms/outputs.lua` when `outputs.lua` is empty or missing. If you already have a
-custom `outputs.lua`, DMS leaves it alone.
+ADVS also migrates legacy `monitor = ...` lines from `hyprland.conf` into
+`advs/outputs.lua` when `outputs.lua` is empty or missing. If you already have a
+custom `outputs.lua`, ADVS leaves it alone.
 
-## DMS Settings Support
+## ADVS Settings Support
 
-DMS Settings now targets Lua files for Hyprland:
+ADVS Settings now targets Lua files for Hyprland:
 
 | Settings page | Lua file |
 | --- | --- |
-| Keyboard Shortcuts | `dms/binds-user.lua` |
-| Displays | `dms/outputs.lua` |
-| Theme Colors | `dms/colors.lua` |
-| Cursor | `dms/cursor.lua` |
-| Window Rules | `dms/windowrules.lua` |
+| Keyboard Shortcuts | `advs/binds-user.lua` |
+| Displays | `advs/outputs.lua` |
+| Theme Colors | `advs/colors.lua` |
+| Cursor | `advs/cursor.lua` |
+| Window Rules | `advs/windowrules.lua` |
 
-The main config should include the DMS fragments:
+The main config should include the ADVS fragments:
 
 ```lua
-require("dms.colors")
-require("dms.outputs")
-require("dms.layout")
-require("dms.cursor")
-require("dms.binds")
-require("dms.binds-user")
-require("dms.windowrules")
+require("advs.colors")
+require("advs.outputs")
+require("advs.layout")
+require("advs.cursor")
+require("advs.binds")
+require("advs.binds-user")
+require("advs.windowrules")
 ```
 
 ### Keyboard Shortcuts: Delete and Reset
 
-The Keyboard Shortcuts page exposes two actions on any DMS-managed bind:
+The Keyboard Shortcuts page exposes two actions on any ADVS-managed bind:
 
-- **Delete** — removes the shortcut entirely. For default DMS shortcuts (from
-  `dms/binds.lua`), this saves an `hl.unbind("KEY")` line into
-  `dms/binds-user.lua` so the removal sticks across `dms setup` runs.
+- **Delete** — removes the shortcut entirely. For default ADVS shortcuts (from
+  `advs/binds.lua`), this saves an `hl.unbind("KEY")` line into
+  `advs/binds-user.lua` so the removal sticks across `advs setup` runs.
 - **Reset to default** — only visible when you are editing a user override of
-  a DMS default. It drops your override so the original DMS default re-applies.
+  a ADVS default. It drops your override so the original ADVS default re-applies.
 
-Binds from your own `hyprland.lua` (outside the `dms/` folder) are read-only
-in Settings — DMS does not write into files it does not manage.
+Binds from your own `hyprland.lua` (outside the `advs/` folder) are read-only
+in Settings — ADVS does not write into files it does not manage.
 
 ## Starting Hyprland
 
@@ -112,14 +112,14 @@ Hyprland -c ~/.config/hypr/hyprland.lua
 ```
 
 If Hyprland warns that it is using an autogenerated config, or the warning
-mentions `hyprland.conf`, the session is not using the DMS Lua config yet.
+mentions `hyprland.conf`, the session is not using the ADVS Lua config yet.
 
 ## Verify Everything
 
-After updating DMS, run:
+After updating ADVS, run:
 
 ```sh
-dms setup
+advs setup
 hyprctl reload
 hyprctl configerrors
 ```
@@ -132,17 +132,17 @@ Useful file checks:
 ```sh
 test -f ~/.config/hypr/hyprland.lua
 test ! -f ~/.config/hypr/hyprland.conf
-ls ~/.config/hypr/dms
+ls ~/.config/hypr/advs
 ```
 
-The live `dms` folder should contain Lua files like `binds.lua`,
+The live `advs` folder should contain Lua files like `binds.lua`,
 `binds-user.lua`, `outputs.lua`, and `windowrules.lua`.
 
 Note: Hyprland 0.55 still auto-generates `hyprland.conf` if you launch it
-without `-c ~/.config/hypr/hyprland.lua`. DMS sweeps any stray
-`hyprland.conf` into `.dms-backups/<timestamp>/` on the next `dms run`
+without `-c ~/.config/hypr/hyprland.lua`. ADVS sweeps any stray
+`hyprland.conf` into `.advs-backups/<timestamp>/` on the next `advs run`
 startup, so the second check above is the right long-term state. If you see
-`hyprland.conf` persist between `dms run` invocations, the session was not
+`hyprland.conf` persist between `advs run` invocations, the session was not
 started from `hyprland.lua` — restart Hyprland with the `-c` flag (or update
 your session/desktop entry to include it).
 
@@ -151,18 +151,18 @@ your session/desktop entry to include it).
 If shortcuts do not work, confirm `hyprland.lua` includes both:
 
 ```lua
-require("dms.binds")
-require("dms.binds-user")
+require("advs.binds")
+require("advs.binds-user")
 ```
 
-If `hyprctl configerrors` reports errors in `dms/binds.lua`, rerun `dms setup`
-with the latest DMS binary so the DMS-managed shortcut file is refreshed.
+If `hyprctl configerrors` reports errors in `advs/binds.lua`, rerun `advs setup`
+with the latest ADVS binary so the ADVS-managed shortcut file is refreshed.
 
 If a migrated monitor setup looks wrong, compare:
 
 ```text
-~/.config/hypr/dms/outputs.lua
-~/.config/hypr/.dms-backups/<timestamp>/
+~/.config/hypr/advs/outputs.lua
+~/.config/hypr/.advs-backups/<timestamp>/
 ```
 
 Your previous config should be available in the timestamped backup folder.
@@ -171,25 +171,25 @@ Your previous config should be available in the timestamped backup folder.
 
 ```text
 ~/.config/hypr/
-|-- hyprland.lua             # Main DMS Hyprland config
-|-- .dms-backups/            # Timestamped backups from setup/migration
-`-- dms/
+|-- hyprland.lua             # Main ADVS Hyprland config
+|-- .advs-backups/            # Timestamped backups from setup/migration
+`-- advs/
     |-- colors.lua           # Theme colors
     |-- outputs.lua          # Monitor/output config
     |-- layout.lua           # Layout, gaps, borders, decoration
     |-- cursor.lua           # Cursor settings
-    |-- binds.lua            # DMS-managed default shortcuts
+    |-- binds.lua            # ADVS-managed default shortcuts
     |-- binds-user.lua       # User shortcut overrides
-    `-- windowrules.lua      # DMS-managed window rules
+    `-- windowrules.lua      # ADVS-managed window rules
 ```
 
-Legacy files such as `hyprland.conf` and `dms/*.conf` should live in
-`.dms-backups/<timestamp>/` after migration, not in the active config tree.
+Legacy files such as `hyprland.conf` and `advs/*.conf` should live in
+`.advs-backups/<timestamp>/` after migration, not in the active config tree.
 
 ## Maintainer Note
 
 Embedded source files live in `core/internal/config/embedded/` and use names like
-`hypr-binds.lua`. Installed user files use shorter names like `dms/binds.lua`.
+`hypr-binds.lua`. Installed user files use shorter names like `advs/binds.lua`.
 
 After changing Hyprland config deployment or parsing, run:
 

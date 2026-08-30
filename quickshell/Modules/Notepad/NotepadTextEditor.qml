@@ -12,8 +12,8 @@ Column {
     id: root
 
     Component.onCompleted: {
-        if (PluginService.isPluginLoaded("dankNotepadModule")) {
-            pluginHighlightedHtml = SettingsData.getBuiltInPluginSetting("dankNotepadModule", "highlightedHtml", "");
+        if (PluginService.isPluginLoaded("advNotepadModule")) {
+            pluginHighlightedHtml = SettingsData.getBuiltInPluginSetting("advNotepadModule", "highlightedHtml", "");
         }
     }
 
@@ -283,7 +283,7 @@ Column {
     }
 
     function syncContentToPlugin() {
-        if (!PluginService.isPluginLoaded("dankNotepadModule"))
+        if (!PluginService.isPluginLoaded("advNotepadModule"))
             return;
         if (!currentTab)
             return;
@@ -292,16 +292,16 @@ Column {
         const ext = baseName.includes('.') ? baseName.split('.').pop().toLowerCase() : "";
         const content = textArea.text;
 
-        if (content === lastPluginContent && SettingsData.getBuiltInPluginSetting("dankNotepadModule", "previewActive", false) === inlinePreviewVisible) {
+        if (content === lastPluginContent && SettingsData.getBuiltInPluginSetting("advNotepadModule", "previewActive", false) === inlinePreviewVisible) {
             return;
         }
 
         lastPluginContent = content;
-        SettingsData.setBuiltInPluginSetting("dankNotepadModule", "previewActive", inlinePreviewVisible);
-        SettingsData.setBuiltInPluginSetting("dankNotepadModule", "currentFilePath", filePath);
-        SettingsData.setBuiltInPluginSetting("dankNotepadModule", "currentFileExtension", ext);
-        SettingsData.setBuiltInPluginSetting("dankNotepadModule", "sourceContent", content);
-        SettingsData.setBuiltInPluginSetting("dankNotepadModule", "updatedAt", Date.now());
+        SettingsData.setBuiltInPluginSetting("advNotepadModule", "previewActive", inlinePreviewVisible);
+        SettingsData.setBuiltInPluginSetting("advNotepadModule", "currentFilePath", filePath);
+        SettingsData.setBuiltInPluginSetting("advNotepadModule", "currentFileExtension", ext);
+        SettingsData.setBuiltInPluginSetting("advNotepadModule", "sourceContent", content);
+        SettingsData.setBuiltInPluginSetting("advNotepadModule", "updatedAt", Date.now());
     }
 
     function hideSearch() {
@@ -349,7 +349,7 @@ Column {
         id: clipboardCopyProcComp
         Process {
             property string content: ""
-            command: ["sh", "-c", "printf '%s' \"$CONTENT\" | dms clipboard copy"]
+            command: ["sh", "-c", "printf '%s' \"$CONTENT\" | advs clipboard copy"]
             environment: ({
                     "CONTENT": content
                 })
@@ -381,7 +381,7 @@ Column {
             anchors.rightMargin: Theme.spacingM
             spacing: Theme.spacingS
 
-            DankTextField {
+            AdvTextField {
                 id: searchField
                 Layout.fillWidth: true
                 Layout.alignment: Qt.AlignVCenter
@@ -455,7 +455,7 @@ Column {
             }
 
             // Navigation buttons
-            DankActionButton {
+            AdvActionButton {
                 id: prevButton
                 Layout.alignment: Qt.AlignVCenter
                 iconName: "keyboard_arrow_up"
@@ -465,7 +465,7 @@ Column {
                 onClicked: root.findPrevious()
             }
 
-            DankActionButton {
+            AdvActionButton {
                 id: nextButton
                 Layout.alignment: Qt.AlignVCenter
                 iconName: "keyboard_arrow_down"
@@ -475,7 +475,7 @@ Column {
                 onClicked: root.findNext()
             }
 
-            DankActionButton {
+            AdvActionButton {
                 id: closeSearchButton
                 Layout.alignment: Qt.AlignVCenter
                 iconName: "close"
@@ -508,7 +508,7 @@ Column {
                 Layout.preferredWidth: inlinePreviewVisible ? parent.width * 0.55 : parent.width
                 clip: true
 
-                DankFlickable {
+                AdvFlickable {
                     id: flickable
                     anchors.fill: parent
                     clip: true
@@ -588,7 +588,7 @@ Column {
                         topPadding: Theme.spacingM
                         rightPadding: Theme.spacingM
                         bottomPadding: Theme.spacingM
-                        cursorDelegate: DankTextCursor {
+                        cursorDelegate: AdvTextCursor {
                             id: notepadCursor
                             width: 1.5
                             color: Theme.surfaceText
@@ -678,7 +678,7 @@ Column {
                                     root.showSearch();
                                     break;
                                 case Qt.Key_P:
-                                    if (PluginService.isPluginLoaded("dankNotepadModule")) {
+                                    if (PluginService.isPluginLoaded("advNotepadModule")) {
                                         event.accepted = true;
                                         root.previewRequested();
                                     }
@@ -741,7 +741,7 @@ Column {
                         spacing: Theme.spacingS
 
                         // Copy plain text button
-                        DankActionButton {
+                        AdvActionButton {
                             iconName: "content_copy"
                             iconSize: Theme.iconSize - 4
                             iconColor: Theme.surfaceTextMedium
@@ -763,7 +763,7 @@ Column {
                         }
 
                         // Copy HTML button
-                        DankActionButton {
+                        AdvActionButton {
                             iconName: "code"
                             iconSize: Theme.iconSize - 4
                             iconColor: Theme.surfaceTextMedium
@@ -779,7 +779,7 @@ Column {
                     }
                 }
 
-                DankFlickable {
+                AdvFlickable {
                     id: previewFlickable
                     anchors.top: previewHeader.bottom
                     anchors.left: parent.left
@@ -826,7 +826,7 @@ Column {
 
                 Row {
                     spacing: Theme.spacingS
-                    DankActionButton {
+                    AdvActionButton {
                         iconName: "save"
                         iconSize: Theme.iconSize - 2
                         iconColor: Theme.primary
@@ -843,7 +843,7 @@ Column {
 
                 Row {
                     spacing: Theme.spacingS
-                    DankActionButton {
+                    AdvActionButton {
                         iconName: "folder_open"
                         iconSize: Theme.iconSize - 2
                         iconColor: Theme.secondary
@@ -859,7 +859,7 @@ Column {
 
                 Row {
                     spacing: Theme.spacingS
-                    DankActionButton {
+                    AdvActionButton {
                         iconName: "note_add"
                         iconSize: Theme.iconSize - 2
                         iconColor: Theme.surfaceText
@@ -875,8 +875,8 @@ Column {
 
                 Row {
                     spacing: Theme.spacingS
-                    visible: PluginService.isPluginLoaded("dankNotepadModule")
-                    DankActionButton {
+                    visible: PluginService.isPluginLoaded("advNotepadModule")
+                    AdvActionButton {
                         iconName: inlinePreviewVisible ? "visibility" : "visibility_off"
                         iconSize: Theme.iconSize - 2
                         iconColor: Theme.surfaceText
@@ -898,7 +898,7 @@ Column {
                 anchors.verticalCenter: parent.verticalCenter
                 spacing: Theme.spacingS
 
-                DankActionButton {
+                AdvActionButton {
                     visible: !root.inPopout
                     iconName: "open_in_new"
                     iconSize: Theme.iconSize - 2
@@ -906,7 +906,7 @@ Column {
                     onClicked: root.popoutRequested()
                 }
 
-                DankActionButton {
+                AdvActionButton {
                     visible: root.inPopout
                     iconName: "dock_to_right"
                     iconSize: Theme.iconSize - 2
@@ -914,7 +914,7 @@ Column {
                     onClicked: root.dockRequested()
                 }
 
-                DankActionButton {
+                AdvActionButton {
                     iconName: "more_horiz"
                     iconSize: Theme.iconSize - 2
                     iconColor: Theme.surfaceText
@@ -945,7 +945,7 @@ Column {
                     anchors.rightMargin: Theme.spacingM
                     spacing: Theme.spacingS
 
-                    DankIcon {
+                    AdvIcon {
                         name: currentTab && currentTab.isTemporary ? "draft" : "description"
                         size: Theme.iconSize - 4
                         color: Theme.surfaceVariantText
@@ -961,7 +961,7 @@ Column {
                         anchors.verticalCenter: parent.verticalCenter
                     }
 
-                    DankActionButton {
+                    AdvActionButton {
                         id: copyPathButton
                         iconName: "content_copy"
                         iconSize: Theme.iconSize - 6
@@ -1038,7 +1038,7 @@ Column {
                     }
                 }
 
-                DankActionButton {
+                AdvActionButton {
                     anchors.verticalCenter: parent.verticalCenter
                     iconName: "info"
                     iconSize: Theme.iconSizeSmall
@@ -1101,8 +1101,8 @@ Column {
     Connections {
         target: SettingsData
         function onBuiltInPluginSettingsChanged() {
-            if (PluginService.isPluginLoaded("dankNotepadModule")) {
-                pluginHighlightedHtml = SettingsData.getBuiltInPluginSetting("dankNotepadModule", "highlightedHtml", "");
+            if (PluginService.isPluginLoaded("advNotepadModule")) {
+                pluginHighlightedHtml = SettingsData.getBuiltInPluginSetting("advNotepadModule", "highlightedHtml", "");
             }
         }
     }

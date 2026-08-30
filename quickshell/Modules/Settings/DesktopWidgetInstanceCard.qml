@@ -50,7 +50,7 @@ SettingsCard {
     onExpandedChanged: isExpanded = expanded
 
     headerActions: [
-        DankToggle {
+        AdvToggle {
             checked: instanceData?.enabled ?? true
             onToggled: isChecked => {
                 if (!root.instanceId)
@@ -60,7 +60,7 @@ SettingsCard {
                 });
             }
         },
-        DankActionButton {
+        AdvActionButton {
             id: menuButton
             iconName: "more_vert"
             onClicked: {
@@ -105,7 +105,7 @@ SettingsCard {
                             anchors.verticalCenter: parent.verticalCenter
                             spacing: Theme.spacingS
 
-                            DankIcon {
+                            AdvIcon {
                                 name: "content_copy"
                                 size: Theme.iconSizeSmall
                                 color: Theme.surfaceText
@@ -142,7 +142,7 @@ SettingsCard {
                             anchors.verticalCenter: parent.verticalCenter
                             spacing: Theme.spacingS
 
-                            DankIcon {
+                            AdvIcon {
                                 name: root.confirmingDelete ? "warning" : "delete"
                                 size: Theme.iconSizeSmall
                                 color: Theme.error
@@ -208,7 +208,7 @@ SettingsCard {
                     horizontalAlignment: Text.AlignLeft
                 }
 
-                DankTextField {
+                AdvTextField {
                     width: parent.width - 80 - Theme.spacingM
                     text: root.widgetName
                     onEditingFinished: {
@@ -245,7 +245,7 @@ SettingsCard {
                     horizontalAlignment: Text.AlignLeft
                 }
 
-                DankDropdown {
+                AdvDropdown {
                     id: groupDropdown
                     width: parent.width - 80 - Theme.spacingM
                     compactMode: true
@@ -404,7 +404,7 @@ SettingsCard {
 
                         StyledText {
                             id: ipcText
-                            text: "dms ipc call desktopWidget toggleOverlay " + root.instanceId
+                            text: "advs ipc call desktopWidget toggleOverlay " + root.instanceId
                             font.pixelSize: Theme.fontSizeSmall
                             font.family: Theme.monoFontFamily
                             color: Theme.surfaceVariantText
@@ -413,7 +413,7 @@ SettingsCard {
                             anchors.verticalCenter: parent.verticalCenter
                         }
 
-                        DankButton {
+                        AdvButton {
                             id: copyBtn
                             iconName: "content_copy"
                             backgroundColor: "transparent"
@@ -422,7 +422,7 @@ SettingsCard {
                             horizontalPadding: 4
                             anchors.verticalCenter: parent.verticalCenter
                             onClicked: {
-                                Quickshell.execDetached(["dms", "cl", "copy", "dms ipc call desktopWidget toggleOverlay " + root.instanceId]);
+                                Quickshell.execDetached(["advs", "cl", "copy", "advs ipc call desktopWidget toggleOverlay " + root.instanceId]);
                                 ToastService.showInfo(I18n.tr("Copied to clipboard"));
                             }
                         }

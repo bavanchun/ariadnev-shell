@@ -4,13 +4,13 @@ import (
 	"fmt"
 	"sync"
 
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/log"
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/proto/keyboard_shortcuts_inhibit"
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/proto/wlr_layer_shell"
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/proto/wlr_screencopy"
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/proto/wp_color_management"
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/proto/wp_viewporter"
-	wlhelpers "github.com/AvengeMedia/DankMaterialShell/core/internal/wayland/client"
+	"github.com/bavanchun/ariadnev-shell/core/internal/log"
+	"github.com/bavanchun/ariadnev-shell/core/internal/proto/keyboard_shortcuts_inhibit"
+	"github.com/bavanchun/ariadnev-shell/core/internal/proto/wlr_layer_shell"
+	"github.com/bavanchun/ariadnev-shell/core/internal/proto/wlr_screencopy"
+	"github.com/bavanchun/ariadnev-shell/core/internal/proto/wp_color_management"
+	"github.com/bavanchun/ariadnev-shell/core/internal/proto/wp_viewporter"
+	wlhelpers "github.com/bavanchun/ariadnev-shell/core/internal/wayland/client"
 	"github.com/AvengeMedia/dankgo/wayland/client"
 )
 
@@ -376,7 +376,7 @@ func (p *Picker) createLayerSurface(output *Output) (*LayerSurface, error) {
 		surface,
 		output.wlOutput,
 		uint32(wlr_layer_shell.ZwlrLayerShellV1LayerOverlay),
-		"dms-colorpicker",
+		"advs-colorpicker",
 	)
 	if err != nil {
 		return nil, fmt.Errorf("get layer surface: %w", err)

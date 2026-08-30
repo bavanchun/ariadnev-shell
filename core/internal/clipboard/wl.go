@@ -3,7 +3,7 @@ package clipboard
 import (
 	"fmt"
 
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/proto/virtual_keyboard"
+	"github.com/bavanchun/ariadnev-shell/core/internal/proto/virtual_keyboard"
 	wlclient "github.com/AvengeMedia/dankgo/wayland/client"
 	"github.com/AvengeMedia/dankgo/wayland/ext_data_control"
 )

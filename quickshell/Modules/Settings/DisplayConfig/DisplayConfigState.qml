@@ -157,10 +157,10 @@ Singleton {
         const legacy = SettingsData.displayProfiles || {};
         const configDir = Paths.strip(StandardPaths.writableLocation(StandardPaths.ConfigLocation));
         const compositorDirs = {
-            "niri": configDir + "/niri/dms/profiles",
-            "hyprland": configDir + "/hypr/dms/profiles",
-            "dwl": configDir + "/mango/dms/profiles",
-            "mango": configDir + "/mango/dms/profiles"
+            "niri": configDir + "/niri/advs/profiles",
+            "hyprland": configDir + "/hypr/advs/profiles",
+            "dwl": configDir + "/mango/advs/profiles",
+            "mango": configDir + "/mango/advs/profiles"
         };
         const compositorExts = {
             "niri": ".kdl",
@@ -1477,23 +1477,23 @@ Singleton {
         case "niri":
             return {
                 "configFile": configDir + "/niri/config.kdl",
-                "outputsFile": configDir + "/niri/dms/outputs.kdl",
-                "grepPattern": 'include.*"dms/outputs.kdl"',
-                "includeLine": 'include "dms/outputs.kdl"'
+                "outputsFile": configDir + "/niri/advs/outputs.kdl",
+                "grepPattern": 'include.*"advs/outputs.kdl"',
+                "includeLine": 'include "advs/outputs.kdl"'
             };
         case "hyprland":
             return {
                 "configFile": configDir + "/hypr/hyprland.lua",
-                "outputsFile": configDir + "/hypr/dms/outputs.lua",
-                "grepPattern": "dms.outputs",
-                "includeLine": "require(\"dms.outputs\")"
+                "outputsFile": configDir + "/hypr/advs/outputs.lua",
+                "grepPattern": "advs.outputs",
+                "includeLine": "require(\"advs.outputs\")"
             };
         case "mango":
             return {
                 "configFile": configDir + "/mango/config.conf",
-                "outputsFile": configDir + "/mango/dms/outputs.conf",
-                "grepPattern": 'source.*dms/outputs.conf',
-                "includeLine": "source=./dms/outputs.conf"
+                "outputsFile": configDir + "/mango/advs/outputs.conf",
+                "grepPattern": 'source.*advs/outputs.conf',
+                "includeLine": "source=./advs/outputs.conf"
             };
         default:
             return null;
@@ -1516,7 +1516,7 @@ Singleton {
         const compositorArg = (compositor === "mango") ? "mangowc" : compositor;
 
         checkingInclude = true;
-        Proc.runCommand("check-outputs-include", [Proc.dmsBin, "config", "resolve-include", compositorArg, filename], (output, exitCode) => {
+        Proc.runCommand("check-outputs-include", [Proc.advsBin, "config", "resolve-include", compositorArg, filename], (output, exitCode) => {
             checkingInclude = false;
             if (exitCode !== 0) {
                 includeStatus = {
@@ -1591,7 +1591,7 @@ Singleton {
     }
 
     function showHyprlandReadOnlyWarning() {
-        ToastService.showWarning(I18n.tr("Hyprland conf mode"), I18n.tr("This install is still using hyprland.conf. Run dms setup to migrate before changing these settings."), "dms setup", "display-config");
+        ToastService.showWarning(I18n.tr("Hyprland conf mode"), I18n.tr("This install is still using hyprland.conf. Run advs setup to migrate before changing these settings."), "advs setup", "display-config");
     }
 
     function buildOutputsMap() {
@@ -2250,7 +2250,7 @@ Singleton {
         const configContent = NiriService.buildOutputsConfig(mergedOutputs, mergedNiriSettings);
 
         const configDir = Paths.strip(StandardPaths.writableLocation(StandardPaths.ConfigLocation));
-        const tempFile = configDir + "/niri/dms/.outputs-validate-tmp.kdl";
+        const tempFile = configDir + "/niri/advs/.outputs-validate-tmp.kdl";
 
         Proc.runCommand("niri-validate-write-tmp", ["sh", "-c", `mkdir -p "$(dirname "${tempFile}")" && cat > "${tempFile}" << 'EOF'\n${configContent}EOF`], (output, writeExitCode) => {
             if (writeExitCode !== 0) {

@@ -4,7 +4,7 @@ import qs.Common
 import qs.Services
 import qs.Widgets
 
-DankFloatingWindow {
+AdvFloatingWindow {
     id: root
 
     function show() {

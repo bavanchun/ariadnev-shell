@@ -6,8 +6,8 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/server/models"
-	"github.com/AvengeMedia/DankMaterialShell/core/pkg/ipp"
+	"github.com/bavanchun/ariadnev-shell/core/internal/server/models"
+	"github.com/bavanchun/ariadnev-shell/core/pkg/ipp"
 	"github.com/stretchr/testify/assert"
 )
 

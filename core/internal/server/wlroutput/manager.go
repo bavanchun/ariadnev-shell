@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/log"
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/proto/wlr_output_management"
+	"github.com/bavanchun/ariadnev-shell/core/internal/log"
+	"github.com/bavanchun/ariadnev-shell/core/internal/proto/wlr_output_management"
 	wlclient "github.com/AvengeMedia/dankgo/wayland/client"
 )
 

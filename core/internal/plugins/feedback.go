@@ -6,7 +6,7 @@ import (
 	"time"
 )
 
-const feedbackURL = "https://api.danklinux.com/plugins"
+const feedbackURL = "https://api.ariadnev.vchun.dev/plugins"
 
 type Feedback struct {
 	Upvotes  int

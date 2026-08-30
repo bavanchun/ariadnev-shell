@@ -1,4 +1,4 @@
-name: DMS Copr Stable Release
+name: ADVS Copr Stable Release
 
 on:
   workflow_dispatch:
@@ -6,10 +6,10 @@ on:
       package:
         description: 'Package to build'
         required: false
-        default: 'dms'
+        default: 'advs'
         type: choice
         options:
-          - dms
+          - advs
       version:
         description: 'Versioning (e.g., 1.0.3, leave empty for latest release)'
         required: false
@@ -28,7 +28,7 @@ jobs:
       - name: Set package list
         id: set-packages
         run: |
-          PACKAGE_INPUT="${{ github.event.inputs.package || 'dms' }}"
+          PACKAGE_INPUT="${{ github.event.inputs.package || 'advs' }}"
           echo "packages=[\"$PACKAGE_INPUT\"]" >> $GITHUB_OUTPUT
 
   build-and-upload:
@@ -75,16 +75,16 @@ jobs:
           VERSION="${{ steps.version.outputs.version }}"
           cd ~/rpmbuild/SOURCES
 
-          echo "📦 Downloading DMS QML source for v${VERSION}..."
+          echo "📦 Downloading ADVS QML source for v${VERSION}..."
 
-          # Download DMS QML source
-          wget "https://github.com/AvengeMedia/DankMaterialShell/releases/download/v${VERSION}/dms-qml.tar.gz" || {
-            echo "❌ Failed to download dms-qml.tar.gz for v${VERSION}"
+          # Download ADVS QML source
+          wget "https://github.com/bavanchun/ariadnev-shell/releases/download/v${VERSION}/advs-qml.tar.gz" || {
+            echo "❌ Failed to download advs-qml.tar.gz for v${VERSION}"
             exit 1
           }
 
           echo "✅ Source downloaded"
-          echo "Note: dms-cli binary will be downloaded during build based on target architecture"
+          echo "Note: advs-cli binary will be downloaded during build based on target architecture"
           ls -lh
 
       - name: Generate stable spec file
@@ -143,7 +143,7 @@ jobs:
           cat > ~/.config/copr << EOF
           [copr-cli]
           login = ${{ secrets.COPR_LOGIN }}
-          username = avengemedia
+          username = bavanchun
           token = ${{ secrets.COPR_TOKEN }}
           copr_url = https://copr.fedorainfracloud.org
           EOF
@@ -155,8 +155,8 @@ jobs:
         id: copr_project
         run: |
           PACKAGE="${{ matrix.package }}"
-          if [ "$PACKAGE" = "dms" ]; then
-            COPR_PROJECT="avengemedia/dms"
+          if [ "$PACKAGE" = "advs" ]; then
+            COPR_PROJECT="bavanchun/advs"
           else
             echo "❌ Unknown package: $PACKAGE"
             exit 1

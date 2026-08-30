@@ -22,7 +22,7 @@ Row {
     height: 40
     spacing: 0
 
-    DankTooltipV2 {
+    AdvTooltipV2 {
         id: sharedTooltip
     }
 
@@ -96,7 +96,7 @@ Row {
         radius: (Theme.iconSize + Theme.spacingS * 2) / 2
         color: iconArea.containsMouse ? Theme.primaryHover : Theme.withAlpha(Theme.primary, 0)
 
-        DankRipple {
+        AdvRipple {
             id: iconRipple
             cornerRadius: parent.radius
         }
@@ -123,7 +123,7 @@ Row {
                 sharedTooltip.hide();
             }
 
-            DankIcon {
+            AdvIcon {
                 anchors.centerIn: parent
                 name: DisplayService.brightnessAvailable && targetDevice ? DisplayService.brightnessIconName(targetDevice, targetBrightness) : "brightness_low"
                 size: Theme.iconSize
@@ -132,7 +132,7 @@ Row {
         }
     }
 
-    DankSlider {
+    AdvSlider {
         id: brightnessSlider
 
         anchors.verticalCenter: parent.verticalCenter

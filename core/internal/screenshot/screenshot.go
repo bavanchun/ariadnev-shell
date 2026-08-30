@@ -5,10 +5,10 @@ import (
 	"math"
 	"sync"
 
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/log"
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/proto/wlr_screencopy"
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/proto/wp_color_management"
-	wlhelpers "github.com/AvengeMedia/DankMaterialShell/core/internal/wayland/client"
+	"github.com/bavanchun/ariadnev-shell/core/internal/log"
+	"github.com/bavanchun/ariadnev-shell/core/internal/proto/wlr_screencopy"
+	"github.com/bavanchun/ariadnev-shell/core/internal/proto/wp_color_management"
+	wlhelpers "github.com/bavanchun/ariadnev-shell/core/internal/wayland/client"
 	"github.com/AvengeMedia/dankgo/wayland/client"
 )
 

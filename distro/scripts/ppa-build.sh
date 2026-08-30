@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
-# Generic source package builder for DMS PPA packages
+# Generic source package builder for ADVS PPA packages
 # Usage: ./create-source.sh <package-dir> [ubuntu-series]
 #
 # Example:
-#   ./create-source.sh ../dms resolute     # Ubuntu 26.04 LTS (default series in ppa-upload)
-#   ./create-source.sh ../dms stonking     # Ubuntu 26.10
-#   ./create-source.sh ../dms-git resolute
-#   ./create-source.sh ../dms-git stonking
+#   ./create-source.sh ../advs resolute     # Ubuntu 26.04 LTS (default series in ppa-upload)
+#   ./create-source.sh ../advs stonking     # Ubuntu 26.10
+#   ./create-source.sh ../advs-git resolute
+#   ./create-source.sh ../advs-git stonking
 
 set -e
 
@@ -25,15 +25,15 @@ if [ $# -lt 1 ]; then
     error "Usage: $0 <package-dir> [ubuntu-series]"
     echo
     echo "Arguments:"
-    echo "  package-dir     : Path to package directory (e.g., ../dms)"
+    echo "  package-dir     : Path to package directory (e.g., ../advs)"
     echo "  ubuntu-series   : Ubuntu series (optional, default: noble)"
     echo "                    Options: noble, jammy, oracular, mantic, resolute, stonking"
     echo
     echo "Examples:"
-    echo "  $0 ../dms resolute"
-    echo "  $0 ../dms stonking"
-    echo "  $0 ../dms-git resolute"
-    echo "  $0 ../dms-git stonking"
+    echo "  $0 ../advs resolute"
+    echo "  $0 ../advs stonking"
+    echo "  $0 ../advs-git resolute"
+    echo "  $0 ../advs-git stonking"
     exit 1
 fi
 
@@ -116,8 +116,8 @@ success "GPG key found"
 get_ppa_name() {
     local pkg="$1"
     case "$pkg" in
-        dms) echo "dms" ;;
-        dms-git) echo "dms-git" ;;
+        advs) echo "advs" ;;
+        advs-git) echo "advs-git" ;;
         *) echo "" ;;
     esac
 }
@@ -135,7 +135,7 @@ check_ppa_version_exists() {
     local DISTRO_SERIES="${5:-}"
 
     # Query Launchpad API (optionally scoped to one Ubuntu series so the same version can ship to resolute and stonking)
-    local API_URL="https://api.launchpad.net/1.0/~avengemedia/+archive/ubuntu/$PPA_NAME?ws.op=getPublishedSources&source_name=$SOURCE_NAME&status=Published"
+    local API_URL="https://api.launchpad.net/1.0/~bavanchun/+archive/ubuntu/$PPA_NAME?ws.op=getPublishedSources&source_name=$SOURCE_NAME&status=Published"
     if [[ -n "$DISTRO_SERIES" ]]; then
         API_URL+="&distro_series=https://api.launchpad.net/1.0/ubuntu/${DISTRO_SERIES}"
     fi
@@ -218,19 +218,19 @@ if grep -q "git clone" debian/rules 2>/dev/null; then
     fi
 fi
 case "$PACKAGE_NAME" in
-dms-git)
+advs-git)
     IS_GIT_PACKAGE=true
-    GIT_REPO="AvengeMedia/DankMaterialShell"
-    SOURCE_DIR="dms-git-repo"
+    GIT_REPO="bavanchun/ariadnev-shell"
+    SOURCE_DIR="advs-git-repo"
     ;;
-dms)
-    GIT_REPO="AvengeMedia/DankMaterialShell"
+advs)
+    GIT_REPO="bavanchun/ariadnev-shell"
     ;;
-danksearch)
-    GIT_REPO="AvengeMedia/danksearch"
+advsearch)
+    GIT_REPO="bavanchun/advsearch"
     ;;
 dgop)
-    GIT_REPO="AvengeMedia/dgop"
+    GIT_REPO="bavanchun/dgop"
     ;;
 esac
 
@@ -298,7 +298,7 @@ ${SOURCE_NAME} (${NEW_VERSION}) ${UBUNTU_SERIES}; urgency=medium
 
   * ${CHANGELOG_MSG}
 
- -- Avenge Media <AvengeMedia.US@gmail.com>  $(date -R)
+ -- Avenge Media <bavanchun.US@gmail.com>  $(date -R)
 EOF
             success "Version updated to $NEW_VERSION"
             CHANGELOG_VERSION=$(dpkg-parsechangelog -S Version)
@@ -315,35 +315,35 @@ EOF
     VERSION=$(dpkg-parsechangelog -S Version | sed 's/-[^-]*$//' | sed 's/ppa[0-9]*$//')
 
     case "$PACKAGE_NAME" in
-    dms)
-        info "Downloading pre-built binaries and source for dms..."
-        if [ ! -f "dms-distropkg-amd64.gz" ]; then
-            info "Downloading dms binary for amd64..."
-            if wget -O dms-distropkg-amd64.gz "https://github.com/AvengeMedia/DankMaterialShell/releases/download/v${VERSION}/dms-distropkg-amd64.gz"; then
+    advs)
+        info "Downloading pre-built binaries and source for advs..."
+        if [ ! -f "advs-distropkg-amd64.gz" ]; then
+            info "Downloading advs binary for amd64..."
+            if wget -O advs-distropkg-amd64.gz "https://github.com/bavanchun/ariadnev-shell/releases/download/v${VERSION}/advs-distropkg-amd64.gz"; then
                 success "amd64 binary downloaded"
             else
-                error "Failed to download dms-distropkg-amd64.gz"
+                error "Failed to download advs-distropkg-amd64.gz"
                 exit 1
             fi
         fi
 
-        if [ ! -f "dms-distropkg-arm64.gz" ]; then
-            info "Downloading dms binary for arm64..."
+        if [ ! -f "advs-distropkg-arm64.gz" ]; then
+            info "Downloading advs binary for arm64..."
             # Try to download arm64 binary, but don't fail if it doesn't exist (yet)
-            if wget -O dms-distropkg-arm64.gz "https://github.com/AvengeMedia/DankMaterialShell/releases/download/v${VERSION}/dms-distropkg-arm64.gz"; then
+            if wget -O advs-distropkg-arm64.gz "https://github.com/bavanchun/ariadnev-shell/releases/download/v${VERSION}/advs-distropkg-arm64.gz"; then
                 success "arm64 binary downloaded"
             else
-                warn "Failed to download dms-distropkg-arm64.gz (skipping)"
-                rm -f dms-distropkg-arm64.gz
+                warn "Failed to download advs-distropkg-arm64.gz (skipping)"
+                rm -f advs-distropkg-arm64.gz
             fi
         fi
 
-        if [ ! -f "dms-source.tar.gz" ]; then
-            info "Downloading dms source for QML files..."
-            if wget -O dms-source.tar.gz "https://github.com/AvengeMedia/DankMaterialShell/releases/download/v${VERSION}/dms-source.tar.gz"; then
+        if [ ! -f "advs-source.tar.gz" ]; then
+            info "Downloading advs source for QML files..."
+            if wget -O advs-source.tar.gz "https://github.com/bavanchun/ariadnev-shell/releases/download/v${VERSION}/advs-source.tar.gz"; then
                 success "source tarball downloaded"
             else
-                error "Failed to download dms-source.tar.gz"
+                error "Failed to download advs-source.tar.gz"
                 exit 1
             fi
         fi
@@ -455,7 +455,7 @@ ${SOURCE_NAME} (${NEW_VERSION}) ${UBUNTU_SERIES}; urgency=medium
 
   * Git snapshot (commit ${GIT_COMMIT_COUNT}: ${GIT_COMMIT_HASH})
 
- -- Avenge Media <AvengeMedia.US@gmail.com>  $(date -R)
+ -- Avenge Media <bavanchun.US@gmail.com>  $(date -R)
 EOF
         success "Version updated to $NEW_VERSION"
         CHANGELOG_VERSION=$(dpkg-parsechangelog -S Version)
@@ -465,10 +465,10 @@ EOF
         rm -rf "$SOURCE_DIR"
         cp -r "$TEMP_CLONE" "$SOURCE_DIR"
 
-        if [ "$PACKAGE_NAME" = "dms-git" ]; then
-            info "Saving version info to .dms-version for build process..."
-            echo "VERSION=${UPSTREAM_VERSION}+git${GIT_COMMIT_COUNT}.${GIT_COMMIT_HASH}" >"$SOURCE_DIR/.dms-version"
-            echo "COMMIT=${GIT_COMMIT_HASH}" >>"$SOURCE_DIR/.dms-version"
+        if [ "$PACKAGE_NAME" = "advs-git" ]; then
+            info "Saving version info to .advs-version for build process..."
+            echo "VERSION=${UPSTREAM_VERSION}+git${GIT_COMMIT_COUNT}.${GIT_COMMIT_HASH}" >"$SOURCE_DIR/.advs-version"
+            echo "COMMIT=${GIT_COMMIT_HASH}" >>"$SOURCE_DIR/.advs-version"
             success "Version info saved: ${UPSTREAM_VERSION}+git${GIT_COMMIT_COUNT}.${GIT_COMMIT_HASH}"
 
             info "Vendoring Go dependencies for offline build..."
@@ -498,13 +498,13 @@ fi
 # Handle packages that need pre-built binaries downloaded
 cd "$WORK_PACKAGE_DIR"
 case "$PACKAGE_NAME" in
-danksearch)
-    info "Downloading pre-built binaries for danksearch..."
+advsearch)
+    info "Downloading pre-built binaries for advsearch..."
     VERSION=$(dpkg-parsechangelog -S Version | sed 's/-[^-]*$//' | sed 's/ppa[0-9]*$//')
 
     if [ ! -f "dsearch-amd64" ]; then
         info "Downloading dsearch binary for amd64..."
-        if wget -O dsearch-amd64.gz "https://github.com/AvengeMedia/danksearch/releases/download/v${VERSION}/dsearch-linux-amd64.gz"; then
+        if wget -O dsearch-amd64.gz "https://github.com/bavanchun/advsearch/releases/download/v${VERSION}/dsearch-linux-amd64.gz"; then
             gunzip dsearch-amd64.gz
             chmod +x dsearch-amd64
             success "amd64 binary downloaded"
@@ -516,7 +516,7 @@ danksearch)
 
     if [ ! -f "dsearch-arm64" ]; then
         info "Downloading dsearch binary for arm64..."
-        if wget -O dsearch-arm64.gz "https://github.com/AvengeMedia/danksearch/releases/download/v${VERSION}/dsearch-linux-arm64.gz"; then
+        if wget -O dsearch-arm64.gz "https://github.com/bavanchun/advsearch/releases/download/v${VERSION}/dsearch-linux-arm64.gz"; then
             gunzip dsearch-arm64.gz
             chmod +x dsearch-arm64
             success "arm64 binary downloaded"
@@ -577,13 +577,13 @@ if yes | DEBIAN_FRONTEND=noninteractive debuild -S $DEBUILD_SOURCE_FLAG -d; then
     echo "     ls -lh ${SOURCE_NAME}_${CHANGELOG_VERSION}*"
     echo
     echo "  2. Upload to PPA (stable):"
-    echo "     dput ppa:avengemedia/dms ${SOURCE_NAME}_${CHANGELOG_VERSION}_source.changes"
+    echo "     dput ppa:bavanchun/advs ${SOURCE_NAME}_${CHANGELOG_VERSION}_source.changes"
     echo
     echo "  3. Or upload to PPA (nightly):"
-    echo "     dput ppa:avengemedia/dms-git ${SOURCE_NAME}_${CHANGELOG_VERSION}_source.changes"
+    echo "     dput ppa:bavanchun/advs-git ${SOURCE_NAME}_${CHANGELOG_VERSION}_source.changes"
     echo
     echo "  4. Or use the upload script:"
-    echo "     ./upload-ppa.sh $PACKAGE_PARENT/${SOURCE_NAME}_${CHANGELOG_VERSION}_source.changes dms"
+    echo "     ./upload-ppa.sh $PACKAGE_PARENT/${SOURCE_NAME}_${CHANGELOG_VERSION}_source.changes advs"
 
 else
     error "Source package build failed!"

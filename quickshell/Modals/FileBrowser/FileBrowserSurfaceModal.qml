@@ -3,7 +3,7 @@ import Quickshell.Wayland
 import qs.Common
 import qs.Modals.Common
 
-DankModal {
+AdvModal {
     id: fileBrowserSurfaceModal
 
     property string browserTitle: "Select File"
@@ -19,7 +19,7 @@ DankModal {
 
     signal fileSelected(string path)
 
-    layerNamespace: "dms:filebrowser"
+    layerNamespace: "advs:filebrowser"
     modalWidth: 800
     modalHeight: 600
     backgroundColor: Theme.withAlpha(Theme.surfaceContainer, Theme.popupTransparency)

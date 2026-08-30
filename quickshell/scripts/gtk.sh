@@ -4,7 +4,7 @@ CONFIG_DIR="$1"
 # apply: setup overrides and config dirs
 # patch: refresh overrides in adw-gtk3
 # remove: remove all overrides
-# assets: relink adw-gtk3 assets if DMS already manages gtk.css
+# assets: relink adw-gtk3 assets if ADVS already manages gtk.css
 MODE="${2:-apply}"
 IS_LIGHT="${3:-light}"
 SHELL_DIR="$4"
@@ -81,7 +81,7 @@ theme_src_checksum() {
 	sha256sum "$1/gtk-3.0/gtk.css" 2>/dev/null | cut -d' ' -f1
 }
 
-# DMS patches the theme css in place, which needs a user-writable copy;
+# ADVS patches the theme css in place, which needs a user-writable copy;
 # package managers install to read-only system dirs (nix store included).
 ensure_user_adw_gtk3() {
 	local variant name src dest marker src_sum
@@ -89,14 +89,14 @@ ensure_user_adw_gtk3() {
 		name=""
 		[ "$variant" == "dark" ] && name="-$variant"
 		dest="$USER_DATA_THEMES/adw-gtk3${name}"
-		marker="$dest/.dms-copy"
+		marker="$dest/.advs-copy"
 
 		if [ -d "$dest/gtk-3.0" ]; then
 			[ -f "$marker" ] || continue
 			src="$(get_system_adw_gtk3_root "$variant")" || continue
 			src_sum="$(theme_src_checksum "$src")" || continue
 			if [ "$src_sum" != "$(sed -n 's/^sha256=//p' "$marker")" ]; then
-				echo "System adw-gtk3${name} changed, refreshing DMS copy"
+				echo "System adw-gtk3${name} changed, refreshing ADVS copy"
 				rm -rf "$dest"
 			else
 				continue
@@ -159,61 +159,61 @@ link_gtk3_assets() {
 	echo "Linked GTK3 assets: $assets_link -> $target"
 }
 
-DANK_IMPORT='@import url("dank-colors.css");'
-DANK_IMPORT_RE='^@import url.*dank-colors\.css.*);$'
+ADV_IMPORT='@import url("adv-colors.css");'
+ADV_IMPORT_RE='^@import url.*adv-colors\.css.*);$'
 
-# gtk.css is DMS-managed if it is our symlink or carries our import line.
+# gtk.css is ADVS-managed if it is our symlink or carries our import line.
 # User-managed symlinks (e.g. home-manager) are never touched.
-dms_managed_css() {
+advs_managed_css() {
 	local gtk_css="$1"
 	if [ -L "$gtk_css" ]; then
 		case "$(readlink "$gtk_css")" in
-			*dank-colors.css*) return 0 ;;
+			*adv-colors.css*) return 0 ;;
 			*) return 1 ;;
 		esac
 	fi
-	[ -f "$gtk_css" ] && grep -q "$DANK_IMPORT_RE" "$gtk_css"
+	[ -f "$gtk_css" ] && grep -q "$ADV_IMPORT_RE" "$gtk_css"
 }
 
-inject_dank_import() {
+inject_adv_import() {
 	local gtk_css="$1"
 
 	if [ -L "$gtk_css" ]; then
-		if ! dms_managed_css "$gtk_css"; then
+		if ! advs_managed_css "$gtk_css"; then
 			echo "Warning: '$gtk_css' is a user-managed symlink; leaving it untouched" >&2
-			echo "Import dank-colors.css from your own stylesheet to use DMS colors" >&2
+			echo "Import adv-colors.css from your own stylesheet to use ADVS colors" >&2
 			return 1
 		fi
 		rm "$gtk_css"
 	fi
 
-	if [ -f "$gtk_css" ] && grep -q "$DANK_IMPORT_RE" "$gtk_css"; then
-		echo "Dank import already present in '$gtk_css'"
+	if [ -f "$gtk_css" ] && grep -q "$ADV_IMPORT_RE" "$gtk_css"; then
+		echo "Adv import already present in '$gtk_css'"
 		return 0
 	fi
 
 	if [ -f "$gtk_css" ] && [ -s "$gtk_css" ]; then
-		sed -i "1i\\$DANK_IMPORT" "$gtk_css"
+		sed -i "1i\\$ADV_IMPORT" "$gtk_css"
 	else
-		echo "$DANK_IMPORT" >"$gtk_css"
+		echo "$ADV_IMPORT" >"$gtk_css"
 	fi
-	echo "Added dank-colors import to '$gtk_css'"
+	echo "Added adv-colors import to '$gtk_css'"
 }
 
-remove_dank_import() {
+remove_adv_import() {
 	local gtk_css="$1"
 
 	if [ -L "$gtk_css" ]; then
-		if dms_managed_css "$gtk_css"; then
+		if advs_managed_css "$gtk_css"; then
 			rm "$gtk_css"
-			echo "Removed DMS-managed symlink '$gtk_css'"
+			echo "Removed ADVS-managed symlink '$gtk_css'"
 		fi
 		return 0
 	fi
 
-	if [ -f "$gtk_css" ] && grep -q "$DANK_IMPORT_RE" "$gtk_css"; then
-		sed -i "/$DANK_IMPORT_RE/d" "$gtk_css"
-		echo "Removed dank-colors import from '$gtk_css'"
+	if [ -f "$gtk_css" ] && grep -q "$ADV_IMPORT_RE" "$gtk_css"; then
+		sed -i "/$ADV_IMPORT_RE/d" "$gtk_css"
+		echo "Removed adv-colors import from '$gtk_css'"
 	fi
 }
 
@@ -221,7 +221,7 @@ remove_gtk3_patch() {
 	local theme_dir="$1"
 	local css_variant="$2"
 	[ "$css_variant" != "-dark" ] && css_variant=""
-	sed -i '/\/\* BEGIN DMS OVERRIDE \*\//,/\/\* END DMS OVERRIDE \*\//d' "${theme_dir}/gtk${css_variant}.css"
+	sed -i '/\/\* BEGIN ADVS OVERRIDE \*\//,/\/\* END ADVS OVERRIDE \*\//d' "${theme_dir}/gtk${css_variant}.css"
 	return $?
 }
 
@@ -231,11 +231,11 @@ remove_gtk3_colors() {
 	local gtk3_dir="$config_dir/gtk-3.0"
 
 	# remove global override
-	remove_dank_import "$gtk3_dir/gtk.css"
-	if [ ! -f "${gtk3_dir}/dank-colors.css" ]; then
+	remove_adv_import "$gtk3_dir/gtk.css"
+	if [ ! -f "${gtk3_dir}/adv-colors.css" ]; then
 		echo "Nothing to remove at '${gtk3_dir}'"
 	else
-		if rm "${gtk3_dir}/dank-colors.css"; then
+		if rm "${gtk3_dir}/adv-colors.css"; then
 			echo "Removed GTK3 override from '${gtk3_dir}'"
 		else
 			echo "Failed to remove GTK3 override from '${gtk3_dir}'"
@@ -272,7 +272,7 @@ do_patch() {
 	[ "$variant" = "dark" ] && css_variant="-${variant}"
 	if {
 		remove_gtk3_patch "$theme_dir" "$css_variant"
-		cat "${gtk3_dir}/dank-colors.css" >>"${theme_dir}/gtk${css_variant}.css"
+		cat "${gtk3_dir}/adv-colors.css" >>"${theme_dir}/gtk${css_variant}.css"
 	}; then
 		echo "Successfully patched '$theme_dir/gtk${css_variant}.css' with GTK '$variant' colors"
 	else
@@ -296,8 +296,8 @@ patch_gtk3_colors() {
 		exit 2
 	fi
 
-	if [ ! -f "${gtk3_dir}/dank-colors.css" ]; then
-		echo "Error: GTK3 dank-colors.css not found at '${gtk3_dir}'" >&2
+	if [ ! -f "${gtk3_dir}/adv-colors.css" ]; then
+		echo "Error: GTK3 adv-colors.css not found at '${gtk3_dir}'" >&2
 		echo "Run matugen first to generate theme files" >&2
 		exit 1
 	fi
@@ -324,29 +324,29 @@ apply_gtk3_colors() {
 	if ! is_user_theme_dir "$adw_gtk3"; then
 		echo "Warning: No user version of adw-gtk3 found" >&2
 		echo "Falling back on global css override" >&2
-		local dank_colors="$gtk3_dir/dank-colors.css"
+		local adv_colors="$gtk3_dir/adv-colors.css"
 
-		if [ ! -f "$dank_colors" ]; then
-			echo "Error: dank-colors.css not found at $dank_colors" >&2
+		if [ ! -f "$adv_colors" ]; then
+			echo "Error: adv-colors.css not found at $adv_colors" >&2
 			echo "Run matugen first to generate theme files" >&2
 			exit 1
 		fi
 
-		inject_dank_import "$gtk3_override" || exit 1
+		inject_adv_import "$gtk3_override" || exit 1
 		link_gtk3_assets "$gtk3_dir"
 
 		return
 	fi
 
-	# adw-gtk3 carries the colors; ensure there's no DMS global override
-	remove_dank_import "$gtk3_override"
+	# adw-gtk3 carries the colors; ensure there's no ADVS global override
+	remove_adv_import "$gtk3_override"
 
 	# Backup pristine adw-gtk3 stylesheets once
 	for variant in light dark; do
 		local adw_gtk3_dir && adw_gtk3_dir="$(get_adw_gtk3_dir "$variant")"
 		for css in gtk.css gtk-dark.css; do
-			if [ -f "$adw_gtk3_dir/$css" ] && [ ! -f "$adw_gtk3_dir/$css.dms-backup" ]; then
-				cp "$adw_gtk3_dir/$css" "$adw_gtk3_dir/$css.dms-backup"
+			if [ -f "$adw_gtk3_dir/$css" ] && [ ! -f "$adw_gtk3_dir/$css.advs-backup" ]; then
+				cp "$adw_gtk3_dir/$css" "$adw_gtk3_dir/$css.advs-backup"
 			fi
 		done
 	done
@@ -356,41 +356,41 @@ remove_gtk4_colors() {
 	local config_dir="$1"
 
 	local gtk4_dir="$config_dir/gtk-4.0"
-	local dank_colors="$gtk4_dir/dank-colors.css"
+	local adv_colors="$gtk4_dir/adv-colors.css"
 	local gtk_css="$gtk4_dir/gtk.css"
 
-	remove_dank_import "$gtk_css"
+	remove_adv_import "$gtk_css"
 
-	if [ ! -f "$dank_colors" ]; then
+	if [ ! -f "$adv_colors" ]; then
 		echo "Nothing to remove in '$gtk4_dir'"
 		return
 	fi
 
-	rm "$dank_colors"
-	echo "Removed 'dank-colors.css' from '$gtk4_dir'"
+	rm "$adv_colors"
+	echo "Removed 'adv-colors.css' from '$gtk4_dir'"
 }
 
 apply_gtk4_colors() {
 	local config_dir="$1"
 
 	local gtk4_dir="$config_dir/gtk-4.0"
-	local dank_colors="$gtk4_dir/dank-colors.css"
+	local adv_colors="$gtk4_dir/adv-colors.css"
 	local gtk_css="$gtk4_dir/gtk.css"
 
-	if [ ! -f "$dank_colors" ]; then
-		echo "Error: GTK4 dank-colors.css not found at $dank_colors" >&2
+	if [ ! -f "$adv_colors" ]; then
+		echo "Error: GTK4 adv-colors.css not found at $adv_colors" >&2
 		echo "Run matugen first to generate theme files" >&2
 		exit 1
 	fi
 
-	inject_dank_import "$gtk_css" || exit 1
+	inject_adv_import "$gtk_css" || exit 1
 }
 
 case "$MODE" in
 	patch)
 		# Only refresh themes the user opted into via 'apply'
-		if ! dms_managed_css "$CONFIG_DIR/gtk-4.0/gtk.css"; then
-			echo "DMS GTK theming is not applied, skipping patch"
+		if ! advs_managed_css "$CONFIG_DIR/gtk-4.0/gtk.css"; then
+			echo "ADVS GTK theming is not applied, skipping patch"
 			exit 2
 		fi
 		patch_gtk3_colors "$CONFIG_DIR" "$IS_LIGHT"
@@ -409,8 +409,8 @@ case "$MODE" in
 		echo "GTK colors applied successfully"
 		;;
 	assets)
-		# Repair pass at startup; only acts when DMS already manages gtk.css
-		if dms_managed_css "$CONFIG_DIR/gtk-3.0/gtk.css"; then
+		# Repair pass at startup; only acts when ADVS already manages gtk.css
+		if advs_managed_css "$CONFIG_DIR/gtk-3.0/gtk.css"; then
 			link_gtk3_assets "$CONFIG_DIR/gtk-3.0"
 		fi
 		;;

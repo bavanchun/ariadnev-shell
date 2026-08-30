@@ -28,7 +28,7 @@ StyledRect {
     signal sliderValueChanged(int newValue)
     signal sliderDragFinished(int finalValue)
 
-    DankTooltipV2 {
+    AdvTooltipV2 {
         id: sharedTooltip
     }
 
@@ -70,7 +70,7 @@ StyledRect {
             width: parent.width
             spacing: Theme.spacingM
 
-            DankIcon {
+            AdvIcon {
                 id: headerIcon
                 name: root.iconName
                 size: Theme.iconSize
@@ -105,7 +105,7 @@ StyledRect {
                 }
             }
 
-            DankActionButton {
+            AdvActionButton {
                 id: resetButton
                 anchors.verticalCenter: parent.verticalCenter
                 buttonSize: 36
@@ -127,7 +127,7 @@ StyledRect {
             }
         }
 
-        DankSlider {
+        AdvSlider {
             id: slider
             width: parent.width
             height: 32

@@ -50,7 +50,7 @@ Singleton {
     Process {
         id: blurProbe
         running: false
-        command: ["dms", "blur", "check"]
+        command: ["advs", "blur", "check"]
 
         stdout: StdioCollector {
             onStreamFinished: {

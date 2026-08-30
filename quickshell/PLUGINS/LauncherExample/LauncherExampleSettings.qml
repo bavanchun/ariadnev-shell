@@ -115,7 +115,7 @@ FocusScope {
                     anchors.verticalCenter: parent.verticalCenter
                 }
 
-                DankTextField {
+                AdvTextField {
                     id: triggerField
                     width: 100
                     height: 40

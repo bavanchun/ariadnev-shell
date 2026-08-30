@@ -6,10 +6,10 @@ import qs.Services
 import qs.Widgets
 import "./utils/state.js" as StateUtils
 
-DankPopout {
+AdvPopout {
     id: root
 
-    layerNamespace: "dms:control-center"
+    layerNamespace: "advs:control-center"
     fullHeightSurface: true
 
     property string expandedSection: ""

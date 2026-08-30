@@ -26,7 +26,7 @@ StyledRect {
     readonly property string buttonText: {
         switch (target) {
         case "island":
-            return I18n.tr("Open Island", "settings: button that opens the Dank Island tab");
+            return I18n.tr("Open Island", "settings: button that opens the Adv Island tab");
         default:
             return I18n.tr("Open Frame", "settings: button that opens the Frame tab");
         }
@@ -34,7 +34,7 @@ StyledRect {
     readonly property string tabName: {
         switch (target) {
         case "island":
-            return "dank_island";
+            return "adv_island";
         default:
             return "frame";
         }
@@ -56,7 +56,7 @@ StyledRect {
         anchors.rightMargin: Theme.spacingM
         spacing: Theme.spacingM
 
-        DankIcon {
+        AdvIcon {
             name: root.iconName
             size: Theme.iconSize
             color: Theme.primary
@@ -87,7 +87,7 @@ StyledRect {
             }
         }
 
-        DankButton {
+        AdvButton {
             id: openButton
             anchors.verticalCenter: parent.verticalCenter
             text: root.buttonText

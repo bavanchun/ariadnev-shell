@@ -8,7 +8,7 @@ import qs.Widgets
 PanelWindow {
     id: root
 
-    WlrLayershell.namespace: "dms:toast"
+    WlrLayershell.namespace: "advs:toast"
 
     property var modelData
     property bool shouldBeVisible: false
@@ -18,7 +18,7 @@ PanelWindow {
     readonly property real dpr: modelData ? CompositorService.getScreenScale(modelData) : 1
     readonly property real shadowBuffer: 5
     // Toasts always drop from the top edge, so they clear whichever chrome owns it.
-    readonly property real islandTopOffset: SettingsData.dankIslandEdgeOffset(modelData, "top")
+    readonly property real islandTopOffset: SettingsData.advIslandEdgeOffset(modelData, "top")
     readonly property real toastY: islandTopOffset > 0 ? islandTopOffset + Theme.spacingS : Theme.barHeight - 4 + (SettingsData.getPrimaryBarConfig()?.spacing ?? 4) + 2
 
     Connections {
@@ -122,7 +122,7 @@ PanelWindow {
                 width: parent.width
                 height: Math.max(Theme.iconSize + 8, messageText.implicitHeight)
 
-                DankIcon {
+                AdvIcon {
                     id: statusIcon
                     name: {
                         switch (ToastService.currentLevel) {
@@ -173,7 +173,7 @@ PanelWindow {
                     wrapMode: Text.NoWrap
                 }
 
-                DankActionButton {
+                AdvActionButton {
                     id: expandButton
                     iconName: toast.expanded ? "expand_less" : "expand_more"
                     iconSize: Theme.iconSize
@@ -202,7 +202,7 @@ PanelWindow {
                     }
                 }
 
-                DankActionButton {
+                AdvActionButton {
                     id: closeButton
                     iconName: "close"
                     iconSize: Theme.iconSize
@@ -285,7 +285,7 @@ PanelWindow {
                             }
                         }
 
-                        DankActionButton {
+                        AdvActionButton {
                             id: copyDetailsButton
                             iconName: "content_copy"
                             iconSize: Theme.iconSizeSmall
@@ -305,7 +305,7 @@ PanelWindow {
                             property bool showTooltip: false
 
                             onClicked: {
-                                Quickshell.execDetached(["dms", "cl", "copy", ToastService.currentDetails]);
+                                Quickshell.execDetached(["advs", "cl", "copy", ToastService.currentDetails]);
                                 showTooltip = true;
                                 detailsTooltipTimer.start();
                             }
@@ -368,7 +368,7 @@ PanelWindow {
                             wrapMode: Text.Wrap
                         }
 
-                        DankActionButton {
+                        AdvActionButton {
                             id: copyButton
                             iconName: "content_copy"
                             iconSize: Theme.iconSizeSmall
@@ -390,7 +390,7 @@ PanelWindow {
                             property bool showTooltip: false
 
                             onClicked: {
-                                Quickshell.execDetached(["dms", "cl", "copy", ToastService.currentCommand]);
+                                Quickshell.execDetached(["advs", "cl", "copy", ToastService.currentCommand]);
                                 showTooltip = true;
                                 tooltipTimer.start();
                             }

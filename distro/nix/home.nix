@@ -5,7 +5,7 @@
   ...
 }@args:
 let
-  cfg = config.programs.dank-material-shell;
+  cfg = config.programs.adv-material-shell;
   jsonFormat = pkgs.formats.json { };
   common = import ./common.nix {
     inherit
@@ -26,44 +26,44 @@ in
     (import ./options.nix args)
     (lib.mkRemovedOptionModule [
       "programs"
-      "dank-material-shell"
+      "adv-material-shell"
       "enableNightMode"
     ] "Night mode is now always available")
     (lib.mkRemovedOptionModule [
       "programs"
-      "dank-material-shell"
+      "adv-material-shell"
       "default"
       "settings"
-    ] "Default settings have been removed and been replaced with programs.dank-material-shell.settings")
+    ] "Default settings have been removed and been replaced with programs.adv-material-shell.settings")
     (lib.mkRemovedOptionModule [
       "programs"
-      "dank-material-shell"
+      "adv-material-shell"
       "default"
       "session"
-    ] "Default session has been removed and been replaced with programs.dank-material-shell.session")
+    ] "Default session has been removed and been replaced with programs.adv-material-shell.session")
     (lib.mkRenamedOptionModule
-      [ "programs" "dank-material-shell" "enableSystemd" ]
-      [ "programs" "dank-material-shell" "systemd" "enable" ]
+      [ "programs" "adv-material-shell" "enableSystemd" ]
+      [ "programs" "adv-material-shell" "systemd" "enable" ]
     )
   ];
 
-  options.programs.dank-material-shell = {
+  options.programs.adv-material-shell = {
     settings = lib.mkOption {
       type = jsonFormat.type;
       default = { };
-      description = "DankMaterialShell configuration settings as an attribute set, to be written to ~/.config/DankMaterialShell/settings.json.";
+      description = "AriadnevShell configuration settings as an attribute set, to be written to ~/.config/AriadnevShell/settings.json.";
     };
 
     clipboardSettings = lib.mkOption {
       type = jsonFormat.type;
       default = { };
-      description = "DankMaterialShell clipboard settings as an attribute set, to be written to ~/.config/DankMaterialShell/clsettings.json.";
+      description = "AriadnevShell clipboard settings as an attribute set, to be written to ~/.config/AriadnevShell/clsettings.json.";
     };
 
     session = lib.mkOption {
       type = jsonFormat.type;
       default = { };
-      description = "DankMaterialShell session settings as an attribute set, to be written to ~/.local/state/DankMaterialShell/session.json.";
+      description = "AriadnevShell session settings as an attribute set, to be written to ~/.local/state/AriadnevShell/session.json.";
     };
 
     managePluginSettings = lib.mkOption {
@@ -86,9 +86,9 @@ in
       inherit (cfg.quickshell) package;
     };
 
-    systemd.user.services.dms = lib.mkIf cfg.systemd.enable {
+    systemd.user.services.advs = lib.mkIf cfg.systemd.enable {
       Unit = {
-        Description = "DankMaterialShell";
+        Description = "AriadnevShell";
         PartOf = [ cfg.systemd.target ];
         After = [ cfg.systemd.target ];
       };
@@ -103,23 +103,23 @@ in
       Install.WantedBy = [ cfg.systemd.target ];
     };
 
-    xdg.stateFile."DankMaterialShell/session.json" = lib.mkIf (cfg.session != { }) {
+    xdg.stateFile."AriadnevShell/session.json" = lib.mkIf (cfg.session != { }) {
       source = jsonFormat.generate "session.json" cfg.session;
     };
 
     xdg.configFile = {
-      "DankMaterialShell/settings.json" = lib.mkIf (cfg.settings != { }) {
+      "AriadnevShell/settings.json" = lib.mkIf (cfg.settings != { }) {
         source = jsonFormat.generate "settings.json" cfg.settings;
       };
-      "DankMaterialShell/clsettings.json" = lib.mkIf (cfg.clipboardSettings != { }) {
+      "AriadnevShell/clsettings.json" = lib.mkIf (cfg.clipboardSettings != { }) {
         source = jsonFormat.generate "clsettings.json" cfg.clipboardSettings;
       };
-      "DankMaterialShell/plugin_settings.json" = lib.mkIf cfg.managePluginSettings {
+      "AriadnevShell/plugin_settings.json" = lib.mkIf cfg.managePluginSettings {
         source = jsonFormat.generate "plugin_settings.json" pluginSettings;
       };
     }
     // (lib.mapAttrs' (name: value: {
-      name = "DankMaterialShell/plugins/${name}";
+      name = "AriadnevShell/plugins/${name}";
       inherit value;
     }) common.plugins);
     warnings =

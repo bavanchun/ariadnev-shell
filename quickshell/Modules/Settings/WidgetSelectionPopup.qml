@@ -3,7 +3,7 @@ import Quickshell
 import qs.Common
 import qs.Widgets
 
-DankFloatingWindow {
+AdvFloatingWindow {
     id: root
 
     property var allWidgets: []
@@ -211,7 +211,7 @@ DankFloatingWindow {
                     anchors.verticalCenter: parent.verticalCenter
                     spacing: Theme.spacingM
 
-                    DankIcon {
+                    AdvIcon {
                         name: "add_circle"
                         size: Theme.iconSize
                         color: Theme.primary
@@ -233,7 +233,7 @@ DankFloatingWindow {
                     anchors.verticalCenter: parent.verticalCenter
                     spacing: Theme.spacingXS
 
-                    DankActionButton {
+                    AdvActionButton {
                         visible: windowControls.canMaximize
                         circular: false
                         iconName: root.maximized ? "fullscreen_exit" : "fullscreen"
@@ -242,7 +242,7 @@ DankFloatingWindow {
                         onClicked: windowControls.tryToggleMaximize()
                     }
 
-                    DankActionButton {
+                    AdvActionButton {
                         circular: false
                         iconName: "close"
                         iconSize: Theme.iconSize - 4
@@ -270,7 +270,7 @@ DankFloatingWindow {
                         wrapMode: Text.WordWrap
                     }
 
-                    DankTextField {
+                    AdvTextField {
                         id: searchField
                         width: parent.width
                         height: 48
@@ -301,7 +301,7 @@ DankFloatingWindow {
                         }
                     }
 
-                    DankListView {
+                    AdvListView {
                         id: widgetList
 
                         width: parent.width
@@ -325,7 +325,7 @@ DankFloatingWindow {
                                 anchors.margins: Theme.spacingM
                                 spacing: Theme.spacingM
 
-                                DankIcon {
+                                AdvIcon {
                                     name: modelData.icon
                                     size: Theme.iconSize
                                     color: Theme.primary
@@ -358,7 +358,7 @@ DankFloatingWindow {
                                     }
                                 }
 
-                                DankIcon {
+                                AdvIcon {
                                     name: "add"
                                     size: Theme.iconSize - 4
                                     color: Theme.primary

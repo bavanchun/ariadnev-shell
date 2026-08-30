@@ -6,10 +6,10 @@ To contribute fork this repository, make your changes, and open a pull request.
 
 ## Setup
 
-Clone with submodules — the shared widget library ([dank-qml-common](https://github.com/AvengeMedia/dank-qml-common)) is vendored at `dank-qml-common/` and symlinked into `quickshell/DankCommon`:
+Clone with submodules — the shared widget library ([ariadnev-qml-common](https://github.com/bavanchun/ariadnev-qml-common)) is vendored at `ariadnev-qml-common/` and symlinked into `quickshell/AdvCommon`:
 
 ```bash
-git clone --recurse-submodules https://github.com/AvengeMedia/DankMaterialShell.git
+git clone --recurse-submodules https://github.com/bavanchun/ariadnev-shell.git
 # or, in an existing clone:
 git submodule update --init
 ```
@@ -44,15 +44,15 @@ The dev shell automatically creates the `.qmlls.ini` file in the `quickshell/` d
 
 ## Building and running
 
-The Quickshell UI is embedded into the `dms` binary at build time. `make build` copies `quickshell/` into `core/internal/shellembed/dist/` (generated, never committed) and compiles with the `withshell` tag. `make dev` builds without the tag — that binary carries no UI and requires an explicit config dir.
+The Quickshell UI is embedded into the `advs` binary at build time. `make build` copies `quickshell/` into `core/internal/shellembed/dist/` (generated, never committed) and compiles with the `withshell` tag. `make dev` builds without the tag — that binary carries no UI and requires an explicit config dir.
 
 ```bash
-make build   # embedded binary at core/bin/dms
+make build   # embedded binary at core/bin/advs
 make dev     # untagged development build
 make run     # dev build, then launch against the live quickshell/ tree
 ```
 
-The UI config dir resolves in order: `-c <dir>`, `DMS_SHELL_DIR`, the dir a running instance is using, then the embedded UI. Each candidate must contain `shell.qml`. `make run` uses `-c $(pwd)/quickshell`, so QML edits hot-reload from the working tree.
+The UI config dir resolves in order: `-c <dir>`, `ADVS_SHELL_DIR`, the dir a running instance is using, then the embedded UI. Each candidate must contain `shell.qml`. `make run` uses `-c $(pwd)/quickshell`, so QML edits hot-reload from the working tree.
 
 The Go core depends on [dankgo](https://github.com/AvengeMedia/dankgo) for logging, XDG paths, the IPC transport, and the quickshell process lifecycle. To develop against a local dankgo checkout, create a gitignored `go.work` at the repo root:
 
@@ -65,21 +65,21 @@ use (
 )
 ```
 
-## Shared widgets (dank-qml-common)
+## Shared widgets (ariadnev-qml-common)
 
-Everything under `quickshell/DankCommon/` (core widgets, the file browser, scroll physics, bundled fonts) is shared across the DMS suite and lives in the `dank-qml-common` submodule. It is a normal git worktree:
+Everything under `quickshell/AdvCommon/` (core widgets, the file browser, scroll physics, bundled fonts) is shared across the ADVS suite and lives in the `ariadnev-qml-common` submodule. It is a normal git worktree:
 
-1. Edit files under `dank-qml-common/` (or through the `quickshell/DankCommon` symlink — same files) and test in the running shell; hot reload works as usual. For isolated widget work, the library is its own runnable config with a gallery: `qs -c dank-qml-common`.
-2. Commit and PR those changes in the `dank-qml-common` repo: `cd dank-qml-common && git switch -c my-change`, push, open the PR there.
-3. Once merged, bump the pointer here: `make update-common` (updates the submodule and the nix flake input together), then commit alongside any DMS-side changes. If you only bump the submodule, CI syncs `flake.lock` to it automatically on master.
+1. Edit files under `ariadnev-qml-common/` (or through the `quickshell/AdvCommon` symlink — same files) and test in the running shell; hot reload works as usual. For isolated widget work, the library is its own runnable config with a gallery: `qs -c ariadnev-qml-common`.
+2. Commit and PR those changes in the `ariadnev-qml-common` repo: `cd ariadnev-qml-common && git switch -c my-change`, push, open the PR there.
+3. Once merged, bump the pointer here: `make update-common` (updates the submodule and the nix flake input together), then commit alongside any ADVS-side changes. If you only bump the submodule, CI syncs `flake.lock` to it automatically on master.
 
 The submodule URL in `.gitmodules` is HTTPS so CI and anonymous clones keep working. To push over SSH instead of being prompted for credentials, add a push rewrite to your git config — fetches stay HTTPS, pushes use SSH:
 
 ```bash
-git config --global url."git@github.com:AvengeMedia/".pushInsteadOf "https://github.com/AvengeMedia/"
+git config --global url."git@github.com:bavanchun/".pushInsteadOf "https://github.com/bavanchun/"
 ```
 
-Shared widgets read app-provided singletons (`Theme`, `SettingsData`, ...) through a documented contract — see the dank-qml-common README. If your change needs a new contract property, add it to the library's stub singletons in the same PR, then to `quickshell/Common/` here when you bump.
+Shared widgets read app-provided singletons (`Theme`, `SettingsData`, ...) through a documented contract — see the ariadnev-qml-common README. If your change needs a new contract property, add it to the library's stub singletons in the same PR, then to `quickshell/Common/` here when you bump.
 
 Files in `quickshell/Widgets/`, `quickshell/Common/`, and `quickshell/Modals/FileBrowser/` that moved to the library remain in place as thin wrappers, so `import qs.Widgets`, `qs.Common`, and `qs.Modals.FileBrowser` keep working for the shell and for plugins.
 
@@ -139,7 +139,7 @@ cd quickshell
 touch .qmlls.ini
 ```
 
-4. Restart dms to generate the `.qmlls.ini` file
+4. Restart advs to generate the `.qmlls.ini` file
 
 5. Run `make lint-qml` from the repo root to lint QML entrypoints (requires the `.qmlls.ini` generated above). The script needs the **Qt 6** `qmllint`; it checks `qmllint6`, Fedora's `qmllint-qt6`, `/usr/lib/qt6/bin/qmllint`, then `qmllint` in `PATH`. If your Qt 6 binary lives elsewhere, set `QMLLINT=/path/to/qmllint`.
 
@@ -161,7 +161,7 @@ Preferably, try to keep new terms to a minimum and re-use existing terms where p
 
 Don't re-extract the translations. `en.json` and `template.json` are synced with POEditor by a maintainer script, so running `extract_translations.py` in your PR just makes a diff that fights the next sync. Add your `I18n.tr()` calls and leave the catalogs alone. (`settings_search_index.json` is the exception, the pre-commit hook regenerates that one when you touch settings QML.)
 
-Strings inside `quickshell/DankCommon/` are owned by the dank-qml-common repo but stay in the DMS POEditor project — extraction here deliberately skips them, and `scripts/i18nsync.py sync` uploads the union of app terms and the submodule's terms instead (common terms carry the `dank-qml-common` tag). On download the sync splits the exports: app translations go to `quickshell/translations/poexports/`, common translations go to `dank-qml-common/DankCommon/translations/poexports/` for you to commit in that repo and bump. At runtime `I18n` merges both catalogs (app terms win). Other apps (dankcalendar) keep their own POEditor projects and merge the `dank-qml-common`-tagged terms from the DMS project.
+Strings inside `quickshell/AdvCommon/` are owned by the ariadnev-qml-common repo but stay in the ADVS POEditor project — extraction here deliberately skips them, and `scripts/i18nsync.py sync` uploads the union of app terms and the submodule's terms instead (common terms carry the `ariadnev-qml-common` tag). On download the sync splits the exports: app translations go to `quickshell/translations/poexports/`, common translations go to `ariadnev-qml-common/AdvCommon/translations/poexports/` for you to commit in that repo and bump. At runtime `I18n` merges both catalogs (app terms win). Other apps (advcalendar) keep their own POEditor projects and merge the `ariadnev-qml-common`-tagged terms from the ADVS project.
 
 ### GO (`core` directory)
 

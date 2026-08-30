@@ -8,7 +8,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/registries"
+	"github.com/bavanchun/ariadnev-shell/core/internal/registries"
 	"github.com/go-git/go-git/v6"
 	"github.com/go-git/go-git/v6/plumbing"
 	"github.com/spf13/afero"
@@ -27,7 +27,7 @@ type Plugin struct {
 	Compositors  []string `json:"compositors"`
 	Distro       []string `json:"distro"`
 	Screenshot   string   `json:"screenshot,omitempty"`
-	RequiresDMS  string   `json:"requires_dms,omitempty"`
+	RequiresADVS  string   `json:"requires_advs,omitempty"`
 	Featured     bool     `json:"featured,omitempty"`
 }
 
@@ -205,7 +205,7 @@ func (r *Registry) cacheDirFor(src registries.Source) string {
 }
 
 func getCacheDir() string {
-	return filepath.Join(os.TempDir(), "dankdots-plugin-registry")
+	return filepath.Join(os.TempDir(), "advdots-plugin-registry")
 }
 
 // A cached clone is reused only when its origin still matches the configured

@@ -10,19 +10,19 @@ function dirname(path) {
 function sectionHeaderFor(includeLine) {
     const line = String(includeLine ?? "").trim();
     if (line.startsWith("require"))
-        return "-- DMS Include Configs";
+        return "-- ADVS Include Configs";
     if (line.startsWith("source"))
-        return "# DMS Include Configs";
-    return "// DMS Include Configs";
+        return "# ADVS Include Configs";
+    return "// ADVS Include Configs";
 }
 
 function managedIncludePatternFor(includeLine) {
     const line = String(includeLine ?? "").trim();
     if (line.startsWith("require"))
-        return "require.*dms[.]";
+        return "require.*advs[.]";
     if (line.startsWith("source"))
-        return "source.*dms/";
-    return "include.*dms/";
+        return "source.*advs/";
+    return "include.*advs/";
 }
 
 function buildRepairScript(options) {

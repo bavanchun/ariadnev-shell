@@ -7,7 +7,7 @@ import qs.Modules.Settings.Widgets
 Item {
     id: root
 
-    DankFlickable {
+    AdvFlickable {
         anchors.fill: parent
         clip: true
         contentHeight: mainColumn.height + Theme.spacingXL
@@ -85,7 +85,7 @@ Item {
                             horizontalAlignment: Text.AlignLeft
                         }
 
-                        DankTextField {
+                        AdvTextField {
                             width: 100
                             height: 28
                             placeholderText: "3"
@@ -247,7 +247,7 @@ Item {
                                 elide: Text.ElideRight
                             }
 
-                            DankIconPicker {
+                            AdvIconPicker {
                                 id: iconPicker
                                 anchors.verticalCenter: parent.verticalCenter
 
@@ -287,7 +287,7 @@ Item {
                                 border.width: 0
                                 anchors.verticalCenter: parent.verticalCenter
 
-                                DankIcon {
+                                AdvIcon {
                                     name: "close"
                                     size: 16
                                     color: clearMouseArea.containsMouse ? Theme.error : Theme.outline

@@ -1,14 +1,14 @@
 # Plugin System
 
-Create widgets for DankBar and Control Center using dynamically-loaded QML components.
+Create widgets for AdvBar and Control Center using dynamically-loaded QML components.
 
 ## Plugin Registry
 
-Browse and discover community plugins at **https://plugins.danklinux.com/**
+Browse and discover community plugins at **https://plugins.ariadnev.vchun.dev/**
 
 ## Overview
 
-Plugins let you add custom widgets to DankBar and Control Center. They're discovered from `~/.config/DankMaterialShell/plugins/` and managed via PluginService.
+Plugins let you add custom widgets to AdvBar and Control Center. They're discovered from `~/.config/AriadnevShell/plugins/` and managed via PluginService.
 
 ## Architecture
 
@@ -16,7 +16,7 @@ Plugins let you add custom widgets to DankBar and Control Center. They're discov
 
 1. **PluginService** (`Services/PluginService.qml`)
    - Singleton service managing plugin lifecycle
-   - Discovers plugins from `$CONFIGPATH/DankMaterialShell/plugins/`
+   - Discovers plugins from `$CONFIGPATH/AriadnevShell/plugins/`
    - Handles loading, unloading, and state management
    - Provides data persistence for plugin settings
 
@@ -29,20 +29,20 @@ Plugins let you add custom widgets to DankBar and Control Center. They're discov
    - Dynamically loads plugin settings components inline
    - Provides consistent settings interface with proper focus handling
 
-4. **DankBar Integration** (`Modules/DankBar/DankBar.qml`)
+4. **AdvBar Integration** (`Modules/AdvBar/AdvBar.qml`)
    - Renders plugin widgets in the bar
    - Merges plugin components with built-in widgets
    - Supports left, center, and right sections
-   - Supports any dankbar position (top/left/right/bottom)
+   - Supports any advbar position (top/left/right/bottom)
 
-Many widgets are implemented in the shared [dank-qml-common](https://github.com/AvengeMedia/dank-qml-common) library and re-exported by DMS. Plugins should keep importing `qs.Common`, `qs.Services`, `qs.Widgets`, and `qs.Modules.Plugins` — these remain the supported plugin API and are unaffected by where a widget is implemented.
+Many widgets are implemented in the shared [ariadnev-qml-common](https://github.com/bavanchun/ariadnev-qml-common) library and re-exported by ADVS. Plugins should keep importing `qs.Common`, `qs.Services`, `qs.Widgets`, and `qs.Modules.Plugins` — these remain the supported plugin API and are unaffected by where a widget is implemented.
 
 ## Plugin Structure
 
-Each plugin must be a directory in `$CONFIGPATH/DankMaterialShell/plugins/` containing:
+Each plugin must be a directory in `$CONFIGPATH/AriadnevShell/plugins/` containing:
 
 ```
-$CONFIGPATH/DankMaterialShell/plugins/YourPlugin/
+$CONFIGPATH/AriadnevShell/plugins/YourPlugin/
 ├── plugin.json          # Required: Plugin manifest
 ├── YourWidget.qml       # Required: Widget component
 ├── YourSettings.qml     # Optional: Settings UI
@@ -68,7 +68,7 @@ The manifest file defines plugin metadata and configuration.
     "component": "./YourWidget.qml",
     "icon": "material_icon_name",
     "settings": "./YourSettings.qml",
-    "requires_dms": ">=0.1.0",
+    "requires_advs": ">=0.1.0",
     "requires": ["some-system-tool"],
     "permissions": [
         "settings_read",
@@ -84,7 +84,7 @@ The manifest file defines plugin metadata and configuration.
 - `version`: Semantic version string (e.g., "1.0.0")
 - `author`: Plugin creator name or email
 - `type`: Plugin type - "widget", "daemon", "launcher", or "desktop"
-- `capabilities`: Array of plugin capabilities  (e.g., ["dankbar-widget"], ["control-center"], ["monitoring"])
+- `capabilities`: Array of plugin capabilities  (e.g., ["advbar-widget"], ["control-center"], ["monitoring"])
 - `component`: Relative path to main QML component file
 
 **Required for Launcher Type:**
@@ -93,9 +93,9 @@ The manifest file defines plugin metadata and configuration.
 **Optional Fields:**
 - `icon`: Material Design icon name (displayed in UI)
 - `settings`: Path to settings component (enables settings UI)
-- `requires_dms`: Minimum DMS version requirement (e.g., ">=0.1.18", ">0.1.0")
+- `requires_advs`: Minimum ADVS version requirement (e.g., ">=0.1.18", ">0.1.0")
 - `requires`: Array of required system tools/dependencies (e.g., ["curl", "jq"])
-- `permissions`: Required DMS permissions (e.g., ["settings_read", "settings_write"])
+- `permissions`: Required ADVS permissions (e.g., ["settings_read", "settings_write"])
 
 **Permissions:**
 
@@ -116,7 +116,7 @@ import qs.Widgets
 import qs.Modules.Plugins
 
 PluginComponent {
-    // Define horizontal bar pill, for top and bottom DankBar positions (optional)
+    // Define horizontal bar pill, for top and bottom AdvBar positions (optional)
     horizontalBarPill: Component {
         StyledRect {
             width: content.implicitWidth + Theme.spacingM * 2
@@ -134,7 +134,7 @@ PluginComponent {
         }
     }
 
-    // Define vertical bar pill, for left and right DankBar positions (optional)
+    // Define vertical bar pill, for left and right AdvBar positions (optional)
     verticalBarPill: Component {
         // Same as horizontal but optimized for vertical layout
     }
@@ -276,7 +276,7 @@ PopoutComponent {
 
     // Your content here - use parent.width for full width
     // Calculate available height: root.popoutHeight - headerHeight - detailsHeight - spacing
-    DankGridView {
+    AdvGridView {
         width: parent.width
         height: parent.height
         // ...
@@ -537,7 +537,7 @@ PluginSettings {
 
 ## Translations
 
-Plugins ship their own translations. Drop a `translations/` directory next to `plugin.json`, wrap your strings in `I18n.trFor()`, done — nothing needs to change in the DMS repo, and users get your translations just by installing the plugin.
+Plugins ship their own translations. Drop a `translations/` directory next to `plugin.json`, wrap your strings in `I18n.trFor()`, done — nothing needs to change in the ADVS repo, and users get your translations just by installing the plugin.
 
 ```
 YourPlugin/
@@ -549,7 +549,7 @@ YourPlugin/
     └── zh_CN.json
 ```
 
-DMS loads the file matching the user's locale when it discovers the plugin, and re-reads it whenever the locale changes. No restart, no registration call.
+ADVS loads the file matching the user's locale when it discovers the plugin, and re-reads it whenever the locale changes. No restart, no registration call.
 
 ### Marking Strings
 
@@ -563,18 +563,18 @@ StyledText {
 }
 ```
 
-Placeholders work the same as anywhere else in DMS:
+Placeholders work the same as anywhere else in ADVS:
 
 ```qml
 ToastService.showInfo(I18n.trFor("yourPlugin", "Copied %1 to clipboard").arg(item))
 ```
 
-Lookup order is: your plugin's translation file → the global DMS catalog → the English term itself. Strings DMS already translates ("Settings", "Close", etc.) resolve from the global catalog for free, and anything untranslated renders as your English text instead of breaking.
+Lookup order is: your plugin's translation file → the global ADVS catalog → the English term itself. Strings ADVS already translates ("Settings", "Close", etc.) resolve from the global catalog for free, and anything untranslated renders as your English text instead of breaking.
 
 Two rules:
 
 - The plugin id must be a **literal string** that exactly matches `id` in your `plugin.json`. The string extraction tooling for central translation reads call sites — a variable there means your strings never get extracted.
-- `I18n.trFor` doesn't exist on DMS versions without plugin translation support, and calling a missing function in QML is a TypeError, not a silent no-op. Bump `requires_dms` when you adopt it.
+- `I18n.trFor` doesn't exist on ADVS versions without plugin translation support, and calling a missing function in QML is a TypeError, not a silent no-op. Bump `requires_advs` when you adopt it.
 
 Plain `I18n.tr()` still works inside plugins, but it only checks the global catalog — it will never see your `translations/` files.
 
@@ -595,11 +595,11 @@ One JSON file per locale. Top-level keys are context buckets; unless you have a 
 
 There is no `en.json` — the strings in your QML are the English source. Translate what you want, skip what you don't; missing terms fall through the lookup order above.
 
-File names match what DMS ships in its own catalog (`es.json`, `pt.json`, `zh_CN.json`, ...), but you're not limited to that list — resolution is driven by the user's locale. For a user on `zh_CN`, DMS tries `zh_CN.json`, then `zh-CN.json`, then `zh.json`, and uses the first one that exists.
+File names match what ADVS ships in its own catalog (`es.json`, `pt.json`, `zh_CN.json`, ...), but you're not limited to that list — resolution is driven by the user's locale. For a user on `zh_CN`, ADVS tries `zh_CN.json`, then `zh-CN.json`, then `zh.json`, and uses the first one that exists.
 
 ### Testing
 
-1. Reload after editing a file: `dms ipc call plugins reload yourPlugin`
+1. Reload after editing a file: `advs ipc call plugins reload yourPlugin`
 2. Switch languages in Settings → Locale — plugin strings retranslate live along with the rest of the shell
 3. Broken JSON logs a `bad plugin translations` warning in shell output and falls back to English
 
@@ -607,7 +607,7 @@ File names match what DMS ships in its own catalog (`es.json`, `pt.json`, `zh_CN
 
 ### Central Translation via POEditor
 
-Plugins in the [plugin registry](https://github.com/AvengeMedia/dms-plugin-registry) can apply to join the central DMS POEditor project — the same one community translators use for DMS itself. Approved plugins get their strings translated alongside the shell, and finished translations come back to the plugin repo as PRs. See the registry's CONTRIBUTING guide for the application process.
+Plugins in the [plugin registry](https://github.com/bavanchun/advs-plugin-registry) can apply to join the central ADVS POEditor project — the same one community translators use for ADVS itself. Approved plugins get their strings translated alongside the shell, and finished translations come back to the plugin repo as PRs. See the registry's CONTRIBUTING guide for the application process.
 
 ## PluginService API
 
@@ -615,7 +615,7 @@ Plugins in the [plugin registry](https://github.com/AvengeMedia/dms-plugin-regis
 
 ```qml
 PluginService.pluginDirectory: string
-// Path to plugins directory ($CONFIGPATH/DankMaterialShell/plugins)
+// Path to plugins directory ($CONFIGPATH/AriadnevShell/plugins)
 
 PluginService.availablePlugins: object
 // Map of all discovered plugins {pluginId: pluginInfo}
@@ -688,7 +688,7 @@ QtObject {
             }
             done({
                 title: I18n.tr("boregard is required"),
-                details: I18n.tr("Install it from https://danklinux.com, then re-enable this plugin.")
+                details: I18n.tr("Install it from https://ariadnev.vchun.dev, then re-enable this plugin.")
             })
         })
     }
@@ -817,8 +817,8 @@ PluginComponent {
 ### Step 1: Create Plugin Directory
 
 ```bash
-mkdir -p $CONFIGPATH/DankMaterialShell/plugins/MyPlugin
-cd $CONFIGPATH/DankMaterialShell/plugins/MyPlugin
+mkdir -p $CONFIGPATH/AriadnevShell/plugins/MyPlugin
+cd $CONFIGPATH/AriadnevShell/plugins/MyPlugin
 ```
 
 ### Step 2: Create Manifest
@@ -837,7 +837,7 @@ Create `plugin.json`:
     "component": "./MyWidget.qml",
     "icon": "extension",
     "settings": "./MySettings.qml",
-    "requires_dms": ">=0.1.0",
+    "requires_advs": ">=0.1.0",
     "permissions": ["settings_read", "settings_write"]
 }
 ```
@@ -932,27 +932,27 @@ PluginSettings {
 
 ### Step 5: Enable Plugin
 
-1. Run the shell: `qs -p $CONFIGPATH/quickshell/dms/shell.qml`
+1. Run the shell: `qs -p $CONFIGPATH/quickshell/ariadnev/shell.qml`
 2. Open Settings (Ctrl+,)
 3. Navigate to Plugins tab
 4. Click "Scan for Plugins"
 5. Enable your plugin with the toggle switch
-6. Add the plugin to your DankBar configuration
+6. Add the plugin to your AdvBar configuration
 
-## Adding Plugin to DankBar
+## Adding Plugin to AdvBar
 
 After enabling a plugin, add it to the bar:
 
-1. Open Settings → Appearance → DankBar Layout
+1. Open Settings → Appearance → AdvBar Layout
 2. Add a new widget entry with your plugin ID
 3. Choose section (left, center, right)
 4. Save and reload
 
-Or edit `$CONFIGPATH/quickshell/dms/config.json`:
+Or edit `$CONFIGPATH/quickshell/ariadnev/config.json`:
 
 ```json
 {
-    "dankBarLeftWidgets": [
+    "advBarLeftWidgets": [
         {"widgetId": "myPlugin", "enabled": true}
     ]
 }
@@ -960,7 +960,7 @@ Or edit `$CONFIGPATH/quickshell/dms/config.json`:
 
 ## Best Practices
 
-1. **Use Existing Widgets**: Leverage `qs.Widgets` components (DankIcon, DankToggle, etc.) for consistency
+1. **Use Existing Widgets**: Leverage `qs.Widgets` components (AdvIcon, AdvToggle, etc.) for consistency
 2. **Follow Theme**: Use `Theme` singleton for colors, spacing, and fonts
 3. **Data Persistence**: Use PluginService data APIs instead of manual file operations
 4. **Error Handling**: Gracefully handle missing dependencies and invalid data
@@ -972,11 +972,11 @@ Or edit `$CONFIGPATH/quickshell/dms/config.json`:
 
 ## Clipboard Access
 
-Plugins that need to copy text to the clipboard should use the built-in `dms cl copy` command through Quickshell's `execDetached` function.
+Plugins that need to copy text to the clipboard should use the built-in `advs cl copy` command through Quickshell's `execDetached` function.
 
 ### Correct Method
 
-Import Quickshell and use `execDetached` with `dms cl copy`:
+Import Quickshell and use `execDetached` with `advs cl copy`:
 
 ```qml
 import QtQuick
@@ -984,7 +984,7 @@ import Quickshell
 
 Item {
     function copyToClipboard(text) {
-        Quickshell.execDetached(["dms", "cl", "copy", text])
+        Quickshell.execDetached(["advs", "cl", "copy", text])
     }
 }
 ```
@@ -996,7 +996,7 @@ From the ExampleEmojiPlugin (EmojiWidget.qml):
 ```qml
 MouseArea {
     onClicked: {
-        Quickshell.execDetached(["dms", "cl", "copy", modelData])
+        Quickshell.execDetached(["advs", "cl", "copy", modelData])
         ToastService.showInfo("Copied " + modelData + " to clipboard")
         popoutColumn.closePopout()
     }
@@ -1011,7 +1011,7 @@ MouseArea {
 
 ### Dependencies
 
-This method uses the built-in DMS clipboard functionality which has native Wayland support.
+This method uses the built-in ADVS clipboard functionality which has native Wayland support.
 
 ## Running External Commands
 
@@ -1151,7 +1151,7 @@ import qs.Common
 import qs.Widgets
 
 Item {
-    DankTextField {
+    AdvTextField {
         id: searchField
         placeholderText: "Search files..."
 
@@ -1200,7 +1200,7 @@ Item {
 View plugin logs:
 
 ```bash
-qs -v -p $CONFIGPATH/quickshell/dms/shell.qml
+qs -v -p $CONFIGPATH/quickshell/ariadnev/shell.qml
 ```
 
 Look for lines prefixed with:
@@ -1212,12 +1212,12 @@ Look for lines prefixed with:
 
 1. **Plugin Not Detected**
    - Check plugin.json syntax (use `jq` or JSON validator)
-   - Verify directory is in `$CONFIGPATH/DankMaterialShell/plugins/`
+   - Verify directory is in `$CONFIGPATH/AriadnevShell/plugins/`
    - Click "Scan for Plugins" in Settings
 
 2. **Widget Not Displaying**
    - Ensure plugin is enabled in Settings
-   - Add plugin ID to DankBar widget list
+   - Add plugin ID to AdvBar widget list
    - Check widget width/height properties
 
 3. **Settings Not Loading**
@@ -1228,7 +1228,7 @@ Look for lines prefixed with:
 
 4. **Data Not Persisting**
    - Confirm pluginService.savePluginData() calls (with injection)
-   - Check `$CONFIGPATH/DankMaterialShell/settings.json` for pluginSettings data
+   - Check `$CONFIGPATH/AriadnevShell/settings.json` for pluginSettings data
    - Verify plugin has settings permissions
    - Ensure PluginService was properly injected into settings component
 
@@ -1246,7 +1246,7 @@ Currently, only `settings_write` is enforced by the PluginSettings component.
 
 ## API Stability
 
-The plugin API is currently **experimental**. Breaking changes may occur in minor version updates. Pin to specific DMS versions for production use.
+The plugin API is currently **experimental**. Breaking changes may occur in minor version updates. Pin to specific ADVS versions for production use.
 
 **Roadmap:**
 - Plugin marketplace/repository
@@ -1257,7 +1257,7 @@ The plugin API is currently **experimental**. Breaking changes may occur in mino
 
 ## Launcher Plugins
 
-Launcher plugins extend the DMS application launcher by adding custom searchable items with trigger-based filtering.
+Launcher plugins extend the ADVS application launcher by adding custom searchable items with trigger-based filtering.
 
 ### Overview
 
@@ -1285,7 +1285,7 @@ To create a launcher plugin, set the plugin type in `plugin.json`:
     "trigger": "#",
     "icon": "search",
     "settings": "./MySettings.qml",
-    "requires_dms": ">=0.1.18",
+    "requires_advs": ">=0.1.18",
     "permissions": ["settings_read", "settings_write"]
 }
 ```
@@ -1446,7 +1446,7 @@ FocusScope {
             }
         }
 
-        DankTextField {
+        AdvTextField {
             id: triggerField
             visible: !noTriggerToggle.checked
             text: loadSettings("trigger", "#")
@@ -1806,7 +1806,7 @@ Instead of a single `type` + `component`, declare a `components` map. Set `type`
     "version": "1.0.0",
     "author": "Your Name",
     "type": "composite",
-    "capabilities": ["daemon", "dankbar-widget", "desktop-widget"],
+    "capabilities": ["daemon", "advbar-widget", "desktop-widget"],
     "components": {
         "daemon":   "./MyDaemon.qml",
         "widget":   "./MyBarWidget.qml",
@@ -1815,7 +1815,7 @@ Instead of a single `type` + `component`, declare a `components` map. Set `type`
     },
     "trigger": "#",
     "settings": "./MySettings.qml",
-    "requires_dms": ">=1.5.0",
+    "requires_advs": ">=1.5.0",
     "permissions": ["settings_read", "settings_write"]
 }
 ```
@@ -1866,12 +1866,12 @@ plugin.
   - [Emoji Picker](./ExampleEmojiPlugin/)
   - [WorldClock](https://github.com/rochacbruno/WorldClock)
   - [LauncherExample](./LauncherExample/)
-  - [Calculator](https://github.com/rochacbruno/DankCalculator)
+  - [Calculator](https://github.com/rochacbruno/AdvCalculator)
   - [Desktop Clock](./ExampleDesktopClock/)
   - [Composite Example](./ExampleCompositePlugin/)
 - **PluginService**: `Services/PluginService.qml`
 - **Settings UI**: `Modules/Settings/PluginsTab.qml`
-- **DankBar Integration**: `Modules/DankBar/DankBar.qml`
+- **AdvBar Integration**: `Modules/AdvBar/AdvBar.qml`
 - **Launcher Integration**: `Modules/AppDrawer/AppLauncher.qml`
 - **Desktop Widget Integration**: `Modules/DesktopWidgetLayer.qml`
 - **Theme Reference**: `Common/Theme.qml`
@@ -1887,4 +1887,4 @@ Share your plugins with the community:
 4. Add example screenshots
 5. Document dependencies and permissions
 
-For plugin system improvements, submit issues or PRs to the main DMS repository.
+For plugin system improvements, submit issues or PRs to the main ADVS repository.

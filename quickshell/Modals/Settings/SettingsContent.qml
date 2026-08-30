@@ -101,7 +101,7 @@ FocusScope {
             visible: active
             focus: active
 
-            sourceComponent: DankBarTab {
+            sourceComponent: AdvBarTab {
                 parentModal: root.parentModal
             }
 
@@ -159,19 +159,19 @@ FocusScope {
             onLoaded: loadedOnce = true
         }
 
-        DankSpinner {
+        AdvSpinner {
             anchors.centerIn: parent
             visible: root.currentIndex === 38 && windowRulesLoader.status === Loader.Loading
         }
 
         Loader {
-            id: dankBarAppearanceLoader
+            id: advBarAppearanceLoader
             anchors.fill: parent
             active: root.currentIndex === 6
             visible: active
             focus: active
 
-            sourceComponent: DankBarAppearanceTab {
+            sourceComponent: AdvBarAppearanceTab {
                 parentModal: root.parentModal
             }
 
@@ -601,7 +601,7 @@ FocusScope {
             }
         }
 
-        DankSpinner {
+        AdvSpinner {
             anchors.centerIn: parent
             visible: root.currentIndex === 22 && widgetsLoader.status === Loader.Loading
         }
@@ -699,12 +699,12 @@ FocusScope {
         }
 
         Loader {
-            id: dankIslandLoader
+            id: advIslandLoader
             anchors.fill: parent
             active: root.currentIndex === 46
             visible: active
             focus: active
-            sourceComponent: DankIslandTab {
+            sourceComponent: AdvIslandTab {
                 parentModal: root.parentModal
             }
 
@@ -762,13 +762,13 @@ FocusScope {
         }
 
         Loader {
-            id: dankDashLoader
+            id: advDashLoader
             anchors.fill: parent
             active: root.currentIndex === 43
             visible: active
             focus: active
 
-            sourceComponent: DankDashTab {}
+            sourceComponent: AdvDashTab {}
 
             onActiveChanged: {
                 if (active && item)

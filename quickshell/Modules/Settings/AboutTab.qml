@@ -1,7 +1,7 @@
 import QtQuick
 import QtQuick.Effects
 import qs.Common
-import qs.DankCommon.Common as DankCommon
+import qs.AdvCommon.Common as AdvCommon
 import qs.Services
 import qs.Widgets
 
@@ -83,8 +83,8 @@ Item {
         return I18n.tr("niri GitHub");
     }
 
-    property string dmsDiscordUrl: "https://discord.gg/ppWTpKmPgT"
-    property string dmsDiscordTooltip: I18n.tr("niri/dms Discord")
+    property string advsDiscordUrl: "https://discord.gg/ppWTpKmPgT"
+    property string advsDiscordTooltip: I18n.tr("niri/advs Discord")
 
     property string compositorDiscordUrl: {
         if (isHyprland)
@@ -113,7 +113,7 @@ Item {
     property bool showReddit: isNiri && !isHyprland && !isSway && !isScroll && !isMiracle && !isMango && !isLabwc
     property bool showIrc: isLabwc
 
-    DankFlickable {
+    AdvFlickable {
         anchors.fill: parent
         clip: true
         contentHeight: mainColumn.height + Theme.spacingXL
@@ -161,7 +161,7 @@ Item {
                             smooth: true
                             mipmap: true
                             asynchronous: true
-                            source: "file://" + Theme.shellDir + "/assets/danklogonormal.svg"
+                            source: "file://" + Theme.shellDir + "/assets/advlogonormal.svg"
                             layer.enabled: true
                             layer.smooth: true
                             layer.mipmap: true
@@ -174,10 +174,10 @@ Item {
 
                         StyledText {
                             anchors.verticalCenter: parent.verticalCenter
-                            text: "DANK LINUX"
+                            text: "ADV LINUX"
                             font.pixelSize: parent.compactLogo ? 32 : 48
                             font.weight: Font.Bold
-                            font.family: DankCommon.Fonts.sans
+                            font.family: AdvCommon.Fonts.sans
                             color: Theme.surfaceText
                             antialiasing: true
                         }
@@ -185,16 +185,16 @@ Item {
 
                     StyledText {
                         text: {
-                            if (!ShellVersionService.shellVersion && !DMSService.cliVersion)
-                                return "dms";
+                            if (!ShellVersionService.shellVersion && !ADVSService.cliVersion)
+                                return "advs";
 
                             let version = ShellVersionService.shellVersion || "";
-                            let cliVersion = DMSService.cliVersion || "";
+                            let cliVersion = ADVSService.cliVersion || "";
 
                             // Debian/Ubuntu/OpenSUSE git format: 1.0.3+git2264.c5c5ce84
                             let match = version.match(/^([\d.]+)\+git(\d+)\./);
                             if (match) {
-                                return `dms (git) v${match[1]}-${match[2]}`;
+                                return `advs (git) v${match[1]}-${match[2]}`;
                             }
 
                             // Fedora COPR git format: 0.0.git.2267.d430cae9
@@ -216,30 +216,30 @@ Item {
                                 if (!baseVersion)
                                     baseVersion = extractBaseVersion(ShellVersionService.semverVersion);
                                 if (baseVersion) {
-                                    return `dms (git) v${baseVersion}-${match[1]}`;
+                                    return `advs (git) v${baseVersion}-${match[1]}`;
                                 }
-                                return `dms (git) v${match[1]}`;
+                                return `advs (git) v${match[1]}`;
                             }
 
                             // Stable release format: 1.0.3
                             match = version.match(/^([\d.]+)$/);
                             if (match) {
-                                return `dms v${match[1]}`;
+                                return `advs v${match[1]}`;
                             }
 
                             if (!version && cliVersion) {
                                 match = cliVersion.match(/^([\d.]+)\+git(\d+)\./);
                                 if (match) {
-                                    return `dms (git) v${match[1]}-${match[2]}`;
+                                    return `advs (git) v${match[1]}-${match[2]}`;
                                 }
                                 match = cliVersion.match(/^([\d.]+)$/);
                                 if (match) {
-                                    return `dms v${match[1]}`;
+                                    return `advs v${match[1]}`;
                                 }
-                                return `dms ${cliVersion}`;
+                                return `advs ${cliVersion}`;
                             }
 
-                            return `dms ${version}`;
+                            return `advs ${version}`;
                         }
                         font.pixelSize: Theme.fontSizeXLarge
                         font.weight: Font.Bold
@@ -265,72 +265,72 @@ Item {
 
                         property bool compactMode: parent.width < 450
 
-                        DankButton {
+                        AdvButton {
                             id: docsButton
                             text: resourceButtonsRow.compactMode ? "" : I18n.tr("Docs")
                             iconName: "menu_book"
                             iconSize: 18
                             backgroundColor: Theme.surfaceTextHover
                             textColor: Theme.surfaceText
-                            onClicked: Qt.openUrlExternally("https://danklinux.com/docs")
+                            onClicked: Qt.openUrlExternally("https://ariadnev.vchun.dev/docs")
                             onHoveredChanged: {
                                 if (hovered)
-                                    resourceTooltip.show(resourceButtonsRow.compactMode ? I18n.tr("Docs") + " - danklinux.com/docs" : "danklinux.com/docs", docsButton, 0, 0, "bottom");
+                                    resourceTooltip.show(resourceButtonsRow.compactMode ? I18n.tr("Docs") + " - ariadnev.vchun.dev/docs" : "ariadnev.vchun.dev/docs", docsButton, 0, 0, "bottom");
                                 else
                                     resourceTooltip.hide();
                             }
                         }
 
-                        DankButton {
+                        AdvButton {
                             id: pluginsButton
                             text: resourceButtonsRow.compactMode ? "" : I18n.tr("Plugins")
                             iconName: "extension"
                             iconSize: 18
                             backgroundColor: Theme.surfaceTextHover
                             textColor: Theme.surfaceText
-                            onClicked: Qt.openUrlExternally("https://plugins.danklinux.com")
+                            onClicked: Qt.openUrlExternally("https://plugins.ariadnev.vchun.dev")
                             onHoveredChanged: {
                                 if (hovered)
-                                    resourceTooltip.show(resourceButtonsRow.compactMode ? I18n.tr("Plugins") + " - plugins.danklinux.com" : "plugins.danklinux.com", pluginsButton, 0, 0, "bottom");
+                                    resourceTooltip.show(resourceButtonsRow.compactMode ? I18n.tr("Plugins") + " - plugins.ariadnev.vchun.dev" : "plugins.ariadnev.vchun.dev", pluginsButton, 0, 0, "bottom");
                                 else
                                     resourceTooltip.hide();
                             }
                         }
 
-                        DankButton {
+                        AdvButton {
                             id: githubButton
                             text: resourceButtonsRow.compactMode ? "" : I18n.tr("GitHub")
                             iconName: "code"
                             iconSize: 18
                             backgroundColor: Theme.surfaceTextHover
                             textColor: Theme.surfaceText
-                            onClicked: Qt.openUrlExternally("https://github.com/AvengeMedia/DankMaterialShell")
+                            onClicked: Qt.openUrlExternally("https://github.com/bavanchun/ariadnev-shell")
                             onHoveredChanged: {
                                 if (hovered)
-                                    resourceTooltip.show(resourceButtonsRow.compactMode ? "GitHub - AvengeMedia/DankMaterialShell" : "github.com/AvengeMedia/DankMaterialShell", githubButton, 0, 0, "bottom");
+                                    resourceTooltip.show(resourceButtonsRow.compactMode ? "GitHub - bavanchun/ariadnev-shell" : "github.com/bavanchun/ariadnev-shell", githubButton, 0, 0, "bottom");
                                 else
                                     resourceTooltip.hide();
                             }
                         }
 
-                        DankButton {
+                        AdvButton {
                             id: kofiButton
                             text: resourceButtonsRow.compactMode ? "" : I18n.tr("Ko-fi")
                             iconName: "favorite"
                             iconSize: 18
                             backgroundColor: Theme.primaryHover
                             textColor: Theme.primary
-                            onClicked: Qt.openUrlExternally("https://ko-fi.com/danklinux")
+                            onClicked: Qt.openUrlExternally("https://ko-fi.com/ariadnev")
                             onHoveredChanged: {
                                 if (hovered)
-                                    resourceTooltip.show(resourceButtonsRow.compactMode ? I18n.tr("Ko-fi") + " - ko-fi.com/danklinux" : "ko-fi.com/danklinux", kofiButton, 0, 0, "bottom");
+                                    resourceTooltip.show(resourceButtonsRow.compactMode ? I18n.tr("Ko-fi") + " - ko-fi.com/ariadnev" : "ko-fi.com/ariadnev", kofiButton, 0, 0, "bottom");
                                 else
                                     resourceTooltip.hide();
                             }
                         }
                     }
 
-                    DankTooltipV2 {
+                    AdvTooltipV2 {
                         id: resourceTooltip
                     }
 
@@ -339,7 +339,7 @@ Item {
                         anchors.horizontalCenter: parent.horizontalCenter
                         height: 24
                         width: {
-                            let baseWidth = compositorButton.width + dmsDiscordButton.width + Theme.spacingM;
+                            let baseWidth = compositorButton.width + advsDiscordButton.width + Theme.spacingM;
                             if (showMatrix) {
                                 baseWidth += matrixButton.width + 4;
                             }
@@ -429,7 +429,7 @@ Item {
                             property bool hovered: false
                             property string tooltipText: ircTooltip
 
-                            DankIcon {
+                            AdvIcon {
                                 anchors.centerIn: parent
                                 name: "forum"
                                 size: 20
@@ -447,7 +447,7 @@ Item {
                         }
 
                         Item {
-                            id: dmsDiscordButton
+                            id: advsDiscordButton
                             width: 20
                             height: 20
                             x: {
@@ -460,7 +460,7 @@ Item {
                             anchors.verticalCenter: parent.verticalCenter
 
                             property bool hovered: false
-                            property string tooltipText: dmsDiscordTooltip
+                            property string tooltipText: advsDiscordTooltip
 
                             Image {
                                 anchors.fill: parent
@@ -476,7 +476,7 @@ Item {
                                 hoverEnabled: true
                                 onEntered: parent.hovered = true
                                 onExited: parent.hovered = false
-                                onClicked: Qt.openUrlExternally(dmsDiscordUrl)
+                                onClicked: Qt.openUrlExternally(advsDiscordUrl)
                             }
                         }
 
@@ -484,7 +484,7 @@ Item {
                             id: compositorDiscordButton
                             width: 20
                             height: 20
-                            x: dmsDiscordButton.x + dmsDiscordButton.width + Theme.spacingM
+                            x: advsDiscordButton.x + advsDiscordButton.width + Theme.spacingM
                             anchors.verticalCenter: parent.verticalCenter
                             visible: showCompositorDiscord
 
@@ -513,7 +513,7 @@ Item {
                             id: redditButton
                             width: 20
                             height: 20
-                            x: showCompositorDiscord ? compositorDiscordButton.x + compositorDiscordButton.width + Theme.spacingM : dmsDiscordButton.x + dmsDiscordButton.width + Theme.spacingM
+                            x: showCompositorDiscord ? compositorDiscordButton.x + compositorDiscordButton.width + Theme.spacingM : advsDiscordButton.x + advsDiscordButton.width + Theme.spacingM
                             anchors.verticalCenter: parent.verticalCenter
                             visible: showReddit
 
@@ -561,7 +561,7 @@ Item {
                         width: parent.width
                         spacing: Theme.spacingM
 
-                        DankIcon {
+                        AdvIcon {
                             name: "info"
                             size: Theme.iconSize
                             color: Theme.primary
@@ -578,7 +578,7 @@ Item {
                     }
 
                     StyledText {
-                        text: I18n.tr('DMS is a highly customizable modern desktop shell with a %1 inspired design.<br/><br/>It is built with %2, a QT6 framework for building desktop shells, and %3, a statically typed, compiled programming language.').arg(`<a href="https://m3.material.io/" style="text-decoration:none; color:${Theme.primary};">Material Design 3</a>`).arg(`<a href="https://quickshell.org" style="text-decoration:none; color:${Theme.primary};">Quickshell</a>`).arg(`<a href="https://go.dev" style="text-decoration:none; color:${Theme.primary};">Go</a>`)
+                        text: I18n.tr('ADVS is a highly customizable modern desktop shell with a %1 inspired design.<br/><br/>It is built with %2, a QT6 framework for building desktop shells, and %3, a statically typed, compiled programming language.').arg(`<a href="https://m3.material.io/" style="text-decoration:none; color:${Theme.primary};">Material Design 3</a>`).arg(`<a href="https://quickshell.org" style="text-decoration:none; color:${Theme.primary};">Quickshell</a>`).arg(`<a href="https://go.dev" style="text-decoration:none; color:${Theme.primary};">Go</a>`)
                         textFormat: Text.RichText
                         font.pixelSize: Theme.fontSizeMedium
                         linkColor: Theme.primary
@@ -598,7 +598,7 @@ Item {
             }
 
             StyledRect {
-                visible: DMSService.isConnected
+                visible: ADVSService.isConnected
                 width: parent.width
                 height: backendSection.implicitHeight + Theme.spacingL * 2
                 radius: Theme.cornerRadius
@@ -617,7 +617,7 @@ Item {
                         width: parent.width
                         spacing: Theme.spacingM
 
-                        DankIcon {
+                        AdvIcon {
                             name: "dns"
                             size: Theme.iconSize
                             color: Theme.primary
@@ -648,7 +648,7 @@ Item {
                             }
 
                             StyledText {
-                                text: DMSService.cliVersion || "—"
+                                text: ADVSService.cliVersion || "—"
                                 font.pixelSize: Theme.fontSizeMedium
                                 font.weight: Font.Medium
                                 color: Theme.surfaceText
@@ -673,7 +673,7 @@ Item {
                             }
 
                             StyledText {
-                                text: `v${DMSService.apiVersion}`
+                                text: `v${ADVSService.apiVersion}`
                                 font.pixelSize: Theme.fontSizeMedium
                                 font.weight: Font.Medium
                                 color: Theme.surfaceText
@@ -722,7 +722,7 @@ Item {
                     Column {
                         width: parent.width
                         spacing: Theme.spacingS
-                        visible: DMSService.capabilities.length > 0
+                        visible: ADVSService.capabilities.length > 0
 
                         StyledText {
                             text: I18n.tr("Capabilities")
@@ -737,7 +737,7 @@ Item {
                             spacing: Theme.spacingS
 
                             Repeater {
-                                model: DMSService.capabilities
+                                model: ADVSService.capabilities
 
                                 Rectangle {
                                     width: capText.implicitWidth + 16
@@ -778,7 +778,7 @@ Item {
                         width: parent.width
                         spacing: Theme.spacingM
 
-                        DankIcon {
+                        AdvIcon {
                             name: "build"
                             size: Theme.iconSize
                             color: Theme.primary
@@ -798,7 +798,7 @@ Item {
                         anchors.left: parent.left
                         spacing: Theme.spacingS
 
-                        DankButton {
+                        AdvButton {
                             text: I18n.tr("Show Welcome")
                             iconName: "waving_hand"
                             backgroundColor: Theme.surfaceTextHover
@@ -806,7 +806,7 @@ Item {
                             onClicked: FirstLaunchService.showWelcome()
                         }
 
-                        DankButton {
+                        AdvButton {
                             text: I18n.tr("System Check")
                             iconName: "vital_signs"
                             backgroundColor: Theme.surfaceTextHover
@@ -819,7 +819,7 @@ Item {
 
             StyledText {
                 anchors.horizontalCenter: parent.horizontalCenter
-                text: `<a href="https://github.com/AvengeMedia/DankMaterialShell/blob/master/LICENSE" style="text-decoration:none; color:${Theme.surfaceVariantText};">${I18n.tr('MIT License')}</a>`
+                text: `<a href="https://github.com/bavanchun/ariadnev-shell/blob/master/LICENSE" style="text-decoration:none; color:${Theme.surfaceVariantText};">${I18n.tr('MIT License')}</a>`
                 font.pixelSize: Theme.fontSizeMedium
                 color: Theme.surfaceVariantText
                 textFormat: Text.RichText
@@ -849,8 +849,8 @@ Item {
                 return matrixButton;
             if (ircButton.visible && ircButton.hovered)
                 return ircButton;
-            if (dmsDiscordButton.hovered)
-                return dmsDiscordButton;
+            if (advsDiscordButton.hovered)
+                return advsDiscordButton;
             if (compositorDiscordButton.visible && compositorDiscordButton.hovered)
                 return compositorDiscordButton;
             if (redditButton.visible && redditButton.hovered)

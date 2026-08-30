@@ -68,8 +68,8 @@ Item {
     }
 
     function getAppDisplayName(appId) {
-        if (appId === root.dmsChooserId || appId === "dms-open") {
-            return root.dmsChooserLabel;
+        if (appId === root.advsChooserId || appId === "advs-open") {
+            return root.advsChooserLabel;
         }
         let entry = DesktopEntries.heuristicLookup(appId);
         if (entry && entry.name) {
@@ -85,15 +85,15 @@ Item {
         return appId;
     }
 
-    readonly property string dmsChooserId: "dms-open.desktop"
-    readonly property string dmsChooserLabel: I18n.tr("DMS Chooser")
+    readonly property string advsChooserId: "advs-open.desktop"
+    readonly property string advsChooserLabel: I18n.tr("ADVS Chooser")
 
-    function withDmsChooser(entries) {
-        const filtered = (entries || []).filter(e => e.value !== root.dmsChooserId && e.value !== "dms-open");
+    function withAdvsChooser(entries) {
+        const filtered = (entries || []).filter(e => e.value !== root.advsChooserId && e.value !== "advs-open");
         return [
             {
-                text: root.dmsChooserLabel,
-                value: root.dmsChooserId
+                text: root.advsChooserLabel,
+                value: root.advsChooserId
             }
         ].concat(filtered);
     }
@@ -106,7 +106,7 @@ Item {
                     text: root.getAppDisplayName(id),
                     value: id
                 }));
-        models[categoryKey] = categoryKey === root.appCategory.Terminal ? entries : root.withDmsChooser(entries);
+        models[categoryKey] = categoryKey === root.appCategory.Terminal ? entries : root.withAdvsChooser(entries);
         root.categoryModels = models;
     }
 
@@ -121,7 +121,7 @@ Item {
                 getDefaultTerminal();
                 break;
             case root.appCategory.WebBrowser:
-                // When using the MIME type, stuff like dms-run shows up.
+                // When using the MIME type, stuff like advs-run shows up.
                 // It's probably better to use the category.
                 loadCategoryModel(root.appCategory.WebBrowser, "WebBrowser");
                 DesktopService.getDefaultApp(mimeMapping[category][0], category.toString());
@@ -213,14 +213,14 @@ Item {
                         value: id
                     }));
 
-            models[categoryIndex] = root.withDmsChooser(entries);
+            models[categoryIndex] = root.withAdvsChooser(entries);
             root.categoryModels = models;
         }
 
         function onGetHandlersForMimeResult(mimeType, apps, callbackId) {
             const categoryIndex = parseInt(callbackId);
             let models = Object.assign({}, root.categoryModels);
-            const existing = models[categoryIndex] || root.withDmsChooser([]);
+            const existing = models[categoryIndex] || root.withAdvsChooser([]);
             const known = new Set(existing.map(opt => opt.value));
             const extra = (apps || []).filter(app => app.id && !known.has(app.id)).map(app => ({
                         text: app.name || root.getAppDisplayName(app.id),
@@ -270,7 +270,7 @@ Item {
 
     // Dropdowns
 
-    DankFlickable {
+    AdvFlickable {
         anchors.fill: parent
         clip: true
         contentHeight: mainColumn.height + Theme.spacingXL

@@ -88,7 +88,7 @@ Item {
 
     readonly property string greeterActionLabel: greeterAction === "activate" ? I18n.tr("Activate") : ""
     readonly property string greeterActionIcon: greeterAction === "activate" ? "login" : ""
-    readonly property var greeterActionCommand: greeterAction === "activate" ? ["dms-greeter", "enable", "--terminal"] : []
+    readonly property var greeterActionCommand: greeterAction === "activate" ? ["advs-greeter", "enable", "--terminal"] : []
 
     function checkGreeterInstallState() {
         greetdEnabledCheckProcess.running = true;
@@ -116,7 +116,7 @@ Item {
 
         greeterActionConfirm.showWithOptions({
             "title": I18n.tr("Activate Greeter", "greeter action confirmation"),
-            "message": I18n.tr("Activate the DMS greeter? A terminal will open for sudo authentication. Run Sync after activation to apply your settings."),
+            "message": I18n.tr("Activate the ADVS greeter? A terminal will open for sudo authentication. Run Sync after activation to apply your settings."),
             "confirmText": I18n.tr("Activate"),
             "cancelText": I18n.tr("Cancel"),
             "confirmColor": Theme.primary,
@@ -163,7 +163,7 @@ Item {
 
     Process {
         id: greeterBinaryCheckProcess
-        command: ["sh", "-c", "command -v dms-greeter >/dev/null 2>&1"]
+        command: ["sh", "-c", "command -v advs-greeter >/dev/null 2>&1"]
         running: false
 
         onExited: exitCode => {
@@ -173,8 +173,8 @@ Item {
 
     Process {
         id: embeddedGreeterCheckProcess
-        // archinstall's DMS profile points greetd at this launcher inside the packaged DMS tree
-        command: ["sh", "-c", "grep -q 'Modules/Greetd/assets/dms-greeter' /etc/greetd/config.toml 2>/dev/null"]
+        // archinstall's ADVS profile points greetd at this launcher inside the packaged ADVS tree
+        command: ["sh", "-c", "grep -q 'Modules/Greetd/assets/advs-greeter' /etc/greetd/config.toml 2>/dev/null"]
         running: false
 
         onExited: exitCode => {
@@ -184,7 +184,7 @@ Item {
 
     Process {
         id: greeterStatusProcess
-        command: ["dms-greeter", "status"]
+        command: ["advs-greeter", "status"]
         running: false
 
         stdout: StdioCollector {
@@ -207,7 +207,7 @@ Item {
                     root.greeterStatusText = root.greeterStatusText + "\n\nstderr:\n" + err;
                 return;
             }
-            var failure = I18n.tr("Failed to run 'dms-greeter status'. Ensure the dms-greeter package is installed.", "greeter status error") + " (exit " + exitCode + ")";
+            var failure = I18n.tr("Failed to run 'advs-greeter status'. Ensure the advs-greeter package is installed.", "greeter status error") + " (exit " + exitCode + ")";
             if (out !== "")
                 failure = failure + "\n\n" + out;
             if (err !== "")
@@ -218,7 +218,7 @@ Item {
 
     Process {
         id: greeterSyncProcess
-        command: ["dms-greeter", "sync", "--yes"]
+        command: ["advs-greeter", "sync", "--yes"]
         running: false
 
         stdout: StdioCollector {
@@ -281,7 +281,7 @@ Item {
 
     Process {
         id: greeterTerminalFallbackProcess
-        command: ["dms-greeter", "sync", "--terminal", "--yes"]
+        command: ["advs-greeter", "sync", "--terminal", "--yes"]
         running: false
 
         stderr: StdioCollector {
@@ -296,7 +296,7 @@ Item {
                 SettingsData.clearGreeterSyncPending();
                 return;
             }
-            var fallback = I18n.tr("Terminal fallback failed. Install one of the supported terminal emulators or run 'dms-greeter sync' manually.") + " (exit " + exitCode + ")";
+            var fallback = I18n.tr("Terminal fallback failed. Install one of the supported terminal emulators or run 'advs-greeter sync' manually.") + " (exit " + exitCode + ")";
             const err = (root.greeterTerminalFallbackStderr || "").trim();
             if (err !== "")
                 fallback = fallback + "\n\nstderr:\n" + err;
@@ -359,7 +359,7 @@ Item {
         }
     ]
 
-    DankFlickable {
+    AdvFlickable {
         anchors.fill: parent
         clip: true
         contentHeight: mainColumn.height + Theme.spacingXL + (syncPendingPill.shown ? syncPendingPill.height + Theme.spacingL : 0)
@@ -379,7 +379,7 @@ Item {
                 settingKey: "greeterStatus"
 
                 StyledText {
-                    text: I18n.tr("Sync applies your theme and settings to the login screen. Shared users should run dms-greeter sync --profile instead of a primary user sync.")
+                    text: I18n.tr("Sync applies your theme and settings to the login screen. Shared users should run advs-greeter sync --profile instead of a primary user sync.")
                     font.pixelSize: Theme.fontSizeSmall
                     color: Theme.surfaceVariantText
                     width: parent.width
@@ -410,9 +410,9 @@ Item {
                             if (root.greeterStatusText !== "")
                                 return root.greeterStatusText;
                             if (root.embeddedGreeterOnly)
-                                return I18n.tr("The greeter bundled with DMS is active (archinstall setup). It keeps working as is, but syncing theme and settings needs the standalone greeter. Install greetd-dms-greeter-bin from the AUR, then run Sync to migrate the login screen.", "embedded greeter status");
+                                return I18n.tr("The greeter bundled with ADVS is active (archinstall setup). It keeps working as is, but syncing theme and settings needs the standalone greeter. Install greetd-advs-greeter-bin from the AUR, then run Sync to migrate the login screen.", "embedded greeter status");
                             if (!root.greeterBinaryExists && root.greeterEnabled)
-                                return I18n.tr("dms-greeter is not installed. Install the dms-greeter package to manage the greeter.", "greeter status placeholder");
+                                return I18n.tr("advs-greeter is not installed. Install the advs-greeter package to manage the greeter.", "greeter status placeholder");
                             return I18n.tr("Click Refresh to check status.", "greeter status placeholder");
                         }
                         font.pixelSize: Theme.fontSizeSmall
@@ -432,7 +432,7 @@ Item {
                     width: parent.width
                     spacing: Theme.spacingS
 
-                    DankButton {
+                    AdvButton {
                         visible: root.greeterActionAvailable
                         text: root.greeterActionLabel
                         iconName: root.greeterActionIcon
@@ -441,7 +441,7 @@ Item {
                         enabled: !root.greeterInstallActionRunning && !root.greeterSyncRunning
                     }
 
-                    DankButton {
+                    AdvButton {
                         text: I18n.tr("Refresh")
                         iconName: "refresh"
                         horizontalPadding: Theme.spacingL
@@ -449,7 +449,7 @@ Item {
                         enabled: !root.greeterStatusRunning
                     }
 
-                    DankButton {
+                    AdvButton {
                         text: I18n.tr("Sync")
                         iconName: "sync"
                         horizontalPadding: Theme.spacingL
@@ -466,7 +466,7 @@ Item {
                 settingKey: "greeterAuth"
 
                 StyledText {
-                    text: I18n.tr("Enable fingerprint or security key for DMS Greeter")
+                    text: I18n.tr("Enable fingerprint or security key for ADVS Greeter")
                     font.pixelSize: Theme.fontSizeSmall
                     color: Theme.surfaceVariantText
                     width: parent.width
@@ -478,7 +478,7 @@ Item {
                     settingKey: "greeterPamExternallyManaged"
                     tags: ["greeter", "pam", "managed", "external", "greetd", "auth"]
                     text: I18n.tr("Use system PAM authentication", "system PAM policy toggle")
-                    description: I18n.tr("DMS removes its managed block from /etc/pam.d/greetd and stops write services", "greeter system PAM toggle description")
+                    description: I18n.tr("ADVS removes its managed block from /etc/pam.d/greetd and stops write services", "greeter system PAM toggle description")
                     checked: SettingsData.greeterPamExternallyManaged
                     onToggled: checked => SettingsData.set("greeterPamExternallyManaged", checked)
                 }
@@ -645,7 +645,7 @@ Item {
                 settingKey: "greeterDeps"
 
                 StyledText {
-                    text: I18n.tr("Requires greetd, dms-greeter, and your user in the greeter group (plus fprintd/pam_fprintd for fingerprint, pam_u2f for security keys).")
+                    text: I18n.tr("Requires greetd, advs-greeter, and your user in the greeter group (plus fprintd/pam_fprintd for fingerprint, pam_u2f for security keys).")
                     font.pixelSize: Theme.fontSizeSmall
                     color: Theme.surfaceVariantText
                     width: parent.width
@@ -654,7 +654,7 @@ Item {
                 }
 
                 StyledText {
-                    text: I18n.tr("Installation and PAM setup are documented in the ") + "<a href=\"https://danklinux.com/docs/dankgreeter/installation\" style=\"text-decoration:none; color:" + Theme.primary + ";\">DankGreeter docs.</a> "
+                    text: I18n.tr("Installation and PAM setup are documented in the ") + "<a href=\"https://ariadnev.vchun.dev/docs/advgreeter/installation\" style=\"text-decoration:none; color:" + Theme.primary + ";\">AdvGreeter docs.</a> "
                     textFormat: Text.RichText
                     font.pixelSize: Theme.fontSizeSmall
                     color: Theme.surfaceVariantText
@@ -720,7 +720,7 @@ Item {
             anchors.centerIn: parent
             spacing: Theme.spacingS
 
-            DankIcon {
+            AdvIcon {
                 id: syncPillIcon
                 name: "sync"
                 size: Theme.iconSize - 4
@@ -747,7 +747,7 @@ Item {
                 anchors.verticalCenter: parent.verticalCenter
             }
 
-            DankActionButton {
+            AdvActionButton {
                 iconName: "close"
                 iconSize: Theme.iconSize - 6
                 iconColor: Theme.primaryText

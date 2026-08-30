@@ -314,8 +314,8 @@
   "A separate minimal launcher action that works in Standalone, Separate Frame Mode, and Connected Frame Mode.": {
     "A separate minimal launcher action that works in Standalone, Separate Frame Mode, and Connected Frame Mode.": "一個獨立的最小啟動器操作，適用於「獨立模式」、「獨立框架模式」和「連接框架模式」。"
   },
-  "A slight natural settle, DMS default": {
-    "A slight natural settle, DMS default": ""
+  "A slight natural settle, ADVS default": {
+    "A slight natural settle, ADVS default": ""
   },
   "A user with that name already exists.": {
     "A user with that name already exists.": "該名稱的使用者已存在。"
@@ -380,8 +380,8 @@
   "Activate Greeter": {
     "Activate Greeter": "啟用歡迎畫面"
   },
-  "Activate the DMS greeter? A terminal will open for sudo authentication. Run Sync after activation to apply your settings.": {
-    "Activate the DMS greeter? A terminal will open for sudo authentication. Run Sync after activation to apply your settings.": "啟用 DMS 歡迎畫面？將開啟終端機以進行 sudo 驗證。啟用後執行「同步」以套用您的設定。"
+  "Activate the ADVS greeter? A terminal will open for sudo authentication. Run Sync after activation to apply your settings.": {
+    "Activate the ADVS greeter? A terminal will open for sudo authentication. Run Sync after activation to apply your settings.": "啟用 ADVS 歡迎畫面？將開啟終端機以進行 sudo 驗證。啟用後執行「同步」以套用您的設定。"
   },
   "Activates immediately": {
     "Activates immediately": ""
@@ -428,11 +428,11 @@
   "Add \"%1\" to the %2 group?": {
     "Add \"%1\" to the %2 group?": "將「%1」加入至 %2 群組嗎？"
   },
-  "Add \"%1\" to the %2 group? They must log out and back in, then run dms greeter sync --profile to publish their login-screen theme.": {
-    "Add \"%1\" to the %2 group? They must log out and back in, then run dms greeter sync --profile to publish their login-screen theme.": "將「%1」加入至 %2 群組嗎？他們必須登出並重新登入，然後執行 dms greeter sync --profile 以發佈他們的登入畫面主題。"
+  "Add \"%1\" to the %2 group? They must log out and back in, then run advs greeter sync --profile to publish their login-screen theme.": {
+    "Add \"%1\" to the %2 group? They must log out and back in, then run advs greeter sync --profile to publish their login-screen theme.": "將「%1」加入至 %2 群組嗎？他們必須登出並重新登入，然後執行 advs greeter sync --profile 以發佈他們的登入畫面主題。"
   },
-  "Add \"%1\" to the %2 group? They must log out and back in, then run dms-greeter sync --profile to publish their login-screen theme.": {
-    "Add \"%1\" to the %2 group? They must log out and back in, then run dms-greeter sync --profile to publish their login-screen theme.": ""
+  "Add \"%1\" to the %2 group? They must log out and back in, then run advs-greeter sync --profile to publish their login-screen theme.": {
+    "Add \"%1\" to the %2 group? They must log out and back in, then run advs-greeter sync --profile to publish their login-screen theme.": ""
   },
   "Add Bar": {
     "Add Bar": "新增欄"
@@ -482,11 +482,11 @@
   "Add notes": {
     "Add notes": ""
   },
-  "Add the new user to the %1 group so they can run dms greeter sync --profile.": {
-    "Add the new user to the %1 group so they can run dms greeter sync --profile.": "將新使用者加入至 %1 群組，以便他們可以執行 dms greeter sync --profile。"
+  "Add the new user to the %1 group so they can run advs greeter sync --profile.": {
+    "Add the new user to the %1 group so they can run advs greeter sync --profile.": "將新使用者加入至 %1 群組，以便他們可以執行 advs greeter sync --profile。"
   },
-  "Add the new user to the %1 group so they can run dms-greeter sync --profile.": {
-    "Add the new user to the %1 group so they can run dms-greeter sync --profile.": ""
+  "Add the new user to the %1 group so they can run advs-greeter sync --profile.": {
+    "Add the new user to the %1 group so they can run advs-greeter sync --profile.": ""
   },
   "Add the new user to the %1 group so they can use sudo.": {
     "Add the new user to the %1 group so they can use sudo.": "將新使用者加入至 %1 群組，以便他們可以使用 sudo。"
@@ -905,8 +905,8 @@
   "Auto-Hide Timeout": {
     "Auto-Hide Timeout": "自動隱藏延遲"
   },
-  "Auto-close Niri overview when DMS launches or focuses a window.": {
-    "Auto-close Niri overview when DMS launches or focuses a window.": ""
+  "Auto-close Niri overview when ADVS launches or focuses a window.": {
+    "Auto-close Niri overview when ADVS launches or focuses a window.": ""
   },
   "Auto-close Niri overview when launching apps.": {
     "Auto-close Niri overview when launching apps.": "啟動應用程式時自動關閉 Niri 總覽。"
@@ -977,8 +977,8 @@
   "Automatically lock after": {
     "Automatically lock after": "指定時間後自動鎖定"
   },
-  "Automatically lock the screen when DMS starts": {
-    "Automatically lock the screen when DMS starts": "DMS 啟動時自動鎖定螢幕"
+  "Automatically lock the screen when ADVS starts": {
+    "Automatically lock the screen when ADVS starts": "ADVS 啟動時自動鎖定螢幕"
   },
   "Automatically lock the screen when the system prepares to suspend": {
     "Automatically lock the screen when the system prepares to suspend": "睡眠時自動鎖定螢幕"
@@ -1415,8 +1415,8 @@
   "Center Section": {
     "Center Section": "中間區塊"
   },
-  "Center Section - Reserved by Dank Island": {
-    "Center Section - Reserved by Dank Island": ""
+  "Center Section - Reserved by Adv Island": {
+    "Center Section - Reserved by Adv Island": ""
   },
   "Center Single Column": {
     "Center Single Column": "中央單欄"
@@ -1433,8 +1433,8 @@
   "Change Volume": {
     "Change Volume": "調整音量"
   },
-  "Change the locale used by the DMS interface.": {
-    "Change the locale used by the DMS interface.": "變更 DMS 介面使用的語系。"
+  "Change the locale used by the ADVS interface.": {
+    "Change the locale used by the ADVS interface.": "變更 ADVS 介面使用的語系。"
   },
   "Change the locale used for date and time formatting, independent of the interface language.": {
     "Change the locale used for date and time formatting, independent of the interface language.": "變更用於日期和時間格式的語系，與介面語言無關。"
@@ -1529,8 +1529,8 @@
   "Choose neutral or accent-colored widget text": {
     "Choose neutral or accent-colored widget text": ""
   },
-  "Choose the logo displayed on the launcher button in DankBar": {
-    "Choose the logo displayed on the launcher button in DankBar": "選擇 DankBar 啟動器按鈕上顯示的 logo"
+  "Choose the logo displayed on the launcher button in AdvBar": {
+    "Choose the logo displayed on the launcher button in AdvBar": "選擇 AdvBar 啟動器按鈕上顯示的 logo"
   },
   "Choose wallpaper folder": {
     "Choose wallpaper folder": ""
@@ -1742,8 +1742,8 @@
   "Color theme for syntax highlighting. %1 themes available.": {
     "Color theme for syntax highlighting. %1 themes available.": "語法標示的顏色佈景主題。有 %1 個佈景主題可用。"
   },
-  "Color theme from DMS registry": {
-    "Color theme from DMS registry": "來自 DMS 登錄檔的色彩主題"
+  "Color theme from ADVS registry": {
+    "Color theme from ADVS registry": "來自 ADVS 登錄檔的色彩主題"
   },
   "Colorful": {
     "Colorful": "彩色"
@@ -1853,8 +1853,8 @@
   "Configure which displays show \"%1": {
     "Configure which displays show \"%1\"": "設定哪些顯示器顯示 \"%1\""
   },
-  "Configure which displays show Dank Island as \"%1": {
-    "Configure which displays show Dank Island as \"%1\"": ""
+  "Configure which displays show Adv Island as \"%1": {
+    "Configure which displays show Adv Island as \"%1\"": ""
   },
   "Configure which displays show shell components": {
     "Configure which displays show shell components": "配置哪些顯示器顯示 shell 元件"
@@ -1982,8 +1982,8 @@
   "Convenience options for the login screen": {
     "Convenience options for the login screen": ""
   },
-  "Convert to DMS": {
-    "Convert to DMS": "轉換為 DMS"
+  "Convert to ADVS": {
+    "Convert to ADVS": "轉換為 ADVS"
   },
   "Cooldown": {
     "Cooldown": "冷卻時間"
@@ -2258,41 +2258,41 @@
   "DEMO MODE - Click anywhere to exit": {
     "DEMO MODE - Click anywhere to exit": "演示模式 - 點擊任意處關閉"
   },
-  "DMS Chooser": {
-    "DMS Chooser": "DMS 選擇器"
+  "ADVS Chooser": {
+    "ADVS Chooser": "ADVS 選擇器"
   },
-  "DMS Plugin Manager Unavailable": {
-    "DMS Plugin Manager Unavailable": "DMS 插件管理器不可用"
+  "ADVS Plugin Manager Unavailable": {
+    "ADVS Plugin Manager Unavailable": "ADVS 插件管理器不可用"
   },
-  "DMS Settings": {
-    "DMS Settings": "DMS 設定"
+  "ADVS Settings": {
+    "ADVS Settings": "ADVS 設定"
   },
-  "DMS Settings writes Lua keybinds. Add the DMS include so edits apply.": {
-    "DMS Settings writes Lua keybinds. Add the DMS include so edits apply.": "DMS 設定會寫入 Lua 按鍵綁定。請新增 DMS 包含項目以套用變更。"
+  "ADVS Settings writes Lua keybinds. Add the ADVS include so edits apply.": {
+    "ADVS Settings writes Lua keybinds. Add the ADVS include so edits apply.": "ADVS 設定會寫入 Lua 按鍵綁定。請新增 ADVS 包含項目以套用變更。"
   },
-  "DMS Shortcuts": {
-    "DMS Shortcuts": "DMS 捷徑"
+  "ADVS Shortcuts": {
+    "ADVS Shortcuts": "ADVS 捷徑"
   },
-  "DMS is a highly customizable modern desktop shell with a %1 inspired design.<br/><br/>It is built with %2, a QT6 framework for building desktop shells, and %3, a statically typed, compiled programming language.": {
-    "DMS is a highly customizable modern desktop shell with a %1 inspired design.<br/><br/>It is built with %2, a QT6 framework for building desktop shells, and %3, a statically typed, compiled programming language.": ""
+  "ADVS is a highly customizable modern desktop shell with a %1 inspired design.<br/><br/>It is built with %2, a QT6 framework for building desktop shells, and %3, a statically typed, compiled programming language.": {
+    "ADVS is a highly customizable modern desktop shell with a %1 inspired design.<br/><br/>It is built with %2, a QT6 framework for building desktop shells, and %3, a statically typed, compiled programming language.": ""
   },
-  "DMS out of date": {
-    "DMS out of date": "DMS 已過期"
+  "ADVS out of date": {
+    "ADVS out of date": "ADVS 已過期"
   },
-  "DMS removes its managed block from /etc/pam.d/greetd and stops write services": {
-    "DMS removes its managed block from /etc/pam.d/greetd and stops write services": ""
+  "ADVS removes its managed block from /etc/pam.d/greetd and stops write services": {
+    "ADVS removes its managed block from /etc/pam.d/greetd and stops write services": ""
   },
-  "DMS server is outdated (API v%1, expected v%2)": {
-    "DMS server is outdated (API v%1, expected v%2)": "DMS 伺服器已過時 (API v%1，預期 v%2)"
+  "ADVS server is outdated (API v%1, expected v%2)": {
+    "ADVS server is outdated (API v%1, expected v%2)": "ADVS 伺服器已過時 (API v%1，預期 v%2)"
   },
-  "DMS service is not connected. Clipboard settings are unavailable.": {
-    "DMS service is not connected. Clipboard settings are unavailable.": "DMS 服務未連線。剪貼簿設定無法使用。"
+  "ADVS service is not connected. Clipboard settings are unavailable.": {
+    "ADVS service is not connected. Clipboard settings are unavailable.": "ADVS 服務未連線。剪貼簿設定無法使用。"
   },
-  "DMS shell actions (launcher, clipboard, etc.)": {
-    "DMS shell actions (launcher, clipboard, etc.)": "DMS shell 動作 (啟動器、剪貼簿等)"
+  "ADVS shell actions (launcher, clipboard, etc.)": {
+    "ADVS shell actions (launcher, clipboard, etc.)": "ADVS shell 動作 (啟動器、剪貼簿等)"
   },
-  "DMS_SOCKET not available": {
-    "DMS_SOCKET not available": "DMS_SOCKET 不可用"
+  "ADVS_SOCKET not available": {
+    "ADVS_SOCKET not available": "ADVS_SOCKET 不可用"
   },
   "Daily": {
     "Daily": "每日"
@@ -2303,41 +2303,41 @@
   "Damped springs settle straight to their target with no overshoot": {
     "Damped springs settle straight to their target with no overshoot": ""
   },
-  "Dank": {
-    "Dank": "Dank"
+  "Adv": {
+    "Adv": "Adv"
   },
-  "Dank Bar": {
-    "Dank Bar": "Dank Bar"
+  "Adv Bar": {
+    "Adv Bar": "Adv Bar"
   },
-  "Dank Bar Xray": {
-    "Dank Bar Xray": ""
+  "Adv Bar Xray": {
+    "Adv Bar Xray": ""
   },
-  "Dank Dash": {
-    "Dank Dash": ""
+  "Adv Dash": {
+    "Adv Dash": ""
   },
-  "Dank Island - Beta": {
-    "Dank Island - Beta": ""
+  "Adv Island - Beta": {
+    "Adv Island - Beta": ""
   },
-  "Dank Island instance": {
-    "Dank Island instance": ""
+  "Adv Island instance": {
+    "Adv Island instance": ""
   },
-  "DankBar": {
-    "DankBar": "DankBar"
+  "AdvBar": {
+    "AdvBar": "AdvBar"
   },
-  "DankCalendar": {
-    "DankCalendar": ""
+  "AdvCalendar": {
+    "AdvCalendar": ""
   },
-  "DankCalendar isn't installed": {
-    "DankCalendar isn't installed": ""
+  "AdvCalendar isn't installed": {
+    "AdvCalendar isn't installed": ""
   },
-  "DankCalendar isn't running": {
-    "DankCalendar isn't running": ""
+  "AdvCalendar isn't running": {
+    "AdvCalendar isn't running": ""
   },
-  "DankMaterialShell is ready to use": {
-    "DankMaterialShell is ready to use": "DankMaterialShell 已可使用"
+  "AriadnevShell is ready to use": {
+    "AriadnevShell is ready to use": "AriadnevShell 已可使用"
   },
-  "DankShell & System Icons (requires restart)": {
-    "DankShell & System Icons (requires restart)": "DankShell 和系統圖示（需要重新啟動）"
+  "AdvShell & System Icons (requires restart)": {
+    "AdvShell & System Icons (requires restart)": "AdvShell 和系統圖示（需要重新啟動）"
   },
   "Dark Mode": {
     "Dark Mode": "深色主題"
@@ -2423,8 +2423,8 @@
   "Default Width (%)": {
     "Default Width (%)": "預設寬度 (%)"
   },
-  "Default launcher shortcuts open a native launcher activity inside Dank Island. Spotlight is used when the focused screen has no DankIsland.": {
-    "Default launcher shortcuts open a native launcher activity inside Dank Island. Spotlight is used when the focused screen has no DankIsland.": ""
+  "Default launcher shortcuts open a native launcher activity inside Adv Island. Spotlight is used when the focused screen has no AdvIsland.": {
+    "Default launcher shortcuts open a native launcher activity inside Adv Island. Spotlight is used when the focused screen has no AdvIsland.": ""
   },
   "Default launcher shortcuts open the full launcher with mode tabs, grid view, and action panel.": {
     "Default launcher shortcuts open the full launcher with mode tabs, grid view, and action panel.": "預設啟動器捷徑會開啟包含模式分頁、網格檢視和操作面板的完整啟動器。"
@@ -2789,8 +2789,8 @@
   "Drop here": {
     "Drop here": ""
   },
-  "Drop your override for %1 so the DMS default action re-applies?": {
-    "Drop your override for %1 so the DMS default action re-applies?": "捨棄您對 %1 的覆蓋設定，以便重新套用 DMS 預設操作嗎？"
+  "Drop your override for %1 so the ADVS default action re-applies?": {
+    "Drop your override for %1 so the ADVS default action re-applies?": "捨棄您對 %1 的覆蓋設定，以便重新套用 ADVS 預設操作嗎？"
   },
   "Duplicate": {
     "Duplicate": "複製"
@@ -2939,8 +2939,8 @@
   "Enable a custom override below to set per-bar shadow intensity, opacity, and color.": {
     "Enable a custom override below to set per-bar shadow intensity, opacity, and color.": "啟用下面的自訂覆寫以設定每個列的陰影強度、不透明度和顏色。"
   },
-  "Enable compositor-targetable blur layer (namespace: dms:blurwallpaper). Requires manual niri configuration.": {
-    "Enable compositor-targetable blur layer (namespace: dms:blurwallpaper). Requires manual niri configuration.": "啟用合成器可定位的模糊圖層（命名空間：dms:blurwallpaper）。需要手動配置 niri。"
+  "Enable compositor-targetable blur layer (namespace: advs:blurwallpaper). Requires manual niri configuration.": {
+    "Enable compositor-targetable blur layer (namespace: advs:blurwallpaper). Requires manual niri configuration.": "啟用合成器可定位的模糊圖層（命名空間：advs:blurwallpaper）。需要手動配置 niri。"
   },
   "Enable fingerprint at login": {
     "Enable fingerprint at login": "在登入時啟用指紋"
@@ -2948,8 +2948,8 @@
   "Enable fingerprint authentication": {
     "Enable fingerprint authentication": "啟用指紋驗證"
   },
-  "Enable fingerprint or security key for DMS Greeter": {
-    "Enable fingerprint or security key for DMS Greeter": ""
+  "Enable fingerprint or security key for ADVS Greeter": {
+    "Enable fingerprint or security key for ADVS Greeter": ""
   },
   "Enable loginctl lock integration": {
     "Enable loginctl lock integration": "啟用 loginctl 鎖定整合"
@@ -3317,11 +3317,11 @@
   "Failed to ring device": {
     "Failed to ring device": "無法讓裝置響鈴"
   },
-  "Failed to run 'dms greeter status'. Ensure DMS is installed and dms is in PATH.": {
-    "Failed to run 'dms greeter status'. Ensure DMS is installed and dms is in PATH.": "執行 'dms greeter status' 失敗。請確保 DMS 已安裝且 dms 位於 PATH 中。"
+  "Failed to run 'advs greeter status'. Ensure ADVS is installed and advs is in PATH.": {
+    "Failed to run 'advs greeter status'. Ensure ADVS is installed and advs is in PATH.": "執行 'advs greeter status' 失敗。請確保 ADVS 已安裝且 advs 位於 PATH 中。"
   },
-  "Failed to run 'dms-greeter status'. Ensure the dms-greeter package is installed.": {
-    "Failed to run 'dms-greeter status'. Ensure the dms-greeter package is installed.": ""
+  "Failed to run 'advs-greeter status'. Ensure the advs-greeter package is installed.": {
+    "Failed to run 'advs-greeter status'. Ensure the advs-greeter package is installed.": ""
   },
   "Failed to save VPN credentials": {
     "Failed to save VPN credentials": ""
@@ -3467,8 +3467,8 @@
   "File received from %1": {
     "File received from %1": ""
   },
-  "File search requires dsearch\nInstall from github.com/AvengeMedia/danksearch": {
-    "File search requires dsearch\nInstall from github.com/AvengeMedia/danksearch": "檔案搜尋需要 dsearch\n從 github.com/morelazers/dsearch 安裝"
+  "File search requires dsearch\nInstall from github.com/bavanchun/advsearch": {
+    "File search requires dsearch\nInstall from github.com/bavanchun/advsearch": "檔案搜尋需要 dsearch\n從 github.com/morelazers/dsearch 安裝"
   },
   "File search unavailable": {
     "File search unavailable": "檔案搜尋不可用"
@@ -3626,8 +3626,8 @@
   "Folders": {
     "Folders": "資料夾"
   },
-  "Follow DMS background color": {
-    "Follow DMS background color": "遵循 DMS 背景顏色"
+  "Follow ADVS background color": {
+    "Follow ADVS background color": "遵循 ADVS 背景顏色"
   },
   "Follow Monitor Focus": {
     "Follow Monitor Focus": "跟隨螢幕焦點"
@@ -3824,8 +3824,8 @@
   "Gamma Control": {
     "Gamma Control": "Gamma 控制"
   },
-  "Gamma control not available. Requires DMS API v6+.": {
-    "Gamma control not available. Requires DMS API v6+.": "Gamma 控制不可用。需要 DMS API v6+。"
+  "Gamma control not available. Requires ADVS API v6+.": {
+    "Gamma control not available. Requires ADVS API v6+.": "Gamma 控制不可用。需要 ADVS API v6+。"
   },
   "Gap between the end widgets and the bar ends (0 = edge-to-edge)": {
     "Gap between the end widgets and the bar ends (0 = edge-to-edge)": ""
@@ -3839,11 +3839,11 @@
   "Generate Override": {
     "Generate Override": "產生覆蓋檔"
   },
-  "Generate baseline GTK3/4 or QT5/QT6 (requires qt6ct-kde) configurations to follow DMS colors. Only needed once.<br /><br />It is recommended to configure %1 prior to applying GTK themes.": {
-    "Generate baseline GTK3/4 or QT5/QT6 (requires qt6ct-kde) configurations to follow DMS colors. Only needed once.<br /><br />It is recommended to configure %1 prior to applying GTK themes.": ""
+  "Generate baseline GTK3/4 or QT5/QT6 (requires qt6ct-kde) configurations to follow ADVS colors. Only needed once.<br /><br />It is recommended to configure %1 prior to applying GTK themes.": {
+    "Generate baseline GTK3/4 or QT5/QT6 (requires qt6ct-kde) configurations to follow ADVS colors. Only needed once.<br /><br />It is recommended to configure %1 prior to applying GTK themes.": ""
   },
-  "Generate baseline GTK3/4, QT5/QT6, or qtengine configurations to follow DMS colors (only qt6ct requires qt6ct-kde). Only needed once.<br /><br />It is recommended to configure %1 prior to applying GTK themes.": {
-    "Generate baseline GTK3/4, QT5/QT6, or qtengine configurations to follow DMS colors (only qt6ct requires qt6ct-kde). Only needed once.<br /><br />It is recommended to configure %1 prior to applying GTK themes.": ""
+  "Generate baseline GTK3/4, QT5/QT6, or qtengine configurations to follow ADVS colors (only qt6ct requires qt6ct-kde). Only needed once.<br /><br />It is recommended to configure %1 prior to applying GTK themes.": {
+    "Generate baseline GTK3/4, QT5/QT6, or qtengine configurations to follow ADVS colors (only qt6ct requires qt6ct-kde). Only needed once.<br /><br />It is recommended to configure %1 prior to applying GTK themes.": ""
   },
   "Generic": {
     "Generic": "一般"
@@ -3914,11 +3914,11 @@
   "Greeter font": {
     "Greeter font": "歡迎畫面字體"
   },
-  "Greeter group members can sync their login-screen theme with dms greeter sync --profile after logging out and back in.": {
-    "Greeter group members can sync their login-screen theme with dms greeter sync --profile after logging out and back in.": "歡迎畫面群組成員可以在登出並重新登入後，使用 dms greeter sync --profile 同步他們的登入畫面主題。"
+  "Greeter group members can sync their login-screen theme with advs greeter sync --profile after logging out and back in.": {
+    "Greeter group members can sync their login-screen theme with advs greeter sync --profile after logging out and back in.": "歡迎畫面群組成員可以在登出並重新登入後，使用 advs greeter sync --profile 同步他們的登入畫面主題。"
   },
-  "Greeter group members can sync their login-screen theme with dms-greeter sync --profile after logging out and back in.": {
-    "Greeter group members can sync their login-screen theme with dms-greeter sync --profile after logging out and back in.": ""
+  "Greeter group members can sync their login-screen theme with advs-greeter sync --profile after logging out and back in.": {
+    "Greeter group members can sync their login-screen theme with advs-greeter sync --profile after logging out and back in.": ""
   },
   "Greeter group:": {
     "Greeter group:": "歡迎畫面群組："
@@ -4262,8 +4262,8 @@
   "Icon Theme": {
     "Icon Theme": "圖示主題"
   },
-  "Icon theme changed outside DMS; switched to System Default": {
-    "Icon theme changed outside DMS; switched to System Default": ""
+  "Icon theme changed outside ADVS; switched to System Default": {
+    "Icon theme changed outside ADVS; switched to System Default": ""
   },
   "Identical alerts show as one popup instead of stacking": {
     "Identical alerts show as one popup instead of stacking": "相同的警告顯示為一個彈出視窗，而不是堆疊顯示"
@@ -4286,8 +4286,8 @@
   "Idle Settings": {
     "Idle Settings": "閒置設定"
   },
-  "If autostart app icons don't appear in the system tray, generate a systemd override to ensure DMS starts before autostart apps": {
-    "If autostart app icons don't appear in the system tray, generate a systemd override to ensure DMS starts before autostart apps": "如果自動啟動的應用程式圖示未出現在系統匣中，請產生 systemd 覆蓋檔以確保 DMS 在自動啟動應用程式前執行"
+  "If autostart app icons don't appear in the system tray, generate a systemd override to ensure ADVS starts before autostart apps": {
+    "If autostart app icons don't appear in the system tray, generate a systemd override to ensure ADVS starts before autostart apps": "如果自動啟動的應用程式圖示未出現在系統匣中，請產生 systemd 覆蓋檔以確保 ADVS 在自動啟動應用程式前執行"
   },
   "If the field is hidden, it will appear as soon as a key is pressed.": {
     "If the field is hidden, it will appear as soon as a key is pressed.": "如果此欄位已隱藏，只要按下按鍵便會顯示。"
@@ -4427,8 +4427,8 @@
   "Install Theme": {
     "Install Theme": "安裝主題"
   },
-  "Install color themes from the DMS theme registry": {
-    "Install color themes from the DMS theme registry": "從 DMS 主題登錄檔安裝色彩主題"
+  "Install color themes from the ADVS theme registry": {
+    "Install color themes from the ADVS theme registry": "從 ADVS 主題登錄檔安裝色彩主題"
   },
   "Install complete. Greeter has been installed.": {
     "Install complete. Greeter has been installed.": "安裝完成。歡迎畫面已安裝。"
@@ -4442,17 +4442,17 @@
   "Install matugen package for dynamic theming": {
     "Install matugen package for dynamic theming": "安裝 matugen 套件以實現動態主題"
   },
-  "Install plugin '%1' from the DMS registry?": {
-    "Install plugin '%1' from the DMS registry?": "要從 DMS 登錄檔安裝外掛「%1」嗎？"
+  "Install plugin '%1' from the ADVS registry?": {
+    "Install plugin '%1' from the ADVS registry?": "要從 ADVS 登錄檔安裝外掛「%1」嗎？"
   },
-  "Install plugins from the DMS plugin registry": {
-    "Install plugins from the DMS plugin registry": "從 DMS 插件註冊表安裝插件"
+  "Install plugins from the ADVS plugin registry": {
+    "Install plugins from the ADVS plugin registry": "從 ADVS 插件註冊表安裝插件"
   },
-  "Install the DMS greeter? A terminal will open for sudo authentication.": {
-    "Install the DMS greeter? A terminal will open for sudo authentication.": "安裝 DMS 歡迎畫面？將開啟終端機以進行 sudo 驗證。"
+  "Install the ADVS greeter? A terminal will open for sudo authentication.": {
+    "Install the ADVS greeter? A terminal will open for sudo authentication.": "安裝 ADVS 歡迎畫面？將開啟終端機以進行 sudo 驗證。"
   },
-  "Install theme '%1' from the DMS registry?": {
-    "Install theme '%1' from the DMS registry?": "要從 DMS 登錄檔安裝主題「%1」嗎？"
+  "Install theme '%1' from the ADVS registry?": {
+    "Install theme '%1' from the ADVS registry?": "要從 ADVS 登錄檔安裝主題「%1」嗎？"
   },
   "Installation and PAM setup are documented in the ": {
     "Installation and PAM setup are documented in the ": ""
@@ -4886,8 +4886,8 @@
   "Make the bar background fully transparent": {
     "Make the bar background fully transparent": "使工具列背景完全透明"
   },
-  "Manage and configure plugins for extending DMS functionality": {
-    "Manage and configure plugins for extending DMS functionality": "管理和配置用於擴展 DMS 功能的插件"
+  "Manage and configure plugins for extending ADVS functionality": {
+    "Manage and configure plugins for extending ADVS functionality": "管理和配置用於擴展 ADVS 功能的插件"
   },
   "Manage up to 4 independent bar configurations. Each bar has its own position, widgets, styling, and display assignment.": {
     "Manage up to 4 independent bar configurations. Each bar has its own position, widgets, styling, and display assignment.": "管理最多 4 個獨立的欄設定。每個欄都有自己的位置、小工具、樣式和顯示分配。"
@@ -4991,8 +4991,8 @@
   "Material inspired shadows and elevation on modals, popouts, and dialogs": {
     "Material inspired shadows and elevation on modals, popouts, and dialogs": "受 Material Design 啟發的陰影和抬升效果，應用於模態框、彈出視窗和對話框"
   },
-  "Material: Material Design 3 Expressive bezier curves. The DMS default feel.": {
-    "Material: Material Design 3 Expressive bezier curves. The DMS default feel.": "材質：Material Design 3 表現力貝茲曲線。DMS 的預設感受。"
+  "Material: Material Design 3 Expressive bezier curves. The ADVS default feel.": {
+    "Material: Material Design 3 Expressive bezier curves. The ADVS default feel.": "材質：Material Design 3 表現力貝茲曲線。ADVS 的預設感受。"
   },
   "Matugen Contrast": {
     "Matugen Contrast": "Matugen 對比度"
@@ -5405,8 +5405,8 @@
   "Night mode & gamma": {
     "Night mode & gamma": "夜間模式與伽瑪"
   },
-  "Night mode failed: DMS gamma control not available": {
-    "Night mode failed: DMS gamma control not available": "夜間模式失敗：DMS gamma 控制不可用"
+  "Night mode failed: ADVS gamma control not available": {
+    "Night mode failed: ADVS gamma control not available": "夜間模式失敗：ADVS gamma 控制不可用"
   },
   "Niri Integration": {
     "Niri Integration": "Niri 整合"
@@ -5435,8 +5435,8 @@
   "No Border": {
     "No Border": "無邊框"
   },
-  "No DMS shortcuts configured": {
-    "No DMS shortcuts configured": "未設定 DMS 捷徑"
+  "No ADVS shortcuts configured": {
+    "No ADVS shortcuts configured": "未設定 ADVS 捷徑"
   },
   "No Dim": {
     "No Dim": "不變暗"
@@ -5903,8 +5903,8 @@
   "Opacity of cards and nested surfaces inside floating windows": {
     "Opacity of cards and nested surfaces inside floating windows": ""
   },
-  "Opacity of floating DMS windows like Settings, Notepad, and authentication prompts": {
-    "Opacity of floating DMS windows like Settings, Notepad, and authentication prompts": ""
+  "Opacity of floating ADVS windows like Settings, Notepad, and authentication prompts": {
+    "Opacity of floating ADVS windows like Settings, Notepad, and authentication prompts": ""
   },
   "Opacity of foreground cards and nested surfaces on shell panels": {
     "Opacity of foreground cards and nested surfaces on shell panels": ""
@@ -5918,8 +5918,8 @@
   "Open App": {
     "Open App": "開啟應用程式"
   },
-  "Open DMS windows floating instead of tiled": {
-    "Open DMS windows floating instead of tiled": ""
+  "Open ADVS windows floating instead of tiled": {
+    "Open ADVS windows floating instead of tiled": ""
   },
   "Open Delay": {
     "Open Delay": ""
@@ -6839,8 +6839,8 @@
   "Remove the shortcut %1?": {
     "Remove the shortcut %1?": "移除捷徑 %1？"
   },
-  "Remove the shortcut %1? An unbind entry will be saved to dms/binds-user.lua so it stays removed across DMS updates.": {
-    "Remove the shortcut %1? An unbind entry will be saved to dms/binds-user.lua so it stays removed across DMS updates.": "移除捷徑 %1？一個解除綁定的條目將被儲存至 dms/binds-user.lua，以確保在 DMS 更新後該捷徑保持移除狀態。"
+  "Remove the shortcut %1? An unbind entry will be saved to advs/binds-user.lua so it stays removed across ADVS updates.": {
+    "Remove the shortcut %1? An unbind entry will be saved to advs/binds-user.lua so it stays removed across ADVS updates.": "移除捷徑 %1？一個解除綁定的條目將被儲存至 advs/binds-user.lua，以確保在 ADVS 更新後該捷徑保持移除狀態。"
   },
   "Removed administrator privileges": {
     "Removed administrator privileges": "已移除管理員權限"
@@ -6893,11 +6893,11 @@
   "Requires 'dgop' tool": {
     "Requires 'dgop' tool": "需要「dgop」工具"
   },
-  "Requires DMS %1": {
-    "Requires DMS %1": "需要 DMS %1"
+  "Requires ADVS %1": {
+    "Requires ADVS %1": "需要 ADVS %1"
   },
-  "Requires DMS server with sysupdate capability": {
-    "Requires DMS server with sysupdate capability": "需要具有 sysupdate 功能的 DMS 伺服器"
+  "Requires ADVS server with sysupdate capability": {
+    "Requires ADVS server with sysupdate capability": "需要具有 sysupdate 功能的 ADVS 伺服器"
   },
   "Requires MangoWC compositor": {
     "Requires MangoWC compositor": ""
@@ -6905,8 +6905,8 @@
   "Requires a newer version of Quickshell": {
     "Requires a newer version of Quickshell": "需要較新版本的 Quickshell"
   },
-  "Requires greetd, dms-greeter, and your user in the greeter group (plus fprintd/pam_fprintd for fingerprint, pam_u2f for security keys).": {
-    "Requires greetd, dms-greeter, and your user in the greeter group (plus fprintd/pam_fprintd for fingerprint, pam_u2f for security keys).": ""
+  "Requires greetd, advs-greeter, and your user in the greeter group (plus fprintd/pam_fprintd for fingerprint, pam_u2f for security keys).": {
+    "Requires greetd, advs-greeter, and your user in the greeter group (plus fprintd/pam_fprintd for fingerprint, pam_u2f for security keys).": ""
   },
   "Requires night mode support": {
     "Requires night mode support": "需要夜間模式支援"
@@ -6914,8 +6914,8 @@
   "Requires remembering the last user and session. Enable those options first.": {
     "Requires remembering the last user and session. Enable those options first.": "需要記憶最後使用的使用者與工作階段。請先啟用這些選項。"
   },
-  "Requires the DMS Theme extension from the editor marketplace": {
-    "Requires the DMS Theme extension from the editor marketplace": ""
+  "Requires the ADVS Theme extension from the editor marketplace": {
+    "Requires the ADVS Theme extension from the editor marketplace": ""
   },
   "Reserved Height": {
     "Reserved Height": ""
@@ -6953,11 +6953,11 @@
   "Resolution, position, scale": {
     "Resolution, position, scale": "解析度、位置、比例"
   },
-  "Restart DMS": {
-    "Restart DMS": "重新啟動 DMS"
+  "Restart ADVS": {
+    "Restart ADVS": "重新啟動 ADVS"
   },
-  "Restart the DankMaterialShell": {
-    "Restart the DankMaterialShell": "重新啟動 DankMaterialShell"
+  "Restart the AriadnevShell": {
+    "Restart the AriadnevShell": "重新啟動 AriadnevShell"
   },
   "Restart userspace without rebooting the kernel, requires systemd": {
     "Restart userspace without rebooting the kernel, requires systemd": ""
@@ -7052,14 +7052,14 @@
   "Rules (%1)": {
     "Rules (%1)": "規則 (%1)"
   },
-  "Rules found in your compositor config. These are read-only here, use Convert to DMS to make an editable copy.": {
-    "Rules found in your compositor config. These are read-only here, use Convert to DMS to make an editable copy.": "在您的合成器設定中找到的規則。此處為唯讀，請使用「轉換為 DMS」建立可編輯副本。"
+  "Rules found in your compositor config. These are read-only here, use Convert to ADVS to make an editable copy.": {
+    "Rules found in your compositor config. These are read-only here, use Convert to ADVS to make an editable copy.": "在您的合成器設定中找到的規則。此處為唯讀，請使用「轉換為 ADVS」建立可編輯副本。"
   },
   "Run Again": {
     "Run Again": "重新執行"
   },
-  "Run DMS Templates": {
-    "Run DMS Templates": "執行 DMS 範本"
+  "Run ADVS Templates": {
+    "Run ADVS Templates": "執行 ADVS 範本"
   },
   "Run User Templates": {
     "Run User Templates": "執行使用者模板"
@@ -7172,11 +7172,11 @@
   "Scale": {
     "Scale": "縮放"
   },
-  "Scale DankBar font sizes independently": {
-    "Scale DankBar font sizes independently": "獨立縮放 DankBar 字體大小"
+  "Scale AdvBar font sizes independently": {
+    "Scale AdvBar font sizes independently": "獨立縮放 AdvBar 字體大小"
   },
-  "Scale DankBar icon sizes independently": {
-    "Scale DankBar icon sizes independently": "獨立縮放 DankBar 圖標大小"
+  "Scale AdvBar icon sizes independently": {
+    "Scale AdvBar icon sizes independently": "獨立縮放 AdvBar 圖標大小"
   },
   "Scale all font sizes throughout the shell": {
     "Scale all font sizes throughout the shell": "縮放整個 Shell 中的所有字體大小"
@@ -7721,8 +7721,8 @@
   "Show Remaining Time": {
     "Show Remaining Time": ""
   },
-  "Show Restart DMS": {
-    "Show Restart DMS": "顯示重新啟動 DMS"
+  "Show Restart ADVS": {
+    "Show Restart ADVS": "顯示重新啟動 ADVS"
   },
   "Show Satellite Widgets": {
     "Show Satellite Widgets": ""
@@ -7976,8 +7976,8 @@
   "Solid material type or Outline": {
     "Solid material type or Outline": ""
   },
-  "Some plugins require a newer version of DMS:": {
-    "Some plugins require a newer version of DMS:": "部分外掛程式需要較新版 DMS："
+  "Some plugins require a newer version of ADVS:": {
+    "Some plugins require a newer version of ADVS:": "部分外掛程式需要較新版 ADVS："
   },
   "Some settings are managed by the island": {
     "Some settings are managed by the island": ""
@@ -8075,14 +8075,14 @@
   "Standard": {
     "Standard": "標準"
   },
-  "Standard: Classic Material Design 3 — panels rise from below with a subtle scale. The DMS default.": {
-    "Standard: Classic Material Design 3 — panels rise from below with a subtle scale. The DMS default.": "標準：經典 Material Design 3 — 面板從下方升起，帶有輕微的縮放。DMS 的預設值。"
+  "Standard: Classic Material Design 3 — panels rise from below with a subtle scale. The ADVS default.": {
+    "Standard: Classic Material Design 3 — panels rise from below with a subtle scale. The ADVS default.": "標準：經典 Material Design 3 — 面板從下方升起，帶有輕微的縮放。ADVS 的預設值。"
   },
   "Start": {
     "Start": "開始"
   },
-  "Start DankConnect, KDE Connect, or Valent to use this plugin": {
-    "Start DankConnect, KDE Connect, or Valent to use this plugin": ""
+  "Start AdvConnect, KDE Connect, or Valent to use this plugin": {
+    "Start AdvConnect, KDE Connect, or Valent to use this plugin": ""
   },
   "Start Hotspot?": {
     "Start Hotspot?": ""
@@ -8243,11 +8243,11 @@
   "Sync Position Across Screens": {
     "Sync Position Across Screens": "跨螢幕同步位置"
   },
-  "Sync applies your theme and settings to the login screen. Shared users should run dms greeter sync --profile instead of a primary user sync.": {
-    "Sync applies your theme and settings to the login screen. Shared users should run dms greeter sync --profile instead of a primary user sync.": ""
+  "Sync applies your theme and settings to the login screen. Shared users should run advs greeter sync --profile instead of a primary user sync.": {
+    "Sync applies your theme and settings to the login screen. Shared users should run advs greeter sync --profile instead of a primary user sync.": ""
   },
-  "Sync applies your theme and settings to the login screen. Shared users should run dms-greeter sync --profile instead of a primary user sync.": {
-    "Sync applies your theme and settings to the login screen. Shared users should run dms-greeter sync --profile instead of a primary user sync.": ""
+  "Sync applies your theme and settings to the login screen. Shared users should run advs-greeter sync --profile instead of a primary user sync.": {
+    "Sync applies your theme and settings to the login screen. Shared users should run advs-greeter sync --profile instead of a primary user sync.": ""
   },
   "Sync completed successfully.": {
     "Sync completed successfully.": "同步成功完成。"
@@ -8363,14 +8363,14 @@
   "Terminal additional parameters": {
     "Terminal additional parameters": "終端機額外參數"
   },
-  "Terminal fallback failed. Install a supported terminal emulator or run 'dms auth sync' manually.": {
-    "Terminal fallback failed. Install a supported terminal emulator or run 'dms auth sync' manually.": "終端機備用失敗。請安裝支援的終端機模擬器或手動執行 'dms auth sync'。"
+  "Terminal fallback failed. Install a supported terminal emulator or run 'advs auth sync' manually.": {
+    "Terminal fallback failed. Install a supported terminal emulator or run 'advs auth sync' manually.": "終端機備用失敗。請安裝支援的終端機模擬器或手動執行 'advs auth sync'。"
   },
-  "Terminal fallback failed. Install one of the supported terminal emulators or run 'dms greeter sync' manually.": {
-    "Terminal fallback failed. Install one of the supported terminal emulators or run 'dms greeter sync' manually.": "終端機回退失敗。請安裝受支援的終端模擬器之一，或手動執行 'dms greeter sync'。"
+  "Terminal fallback failed. Install one of the supported terminal emulators or run 'advs greeter sync' manually.": {
+    "Terminal fallback failed. Install one of the supported terminal emulators or run 'advs greeter sync' manually.": "終端機回退失敗。請安裝受支援的終端模擬器之一，或手動執行 'advs greeter sync'。"
   },
-  "Terminal fallback failed. Install one of the supported terminal emulators or run 'dms-greeter sync' manually.": {
-    "Terminal fallback failed. Install one of the supported terminal emulators or run 'dms-greeter sync' manually.": ""
+  "Terminal fallback failed. Install one of the supported terminal emulators or run 'advs-greeter sync' manually.": {
+    "Terminal fallback failed. Install one of the supported terminal emulators or run 'advs-greeter sync' manually.": ""
   },
   "Terminal fallback opened. Complete authentication there; it will close automatically when done.": {
     "Terminal fallback opened. Complete authentication there; it will close automatically when done.": ""
@@ -8414,8 +8414,8 @@
   "The 'dgop' tool is required for system monitoring.\nPlease install dgop to use this feature.": {
     "The 'dgop' tool is required for system monitoring.\nPlease install dgop to use this feature.": "系統監控需要 'dgop' 工具。\n請安裝 dgop 以使用此功能。"
   },
-  "The DMS_SOCKET environment variable is not set or the socket is unavailable. Automated plugin management requires the DMS_SOCKET.": {
-    "The DMS_SOCKET environment variable is not set or the socket is unavailable. Automated plugin management requires the DMS_SOCKET.": "DMS_SOCKET 環境變數未設定或套接字不可用。自動插件管理需要 DMS_SOCKET。"
+  "The ADVS_SOCKET environment variable is not set or the socket is unavailable. Automated plugin management requires the ADVS_SOCKET.": {
+    "The ADVS_SOCKET environment variable is not set or the socket is unavailable. Automated plugin management requires the ADVS_SOCKET.": "ADVS_SOCKET 環境變數未設定或套接字不可用。自動插件管理需要 ADVS_SOCKET。"
   },
   "The Island anchors to the top or bottom edge": {
     "The Island anchors to the top or bottom edge": ""
@@ -8435,8 +8435,8 @@
   "The custom command used when attaching to sessions (receives the session name as the first argument)": {
     "The custom command used when attaching to sessions (receives the session name as the first argument)": "附加到會話時使用的自訂命令（將會話名稱作為第一個參數接收）"
   },
-  "The greeter bundled with DMS is active (archinstall setup). It keeps working as is, but syncing theme and settings needs the standalone greeter. Install greetd-dms-greeter-bin from the AUR, then run Sync to migrate the login screen.": {
-    "The greeter bundled with DMS is active (archinstall setup). It keeps working as is, but syncing theme and settings needs the standalone greeter. Install greetd-dms-greeter-bin from the AUR, then run Sync to migrate the login screen.": ""
+  "The greeter bundled with ADVS is active (archinstall setup). It keeps working as is, but syncing theme and settings needs the standalone greeter. Install greetd-advs-greeter-bin from the AUR, then run Sync to migrate the login screen.": {
+    "The greeter bundled with ADVS is active (archinstall setup). It keeps working as is, but syncing theme and settings needs the standalone greeter. Install greetd-advs-greeter-bin from the AUR, then run Sync to migrate the login screen.": ""
   },
   "The island draws its own surface": {
     "The island draws its own surface": ""
@@ -8489,8 +8489,8 @@
   "Third-Party Plugin Warning": {
     "Third-Party Plugin Warning": "第三方插件警告"
   },
-  "Third-party plugins are created by the community and are not officially supported by DankMaterialShell.\n\nThese plugins may pose security and privacy risks - install at your own risk.": {
-    "Third-party plugins are created by the community and are not officially supported by DankMaterialShell.\n\nThese plugins may pose security and privacy risks - install at your own risk.": "第三方外掛程式由社群建立，非 DankMaterialShell 官方支援。\n\n這些外掛程式可能存在安全和隱私風險 — 請自行承擔風險安裝。"
+  "Third-party plugins are created by the community and are not officially supported by AriadnevShell.\n\nThese plugins may pose security and privacy risks - install at your own risk.": {
+    "Third-party plugins are created by the community and are not officially supported by AriadnevShell.\n\nThese plugins may pose security and privacy risks - install at your own risk.": "第三方外掛程式由社群建立，非 AriadnevShell 官方支援。\n\n這些外掛程式可能存在安全和隱私風險 — 請自行承擔風險安裝。"
   },
   "This bind is overridden by config.kdl": {
     "This bind is overridden by config.kdl": "此綁定已被 config.kdl 覆蓋"
@@ -8498,8 +8498,8 @@
   "This device": {
     "This device": "此裝置"
   },
-  "This install is still using hyprland.conf. Run dms setup to migrate before changing these settings.": {
-    "This install is still using hyprland.conf. Run dms setup to migrate before changing these settings.": ""
+  "This install is still using hyprland.conf. Run advs setup to migrate before changing these settings.": {
+    "This install is still using hyprland.conf. Run advs setup to migrate before changing these settings.": ""
   },
   "This may take a few seconds": {
     "This may take a few seconds": "這可能需要幾秒鐘"
@@ -8612,8 +8612,8 @@
   "To update, run the following command:": {
     "To update, run the following command:": "若要更新，請執行以下命令："
   },
-  "To use this DMS bind, remove or change the keybind in your config.kdl": {
-    "To use this DMS bind, remove or change the keybind in your config.kdl": "若要使用此 DMS 綁定，請在 config.kdl 中移除或更改按鍵綁定"
+  "To use this ADVS bind, remove or change the keybind in your config.kdl": {
+    "To use this ADVS bind, remove or change the keybind in your config.kdl": "若要使用此 ADVS 綁定，請在 config.kdl 中移除或更改按鍵綁定"
   },
   "Toast": {
     "Toast": ""
@@ -8813,8 +8813,8 @@
   "Uninstall failed: %1": {
     "Uninstall failed: %1": "解除安裝失敗：%1"
   },
-  "Uninstall the DMS greeter? This will remove configuration and restore your previous display manager. A terminal will open for sudo authentication.": {
-    "Uninstall the DMS greeter? This will remove configuration and restore your previous display manager. A terminal will open for sudo authentication.": "解除安裝 DMS 歡迎畫面？這將移除設定並還原您之前的顯示管理器。將會開啟一個終端機以進行 sudo 驗證。"
+  "Uninstall the ADVS greeter? This will remove configuration and restore your previous display manager. A terminal will open for sudo authentication.": {
+    "Uninstall the ADVS greeter? This will remove configuration and restore your previous display manager. A terminal will open for sudo authentication.": "解除安裝 ADVS 歡迎畫面？這將移除設定並還原您之前的顯示管理器。將會開啟一個終端機以進行 sudo 驗證。"
   },
   "Uninstalled: %1": {
     "Uninstalled: %1": "已解除安裝：%1"
@@ -9104,8 +9104,8 @@
   "Uses the spotlight-bar IPC action and always opens the minimal bar.": {
     "Uses the spotlight-bar IPC action and always opens the minimal bar.": "使用 spotlight-bar IPC 動作並始終開啟簡約工具列。"
   },
-  "Using DankCalendar%1": {
-    "Using DankCalendar%1": ""
+  "Using AdvCalendar%1": {
+    "Using AdvCalendar%1": ""
   },
   "Using global monospace font from Settings → Personalization": {
     "Using global monospace font from Settings → Personalization": "使用來自「設定」→「個人化」的全域等寬字體"
@@ -9287,8 +9287,8 @@
   "Welcome": {
     "Welcome": "歡迎"
   },
-  "Welcome to DankMaterialShell": {
-    "Welcome to DankMaterialShell": "歡迎使用 DankMaterialShell"
+  "Welcome to AriadnevShell": {
+    "Welcome to AriadnevShell": "歡迎使用 AriadnevShell"
   },
   "When clicking a dock window in a Hyprland special workspace, bring that special workspace back before focusing the window": {
     "When clicking a dock window in a Hyprland special workspace, bring that special workspace back before focusing the window": "在 Hyprland 特殊工作區中點擊停靠視窗時，在聚焦視窗之前將該特殊工作區帶回"
@@ -9575,8 +9575,8 @@
   "display rotation option": {
     "Normal": ""
   },
-  "dms-greeter is not installed. Install the dms-greeter package to manage the greeter.": {
-    "dms-greeter is not installed. Install the dms-greeter package to manage the greeter.": ""
+  "advs-greeter is not installed. Install the advs-greeter package to manage the greeter.": {
+    "advs-greeter is not installed. Install the advs-greeter package to manage the greeter.": ""
   },
   "e.g. /usr/bin/my-script --flag": {
     "e.g. /usr/bin/my-script --flag": "例如：/usr/bin/my-script --flag"
@@ -9620,8 +9620,8 @@
   "loginctl activate failed (exit %1)": {
     "loginctl activate failed (exit %1)": "loginctl 啟動失敗（結束代碼 %1）"
   },
-  "loginctl not available - lock integration requires DMS socket connection": {
-    "loginctl not available - lock integration requires DMS socket connection": "loginctl 不可用 - 鎖定整合需要 DMS 套接字連接"
+  "loginctl not available - lock integration requires ADVS socket connection": {
+    "loginctl not available - lock integration requires ADVS socket connection": "loginctl 不可用 - 鎖定整合需要 ADVS 套接字連接"
   },
   "mango: config reloaded": {
     "mango: config reloaded": ""
@@ -9662,8 +9662,8 @@
   "niri shortcuts config": {
     "niri shortcuts config": "niri 捷徑設定"
   },
-  "niri/dms Discord": {
-    "niri/dms Discord": "niri/dms Discord"
+  "niri/advs Discord": {
+    "niri/advs Discord": "niri/advs Discord"
   },
   "niri: config reloaded": {
     "niri: config reloaded": "niri：設定已重新載入"
@@ -9740,8 +9740,8 @@
   "up": {
     "up": "向上"
   },
-  "update dms for NM integration.": {
-    "update dms for NM integration.": "更新 dms 以進行 NM 整合。"
+  "update advs for NM integration.": {
+    "update advs for NM integration.": "更新 advs 以進行 NM 整合。"
   },
   "useradd failed (exit %1)": {
     "useradd failed (exit %1)": "useradd 失敗（結束代碼 %1）"

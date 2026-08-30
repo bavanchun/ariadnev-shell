@@ -6,8 +6,8 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/errdefs"
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/geolocation"
+	"github.com/bavanchun/ariadnev-shell/core/internal/errdefs"
+	"github.com/bavanchun/ariadnev-shell/core/internal/geolocation"
 	"github.com/AvengeMedia/dankgo/syncmap"
 	wlclient "github.com/AvengeMedia/dankgo/wayland/client"
 	"github.com/godbus/dbus/v5"

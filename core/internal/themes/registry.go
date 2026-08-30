@@ -7,7 +7,7 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/registries"
+	"github.com/bavanchun/ariadnev-shell/core/internal/registries"
 	"github.com/go-git/go-git/v6"
 	"github.com/spf13/afero"
 )
@@ -224,7 +224,7 @@ func (r *Registry) cacheDirFor(src registries.Source) string {
 }
 
 func getCacheDir() string {
-	return filepath.Join(os.TempDir(), "dankdots-plugin-registry")
+	return filepath.Join(os.TempDir(), "advdots-plugin-registry")
 }
 
 // A cached clone is reused only when its origin still matches the configured

@@ -1,39 +1,48 @@
-# DankMaterialShell
+# AriadnevShell
+
+> **Attribution** — AriadnevShell is derived from
+> [DankMaterialShell](https://github.com/AvengeMedia/DankMaterialShell) by Avenge Media LLC,
+> used under the MIT License. The original copyright notice is retained in `LICENSE`.
+> This is an independent fork, not affiliated with or endorsed by Avenge Media.
+>
+> Note: `ariadnev.vchun.dev` links below are placeholders — the docs site is not up yet.
+> Distro packaging under `distro/` still needs COPR / PPA / OBS accounts to be set up.
+
 
 <div align="center">
-  <a href="https://danklinux.com">
-    <img src="assets/danklogo.svg" alt="DankMaterialShell" width="200">
+  <a href="https://ariadnev.vchun.dev">
+    <img src="assets/advlogo.svg" alt="AriadnevShell" width="200">
   </a>
 
 ### A modern desktop shell for Wayland
 
 Built with [Quickshell](https://quickshell.org/) and [Go](https://go.dev/)
 
-[![Documentation](https://img.shields.io/badge/docs-danklinux.com-9ccbfb?style=for-the-badge&labelColor=101418)](https://danklinux.com/docs)
-[![GitHub stars](https://img.shields.io/github/stars/AvengeMedia/DankMaterialShell?style=for-the-badge&labelColor=101418&color=ffd700)](https://github.com/AvengeMedia/DankMaterialShell/stargazers)
-[![GitHub License](https://img.shields.io/github/license/AvengeMedia/DankMaterialShell?style=for-the-badge&labelColor=101418&color=b9c8da)](https://github.com/AvengeMedia/DankMaterialShell/blob/master/LICENSE)
-[![GitHub release](https://img.shields.io/github/v/release/AvengeMedia/DankMaterialShell?style=for-the-badge&labelColor=101418&color=9ccbfb)](https://github.com/AvengeMedia/DankMaterialShell/releases)
-[![Arch version](https://img.shields.io/archlinux/v/extra/x86_64/dms-shell?style=for-the-badge&labelColor=101418&color=9ccbfb)](https://archlinux.org/packages/extra/x86_64/dms-shell/)
-[![AUR version (git)](<https://img.shields.io/aur/version/dms-shell-git?style=for-the-badge&labelColor=101418&color=9ccbfb&label=AUR%20(git)>)](https://aur.archlinux.org/packages/dms-shell-git)
-[![Ko-Fi donate](https://img.shields.io/badge/donate-kofi?style=for-the-badge&logo=ko-fi&logoColor=ffffff&label=ko-fi&labelColor=101418&color=f16061&link=https%3A%2F%2Fko-fi.com%2Fdanklinux)](https://ko-fi.com/danklinux)
+[![Documentation](https://img.shields.io/badge/docs-ariadnev.vchun.dev-9ccbfb?style=for-the-badge&labelColor=101418)](https://ariadnev.vchun.dev/docs)
+[![GitHub stars](https://img.shields.io/github/stars/bavanchun/ariadnev-shell?style=for-the-badge&labelColor=101418&color=ffd700)](https://github.com/bavanchun/ariadnev-shell/stargazers)
+[![GitHub License](https://img.shields.io/github/license/bavanchun/ariadnev-shell?style=for-the-badge&labelColor=101418&color=b9c8da)](https://github.com/bavanchun/ariadnev-shell/blob/master/LICENSE)
+[![GitHub release](https://img.shields.io/github/v/release/bavanchun/ariadnev-shell?style=for-the-badge&labelColor=101418&color=9ccbfb)](https://github.com/bavanchun/ariadnev-shell/releases)
+[![Arch version](https://img.shields.io/archlinux/v/extra/x86_64/ariadnev-shell?style=for-the-badge&labelColor=101418&color=9ccbfb)](https://archlinux.org/packages/extra/x86_64/ariadnev-shell/)
+[![AUR version (git)](<https://img.shields.io/aur/version/ariadnev-shell-git?style=for-the-badge&labelColor=101418&color=9ccbfb&label=AUR%20(git)>)](https://aur.archlinux.org/packages/ariadnev-shell-git)
+[![Ko-Fi donate](https://img.shields.io/badge/donate-kofi?style=for-the-badge&logo=ko-fi&logoColor=ffffff&label=ko-fi&labelColor=101418&color=f16061&link=https%3A%2F%2Fko-fi.com%2Fariadnev)](https://ko-fi.com/ariadnev)
 
 </div>
 
-DankMaterialShell is a complete desktop shell for [niri](https://github.com/YaLTeR/niri), [Hyprland](https://hyprland.org/), [MangoWC](https://github.com/DreamMaoMao/mangowc), [Sway](https://swaywm.org), [labwc](https://labwc.github.io/), [Scroll](https://github.com/dawsers/scroll), [Miracle WM](https://github.com/miracle-wm-org/miracle-wm), and other Wayland compositors. It replaces waybar, swaylock, swayidle, mako, fuzzel, polkit, and everything else you'd normally stitch together to make a desktop.
+AriadnevShell is a complete desktop shell for [niri](https://github.com/YaLTeR/niri), [Hyprland](https://hyprland.org/), [MangoWC](https://github.com/DreamMaoMao/mangowc), [Sway](https://swaywm.org), [labwc](https://labwc.github.io/), [Scroll](https://github.com/dawsers/scroll), [Miracle WM](https://github.com/miracle-wm-org/miracle-wm), and other Wayland compositors. It replaces waybar, swaylock, swayidle, mako, fuzzel, polkit, and everything else you'd normally stitch together to make a desktop.
 
 ## Repository Structure
 
 This is a monorepo containing both the shell interface and the core backend services:
 
 ```
-DankMaterialShell/
+AriadnevShell/
 ├── quickshell/         # QML-based shell interface
 │   ├── Modules/        # UI components (panels, widgets, overlays)
 │   ├── Services/       # System integration (audio, network, bluetooth)
 │   ├── Widgets/        # Reusable UI controls
 │   └── Common/         # Shared resources and themes
 ├── core/               # Go backend and CLI
-│   ├── cmd/            # dms CLI and dankinstall binaries
+│   ├── cmd/            # advs CLI and advinstall binaries
 │   ├── internal/       # System integration, IPC, distro support
 │   └── pkg/            # Shared packages
 ├── distro/             # Distribution packaging
@@ -70,23 +79,23 @@ https://github.com/user-attachments/assets/1200a739-7770-4601-8b85-695ca527819a
 ## Installation
 
 ```bash
-curl -fsSL https://install.danklinux.com | sh
+curl -fsSL https://install.ariadnev.vchun.dev | sh
 ```
 
-One command installs DMS and all dependencies on Arch, Fedora, Debian, Ubuntu, openSUSE, or Gentoo.
+One command installs ADVS and all dependencies on Arch, Fedora, Debian, Ubuntu, openSUSE, or Gentoo.
 
-**[Manual installation guide](https://danklinux.com/docs/dankmaterialshell/installation)**
+**[Manual installation guide](https://ariadnev.vchun.dev/docs/advmaterialshell/installation)**
 
 ## Features
 
 **Dynamic Theming**
-Wallpaper-based color schemes that automatically theme GTK, Qt, terminals, editors (vscode, vscodium), and more using [matugen](https://github.com/InioX/matugen) and dank16.
+Wallpaper-based color schemes that automatically theme GTK, Qt, terminals, editors (vscode, vscodium), and more using [matugen](https://github.com/InioX/matugen) and adv16.
 
 **System Monitoring**
-Real-time CPU, RAM, GPU metrics and temperatures built into the dms daemon (powered by [dgop](https://github.com/AvengeMedia/dgop)). Process list with search and management.
+Real-time CPU, RAM, GPU metrics and temperatures built into the advs daemon (powered by [dgop](https://github.com/AvengeMedia/dgop)). Process list with search and management.
 
 **Powerful Launcher**
-Spotlight-style search for applications, files ([dsearch](https://github.com/AvengeMedia/danksearch)), emojis, running windows, calculator, and commands. Extensible with plugins.
+Spotlight-style search for applications, files ([dsearch](https://github.com/bavanchun/advsearch)), emojis, running windows, calculator, and commands. Extensible with plugins.
 
 **Control Center**
 Unified interface for network, Bluetooth, audio devices, display settings, and night mode.
@@ -98,53 +107,52 @@ Notification center with grouping, rich text support, and keyboard navigation.
 MPRIS player controls, calendar sync, weather widgets, and clipboard history with image previews.
 
 **Session Management**
-Lock screen, idle detection, auto-lock/suspend with separate AC/battery settings, and a settings front-end for [dank-greeter](https://github.com/AvengeMedia/dank-greeter).
+Lock screen, idle detection, auto-lock/suspend with separate AC/battery settings, and a settings front-end for [adv-greeter](https://github.com/bavanchun/adv-greeter).
 
 **Plugin System**
-Extend functionality with the [plugin registry](https://plugins.danklinux.com). DMS keeps
-`~/.config/DankMaterialShell/plugins.lock.json` synchronized with managed plugin installs and
+Extend functionality with the [plugin registry](https://plugins.ariadnev.vchun.dev). ADVS keeps
+`~/.config/AriadnevShell/plugins.lock.json` synchronized with managed plugin installs and
 their exact Git commits, so the same plugins can be reproduced on another machine.
 
 ## Supported Compositors
 
 Works best with [niri](https://github.com/YaLTeR/niri), [Hyprland](https://hyprland.org/), [Sway](https://swaywm.org/), [MangoWC](https://github.com/DreamMaoMao/mangowc), [labwc](https://labwc.github.io/), [Scroll](https://github.com/dawsers/scroll), and [Miracle WM](https://github.com/miracle-wm-org/miracle-wm) with full workspace switching, overview integration, and monitor management. Other Wayland compositors work with reduced features.
 
-[Compositor configuration guide](https://danklinux.com/docs/dankmaterialshell/compositors)
+[Compositor configuration guide](https://ariadnev.vchun.dev/docs/advmaterialshell/compositors)
 
 ## Command Line Interface
 
 Control the shell from the command line or keybinds:
 
 ```bash
-dms run              # Start the shell
-dms ipc call spotlight toggle
-dms ipc call audio setvolume 50
-dms ipc call wallpaper set /path/to/image.jpg
-dms brightness list  # List available displays
-dms plugins search   # Browse plugin registry
-dms plugins lock     # Refresh the portable plugin lockfile
-dms plugins restore ~/plugins.lock.json
+advs run              # Start the shell
+advs ipc call spotlight toggle
+advs ipc call audio setvolume 50
+advs ipc call wallpaper set /path/to/image.jpg
+advs brightness list  # List available displays
+advs plugins search   # Browse plugin registry
+advs plugins lock     # Refresh the portable plugin lockfile
+advs plugins restore ~/plugins.lock.json
 ```
 
-[Full CLI and IPC documentation](https://danklinux.com/docs/dankmaterialshell/keybinds-ipc)
+[Full CLI and IPC documentation](https://ariadnev.vchun.dev/docs/advmaterialshell/keybinds-ipc)
 
 ## Documentation
 
-- **Website:** [danklinux.com](https://danklinux.com)
-- **Docs:** [danklinux.com/docs](https://danklinux.com/docs/)
-- **Theming:** [Application themes](https://danklinux.com/docs/dankmaterialshell/application-themes) | [Custom themes](https://danklinux.com/docs/dankmaterialshell/custom-themes)
-- **Plugins:** [Development guide](https://danklinux.com/docs/dankmaterialshell/plugins-overview)
-- **Support:** [Ko-fi](https://ko-fi.com/avengemediallc)
+- **Website:** [ariadnev.vchun.dev](https://ariadnev.vchun.dev)
+- **Docs:** [ariadnev.vchun.dev/docs](https://ariadnev.vchun.dev/docs/)
+- **Theming:** [Application themes](https://ariadnev.vchun.dev/docs/advmaterialshell/application-themes) | [Custom themes](https://ariadnev.vchun.dev/docs/advmaterialshell/custom-themes)
+- **Plugins:** [Development guide](https://ariadnev.vchun.dev/docs/advmaterialshell/plugins-overview)
 
-## Dank Projects
+## Adv Projects
 
-DMS is one piece of the suite. The rest lives in its own repos:
+ADVS is one piece of the suite. The rest lives in its own repos:
 
-- [dank-greeter](https://github.com/AvengeMedia/dank-greeter) - greetd login screen with the Dank Material aesthetic. The Greeter tab in DMS settings is the front-end for it.
-- [dankcalendar](https://github.com/AvengeMedia/dankcalendar) - Local, Google, Microsoft, and CalDAV calendars for the dank desktop.
-- [dgop](https://github.com/AvengeMedia/dgop) - System monitoring TUI and Go library; its library powers the process list and dashboard widgets inside the dms daemon.
-- [dsearch](https://github.com/AvengeMedia/danksearch) - Fast file search that powers file results in the launcher.
-- [dank-qml-common](https://github.com/AvengeMedia/dank-qml-common) - Shared QML widgets and components used by DMS, dank-greeter, and dankcalendar.
+- [adv-greeter](https://github.com/bavanchun/adv-greeter) - greetd login screen with the Adv Material aesthetic. The Greeter tab in ADVS settings is the front-end for it.
+- [advcalendar](https://github.com/bavanchun/advcalendar) - Local, Google, Microsoft, and CalDAV calendars for the adv desktop.
+- [dgop](https://github.com/AvengeMedia/dgop) - System monitoring TUI and Go library; its library powers the process list and dashboard widgets inside the advs daemon.
+- [dsearch](https://github.com/bavanchun/advsearch) - Fast file search that powers file results in the launcher.
+- [ariadnev-qml-common](https://github.com/bavanchun/ariadnev-qml-common) - Shared QML widgets and components used by ADVS, adv-greeter, and advcalendar.
 - [dankgo](https://github.com/AvengeMedia/dankgo) - Common Go modules behind the single binary apps.
 
 ## Development
@@ -157,12 +165,12 @@ See component-specific documentation:
 
 ### Building from Source
 
-**Core + Dankinstall:**
+**Core + Advinstall:**
 
 ```bash
 cd core
-make              # Build dms CLI
-make dankinstall  # Build installer
+make              # Build advs CLI
+make advinstall  # Build installer
 ```
 
 **Shell:**
@@ -175,10 +183,10 @@ quickshell -p quickshell/
 
 ```nix
 {
-  inputs.dms.url = "github:AvengeMedia/DankMaterialShell";
+  inputs.advs.url = "github:bavanchun/ariadnev-shell";
 
   # Use in home-manager or NixOS configuration
-  imports = [ inputs.dms.homeModules.dank-material-shell ];
+  imports = [ inputs.advs.homeModules.adv-material-shell ];
 }
 ```
 
@@ -191,7 +199,7 @@ Contributions welcome. Bug fixes, widgets, features, documentation, and plugins 
 3. Test thoroughly
 4. Open a pull request
 
-For documentation contributions, see [DankLinux-Docs](https://github.com/AvengeMedia/DankLinux-Docs).
+For documentation contributions, see [AdvLinux-Docs](https://github.com/bavanchun/AdvLinux-Docs).
 
 ## Credits
 
@@ -203,7 +211,7 @@ For documentation contributions, see [DankLinux-Docs](https://github.com/AvengeM
 
 ## Star History
 
-[![Star History Chart](https://star-history.dera.page/svg?repos=AvengeMedia/DankMaterialShell&type=date&legend=top-left)](https://star-history.dera.page/#AvengeMedia/DankMaterialShell&type=date&legend=top-left)
+[![Star History Chart](https://star-history.dera.page/svg?repos=bavanchun/ariadnev-shell&type=date&legend=top-left)](https://star-history.dera.page/#bavanchun/ariadnev-shell&type=date&legend=top-left)
 
 ## License
 

@@ -49,7 +49,7 @@ Singleton {
 
     // ionice is util-linux only; the BSDs get plain nice
     readonly property var lowPriorityCmd: Qt.platform.os === "linux" ? ["nice", "-n", "19", "ionice", "-c3"] : ["nice", "-n", "19"]
-    readonly property var fetchCmd: [Proc.dmsBin, "dl", "--connect-timeout", "8", "--timeout", "20"]
+    readonly property var fetchCmd: [Proc.advsBin, "dl", "--connect-timeout", "8", "--timeout", "20"]
 
     property var weatherIcons: ({
             "0": "clear_day",
@@ -619,7 +619,7 @@ Singleton {
 
     function tryNominatim(lat, lon, reqId) {
         const url = "https://nominatim.openstreetmap.org/reverse?lat=" + lat + "&lon=" + lon + "&format=json&addressdetails=1&accept-language=en";
-        nominatimFetcher.command = lowPriorityCmd.concat(fetchCmd, ["--user-agent", "DankMaterialShell Weather Widget", url]);
+        nominatimFetcher.command = lowPriorityCmd.concat(fetchCmd, ["--user-agent", "AriadnevShell Weather Widget", url]);
         nominatimFetcher.reqId = reqId;
         nominatimFetcher.running = true;
     }

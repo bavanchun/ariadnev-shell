@@ -26,7 +26,7 @@ Item {
         NetworkService.removeRef();
     }
 
-    DankFlickable {
+    AdvFlickable {
         anchors.fill: parent
         clip: true
         contentHeight: mainColumn.height + Theme.spacingXL
@@ -88,7 +88,7 @@ Item {
 
                 function mergedSavedWifiNetworks() {
                     const saved = NetworkService.savedWifiNetworks || [];
-                    const supportsSavedWifiState = DMSService.apiVersion >= NetworkService.savedWifiStateApiVersion;
+                    const supportsSavedWifiState = ADVSService.apiVersion >= NetworkService.savedWifiStateApiVersion;
                     const result = [];
                     const seen = new Set();
 
@@ -186,21 +186,21 @@ Item {
                             anchors.verticalCenter: parent.verticalCenter
                             spacing: Theme.spacingS
 
-                            DankActionButton {
+                            AdvActionButton {
                                 iconName: "wifi_find"
                                 buttonSize: 32
                                 visible: NetworkService.backend === "networkmanager" && NetworkService.wifiEnabled && !NetworkService.wifiToggling
                                 onClicked: PopoutService.showHiddenNetworkModal()
                             }
 
-                            DankActionButton {
+                            AdvActionButton {
                                 iconName: "refresh"
                                 buttonSize: 32
                                 visible: NetworkService.wifiEnabled && !NetworkService.wifiToggling && !NetworkService.isScanning
                                 onClicked: NetworkService.scanWifi()
                             }
 
-                            DankToggle {
+                            AdvToggle {
                                 checked: NetworkService.wifiEnabled
                                 enabled: !NetworkService.wifiToggling
                                 onToggled: NetworkService.toggleWifiRadio()
@@ -225,7 +225,7 @@ Item {
                             height: 1
                         }
 
-                        DankDropdown {
+                        AdvDropdown {
                             id: wifiDeviceDropdown
                             dropdownWidth: 150
                             popupWidth: 180
@@ -322,7 +322,7 @@ Item {
                                     spacing: Theme.spacingXS
                                     anchors.verticalCenter: parent.verticalCenter
 
-                                    DankIcon {
+                                    AdvIcon {
                                         name: {
                                             const s = NetworkService.wifiSignalStrength;
                                             if (s >= 50)
@@ -385,7 +385,7 @@ Item {
                                 anchors.centerIn: parent
                                 spacing: Theme.spacingS
 
-                                DankIcon {
+                                AdvIcon {
                                     id: scanningIcon
                                     name: "wifi_find"
                                     size: 32
@@ -493,7 +493,7 @@ Item {
                                                 anchors.rightMargin: Theme.spacingS
                                                 spacing: Theme.spacingS
 
-                                                DankSpinner {
+                                                AdvSpinner {
                                                     size: 20
                                                     strokeWidth: 2
                                                     color: Theme.warning
@@ -502,7 +502,7 @@ Item {
                                                     anchors.verticalCenter: parent.verticalCenter
                                                 }
 
-                                                DankIcon {
+                                                AdvIcon {
                                                     visible: !isConnecting
                                                     name: {
                                                         const s = modelData.signal || 0;
@@ -534,7 +534,7 @@ Item {
                                                             elide: Text.ElideRight
                                                         }
 
-                                                        DankIcon {
+                                                        AdvIcon {
                                                             name: "push_pin"
                                                             size: 14
                                                             color: Theme.primary
@@ -542,7 +542,7 @@ Item {
                                                             anchors.verticalCenter: parent.verticalCenter
                                                         }
 
-                                                        DankIcon {
+                                                        AdvIcon {
                                                             name: "visibility_off"
                                                             size: 14
                                                             color: Theme.surfaceVariantText
@@ -618,7 +618,7 @@ Item {
                                                     color: wifiExpandBtn.containsMouse ? Theme.surfacePressed : Theme.withAlpha(Theme.surfacePressed, 0)
                                                     visible: isConnected || modelData.saved
 
-                                                    DankIcon {
+                                                    AdvIcon {
                                                         anchors.centerIn: parent
                                                         name: isExpanded ? "expand_less" : "expand_more"
                                                         size: 18
@@ -641,7 +641,7 @@ Item {
                                                     }
                                                 }
 
-                                                DankActionButton {
+                                                AdvActionButton {
                                                     iconName: "qr_code"
                                                     buttonSize: 28
                                                     visible: modelData.secured && modelData.saved && !(modelData.enterprise || false)
@@ -650,7 +650,7 @@ Item {
                                                     }
                                                 }
 
-                                                DankActionButton {
+                                                AdvActionButton {
                                                     iconName: isPinned ? "push_pin" : "push_pin"
                                                     buttonSize: 28
                                                     iconColor: isPinned ? Theme.primary : Theme.surfaceVariantText
@@ -659,7 +659,7 @@ Item {
                                                     }
                                                 }
 
-                                                DankActionButton {
+                                                AdvActionButton {
                                                     iconName: "delete"
                                                     buttonSize: 28
                                                     iconColor: Theme.error
@@ -714,7 +714,7 @@ Item {
                                                         height: NetworkService.networkInfoLoading ? 40 : 0
                                                         visible: NetworkService.networkInfoLoading
 
-                                                        DankSpinner {
+                                                        AdvSpinner {
                                                             anchors.centerIn: parent
                                                             size: 20
                                                         }
@@ -806,9 +806,9 @@ Item {
 
                                                     Row {
                                                         spacing: Theme.spacingS
-                                                        visible: (modelData.saved || isConnected) && DMSService.apiVersion > 13
+                                                        visible: (modelData.saved || isConnected) && ADVSService.apiVersion > 13
 
-                                                        DankToggle {
+                                                        AdvToggle {
                                                             id: autoconnectToggle
                                                             text: I18n.tr("Autoconnect")
                                                             checked: modelData.autoconnect || false
@@ -900,7 +900,7 @@ Item {
                                         anchors.rightMargin: Theme.spacingS
                                         spacing: Theme.spacingS
 
-                                        DankSpinner {
+                                        AdvSpinner {
                                             size: 20
                                             strokeWidth: 2
                                             color: Theme.warning
@@ -909,7 +909,7 @@ Item {
                                             anchors.verticalCenter: parent.verticalCenter
                                         }
 
-                                        DankIcon {
+                                        AdvIcon {
                                             visible: !isConnecting
                                             name: {
                                                 if (isOutOfRange)
@@ -945,7 +945,7 @@ Item {
                                                     width: Math.max(0, parent.width - (savedWifiHiddenIcon.visible ? savedWifiHiddenIcon.width + Theme.spacingXS : 0))
                                                 }
 
-                                                DankIcon {
+                                                AdvIcon {
                                                     id: savedWifiHiddenIcon
                                                     name: "visibility_off"
                                                     size: 14
@@ -987,7 +987,7 @@ Item {
                                             color: savedWifiExpandBtn.containsMouse ? Theme.surfacePressed : Theme.withAlpha(Theme.surfacePressed, 0)
                                             visible: !isOutOfRange
 
-                                            DankIcon {
+                                            AdvIcon {
                                                 anchors.centerIn: parent
                                                 name: isExpanded ? "expand_less" : "expand_more"
                                                 size: 18
@@ -1009,7 +1009,7 @@ Item {
                                             }
                                         }
 
-                                        DankActionButton {
+                                        AdvActionButton {
                                             iconName: "qr_code"
                                             buttonSize: 28
                                             visible: modelData.secured && !(modelData.enterprise || false)
@@ -1018,7 +1018,7 @@ Item {
                                             }
                                         }
 
-                                        DankActionButton {
+                                        AdvActionButton {
                                             iconName: "push_pin"
                                             buttonSize: 28
                                             iconColor: isPinned ? Theme.primary : Theme.surfaceVariantText
@@ -1027,7 +1027,7 @@ Item {
                                             }
                                         }
 
-                                        DankActionButton {
+                                        AdvActionButton {
                                             id: savedWifiMoreButton
                                             iconName: "more_horiz"
                                             buttonSize: 28
@@ -1209,8 +1209,8 @@ Item {
 
                                 MenuItem {
                                     text: modelData.autoconnect ? I18n.tr("Disable Autoconnect") : I18n.tr("Enable Autoconnect")
-                                    height: DMSService.apiVersion > 13 ? 32 : 0
-                                    visible: DMSService.apiVersion > 13
+                                    height: ADVSService.apiVersion > 13 ? 32 : 0
+                                    visible: ADVSService.apiVersion > 13
 
                                     contentItem: StyledText {
                                         text: parent.text
@@ -1451,7 +1451,7 @@ Item {
                         spacing: Theme.spacingM
                         visible: !hotspotCard.showForm
 
-                        DankIcon {
+                        AdvIcon {
                             name: NetworkService.hotspotEnabled ? "wifi_tethering" : "wifi_tethering_off"
                             size: Theme.iconSize
                             color: NetworkService.hotspotEnabled ? Theme.primary : Theme.surfaceVariantText
@@ -1492,7 +1492,7 @@ Item {
                         spacing: Theme.spacingM
                         visible: hotspotCard.showForm
 
-                        DankTextField {
+                        AdvTextField {
                             width: parent.width
                             labelText: I18n.tr("Hotspot name", "hotspot SSID field label")
                             placeholderText: I18n.tr("SSID", "hotspot network name placeholder")
@@ -1503,7 +1503,7 @@ Item {
                             onAccepted: hotspotCard.saveOnly()
                         }
 
-                        DankTextField {
+                        AdvTextField {
                             width: parent.width
                             labelText: I18n.tr("Password", "hotspot password field label")
                             placeholderText: I18n.tr("Optional; leave blank for open hotspot", "hotspot password field placeholder")
@@ -1524,7 +1524,7 @@ Item {
                             width: parent.width
                             spacing: Theme.spacingM
 
-                            DankDropdown {
+                            AdvDropdown {
                                 width: (parent.width - Theme.spacingM) / 2
                                 text: I18n.tr("Device", "hotspot WiFi device field label")
                                 description: I18n.tr("Optional", "hotspot WiFi device field description")
@@ -1536,7 +1536,7 @@ Item {
                                 onValueChanged: value => hotspotCard.device = value === I18n.tr("Auto", "hotspot device or band option") ? "" : value
                             }
 
-                            DankDropdown {
+                            AdvDropdown {
                                 width: (parent.width - Theme.spacingM) / 2
                                 text: I18n.tr("Band", "hotspot WiFi band field label")
                                 description: I18n.tr("Optional", "hotspot WiFi band field description")
@@ -1556,7 +1556,7 @@ Item {
                             height: 1
                         }
 
-                        DankButton {
+                        AdvButton {
                             id: cancelButton
                             visible: hotspotCard.editing
                             text: I18n.tr("Cancel", "cancel hotspot editing action")
@@ -1566,7 +1566,7 @@ Item {
                             onClicked: hotspotCard.stopEditing()
                         }
 
-                        DankButton {
+                        AdvButton {
                             id: editButton
                             visible: !hotspotCard.showForm
                             text: I18n.tr("Edit", "edit hotspot action")
@@ -1578,7 +1578,7 @@ Item {
                             onClicked: hotspotCard.beginEditing()
                         }
 
-                        DankButton {
+                        AdvButton {
                             id: saveButton
                             visible: hotspotCard.showForm
                             text: hotspotCard.passwordLoading ? I18n.tr("Loading...", "hotspot password loading status") : (NetworkService.hotspotBusy ? I18n.tr("Saving...", "hotspot configuration saving status") : I18n.tr("Save", "save hotspot configuration action"))
@@ -1590,7 +1590,7 @@ Item {
                             onClicked: hotspotCard.saveOnly()
                         }
 
-                        DankButton {
+                        AdvButton {
                             id: startStopButton
                             text: {
                                 if (NetworkService.hotspotEnabled)

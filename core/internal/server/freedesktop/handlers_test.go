@@ -10,8 +10,8 @@ import (
 	"testing"
 	"time"
 
-	mockdbus "github.com/AvengeMedia/DankMaterialShell/core/internal/mocks/github.com/godbus/dbus/v5"
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/server/models"
+	mockdbus "github.com/bavanchun/ariadnev-shell/core/internal/mocks/github.com/godbus/dbus/v5"
+	"github.com/bavanchun/ariadnev-shell/core/internal/server/models"
 	"github.com/godbus/dbus/v5"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/mock"

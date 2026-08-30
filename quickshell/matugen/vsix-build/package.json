@@ -1,10 +1,10 @@
 {
-  "name": "dms-theme",
-  "displayName": "DMS - Dank Material Shell Theme",
-  "description": "Dynamic theme using matugen & dank16 terminal colors - auto-updated by DankMaterialShell",
-  "publisher": "DankLinux",
+  "name": "advs-theme",
+  "displayName": "ADVS - Adv Material Shell Theme",
+  "description": "Dynamic theme using matugen & adv16 terminal colors - auto-updated by AriadnevShell",
+  "publisher": "AdvLinux",
   "version": "0.0.3",
-  "icon": "danklogo.png",
+  "icon": "advlogo.png",
   "engines": {
     "vscode": "^1.70.0"
   },
@@ -12,34 +12,34 @@
     "Themes"
   ],
   "keywords": [
-    "dms",
-    "dank",
+    "advs",
+    "adv",
     "material",
-    "dankshell",
-    "danklinux"
+    "advshell",
+    "ariadnev"
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/AvengeMedia/DankMaterialShell"
+    "url": "https://github.com/bavanchun/ariadnev-shell"
   },
   "contributes": {
     "themes": [
       {
-        "label": "Dynamic Base16 DankShell",
+        "label": "Dynamic Base16 AdvShell",
         "uiTheme": "vs-dark",
-        "path": "./themes/dankshell-default.json",
+        "path": "./themes/advshell-default.json",
         "_watch": true
       },
       {
-        "label": "Dynamic Base16 DankShell (Dark)",
+        "label": "Dynamic Base16 AdvShell (Dark)",
         "uiTheme": "vs-dark",
-        "path": "./themes/dankshell-dark.json",
+        "path": "./themes/advshell-dark.json",
         "_watch": true
       },
       {
-        "label": "Dynamic Base16 DankShell (Light)",
+        "label": "Dynamic Base16 AdvShell (Light)",
         "uiTheme": "vs",
-        "path": "./themes/dankshell-light.json",
+        "path": "./themes/advshell-light.json",
         "_watch": true
       }
     ]

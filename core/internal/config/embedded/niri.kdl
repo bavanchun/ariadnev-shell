@@ -240,11 +240,11 @@ recent-windows {
     }
 }
 
-// Include dms files
-include optional=true "dms/colors.kdl"
-include optional=true "dms/layout.kdl"
-include optional=true "dms/alttab.kdl"
-include optional=true "dms/binds.kdl"
-include optional=true "dms/outputs.kdl"
-include optional=true "dms/cursor.kdl"
-include optional=true "dms/input.kdl"
+// Include advs files
+include optional=true "advs/colors.kdl"
+include optional=true "advs/layout.kdl"
+include optional=true "advs/alttab.kdl"
+include optional=true "advs/binds.kdl"
+include optional=true "advs/outputs.kdl"
+include optional=true "advs/cursor.kdl"
+include optional=true "advs/input.kdl"

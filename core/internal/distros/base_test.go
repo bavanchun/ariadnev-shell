@@ -6,11 +6,11 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/deps"
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/utils"
+	"github.com/bavanchun/ariadnev-shell/core/internal/deps"
+	"github.com/bavanchun/ariadnev-shell/core/internal/utils"
 )
 
-func TestBaseDistribution_detectDMS_NotInstalled(t *testing.T) {
+func TestBaseDistribution_detectADVS_NotInstalled(t *testing.T) {
 	originalHome := os.Getenv("HOME")
 	defer os.Setenv("HOME", originalHome)
 
@@ -21,14 +21,14 @@ func TestBaseDistribution_detectDMS_NotInstalled(t *testing.T) {
 	defer close(logChan)
 
 	base := NewBaseDistribution(logChan)
-	dep := base.detectDMS()
+	dep := base.detectADVS()
 
 	if dep.Status != deps.StatusMissing {
 		t.Errorf("Expected StatusMissing, got %d", dep.Status)
 	}
 
-	if dep.Name != "dms (DankMaterialShell)" {
-		t.Errorf("Expected name 'dms (DankMaterialShell)', got %s", dep.Name)
+	if dep.Name != "advs (AriadnevShell)" {
+		t.Errorf("Expected name 'advs (AriadnevShell)', got %s", dep.Name)
 	}
 
 	if !dep.Required {
@@ -36,41 +36,41 @@ func TestBaseDistribution_detectDMS_NotInstalled(t *testing.T) {
 	}
 }
 
-func TestBaseDistribution_detectDMS_Installed(t *testing.T) {
+func TestBaseDistribution_detectADVS_Installed(t *testing.T) {
 	if !utils.CommandExists("git") {
 		t.Skip("git not available")
 	}
 
 	tempDir := t.TempDir()
-	dmsPath := filepath.Join(tempDir, ".config", "quickshell", "dms")
-	os.MkdirAll(dmsPath, 0o755)
+	advsPath := filepath.Join(tempDir, ".config", "quickshell", "advs")
+	os.MkdirAll(advsPath, 0o755)
 
 	originalHome := os.Getenv("HOME")
 	defer os.Setenv("HOME", originalHome)
 	os.Setenv("HOME", tempDir)
 
-	exec.Command("git", "init", dmsPath).Run()
-	exec.Command("git", "-C", dmsPath, "config", "user.email", "test@test.com").Run()
-	exec.Command("git", "-C", dmsPath, "config", "user.name", "Test User").Run()
-	exec.Command("git", "-C", dmsPath, "checkout", "-b", "master").Run()
+	exec.Command("git", "init", advsPath).Run()
+	exec.Command("git", "-C", advsPath, "config", "user.email", "test@test.com").Run()
+	exec.Command("git", "-C", advsPath, "config", "user.name", "Test User").Run()
+	exec.Command("git", "-C", advsPath, "checkout", "-b", "master").Run()
 
-	testFile := filepath.Join(dmsPath, "test.txt")
+	testFile := filepath.Join(advsPath, "test.txt")
 	os.WriteFile(testFile, []byte("test"), 0o644)
-	exec.Command("git", "-C", dmsPath, "add", ".").Run()
-	exec.Command("git", "-C", dmsPath, "commit", "-m", "initial").Run()
+	exec.Command("git", "-C", advsPath, "add", ".").Run()
+	exec.Command("git", "-C", advsPath, "commit", "-m", "initial").Run()
 
 	logChan := make(chan string, 10)
 	defer close(logChan)
 
 	base := NewBaseDistribution(logChan)
-	dep := base.detectDMS()
+	dep := base.detectADVS()
 
 	if dep.Status == deps.StatusMissing {
-		t.Error("Expected DMS to be detected as installed")
+		t.Error("Expected ADVS to be detected as installed")
 	}
 
-	if dep.Name != "dms (DankMaterialShell)" {
-		t.Errorf("Expected name 'dms (DankMaterialShell)', got %s", dep.Name)
+	if dep.Name != "advs (AriadnevShell)" {
+		t.Errorf("Expected name 'advs (AriadnevShell)', got %s", dep.Name)
 	}
 
 	if !dep.Required {
@@ -80,39 +80,39 @@ func TestBaseDistribution_detectDMS_Installed(t *testing.T) {
 	t.Logf("Status: %d, Version: %s", dep.Status, dep.Version)
 }
 
-func TestBaseDistribution_detectDMS_NeedsUpdate(t *testing.T) {
+func TestBaseDistribution_detectADVS_NeedsUpdate(t *testing.T) {
 	if !utils.CommandExists("git") {
 		t.Skip("git not available")
 	}
 
 	tempDir := t.TempDir()
-	dmsPath := filepath.Join(tempDir, ".config", "quickshell", "dms")
-	os.MkdirAll(dmsPath, 0o755)
+	advsPath := filepath.Join(tempDir, ".config", "quickshell", "advs")
+	os.MkdirAll(advsPath, 0o755)
 
 	originalHome := os.Getenv("HOME")
 	defer os.Setenv("HOME", originalHome)
 	os.Setenv("HOME", tempDir)
 
-	exec.Command("git", "init", dmsPath).Run()
-	exec.Command("git", "-C", dmsPath, "config", "user.email", "test@test.com").Run()
-	exec.Command("git", "-C", dmsPath, "config", "user.name", "Test User").Run()
-	exec.Command("git", "-C", dmsPath, "remote", "add", "origin", "https://github.com/AvengeMedia/DankMaterialShell.git").Run()
+	exec.Command("git", "init", advsPath).Run()
+	exec.Command("git", "-C", advsPath, "config", "user.email", "test@test.com").Run()
+	exec.Command("git", "-C", advsPath, "config", "user.name", "Test User").Run()
+	exec.Command("git", "-C", advsPath, "remote", "add", "origin", "https://github.com/bavanchun/ariadnev-shell.git").Run()
 
-	testFile := filepath.Join(dmsPath, "test.txt")
+	testFile := filepath.Join(advsPath, "test.txt")
 	os.WriteFile(testFile, []byte("test"), 0o644)
-	exec.Command("git", "-C", dmsPath, "add", ".").Run()
-	exec.Command("git", "-C", dmsPath, "commit", "-m", "initial").Run()
-	exec.Command("git", "-C", dmsPath, "tag", "v0.0.1").Run()
-	exec.Command("git", "-C", dmsPath, "checkout", "v0.0.1").Run()
+	exec.Command("git", "-C", advsPath, "add", ".").Run()
+	exec.Command("git", "-C", advsPath, "commit", "-m", "initial").Run()
+	exec.Command("git", "-C", advsPath, "tag", "v0.0.1").Run()
+	exec.Command("git", "-C", advsPath, "checkout", "v0.0.1").Run()
 
 	logChan := make(chan string, 10)
 	defer close(logChan)
 
 	base := NewBaseDistribution(logChan)
-	dep := base.detectDMS()
+	dep := base.detectADVS()
 
-	if dep.Name != "dms (DankMaterialShell)" {
-		t.Errorf("Expected name 'dms (DankMaterialShell)', got %s", dep.Name)
+	if dep.Name != "advs (AriadnevShell)" {
+		t.Errorf("Expected name 'advs (AriadnevShell)', got %s", dep.Name)
 	}
 
 	if !dep.Required {
@@ -122,10 +122,10 @@ func TestBaseDistribution_detectDMS_NeedsUpdate(t *testing.T) {
 	t.Logf("Status: %d, Version: %s", dep.Status, dep.Version)
 }
 
-func TestBaseDistribution_detectDMS_DirectoryWithoutGit(t *testing.T) {
+func TestBaseDistribution_detectADVS_DirectoryWithoutGit(t *testing.T) {
 	tempDir := t.TempDir()
-	dmsPath := filepath.Join(tempDir, ".config", "quickshell", "dms")
-	os.MkdirAll(dmsPath, 0o755)
+	advsPath := filepath.Join(tempDir, ".config", "quickshell", "advs")
+	os.MkdirAll(advsPath, 0o755)
 
 	originalHome := os.Getenv("HOME")
 	defer os.Setenv("HOME", originalHome)
@@ -135,14 +135,14 @@ func TestBaseDistribution_detectDMS_DirectoryWithoutGit(t *testing.T) {
 	defer close(logChan)
 
 	base := NewBaseDistribution(logChan)
-	dep := base.detectDMS()
+	dep := base.detectADVS()
 
 	if dep.Status == deps.StatusMissing {
-		t.Error("Expected DMS to be detected as present")
+		t.Error("Expected ADVS to be detected as present")
 	}
 
-	if dep.Name != "dms (DankMaterialShell)" {
-		t.Errorf("Expected name 'dms (DankMaterialShell)', got %s", dep.Name)
+	if dep.Name != "advs (AriadnevShell)" {
+		t.Errorf("Expected name 'advs (AriadnevShell)', got %s", dep.Name)
 	}
 
 	if !dep.Required {

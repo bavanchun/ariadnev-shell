@@ -43,7 +43,7 @@ Rectangle {
         return mouseArea.containsMouse ? Theme.primaryHoverLight : Theme.withAlpha(Theme.surfaceContainerHigh, Theme.popupTransparency);
     }
 
-    DankRipple {
+    AdvRipple {
         id: rippleLayer
         rippleColor: Theme.surfaceText
         cornerRadius: root.radius
@@ -91,7 +91,7 @@ Rectangle {
             visible: root.showPinnedIndicator
 
             // Status indicator only; the Pin action remains hidden.
-            DankIcon {
+            AdvIcon {
                 anchors.centerIn: parent
                 name: "push_pin"
                 size: Theme.iconSize - 6
@@ -99,7 +99,7 @@ Rectangle {
             }
         }
 
-        DankActionButton {
+        AdvActionButton {
             iconName: "content_copy"
             iconSize: Theme.iconSize - 6
             iconColor: Theme.surfaceText
@@ -107,7 +107,7 @@ Rectangle {
             onClicked: copyRequested()
         }
 
-        DankActionButton {
+        AdvActionButton {
             iconName: "content_paste"
             iconSize: Theme.iconSize - 6
             iconColor: Theme.surfaceText
@@ -115,7 +115,7 @@ Rectangle {
             onClicked: pasteRequested()
         }
 
-        DankActionButton {
+        AdvActionButton {
             iconName: "push_pin"
             iconSize: Theme.iconSize - 6
             iconColor: (entry.pinned || hasPinnedDuplicate) ? Theme.primary : Theme.surfaceText
@@ -134,7 +134,7 @@ Rectangle {
             }
         }
 
-        DankActionButton {
+        AdvActionButton {
             iconName: "edit"
             iconSize: Theme.iconSize - 6
             iconColor: Theme.surfaceText
@@ -148,7 +148,7 @@ Rectangle {
             }
         }
 
-        DankActionButton {
+        AdvActionButton {
             iconName: "close"
             iconSize: Theme.iconSize - 6
             iconColor: Theme.surfaceText

@@ -52,6 +52,6 @@ func TestLockScreenPamSupportsManagedAndSystemPolicies(t *testing.T) {
 		}
 	}
 	if strings.Contains(content, "runningFromNixStore || resolveUserPam.running") {
-		t.Fatalf("DMS-managed policy must generate the sanitized user PAM stack on Nix-store installs")
+		t.Fatalf("ADVS-managed policy must generate the sanitized user PAM stack on Nix-store installs")
 	}
 }

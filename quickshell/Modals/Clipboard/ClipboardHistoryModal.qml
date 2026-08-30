@@ -6,10 +6,10 @@ import qs.Modals.Clipboard
 import qs.Modals.Common
 import qs.Services
 
-DankModal {
+AdvModal {
     id: clipboardHistoryModal
 
-    layerNamespace: "dms:clipboard"
+    layerNamespace: "advs:clipboard"
 
     function toggle() {
         if (shouldBeVisible) {

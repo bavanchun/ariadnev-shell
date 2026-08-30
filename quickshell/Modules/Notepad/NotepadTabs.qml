@@ -172,7 +172,7 @@ Column {
                                         anchors.verticalCenter: parent.verticalCenter
                                     }
 
-                                    DankTextField {
+                                    AdvTextField {
                                         id: renameField
                                         visible: delegateItem.editing
                                         enabled: delegateItem.editing
@@ -229,7 +229,7 @@ Column {
                                         visible: NotepadStorageService.tabs.length > 1 && !delegateItem.editing
                                         anchors.verticalCenter: parent.verticalCenter
 
-                                        DankIcon {
+                                        AdvIcon {
                                             name: "close"
                                             size: 14
                                             color: Theme.surfaceTextMedium
@@ -347,7 +347,7 @@ Column {
             }
         }
 
-        DankActionButton {
+        AdvActionButton {
             id: newTabButton
             width: 32
             height: 32
@@ -358,7 +358,7 @@ Column {
         }
     }
 
-    DankTooltipV2 {
+    AdvTooltipV2 {
         id: tabTooltip
     }
 }

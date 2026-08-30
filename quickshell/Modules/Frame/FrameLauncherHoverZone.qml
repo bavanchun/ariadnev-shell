@@ -28,12 +28,12 @@ Variants {
 
             readonly property bool vertical: zoneLoader.emergeSide === "left" || zoneLoader.emergeSide === "right"
             readonly property real triggerThickness: Math.max(6, SettingsData.frameThickness)
-            readonly property bool launcherOpen: PopoutService.dankLauncherV2Modal?.spotlightOpen ?? false
+            readonly property bool launcherOpen: PopoutService.advLauncherV2Modal?.spotlightOpen ?? false
             property bool _openedForCurrentHover: false
 
             // Hot zone dimensions centered on the emerge edge to cover the launcher footprint.
-            readonly property real _launcherBaseW: SettingsData.dankLauncherV2Size === "micro" ? 500 : (SettingsData.dankLauncherV2Size === "medium" ? 720 : (SettingsData.dankLauncherV2Size === "large" ? 860 : 620))
-            readonly property real _launcherBaseH: SettingsData.dankLauncherV2Size === "micro" ? 480 : (SettingsData.dankLauncherV2Size === "medium" ? 720 : (SettingsData.dankLauncherV2Size === "large" ? 860 : 600))
+            readonly property real _launcherBaseW: SettingsData.advLauncherV2Size === "micro" ? 500 : (SettingsData.advLauncherV2Size === "medium" ? 720 : (SettingsData.advLauncherV2Size === "large" ? 860 : 620))
+            readonly property real _launcherBaseH: SettingsData.advLauncherV2Size === "micro" ? 480 : (SettingsData.advLauncherV2Size === "medium" ? 720 : (SettingsData.advLauncherV2Size === "large" ? 860 : 600))
             readonly property real screenW: zoneLoader.modelData?.width ?? 0
             readonly property real screenH: zoneLoader.modelData?.height ?? 0
             readonly property real spanW: Math.round(Math.min(_launcherBaseW, screenW - 100) * 1.1)
@@ -43,13 +43,13 @@ Variants {
                 if (launcherOpen || _openedForCurrentHover)
                     return;
                 _openedForCurrentHover = true;
-                PopoutService.openDankLauncherV2(CompositorService.framePeerSurfacesUseOverlayForScreen(zoneLoader.modelData), true);
+                PopoutService.openAdvLauncherV2(CompositorService.framePeerSurfacesUseOverlayForScreen(zoneLoader.modelData), true);
             }
 
             screen: zoneLoader.modelData
             color: "transparent"
 
-            WlrLayershell.namespace: "dms:frame-launcher-hover"
+            WlrLayershell.namespace: "advs:frame-launcher-hover"
             WlrLayershell.layer: WlrLayer.Top
             WlrLayershell.exclusionMode: ExclusionMode.Ignore
             WlrLayershell.keyboardFocus: WlrKeyboardFocus.None

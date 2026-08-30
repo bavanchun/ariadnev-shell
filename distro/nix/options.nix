@@ -1,6 +1,6 @@
 {
   lib,
-  dmsPkgs,
+  advsPkgs,
   pkgs,
   ...
 }:
@@ -8,10 +8,10 @@ let
   inherit (lib) types;
   path = [
     "programs"
-    "dank-material-shell"
+    "adv-material-shell"
   ];
   jsonFormat = pkgs.formats.json { };
-  builtInRemovedMsg = "This is now built-in in DMS and doesn't need additional dependencies.";
+  builtInRemovedMsg = "This is now built-in in ADVS and doesn't need additional dependencies.";
 in
 {
   imports = [
@@ -20,22 +20,22 @@ in
     (lib.mkRemovedOptionModule (path ++ [ "enableClipboard" ]) builtInRemovedMsg)
     (lib.mkRemovedOptionModule (
       path ++ [ "enableSystemSound" ]
-    ) "qtmultimedia is now included on dms-shell package.")
-    ./dms-rename.nix
+    ) "qtmultimedia is now included on ariadnev-shell package.")
+    ./advs-rename.nix
   ];
 
-  options.programs.dank-material-shell = {
-    enable = lib.mkEnableOption "DankMaterialShell";
-    package = lib.mkPackageOption dmsPkgs "dms-shell" {
-      extraDescription = "The DankMaterialShell package to use (defaults to be built from source)";
+  options.programs.adv-material-shell = {
+    enable = lib.mkEnableOption "AriadnevShell";
+    package = lib.mkPackageOption advsPkgs "ariadnev-shell" {
+      extraDescription = "The AriadnevShell package to use (defaults to be built from source)";
     };
 
     systemd = {
-      enable = lib.mkEnableOption "DankMaterialShell systemd startup";
+      enable = lib.mkEnableOption "AriadnevShell systemd startup";
       restartIfChanged = lib.mkOption {
         type = types.bool;
         default = true;
-        description = "Auto-restart dms.service when dank-material-shell changes";
+        description = "Auto-restart advs.service when adv-material-shell changes";
       };
     };
 
@@ -72,7 +72,7 @@ in
     enableClipboardPaste = lib.mkOption {
       type = types.bool;
       default = true;
-      description = "Deprecated: paste is built into dms; no extra dependencies needed. Kept as a no-op for compatibility.";
+      description = "Deprecated: paste is built into advs; no extra dependencies needed. Kept as a no-op for compatibility.";
     };
 
     quickshell = {
@@ -103,13 +103,13 @@ in
         }
       );
       default = { };
-      description = "DMS Plugins to install and enable";
+      description = "ADVS Plugins to install and enable";
       example = lib.literalExpression ''
         {
           DockerManager = {
             src = pkgs.fetchFromGitHub {
               owner = "LuckShiba";
-              repo = "DmsDockerManager";
+              repo = "AdvsDockerManager";
               rev = "v1.2.0";
               sha256 = "sha256-VoJCaygWnKpv0s0pqTOmzZnPM922qPDMHk4EPcgVnaU=";
             };

@@ -29,23 +29,23 @@ Item {
         case "niri":
             return {
                 "configFile": configDir + "/niri/config.kdl",
-                "layoutFile": configDir + "/niri/dms/layout.kdl",
-                "grepPattern": 'include.*"dms/layout.kdl"',
-                "includeLine": 'include "dms/layout.kdl"'
+                "layoutFile": configDir + "/niri/advs/layout.kdl",
+                "grepPattern": 'include.*"advs/layout.kdl"',
+                "includeLine": 'include "advs/layout.kdl"'
             };
         case "hyprland":
             return {
                 "configFile": configDir + "/hypr/hyprland.lua",
-                "layoutFile": configDir + "/hypr/dms/layout.lua",
-                "grepPattern": "dms.layout",
-                "includeLine": "require(\"dms.layout\")"
+                "layoutFile": configDir + "/hypr/advs/layout.lua",
+                "grepPattern": "advs.layout",
+                "includeLine": "require(\"advs.layout\")"
             };
         case "mango":
             return {
                 "configFile": configDir + "/mango/config.conf",
-                "layoutFile": configDir + "/mango/dms/layout.conf",
-                "grepPattern": "source.*dms/layout.conf",
-                "includeLine": "source=./dms/layout.conf"
+                "layoutFile": configDir + "/mango/advs/layout.conf",
+                "grepPattern": "source.*advs/layout.conf",
+                "includeLine": "source=./advs/layout.conf"
             };
         default:
             return null;
@@ -68,7 +68,7 @@ Item {
         const compositorArg = compositor === "mango" ? "mangowc" : compositor;
 
         checkingInclude = true;
-        Proc.runCommand("check-layout-include", [Proc.dmsBin, "config", "resolve-include", compositorArg, filename], (output, exitCode) => {
+        Proc.runCommand("check-layout-include", [Proc.advsBin, "config", "resolve-include", compositorArg, filename], (output, exitCode) => {
             checkingInclude = false;
             if (exitCode !== 0) {
                 layoutIncludeStatus = {
@@ -94,7 +94,7 @@ Item {
 
     function fixLayoutInclude() {
         if (readOnly) {
-            ToastService.showWarning(I18n.tr("Hyprland conf mode"), I18n.tr("This install is still using hyprland.conf. Run dms setup to migrate before changing these settings."), "dms setup", "hyprland-migration");
+            ToastService.showWarning(I18n.tr("Hyprland conf mode"), I18n.tr("This install is still using hyprland.conf. Run advs setup to migrate before changing these settings."), "advs setup", "hyprland-migration");
             return;
         }
         const paths = getLayoutConfigPaths();
@@ -127,7 +127,7 @@ Item {
         const script = `cd "${configDir}/niri" 2>/dev/null || exit 0
 files="config.kdl"
 for f in $(sed -nE 's/^[[:space:]]*include[[:space:]]+"([^"]+)".*/\\1/p' config.kdl 2>/dev/null); do
-    case "$f" in dms/*|/*dms/*) continue ;; esac
+    case "$f" in advs/*|/*advs/*) continue ;; esac
     [ -f "$f" ] && files="$files $f"
 done
 awk '$1 == "xray" { print FILENAME ":" FNR; exit }' $files 2>/dev/null`;
@@ -144,7 +144,7 @@ awk '$1 == "xray" { print FILENAME ":" FNR; exit }' $files 2>/dev/null`;
         }
     }
 
-    DankFlickable {
+    AdvFlickable {
         anchors.fill: parent
         clip: true
         contentHeight: layoutColumn.height + Theme.spacingXL
@@ -178,7 +178,7 @@ awk '$1 == "xray" { print FILENAME ":" FNR; exit }' $files 2>/dev/null`;
                     anchors.margins: Theme.spacingL
                     spacing: Theme.spacingM
 
-                    DankIcon {
+                    AdvIcon {
                         name: "warning"
                         size: Theme.iconSize
                         color: Theme.primary
@@ -208,9 +208,9 @@ awk '$1 == "xray" { print FILENAME ":" FNR; exit }' $files 2>/dev/null`;
                         StyledText {
                             text: {
                                 if (warningBox.showLegacy)
-                                    return I18n.tr("This install is still using hyprland.conf. Run dms setup to migrate before changing these settings.");
+                                    return I18n.tr("This install is still using hyprland.conf. Run advs setup to migrate before changing these settings.");
                                 if (warningBox.showSetup)
-                                    return I18n.tr("Click 'Setup' to create %1 and add include to your compositor config.").arg("dms/layout");
+                                    return I18n.tr("Click 'Setup' to create %1 and add include to your compositor config.").arg("advs/layout");
                                 return "";
                             }
                             font.pixelSize: Theme.fontSizeSmall
@@ -221,7 +221,7 @@ awk '$1 == "xray" { print FILENAME ":" FNR; exit }' $files 2>/dev/null`;
                         }
                     }
 
-                    DankButton {
+                    AdvButton {
                         id: fixButton
                         visible: !warningBox.showLegacy && warningBox.showSetup
                         text: root.fixingInclude ? I18n.tr("Setting up...") : I18n.tr("Setup")
@@ -249,7 +249,7 @@ awk '$1 == "xray" { print FILENAME ":" FNR; exit }' $files 2>/dev/null`;
                     anchors.margins: Theme.spacingL
                     spacing: Theme.spacingM
 
-                    DankIcon {
+                    AdvIcon {
                         name: "warning"
                         size: Theme.iconSize
                         color: Theme.primary
@@ -389,7 +389,7 @@ awk '$1 == "xray" { print FILENAME ":" FNR; exit }' $files 2>/dev/null`;
                     visible: CompositorService.isNiri && !SettingsData.connectedFrameModeActive
                     tags: ["niri", "xray", "bar", "frame", "performance"]
                     settingKey: "niriLayoutBarXrayEnabled"
-                    text: SettingsData.frameEnabled ? I18n.tr("Frame Xray") : I18n.tr("Dank Bar Xray")
+                    text: SettingsData.frameEnabled ? I18n.tr("Frame Xray") : I18n.tr("Adv Bar Xray")
                     description: I18n.tr("Always blur against the wallpaper, even with Xray off")
                     checked: NiriService.layoutBarXrayEnabled
                     onToggled: checked => NiriService.setLayoutBarXray(checked)
@@ -425,8 +425,8 @@ awk '$1 == "xray" { print FILENAME ":" FNR; exit }' $files 2>/dev/null`;
                 SettingsToggleRow {
                     tags: ["niri", "overview", "window", "focus", "launch", "launcher", "dock", "settings"]
                     settingKey: "closeNiriOverviewOnWindowFocus"
-                    text: I18n.tr("Close Niri Overview on Window Focus", "Niri setting to leave Niri overview when DMS launches or focuses a window")
-                    description: I18n.tr("Auto-close Niri overview when DMS launches or focuses a window.", "Description of the close Niri overview on window focus setting")
+                    text: I18n.tr("Close Niri Overview on Window Focus", "Niri setting to leave Niri overview when ADVS launches or focuses a window")
+                    description: I18n.tr("Auto-close Niri overview when ADVS launches or focuses a window.", "Description of the close Niri overview on window focus setting")
                     checked: SettingsData.closeNiriOverviewOnWindowFocus
                     onToggled: checked => SettingsData.set("closeNiriOverviewOnWindowFocus", checked)
                 }
@@ -576,7 +576,7 @@ awk '$1 == "xray" { print FILENAME ":" FNR; exit }' $files 2>/dev/null`;
                     visible: CompositorService.isHyprland && !SettingsData.connectedFrameModeActive
                     tags: ["hyprland", "xray", "bar", "frame", "performance"]
                     settingKey: "hyprlandLayoutBarXrayEnabled"
-                    text: SettingsData.frameEnabled ? I18n.tr("Frame Xray") : I18n.tr("Dank Bar Xray")
+                    text: SettingsData.frameEnabled ? I18n.tr("Frame Xray") : I18n.tr("Adv Bar Xray")
                     description: I18n.tr("Always blur against the wallpaper, even with Xray off")
                     checked: HyprlandService.layoutBarXrayEnabled
                     onToggled: checked => HyprlandService.setLayoutBarXray(checked)

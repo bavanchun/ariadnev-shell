@@ -4,8 +4,8 @@ import (
 	"errors"
 	"fmt"
 
-	clipboardstore "github.com/AvengeMedia/DankMaterialShell/core/internal/clipboard"
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/server/models"
+	clipboardstore "github.com/bavanchun/ariadnev-shell/core/internal/clipboard"
+	"github.com/bavanchun/ariadnev-shell/core/internal/server/models"
 	"github.com/AvengeMedia/dankgo/ipc/params"
 )
 

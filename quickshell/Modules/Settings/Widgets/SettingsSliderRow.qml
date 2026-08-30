@@ -64,7 +64,7 @@ Item {
     signal sliderValueChanged(int newValue)
     signal sliderDragFinished(int finalValue)
 
-    DankTooltipV2 {
+    AdvTooltipV2 {
         id: sharedTooltip
     }
 
@@ -117,7 +117,7 @@ Item {
                 height: 36
                 anchors.verticalCenter: parent.verticalCenter
 
-                DankActionButton {
+                AdvActionButton {
                     id: resetButton
                     anchors.centerIn: parent
                     buttonSize: 36
@@ -140,7 +140,7 @@ Item {
             }
         }
 
-        DankSlider {
+        AdvSlider {
             id: slider
             width: parent.width
             height: 32

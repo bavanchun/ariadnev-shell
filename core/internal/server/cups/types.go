@@ -5,7 +5,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/AvengeMedia/DankMaterialShell/core/pkg/ipp"
+	"github.com/bavanchun/ariadnev-shell/core/pkg/ipp"
 	"github.com/AvengeMedia/dankgo/syncmap"
 )
 

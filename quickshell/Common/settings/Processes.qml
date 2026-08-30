@@ -19,7 +19,7 @@ Singleton {
             consumeGreeterAutoLoginPendingSync();
     }
 
-    readonly property string greeterAutoLoginPendingSyncPath: (Quickshell.env("DMS_GREET_CFG_DIR") || "/var/cache/dms-greeter") + "/.local/state/auto-login-sync-pending"
+    readonly property string greeterAutoLoginPendingSyncPath: (Quickshell.env("ADVS_GREET_CFG_DIR") || "/var/cache/advs-greeter") + "/.local/state/auto-login-sync-pending"
 
     function consumeGreeterAutoLoginPendingSync() {
         if (!settingsRoot || settingsRoot.isGreeterMode)
@@ -51,7 +51,7 @@ Singleton {
     property string systemLocalLoginPamText: ""
     property string commonAuthPcPamText: ""
     property string loginPamText: ""
-    property string dankshellU2fPamText: ""
+    property string advshellU2fPamText: ""
     property string u2fKeysText: ""
 
     property string fingerprintProbeOutput: ""
@@ -64,7 +64,7 @@ Singleton {
     readonly property string homeDir: Quickshell.env("HOME") || ""
     readonly property string u2fKeysPath: homeDir ? homeDir + "/.config/Yubico/u2f_keys" : ""
     readonly property bool homeU2fKeysDetected: u2fKeysPath !== "" && u2fKeysWatcher.loaded && u2fKeysText.trim() !== ""
-    readonly property bool lockU2fCustomConfigDetected: pamModuleEnabled(dankshellU2fPamText, "pam_u2f")
+    readonly property bool lockU2fCustomConfigDetected: pamModuleEnabled(advshellU2fPamText, "pam_u2f")
     readonly property bool lockU2fCustomSourceDetected: (settingsRoot?.lockU2fPamPath || "") !== "" && customU2fPamWatcher.loaded
     readonly property bool greeterPamHasFprint: greeterPamStackHasModule("pam_fprintd")
     readonly property bool greeterPamHasU2f: greeterPamStackHasModule("pam_u2f")
@@ -78,8 +78,8 @@ Singleton {
         return null;
     }
 
-    readonly property var forcedFprintAvailable: envFlag("DMS_FORCE_FPRINT_AVAILABLE")
-    readonly property var forcedU2fAvailable: envFlag("DMS_FORCE_U2F_AVAILABLE")
+    readonly property var forcedFprintAvailable: envFlag("ADVS_FORCE_FPRINT_AVAILABLE")
+    readonly property var forcedU2fAvailable: envFlag("ADVS_FORCE_U2F_AVAILABLE")
 
     // --- Derived auth probe state ---
 
@@ -162,13 +162,13 @@ Singleton {
 
     readonly property string greeterFingerprintSource: {
         if (forcedFprintAvailable !== null)
-            return forcedFprintAvailable ? "dms" : "none";
+            return forcedFprintAvailable ? "advs" : "none";
         if (greeterPamHasFprint)
             return "pam";
         switch (fingerprintProbeState) {
         case "ready":
         case "missing_enrollment":
-            return "dms";
+            return "advs";
         default:
             return "none";
         }
@@ -230,11 +230,11 @@ Singleton {
 
     readonly property string greeterU2fSource: {
         if (forcedU2fAvailable !== null)
-            return forcedU2fAvailable ? "dms" : "none";
+            return forcedU2fAvailable ? "advs" : "none";
         if (greeterPamHasU2f)
             return "pam";
         if (greeterU2fCanEnable)
-            return "dms";
+            return "advs";
         return "none";
     }
 
@@ -250,7 +250,7 @@ Singleton {
 
     function detectAuthCapabilities() {
         // FileView cannot watch paths that do not exist yet, so reload the U2F PAM
-        dankshellU2fPamWatcher.reload();
+        advshellU2fPamWatcher.reload();
         u2fKeysWatcher.reload();
 
         if (forcedFprintAvailable === null) {
@@ -368,7 +368,7 @@ Singleton {
     function deferGreeterAutoLoginSyncToPill(details) {
         toastCategoryDismissed("greeter-autologin-sync");
         SessionData.set("greeterSyncPending", true);
-        toastRequested(1, I18n.tr("Auto-login change needs a sync"), I18n.tr("Administrator access is required. Use the Sync button in Settings → Greeter to apply.") + (details ? "\n\n" + details : ""), "dms-greeter sync --autologin", "greeter-autologin-sync");
+        toastRequested(1, I18n.tr("Auto-login change needs a sync"), I18n.tr("Administrator access is required. Use the Sync button in Settings → Greeter to apply.") + (details ? "\n\n" + details : ""), "advs-greeter sync --autologin", "greeter-autologin-sync");
         finishGreeterAutoLoginSync();
     }
 
@@ -505,7 +505,7 @@ Singleton {
     }
 
     property var greeterAutoLoginSyncProcess: Process {
-        command: ["dms-greeter", "sync", "--yes", "--autologin"]
+        command: ["advs-greeter", "sync", "--yes", "--autologin"]
         running: false
 
         stdout: StdioCollector {
@@ -545,7 +545,7 @@ Singleton {
         onExited: exitCode => {
             const enabling = root.settingsRoot && root.settingsRoot.greeterAutoLogin;
             if (exitCode === 0) {
-                root.toastRequested(1, enabling ? I18n.tr("Applying auto-login on startup...") : I18n.tr("Disabling auto-login on startup..."), "", "dms-greeter sync --autologin", "greeter-autologin-sync");
+                root.toastRequested(1, enabling ? I18n.tr("Applying auto-login on startup...") : I18n.tr("Disabling auto-login on startup..."), "", "advs-greeter sync --autologin", "greeter-autologin-sync");
                 root.greeterAutoLoginSyncProcess.running = true;
                 return;
             }
@@ -555,7 +555,7 @@ Singleton {
     }
 
     property var authApplyProcess: Process {
-        command: ["dms", "auth", "sync", "--yes"]
+        command: ["advs", "auth", "sync", "--yes"]
         running: false
 
         stdout: StdioCollector {
@@ -611,7 +611,7 @@ Singleton {
     }
 
     property var authApplyTerminalFallbackProcess: Process {
-        command: ["dms", "auth", "sync", "--terminal", "--yes"]
+        command: ["advs", "auth", "sync", "--terminal", "--yes"]
         running: false
 
         stderr: StdioCollector {
@@ -624,7 +624,7 @@ Singleton {
                 root.toastRequested(0, message, "", "", "auth-sync");
             } else {
                 let details = (root.authApplyTerminalFallbackStderr || "").trim();
-                root.toastRequested(2, I18n.tr("Terminal fallback failed. Install a supported terminal emulator or run 'dms auth sync' manually.") + " (exit " + exitCode + ")", details, "", "auth-sync");
+                root.toastRequested(2, I18n.tr("Terminal fallback failed. Install a supported terminal emulator or run 'advs auth sync' manually.") + " (exit " + exitCode + ")", details, "", "auth-sync");
             }
             root.finishAuthApply();
         }
@@ -695,12 +695,12 @@ Singleton {
     }
 
     FileView {
-        id: dankshellU2fPamWatcher
-        path: "/etc/pam.d/dankshell-u2f"
+        id: advshellU2fPamWatcher
+        path: "/etc/pam.d/advshell-u2f"
         watchChanges: true
         printErrors: false
-        onLoaded: root.dankshellU2fPamText = text()
-        onLoadFailed: root.dankshellU2fPamText = ""
+        onLoaded: root.advshellU2fPamText = text()
+        onLoadFailed: root.advshellU2fPamText = ""
     }
 
     FileView {

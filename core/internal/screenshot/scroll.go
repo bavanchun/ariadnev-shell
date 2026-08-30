@@ -8,9 +8,9 @@ import (
 	"os/signal"
 	"time"
 
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/log"
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/proto/wlr_layer_shell"
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/proto/wlr_screencopy"
+	"github.com/bavanchun/ariadnev-shell/core/internal/log"
+	"github.com/bavanchun/ariadnev-shell/core/internal/proto/wlr_layer_shell"
+	"github.com/bavanchun/ariadnev-shell/core/internal/proto/wlr_screencopy"
 	"github.com/AvengeMedia/dankgo/wayland/client"
 	"golang.org/x/sys/unix"
 )
@@ -472,7 +472,7 @@ func (r *RegionSelector) handleScrollFrame() {
 	}
 }
 
-var scrollDebug = os.Getenv("DMS_SCROLL_DEBUG") != ""
+var scrollDebug = os.Getenv("ADVS_SCROLL_DEBUG") != ""
 
 func (s *scrollSession) extractRows() ([]byte, error) {
 	src := s.buf

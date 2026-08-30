@@ -7,7 +7,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/AvengeMedia/DankMaterialShell/core/pkg/ipp"
+	"github.com/bavanchun/ariadnev-shell/core/pkg/ipp"
 )
 
 var validProtocols = map[string]bool{

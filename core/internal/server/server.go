@@ -9,30 +9,30 @@ import (
 	"sync"
 	"time"
 
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/geolocation"
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/log"
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/matugen"
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/server/apppicker"
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/server/bluez"
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/server/brightness"
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/server/clipboard"
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/server/cups"
-	serverDbus "github.com/AvengeMedia/DankMaterialShell/core/internal/server/dbus"
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/server/evdev"
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/server/freedesktop"
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/server/location"
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/server/loginctl"
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/server/models"
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/server/network"
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/server/notifyactions"
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/server/sysupdate"
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/server/tailscale"
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/server/thememode"
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/server/trayrecovery"
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/server/wallpaper"
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/server/wayland"
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/server/wlcontext"
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/server/wlroutput"
+	"github.com/bavanchun/ariadnev-shell/core/internal/geolocation"
+	"github.com/bavanchun/ariadnev-shell/core/internal/log"
+	"github.com/bavanchun/ariadnev-shell/core/internal/matugen"
+	"github.com/bavanchun/ariadnev-shell/core/internal/server/apppicker"
+	"github.com/bavanchun/ariadnev-shell/core/internal/server/bluez"
+	"github.com/bavanchun/ariadnev-shell/core/internal/server/brightness"
+	"github.com/bavanchun/ariadnev-shell/core/internal/server/clipboard"
+	"github.com/bavanchun/ariadnev-shell/core/internal/server/cups"
+	serverDbus "github.com/bavanchun/ariadnev-shell/core/internal/server/dbus"
+	"github.com/bavanchun/ariadnev-shell/core/internal/server/evdev"
+	"github.com/bavanchun/ariadnev-shell/core/internal/server/freedesktop"
+	"github.com/bavanchun/ariadnev-shell/core/internal/server/location"
+	"github.com/bavanchun/ariadnev-shell/core/internal/server/loginctl"
+	"github.com/bavanchun/ariadnev-shell/core/internal/server/models"
+	"github.com/bavanchun/ariadnev-shell/core/internal/server/network"
+	"github.com/bavanchun/ariadnev-shell/core/internal/server/notifyactions"
+	"github.com/bavanchun/ariadnev-shell/core/internal/server/sysupdate"
+	"github.com/bavanchun/ariadnev-shell/core/internal/server/tailscale"
+	"github.com/bavanchun/ariadnev-shell/core/internal/server/thememode"
+	"github.com/bavanchun/ariadnev-shell/core/internal/server/trayrecovery"
+	"github.com/bavanchun/ariadnev-shell/core/internal/server/wallpaper"
+	"github.com/bavanchun/ariadnev-shell/core/internal/server/wayland"
+	"github.com/bavanchun/ariadnev-shell/core/internal/server/wlcontext"
+	"github.com/bavanchun/ariadnev-shell/core/internal/server/wlroutput"
 	"github.com/AvengeMedia/dankgo/ipc"
 	"github.com/AvengeMedia/dankgo/paths"
 	"github.com/AvengeMedia/dankgo/syncmap"
@@ -79,14 +79,14 @@ var sysUpdateManager *sysupdate.Manager
 var notifyActionsManager *notifyactions.Manager
 var geoClientInstance geolocation.Client
 
-const dbusClientID = "dms-dbus-client"
+const dbusClientID = "advs-dbus-client"
 
 var capabilitySubscribers syncmap.Map[string, chan ServerInfo]
 var cupsMu sync.Mutex
 var cupsSubscriberCount int
 var cupsEverAvailable bool
 
-var appPaths = paths.New("danklinux")
+var appPaths = paths.New("ariadnev")
 
 func GetSocketPath() string {
 	return appPaths.SocketPath()
@@ -1352,7 +1352,7 @@ func (s *Server) Serve(printDocs bool) error {
 		notifyCapabilityChange()
 	})
 
-	log.Infof("DMS API Server listening on: %s", s.ipc.SocketPath())
+	log.Infof("ADVS API Server listening on: %s", s.ipc.SocketPath())
 	log.Infof("API Version: %d", APIVersion)
 	log.Info("Protocol: JSON over Unix socket")
 	log.Info("Request format: {\"id\": <any>, \"method\": \"...\", \"params\": {...}}")
@@ -1579,8 +1579,8 @@ func (s *Server) Serve(printDocs bool) error {
 			return
 		}
 
-		ch := loginctlManager.Subscribe("dms-lock-bridge")
-		defer loginctlManager.Unsubscribe("dms-lock-bridge")
+		ch := loginctlManager.Subscribe("advs-lock-bridge")
+		defer loginctlManager.Unsubscribe("advs-lock-bridge")
 
 		initial := loginctlManager.GetState()
 		lastLocked := initial.Locked

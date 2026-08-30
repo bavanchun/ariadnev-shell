@@ -30,7 +30,7 @@ Item {
         case "compositor":
             return compositorAvailable ? "compositor" : fallback;
         case "os":
-        case "dank":
+        case "adv":
             return mode;
         case "apps":
             return "apps";
@@ -61,7 +61,7 @@ Item {
     width: size
     height: size
 
-    DankIcon {
+    AdvIcon {
         visible: root.resolvedMode === "apps"
         anchors.centerIn: parent
         name: "apps"
@@ -80,14 +80,14 @@ Item {
     }
 
     IconImage {
-        visible: root.resolvedMode === "dank"
+        visible: root.resolvedMode === "adv"
         anchors.centerIn: parent
         width: root.size
         height: root.size
         smooth: true
         mipmap: true
         asynchronous: true
-        source: "file://" + Theme.shellDir + "/assets/danklogo.svg"
+        source: "file://" + Theme.shellDir + "/assets/advlogo.svg"
         layer.enabled: root.colorize
         layer.smooth: true
         layer.mipmap: true

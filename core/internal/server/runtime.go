@@ -7,7 +7,7 @@ import (
 	"runtime"
 	"runtime/debug"
 
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/log"
+	"github.com/bavanchun/ariadnev-shell/core/internal/log"
 )
 
 const (
@@ -25,7 +25,7 @@ func tuneRuntime() {
 }
 
 func startPprof() {
-	addr := os.Getenv("DMS_PPROF")
+	addr := os.Getenv("ADVS_PPROF")
 	if addr == "" {
 		return
 	}

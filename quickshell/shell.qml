@@ -5,20 +5,20 @@
 //@ pragma Env QT_WAYLAND_DISABLE_WINDOWDECORATION=1
 //@ pragma Env QT_QUICK_CONTROLS_STYLE=Material
 //@ pragma UseQApplication
-//@ pragma AppId com.danklinux.dms
+//@ pragma AppId dev.vchun.ariadnev
 
 import QtQuick
 import Quickshell
 import qs.Common
-import qs.DankCommon.Common as DC
+import qs.AdvCommon.Common as DC
 import qs.Modules
 import qs.Services
 
 ShellRoot {
     id: entrypoint
 
-    readonly property bool runGreeter: Quickshell.env("DMS_RUN_GREETER") === "1" || Quickshell.env("DMS_RUN_GREETER") === "true"
-    readonly property bool disableHotReload: Quickshell.env("DMS_DISABLE_HOT_RELOAD") === "1" || Quickshell.env("DMS_DISABLE_HOT_RELOAD") === "true"
+    readonly property bool runGreeter: Quickshell.env("ADVS_RUN_GREETER") === "1" || Quickshell.env("ADVS_RUN_GREETER") === "true"
+    readonly property bool disableHotReload: Quickshell.env("ADVS_DISABLE_HOT_RELOAD") === "1" || Quickshell.env("ADVS_DISABLE_HOT_RELOAD") === "true"
 
     Component.onCompleted: {
         Quickshell.watchFiles = !disableHotReload;
@@ -31,7 +31,7 @@ ShellRoot {
         DC.Host.cache = CacheData;
         if (entrypoint.runGreeter)
             return;
-        // Build the polkit agent here, outside incubation: first-touching it from a Connections target during DMSShell's async load crashed QQmlConnections::connectSignalsToMethods.
+        // Build the polkit agent here, outside incubation: first-touching it from a Connections target during AriadnevShell's async load crashed QQmlConnections::connectSignalsToMethods.
         void PolkitService.agent;
     }
 
@@ -56,20 +56,20 @@ ShellRoot {
         active: !entrypoint.runGreeter
         asynchronous: true
         source: "ShellCore.qml"
-        onLoaded: dmsShellLoader.setSource("DMSShell.qml", {
+        onLoaded: advsShellLoader.setSource("AriadnevShell.qml", {
             core: item
         })
     }
 
     Loader {
-        id: dmsShellLoader
+        id: advsShellLoader
         asynchronous: true
     }
 
     Loader {
-        id: dmsGreeterLoader
+        id: advsGreeterLoader
         active: entrypoint.runGreeter
         asynchronous: false
-        source: "DMSGreeter.qml"
+        source: "AriadnevGreeter.qml"
     }
 }

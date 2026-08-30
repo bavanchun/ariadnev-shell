@@ -206,7 +206,7 @@ Item {
                 width: parent.width
                 spacing: Theme.spacingM
 
-                DankIcon {
+                AdvIcon {
                     name: device ? BluetoothService.getDeviceIcon(device) : "headset"
                     size: Theme.iconSize + 4
                     color: Theme.primary
@@ -345,7 +345,7 @@ Item {
                     }
                 }
 
-                DankIcon {
+                AdvIcon {
                     name: "check"
                     size: Theme.iconSize - 4
                     color: Theme.primary
@@ -355,7 +355,7 @@ Item {
                     visible: modelData.name === root.currentCodec
                 }
 
-                DankRipple {
+                AdvRipple {
                     id: codecRipple
                     cornerRadius: parent.radius
                 }

@@ -26,7 +26,7 @@ Rectangle {
         anchors.margins: Theme.spacingS
         spacing: Theme.spacingXXS
 
-        DankToggle {
+        AdvToggle {
             width: parent.width
             text: I18n.tr("Show mount path", "toggle in control center disk usage widget to turn mount path display on or off")
             checked: root.widgetData?.showMountPath !== false

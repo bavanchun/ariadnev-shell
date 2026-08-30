@@ -4,7 +4,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/deps"
+	"github.com/bavanchun/ariadnev-shell/core/internal/deps"
 )
 
 func TestParseWindowManager(t *testing.T) {
@@ -72,8 +72,8 @@ func TestDepExists(t *testing.T) {
 	dependencies := []deps.Dependency{
 		{Name: "niri", Status: deps.StatusInstalled},
 		{Name: "ghostty", Status: deps.StatusMissing},
-		{Name: "dms (DankMaterialShell)", Status: deps.StatusInstalled},
-		{Name: "dms-greeter", Status: deps.StatusMissing},
+		{Name: "advs (AriadnevShell)", Status: deps.StatusInstalled},
+		{Name: "advs-greeter", Status: deps.StatusMissing},
 	}
 
 	tests := []struct {
@@ -82,8 +82,8 @@ func TestDepExists(t *testing.T) {
 		want bool
 	}{
 		{"existing dep", "niri", true},
-		{"existing dep with special chars", "dms (DankMaterialShell)", true},
-		{"existing optional dep", "dms-greeter", true},
+		{"existing dep with special chars", "advs (AriadnevShell)", true},
+		{"existing optional dep", "advs-greeter", true},
 		{"non-existing dep", "firefox", false},
 		{"empty name", "", false},
 	}
@@ -102,7 +102,7 @@ func TestNewRunner(t *testing.T) {
 	cfg := Config{
 		Compositor:  "niri",
 		Terminal:    "ghostty",
-		IncludeDeps: []string{"dms-greeter"},
+		IncludeDeps: []string{"advs-greeter"},
 		ExcludeDeps: []string{"some-pkg"},
 		Yes:         true,
 	}
@@ -344,10 +344,10 @@ func TestBuildDisabledItems(t *testing.T) {
 	dependencies := []deps.Dependency{
 		{Name: "niri", Status: deps.StatusInstalled, Required: true},
 		{Name: "ghostty", Status: deps.StatusMissing, Required: true},
-		{Name: "dms (DankMaterialShell)", Status: deps.StatusInstalled, Required: true},
-		{Name: "dms-greeter", Status: deps.StatusMissing},
-		{Name: "danksearch", Status: deps.StatusMissing},
-		{Name: "dankcalendar", Status: deps.StatusMissing},
+		{Name: "advs (AriadnevShell)", Status: deps.StatusInstalled, Required: true},
+		{Name: "advs-greeter", Status: deps.StatusMissing},
+		{Name: "advsearch", Status: deps.StatusMissing},
+		{Name: "advcalendar", Status: deps.StatusMissing},
 		{Name: "waybar", Status: deps.StatusMissing, Required: true},
 	}
 
@@ -355,9 +355,9 @@ func TestBuildDisabledItems(t *testing.T) {
 		name         string
 		includeDeps  []string
 		excludeDeps  []string
-		dankSearch   bool
-		dankCalendar bool
-		dmsGreeter   bool
+		advSearch   bool
+		advCalendar bool
+		advsGreeter   bool
 		allFeatures  bool
 		deps         []deps.Dependency // nil means use the shared fixture
 		wantErr      bool
@@ -367,19 +367,19 @@ func TestBuildDisabledItems(t *testing.T) {
 	}{
 		{
 			name:         "no flags set, optional deps disabled by default",
-			wantDisabled: []string{"dms-greeter", "danksearch", "dankcalendar"},
+			wantDisabled: []string{"advs-greeter", "advsearch", "advcalendar"},
 			wantEnabled:  []string{"niri", "ghostty", "waybar"},
 		},
 		{
-			name:         "include dms-greeter enables it",
-			includeDeps:  []string{"dms-greeter"},
-			wantEnabled:  []string{"dms-greeter"},
-			wantDisabled: []string{"danksearch", "dankcalendar"},
+			name:         "include advs-greeter enables it",
+			includeDeps:  []string{"advs-greeter"},
+			wantEnabled:  []string{"advs-greeter"},
+			wantDisabled: []string{"advsearch", "advcalendar"},
 		},
 		{
 			name:         "exclude a regular dep",
 			excludeDeps:  []string{"waybar"},
-			wantDisabled: []string{"dms-greeter", "danksearch", "dankcalendar", "waybar"},
+			wantDisabled: []string{"advs-greeter", "advsearch", "advcalendar", "waybar"},
 		},
 		{
 			name:        "include unknown dep returns error",
@@ -394,22 +394,22 @@ func TestBuildDisabledItems(t *testing.T) {
 			errContains: "--exclude-deps",
 		},
 		{
-			name:        "exclude DMS itself is forbidden",
-			excludeDeps: []string{"dms (DankMaterialShell)"},
+			name:        "exclude ADVS itself is forbidden",
+			excludeDeps: []string{"advs (AriadnevShell)"},
 			wantErr:     true,
 			errContains: "cannot exclude required package",
 		},
 		{
 			name:         "include and exclude same dep",
-			includeDeps:  []string{"dms-greeter"},
-			excludeDeps:  []string{"dms-greeter"},
-			wantDisabled: []string{"dms-greeter"},
+			includeDeps:  []string{"advs-greeter"},
+			excludeDeps:  []string{"advs-greeter"},
+			wantDisabled: []string{"advs-greeter"},
 		},
 		{
 			name:         "whitespace entries are skipped",
-			includeDeps:  []string{"  ", "dms-greeter"},
-			wantEnabled:  []string{"dms-greeter"},
-			wantDisabled: []string{"danksearch", "dankcalendar"},
+			includeDeps:  []string{"  ", "advs-greeter"},
+			wantEnabled:  []string{"advs-greeter"},
+			wantDisabled: []string{"advsearch", "advcalendar"},
 		},
 		{
 			name: "no optional deps present, nothing disabled by default",
@@ -419,55 +419,55 @@ func TestBuildDisabledItems(t *testing.T) {
 			wantEnabled: []string{"niri"},
 		},
 		{
-			name:         "danksearch flag enables it",
-			dankSearch:   true,
-			wantEnabled:  []string{"danksearch"},
-			wantDisabled: []string{"dms-greeter", "dankcalendar"},
+			name:         "advsearch flag enables it",
+			advSearch:   true,
+			wantEnabled:  []string{"advsearch"},
+			wantDisabled: []string{"advs-greeter", "advcalendar"},
 		},
 		{
-			name:         "dankcalendar flag enables it",
-			dankCalendar: true,
-			wantEnabled:  []string{"dankcalendar"},
-			wantDisabled: []string{"dms-greeter", "danksearch"},
+			name:         "advcalendar flag enables it",
+			advCalendar: true,
+			wantEnabled:  []string{"advcalendar"},
+			wantDisabled: []string{"advs-greeter", "advsearch"},
 		},
 		{
-			name:        "danksearch flag when unavailable errors",
-			dankSearch:  true,
+			name:        "advsearch flag when unavailable errors",
+			advSearch:  true,
 			deps:        []deps.Dependency{{Name: "niri", Status: deps.StatusInstalled, Required: true}},
 			wantErr:     true,
-			errContains: "--danksearch",
+			errContains: "--advsearch",
 		},
 		{
-			name:         "dankcalendar flag when unavailable errors",
-			dankCalendar: true,
+			name:         "advcalendar flag when unavailable errors",
+			advCalendar: true,
 			deps:         []deps.Dependency{{Name: "niri", Status: deps.StatusInstalled, Required: true}},
 			wantErr:      true,
-			errContains:  "--dankcalendar",
+			errContains:  "--advcalendar",
 		},
 		{
-			name:         "dms-greeter flag enables it",
-			dmsGreeter:   true,
-			wantEnabled:  []string{"dms-greeter"},
-			wantDisabled: []string{"danksearch", "dankcalendar"},
+			name:         "advs-greeter flag enables it",
+			advsGreeter:   true,
+			wantEnabled:  []string{"advs-greeter"},
+			wantDisabled: []string{"advsearch", "advcalendar"},
 		},
 		{
-			name:        "dms-greeter flag when unavailable errors",
-			dmsGreeter:  true,
+			name:        "advs-greeter flag when unavailable errors",
+			advsGreeter:  true,
 			deps:        []deps.Dependency{{Name: "niri", Status: deps.StatusInstalled, Required: true}},
 			wantErr:     true,
-			errContains: "--dms-greeter",
+			errContains: "--advs-greeter",
 		},
 		{
 			name:        "all-features enables every optional dep",
 			allFeatures: true,
-			wantEnabled: []string{"dms-greeter", "danksearch", "dankcalendar", "niri", "ghostty", "waybar"},
+			wantEnabled: []string{"advs-greeter", "advsearch", "advcalendar", "niri", "ghostty", "waybar"},
 		},
 		{
 			name:         "all-features with exclude still disables the excluded dep",
 			allFeatures:  true,
-			excludeDeps:  []string{"dankcalendar"},
-			wantEnabled:  []string{"dms-greeter", "danksearch"},
-			wantDisabled: []string{"dankcalendar"},
+			excludeDeps:  []string{"advcalendar"},
+			wantEnabled:  []string{"advs-greeter", "advsearch"},
+			wantDisabled: []string{"advcalendar"},
 		},
 	}
 
@@ -476,9 +476,9 @@ func TestBuildDisabledItems(t *testing.T) {
 			r := NewRunner(Config{
 				IncludeDeps:  tt.includeDeps,
 				ExcludeDeps:  tt.excludeDeps,
-				DankSearch:   tt.dankSearch,
-				DankCalendar: tt.dankCalendar,
-				DmsGreeter:   tt.dmsGreeter,
+				AdvSearch:   tt.advSearch,
+				AdvCalendar: tt.advCalendar,
+				AdvsGreeter:   tt.advsGreeter,
 				AllFeatures:  tt.allFeatures,
 			})
 			d := tt.deps
@@ -527,7 +527,7 @@ func TestApplyGitVariants(t *testing.T) {
 			{Name: "niri", Status: deps.StatusInstalled, Variant: deps.VariantStable, CanToggle: true},
 			{Name: "quickshell", Status: deps.StatusMissing, Variant: deps.VariantStable, CanToggle: true},
 			{Name: "hyprland", Status: deps.StatusInstalled, Variant: deps.VariantGit, CanToggle: true},
-			{Name: "dms (DankMaterialShell)", Status: deps.StatusMissing, Variant: deps.VariantStable, CanToggle: true},
+			{Name: "advs (AriadnevShell)", Status: deps.StatusMissing, Variant: deps.VariantStable, CanToggle: true},
 			{Name: "ghostty", Status: deps.StatusInstalled, Variant: deps.VariantStable, CanToggle: false},
 		}
 	}
@@ -546,19 +546,19 @@ func TestApplyGitVariants(t *testing.T) {
 		{
 			name:       "no git flags leaves variants untouched",
 			wantGit:    []string{"hyprland"},
-			wantStable: []string{"niri", "quickshell", "dms (DankMaterialShell)", "ghostty"},
+			wantStable: []string{"niri", "quickshell", "advs (AriadnevShell)", "ghostty"},
 		},
 		{
 			name:          "git-deps flips only the named deps",
 			gitDeps:       []string{"niri", "quickshell"},
 			wantGit:       []string{"niri", "quickshell", "hyprland"},
-			wantStable:    []string{"dms (DankMaterialShell)", "ghostty"},
+			wantStable:    []string{"advs (AriadnevShell)", "ghostty"},
 			wantReinstall: []string{"niri"},
 		},
 		{
-			name:          "git-deps matches names case-insensitively and accepts the dms alias",
-			gitDeps:       []string{"NIRI", "dms"},
-			wantGit:       []string{"niri", "dms (DankMaterialShell)", "hyprland"},
+			name:          "git-deps matches names case-insensitively and accepts the advs alias",
+			gitDeps:       []string{"NIRI", "advs"},
+			wantGit:       []string{"niri", "advs (AriadnevShell)", "hyprland"},
 			wantStable:    []string{"quickshell", "ghostty"},
 			wantReinstall: []string{"niri"},
 		},
@@ -566,7 +566,7 @@ func TestApplyGitVariants(t *testing.T) {
 			name:       "empty and whitespace entries are skipped",
 			gitDeps:    []string{"", "  "},
 			wantGit:    []string{"hyprland"},
-			wantStable: []string{"niri", "quickshell", "dms (DankMaterialShell)", "ghostty"},
+			wantStable: []string{"niri", "quickshell", "advs (AriadnevShell)", "ghostty"},
 		},
 		{
 			name:        "unknown dep errors",
@@ -583,7 +583,7 @@ func TestApplyGitVariants(t *testing.T) {
 		{
 			name:          "git flips every toggleable dep",
 			gitAll:        true,
-			wantGit:       []string{"niri", "quickshell", "hyprland", "dms (DankMaterialShell)"},
+			wantGit:       []string{"niri", "quickshell", "hyprland", "advs (AriadnevShell)"},
 			wantStable:    []string{"ghostty"},
 			wantReinstall: []string{"niri"},
 		},
@@ -598,7 +598,7 @@ func TestApplyGitVariants(t *testing.T) {
 			name:          "git skips deps without a distinct git package",
 			gitAll:        true,
 			noGitVariant:  []string{"niri"},
-			wantGit:       []string{"quickshell", "hyprland", "dms (DankMaterialShell)"},
+			wantGit:       []string{"quickshell", "hyprland", "advs (AriadnevShell)"},
 			wantStable:    []string{"niri", "ghostty"},
 			wantReinstall: nil,
 		},

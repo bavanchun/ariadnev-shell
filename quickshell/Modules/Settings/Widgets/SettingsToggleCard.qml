@@ -75,7 +75,7 @@ StyledRect {
                     spacing: Theme.spacingM
                     width: parent.width
 
-                    DankIcon {
+                    AdvIcon {
                         id: headerIcon
                         name: root.iconName
                         size: Theme.iconSize
@@ -109,7 +109,7 @@ StyledRect {
                 }
             }
 
-            DankToggle {
+            AdvToggle {
                 id: toggleSwitch
                 anchors.right: parent.right
                 anchors.verticalCenter: parent.verticalCenter

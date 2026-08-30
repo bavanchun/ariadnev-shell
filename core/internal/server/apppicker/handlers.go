@@ -1,9 +1,9 @@
 package apppicker
 
 import (
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/desktop"
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/log"
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/server/models"
+	"github.com/bavanchun/ariadnev-shell/core/internal/desktop"
+	"github.com/bavanchun/ariadnev-shell/core/internal/log"
+	"github.com/bavanchun/ariadnev-shell/core/internal/server/models"
 )
 
 func HandleRequest(conn *models.Conn, req models.Request, manager *Manager) {

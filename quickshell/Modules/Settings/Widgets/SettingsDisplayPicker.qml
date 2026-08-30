@@ -38,7 +38,7 @@ Item {
             color: Theme.surfaceText
         }
 
-        DankToggle {
+        AdvToggle {
             width: parent.width
             text: I18n.tr("All displays")
             checked: root.localAllDisplays
@@ -68,7 +68,7 @@ Item {
             Repeater {
                 model: Quickshell.screens
 
-                DankToggle {
+                AdvToggle {
                     required property var modelData
 
                     property bool localChecked: {

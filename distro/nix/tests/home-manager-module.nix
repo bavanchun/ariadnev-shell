@@ -12,7 +12,7 @@ let
     + "/nixos";
 in
 pkgs.testers.runNixOSTest {
-  name = "dms-home-manager-module";
+  name = "advs-home-manager-module";
 
   nodes.machine = {
     ...
@@ -21,29 +21,29 @@ pkgs.testers.runNixOSTest {
       homeManagerNixosModule
     ];
 
-    users.users.danklinux = {
+    users.users.ariadnev = {
       isNormalUser = true;
       createHome = true;
-      home = "/home/danklinux";
+      home = "/home/ariadnev";
       extraGroups = [ "wheel" ];
     };
 
     home-manager.useGlobalPkgs = true;
     home-manager.useUserPackages = true;
 
-    home-manager.users.danklinux = {
+    home-manager.users.ariadnev = {
       pkgs,
       ...
     }: {
       imports = [
-        self.homeModules.dank-material-shell
+        self.homeModules.adv-material-shell
       ];
 
-      home.username = "danklinux";
-      home.homeDirectory = "/home/danklinux";
+      home.username = "ariadnev";
+      home.homeDirectory = "/home/ariadnev";
       home.stateVersion = "25.11";
 
-      programs.dank-material-shell = {
+      programs.adv-material-shell = {
         enable = true;
         systemd = {
           enable = true;
@@ -64,7 +64,7 @@ pkgs.testers.runNixOSTest {
 
         plugins.TestPlugin = {
           enable = true;
-          src = pkgs.runCommand "dms-test-plugin" { } ''
+          src = pkgs.runCommand "advs-test-plugin" { } ''
             mkdir -p "$out"
             echo plugin > "$out/plugin.txt"
           '';
@@ -84,18 +84,18 @@ pkgs.testers.runNixOSTest {
 
     machine.wait_for_unit("multi-user.target")
 
-    machine.succeed("su -- danklinux -c 'command -v dms'")
-    machine.succeed("su -- danklinux -c 'test -f ~/.config/DankMaterialShell/settings.json'")
-    machine.succeed("su -- danklinux -c 'test -f ~/.config/DankMaterialShell/clsettings.json'")
-    machine.succeed("su -- danklinux -c 'test -f ~/.config/DankMaterialShell/plugin_settings.json'")
-    machine.succeed("su -- danklinux -c 'test -e ~/.config/DankMaterialShell/plugins/TestPlugin'")
-    machine.succeed("su -- danklinux -c 'test -f ~/.local/state/DankMaterialShell/session.json'")
+    machine.succeed("su -- ariadnev -c 'command -v advs'")
+    machine.succeed("su -- ariadnev -c 'test -f ~/.config/AriadnevShell/settings.json'")
+    machine.succeed("su -- ariadnev -c 'test -f ~/.config/AriadnevShell/clsettings.json'")
+    machine.succeed("su -- ariadnev -c 'test -f ~/.config/AriadnevShell/plugin_settings.json'")
+    machine.succeed("su -- ariadnev -c 'test -e ~/.config/AriadnevShell/plugins/TestPlugin'")
+    machine.succeed("su -- ariadnev -c 'test -f ~/.local/state/AriadnevShell/session.json'")
 
-    settings = json.loads(machine.succeed("su -- danklinux -c 'cat ~/.config/DankMaterialShell/settings.json'"))
-    clipboard = json.loads(machine.succeed("su -- danklinux -c 'cat ~/.config/DankMaterialShell/clsettings.json'"))
-    session = json.loads(machine.succeed("su -- danklinux -c 'cat ~/.local/state/DankMaterialShell/session.json'"))
-    plugins = json.loads(machine.succeed("su -- danklinux -c 'cat ~/.config/DankMaterialShell/plugin_settings.json'"))
-    doctor = json.loads(machine.succeed("su -- danklinux -c 'dms doctor --json'"))
+    settings = json.loads(machine.succeed("su -- ariadnev -c 'cat ~/.config/AriadnevShell/settings.json'"))
+    clipboard = json.loads(machine.succeed("su -- ariadnev -c 'cat ~/.config/AriadnevShell/clsettings.json'"))
+    session = json.loads(machine.succeed("su -- ariadnev -c 'cat ~/.local/state/AriadnevShell/session.json'"))
+    plugins = json.loads(machine.succeed("su -- ariadnev -c 'cat ~/.config/AriadnevShell/plugin_settings.json'"))
+    doctor = json.loads(machine.succeed("su -- ariadnev -c 'advs doctor --json'"))
 
     t.assertEqual(settings["theme"], "integration-test")
     t.assertEqual(clipboard["maxItems"], 10)

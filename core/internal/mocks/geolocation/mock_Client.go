@@ -5,7 +5,7 @@
 package mocks_geolocation
 
 import (
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/geolocation"
+	"github.com/bavanchun/ariadnev-shell/core/internal/geolocation"
 	mock "github.com/stretchr/testify/mock"
 )
 

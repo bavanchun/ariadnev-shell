@@ -1,7 +1,7 @@
-[templates.dmskitty]
+[templates.advskitty]
 input_path = 'SHELL_DIR/matugen/templates/kitty.conf'
-output_path = 'CONFIG_DIR/kitty/dank-theme.conf'
+output_path = 'CONFIG_DIR/kitty/adv-theme.conf'
 
-[templates.dmskittytabs]
+[templates.advskittytabs]
 input_path = 'SHELL_DIR/matugen/templates/kitty-tabs.conf'
-output_path = 'CONFIG_DIR/kitty/dank-tabs.conf'
+output_path = 'CONFIG_DIR/kitty/adv-tabs.conf'

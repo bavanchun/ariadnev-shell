@@ -45,7 +45,7 @@ Item {
             verticalCenter: parent.verticalCenter
         }
 
-        DankIcon {
+        AdvIcon {
             anchors.centerIn: parent
             name: root.iconName
             size: root.iconSize
@@ -66,7 +66,7 @@ Item {
         }
     }
 
-    DankSlider {
+    AdvSlider {
         id: levelSlider
 
         anchors {

@@ -71,7 +71,7 @@ Item {
         root.authValidateOk = false;
         root.authValidateWarn = false;
         root.authValidateRunning = true;
-        authValidateProcess.command = ["dms", "auth", "validate", "--path", path, "--json"];
+        authValidateProcess.command = ["advs", "auth", "validate", "--path", path, "--json"];
         authValidateProcess.running = true;
     }
 
@@ -90,7 +90,7 @@ Item {
         root.u2fValidateOk = false;
         root.u2fValidateWarn = false;
         root.u2fValidateRunning = true;
-        u2fValidateProcess.command = ["dms", "auth", "validate", "--purpose", "u2f", "--path", path, "--json"];
+        u2fValidateProcess.command = ["advs", "auth", "validate", "--purpose", "u2f", "--path", path, "--json"];
         u2fValidateProcess.running = true;
     }
 
@@ -149,7 +149,7 @@ Item {
 
     Process {
         id: authListServicesProcess
-        command: ["dms", "auth", "list-services", "--json"]
+        command: ["advs", "auth", "list-services", "--json"]
         running: false
 
         property string collected: ""
@@ -251,7 +251,7 @@ Item {
         }
     }
 
-    DankFlickable {
+    AdvFlickable {
         anchors.fill: parent
         clip: true
         contentHeight: mainColumn.height + Theme.spacingXL
@@ -451,7 +451,7 @@ Item {
                     spacing: Theme.spacingS
                     visible: root.authShowCustom || root.authCurrentValue === root.authCustomLabel
 
-                    DankTextField {
+                    AdvTextField {
                         id: customPamField
                         width: parent.width - validatePamButton.width - Theme.spacingS
                         placeholderText: "/etc/pam.d/my-service"
@@ -459,7 +459,7 @@ Item {
                         backgroundColor: Theme.floatingWindowFieldColor
                     }
 
-                    DankButton {
+                    AdvButton {
                         id: validatePamButton
                         text: I18n.tr("Apply Changes", "validate and apply custom PAM authentication source")
                         enabled: !root.authValidateRunning && customPamField.text.trim() !== ""
@@ -575,7 +575,7 @@ Item {
                         }
                     }
 
-                    DankButton {
+                    AdvButton {
                         id: securityKeyCapture
                         width: 200
                         anchors.verticalCenter: parent.verticalCenter
@@ -669,15 +669,15 @@ Item {
                     spacing: Theme.spacingS
                     visible: !root.lockU2fControlledByPrimary && (root.u2fShowCustom || root.u2fAuthCurrentValue === root.authCustomLabel)
 
-                    DankTextField {
+                    AdvTextField {
                         id: customU2fPamField
                         width: parent.width - validateU2fPamButton.width - Theme.spacingS
-                        placeholderText: "/etc/pam.d/dankshell-u2f"
+                        placeholderText: "/etc/pam.d/advshell-u2f"
                         text: SettingsData.lockU2fPamPath
                         backgroundColor: Theme.floatingWindowFieldColor
                     }
 
-                    DankButton {
+                    AdvButton {
                         id: validateU2fPamButton
                         text: I18n.tr("Apply Changes", "validate and apply custom U2F PAM authentication source")
                         enabled: !root.u2fValidateRunning && customU2fPamField.text.trim() !== ""
@@ -715,7 +715,7 @@ Item {
                 settingKey: "lockBehavior"
 
                 StyledText {
-                    text: I18n.tr("loginctl not available - lock integration requires DMS socket connection")
+                    text: I18n.tr("loginctl not available - lock integration requires ADVS socket connection")
                     font.pixelSize: Theme.fontSizeSmall
                     color: Theme.warning
                     visible: !SessionService.loginctlAvailable
@@ -760,7 +760,7 @@ Item {
                     settingKey: "lockAtStartup"
                     tags: ["lock", "screen", "startup", "start", "boot", "login", "automatic"]
                     text: I18n.tr("Lock at startup")
-                    description: I18n.tr("Automatically lock the screen when DMS starts")
+                    description: I18n.tr("Automatically lock the screen when ADVS starts")
                     checked: SettingsData.lockAtStartup
                     onToggled: checked => SettingsData.set("lockAtStartup", checked)
                 }
@@ -814,7 +814,7 @@ Item {
                         width: parent.width
                         spacing: Theme.spacingS
 
-                        DankTextField {
+                        AdvTextField {
                             id: videoPathField
                             width: parent.width - browseVideoButton.width - Theme.spacingS
                             placeholderText: I18n.tr("/path/to/videos")
@@ -827,7 +827,7 @@ Item {
                             }
                         }
 
-                        DankButton {
+                        AdvButton {
                             id: browseVideoButton
                             text: I18n.tr("Browse")
                             onClicked: videoBrowserModal.open()

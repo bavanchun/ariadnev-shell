@@ -7,7 +7,7 @@ import (
 	"slices"
 	"strings"
 
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/utils"
+	"github.com/bavanchun/ariadnev-shell/core/internal/utils"
 )
 
 const (
@@ -34,18 +34,18 @@ type MangoWCParser struct {
 	readingLine        int
 	configDir          string
 	currentSource      string
-	dmsBindsExists     bool
-	dmsBindsIncluded   bool
+	advsBindsExists     bool
+	advsBindsIncluded   bool
 	includeCount       int
-	dmsIncludePos      int
-	bindsAfterDMS      int
-	dmsBindKeys        map[string]bool
+	advsIncludePos      int
+	bindsAfterADVS      int
+	advsBindKeys        map[string]bool
 	configBindKeys     map[string]bool
 	conflictingConfigs map[string]*MangoWCKeyBinding
 	bindMap            map[string]*MangoWCKeyBinding
 	bindOrder          []string
 	processedFiles     map[string]bool
-	dmsProcessed       bool
+	advsProcessed       bool
 }
 
 func NewMangoWCParser(configDir string) *MangoWCParser {
@@ -53,8 +53,8 @@ func NewMangoWCParser(configDir string) *MangoWCParser {
 		contentLines:       []string{},
 		readingLine:        0,
 		configDir:          configDir,
-		dmsIncludePos:      -1,
-		dmsBindKeys:        make(map[string]bool),
+		advsIncludePos:      -1,
+		advsBindKeys:        make(map[string]bool),
 		configBindKeys:     make(map[string]bool),
 		conflictingConfigs: make(map[string]*MangoWCKeyBinding),
 		bindMap:            make(map[string]*MangoWCKeyBinding),
@@ -270,45 +270,45 @@ func ParseMangoWCKeys(path string) ([]MangoWCKeyBinding, error) {
 
 type MangoWCParseResult struct {
 	Keybinds           []MangoWCKeyBinding
-	DMSBindsIncluded   bool
-	DMSStatus          *MangoWCDMSStatus
+	ADVSBindsIncluded   bool
+	ADVSStatus          *MangoWCADVSStatus
 	ConflictingConfigs map[string]*MangoWCKeyBinding
 }
 
-type MangoWCDMSStatus struct {
+type MangoWCADVSStatus struct {
 	Exists          bool
 	Included        bool
 	IncludePosition int
 	TotalIncludes   int
-	BindsAfterDMS   int
+	BindsAfterADVS   int
 	Effective       bool
 	OverriddenBy    int
 	StatusMessage   string
 }
 
-func (p *MangoWCParser) buildDMSStatus() *MangoWCDMSStatus {
-	status := &MangoWCDMSStatus{
-		Exists:          p.dmsBindsExists,
-		Included:        p.dmsBindsIncluded,
-		IncludePosition: p.dmsIncludePos,
+func (p *MangoWCParser) buildADVSStatus() *MangoWCADVSStatus {
+	status := &MangoWCADVSStatus{
+		Exists:          p.advsBindsExists,
+		Included:        p.advsBindsIncluded,
+		IncludePosition: p.advsIncludePos,
 		TotalIncludes:   p.includeCount,
-		BindsAfterDMS:   p.bindsAfterDMS,
+		BindsAfterADVS:   p.bindsAfterADVS,
 	}
 
 	switch {
-	case !p.dmsBindsExists:
+	case !p.advsBindsExists:
 		status.Effective = false
-		status.StatusMessage = "dms/binds.conf does not exist"
-	case !p.dmsBindsIncluded:
+		status.StatusMessage = "advs/binds.conf does not exist"
+	case !p.advsBindsIncluded:
 		status.Effective = false
-		status.StatusMessage = "dms/binds.conf is not sourced in config"
-	case p.bindsAfterDMS > 0:
+		status.StatusMessage = "advs/binds.conf is not sourced in config"
+	case p.bindsAfterADVS > 0:
 		status.Effective = true
-		status.OverriddenBy = p.bindsAfterDMS
-		status.StatusMessage = "Some DMS binds may be overridden by config binds"
+		status.OverriddenBy = p.bindsAfterADVS
+		status.StatusMessage = "Some ADVS binds may be overridden by config binds"
 	default:
 		status.Effective = true
-		status.StatusMessage = "DMS binds are active"
+		status.StatusMessage = "ADVS binds are active"
 	}
 
 	return status
@@ -328,12 +328,12 @@ func (p *MangoWCParser) normalizeKey(key string) string {
 func (p *MangoWCParser) addBind(kb *MangoWCKeyBinding) {
 	key := p.formatBindKey(kb)
 	normalizedKey := p.normalizeKey(key)
-	isDMSBind := strings.Contains(kb.Source, "dms/binds.conf") || strings.Contains(kb.Source, "dms"+string(os.PathSeparator)+"binds.conf")
+	isADVSBind := strings.Contains(kb.Source, "advs/binds.conf") || strings.Contains(kb.Source, "advs"+string(os.PathSeparator)+"binds.conf")
 
-	if isDMSBind {
-		p.dmsBindKeys[normalizedKey] = true
-	} else if p.dmsBindKeys[normalizedKey] {
-		p.bindsAfterDMS++
+	if isADVSBind {
+		p.advsBindKeys[normalizedKey] = true
+	} else if p.advsBindKeys[normalizedKey] {
+		p.bindsAfterADVS++
 		p.conflictingConfigs[normalizedKey] = kb
 		p.configBindKeys[normalizedKey] = true
 		return
@@ -347,15 +347,15 @@ func (p *MangoWCParser) addBind(kb *MangoWCKeyBinding) {
 	p.bindMap[normalizedKey] = kb
 }
 
-func (p *MangoWCParser) ParseWithDMS() ([]MangoWCKeyBinding, error) {
+func (p *MangoWCParser) ParseWithADVS() ([]MangoWCKeyBinding, error) {
 	expandedDir, err := utils.ExpandPath(p.configDir)
 	if err != nil {
 		return nil, err
 	}
 
-	dmsBindsPath := filepath.Join(expandedDir, "dms", "binds.conf")
-	if _, err := os.Stat(dmsBindsPath); err == nil {
-		p.dmsBindsExists = true
+	advsBindsPath := filepath.Join(expandedDir, "advs", "binds.conf")
+	if _, err := os.Stat(advsBindsPath); err == nil {
+		p.advsBindsExists = true
 	}
 
 	mainConfig := filepath.Join(expandedDir, "config.conf")
@@ -368,8 +368,8 @@ func (p *MangoWCParser) ParseWithDMS() ([]MangoWCKeyBinding, error) {
 		return nil, err
 	}
 
-	if p.dmsBindsExists && !p.dmsProcessed {
-		p.parseDMSBindsDirectly(dmsBindsPath)
+	if p.advsBindsExists && !p.advsProcessed {
+		p.parseADVSBindsDirectly(advsBindsPath)
 	}
 
 	var keybinds []MangoWCKeyBinding
@@ -454,13 +454,13 @@ func (p *MangoWCParser) handleSource(line, baseDir string, keybinds *[]MangoWCKe
 	}
 
 	sourcePath := strings.TrimSpace(parts[1])
-	isDMSSource := sourcePath == "dms/binds.conf" || sourcePath == "./dms/binds.conf" || strings.HasSuffix(sourcePath, "/dms/binds.conf")
+	isADVSSource := sourcePath == "advs/binds.conf" || sourcePath == "./advs/binds.conf" || strings.HasSuffix(sourcePath, "/advs/binds.conf")
 
 	p.includeCount++
-	if isDMSSource {
-		p.dmsBindsIncluded = true
-		p.dmsIncludePos = p.includeCount
-		p.dmsProcessed = true
+	if isADVSSource {
+		p.advsBindsIncluded = true
+		p.advsIncludePos = p.includeCount
+		p.advsProcessed = true
 	}
 
 	expanded, err := utils.ExpandPath(sourcePath)
@@ -481,18 +481,18 @@ func (p *MangoWCParser) handleSource(line, baseDir string, keybinds *[]MangoWCKe
 	*keybinds = append(*keybinds, includedBinds...)
 }
 
-func (p *MangoWCParser) parseDMSBindsDirectly(dmsBindsPath string) []MangoWCKeyBinding {
-	keybinds, err := p.parseFileWithSource(dmsBindsPath)
+func (p *MangoWCParser) parseADVSBindsDirectly(advsBindsPath string) []MangoWCKeyBinding {
+	keybinds, err := p.parseFileWithSource(advsBindsPath)
 	if err != nil {
 		return nil
 	}
-	p.dmsProcessed = true
+	p.advsProcessed = true
 	return keybinds
 }
 
 // getKeybindAtLineContent parses one `bind=` line. precedingComment (a `# ...`
 // line directly above) is the description: mango feeds inline comments to spawn
-// as argv, so DMS keeps descriptions on the line above; inline `#` is a fallback.
+// as argv, so ADVS keeps descriptions on the line above; inline `#` is a fallback.
 func (p *MangoWCParser) getKeybindAtLineContent(line string, precedingComment string) *MangoWCKeyBinding {
 	bindMatch := regexp.MustCompile(`^(bind[lsrp]*|axisbind)\s*=\s*(.+)$`)
 	matches := bindMatch.FindStringSubmatch(line)
@@ -567,17 +567,17 @@ func (p *MangoWCParser) getKeybindAtLineContent(line string, precedingComment st
 	}
 }
 
-func ParseMangoWCKeysWithDMS(path string) (*MangoWCParseResult, error) {
+func ParseMangoWCKeysWithADVS(path string) (*MangoWCParseResult, error) {
 	parser := NewMangoWCParser(path)
-	keybinds, err := parser.ParseWithDMS()
+	keybinds, err := parser.ParseWithADVS()
 	if err != nil {
 		return nil, err
 	}
 
 	return &MangoWCParseResult{
 		Keybinds:           keybinds,
-		DMSBindsIncluded:   parser.dmsBindsIncluded,
-		DMSStatus:          parser.buildDMSStatus(),
+		ADVSBindsIncluded:   parser.advsBindsIncluded,
+		ADVSStatus:          parser.buildADVSStatus(),
 		ConflictingConfigs: parser.conflictingConfigs,
 	}, nil
 }

@@ -7,7 +7,7 @@ import Quickshell.I3
 import Quickshell.Wayland
 import Quickshell.Hyprland
 import qs.Common
-import qs.DankCommon.Common as DankCommon
+import qs.AdvCommon.Common as AdvCommon
 import qs.Services
 
 Singleton {
@@ -24,7 +24,7 @@ Singleton {
     property string compositor: "unknown"
     property bool compositorDetected: false
     readonly property bool frameCompositorLayoutReady: (!isNiri || NiriService.frameLayoutReady) && (!isHyprland || HyprlandService.frameLayoutReady)
-    readonly property bool useHyprlandFocusGrab: isHyprland && Quickshell.env("DMS_HYPRLAND_EXCLUSIVE_FOCUS") !== "1"
+    readonly property bool useHyprlandFocusGrab: isHyprland && Quickshell.env("ADVS_HYPRLAND_EXCLUSIVE_FOCUS") !== "1"
 
     readonly property string hyprlandSignature: Quickshell.env("HYPRLAND_INSTANCE_SIGNATURE")
     readonly property string niriSocket: Quickshell.env("NIRI_SOCKET")
@@ -45,7 +45,7 @@ Singleton {
 
     signal toplevelsChanged
 
-    readonly property bool supportsMinimize: DankCommon.Compositor.supportsMinimize
+    readonly property bool supportsMinimize: AdvCommon.Compositor.supportsMinimize
 
     function canMinimize(toplevel) {
         return supportsMinimize && toplevel && toplevel.minimized !== undefined;
@@ -84,7 +84,7 @@ Singleton {
     }
 
     function fetchRandrData() {
-        Proc.runCommand("randr", [Proc.dmsBin, "randr", "--json"], (output, exitCode) => {
+        Proc.runCommand("randr", [Proc.advsBin, "randr", "--json"], (output, exitCode) => {
             if (exitCode === 0 && output) {
                 try {
                     const data = JSON.parse(output.trim());
@@ -933,17 +933,17 @@ Singleton {
         compositorDetected = true;
         if (isNiri)
             NiriService.generateNiriBlurrule();
-        Qt.callLater(applyDmsWindowFloatingRule);
+        Qt.callLater(applyAdvsWindowFloatingRule);
     }
 
-    function applyDmsWindowFloatingRule() {
+    function applyAdvsWindowFloatingRule() {
         if (!compositorDetected || (!isNiri && !isHyprland && !isMango))
             return;
-        const floating = typeof SettingsData === "undefined" || (SettingsData.dmsWindowsFloating ?? true);
+        const floating = typeof SettingsData === "undefined" || (SettingsData.advsWindowsFloating ?? true);
         if (!floating) {
-            Proc.runCommand("dms-windowrule-float-remove", [Proc.dmsBin, "config", "windowrules", "remove", compositor, "dms-floating-windows"], (output, exitCode) => {
+            Proc.runCommand("advs-windowrule-float-remove", [Proc.advsBin, "config", "windowrules", "remove", compositor, "advs-floating-windows"], (output, exitCode) => {
                 if (exitCode !== 0) {
-                    log.warn("failed to remove DMS floating window rule", exitCode, output);
+                    log.warn("failed to remove ADVS floating window rule", exitCode, output);
                     return;
                 }
                 if (isMango)
@@ -952,19 +952,19 @@ Singleton {
             return;
         }
         const ruleJson = JSON.stringify({
-            "id": "dms-floating-windows",
-            "name": "DMS Floating Windows",
+            "id": "advs-floating-windows",
+            "name": "ADVS Floating Windows",
             "enabled": true,
             "matchCriteria": {
-                "appId": "^com.danklinux.dms$"
+                "appId": "^dev.vchun.ariadnev$"
             },
             "actions": {
                 "openFloating": true
             }
         });
-        Proc.runCommand("dms-windowrule-float-add", [Proc.dmsBin, "config", "windowrules", "add", compositor, ruleJson], (output, exitCode) => {
+        Proc.runCommand("advs-windowrule-float-add", [Proc.advsBin, "config", "windowrules", "add", compositor, ruleJson], (output, exitCode) => {
             if (exitCode !== 0) {
-                log.warn("failed to add DMS floating window rule", exitCode, output);
+                log.warn("failed to add ADVS floating window rule", exitCode, output);
                 return;
             }
             if (isNiri)
@@ -1061,7 +1061,7 @@ Singleton {
             return;
         }
         if (isLabwc) {
-            Quickshell.execDetached(["dms", "dpms", "off"]);
+            Quickshell.execDetached(["advs", "dpms", "off"]);
         }
         log.warn("Cannot power off monitors, unknown compositor");
     }
@@ -1080,7 +1080,7 @@ Singleton {
             return;
         }
         if (isLabwc) {
-            Quickshell.execDetached(["dms", "dpms", "on"]);
+            Quickshell.execDetached(["advs", "dpms", "on"]);
         }
         log.warn("Cannot power on monitors, unknown compositor");
     }
@@ -1138,8 +1138,8 @@ Singleton {
             }
         }
 
-        function onDmsWindowsFloatingChanged() {
-            root.applyDmsWindowFloatingRule();
+        function onAdvsWindowsFloatingChanged() {
+            root.applyAdvsWindowFloatingRule();
         }
     }
 }

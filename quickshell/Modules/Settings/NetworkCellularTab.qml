@@ -15,7 +15,7 @@ Item {
     Component.onCompleted: NetworkService.addRef()
     Component.onDestruction: NetworkService.removeRef()
 
-    DankFlickable {
+    AdvFlickable {
         anchors.fill: parent
         clip: true
         contentHeight: mainColumn.height + Theme.spacingXL
@@ -74,7 +74,7 @@ Item {
                             anchors.verticalCenter: parent.verticalCenter
                             spacing: Theme.spacingS
 
-                            DankToggle {
+                            AdvToggle {
                                 checked: NetworkService.cellularEnabled
                                 enabled: NetworkService.cellularHardwareEnabled && !NetworkService.cellularToggling
                                 onToggled: NetworkService.toggleCellularRadio()
@@ -126,7 +126,7 @@ Item {
                                     anchors.verticalCenter: parent.verticalCenter
                                     spacing: Theme.spacingS
 
-                                    DankIcon {
+                                    AdvIcon {
                                         name: "network_cell"
                                         size: 20
                                         color: modemDelegate.isConnected ? Theme.primary : Theme.surfaceText
@@ -176,7 +176,7 @@ Item {
                                         radius: 14
                                         color: modemActionBtn.containsMouse ? (modemDelegate.isConnected ? Theme.errorHover : Theme.primaryHover) : "transparent"
 
-                                        DankIcon {
+                                        AdvIcon {
                                             anchors.centerIn: parent
                                             name: modemDelegate.isConnected ? "link_off" : "link"
                                             size: 18
@@ -253,7 +253,7 @@ Item {
                                 anchors.verticalCenter: parent.verticalCenter
                                 spacing: Theme.spacingS
 
-                                DankIcon {
+                                AdvIcon {
                                     name: "sim_card"
                                     size: 20
                                     color: profileDelegate.isActive ? Theme.primary : Theme.surfaceText
@@ -285,7 +285,7 @@ Item {
                                 }
                             }
 
-                            DankActionButton {
+                            AdvActionButton {
                                 id: profileAction
                                 anchors.right: parent.right
                                 anchors.rightMargin: Theme.spacingS

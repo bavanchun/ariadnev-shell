@@ -22,7 +22,7 @@ Variants {
         screen: modelData
         color: "transparent"
 
-        WlrLayershell.namespace: "dms:dock"
+        WlrLayershell.namespace: "advs:dock"
         WlrLayershell.layer: body.usesOverlayLayer ? WlrLayer.Overlay : WlrLayer.Top
 
         anchors {
@@ -80,7 +80,7 @@ Variants {
             implicitHeight: body.isVertical ? 1 : body.dockReserveZone
             exclusiveZone: visible ? body.dockReserveZone : -1
 
-            WlrLayershell.namespace: "dms:dock-exclusion"
+            WlrLayershell.namespace: "advs:dock-exclusion"
             WlrLayershell.layer: WlrLayer.Top
 
             Component.onCompleted: SurfaceRecovery.track(dockExclusion)

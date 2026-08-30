@@ -57,7 +57,7 @@ Rectangle {
         anchors.centerIn: parent
         spacing: Theme.spacingXS
 
-        DankIcon {
+        AdvIcon {
             name: BatteryService.getBatteryIcon()
             size: Theme.iconSizeLarge
             color: {
@@ -84,7 +84,7 @@ Rectangle {
         }
     }
 
-    DankRipple {
+    AdvRipple {
         id: ripple
         cornerRadius: root.radius
     }

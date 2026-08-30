@@ -106,7 +106,7 @@ Item {
             width: parent.width
             implicitHeight: searchField.height
 
-            DankTextField {
+            AdvTextField {
                 id: searchField
 
                 width: parent.width
@@ -141,7 +141,7 @@ Item {
                 }
             }
 
-            DankActionButton {
+            AdvActionButton {
                 id: filterButton
 
                 anchors.right: parent.right
@@ -164,7 +164,7 @@ Item {
             Component {
                 id: filterMenuComponent
 
-                DankDropdown {
+                AdvDropdown {
                     showTrigger: false
                     popupAnchorItem: filterButton
                     popupWidth: 180
@@ -198,7 +198,7 @@ Item {
         anchors.bottomMargin: (modal.showKeyboardHints ? (ClipboardConstants.keyboardHintsHeight + Theme.spacingM * 2) : 0) + Theme.spacingXS
         clip: true
 
-        DankListView {
+        AdvListView {
             id: clipboardListView
             anchors.fill: parent
             model: ScriptModel {
@@ -260,7 +260,7 @@ Item {
             }
         }
 
-        DankListView {
+        AdvListView {
             id: savedListView
             anchors.fill: parent
             model: ScriptModel {

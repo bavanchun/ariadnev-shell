@@ -1,5 +1,5 @@
 -- ! Auto-generated file. Do not edit directly.
--- Regenerate via DMS theme tools or remove require("dms.colors") from hyprland.lua to override.
+-- Regenerate via ADVS theme tools or remove require("advs.colors") from hyprland.lua to override.
 
 hl.config({
 	general = {

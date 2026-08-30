@@ -27,7 +27,7 @@ Item {
                 smooth: true
                 mipmap: true
                 asynchronous: true
-                source: "file://" + Theme.shellDir + "/assets/danklogonormal.svg"
+                source: "file://" + Theme.shellDir + "/assets/advlogonormal.svg"
                 layer.enabled: true
                 layer.smooth: true
                 layer.mipmap: true
@@ -43,7 +43,7 @@ Item {
                 spacing: Theme.spacingXS
 
                 StyledText {
-                    text: I18n.tr("Welcome to DankMaterialShell", "greeter welcome page title")
+                    text: I18n.tr("Welcome to AriadnevShell", "greeter welcome page title")
                     font.pixelSize: Theme.fontSizeXLarge + 4
                     font.weight: Font.Bold
                     color: Theme.surfaceText
@@ -110,9 +110,9 @@ Item {
                 GreeterFeatureCard {
                     width: (parent.width - Theme.spacingS * 2) / 3
                     iconName: "view_carousel"
-                    title: I18n.tr("DankBar", "greeter feature card title")
+                    title: I18n.tr("AdvBar", "greeter feature card title")
                     description: I18n.tr("Modular widget bar", "greeter feature card description")
-                    onClicked: PopoutService.openSettingsWithTab("dankbar_settings")
+                    onClicked: PopoutService.openSettingsWithTab("advbar_settings")
                 }
 
                 GreeterFeatureCard {

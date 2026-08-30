@@ -314,8 +314,8 @@
   "A separate minimal launcher action that works in Standalone, Separate Frame Mode, and Connected Frame Mode.": {
     "A separate minimal launcher action that works in Standalone, Separate Frame Mode, and Connected Frame Mode.": "Egy különálló minimális indítási művelet, amely Önálló, Különálló keret és Csatlakoztatott keret módban is működik."
   },
-  "A slight natural settle, DMS default": {
-    "A slight natural settle, DMS default": ""
+  "A slight natural settle, ADVS default": {
+    "A slight natural settle, ADVS default": ""
   },
   "A user with that name already exists.": {
     "A user with that name already exists.": "Már létezik ilyen nevű felhasználó."
@@ -380,8 +380,8 @@
   "Activate Greeter": {
     "Activate Greeter": "Üdvözlőképernyő aktiválása"
   },
-  "Activate the DMS greeter? A terminal will open for sudo authentication. Run Sync after activation to apply your settings.": {
-    "Activate the DMS greeter? A terminal will open for sudo authentication. Run Sync after activation to apply your settings.": "Aktiválod a DMS-üdvözlőképernyőt? (greeter) Egy terminál fog megnyílni a sudo-hitelesítéshez. Az aktiválás után futtasd a szinkronizálást a beállítások alkalmazásához."
+  "Activate the ADVS greeter? A terminal will open for sudo authentication. Run Sync after activation to apply your settings.": {
+    "Activate the ADVS greeter? A terminal will open for sudo authentication. Run Sync after activation to apply your settings.": "Aktiválod a ADVS-üdvözlőképernyőt? (greeter) Egy terminál fog megnyílni a sudo-hitelesítéshez. Az aktiválás után futtasd a szinkronizálást a beállítások alkalmazásához."
   },
   "Activates immediately": {
     "Activates immediately": "Azonnal aktiválódik"
@@ -428,11 +428,11 @@
   "Add \"%1\" to the %2 group?": {
     "Add \"%1\" to the %2 group?": "Hozzáadod a(z) „%1” felhasználót a(z) %2 csoporthoz?"
   },
-  "Add \"%1\" to the %2 group? They must log out and back in, then run dms greeter sync --profile to publish their login-screen theme.": {
-    "Add \"%1\" to the %2 group? They must log out and back in, then run dms greeter sync --profile to publish their login-screen theme.": "Hozzáadod a(z) „%1” felhasználót a(z) %2 csoporthoz? Ki és be kell jelentkezniük, majd futtatniuk kell a dms greeter sync --profile parancsot a bejelentkezési képernyő témájának közzétételéhez."
+  "Add \"%1\" to the %2 group? They must log out and back in, then run advs greeter sync --profile to publish their login-screen theme.": {
+    "Add \"%1\" to the %2 group? They must log out and back in, then run advs greeter sync --profile to publish their login-screen theme.": "Hozzáadod a(z) „%1” felhasználót a(z) %2 csoporthoz? Ki és be kell jelentkezniük, majd futtatniuk kell a advs greeter sync --profile parancsot a bejelentkezési képernyő témájának közzétételéhez."
   },
-  "Add \"%1\" to the %2 group? They must log out and back in, then run dms-greeter sync --profile to publish their login-screen theme.": {
-    "Add \"%1\" to the %2 group? They must log out and back in, then run dms-greeter sync --profile to publish their login-screen theme.": "Hozzáadod a(z) „%1” felhasználót a(z) %2 csoporthoz? Ki kell jelentkeznie, majd újra be kell jelentkeznie, ezután futtatnia kell a dms-greeter sync --profile parancsot a bejelentkezési képernyő témájának közzétételéhez."
+  "Add \"%1\" to the %2 group? They must log out and back in, then run advs-greeter sync --profile to publish their login-screen theme.": {
+    "Add \"%1\" to the %2 group? They must log out and back in, then run advs-greeter sync --profile to publish their login-screen theme.": "Hozzáadod a(z) „%1” felhasználót a(z) %2 csoporthoz? Ki kell jelentkeznie, majd újra be kell jelentkeznie, ezután futtatnia kell a advs-greeter sync --profile parancsot a bejelentkezési képernyő témájának közzétételéhez."
   },
   "Add Bar": {
     "Add Bar": "Sáv hozzáadása"
@@ -482,11 +482,11 @@
   "Add notes": {
     "Add notes": "Jegyzetek hozzáadása"
   },
-  "Add the new user to the %1 group so they can run dms greeter sync --profile.": {
-    "Add the new user to the %1 group so they can run dms greeter sync --profile.": "Add hozzá az új felhasználót a(z) %1 csoporthoz, hogy futtathassák a „dms greeter sync --profile” parancsot."
+  "Add the new user to the %1 group so they can run advs greeter sync --profile.": {
+    "Add the new user to the %1 group so they can run advs greeter sync --profile.": "Add hozzá az új felhasználót a(z) %1 csoporthoz, hogy futtathassák a „advs greeter sync --profile” parancsot."
   },
-  "Add the new user to the %1 group so they can run dms-greeter sync --profile.": {
-    "Add the new user to the %1 group so they can run dms-greeter sync --profile.": "Add hozzá az új felhasználót a(z) %1 csoporthoz, hogy futtathassa a dms-greeter sync --profile parancsot."
+  "Add the new user to the %1 group so they can run advs-greeter sync --profile.": {
+    "Add the new user to the %1 group so they can run advs-greeter sync --profile.": "Add hozzá az új felhasználót a(z) %1 csoporthoz, hogy futtathassa a advs-greeter sync --profile parancsot."
   },
   "Add the new user to the %1 group so they can use sudo.": {
     "Add the new user to the %1 group so they can use sudo.": "Az új felhasználó hozzáadása a(z) %1 csoporthoz, hogy használhassa a sudot."
@@ -905,8 +905,8 @@
   "Auto-Hide Timeout": {
     "Auto-Hide Timeout": "Automatikus elrejtés időtúllépése"
   },
-  "Auto-close Niri overview when DMS launches or focuses a window.": {
-    "Auto-close Niri overview when DMS launches or focuses a window.": "Niri-áttekintés automatikus bezárása, ha a DMS elindul vagy fókuszba helyez egy ablakot."
+  "Auto-close Niri overview when ADVS launches or focuses a window.": {
+    "Auto-close Niri overview when ADVS launches or focuses a window.": "Niri-áttekintés automatikus bezárása, ha a ADVS elindul vagy fókuszba helyez egy ablakot."
   },
   "Auto-close Niri overview when launching apps.": {
     "Auto-close Niri overview when launching apps.": "A Niri-áttekintés automatikus bezárása alkalmazások indításakor."
@@ -977,8 +977,8 @@
   "Automatically lock after": {
     "Automatically lock after": "Automatikus zárolás"
   },
-  "Automatically lock the screen when DMS starts": {
-    "Automatically lock the screen when DMS starts": "Képernyő automatikus zárolása a DMS indulásakor"
+  "Automatically lock the screen when ADVS starts": {
+    "Automatically lock the screen when ADVS starts": "Képernyő automatikus zárolása a ADVS indulásakor"
   },
   "Automatically lock the screen when the system prepares to suspend": {
     "Automatically lock the screen when the system prepares to suspend": "A képernyő automatikus zárolása, amikor a rendszer felfüggesztésre készül"
@@ -1415,8 +1415,8 @@
   "Center Section": {
     "Center Section": "Középső rész"
   },
-  "Center Section - Reserved by Dank Island": {
-    "Center Section - Reserved by Dank Island": ""
+  "Center Section - Reserved by Adv Island": {
+    "Center Section - Reserved by Adv Island": ""
   },
   "Center Single Column": {
     "Center Single Column": "Középső egyoszlopos"
@@ -1433,8 +1433,8 @@
   "Change Volume": {
     "Change Volume": "Hangerő módosítása"
   },
-  "Change the locale used by the DMS interface.": {
-    "Change the locale used by the DMS interface.": "A DMS-felület által használt területi beállítások módosítása."
+  "Change the locale used by the ADVS interface.": {
+    "Change the locale used by the ADVS interface.": "A ADVS-felület által használt területi beállítások módosítása."
   },
   "Change the locale used for date and time formatting, independent of the interface language.": {
     "Change the locale used for date and time formatting, independent of the interface language.": "A dátum- és időformátumhoz használt területi beállítás módosítása, a felület nyelvétől függetlenül."
@@ -1529,8 +1529,8 @@
   "Choose neutral or accent-colored widget text": {
     "Choose neutral or accent-colored widget text": "Semleges vagy kiemelt színű widget szöveg választása"
   },
-  "Choose the logo displayed on the launcher button in DankBar": {
-    "Choose the logo displayed on the launcher button in DankBar": "A DankBar indítógombján megjelenő logó kiválasztása"
+  "Choose the logo displayed on the launcher button in AdvBar": {
+    "Choose the logo displayed on the launcher button in AdvBar": "A AdvBar indítógombján megjelenő logó kiválasztása"
   },
   "Choose wallpaper folder": {
     "Choose wallpaper folder": "Háttérképmappa kiválasztása"
@@ -1742,8 +1742,8 @@
   "Color theme for syntax highlighting. %1 themes available.": {
     "Color theme for syntax highlighting. %1 themes available.": "Színtéma a szintaxiskiemeléshez. %1 téma érhető el."
   },
-  "Color theme from DMS registry": {
-    "Color theme from DMS registry": "Színtéma a DMS-regiszterből"
+  "Color theme from ADVS registry": {
+    "Color theme from ADVS registry": "Színtéma a ADVS-regiszterből"
   },
   "Colorful": {
     "Colorful": "Színes"
@@ -1853,8 +1853,8 @@
   "Configure which displays show \"%1": {
     "Configure which displays show \"%1\"": "Mely kijelzők mutassák ezt: „%1”"
   },
-  "Configure which displays show Dank Island as \"%1": {
-    "Configure which displays show Dank Island as \"%1\"": ""
+  "Configure which displays show Adv Island as \"%1": {
+    "Configure which displays show Adv Island as \"%1\"": ""
   },
   "Configure which displays show shell components": {
     "Configure which displays show shell components": "Mely kijelzőkön jelenjenek meg a héj összetevői"
@@ -1982,8 +1982,8 @@
   "Convenience options for the login screen": {
     "Convenience options for the login screen": "Kényelmi beállítások a bejelentkezési képernyőhöz"
   },
-  "Convert to DMS": {
-    "Convert to DMS": "Konvertálás DMS-formátumba"
+  "Convert to ADVS": {
+    "Convert to ADVS": "Konvertálás ADVS-formátumba"
   },
   "Cooldown": {
     "Cooldown": "Várakozási idő"
@@ -2258,41 +2258,41 @@
   "DEMO MODE - Click anywhere to exit": {
     "DEMO MODE - Click anywhere to exit": "DEMO MÓD - Kattints bárhova a kilépéshez"
   },
-  "DMS Chooser": {
-    "DMS Chooser": "DMS-választó"
+  "ADVS Chooser": {
+    "ADVS Chooser": "ADVS-választó"
   },
-  "DMS Plugin Manager Unavailable": {
-    "DMS Plugin Manager Unavailable": "A DMS-bővítménykezelő nem érhető el"
+  "ADVS Plugin Manager Unavailable": {
+    "ADVS Plugin Manager Unavailable": "A ADVS-bővítménykezelő nem érhető el"
   },
-  "DMS Settings": {
-    "DMS Settings": "DMS-beállítások"
+  "ADVS Settings": {
+    "ADVS Settings": "ADVS-beállítások"
   },
-  "DMS Settings writes Lua keybinds. Add the DMS include so edits apply.": {
-    "DMS Settings writes Lua keybinds. Add the DMS include so edits apply.": "A DMS-beállítások Lua-gyorsbillentyűket írnak. Add hozzá a DMS include-ot a módosítások érvényesítéséhez."
+  "ADVS Settings writes Lua keybinds. Add the ADVS include so edits apply.": {
+    "ADVS Settings writes Lua keybinds. Add the ADVS include so edits apply.": "A ADVS-beállítások Lua-gyorsbillentyűket írnak. Add hozzá a ADVS include-ot a módosítások érvényesítéséhez."
   },
-  "DMS Shortcuts": {
-    "DMS Shortcuts": "DMS-gyorsbillentyűk"
+  "ADVS Shortcuts": {
+    "ADVS Shortcuts": "ADVS-gyorsbillentyűk"
   },
-  "DMS is a highly customizable modern desktop shell with a %1 inspired design.<br/><br/>It is built with %2, a QT6 framework for building desktop shells, and %3, a statically typed, compiled programming language.": {
-    "DMS is a highly customizable modern desktop shell with a %1 inspired design.<br/><br/>It is built with %2, a QT6 framework for building desktop shells, and %3, a statically typed, compiled programming language.": "A DMS egy nagymértékben testreszabható modern asztali héj, amelyet a %1 ihletett.<br/><br/>A %2 QT6 keretrendszerrel épült asztali héjak létrehozásához, és a %3 statikusan típusos, fordított programozási nyelvvel."
+  "ADVS is a highly customizable modern desktop shell with a %1 inspired design.<br/><br/>It is built with %2, a QT6 framework for building desktop shells, and %3, a statically typed, compiled programming language.": {
+    "ADVS is a highly customizable modern desktop shell with a %1 inspired design.<br/><br/>It is built with %2, a QT6 framework for building desktop shells, and %3, a statically typed, compiled programming language.": "A ADVS egy nagymértékben testreszabható modern asztali héj, amelyet a %1 ihletett.<br/><br/>A %2 QT6 keretrendszerrel épült asztali héjak létrehozásához, és a %3 statikusan típusos, fordított programozási nyelvvel."
   },
-  "DMS out of date": {
-    "DMS out of date": "A DMS elavult"
+  "ADVS out of date": {
+    "ADVS out of date": "A ADVS elavult"
   },
-  "DMS removes its managed block from /etc/pam.d/greetd and stops write services": {
-    "DMS removes its managed block from /etc/pam.d/greetd and stops write services": "A DMS eltávolítja a kezelt blokkját a /etc/pam.d/greetd fájlból, és leállítja az írási szolgáltatásokat"
+  "ADVS removes its managed block from /etc/pam.d/greetd and stops write services": {
+    "ADVS removes its managed block from /etc/pam.d/greetd and stops write services": "A ADVS eltávolítja a kezelt blokkját a /etc/pam.d/greetd fájlból, és leállítja az írási szolgáltatásokat"
   },
-  "DMS server is outdated (API v%1, expected v%2)": {
-    "DMS server is outdated (API v%1, expected v%2)": "A DMS-szerver elavult (API v%1, várt v%2)"
+  "ADVS server is outdated (API v%1, expected v%2)": {
+    "ADVS server is outdated (API v%1, expected v%2)": "A ADVS-szerver elavult (API v%1, várt v%2)"
   },
-  "DMS service is not connected. Clipboard settings are unavailable.": {
-    "DMS service is not connected. Clipboard settings are unavailable.": "A DMS-szolgáltatás nincs csatlakoztatva. A vágólap-beállítások nem érhetők el."
+  "ADVS service is not connected. Clipboard settings are unavailable.": {
+    "ADVS service is not connected. Clipboard settings are unavailable.": "A ADVS-szolgáltatás nincs csatlakoztatva. A vágólap-beállítások nem érhetők el."
   },
-  "DMS shell actions (launcher, clipboard, etc.)": {
-    "DMS shell actions (launcher, clipboard, etc.)": "DMS-héjműveletek (indító, vágólap, stb.)"
+  "ADVS shell actions (launcher, clipboard, etc.)": {
+    "ADVS shell actions (launcher, clipboard, etc.)": "ADVS-héjműveletek (indító, vágólap, stb.)"
   },
-  "DMS_SOCKET not available": {
-    "DMS_SOCKET not available": "A DMS_SOCKET nem érhető el"
+  "ADVS_SOCKET not available": {
+    "ADVS_SOCKET not available": "A ADVS_SOCKET nem érhető el"
   },
   "Daily": {
     "Daily": "Napi"
@@ -2303,41 +2303,41 @@
   "Damped springs settle straight to their target with no overshoot": {
     "Damped springs settle straight to their target with no overshoot": ""
   },
-  "Dank": {
-    "Dank": "Dank"
+  "Adv": {
+    "Adv": "Adv"
   },
-  "Dank Bar": {
-    "Dank Bar": "Dank Bar"
+  "Adv Bar": {
+    "Adv Bar": "Adv Bar"
   },
-  "Dank Bar Xray": {
-    "Dank Bar Xray": "Dank Bar-röntgen"
+  "Adv Bar Xray": {
+    "Adv Bar Xray": "Adv Bar-röntgen"
   },
-  "Dank Dash": {
-    "Dank Dash": "Dank Dash"
+  "Adv Dash": {
+    "Adv Dash": "Adv Dash"
   },
-  "Dank Island - Beta": {
-    "Dank Island - Beta": ""
+  "Adv Island - Beta": {
+    "Adv Island - Beta": ""
   },
-  "Dank Island instance": {
-    "Dank Island instance": ""
+  "Adv Island instance": {
+    "Adv Island instance": ""
   },
-  "DankBar": {
-    "DankBar": "DankBar"
+  "AdvBar": {
+    "AdvBar": "AdvBar"
   },
-  "DankCalendar": {
-    "DankCalendar": "DankCalendar"
+  "AdvCalendar": {
+    "AdvCalendar": "AdvCalendar"
   },
-  "DankCalendar isn't installed": {
-    "DankCalendar isn't installed": "A DankCalendar nincs telepítve"
+  "AdvCalendar isn't installed": {
+    "AdvCalendar isn't installed": "A AdvCalendar nincs telepítve"
   },
-  "DankCalendar isn't running": {
-    "DankCalendar isn't running": "A DankCalendar nem fut"
+  "AdvCalendar isn't running": {
+    "AdvCalendar isn't running": "A AdvCalendar nem fut"
   },
-  "DankMaterialShell is ready to use": {
-    "DankMaterialShell is ready to use": "A DankMaterialShell használatra kész"
+  "AriadnevShell is ready to use": {
+    "AriadnevShell is ready to use": "A AriadnevShell használatra kész"
   },
-  "DankShell & System Icons (requires restart)": {
-    "DankShell & System Icons (requires restart)": "DankShell és Rendszerikonok (újraindítást igényel)"
+  "AdvShell & System Icons (requires restart)": {
+    "AdvShell & System Icons (requires restart)": "AdvShell és Rendszerikonok (újraindítást igényel)"
   },
   "Dark Mode": {
     "Dark Mode": "Sötét mód"
@@ -2423,8 +2423,8 @@
   "Default Width (%)": {
     "Default Width (%)": "Alapértelmezett szélesség (%)"
   },
-  "Default launcher shortcuts open a native launcher activity inside Dank Island. Spotlight is used when the focused screen has no DankIsland.": {
-    "Default launcher shortcuts open a native launcher activity inside Dank Island. Spotlight is used when the focused screen has no DankIsland.": ""
+  "Default launcher shortcuts open a native launcher activity inside Adv Island. Spotlight is used when the focused screen has no AdvIsland.": {
+    "Default launcher shortcuts open a native launcher activity inside Adv Island. Spotlight is used when the focused screen has no AdvIsland.": ""
   },
   "Default launcher shortcuts open the full launcher with mode tabs, grid view, and action panel.": {
     "Default launcher shortcuts open the full launcher with mode tabs, grid view, and action panel.": "Az alapértelmezett indító gyorsbillentyűk megnyitják a teljes indítót módfülekkel, rácsnézettel és műveleti panellel."
@@ -2789,8 +2789,8 @@
   "Drop here": {
     "Drop here": "Dobd ide"
   },
-  "Drop your override for %1 so the DMS default action re-applies?": {
-    "Drop your override for %1 so the DMS default action re-applies?": "Elveted a(z) %1 felülbírálását, hogy a DMS alapértelmezett művelete újra érvénybe lépjen?"
+  "Drop your override for %1 so the ADVS default action re-applies?": {
+    "Drop your override for %1 so the ADVS default action re-applies?": "Elveted a(z) %1 felülbírálását, hogy a ADVS alapértelmezett művelete újra érvénybe lépjen?"
   },
   "Duplicate": {
     "Duplicate": "Kettőzés"
@@ -2939,8 +2939,8 @@
   "Enable a custom override below to set per-bar shadow intensity, opacity, and color.": {
     "Enable a custom override below to set per-bar shadow intensity, opacity, and color.": "Engedélyezd az egyéni felülbírálást alább a sávonkénti árnyékintenzitás, átlátszatlanság és szín beállításához."
   },
-  "Enable compositor-targetable blur layer (namespace: dms:blurwallpaper). Requires manual niri configuration.": {
-    "Enable compositor-targetable blur layer (namespace: dms:blurwallpaper). Requires manual niri configuration.": "Kompozitor által célozható elmosási réteg engedélyezése (névtér: dms:blurwallpaper). Kézi niri konfigurációt igényel."
+  "Enable compositor-targetable blur layer (namespace: advs:blurwallpaper). Requires manual niri configuration.": {
+    "Enable compositor-targetable blur layer (namespace: advs:blurwallpaper). Requires manual niri configuration.": "Kompozitor által célozható elmosási réteg engedélyezése (névtér: advs:blurwallpaper). Kézi niri konfigurációt igényel."
   },
   "Enable fingerprint at login": {
     "Enable fingerprint at login": "Ujjlenyomat engedélyezése bejelentkezéskor"
@@ -2948,8 +2948,8 @@
   "Enable fingerprint authentication": {
     "Enable fingerprint authentication": "Ujjlenyomatos azonosítás engedélyezése"
   },
-  "Enable fingerprint or security key for DMS Greeter": {
-    "Enable fingerprint or security key for DMS Greeter": "Ujjlenyomat vagy biztonsági kulcs engedélyezése a DMS Greeterhez"
+  "Enable fingerprint or security key for ADVS Greeter": {
+    "Enable fingerprint or security key for ADVS Greeter": "Ujjlenyomat vagy biztonsági kulcs engedélyezése a ADVS Greeterhez"
   },
   "Enable loginctl lock integration": {
     "Enable loginctl lock integration": "loginctl-alapú zárolás integráció engedélyezése"
@@ -3317,11 +3317,11 @@
   "Failed to ring device": {
     "Failed to ring device": "Nem sikerült az eszköz megcsöngetése"
   },
-  "Failed to run 'dms greeter status'. Ensure DMS is installed and dms is in PATH.": {
-    "Failed to run 'dms greeter status'. Ensure DMS is installed and dms is in PATH.": "Nem sikerült futtatni a „dms greeter status” parancsot. Győződj meg róla, hogy a DMS telepítve van, és a dms benne van a PATH környezeti változóban."
+  "Failed to run 'advs greeter status'. Ensure ADVS is installed and advs is in PATH.": {
+    "Failed to run 'advs greeter status'. Ensure ADVS is installed and advs is in PATH.": "Nem sikerült futtatni a „advs greeter status” parancsot. Győződj meg róla, hogy a ADVS telepítve van, és a advs benne van a PATH környezeti változóban."
   },
-  "Failed to run 'dms-greeter status'. Ensure the dms-greeter package is installed.": {
-    "Failed to run 'dms-greeter status'. Ensure the dms-greeter package is installed.": "Nem sikerült futtatni a 'dms-greeter status' parancsot. Győződj meg arról, hogy a dms-greeter csomag telepítve van."
+  "Failed to run 'advs-greeter status'. Ensure the advs-greeter package is installed.": {
+    "Failed to run 'advs-greeter status'. Ensure the advs-greeter package is installed.": "Nem sikerült futtatni a 'advs-greeter status' parancsot. Győződj meg arról, hogy a advs-greeter csomag telepítve van."
   },
   "Failed to save VPN credentials": {
     "Failed to save VPN credentials": "Nem sikerült menteni a VPN-hitelesítési adatokat"
@@ -3467,8 +3467,8 @@
   "File received from %1": {
     "File received from %1": "Fájl érkezett innen: %1"
   },
-  "File search requires dsearch\nInstall from github.com/AvengeMedia/danksearch": {
-    "File search requires dsearch\nInstall from github.com/AvengeMedia/danksearch": "A fájlkereséshez dsearch szükséges\nTelepítsd innen: github.com/AvengeMedia/danksearch"
+  "File search requires dsearch\nInstall from github.com/bavanchun/advsearch": {
+    "File search requires dsearch\nInstall from github.com/bavanchun/advsearch": "A fájlkereséshez dsearch szükséges\nTelepítsd innen: github.com/bavanchun/advsearch"
   },
   "File search unavailable": {
     "File search unavailable": "A fájlkeresés nem érhető el"
@@ -3626,8 +3626,8 @@
   "Folders": {
     "Folders": "Mappa"
   },
-  "Follow DMS background color": {
-    "Follow DMS background color": "A DMS háttérszínének követése"
+  "Follow ADVS background color": {
+    "Follow ADVS background color": "A ADVS háttérszínének követése"
   },
   "Follow Monitor Focus": {
     "Follow Monitor Focus": "Monitor fókuszának követése"
@@ -3824,8 +3824,8 @@
   "Gamma Control": {
     "Gamma Control": "Gammavezérlés"
   },
-  "Gamma control not available. Requires DMS API v6+.": {
-    "Gamma control not available. Requires DMS API v6+.": "A gammavezérlés nem érhető el. DMS API v6+ szükséges."
+  "Gamma control not available. Requires ADVS API v6+.": {
+    "Gamma control not available. Requires ADVS API v6+.": "A gammavezérlés nem érhető el. ADVS API v6+ szükséges."
   },
   "Gap between the end widgets and the bar ends (0 = edge-to-edge)": {
     "Gap between the end widgets and the bar ends (0 = edge-to-edge)": "Hézag a szélső widgetek és a sáv végei között (0 = szegélytől szegélyig)"
@@ -3839,11 +3839,11 @@
   "Generate Override": {
     "Generate Override": "Felülbírálás létrehozása"
   },
-  "Generate baseline GTK3/4 or QT5/QT6 (requires qt6ct-kde) configurations to follow DMS colors. Only needed once.<br /><br />It is recommended to configure %1 prior to applying GTK themes.": {
-    "Generate baseline GTK3/4 or QT5/QT6 (requires qt6ct-kde) configurations to follow DMS colors. Only needed once.<br /><br />It is recommended to configure %1 prior to applying GTK themes.": "Alapszintű GTK3/4 vagy QT5/QT6 (qt6ct-kde szükséges) konfigurációk generálása a DMS színeinek követéséhez. Csak egyszer szükséges.<br /><br />Javasoljuk a %1 konfigurálását a GTK témák alkalmazása előtt."
+  "Generate baseline GTK3/4 or QT5/QT6 (requires qt6ct-kde) configurations to follow ADVS colors. Only needed once.<br /><br />It is recommended to configure %1 prior to applying GTK themes.": {
+    "Generate baseline GTK3/4 or QT5/QT6 (requires qt6ct-kde) configurations to follow ADVS colors. Only needed once.<br /><br />It is recommended to configure %1 prior to applying GTK themes.": "Alapszintű GTK3/4 vagy QT5/QT6 (qt6ct-kde szükséges) konfigurációk generálása a ADVS színeinek követéséhez. Csak egyszer szükséges.<br /><br />Javasoljuk a %1 konfigurálását a GTK témák alkalmazása előtt."
   },
-  "Generate baseline GTK3/4, QT5/QT6, or qtengine configurations to follow DMS colors (only qt6ct requires qt6ct-kde). Only needed once.<br /><br />It is recommended to configure %1 prior to applying GTK themes.": {
-    "Generate baseline GTK3/4, QT5/QT6, or qtengine configurations to follow DMS colors (only qt6ct requires qt6ct-kde). Only needed once.<br /><br />It is recommended to configure %1 prior to applying GTK themes.": "Alapszintű GTK3/4-, QT5/QT6- vagy qtengine-konfigurációk létrehozása a DMS színeinek követéséhez (csak a qt6ct-hez szükséges a qt6ct-kde). Csak egyszer szükséges.<br /><br />Javasoljuk a(z) %1 konfigurálását a GTK témák alkalmazása előtt."
+  "Generate baseline GTK3/4, QT5/QT6, or qtengine configurations to follow ADVS colors (only qt6ct requires qt6ct-kde). Only needed once.<br /><br />It is recommended to configure %1 prior to applying GTK themes.": {
+    "Generate baseline GTK3/4, QT5/QT6, or qtengine configurations to follow ADVS colors (only qt6ct requires qt6ct-kde). Only needed once.<br /><br />It is recommended to configure %1 prior to applying GTK themes.": "Alapszintű GTK3/4-, QT5/QT6- vagy qtengine-konfigurációk létrehozása a ADVS színeinek követéséhez (csak a qt6ct-hez szükséges a qt6ct-kde). Csak egyszer szükséges.<br /><br />Javasoljuk a(z) %1 konfigurálását a GTK témák alkalmazása előtt."
   },
   "Generic": {
     "Generic": "Általános"
@@ -3914,11 +3914,11 @@
   "Greeter font": {
     "Greeter font": "Üdvözlőképernyő betűtípusa"
   },
-  "Greeter group members can sync their login-screen theme with dms greeter sync --profile after logging out and back in.": {
-    "Greeter group members can sync their login-screen theme with dms greeter sync --profile after logging out and back in.": "Az üdvözlőképernyő-csoport tagjai a ki- és bejelentkezés után a dms greeter sync --profile paranccsal szinkronizálhatják a bejelentkezési képernyő témáját."
+  "Greeter group members can sync their login-screen theme with advs greeter sync --profile after logging out and back in.": {
+    "Greeter group members can sync their login-screen theme with advs greeter sync --profile after logging out and back in.": "Az üdvözlőképernyő-csoport tagjai a ki- és bejelentkezés után a advs greeter sync --profile paranccsal szinkronizálhatják a bejelentkezési képernyő témáját."
   },
-  "Greeter group members can sync their login-screen theme with dms-greeter sync --profile after logging out and back in.": {
-    "Greeter group members can sync their login-screen theme with dms-greeter sync --profile after logging out and back in.": "A greeter csoport tagjai kijelentkezés és újbóli bejelentkezés után a dms-greeter sync --profile paranccsal szinkronizálhatják a bejelentkezési képernyő témáját."
+  "Greeter group members can sync their login-screen theme with advs-greeter sync --profile after logging out and back in.": {
+    "Greeter group members can sync their login-screen theme with advs-greeter sync --profile after logging out and back in.": "A greeter csoport tagjai kijelentkezés és újbóli bejelentkezés után a advs-greeter sync --profile paranccsal szinkronizálhatják a bejelentkezési képernyő témáját."
   },
   "Greeter group:": {
     "Greeter group:": "Üdvözlőképernyő-csoport:"
@@ -4262,8 +4262,8 @@
   "Icon Theme": {
     "Icon Theme": "Ikontéma"
   },
-  "Icon theme changed outside DMS; switched to System Default": {
-    "Icon theme changed outside DMS; switched to System Default": "Az ikontéma a DMS-en kívül megváltozott; átváltva a Rendszer alapértelmezettre"
+  "Icon theme changed outside ADVS; switched to System Default": {
+    "Icon theme changed outside ADVS; switched to System Default": "Az ikontéma a ADVS-en kívül megváltozott; átváltva a Rendszer alapértelmezettre"
   },
   "Identical alerts show as one popup instead of stacking": {
     "Identical alerts show as one popup instead of stacking": "Az azonos riasztások egyetlen felugró ablakként jelennek meg egymásra halmozás helyett"
@@ -4286,8 +4286,8 @@
   "Idle Settings": {
     "Idle Settings": "Inaktivitási beállítások"
   },
-  "If autostart app icons don't appear in the system tray, generate a systemd override to ensure DMS starts before autostart apps": {
-    "If autostart app icons don't appear in the system tray, generate a systemd override to ensure DMS starts before autostart apps": "Ha az automatikusan induló alkalmazások ikonjai nem jelennek meg a tálcán, hozz létre egy systemd felülbírálást, hogy a DMS az automatikusan induló alkalmazások előtt induljon el"
+  "If autostart app icons don't appear in the system tray, generate a systemd override to ensure ADVS starts before autostart apps": {
+    "If autostart app icons don't appear in the system tray, generate a systemd override to ensure ADVS starts before autostart apps": "Ha az automatikusan induló alkalmazások ikonjai nem jelennek meg a tálcán, hozz létre egy systemd felülbírálást, hogy a ADVS az automatikusan induló alkalmazások előtt induljon el"
   },
   "If the field is hidden, it will appear as soon as a key is pressed.": {
     "If the field is hidden, it will appear as soon as a key is pressed.": "Ha a mező rejtett, megjelenik, amint lenyomsz egy billentyűt."
@@ -4427,8 +4427,8 @@
   "Install Theme": {
     "Install Theme": "Téma telepítése"
   },
-  "Install color themes from the DMS theme registry": {
-    "Install color themes from the DMS theme registry": "Színtémák telepítése a DMS-témaregiszterből"
+  "Install color themes from the ADVS theme registry": {
+    "Install color themes from the ADVS theme registry": "Színtémák telepítése a ADVS-témaregiszterből"
   },
   "Install complete. Greeter has been installed.": {
     "Install complete. Greeter has been installed.": "Telepítés befejezve. Az üdvözlőképernyő telepítve lett."
@@ -4442,17 +4442,17 @@
   "Install matugen package for dynamic theming": {
     "Install matugen package for dynamic theming": "Telepítsd a matugen csomagot a dinamikus témázáshoz"
   },
-  "Install plugin '%1' from the DMS registry?": {
-    "Install plugin '%1' from the DMS registry?": "Telepíted a(z) „%1” bővítményt a DMS-regiszterből?"
+  "Install plugin '%1' from the ADVS registry?": {
+    "Install plugin '%1' from the ADVS registry?": "Telepíted a(z) „%1” bővítményt a ADVS-regiszterből?"
   },
-  "Install plugins from the DMS plugin registry": {
-    "Install plugins from the DMS plugin registry": "Bővítmények telepítése a DMS-bővítményregiszterből"
+  "Install plugins from the ADVS plugin registry": {
+    "Install plugins from the ADVS plugin registry": "Bővítmények telepítése a ADVS-bővítményregiszterből"
   },
-  "Install the DMS greeter? A terminal will open for sudo authentication.": {
-    "Install the DMS greeter? A terminal will open for sudo authentication.": "Telepíted a DMS-üdvözlőképernyőt? (greeter) Egy terminál fog megnyílni a sudo hitelesítéshez."
+  "Install the ADVS greeter? A terminal will open for sudo authentication.": {
+    "Install the ADVS greeter? A terminal will open for sudo authentication.": "Telepíted a ADVS-üdvözlőképernyőt? (greeter) Egy terminál fog megnyílni a sudo hitelesítéshez."
   },
-  "Install theme '%1' from the DMS registry?": {
-    "Install theme '%1' from the DMS registry?": "Telepíted a(z) „%1” témát a DMS-regiszterből?"
+  "Install theme '%1' from the ADVS registry?": {
+    "Install theme '%1' from the ADVS registry?": "Telepíted a(z) „%1” témát a ADVS-regiszterből?"
   },
   "Installation and PAM setup are documented in the ": {
     "Installation and PAM setup are documented in the ": "A telepítés és a PAM beállítása dokumentálva van a következő helyen: "
@@ -4886,8 +4886,8 @@
   "Make the bar background fully transparent": {
     "Make the bar background fully transparent": "A sáv hátterének teljesen átlátszóvá tétele"
   },
-  "Manage and configure plugins for extending DMS functionality": {
-    "Manage and configure plugins for extending DMS functionality": "Bővítmények kezelése és beállítása a DMS funkcionalitásának kiterjesztésére"
+  "Manage and configure plugins for extending ADVS functionality": {
+    "Manage and configure plugins for extending ADVS functionality": "Bővítmények kezelése és beállítása a ADVS funkcionalitásának kiterjesztésére"
   },
   "Manage up to 4 independent bar configurations. Each bar has its own position, widgets, styling, and display assignment.": {
     "Manage up to 4 independent bar configurations. Each bar has its own position, widgets, styling, and display assignment.": "Legfeljebb 4 független sávkonfiguráció kezelése. Minden sávnak megvan a saját pozíciója, widgetjei, stílusa és kijelző-hozzárendelése."
@@ -4991,8 +4991,8 @@
   "Material inspired shadows and elevation on modals, popouts, and dialogs": {
     "Material inspired shadows and elevation on modals, popouts, and dialogs": "Material stílusú árnyékok és emelések a modális ablakokon, felugrókon és párbeszédpaneleken"
   },
-  "Material: Material Design 3 Expressive bezier curves. The DMS default feel.": {
-    "Material: Material Design 3 Expressive bezier curves. The DMS default feel.": "Material: Material Design 3 kifejező Bézier-görbék. A DMS alapértelmezett érzete."
+  "Material: Material Design 3 Expressive bezier curves. The ADVS default feel.": {
+    "Material: Material Design 3 Expressive bezier curves. The ADVS default feel.": "Material: Material Design 3 kifejező Bézier-görbék. A ADVS alapértelmezett érzete."
   },
   "Matugen Contrast": {
     "Matugen Contrast": "Matugen kontraszt"
@@ -5405,8 +5405,8 @@
   "Night mode & gamma": {
     "Night mode & gamma": "Éjszakai mód és gamma"
   },
-  "Night mode failed: DMS gamma control not available": {
-    "Night mode failed: DMS gamma control not available": "Az éjszakai mód nem sikerült: a DMS gammavezérlése nem érhető el"
+  "Night mode failed: ADVS gamma control not available": {
+    "Night mode failed: ADVS gamma control not available": "Az éjszakai mód nem sikerült: a ADVS gammavezérlése nem érhető el"
   },
   "Niri Integration": {
     "Niri Integration": "Niri integráció"
@@ -5435,8 +5435,8 @@
   "No Border": {
     "No Border": "Nincs szegély"
   },
-  "No DMS shortcuts configured": {
-    "No DMS shortcuts configured": "Nincsenek DMS-gyorsbillentyűk beállítva"
+  "No ADVS shortcuts configured": {
+    "No ADVS shortcuts configured": "Nincsenek ADVS-gyorsbillentyűk beállítva"
   },
   "No Dim": {
     "No Dim": "Nincs sötétítés"
@@ -5903,8 +5903,8 @@
   "Opacity of cards and nested surfaces inside floating windows": {
     "Opacity of cards and nested surfaces inside floating windows": "Kártyák és beágyazott felületek átlátszatlansága a lebegő ablakokon belül"
   },
-  "Opacity of floating DMS windows like Settings, Notepad, and authentication prompts": {
-    "Opacity of floating DMS windows like Settings, Notepad, and authentication prompts": "Lebegő DMS-ablakok (pl. Beállítások, Jegyzettömb és hitelesítési ablakok) átlátszatlansága"
+  "Opacity of floating ADVS windows like Settings, Notepad, and authentication prompts": {
+    "Opacity of floating ADVS windows like Settings, Notepad, and authentication prompts": "Lebegő ADVS-ablakok (pl. Beállítások, Jegyzettömb és hitelesítési ablakok) átlátszatlansága"
   },
   "Opacity of foreground cards and nested surfaces on shell panels": {
     "Opacity of foreground cards and nested surfaces on shell panels": "Előtér kártyák és beágyazott felületek átlátszatlansága a héj panelein"
@@ -5918,8 +5918,8 @@
   "Open App": {
     "Open App": "Alkalmazás megnyitása"
   },
-  "Open DMS windows floating instead of tiled": {
-    "Open DMS windows floating instead of tiled": "DMS-ablakok megnyitása lebegőként a csempézett helyett"
+  "Open ADVS windows floating instead of tiled": {
+    "Open ADVS windows floating instead of tiled": "ADVS-ablakok megnyitása lebegőként a csempézett helyett"
   },
   "Open Delay": {
     "Open Delay": "Megnyitási késleltetés"
@@ -6839,8 +6839,8 @@
   "Remove the shortcut %1?": {
     "Remove the shortcut %1?": "Eltávolítod a(z) %1 gyorsbillentyűt?"
   },
-  "Remove the shortcut %1? An unbind entry will be saved to dms/binds-user.lua so it stays removed across DMS updates.": {
-    "Remove the shortcut %1? An unbind entry will be saved to dms/binds-user.lua so it stays removed across DMS updates.": "Eltávolítod a(z) %1 gyorsbillentyűt? Egy feloldási bejegyzés mentésre kerül a dms/binds-user.lua fájlba, így a DMS frissítései után is törölve marad."
+  "Remove the shortcut %1? An unbind entry will be saved to advs/binds-user.lua so it stays removed across ADVS updates.": {
+    "Remove the shortcut %1? An unbind entry will be saved to advs/binds-user.lua so it stays removed across ADVS updates.": "Eltávolítod a(z) %1 gyorsbillentyűt? Egy feloldási bejegyzés mentésre kerül a advs/binds-user.lua fájlba, így a ADVS frissítései után is törölve marad."
   },
   "Removed administrator privileges": {
     "Removed administrator privileges": "Rendszergazdai jogosultságok eltávolítva"
@@ -6893,11 +6893,11 @@
   "Requires 'dgop' tool": {
     "Requires 'dgop' tool": "Szükséges a „dgop” eszköz"
   },
-  "Requires DMS %1": {
-    "Requires DMS %1": "DMS %1 szükséges"
+  "Requires ADVS %1": {
+    "Requires ADVS %1": "ADVS %1 szükséges"
   },
-  "Requires DMS server with sysupdate capability": {
-    "Requires DMS server with sysupdate capability": "DMS-szerver szükséges sysupdate-képességgel"
+  "Requires ADVS server with sysupdate capability": {
+    "Requires ADVS server with sysupdate capability": "ADVS-szerver szükséges sysupdate-képességgel"
   },
   "Requires MangoWC compositor": {
     "Requires MangoWC compositor": "MangoWC kompozitor szükséges"
@@ -6905,8 +6905,8 @@
   "Requires a newer version of Quickshell": {
     "Requires a newer version of Quickshell": "A Quickshell újabb verziója szükséges"
   },
-  "Requires greetd, dms-greeter, and your user in the greeter group (plus fprintd/pam_fprintd for fingerprint, pam_u2f for security keys).": {
-    "Requires greetd, dms-greeter, and your user in the greeter group (plus fprintd/pam_fprintd for fingerprint, pam_u2f for security keys).": "Szükséges hozzá a greetd, dms-greeter, és a felhasználója a greeter csoportban (plusz fprintd/pam_fprintd az ujjlenyomathoz, pam_u2f a biztonsági kulcsokhoz)."
+  "Requires greetd, advs-greeter, and your user in the greeter group (plus fprintd/pam_fprintd for fingerprint, pam_u2f for security keys).": {
+    "Requires greetd, advs-greeter, and your user in the greeter group (plus fprintd/pam_fprintd for fingerprint, pam_u2f for security keys).": "Szükséges hozzá a greetd, advs-greeter, és a felhasználója a greeter csoportban (plusz fprintd/pam_fprintd az ujjlenyomathoz, pam_u2f a biztonsági kulcsokhoz)."
   },
   "Requires night mode support": {
     "Requires night mode support": "Éjszakai mód támogatás szükséges"
@@ -6914,8 +6914,8 @@
   "Requires remembering the last user and session. Enable those options first.": {
     "Requires remembering the last user and session. Enable those options first.": "Az utolsó felhasználó és munkamenet megjegyzése szükséges. Előbb engedélyezd ezeket a beállításokat."
   },
-  "Requires the DMS Theme extension from the editor marketplace": {
-    "Requires the DMS Theme extension from the editor marketplace": "Megköveteli a DMS Theme bővítményt a szerkesztő piacteréről"
+  "Requires the ADVS Theme extension from the editor marketplace": {
+    "Requires the ADVS Theme extension from the editor marketplace": "Megköveteli a ADVS Theme bővítményt a szerkesztő piacteréről"
   },
   "Reserved Height": {
     "Reserved Height": ""
@@ -6953,11 +6953,11 @@
   "Resolution, position, scale": {
     "Resolution, position, scale": "Felbontás, pozíció, méretezés"
   },
-  "Restart DMS": {
-    "Restart DMS": "DMS újraindítása"
+  "Restart ADVS": {
+    "Restart ADVS": "ADVS újraindítása"
   },
-  "Restart the DankMaterialShell": {
-    "Restart the DankMaterialShell": "A DankMaterialShell újraindítása"
+  "Restart the AriadnevShell": {
+    "Restart the AriadnevShell": "A AriadnevShell újraindítása"
   },
   "Restart userspace without rebooting the kernel, requires systemd": {
     "Restart userspace without rebooting the kernel, requires systemd": "Felhasználói tér újraindítása a kernel újraindítása nélkül, systemd szükséges hozzá"
@@ -7052,14 +7052,14 @@
   "Rules (%1)": {
     "Rules (%1)": "Szabályok (%1)"
   },
-  "Rules found in your compositor config. These are read-only here, use Convert to DMS to make an editable copy.": {
-    "Rules found in your compositor config. These are read-only here, use Convert to DMS to make an editable copy.": "A kompozitor konfigurációjában talált szabályok. Ezek itt írásvédettek, a szerkeszthető másolathoz használd a „Konvertálás DMS-formátumba” lehetőséget."
+  "Rules found in your compositor config. These are read-only here, use Convert to ADVS to make an editable copy.": {
+    "Rules found in your compositor config. These are read-only here, use Convert to ADVS to make an editable copy.": "A kompozitor konfigurációjában talált szabályok. Ezek itt írásvédettek, a szerkeszthető másolathoz használd a „Konvertálás ADVS-formátumba” lehetőséget."
   },
   "Run Again": {
     "Run Again": "Futtatás újra"
   },
-  "Run DMS Templates": {
-    "Run DMS Templates": "DMS-sablonok futtatása"
+  "Run ADVS Templates": {
+    "Run ADVS Templates": "ADVS-sablonok futtatása"
   },
   "Run User Templates": {
     "Run User Templates": "Felhasználói sablonok futtatása"
@@ -7172,11 +7172,11 @@
   "Scale": {
     "Scale": "Skála"
   },
-  "Scale DankBar font sizes independently": {
-    "Scale DankBar font sizes independently": "A DankBar betűméretének független méretezése"
+  "Scale AdvBar font sizes independently": {
+    "Scale AdvBar font sizes independently": "A AdvBar betűméretének független méretezése"
   },
-  "Scale DankBar icon sizes independently": {
-    "Scale DankBar icon sizes independently": "DankBar ikonméretek független skálázása"
+  "Scale AdvBar icon sizes independently": {
+    "Scale AdvBar icon sizes independently": "AdvBar ikonméretek független skálázása"
   },
   "Scale all font sizes throughout the shell": {
     "Scale all font sizes throughout the shell": "Betűméret skálázása a felületen"
@@ -7721,8 +7721,8 @@
   "Show Remaining Time": {
     "Show Remaining Time": "Hátralévő idő megjelenítése"
   },
-  "Show Restart DMS": {
-    "Show Restart DMS": "„DMS újraindítása” megjelenítése"
+  "Show Restart ADVS": {
+    "Show Restart ADVS": "„ADVS újraindítása” megjelenítése"
   },
   "Show Satellite Widgets": {
     "Show Satellite Widgets": ""
@@ -7976,8 +7976,8 @@
   "Solid material type or Outline": {
     "Solid material type or Outline": ""
   },
-  "Some plugins require a newer version of DMS:": {
-    "Some plugins require a newer version of DMS:": "Néhány bővítmény a DMS újabb verzióját igényli:"
+  "Some plugins require a newer version of ADVS:": {
+    "Some plugins require a newer version of ADVS:": "Néhány bővítmény a ADVS újabb verzióját igényli:"
   },
   "Some settings are managed by the island": {
     "Some settings are managed by the island": ""
@@ -8075,14 +8075,14 @@
   "Standard": {
     "Standard": "Szabványos"
   },
-  "Standard: Classic Material Design 3 — panels rise from below with a subtle scale. The DMS default.": {
-    "Standard: Classic Material Design 3 — panels rise from below with a subtle scale. The DMS default.": "Standard: Klasszikus Material Design 3 — a panelek alulról emelkednek fel finom skálázással. A DMS alapértelmezett beállítása."
+  "Standard: Classic Material Design 3 — panels rise from below with a subtle scale. The ADVS default.": {
+    "Standard: Classic Material Design 3 — panels rise from below with a subtle scale. The ADVS default.": "Standard: Klasszikus Material Design 3 — a panelek alulról emelkednek fel finom skálázással. A ADVS alapértelmezett beállítása."
   },
   "Start": {
     "Start": "Indítás"
   },
-  "Start DankConnect, KDE Connect, or Valent to use this plugin": {
-    "Start DankConnect, KDE Connect, or Valent to use this plugin": "A bővítmény használatához indítsd el a DankConnect, KDE Connect vagy Valent alkalmazást"
+  "Start AdvConnect, KDE Connect, or Valent to use this plugin": {
+    "Start AdvConnect, KDE Connect, or Valent to use this plugin": "A bővítmény használatához indítsd el a AdvConnect, KDE Connect vagy Valent alkalmazást"
   },
   "Start Hotspot?": {
     "Start Hotspot?": "Elindítod a hotspotot?"
@@ -8243,11 +8243,11 @@
   "Sync Position Across Screens": {
     "Sync Position Across Screens": "Pozíció szinkronizálása a képernyők között"
   },
-  "Sync applies your theme and settings to the login screen. Shared users should run dms greeter sync --profile instead of a primary user sync.": {
-    "Sync applies your theme and settings to the login screen. Shared users should run dms greeter sync --profile instead of a primary user sync.": "A szinkronizálás alkalmazza a témáját és a beállításait a bejelentkezési képernyőre. A megosztott felhasználóknak a dms greeter sync --profile parancsot kell futtatniuk az elsődleges felhasználói szinkronizálás helyett."
+  "Sync applies your theme and settings to the login screen. Shared users should run advs greeter sync --profile instead of a primary user sync.": {
+    "Sync applies your theme and settings to the login screen. Shared users should run advs greeter sync --profile instead of a primary user sync.": "A szinkronizálás alkalmazza a témáját és a beállításait a bejelentkezési képernyőre. A megosztott felhasználóknak a advs greeter sync --profile parancsot kell futtatniuk az elsődleges felhasználói szinkronizálás helyett."
   },
-  "Sync applies your theme and settings to the login screen. Shared users should run dms-greeter sync --profile instead of a primary user sync.": {
-    "Sync applies your theme and settings to the login screen. Shared users should run dms-greeter sync --profile instead of a primary user sync.": "A szinkronizálás alkalmazza a témáját és a beállításait a bejelentkezési képernyőre. A megosztott felhasználóknak a dms-greeter sync --profile parancsot kell futtatniuk az elsődleges felhasználói szinkronizálás helyett."
+  "Sync applies your theme and settings to the login screen. Shared users should run advs-greeter sync --profile instead of a primary user sync.": {
+    "Sync applies your theme and settings to the login screen. Shared users should run advs-greeter sync --profile instead of a primary user sync.": "A szinkronizálás alkalmazza a témáját és a beállításait a bejelentkezési képernyőre. A megosztott felhasználóknak a advs-greeter sync --profile parancsot kell futtatniuk az elsődleges felhasználói szinkronizálás helyett."
   },
   "Sync completed successfully.": {
     "Sync completed successfully.": "Szinkronizálás sikeresen befejeződött."
@@ -8363,14 +8363,14 @@
   "Terminal additional parameters": {
     "Terminal additional parameters": "Terminál további paraméterei"
   },
-  "Terminal fallback failed. Install a supported terminal emulator or run 'dms auth sync' manually.": {
-    "Terminal fallback failed. Install a supported terminal emulator or run 'dms auth sync' manually.": "A tartalék terminál megnyitása sikertelen. Telepíts egy támogatott terminálemulátort, vagy futtasd a 'dms auth sync' parancsot."
+  "Terminal fallback failed. Install a supported terminal emulator or run 'advs auth sync' manually.": {
+    "Terminal fallback failed. Install a supported terminal emulator or run 'advs auth sync' manually.": "A tartalék terminál megnyitása sikertelen. Telepíts egy támogatott terminálemulátort, vagy futtasd a 'advs auth sync' parancsot."
   },
-  "Terminal fallback failed. Install one of the supported terminal emulators or run 'dms greeter sync' manually.": {
-    "Terminal fallback failed. Install one of the supported terminal emulators or run 'dms greeter sync' manually.": "A tartalék terminál megnyitása sikertelen. Telepíts egyet a támogatott terminálemulátorok közül, vagy futtasd a „dms greeter sync” parancsot."
+  "Terminal fallback failed. Install one of the supported terminal emulators or run 'advs greeter sync' manually.": {
+    "Terminal fallback failed. Install one of the supported terminal emulators or run 'advs greeter sync' manually.": "A tartalék terminál megnyitása sikertelen. Telepíts egyet a támogatott terminálemulátorok közül, vagy futtasd a „advs greeter sync” parancsot."
   },
-  "Terminal fallback failed. Install one of the supported terminal emulators or run 'dms-greeter sync' manually.": {
-    "Terminal fallback failed. Install one of the supported terminal emulators or run 'dms-greeter sync' manually.": "Terminál helyettesítési kísérlet sikertelen. Telepítsd a támogatott terminálemulátorok egyikét, vagy futtasd a 'dms-greeter sync' parancsot."
+  "Terminal fallback failed. Install one of the supported terminal emulators or run 'advs-greeter sync' manually.": {
+    "Terminal fallback failed. Install one of the supported terminal emulators or run 'advs-greeter sync' manually.": "Terminál helyettesítési kísérlet sikertelen. Telepítsd a támogatott terminálemulátorok egyikét, vagy futtasd a 'advs-greeter sync' parancsot."
   },
   "Terminal fallback opened. Complete authentication there; it will close automatically when done.": {
     "Terminal fallback opened. Complete authentication there; it will close automatically when done.": "Terminálos másodlagos hitelesítés megnyitva. Végezd el ott a hitelesítést; befejezés után automatikusan bezárul."
@@ -8414,8 +8414,8 @@
   "The 'dgop' tool is required for system monitoring.\nPlease install dgop to use this feature.": {
     "The 'dgop' tool is required for system monitoring.\nPlease install dgop to use this feature.": "A rendszerfigyeléshez a „dgop” eszköz szükséges.\nTelepítsd a dgop-ot a funkció használatához."
   },
-  "The DMS_SOCKET environment variable is not set or the socket is unavailable. Automated plugin management requires the DMS_SOCKET.": {
-    "The DMS_SOCKET environment variable is not set or the socket is unavailable. Automated plugin management requires the DMS_SOCKET.": "A DMS_SOCKET környezeti változó nincs beállítva, vagy a socket nem érhető el. Az automatizált bővítménykezeléshez DMS_SOCKET szükséges."
+  "The ADVS_SOCKET environment variable is not set or the socket is unavailable. Automated plugin management requires the ADVS_SOCKET.": {
+    "The ADVS_SOCKET environment variable is not set or the socket is unavailable. Automated plugin management requires the ADVS_SOCKET.": "A ADVS_SOCKET környezeti változó nincs beállítva, vagy a socket nem érhető el. Az automatizált bővítménykezeléshez ADVS_SOCKET szükséges."
   },
   "The Island anchors to the top or bottom edge": {
     "The Island anchors to the top or bottom edge": ""
@@ -8435,8 +8435,8 @@
   "The custom command used when attaching to sessions (receives the session name as the first argument)": {
     "The custom command used when attaching to sessions (receives the session name as the first argument)": "A munkamenetekhez való csatlakozáskor használt egyéni parancs (első argumentumként a munkamenet nevét kapja)"
   },
-  "The greeter bundled with DMS is active (archinstall setup). It keeps working as is, but syncing theme and settings needs the standalone greeter. Install greetd-dms-greeter-bin from the AUR, then run Sync to migrate the login screen.": {
-    "The greeter bundled with DMS is active (archinstall setup). It keeps working as is, but syncing theme and settings needs the standalone greeter. Install greetd-dms-greeter-bin from the AUR, then run Sync to migrate the login screen.": ""
+  "The greeter bundled with ADVS is active (archinstall setup). It keeps working as is, but syncing theme and settings needs the standalone greeter. Install greetd-advs-greeter-bin from the AUR, then run Sync to migrate the login screen.": {
+    "The greeter bundled with ADVS is active (archinstall setup). It keeps working as is, but syncing theme and settings needs the standalone greeter. Install greetd-advs-greeter-bin from the AUR, then run Sync to migrate the login screen.": ""
   },
   "The island draws its own surface": {
     "The island draws its own surface": ""
@@ -8489,8 +8489,8 @@
   "Third-Party Plugin Warning": {
     "Third-Party Plugin Warning": "Külső bővítmény figyelmeztetés"
   },
-  "Third-party plugins are created by the community and are not officially supported by DankMaterialShell.\n\nThese plugins may pose security and privacy risks - install at your own risk.": {
-    "Third-party plugins are created by the community and are not officially supported by DankMaterialShell.\n\nThese plugins may pose security and privacy risks - install at your own risk.": "A külső bővítményeket a közösség készíti, és a DankMaterialShell hivatalosan nem támogatja őket.\n\nEzek a bővítmények biztonsági és adatvédelmi kockázatokat jelenthetnek – telepítés csak saját felelősségre."
+  "Third-party plugins are created by the community and are not officially supported by AriadnevShell.\n\nThese plugins may pose security and privacy risks - install at your own risk.": {
+    "Third-party plugins are created by the community and are not officially supported by AriadnevShell.\n\nThese plugins may pose security and privacy risks - install at your own risk.": "A külső bővítményeket a közösség készíti, és a AriadnevShell hivatalosan nem támogatja őket.\n\nEzek a bővítmények biztonsági és adatvédelmi kockázatokat jelenthetnek – telepítés csak saját felelősségre."
   },
   "This bind is overridden by config.kdl": {
     "This bind is overridden by config.kdl": "Ezt a billentyűt felülírja a config.kdl"
@@ -8498,8 +8498,8 @@
   "This device": {
     "This device": "Ez az eszköz"
   },
-  "This install is still using hyprland.conf. Run dms setup to migrate before changing these settings.": {
-    "This install is still using hyprland.conf. Run dms setup to migrate before changing these settings.": "Ez a telepítés továbbra is a hyprland.conf fájlt használja. Futtasd a dms setup parancsot a migráláshoz ezen beállítások módosítása előtt."
+  "This install is still using hyprland.conf. Run advs setup to migrate before changing these settings.": {
+    "This install is still using hyprland.conf. Run advs setup to migrate before changing these settings.": "Ez a telepítés továbbra is a hyprland.conf fájlt használja. Futtasd a advs setup parancsot a migráláshoz ezen beállítások módosítása előtt."
   },
   "This may take a few seconds": {
     "This may take a few seconds": "Ez eltarthat néhány másodpercig"
@@ -8612,8 +8612,8 @@
   "To update, run the following command:": {
     "To update, run the following command:": "A frissítéshez futtasd a következő parancsot:"
   },
-  "To use this DMS bind, remove or change the keybind in your config.kdl": {
-    "To use this DMS bind, remove or change the keybind in your config.kdl": "A DMS-billentyű használatához távolítsd el vagy módosítsd a billentyűkombinációt a config.kdl fájlban"
+  "To use this ADVS bind, remove or change the keybind in your config.kdl": {
+    "To use this ADVS bind, remove or change the keybind in your config.kdl": "A ADVS-billentyű használatához távolítsd el vagy módosítsd a billentyűkombinációt a config.kdl fájlban"
   },
   "Toast": {
     "Toast": "Felugró értesítés"
@@ -8813,8 +8813,8 @@
   "Uninstall failed: %1": {
     "Uninstall failed: %1": "Az eltávolítás sikertelen: %1"
   },
-  "Uninstall the DMS greeter? This will remove configuration and restore your previous display manager. A terminal will open for sudo authentication.": {
-    "Uninstall the DMS greeter? This will remove configuration and restore your previous display manager. A terminal will open for sudo authentication.": "Eltávolítod a DMS-üdvözlőképernyőt? (greeter) Ez törli a beállításokat és visszaállítja az előző megjelenítéskezelőt. Egy terminál fog megnyílni a sudo hitelesítéshez."
+  "Uninstall the ADVS greeter? This will remove configuration and restore your previous display manager. A terminal will open for sudo authentication.": {
+    "Uninstall the ADVS greeter? This will remove configuration and restore your previous display manager. A terminal will open for sudo authentication.": "Eltávolítod a ADVS-üdvözlőképernyőt? (greeter) Ez törli a beállításokat és visszaállítja az előző megjelenítéskezelőt. Egy terminál fog megnyílni a sudo hitelesítéshez."
   },
   "Uninstalled: %1": {
     "Uninstalled: %1": "Eltávolítva: %1"
@@ -9104,8 +9104,8 @@
   "Uses the spotlight-bar IPC action and always opens the minimal bar.": {
     "Uses the spotlight-bar IPC action and always opens the minimal bar.": "A „spotlight-bar” IPC-műveletet használja, és mindig a minimális sávot nyitja meg."
   },
-  "Using DankCalendar%1": {
-    "Using DankCalendar%1": "DankCalendar%1 használata"
+  "Using AdvCalendar%1": {
+    "Using AdvCalendar%1": "AdvCalendar%1 használata"
   },
   "Using global monospace font from Settings → Personalization": {
     "Using global monospace font from Settings → Personalization": "A Beállítások → Személyre szabás menüpontban megadott globális rögzített szélességű betűtípus használata"
@@ -9287,8 +9287,8 @@
   "Welcome": {
     "Welcome": "Üdvözlünk"
   },
-  "Welcome to DankMaterialShell": {
-    "Welcome to DankMaterialShell": "Üdvözlünk a DankMaterialShell-ben"
+  "Welcome to AriadnevShell": {
+    "Welcome to AriadnevShell": "Üdvözlünk a AriadnevShell-ben"
   },
   "When clicking a dock window in a Hyprland special workspace, bring that special workspace back before focusing the window": {
     "When clicking a dock window in a Hyprland special workspace, bring that special workspace back before focusing the window": "Ha a Hyprland speciális munkaterületén lévő dokkablakra kattintasz, visszahozza azt a speciális munkaterületet, mielőtt az ablakra fókuszálna"
@@ -9575,8 +9575,8 @@
   "display rotation option": {
     "Normal": "Normál"
   },
-  "dms-greeter is not installed. Install the dms-greeter package to manage the greeter.": {
-    "dms-greeter is not installed. Install the dms-greeter package to manage the greeter.": ""
+  "advs-greeter is not installed. Install the advs-greeter package to manage the greeter.": {
+    "advs-greeter is not installed. Install the advs-greeter package to manage the greeter.": ""
   },
   "e.g. /usr/bin/my-script --flag": {
     "e.g. /usr/bin/my-script --flag": "Például /usr/bin/my-script --flag"
@@ -9620,8 +9620,8 @@
   "loginctl activate failed (exit %1)": {
     "loginctl activate failed (exit %1)": "„loginctl activate” sikertelen (kilépési kód: %1)"
   },
-  "loginctl not available - lock integration requires DMS socket connection": {
-    "loginctl not available - lock integration requires DMS socket connection": "A loginctl nem érhető el – a zárolás integrációhoz DMS-socketkapcsolat szükséges"
+  "loginctl not available - lock integration requires ADVS socket connection": {
+    "loginctl not available - lock integration requires ADVS socket connection": "A loginctl nem érhető el – a zárolás integrációhoz ADVS-socketkapcsolat szükséges"
   },
   "mango: config reloaded": {
     "mango: config reloaded": "mango: konfiguráció újratöltve"
@@ -9662,8 +9662,8 @@
   "niri shortcuts config": {
     "niri shortcuts config": "niri gyorsbillentyűk beállítása"
   },
-  "niri/dms Discord": {
-    "niri/dms Discord": "niri/dms Discord"
+  "niri/advs Discord": {
+    "niri/advs Discord": "niri/advs Discord"
   },
   "niri: config reloaded": {
     "niri: config reloaded": "niri: konfiguráció újratöltve"
@@ -9740,8 +9740,8 @@
   "up": {
     "up": "fel"
   },
-  "update dms for NM integration.": {
-    "update dms for NM integration.": "frissítsd a dms-t az NM integrációhoz."
+  "update advs for NM integration.": {
+    "update advs for NM integration.": "frissítsd a advs-t az NM integrációhoz."
   },
   "useradd failed (exit %1)": {
     "useradd failed (exit %1)": "„useradd” sikertelen (kilépési kód: %1)"

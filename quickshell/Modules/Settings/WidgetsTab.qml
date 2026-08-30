@@ -24,10 +24,10 @@ Item {
         return pos === SettingsData.Position.Left || pos === SettingsData.Position.Right;
     }
 
-    readonly property bool dankIslandOwnsSelectedBarCenter: {
-        SettingsData.dankIslandBarId;
+    readonly property bool advIslandOwnsSelectedBarCenter: {
+        SettingsData.advIslandBarId;
         selectedBarId;
-        return !!selectedBarId && selectedBarId === SettingsData.dankIslandBarId;
+        return !!selectedBarId && selectedBarId === SettingsData.advIslandBarId;
     }
 
     property bool hasMultipleBars: SettingsData.barConfigs.length > 1
@@ -49,7 +49,7 @@ Item {
     property real proxyY: 0
     property real proxyWidth: 0
 
-    DankTooltipV2 {
+    AdvTooltipV2 {
         id: sharedTooltip
     }
 
@@ -271,7 +271,7 @@ Item {
                 "description": I18n.tr("Check for system updates"),
                 "icon": "update",
                 "enabled": SystemUpdateService.sysupdateAvailable,
-                "warning": SystemUpdateService.sysupdateAvailable ? undefined : I18n.tr("Requires DMS server with sysupdate capability")
+                "warning": SystemUpdateService.sysupdateAvailable ? undefined : I18n.tr("Requires ADVS server with sysupdate capability")
             },
             {
                 "id": "powerMenuButton",
@@ -429,7 +429,7 @@ Item {
     }
 
     function setWidgetsForSection(sectionId, widgets) {
-        if (sectionId === "center" && dankIslandOwnsSelectedBarCenter)
+        if (sectionId === "center" && advIslandOwnsSelectedBarCenter)
             return;
         switch (sectionId) {
         case "left":
@@ -572,7 +572,7 @@ Item {
 
     // Move a widget across sections (or within); committed as one atomic bar-config save
     function moveWidget(fromSection, toSection, movedId, toIndex) {
-        if (dankIslandOwnsSelectedBarCenter && (fromSection === "center" || toSection === "center"))
+        if (advIslandOwnsSelectedBarCenter && (fromSection === "center" || toSection === "center"))
             return;
         if (fromSection === toSection) {
             var arr = getWidgetsForSection(fromSection).slice();
@@ -598,7 +598,7 @@ Item {
     }
 
     function sectionAtY(gy) {
-        var sections = dankIslandOwnsSelectedBarCenter ? ["left", "right"] : ["left", "center", "right"];
+        var sections = advIslandOwnsSelectedBarCenter ? ["left", "right"] : ["left", "center", "right"];
         var nearest = "";
         var nearestDist = Infinity;
         for (var i = 0; i < sections.length; i++) {
@@ -724,7 +724,7 @@ Item {
     }
 
     function moveAcrossSections(sectionId, id, delta) {
-        var order = dankIslandOwnsSelectedBarCenter ? ["left", "right"] : ["left", "center", "right"];
+        var order = advIslandOwnsSelectedBarCenter ? ["left", "right"] : ["left", "center", "right"];
         var si = order.indexOf(sectionId);
         var ti = si + delta;
         if (si < 0 || ti < 0 || ti >= order.length)
@@ -1150,7 +1150,7 @@ Item {
         widgetSelectionPopupLoader.item.show();
     }
 
-    DankFlickable {
+    AdvFlickable {
         anchors.fill: parent
         clip: true
         contentHeight: mainColumn.height + Theme.spacingXL
@@ -1182,7 +1182,7 @@ Item {
                         width: parent.width
                         spacing: Theme.spacingM
 
-                        DankIcon {
+                        AdvIcon {
                             name: "toolbar"
                             size: Theme.iconSize
                             color: Theme.primary
@@ -1198,7 +1198,7 @@ Item {
                         }
                     }
 
-                    DankButtonGroup {
+                    AdvButtonGroup {
                         id: barSelectorGroup
                         width: parent.width
                         model: SettingsData.barConfigs.map(cfg => cfg.name || ("Bar " + (SettingsData.barConfigs.indexOf(cfg) + 1)))
@@ -1235,7 +1235,7 @@ Item {
                         width: parent.width
                         spacing: Theme.spacingM
 
-                        DankIcon {
+                        AdvIcon {
                             name: "widgets"
                             size: Theme.iconSize
                             color: Theme.primary
@@ -1268,7 +1268,7 @@ Item {
                                 anchors.centerIn: parent
                                 spacing: Theme.spacingXS
 
-                                DankIcon {
+                                AdvIcon {
                                     name: "refresh"
                                     size: 14
                                     color: Theme.surfaceText
@@ -1419,10 +1419,10 @@ Item {
                         id: centerSection
                         anchors.fill: parent
                         anchors.margins: Theme.spacingL
-                        title: widgetsTab.dankIslandOwnsSelectedBarCenter ? I18n.tr("Center Section - Reserved by Dank Island") : (selectedBarIsVertical ? I18n.tr("Middle Section") : I18n.tr("Center Section"))
-                        titleIcon: widgetsTab.dankIslandOwnsSelectedBarCenter ? "lock" : "format_align_center"
+                        title: widgetsTab.advIslandOwnsSelectedBarCenter ? I18n.tr("Center Section - Reserved by Adv Island") : (selectedBarIsVertical ? I18n.tr("Middle Section") : I18n.tr("Center Section"))
+                        titleIcon: widgetsTab.advIslandOwnsSelectedBarCenter ? "lock" : "format_align_center"
                         sectionId: "center"
-                        readOnly: widgetsTab.dankIslandOwnsSelectedBarCenter
+                        readOnly: widgetsTab.advIslandOwnsSelectedBarCenter
                         allWidgets: widgetsTab.baseWidgetDefinitions
                         items: widgetsTab.getItemsForSection("center")
                         onItemEnabledChanged: (sectionId, itemId, enabled) => {
@@ -1587,7 +1587,7 @@ Item {
         }
     }
 
-    // Floating drag avatar, outside the DankFlickable clip so it paints over the inter-card gap.
+    // Floating drag avatar, outside the AdvFlickable clip so it paints over the inter-card gap.
     Item {
         id: dragProxy
 
@@ -1608,7 +1608,7 @@ Item {
             scale: 1.02
             opacity: 0.95
 
-            DankIcon {
+            AdvIcon {
                 name: "drag_indicator"
                 size: Theme.iconSize - 4
                 color: Theme.primary
@@ -1617,7 +1617,7 @@ Item {
                 anchors.verticalCenter: parent.verticalCenter
             }
 
-            DankIcon {
+            AdvIcon {
                 id: proxyIcon
                 name: (widgetsTab.dragWidgetData && widgetsTab.dragWidgetData.icon) ? widgetsTab.dragWidgetData.icon : "widgets"
                 size: Theme.iconSize

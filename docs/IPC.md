@@ -1,22 +1,22 @@
 # IPC Commands Reference
 
-DankMaterialShell provides comprehensive IPC (Inter-Process Communication) functionality that allows external control of the shell through command-line commands. All IPC commands follow the format:
+AriadnevShell provides comprehensive IPC (Inter-Process Communication) functionality that allows external control of the shell through command-line commands. All IPC commands follow the format:
 
 ```bash
-dms ipc call <target> <function> [parameters...]
+advs ipc call <target> <function> [parameters...]
 ```
 
 ## Discovering IPC commands
 
-List all available targets and functions while DMS is running:
+List all available targets and functions while ADVS is running:
 
 ```bash
-dms ipc list
-dms ipc          # same
-dms ipc --help   # same, plus usage text
+advs ipc list
+advs ipc          # same
+advs ipc --help   # same, plus usage text
 ```
 
-Live listing requires DMS to be running. If listing fails, use this document or the [Keybinds & IPC docs](https://danklinux.com/docs/dankmaterialshell/keybinds-ipc) as an offline reference.
+Live listing requires ADVS to be running. If listing fails, use this document or the [Keybinds & IPC docs](https://ariadnev.vchun.dev/docs/advmaterialshell/keybinds-ipc) as an offline reference.
 
 ## Target: `audio`
 
@@ -56,9 +56,9 @@ Audio system control and information.
 
 ### Examples
 ```bash
-dms ipc call audio setvolume 50
-dms ipc call audio increment 10
-dms ipc call audio mute
+advs ipc call audio setvolume 50
+advs ipc call audio increment 10
+advs ipc call audio mute
 ```
 
 ## Target: `brightness`
@@ -98,9 +98,9 @@ Display brightness control for internal and external displays.
 
 ### Examples
 ```bash
-dms ipc call brightness set 80
-dms ipc call brightness increment 10 ""
-dms ipc call brightness decrement 5 "intel_backlight"
+advs ipc call brightness set 80
+advs ipc call brightness increment 10 ""
+advs ipc call brightness decrement 5 "intel_backlight"
 ```
 
 ## Target: `night`
@@ -153,11 +153,11 @@ Night mode (gamma/color temperature) control.
 
 ### Examples
 ```bash
-dms ipc call night toggle
-dms ipc call night temperature 4000
-dms ipc call night automation time
-dms ipc call night schedule 20:00 06:00
-dms ipc call night location 40.7128 -74.0060
+advs ipc call night toggle
+advs ipc call night temperature 4000
+advs ipc call night automation time
+advs ipc call night schedule 20:00 06:00
+advs ipc call night location 40.7128 -74.0060
 ```
 
 ## Target: `mpris`
@@ -196,8 +196,8 @@ Media player control via MPRIS interface.
 
 ### Examples
 ```bash
-dms ipc call mpris playPause
-dms ipc call mpris next
+advs ipc call mpris playPause
+advs ipc call mpris next
 ```
 
 ## Target: `lock`
@@ -220,8 +220,8 @@ Screen lock control and status.
 
 ### Examples
 ```bash
-dms ipc call lock lock
-dms ipc call lock isLocked
+advs ipc call lock lock
+advs ipc call lock isLocked
 ```
 
 ## Target: `sessions`
@@ -231,7 +231,7 @@ Logind session enumeration and seat-local session switching. Wraps `loginctl lis
 ### Functions
 
 **`list`**
-- Print every session DMS knows about as tab-separated columns: `sessionId\tusername\tseat\ttty\ttype\tcurrent-marker`
+- Print every session ADVS knows about as tab-separated columns: `sessionId\tusername\tseat\ttty\ttype\tcurrent-marker`
 - Returns: Multi-line string. The current session is marked with `*current*`.
 
 **`refresh`**
@@ -256,19 +256,19 @@ Logind session enumeration and seat-local session switching. Wraps `loginctl lis
 ### Examples
 ```bash
 # Inspect what's switchable
-dms ipc call sessions list
+advs ipc call sessions list
 
 # Open the picker (useful for a keybind)
-dms ipc call sessions open
+advs ipc call sessions open
 
 # Jump straight to another logged-in user without the picker
-dms ipc call sessions switchTo testuser2
+advs ipc call sessions switchTo testuser2
 
 # Or by session ID, when the user has multiple sessions
-dms ipc call sessions activate 4
+advs ipc call sessions activate 4
 ```
 
-The dedicated `dms switch-user [target]` CLI command wraps the same behavior with a friendlier error path (it prints the switchable list when no target matches).
+The dedicated `advs switch-user [target]` CLI command wraps the same behavior with a friendlier error path (it prints the switchable list when no target matches).
 
 ## Target: `inhibit`
 
@@ -290,13 +290,13 @@ Idle inhibitor control to prevent automatic sleep/lock.
 
 ### Examples
 ```bash
-dms ipc call inhibit toggle
-dms ipc call inhibit enable
+advs ipc call inhibit toggle
+advs ipc call inhibit enable
 ```
 
 ## Target: `powerprofile`
 
-Power profile control via `power-profiles-daemon`. Changes stay in sync with DMS UI and trigger the power profile OSD when enabled.
+Power profile control via `power-profiles-daemon`. Changes stay in sync with ADVS UI and trigger the power profile OSD when enabled.
 
 Requires `power-profiles-daemon` to be installed and running. Works on all compositors.
 
@@ -333,12 +333,12 @@ Requires `power-profiles-daemon` to be installed and running. Works on all compo
 
 ### Examples
 ```bash
-dms ipc call powerprofile status
-dms ipc call powerprofile list
-dms ipc call powerprofile cycle
-dms ipc call powerprofile set balanced
-dms ipc call powerprofile set performance
-dms ipc call powerprofile toggle
+advs ipc call powerprofile status
+advs ipc call powerprofile list
+advs ipc call powerprofile cycle
+advs ipc call powerprofile set balanced
+advs ipc call powerprofile set performance
+advs ipc call powerprofile toggle
 ```
 
 ## Target: `wallpaper`
@@ -396,36 +396,36 @@ Wallpaper management and retrieval with support for per-monitor configurations.
 
 **Global wallpaper mode:**
 ```bash
-dms ipc call wallpaper get
-dms ipc call wallpaper set /path/to/image.jpg
-dms ipc call wallpaper next
-dms ipc call wallpaper clear
+advs ipc call wallpaper get
+advs ipc call wallpaper set /path/to/image.jpg
+advs ipc call wallpaper next
+advs ipc call wallpaper clear
 ```
 
 **Per-monitor wallpaper mode:**
 ```bash
 # Set different wallpapers for each monitor
-dms ipc call wallpaper setFor DP-2 /path/to/image1.jpg
-dms ipc call wallpaper setFor eDP-1 /path/to/image2.jpg
+advs ipc call wallpaper setFor DP-2 /path/to/image1.jpg
+advs ipc call wallpaper setFor eDP-1 /path/to/image2.jpg
 
 # Get wallpaper for specific monitor
-dms ipc call wallpaper getFor DP-2
+advs ipc call wallpaper getFor DP-2
 
 # Cycle wallpapers for specific monitor
-dms ipc call wallpaper nextFor eDP-1
-dms ipc call wallpaper prevFor DP-2
+advs ipc call wallpaper nextFor eDP-1
+advs ipc call wallpaper prevFor DP-2
 
 # Clear all wallpapers and return to global mode
-dms ipc call wallpaper clear
+advs ipc call wallpaper clear
 ```
 
 **Error handling:**
 When per-monitor mode is enabled, legacy functions will return helpful error messages:
 ```bash
-dms ipc call wallpaper get
+advs ipc call wallpaper get
 # Returns: "ERROR: Per-monitor mode enabled. Use getFor(screenName) instead."
 
-dms ipc call wallpaper set /path/to/image.jpg
+advs ipc call wallpaper set /path/to/image.jpg
 # Returns: "ERROR: Per-monitor mode enabled. Use setFor(screenName, path) instead."
 ```
 
@@ -450,9 +450,9 @@ User profile image management.
 
 ### Examples
 ```bash
-dms ipc call profile getImage
-dms ipc call profile setImage /path/to/avatar.png
-dms ipc call profile clearImage
+advs ipc call profile getImage
+advs ipc call profile setImage /path/to/avatar.png
+advs ipc call profile clearImage
 ```
 
 ## Target: `theme`
@@ -479,8 +479,8 @@ Theme mode control (light/dark mode switching).
 
 ### Examples
 ```bash
-dms ipc call theme toggle
-dms ipc call theme dark
+advs ipc call theme toggle
+advs ipc call theme dark
 ```
 
 ## Target: `bar`
@@ -511,19 +511,19 @@ Top bar visibility control.
 
 ### Examples
 ```bash
-dms ipc call bar toggle
-dms ipc call bar toggleReveal index 0
-dms ipc call bar hide
-dms ipc call bar status
+advs ipc call bar toggle
+advs ipc call bar toggleReveal index 0
+advs ipc call bar hide
+advs ipc call bar status
 ```
 
-### Dank Island instances
+### Adv Island instances
 
-One bar instance may be designated as Dank Island (Settings → Island → Island instance)
+One bar instance may be designated as Adv Island (Settings → Island → Island instance)
 
 ## Target: `island`
 
-Dank Island activity surface. Requires a bar instance designated as the island in Settings (Island → Island instance) and enabled. Commands target the focused screen.
+Adv Island activity surface. Requires a bar instance designated as the island in Settings (Island → Island instance) and enabled. Commands target the focused screen.
 
 ### Activities
 
@@ -540,25 +540,25 @@ Dank Island activity surface. Requires a bar instance designated as the island i
 **`open <activity>`**
 - Expand the island into the requested activity
 - Parameters: `activity` - Activity id (see above)
-- Returns: `DANK_ISLAND_OPEN: <activity>\t<screen>`, `DANK_ISLAND_ACTIVITY_UNAVAILABLE: <activity>`, or `DANK_ISLAND_UNAVAILABLE`
+- Returns: `ADV_ISLAND_OPEN: <activity>\t<screen>`, `ADV_ISLAND_ACTIVITY_UNAVAILABLE: <activity>`, or `ADV_ISLAND_UNAVAILABLE`
 
 **`toggle <activity>`**
 - Collapse if the island is expanded; otherwise expand into the requested activity
 - Parameters: `activity` - Activity id to open when collapsed
-- Returns: `DANK_ISLAND_OPEN: <activity>\t<screen>`, `DANK_ISLAND_CLOSED: <screen>`, `DANK_ISLAND_ACTIVITY_UNAVAILABLE: <activity>`, or `DANK_ISLAND_UNAVAILABLE`
+- Returns: `ADV_ISLAND_OPEN: <activity>\t<screen>`, `ADV_ISLAND_CLOSED: <screen>`, `ADV_ISLAND_ACTIVITY_UNAVAILABLE: <activity>`, or `ADV_ISLAND_UNAVAILABLE`
 
 **`show <activity>`**
 - Switch the compact island face without expanding
 - Parameters: `activity` - Activity id
-- Returns: `DANK_ISLAND_SHOW: <activity>\t<screen>`, `DANK_ISLAND_ACTIVITY_UNAVAILABLE: <activity>`, or `DANK_ISLAND_UNAVAILABLE`
+- Returns: `ADV_ISLAND_SHOW: <activity>\t<screen>`, `ADV_ISLAND_ACTIVITY_UNAVAILABLE: <activity>`, or `ADV_ISLAND_UNAVAILABLE`
 
 **`close`**
 - Collapse the island back to its compact face
-- Returns: `DANK_ISLAND_CLOSED: <screen>` or `DANK_ISLAND_UNAVAILABLE`
+- Returns: `ADV_ISLAND_CLOSED: <screen>` or `ADV_ISLAND_UNAVAILABLE`
 
 **`cycle`**
 - Cycle island activities (`home` → `media` when available → `launcher` when Launcher → Default Opens is Island → `controlcenter` → `notificationcenter`)
-- Returns: `DANK_ISLAND_ACTIVITY: <activity>\t<screen>` or `DANK_ISLAND_UNAVAILABLE`
+- Returns: `ADV_ISLAND_ACTIVITY: <activity>\t<screen>` or `ADV_ISLAND_UNAVAILABLE`
 
 **`status`**
 - JSON snapshot of the island on the focused screen
@@ -566,39 +566,39 @@ Dank Island activity surface. Requires a bar instance designated as the island i
 
 **`notifications`**
 - Toggle the notification center as an island activity
-- Returns: `DANK_ISLAND_OPEN: notificationcenter\t<screen>`, `DANK_ISLAND_CLOSED: <screen>`, or `DANK_ISLAND_UNAVAILABLE`
+- Returns: `ADV_ISLAND_OPEN: notificationcenter\t<screen>`, `ADV_ISLAND_CLOSED: <screen>`, or `ADV_ISLAND_UNAVAILABLE`
 
 **`openOn <activity> <screen>` / `toggleOn <activity> <screen>` / `showOn <activity> <screen>` / `closeOn <screen>` / `cycleOn <screen>` / `statusOn <screen>` / `notificationsOn <screen>`**
 - Same actions on a specific monitor (e.g. `DP-1`)
-- A screen name with no island on it returns `DANK_ISLAND_UNAVAILABLE` rather than falling back to another display
+- A screen name with no island on it returns `ADV_ISLAND_UNAVAILABLE` rather than falling back to another display
 
 ### Shared IPC routing
 
-When Dank Island is the sole top chrome on the focused display, these existing targets open island activities instead of their popouts:
+When Adv Island is the sole top chrome on the focused display, these existing targets open island activities instead of their popouts:
 
 - `control-center` `open` / `toggle` / `hide` / `status`
 - `notifications` `open` / `toggle` / `close` (the notification modal falls back when the island does not own the screen)
 - `dash` `open` / `toggle` `overview` (or no tab), `media`, `wallpaper`, or `weather`, and `dash close` while those activities are open
-- `dankdash wallpaper` (deprecated; same wallpaper path)
+- `advdash wallpaper` (deprecated; same wallpaper path)
 
 `spotlight` and `launcher` open the island launcher when **Launcher → Default Opens** is set to Island, and fall back to Spotlight if the focused screen has no island.
 
 ### Examples
 ```bash
-dms ipc call island toggle home
-dms ipc call island open home
-dms ipc call island open media
-dms ipc call island open launcher
-dms ipc call island open controlcenter
-dms ipc call island open wallpaper
-dms ipc call island open weather
-dms ipc call island open notifications
-dms ipc call island notifications
-dms ipc call island show home
-dms ipc call island toggleOn media DP-1
-dms ipc call island cycle
-dms ipc call island close
-dms ipc call island status
+advs ipc call island toggle home
+advs ipc call island open home
+advs ipc call island open media
+advs ipc call island open launcher
+advs ipc call island open controlcenter
+advs ipc call island open wallpaper
+advs ipc call island open weather
+advs ipc call island open notifications
+advs ipc call island notifications
+advs ipc call island show home
+advs ipc call island toggleOn media DP-1
+advs ipc call island cycle
+advs ipc call island close
+advs ipc call island status
 ```
 
 ## Target: `systemupdater`
@@ -622,10 +622,10 @@ System updater widget control and background update checks.
 
 ### Examples
 ```bash
-dms ipc call systemupdater toggle
-dms ipc call systemupdater open
-dms ipc call systemupdater close
-dms ipc call systemupdater updatestatus
+advs ipc call systemupdater toggle
+advs ipc call systemupdater open
+advs ipc call systemupdater close
+advs ipc call systemupdater updatestatus
 ```
 
 ## Target: `defaultApp`
@@ -672,8 +672,8 @@ Launch applications configured in Settings > Default Apps.
 
 ### Examples
 ```bash
-dms ipc call defaultApp browser
-dms ipc call defaultApp fileManager
+advs ipc call defaultApp browser
+advs ipc call defaultApp fileManager
 ```
 
 ## Modal Controls
@@ -694,7 +694,7 @@ Application launcher modal control.
   - Parameters: `query` - Search text to pre-fill in the search box (only used when opening)
   - Returns: Success confirmation
 
-When **Launcher → Default Opens** is set to Island, `spotlight` and `launcher` open the island launcher on the focused screen (Spotlight is used if that screen has no Dank Island). Direct island control is `island open launcher`.
+When **Launcher → Default Opens** is set to Island, `spotlight` and `launcher` open the island launcher on the focused screen (Spotlight is used if that screen has no Adv Island). Direct island control is `island open launcher`.
 
 ### Target: `clipboard`
 Clipboard history modal control.
@@ -756,13 +756,13 @@ Control Center popout containing network, bluetooth, audio, power, and other qui
 - `close` - Hide the control center
 - `toggle` - Toggle control center visibility
 
-When Dank Island is enabled and is the sole top chrome on the focused display, these calls open the native Control Center island activity instead of the popout. Use `island` to target a specific screen or activity.
+When Adv Island is enabled and is the sole top chrome on the focused display, these calls open the native Control Center island activity instead of the popout. Use `island` to target a specific screen or activity.
 
 **Examples**
 ```bash
-dms ipc call control-center toggle
-dms ipc call control-center open
-dms ipc call control-center close
+advs ipc call control-center toggle
+advs ipc call control-center open
+advs ipc call control-center close
 ```
 
 ### Target: `notepad`
@@ -775,7 +775,7 @@ Notepad/scratchpad modal control for quick note-taking.
 - `openFile <path>` - Show notepad and load a file into a tab, reusing an existing tab if that file is already open
   - Parameters: `path` - Absolute path to a file. Empty path behaves like `open`.
   - Returns: Success/failure message
-  - This is what `com.danklinux.dms.notepad.desktop`'s `Exec=dms ipc call notepad openFile %f` uses so Notepad shows up in "Open With" pickers for text files.
+  - This is what `dev.vchun.ariadnev.notepad.desktop`'s `Exec=advs ipc call notepad openFile %f` uses so Notepad shows up in "Open With" pickers for text files.
 - `expand` - Expand the active notepad width and open it if hidden
 - `collapse` - Collapse the active notepad width without changing visibility
 - `toggleExpand` - Toggle the active notepad width between collapsed and expanded
@@ -793,13 +793,13 @@ Dashboard popup control with tab selection for overview, media, and weather info
   - Parameters: `tab` - Tab to open when showing: "", "overview", "media", or "weather"
   - Returns: Success/failure message
 
-On displays where Dank Island is the sole top chrome, `open`/`toggle` with `overview` (or no tab), `media`, `wallpaper`, or `weather` route to the matching island activity. `close` collapses those island activities when they are open.
+On displays where Adv Island is the sole top chrome, `open`/`toggle` with `overview` (or no tab), `media`, `wallpaper`, or `weather` route to the matching island activity. `close` collapses those island activities when they are open.
 
-### Target: `dankdash`
-DankDash wallpaper browser control.
+### Target: `advdash`
+AdvDash wallpaper browser control.
 
 **Functions:**
-- `wallpaper` - Toggle DankDash popup on focused screen with wallpaper tab selected
+- `wallpaper` - Toggle AdvDash popup on focused screen with wallpaper tab selected
   - Returns: Success/failure message
 
 ### Target: `file`
@@ -824,12 +824,12 @@ In-shell color picker modal for theme and settings color selection.
 - `toggle` - Toggle color picker modal visibility
 - `toggleInstant` - Toggle color picker modal visibility without animation on hide
 
-**Note:** This controls the in-shell modal. To pick a pixel from the screen via CLI, use `dms color pick` instead (see [Color Picker CLI](https://danklinux.com/docs/dankmaterialshell/cli-color-picker)).
+**Note:** This controls the in-shell modal. To pick a pixel from the screen via CLI, use `advs color pick` instead (see [Color Picker CLI](https://ariadnev.vchun.dev/docs/advmaterialshell/cli-color-picker)).
 
 **Examples:**
 ```bash
-dms ipc call color-picker toggle
-dms ipc call color-picker openColor "#3f51b5"
+advs ipc call color-picker toggle
+advs ipc call color-picker openColor "#3f51b5"
 ```
 
 ### Target: `hypr`
@@ -873,72 +873,72 @@ Displays a live overview of all workspaces across all monitors with window previ
 ### Modal Examples
 ```bash
 # Open application launcher
-dms ipc call spotlight toggle
+advs ipc call spotlight toggle
 
-# Toggle Dank Island on the focused screen
-dms ipc call island toggle home
-dms ipc call island open media
-dms ipc call island open controlcenter
-dms ipc call island cycle
+# Toggle Adv Island on the focused screen
+advs ipc call island toggle home
+advs ipc call island open media
+advs ipc call island open controlcenter
+advs ipc call island cycle
 
 # Open spotlight with pre-filled search
-dms ipc call spotlight openQuery browser
-dms ipc call spotlight toggleQuery "!"
+advs ipc call spotlight openQuery browser
+advs ipc call spotlight toggleQuery "!"
 
 # Show clipboard history
-dms ipc call clipboard open
+advs ipc call clipboard open
 
 # Toggle notification center
-dms ipc call notifications toggle
+advs ipc call notifications toggle
 
 # Show settings
-dms ipc call settings open
+advs ipc call settings open
 
 # Show system monitor
-dms ipc call processlist toggle
+advs ipc call processlist toggle
 
 # Show power menu
-dms ipc call powermenu toggle
+advs ipc call powermenu toggle
 
 # Cycle or set power profile (requires power-profiles-daemon)
-dms ipc call powerprofile cycle
-dms ipc call powerprofile toggle
+advs ipc call powerprofile cycle
+advs ipc call powerprofile toggle
 
 # Open notepad
-dms ipc call notepad toggle
+advs ipc call notepad toggle
 
 # Open the active notepad expanded
-dms ipc call notepad expand
+advs ipc call notepad expand
 
 # Collapse the active notepad width
-dms ipc call notepad collapse
+advs ipc call notepad collapse
 
 # Toggle the active notepad width
-dms ipc call notepad toggleExpand
+advs ipc call notepad toggleExpand
 
 # Show dashboard with specific tabs
-dms ipc call dash open overview
-dms ipc call dash toggle media
-dms ipc call dash open weather
+advs ipc call dash open overview
+advs ipc call dash toggle media
+advs ipc call dash open weather
 
 # Open wallpaper browser
-dms ipc call dankdash wallpaper
+advs ipc call advdash wallpaper
 
 # Open file browsers
-dms ipc call file browse wallpaper
-dms ipc call file browse profile
+advs ipc call file browse wallpaper
+advs ipc call file browse profile
 
 # Open color picker
-dms ipc call color-picker toggle
+advs ipc call color-picker toggle
 
 # Show Hyprland keybinds cheatsheet (Hyprland only)
-dms ipc call hypr toggleBinds
-dms ipc call hypr openBinds
+advs ipc call hypr toggleBinds
+advs ipc call hypr openBinds
 
 # Show Hyprland workspace overview (Hyprland only)
-dms ipc call hypr toggleOverview
-dms ipc call hypr openOverview
-dms ipc call hypr closeOverview
+advs ipc call hypr toggleOverview
+advs ipc call hypr openOverview
+advs ipc call hypr closeOverview
 ```
 
 ## Common Usage Patterns
@@ -950,33 +950,33 @@ These IPC commands are designed to be used with window manager keybindings.
 **Example niri configuration:**
 ```kdl
 binds {
-    Mod+Space { spawn "qs" "-c" "dms" "ipc" "call" "spotlight" "toggle"; }
-    Mod+I { spawn "qs" "-c" "dms" "ipc" "call" "island" "toggle" "home"; }
-    Mod+Shift+I { spawn "qs" "-c" "dms" "ipc" "call" "island" "open" "controlcenter"; }
-    Mod+V { spawn "qs" "-c" "dms" "ipc" "call" "clipboard" "toggle"; }
-    Mod+P { spawn "qs" "-c" "dms" "ipc" "call" "notepad" "toggle"; }
-    Mod+Shift+P { spawn "qs" "-c" "dms" "ipc" "call" "notepad" "expand"; }
-    Mod+Ctrl+P { spawn "qs" "-c" "dms" "ipc" "call" "notepad" "toggleExpand"; }
-    Mod+X { spawn "qs" "-c" "dms" "ipc" "call" "powermenu" "toggle"; }
-    XF86AudioRaiseVolume { spawn "qs" "-c" "dms" "ipc" "call" "audio" "increment" "3"; }
-    XF86MonBrightnessUp { spawn "qs" "-c" "dms" "ipc" "call" "brightness" "increment" "5" ""; }
+    Mod+Space { spawn "qs" "-c" "advs" "ipc" "call" "spotlight" "toggle"; }
+    Mod+I { spawn "qs" "-c" "advs" "ipc" "call" "island" "toggle" "home"; }
+    Mod+Shift+I { spawn "qs" "-c" "advs" "ipc" "call" "island" "open" "controlcenter"; }
+    Mod+V { spawn "qs" "-c" "advs" "ipc" "call" "clipboard" "toggle"; }
+    Mod+P { spawn "qs" "-c" "advs" "ipc" "call" "notepad" "toggle"; }
+    Mod+Shift+P { spawn "qs" "-c" "advs" "ipc" "call" "notepad" "expand"; }
+    Mod+Ctrl+P { spawn "qs" "-c" "advs" "ipc" "call" "notepad" "toggleExpand"; }
+    Mod+X { spawn "qs" "-c" "advs" "ipc" "call" "powermenu" "toggle"; }
+    XF86AudioRaiseVolume { spawn "qs" "-c" "advs" "ipc" "call" "audio" "increment" "3"; }
+    XF86MonBrightnessUp { spawn "qs" "-c" "advs" "ipc" "call" "brightness" "increment" "5" ""; }
 }
 ```
 
 **Example Hyprland configuration:**
 ```conf
-bind = SUPER, Space, exec, qs -c dms ipc call spotlight toggle
-bind = SUPER, I, exec, qs -c dms ipc call island toggle home
-bind = SUPER SHIFT, I, exec, qs -c dms ipc call island open controlcenter
-bind = SUPER, V, exec, qs -c dms ipc call clipboard toggle
-bind = SUPER, P, exec, qs -c dms ipc call notepad toggle
-bind = SUPER SHIFT, P, exec, qs -c dms ipc call notepad expand
-bind = SUPER CTRL, P, exec, qs -c dms ipc call notepad toggleExpand
-bind = SUPER, X, exec, qs -c dms ipc call powermenu toggle
-bind = SUPER, slash, exec, qs -c dms ipc call hypr toggleBinds
-bind = SUPER, Tab, exec, qs -c dms ipc call hypr toggleOverview
-bind = , XF86AudioRaiseVolume, exec, qs -c dms ipc call audio increment 3
-bind = , XF86MonBrightnessUp, exec, qs -c dms ipc call brightness increment 5 ""
+bind = SUPER, Space, exec, qs -c advs ipc call spotlight toggle
+bind = SUPER, I, exec, qs -c advs ipc call island toggle home
+bind = SUPER SHIFT, I, exec, qs -c advs ipc call island open controlcenter
+bind = SUPER, V, exec, qs -c advs ipc call clipboard toggle
+bind = SUPER, P, exec, qs -c advs ipc call notepad toggle
+bind = SUPER SHIFT, P, exec, qs -c advs ipc call notepad expand
+bind = SUPER CTRL, P, exec, qs -c advs ipc call notepad toggleExpand
+bind = SUPER, X, exec, qs -c advs ipc call powermenu toggle
+bind = SUPER, slash, exec, qs -c advs ipc call hypr toggleBinds
+bind = SUPER, Tab, exec, qs -c advs ipc call hypr toggleOverview
+bind = , XF86AudioRaiseVolume, exec, qs -c advs ipc call audio increment 3
+bind = , XF86MonBrightnessUp, exec, qs -c advs ipc call brightness increment 5 ""
 ```
 
 ### Scripting and Automation
@@ -988,9 +988,9 @@ IPC commands can be used in scripts for automation:
 # Toggle night mode based on time of day
 hour=$(date +%H)
 if [ $hour -ge 20 ] || [ $hour -le 6 ]; then
-    dms ipc call night enable
+    advs ipc call night enable
 else
-    dms ipc call night disable
+    advs ipc call night disable
 fi
 ```
 
@@ -1000,9 +1000,9 @@ Many commands provide status information useful for scripts:
 
 ```bash
 # Check if screen is locked before performing action
-if dms ipc call lock isLocked | grep -q "false"; then
+if advs ipc call lock isLocked | grep -q "false"; then
     # Perform action only if unlocked
-    dms ipc call notifications open
+    advs ipc call notifications open
 fi
 ```
 

@@ -526,7 +526,7 @@ FocusScope {
                     anchors.centerIn: parent
                     spacing: Theme.spacingS
 
-                    DankIcon {
+                    AdvIcon {
                         name: gridButtonRect.actionData.icon
                         size: Theme.iconSize + 8
                         color: {
@@ -658,7 +658,7 @@ FocusScope {
                     }
                     spacing: Theme.spacingM
 
-                    DankIcon {
+                    AdvIcon {
                         name: listButtonRect.actionData.icon
                         size: Theme.iconSize + 4
                         color: {
@@ -738,7 +738,7 @@ FocusScope {
             }
         }
 
-        DankIcon {
+        AdvIcon {
             name: {
                 if (root.showHoldHint)
                     return "warning";

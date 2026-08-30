@@ -65,7 +65,7 @@ Item {
         id: greeterToggleConfirm
     }
 
-    DankFlickable {
+    AdvFlickable {
         anchors.fill: parent
         clip: true
         contentHeight: mainColumn.height + Theme.spacingXL
@@ -148,7 +148,7 @@ Item {
 
                 StyledText {
                     width: parent.width
-                    text: I18n.tr("Greeter group members can sync their login-screen theme with dms-greeter sync --profile after logging out and back in.")
+                    text: I18n.tr("Greeter group members can sync their login-screen theme with advs-greeter sync --profile after logging out and back in.")
                     font.pixelSize: Theme.fontSizeSmall
                     color: Theme.surfaceVariantText
                     wrapMode: Text.Wrap
@@ -175,7 +175,7 @@ Item {
                             anchors.margins: Theme.spacingM
                             spacing: Theme.spacingM
 
-                            DankIcon {
+                            AdvIcon {
                                 name: "account_circle"
                                 size: Theme.iconSize
                                 color: Theme.primary
@@ -249,7 +249,7 @@ Item {
                                 spacing: Theme.spacingS
                                 anchors.verticalCenter: parent.verticalCenter
 
-                                DankActionButton {
+                                AdvActionButton {
                                     id: greeterToggleBtn
                                     readonly property bool actionBlocked: root.operationPending
                                     buttonSize: 36
@@ -265,7 +265,7 @@ Item {
                                         const enableGreeter = !userRow.modelData.isGreeter;
                                         greeterToggleConfirm.showWithOptions({
                                             title: enableGreeter ? I18n.tr("Allow greeter access?") : I18n.tr("Remove greeter access?"),
-                                            message: enableGreeter ? I18n.tr("Add \"%1\" to the %2 group? They must log out and back in, then run dms-greeter sync --profile to publish their login-screen theme.").arg(userRow.modelData.username).arg(UsersService.greeterGroup) : I18n.tr("Remove \"%1\" from the %2 group?").arg(userRow.modelData.username).arg(UsersService.greeterGroup),
+                                            message: enableGreeter ? I18n.tr("Add \"%1\" to the %2 group? They must log out and back in, then run advs-greeter sync --profile to publish their login-screen theme.").arg(userRow.modelData.username).arg(UsersService.greeterGroup) : I18n.tr("Remove \"%1\" from the %2 group?").arg(userRow.modelData.username).arg(UsersService.greeterGroup),
                                             confirmText: enableGreeter ? I18n.tr("Allow") : I18n.tr("Remove"),
                                             confirmColor: Theme.primary,
                                             onConfirm: () => {
@@ -277,7 +277,7 @@ Item {
                                     }
                                 }
 
-                                DankActionButton {
+                                AdvActionButton {
                                     id: adminToggleBtn
                                     readonly property bool actionBlocked: root.operationPending || (userRow.isLastAdmin && userRow.modelData.isAdmin)
                                     buttonSize: 36
@@ -305,7 +305,7 @@ Item {
                                     }
                                 }
 
-                                DankActionButton {
+                                AdvActionButton {
                                     id: deleteBtn
                                     readonly property bool actionBlocked: root.operationPending || !UsersService.canDelete(userRow.modelData.username)
                                     buttonSize: 36
@@ -362,7 +362,7 @@ Item {
                         color: Theme.surfaceVariantText
                     }
 
-                    DankTextField {
+                    AdvTextField {
                         id: usernameField
                         width: parent.width
                         placeholderText: I18n.tr("e.g. alice")
@@ -406,7 +406,7 @@ Item {
                         color: Theme.surfaceVariantText
                     }
 
-                    DankTextField {
+                    AdvTextField {
                         id: passwordField
                         width: parent.width
                         placeholderText: I18n.tr("Set initial password")
@@ -429,7 +429,7 @@ Item {
                         color: Theme.surfaceVariantText
                     }
 
-                    DankTextField {
+                    AdvTextField {
                         id: confirmField
                         width: parent.width
                         placeholderText: I18n.tr("Re-enter password")
@@ -466,7 +466,7 @@ Item {
                     settingKey: "createUserGreeter"
                     tags: ["user", "greeter", "login", "sync"]
                     text: I18n.tr("Allow greeter login access")
-                    description: I18n.tr("Add the new user to the %1 group so they can run dms-greeter sync --profile.").arg(UsersService.greeterGroup)
+                    description: I18n.tr("Add the new user to the %1 group so they can run advs-greeter sync --profile.").arg(UsersService.greeterGroup)
                     checked: root.pendingGreeter
                     onToggled: checked => root.pendingGreeter = checked
                 }
@@ -475,7 +475,7 @@ Item {
                     width: parent.width
                     spacing: Theme.spacingM
 
-                    DankButton {
+                    AdvButton {
                         text: root.operationPending ? I18n.tr("Working...") : I18n.tr("Create User")
                         iconName: "person_add"
                         backgroundColor: Theme.primary

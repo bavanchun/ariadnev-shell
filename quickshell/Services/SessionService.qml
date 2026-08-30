@@ -48,7 +48,7 @@ Singleton {
     property bool prepareForSleepSubscriptionPending: false
     property double lastResumeSignalTimestamp: 0
 
-    readonly property string socketPath: Quickshell.env("DMS_SOCKET")
+    readonly property string socketPath: Quickshell.env("ADVS_SOCKET")
 
     Timer {
         id: sessionInitTimer
@@ -67,9 +67,9 @@ Singleton {
                 return;
             }
             if (socketPath && socketPath.length > 0) {
-                checkDMSCapabilities();
+                checkADVSCapabilities();
             } else {
-                log.debug("DMS_SOCKET not set");
+                log.debug("ADVS_SOCKET not set");
             }
         }
     }
@@ -286,8 +286,8 @@ Singleton {
                 return;
             env[target] = orig.length > 0 ? orig : null;
         };
-        restore("NIXPKGS_QT6_QML_IMPORT_PATH", "DMS_ORIG_NIXPKGS_QT6_QML_IMPORT_PATH");
-        restore("QT_PLUGIN_PATH", "DMS_ORIG_QT_PLUGIN_PATH");
+        restore("NIXPKGS_QT6_QML_IMPORT_PATH", "ADVS_ORIG_NIXPKGS_QT6_QML_IMPORT_PATH");
+        restore("QT_PLUGIN_PATH", "ADVS_ORIG_QT_PLUGIN_PATH");
         return env;
     }
 
@@ -309,7 +309,7 @@ Singleton {
         }
 
         const userPrefix = SettingsData.launchPrefix?.trim() || "";
-        const defaultPrefix = Quickshell.env("DMS_DEFAULT_LAUNCH_PREFIX") || "";
+        const defaultPrefix = Quickshell.env("ADVS_DEFAULT_LAUNCH_PREFIX") || "";
         const prefix = userPrefix.length > 0 ? userPrefix : defaultPrefix;
         const workDir = desktopEntry.workingDirectory || Quickshell.env("HOME");
         const cursorEnv = typeof SettingsData.getCursorEnvironment === "function" ? SettingsData.getCursorEnvironment() : {};
@@ -362,7 +362,7 @@ Singleton {
             cmd = [nvidiaCommand].concat(cmd);
 
         const userPrefix = SettingsData.launchPrefix?.trim() || "";
-        const defaultPrefix = Quickshell.env("DMS_DEFAULT_LAUNCH_PREFIX") || "";
+        const defaultPrefix = Quickshell.env("ADVS_DEFAULT_LAUNCH_PREFIX") || "";
         const prefix = userPrefix.length > 0 ? userPrefix : defaultPrefix;
         const workDir = desktopEntry.workingDirectory || Quickshell.env("HOME");
         const cursorEnv = typeof SettingsData.getCursorEnvironment === "function" ? SettingsData.getCursorEnvironment() : {};
@@ -538,7 +538,7 @@ Singleton {
             poweroff();
             return true;
         case "restart":
-            Quickshell.execDetached(["dms", "restart"]);
+            Quickshell.execDetached(["advs", "restart"]);
             return true;
         default:
             return false;
@@ -600,7 +600,7 @@ Singleton {
         case "restart":
             return {
                 "icon": "refresh",
-                "label": I18n.tr("Restart DMS"),
+                "label": I18n.tr("Restart ADVS"),
                 "key": "D"
             };
         case "switchuser":
@@ -673,11 +673,11 @@ Singleton {
     }
 
     Connections {
-        target: DMSService
+        target: ADVSService
 
         function onConnectionStateChanged() {
-            if (DMSService.isConnected) {
-                checkDMSCapabilities();
+            if (ADVSService.isConnected) {
+                checkADVSCapabilities();
             } else {
                 clearPrepareForSleepSubscriptionState();
             }
@@ -689,11 +689,11 @@ Singleton {
     }
 
     Connections {
-        target: DMSService
-        enabled: DMSService.isConnected
+        target: ADVSService
+        enabled: ADVSService.isConnected
 
         function onCapabilitiesChanged() {
-            checkDMSCapabilities();
+            checkADVSCapabilities();
         }
 
         function onDbusSignalReceived(subscriptionId, data) {
@@ -731,7 +731,7 @@ Singleton {
     }
 
     Connections {
-        target: DMSService
+        target: ADVSService
         enabled: SettingsData.loginctlLockIntegration
 
         function onLoginctlStateUpdate(data) {
@@ -739,16 +739,16 @@ Singleton {
         }
     }
 
-    function checkDMSCapabilities() {
-        if (!DMSService.isConnected) {
+    function checkADVSCapabilities() {
+        if (!ADVSService.isConnected) {
             return;
         }
 
-        if (DMSService.capabilities.length === 0) {
+        if (ADVSService.capabilities.length === 0) {
             return;
         }
 
-        if (DMSService.capabilities.includes("loginctl")) {
+        if (ADVSService.capabilities.includes("loginctl")) {
             loginctlAvailable = true;
             if (SettingsData.loginctlLockIntegration && !stateInitialized) {
                 stateInitialized = true;
@@ -757,10 +757,10 @@ Singleton {
             }
         } else {
             loginctlAvailable = false;
-            log.debug("loginctl capability not available in DMS");
+            log.debug("loginctl capability not available in ADVS");
         }
 
-        if (DMSService.capabilities.includes("dbus")) {
+        if (ADVSService.capabilities.includes("dbus")) {
             ensurePrepareForSleepSubscription();
         } else {
             clearPrepareForSleepSubscriptionState();
@@ -773,7 +773,7 @@ Singleton {
     }
 
     function ensurePrepareForSleepSubscription() {
-        if (!DMSService.isConnected || !DMSService.capabilities.includes("dbus")) {
+        if (!ADVSService.isConnected || !ADVSService.capabilities.includes("dbus")) {
             return;
         }
 
@@ -782,7 +782,7 @@ Singleton {
         }
 
         prepareForSleepSubscriptionPending = true;
-        DMSService.dbusSubscribe("system", "org.freedesktop.login1", "/org/freedesktop/login1", "org.freedesktop.login1.Manager", "PrepareForSleep", response => {
+        ADVSService.dbusSubscribe("system", "org.freedesktop.login1", "/org/freedesktop/login1", "org.freedesktop.login1.Manager", "PrepareForSleep", response => {
             prepareForSleepSubscriptionPending = false;
 
             if (response.error) {
@@ -819,7 +819,7 @@ Singleton {
     function getLoginctlState() {
         if (!loginctlAvailable)
             return;
-        DMSService.sendRequest("loginctl.getState", null, response => {
+        ADVSService.sendRequest("loginctl.getState", null, response => {
             if (response.result) {
                 updateLoginctlState(response.result);
             }
@@ -829,7 +829,7 @@ Singleton {
     function syncLockBeforeSuspend() {
         if (!loginctlAvailable)
             return;
-        DMSService.sendRequest("loginctl.setLockBeforeSuspend", {
+        ADVSService.sendRequest("loginctl.setLockBeforeSuspend", {
             enabled: SettingsData.lockBeforeSuspend
         }, response => {
             if (response.error) {
@@ -843,9 +843,9 @@ Singleton {
     function syncSleepInhibitor() {
         if (!loginctlAvailable)
             return;
-        if (!DMSService.apiVersion || DMSService.apiVersion < 4)
+        if (!ADVSService.apiVersion || ADVSService.apiVersion < 4)
             return;
-        DMSService.sendRequest("loginctl.setSleepInhibitorEnabled", {
+        ADVSService.sendRequest("loginctl.setSleepInhibitorEnabled", {
             enabled: SettingsData.loginctlLockIntegration && SettingsData.lockBeforeSuspend
         }, response => {
             if (response.error) {

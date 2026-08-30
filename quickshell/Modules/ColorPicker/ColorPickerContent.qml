@@ -48,7 +48,7 @@ FocusScope {
     }
 
     function copyColorToClipboard(colorValue) {
-        Quickshell.execDetached(["dms", "cl", "copy", colorValue]);
+        Quickshell.execDetached(["advs", "cl", "copy", colorValue]);
         ToastService.showInfo(I18n.tr("Color %1 copied").arg(colorValue));
         SessionData.addRecentColor(currentColor);
     }
@@ -82,22 +82,22 @@ FocusScope {
 
     function pickColorFromScreen() {
         hideRequested();
-        Proc.runCommand("dms-color-pick", [Proc.dmsBin, "color", "pick", "--json"], (output, exitCode) => {
+        Proc.runCommand("advs-color-pick", [Proc.advsBin, "color", "pick", "--json"], (output, exitCode) => {
             if (exitCode !== 0) {
-                log.warn("dms color pick exited with code:", exitCode);
+                log.warn("advs color pick exited with code:", exitCode);
                 showRequested();
                 return;
             }
             try {
                 const result = JSON.parse(output);
                 if (!result.hex) {
-                    log.warn("Failed to parse dms color pick output: missing hex");
+                    log.warn("Failed to parse advs color pick output: missing hex");
                     showRequested();
                     return;
                 }
                 applyPickedColor(result.hex);
             } catch (e) {
-                log.warn("Failed to parse dms color pick JSON:", e);
+                log.warn("Failed to parse advs color pick JSON:", e);
                 showRequested();
             }
         }, 0, Proc.noTimeout);
@@ -135,7 +135,7 @@ FocusScope {
                 }
             }
 
-            DankActionButton {
+            AdvActionButton {
                 iconName: "colorize"
                 iconSize: Theme.iconSize - 4
                 iconColor: Theme.surfaceText
@@ -144,7 +144,7 @@ FocusScope {
                 }
             }
 
-            DankActionButton {
+            AdvActionButton {
                 iconName: "close"
                 iconSize: Theme.iconSize - 4
                 iconColor: Theme.surfaceText
@@ -429,7 +429,7 @@ FocusScope {
                         anchors.left: parent.left
                     }
 
-                    DankSlider {
+                    AdvSlider {
                         width: parent.width
                         value: Math.round(root.alpha * 100)
                         minimum: 0
@@ -478,7 +478,7 @@ FocusScope {
                         width: parent.width
                         spacing: Theme.spacingXS
 
-                        DankTextField {
+                        AdvTextField {
                             id: hexInput
                             width: parent.width - 36
                             height: 36
@@ -508,7 +508,7 @@ FocusScope {
                             }
                         }
 
-                        DankActionButton {
+                        AdvActionButton {
                             iconName: "content_copy"
                             iconSize: Theme.iconSize - 6
                             iconColor: Theme.surfaceText
@@ -562,7 +562,7 @@ FocusScope {
                             }
                         }
 
-                        DankActionButton {
+                        AdvActionButton {
                             iconName: "content_copy"
                             iconSize: Theme.iconSize - 6
                             iconColor: Theme.surfaceText
@@ -579,7 +579,7 @@ FocusScope {
                                 } else {
                                     rgbString = `rgb(${r}, ${g}, ${b})`;
                                 }
-                                Quickshell.execDetached(["dms", "cl", "copy", rgbString]);
+                                Quickshell.execDetached(["advs", "cl", "copy", rgbString]);
                                 ToastService.showInfo(I18n.tr("%1 copied").arg(rgbString));
                             }
                         }
@@ -627,7 +627,7 @@ FocusScope {
                             }
                         }
 
-                        DankActionButton {
+                        AdvActionButton {
                             iconName: "content_copy"
                             iconSize: Theme.iconSize - 6
                             iconColor: Theme.surfaceText
@@ -644,7 +644,7 @@ FocusScope {
                                 } else {
                                     hsvString = `${h}, ${s}, ${v}`;
                                 }
-                                Quickshell.execDetached(["dms", "cl", "copy", hsvString]);
+                                Quickshell.execDetached(["advs", "cl", "copy", hsvString]);
                                 ToastService.showInfo(I18n.tr("HSV %1 copied").arg(hsvString));
                             }
                         }
@@ -652,7 +652,7 @@ FocusScope {
                 }
             }
 
-            DankButton {
+            AdvButton {
                 visible: root.showSaveButton
                 width: 70
                 buttonHeight: 36

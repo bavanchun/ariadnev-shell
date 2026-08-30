@@ -18,9 +18,9 @@ Rectangle {
     signal toggleExpand
     signal deleteRequested
 
-    readonly property bool isActive: DMSNetworkService.vpnStateForUuid(profile?.uuid) === "activated"
-    readonly property bool isConnecting: DMSNetworkService.isVpnConnectingUuid(profile?.uuid)
-    readonly property bool hasError: !isConnecting && DMSNetworkService.vpnError !== "" && DMSNetworkService.vpnErrorUuid === (profile?.uuid ?? "")
+    readonly property bool isActive: ADVSNetworkService.vpnStateForUuid(profile?.uuid) === "activated"
+    readonly property bool isConnecting: ADVSNetworkService.isVpnConnectingUuid(profile?.uuid)
+    readonly property bool hasError: !isConnecting && ADVSNetworkService.vpnError !== "" && ADVSNetworkService.vpnErrorUuid === (profile?.uuid ?? "")
     readonly property bool isHovered: rowArea.containsMouse || expandBtn.containsMouse || deleteBtn.containsMouse
     readonly property var configData: (!isTransient && isExpanded) ? VPNService.editConfig : null
     readonly property var configFields: buildConfigFields()
@@ -30,7 +30,7 @@ Rectangle {
     color: isHovered ? Theme.primaryHoverLight : (isActive ? Theme.primaryPressed : Theme.surfaceLight)
     border.width: isActive ? 2 : 1
     border.color: isActive ? Theme.primary : Theme.outlineLight
-    opacity: (DMSNetworkService.isBusy && !isConnecting) ? 0.5 : 1.0
+    opacity: (ADVSNetworkService.isBusy && !isConnecting) ? 0.5 : 1.0
     clip: true
 
     function buildConfigFields() {
@@ -94,9 +94,9 @@ Rectangle {
         id: rowArea
         anchors.fill: parent
         hoverEnabled: true
-        cursorShape: DMSNetworkService.isBusy ? Qt.BusyCursor : Qt.PointingHandCursor
-        enabled: !DMSNetworkService.isBusy
-        onClicked: DMSNetworkService.toggle(profile.uuid)
+        cursorShape: ADVSNetworkService.isBusy ? Qt.BusyCursor : Qt.PointingHandCursor
+        enabled: !ADVSNetworkService.isBusy
+        onClicked: ADVSNetworkService.toggle(profile.uuid)
     }
 
     Column {
@@ -109,7 +109,7 @@ Rectangle {
             height: 46 - Theme.spacingS * 2
             spacing: Theme.spacingS
 
-            DankSpinner {
+            AdvSpinner {
                 size: 18
                 strokeWidth: 2
                 color: Theme.warning
@@ -118,7 +118,7 @@ Rectangle {
                 anchors.verticalCenter: parent.verticalCenter
             }
 
-            DankIcon {
+            AdvIcon {
                 visible: !root.isConnecting
                 name: isActive ? "vpn_lock" : (root.hasError ? "error" : "vpn_key_off")
                 size: 20
@@ -142,7 +142,7 @@ Rectangle {
                 }
 
                 StyledText {
-                    text: root.isConnecting ? I18n.tr("Connecting...") : (root.hasError ? DMSNetworkService.vpnError : VPNService.getVpnTypeFromProfile(profile))
+                    text: root.isConnecting ? I18n.tr("Connecting...") : (root.hasError ? ADVSNetworkService.vpnError : VPNService.getVpnTypeFromProfile(profile))
                     font.pixelSize: Theme.fontSizeSmall
                     color: root.isConnecting ? Theme.warning : (root.hasError ? Theme.error : Theme.surfaceTextMedium)
                     wrapMode: Text.NoWrap
@@ -165,7 +165,7 @@ Rectangle {
                 anchors.verticalCenter: parent.verticalCenter
                 visible: canExpand
 
-                DankIcon {
+                AdvIcon {
                     anchors.centerIn: parent
                     name: isExpanded ? "expand_less" : "expand_more"
                     size: 18
@@ -189,7 +189,7 @@ Rectangle {
                 anchors.verticalCenter: parent.verticalCenter
                 visible: canDelete
 
-                DankIcon {
+                AdvIcon {
                     anchors.centerIn: parent
                     name: "delete"
                     size: 18
@@ -223,7 +223,7 @@ Rectangle {
                 height: VPNService.configLoading ? 40 : 0
                 visible: VPNService.configLoading
 
-                DankSpinner {
+                AdvSpinner {
                     anchors.centerIn: parent
                     size: 20
                 }
@@ -271,7 +271,7 @@ Rectangle {
                 }
             }
 
-            DankToggle {
+            AdvToggle {
                 width: parent.width
                 text: I18n.tr("Autoconnect")
                 checked: configData ? (configData.autoconnect || false) : false
@@ -289,19 +289,19 @@ Rectangle {
                 visible: !isTransient && !VPNService.configLoading && profile?.type !== "wireguard"
 
                 StyledText {
-                    text: root.hasError ? DMSNetworkService.vpnError : I18n.tr("Credentials")
+                    text: root.hasError ? ADVSNetworkService.vpnError : I18n.tr("Credentials")
                     font.pixelSize: Theme.fontSizeSmall
                     color: root.hasError ? Theme.error : Theme.surfaceVariantText
                 }
 
-                DankTextField {
+                AdvTextField {
                     id: usernameField
                     width: parent.width
                     placeholderText: I18n.tr("Username")
                     text: (configData && (configData.username || (configData.data && configData.data.username))) || ""
                 }
 
-                DankTextField {
+                AdvTextField {
                     id: passwordField
                     width: parent.width
                     placeholderText: I18n.tr("Password")
@@ -310,7 +310,7 @@ Rectangle {
                     normalBorderColor: root.hasError ? Theme.error : Theme.outlineMedium
                 }
 
-                DankButton {
+                AdvButton {
                     text: I18n.tr("Save credentials")
                     opacity: passwordField.text.length > 0 ? 1 : 0.5
                     onClicked: {

@@ -7,7 +7,7 @@ import qs.Services
 import qs.Widgets
 import "../Common/Format.js" as Format
 
-DankFloatingWindow {
+AdvFloatingWindow {
     id: processListModal
     readonly property var log: Log.scoped("ProcessListModal")
 
@@ -197,7 +197,7 @@ DankFloatingWindow {
                 anchors.centerIn: parent
                 spacing: Theme.spacingL
 
-                DankIcon {
+                AdvIcon {
                     name: "error"
                     size: 48
                     color: Theme.error
@@ -213,7 +213,7 @@ DankFloatingWindow {
                 }
 
                 StyledText {
-                    text: I18n.tr("DMS_SOCKET not available")
+                    text: I18n.tr("ADVS_SOCKET not available")
                     font.pixelSize: Theme.fontSizeMedium
                     color: Theme.surfaceText
                     anchors.horizontalCenter: parent.horizontalCenter
@@ -244,7 +244,7 @@ DankFloatingWindow {
                     anchors.verticalCenter: parent.verticalCenter
                     spacing: Theme.spacingM
 
-                    DankIcon {
+                    AdvIcon {
                         name: "analytics"
                         size: Theme.iconSize
                         color: Theme.primary
@@ -266,7 +266,7 @@ DankFloatingWindow {
                     anchors.verticalCenter: parent.verticalCenter
                     spacing: Theme.spacingXS
 
-                    DankActionButton {
+                    AdvActionButton {
                         visible: windowControls.canMaximize
                         circular: false
                         iconName: processListModal.maximized ? "fullscreen_exit" : "fullscreen"
@@ -275,7 +275,7 @@ DankFloatingWindow {
                         onClicked: windowControls.tryToggleMaximize()
                     }
 
-                    DankActionButton {
+                    AdvActionButton {
                         circular: false
                         iconName: "close"
                         iconSize: Theme.iconSize - 4
@@ -328,7 +328,7 @@ DankFloatingWindow {
                                 anchors.centerIn: parent
                                 spacing: Theme.spacingXS
 
-                                DankIcon {
+                                AdvIcon {
                                     name: modelData.icon
                                     size: Theme.iconSize - 2
                                     color: currentTab === index ? Theme.primary : Theme.surfaceText
@@ -366,7 +366,7 @@ DankFloatingWindow {
                     Layout.fillWidth: true
                 }
 
-                DankButtonGroup {
+                AdvButtonGroup {
                     id: processFilterGroup
                     model: [I18n.tr("All"), I18n.tr("User"), I18n.tr("System")]
                     currentIndex: 0
@@ -394,7 +394,7 @@ DankFloatingWindow {
                     }
                 }
 
-                DankTextField {
+                AdvTextField {
                     id: searchField
                     Layout.fillWidth: true
                     Layout.maximumWidth: Math.round(Theme.fontSizeMedium * 18)
@@ -521,7 +521,7 @@ DankFloatingWindow {
                     Row {
                         spacing: Theme.spacingXS
 
-                        DankIcon {
+                        AdvIcon {
                             name: "swap_horiz"
                             size: 14
                             color: Theme.info
@@ -539,7 +539,7 @@ DankFloatingWindow {
                     Row {
                         spacing: Theme.spacingXS
 
-                        DankIcon {
+                        AdvIcon {
                             name: "storage"
                             size: 14
                             color: Theme.warning
@@ -557,7 +557,7 @@ DankFloatingWindow {
                     Row {
                         spacing: Theme.spacingXS
 
-                        DankIcon {
+                        AdvIcon {
                             name: "memory"
                             size: 14
                             color: Theme.primary
@@ -576,7 +576,7 @@ DankFloatingWindow {
                     Row {
                         spacing: Theme.spacingXS
 
-                        DankIcon {
+                        AdvIcon {
                             name: "sd_card"
                             size: 14
                             color: Theme.secondary

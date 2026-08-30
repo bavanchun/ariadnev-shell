@@ -118,7 +118,7 @@ PluginComponent {
                             }
                         }
 
-                        DankActionButton {
+                        AdvActionButton {
                             id: settingsButton
                             anchors.verticalCenter: parent.verticalCenter
                             iconName: "settings"
@@ -217,7 +217,7 @@ PluginComponent {
     horizontalBarPill: Component {
         Row {
             spacing: Theme.spacingXS
-            DankIcon {
+            AdvIcon {
                 name: "monitor"
                 color: Theme.primary
                 size: root.iconSize
@@ -235,7 +235,7 @@ PluginComponent {
     verticalBarPill: Component {
         Column {
             spacing: Theme.spacingXXS
-            DankIcon {
+            AdvIcon {
                 name: "monitor"
                 color: Theme.primary
                 size: root.iconSize

@@ -21,9 +21,9 @@ FocusScope {
     property var filteredPlugins: []
 
     readonly property var pluginsWithUpdates: {
-        if (!DMSService.installedPlugins)
+        if (!ADVSService.installedPlugins)
             return [];
-        return DMSService.installedPlugins.filter(p => p.hasUpdate === true);
+        return ADVSService.installedPlugins.filter(p => p.hasUpdate === true);
     }
 
     function updateFilteredPlugins() {
@@ -66,11 +66,11 @@ FocusScope {
 
     focus: true
 
-    DankTooltipV2 {
+    AdvTooltipV2 {
         id: sharedTooltip
     }
 
-    DankFlickable {
+    AdvFlickable {
         id: pluginFlickable
         anchors.fill: parent
         clip: true
@@ -104,7 +104,7 @@ FocusScope {
                         width: parent.width
                         spacing: Theme.spacingM
 
-                        DankIcon {
+                        AdvIcon {
                             name: "extension"
                             size: Theme.iconSize
                             color: Theme.primary
@@ -126,7 +126,7 @@ FocusScope {
                             }
 
                             StyledText {
-                                text: I18n.tr("Manage and configure plugins for extending DMS functionality")
+                                text: I18n.tr("Manage and configure plugins for extending ADVS functionality")
                                 font.pixelSize: Theme.fontSizeSmall
                                 color: Theme.surfaceVariantText
                                 width: parent.width
@@ -137,15 +137,15 @@ FocusScope {
 
                     StyledRect {
                         width: parent.width
-                        height: dmsWarningColumn.implicitHeight + Theme.spacingM * 2
+                        height: advsWarningColumn.implicitHeight + Theme.spacingM * 2
                         radius: Theme.cornerRadius
                         color: Theme.withAlpha(Theme.warning, 0.1)
                         border.color: Theme.warning
                         border.width: 1
-                        visible: !DMSService.dmsAvailable
+                        visible: !ADVSService.advsAvailable
 
                         Column {
-                            id: dmsWarningColumn
+                            id: advsWarningColumn
                             anchors.fill: parent
                             anchors.margins: Theme.spacingM
                             spacing: Theme.spacingXS
@@ -153,7 +153,7 @@ FocusScope {
                             Row {
                                 spacing: Theme.spacingXS
 
-                                DankIcon {
+                                AdvIcon {
                                     name: "warning"
                                     size: 16
                                     color: Theme.warning
@@ -161,7 +161,7 @@ FocusScope {
                                 }
 
                                 StyledText {
-                                    text: I18n.tr("DMS Plugin Manager Unavailable")
+                                    text: I18n.tr("ADVS Plugin Manager Unavailable")
                                     font.pixelSize: Theme.fontSizeSmall
                                     color: Theme.warning
                                     font.weight: Font.Medium
@@ -170,7 +170,7 @@ FocusScope {
                             }
 
                             StyledText {
-                                text: I18n.tr("The DMS_SOCKET environment variable is not set or the socket is unavailable. Automated plugin management requires the DMS_SOCKET.")
+                                text: I18n.tr("The ADVS_SOCKET environment variable is not set or the socket is unavailable. Automated plugin management requires the ADVS_SOCKET.")
                                 font.pixelSize: Theme.fontSizeSmall - 1
                                 color: Theme.surfaceVariantText
                                 wrapMode: Text.WordWrap
@@ -206,7 +206,7 @@ FocusScope {
                             Row {
                                 spacing: Theme.spacingXS
 
-                                DankIcon {
+                                AdvIcon {
                                     name: "error"
                                     size: 16
                                     color: Theme.error
@@ -223,7 +223,7 @@ FocusScope {
                             }
 
                             StyledText {
-                                text: I18n.tr("Some plugins require a newer version of DMS:") + " " + incompatWarning.incompatPlugins.map(p => p.name + " (" + p.requires_dms + ")").join(", ")
+                                text: I18n.tr("Some plugins require a newer version of ADVS:") + " " + incompatWarning.incompatPlugins.map(p => p.name + " (" + p.requires_advs + ")").join(", ")
                                 font.pixelSize: Theme.fontSizeSmall - 1
                                 color: Theme.surfaceVariantText
                                 wrapMode: Text.WordWrap
@@ -254,29 +254,29 @@ FocusScope {
                         width: parent.width
                         spacing: Theme.spacingM
 
-                        DankButton {
+                        AdvButton {
                             text: I18n.tr("Browse")
                             iconName: "store"
-                            enabled: DMSService.dmsAvailable
+                            enabled: ADVSService.advsAvailable
                             onClicked: {
                                 showPluginBrowser();
                             }
                         }
 
-                        DankButton {
+                        AdvButton {
                             text: I18n.tr("Scan")
                             iconName: "refresh"
                             onClicked: {
                                 pluginsTab.isRefreshingPlugins = true;
                                 PluginService.scanPlugins();
-                                if (DMSService.dmsAvailable) {
-                                    DMSService.listInstalled();
+                                if (ADVSService.advsAvailable) {
+                                    ADVSService.listInstalled();
                                 }
                                 pluginsTab.refreshPluginList();
                             }
                         }
 
-                        DankButton {
+                        AdvButton {
                             text: PluginService.pluginDirectoryExists ? I18n.tr("Open Dir") : I18n.tr("Create Dir")
                             iconName: PluginService.pluginDirectoryExists ? "folder_open" : "create_new_folder"
                             onClicked: {
@@ -289,10 +289,10 @@ FocusScope {
                             }
                         }
 
-                        DankButton {
+                        AdvButton {
                             text: I18n.tr("Update All")
                             iconName: "download"
-                            enabled: DMSService.dmsAvailable && pluginsTab.pluginsWithUpdates.length > 0
+                            enabled: ADVSService.advsAvailable && pluginsTab.pluginsWithUpdates.length > 0
                             onClicked: {
                                 showPluginUpdatesDialog();
                             }
@@ -357,7 +357,7 @@ FocusScope {
                 color: Theme.floatingWindowNestedSurface
                 border.color: Theme.outlineMedium
                 border.width: Theme.layerOutlineWidth
-                visible: DMSService.dmsAvailable && DMSService.apiVersion >= 29
+                visible: ADVSService.advsAvailable && ADVSService.apiVersion >= 29
 
                 Column {
                     id: registriesColumn
@@ -385,7 +385,7 @@ FocusScope {
                     }
 
                     Repeater {
-                        model: DMSService.registries
+                        model: ADVSService.registries
 
                         Item {
                             required property var modelData
@@ -430,14 +430,14 @@ FocusScope {
                                 }
                             }
 
-                            DankActionButton {
+                            AdvActionButton {
                                 id: removeRegistryBtn
                                 anchors.right: parent.right
                                 anchors.verticalCenter: parent.verticalCenter
                                 iconName: "delete"
                                 iconSize: 18
                                 visible: !modelData.official
-                                onClicked: DMSService.removeRegistry(modelData.name, response => {
+                                onClicked: ADVSService.removeRegistry(modelData.name, response => {
                                     if (response.error)
                                         ToastService.showError(response.error);
                                 })
@@ -449,24 +449,24 @@ FocusScope {
                         width: parent.width
                         spacing: Theme.spacingM
 
-                        DankTextField {
+                        AdvTextField {
                             id: registryNameField
                             width: 140
                             placeholderText: I18n.tr("Name")
                         }
 
-                        DankTextField {
+                        AdvTextField {
                             id: registryUrlField
                             width: parent.width - 140 - addRegistryBtn.width - Theme.spacingM * 2
                             placeholderText: "https://github.com/user/registry.git"
                         }
 
-                        DankButton {
+                        AdvButton {
                             id: addRegistryBtn
                             text: I18n.tr("Add")
                             enabled: registryNameField.text.trim() !== "" && registryUrlField.text.trim() !== ""
                             anchors.verticalCenter: parent.verticalCenter
-                            onClicked: DMSService.addRegistry(registryNameField.text.trim(), registryUrlField.text.trim(), response => {
+                            onClicked: ADVSService.addRegistry(registryNameField.text.trim(), registryUrlField.text.trim(), response => {
                                 if (response.error) {
                                     ToastService.showError(response.error);
                                     return;
@@ -511,7 +511,7 @@ FocusScope {
                             height: 1
                         }
 
-                        DankActionButton {
+                        AdvActionButton {
                             id: searchIconBtn
                             iconName: "search"
                             iconSize: 20
@@ -530,7 +530,7 @@ FocusScope {
                         }
                     }
 
-                    DankTextField {
+                    AdvTextField {
                         id: pluginSearchField
                         width: parent.width
                         visible: pluginsTab.isSearchExpanded || height > 0
@@ -574,7 +574,7 @@ FocusScope {
                                 pluginData: modelData
                                 expandedPluginId: pluginsTab.expandedPluginId
                                 hasUpdate: {
-                                    if (DMSService.apiVersion < 8)
+                                    if (ADVSService.apiVersion < 8)
                                         return false;
                                     return pluginsTab.installedPluginsData[pluginId] || pluginsTab.installedPluginsData[pluginName] || false;
                                 }
@@ -622,8 +622,8 @@ FocusScope {
             }
         }
         function onPluginListUpdated() {
-            if (DMSService.apiVersion >= 8) {
-                DMSService.listInstalled();
+            if (ADVSService.apiVersion >= 8) {
+                ADVSService.listInstalled();
             }
             refreshPluginList();
         }
@@ -640,7 +640,7 @@ FocusScope {
     }
 
     Connections {
-        target: DMSService
+        target: ADVSService
         function onPluginsListReceived(plugins) {
             if (!pluginBrowserLoader.item)
                 return;
@@ -669,18 +669,18 @@ FocusScope {
         function onOperationError(error) {
             ToastService.showError(error);
         }
-        function onDmsAvailableChanged() {
-            if (DMSService.dmsAvailable && DMSService.apiVersion >= 29)
-                DMSService.listRegistries();
+        function onAdvsAvailableChanged() {
+            if (ADVSService.advsAvailable && ADVSService.apiVersion >= 29)
+                ADVSService.listRegistries();
         }
     }
 
     Component.onCompleted: {
         updateFilteredPlugins();
-        if (DMSService.dmsAvailable && DMSService.apiVersion >= 8)
-            DMSService.listInstalled();
-        if (DMSService.dmsAvailable && DMSService.apiVersion >= 29)
-            DMSService.listRegistries();
+        if (ADVSService.advsAvailable && ADVSService.apiVersion >= 8)
+            ADVSService.listInstalled();
+        if (ADVSService.advsAvailable && ADVSService.apiVersion >= 29)
+            ADVSService.listRegistries();
         if (PopoutService.pendingPluginInstall)
             Qt.callLater(showPluginBrowser);
     }

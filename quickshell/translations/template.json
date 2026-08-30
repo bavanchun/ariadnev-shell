@@ -735,9 +735,9 @@
     "comment": ""
   },
   {
-    "term": "A slight natural settle, DMS default",
+    "term": "A slight natural settle, ADVS default",
     "translation": "",
-    "context": "A slight natural settle, DMS default",
+    "context": "A slight natural settle, ADVS default",
     "reference": "",
     "comment": ""
   },
@@ -896,9 +896,9 @@
     "comment": "greeter action confirmation"
   },
   {
-    "term": "Activate the DMS greeter? A terminal will open for sudo authentication. Run Sync after activation to apply your settings.",
+    "term": "Activate the ADVS greeter? A terminal will open for sudo authentication. Run Sync after activation to apply your settings.",
     "translation": "",
-    "context": "Activate the DMS greeter? A terminal will open for sudo authentication. Run Sync after activation to apply your settings.",
+    "context": "Activate the ADVS greeter? A terminal will open for sudo authentication. Run Sync after activation to apply your settings.",
     "reference": "",
     "comment": ""
   },
@@ -1008,9 +1008,9 @@
     "comment": ""
   },
   {
-    "term": "Add \"%1\" to the %2 group? They must log out and back in, then run dms-greeter sync --profile to publish their login-screen theme.",
+    "term": "Add \"%1\" to the %2 group? They must log out and back in, then run advs-greeter sync --profile to publish their login-screen theme.",
     "translation": "",
-    "context": "Add \"%1\" to the %2 group? They must log out and back in, then run dms-greeter sync --profile to publish their login-screen theme.",
+    "context": "Add \"%1\" to the %2 group? They must log out and back in, then run advs-greeter sync --profile to publish their login-screen theme.",
     "reference": "",
     "comment": ""
   },
@@ -1127,9 +1127,9 @@
     "comment": ""
   },
   {
-    "term": "Add the new user to the %1 group so they can run dms-greeter sync --profile.",
+    "term": "Add the new user to the %1 group so they can run advs-greeter sync --profile.",
     "translation": "",
-    "context": "Add the new user to the %1 group so they can run dms-greeter sync --profile.",
+    "context": "Add the new user to the %1 group so they can run advs-greeter sync --profile.",
     "reference": "",
     "comment": ""
   },
@@ -2114,9 +2114,9 @@
     "comment": ""
   },
   {
-    "term": "Auto-close Niri overview when DMS launches or focuses a window.",
+    "term": "Auto-close Niri overview when ADVS launches or focuses a window.",
     "translation": "",
-    "context": "Auto-close Niri overview when DMS launches or focuses a window.",
+    "context": "Auto-close Niri overview when ADVS launches or focuses a window.",
     "reference": "",
     "comment": "Description of the close Niri overview on window focus setting"
   },
@@ -2268,9 +2268,9 @@
     "comment": ""
   },
   {
-    "term": "Automatically lock the screen when DMS starts",
+    "term": "Automatically lock the screen when ADVS starts",
     "translation": "",
-    "context": "Automatically lock the screen when DMS starts",
+    "context": "Automatically lock the screen when ADVS starts",
     "reference": "",
     "comment": ""
   },
@@ -3297,9 +3297,9 @@
     "comment": ""
   },
   {
-    "term": "Center Section - Reserved by Dank Island",
+    "term": "Center Section - Reserved by Adv Island",
     "translation": "",
-    "context": "Center Section - Reserved by Dank Island",
+    "context": "Center Section - Reserved by Adv Island",
     "reference": "",
     "comment": ""
   },
@@ -3339,9 +3339,9 @@
     "comment": "media scroll wheel option"
   },
   {
-    "term": "Change the locale used by the DMS interface.",
+    "term": "Change the locale used by the ADVS interface.",
     "translation": "",
-    "context": "Change the locale used by the DMS interface.",
+    "context": "Change the locale used by the ADVS interface.",
     "reference": "",
     "comment": ""
   },
@@ -3556,9 +3556,9 @@
     "comment": ""
   },
   {
-    "term": "Choose the logo displayed on the launcher button in DankBar",
+    "term": "Choose the logo displayed on the launcher button in AdvBar",
     "translation": "",
-    "context": "Choose the logo displayed on the launcher button in DankBar",
+    "context": "Choose the logo displayed on the launcher button in AdvBar",
     "reference": "",
     "comment": ""
   },
@@ -3910,7 +3910,7 @@
     "translation": "",
     "context": "Close Niri Overview on Window Focus",
     "reference": "",
-    "comment": "Niri setting to leave Niri overview when DMS launches or focuses a window"
+    "comment": "Niri setting to leave Niri overview when ADVS launches or focuses a window"
   },
   {
     "term": "Close Window",
@@ -4039,9 +4039,9 @@
     "comment": ""
   },
   {
-    "term": "Color theme from DMS registry",
+    "term": "Color theme from ADVS registry",
     "translation": "",
-    "context": "Color theme from DMS registry",
+    "context": "Color theme from ADVS registry",
     "reference": "",
     "comment": "registry theme description"
   },
@@ -4298,9 +4298,9 @@
     "comment": ""
   },
   {
-    "term": "Configure which displays show Dank Island as \"%1\"",
+    "term": "Configure which displays show Adv Island as \"%1\"",
     "translation": "",
-    "context": "Configure which displays show Dank Island as \"%1\"",
+    "context": "Configure which displays show Adv Island as \"%1\"",
     "reference": "",
     "comment": ""
   },
@@ -4599,9 +4599,9 @@
     "comment": ""
   },
   {
-    "term": "Convert to DMS",
+    "term": "Convert to ADVS",
     "translation": "",
-    "context": "Convert to DMS",
+    "context": "Convert to ADVS",
     "reference": "",
     "comment": ""
   },
@@ -5243,86 +5243,86 @@
     "comment": ""
   },
   {
-    "term": "DMS Chooser",
+    "term": "ADVS Chooser",
     "translation": "",
-    "context": "DMS Chooser",
+    "context": "ADVS Chooser",
     "reference": "",
     "comment": ""
   },
   {
-    "term": "DMS Plugin Manager Unavailable",
+    "term": "ADVS Plugin Manager Unavailable",
     "translation": "",
-    "context": "DMS Plugin Manager Unavailable",
+    "context": "ADVS Plugin Manager Unavailable",
     "reference": "",
     "comment": ""
   },
   {
-    "term": "DMS Settings",
+    "term": "ADVS Settings",
     "translation": "",
-    "context": "DMS Settings",
+    "context": "ADVS Settings",
     "reference": "",
     "comment": ""
   },
   {
-    "term": "DMS Settings writes Lua keybinds. Add the DMS include so edits apply.",
+    "term": "ADVS Settings writes Lua keybinds. Add the ADVS include so edits apply.",
     "translation": "",
-    "context": "DMS Settings writes Lua keybinds. Add the DMS include so edits apply.",
+    "context": "ADVS Settings writes Lua keybinds. Add the ADVS include so edits apply.",
     "reference": "",
     "comment": ""
   },
   {
-    "term": "DMS Shortcuts",
+    "term": "ADVS Shortcuts",
     "translation": "",
-    "context": "DMS Shortcuts",
+    "context": "ADVS Shortcuts",
     "reference": "",
     "comment": "greeter keybinds section header"
   },
   {
-    "term": "DMS is a highly customizable modern desktop shell with a %1 inspired design.<br/><br/>It is built with %2, a QT6 framework for building desktop shells, and %3, a statically typed, compiled programming language.",
+    "term": "ADVS is a highly customizable modern desktop shell with a %1 inspired design.<br/><br/>It is built with %2, a QT6 framework for building desktop shells, and %3, a statically typed, compiled programming language.",
     "translation": "",
-    "context": "DMS is a highly customizable modern desktop shell with a %1 inspired design.<br/><br/>It is built with %2, a QT6 framework for building desktop shells, and %3, a statically typed, compiled programming language.",
+    "context": "ADVS is a highly customizable modern desktop shell with a %1 inspired design.<br/><br/>It is built with %2, a QT6 framework for building desktop shells, and %3, a statically typed, compiled programming language.",
     "reference": "",
     "comment": ""
   },
   {
-    "term": "DMS out of date",
+    "term": "ADVS out of date",
     "translation": "",
-    "context": "DMS out of date",
+    "context": "ADVS out of date",
     "reference": "",
     "comment": ""
   },
   {
-    "term": "DMS removes its managed block from /etc/pam.d/greetd and stops write services",
+    "term": "ADVS removes its managed block from /etc/pam.d/greetd and stops write services",
     "translation": "",
-    "context": "DMS removes its managed block from /etc/pam.d/greetd and stops write services",
+    "context": "ADVS removes its managed block from /etc/pam.d/greetd and stops write services",
     "reference": "",
     "comment": "greeter system PAM toggle description"
   },
   {
-    "term": "DMS server is outdated (API v%1, expected v%2)",
+    "term": "ADVS server is outdated (API v%1, expected v%2)",
     "translation": "",
-    "context": "DMS server is outdated (API v%1, expected v%2)",
+    "context": "ADVS server is outdated (API v%1, expected v%2)",
     "reference": "",
     "comment": ""
   },
   {
-    "term": "DMS service is not connected. Clipboard settings are unavailable.",
+    "term": "ADVS service is not connected. Clipboard settings are unavailable.",
     "translation": "",
-    "context": "DMS service is not connected. Clipboard settings are unavailable.",
+    "context": "ADVS service is not connected. Clipboard settings are unavailable.",
     "reference": "",
     "comment": ""
   },
   {
-    "term": "DMS shell actions (launcher, clipboard, etc.)",
+    "term": "ADVS shell actions (launcher, clipboard, etc.)",
     "translation": "",
-    "context": "DMS shell actions (launcher, clipboard, etc.)",
+    "context": "ADVS shell actions (launcher, clipboard, etc.)",
     "reference": "",
     "comment": ""
   },
   {
-    "term": "DMS_SOCKET not available",
+    "term": "ADVS_SOCKET not available",
     "translation": "",
-    "context": "DMS_SOCKET not available",
+    "context": "ADVS_SOCKET not available",
     "reference": "",
     "comment": ""
   },
@@ -5348,86 +5348,86 @@
     "comment": ""
   },
   {
-    "term": "Dank",
+    "term": "Adv",
     "translation": "",
-    "context": "Dank",
+    "context": "Adv",
     "reference": "",
     "comment": ""
   },
   {
-    "term": "Dank Bar",
+    "term": "Adv Bar",
     "translation": "",
-    "context": "Dank Bar",
+    "context": "Adv Bar",
     "reference": "",
     "comment": ""
   },
   {
-    "term": "Dank Bar Xray",
+    "term": "Adv Bar Xray",
     "translation": "",
-    "context": "Dank Bar Xray",
+    "context": "Adv Bar Xray",
     "reference": "",
     "comment": ""
   },
   {
-    "term": "Dank Dash",
+    "term": "Adv Dash",
     "translation": "",
-    "context": "Dank Dash",
+    "context": "Adv Dash",
     "reference": "",
     "comment": ""
   },
   {
-    "term": "Dank Island - Beta",
+    "term": "Adv Island - Beta",
     "translation": "",
-    "context": "Dank Island - Beta",
+    "context": "Adv Island - Beta",
     "reference": "",
     "comment": "island settings: page title"
   },
   {
-    "term": "Dank Island instance",
+    "term": "Adv Island instance",
     "translation": "",
-    "context": "Dank Island instance",
+    "context": "Adv Island instance",
     "reference": "",
     "comment": ""
   },
   {
-    "term": "DankBar",
+    "term": "AdvBar",
     "translation": "",
-    "context": "DankBar",
+    "context": "AdvBar",
     "reference": "",
     "comment": "greeter feature card title | greeter settings link"
   },
   {
-    "term": "DankCalendar",
+    "term": "AdvCalendar",
     "translation": "",
-    "context": "DankCalendar",
+    "context": "AdvCalendar",
     "reference": "",
     "comment": "calendar backend option"
   },
   {
-    "term": "DankCalendar isn't installed",
+    "term": "AdvCalendar isn't installed",
     "translation": "",
-    "context": "DankCalendar isn't installed",
+    "context": "AdvCalendar isn't installed",
     "reference": "",
     "comment": ""
   },
   {
-    "term": "DankCalendar isn't running",
+    "term": "AdvCalendar isn't running",
     "translation": "",
-    "context": "DankCalendar isn't running",
+    "context": "AdvCalendar isn't running",
     "reference": "",
     "comment": ""
   },
   {
-    "term": "DankMaterialShell is ready to use",
+    "term": "AriadnevShell is ready to use",
     "translation": "",
-    "context": "DankMaterialShell is ready to use",
+    "context": "AriadnevShell is ready to use",
     "reference": "",
     "comment": "greeter completion page subtitle"
   },
   {
-    "term": "DankShell & System Icons (requires restart)",
+    "term": "AdvShell & System Icons (requires restart)",
     "translation": "",
-    "context": "DankShell & System Icons (requires restart)",
+    "context": "AdvShell & System Icons (requires restart)",
     "reference": "",
     "comment": ""
   },
@@ -5628,9 +5628,9 @@
     "comment": ""
   },
   {
-    "term": "Default launcher shortcuts open a native launcher activity inside Dank Island. Spotlight is used when the focused screen has no DankIsland.",
+    "term": "Default launcher shortcuts open a native launcher activity inside Adv Island. Spotlight is used when the focused screen has no AdvIsland.",
     "translation": "",
-    "context": "Default launcher shortcuts open a native launcher activity inside Dank Island. Spotlight is used when the focused screen has no DankIsland.",
+    "context": "Default launcher shortcuts open a native launcher activity inside Adv Island. Spotlight is used when the focused screen has no AdvIsland.",
     "reference": "",
     "comment": ""
   },
@@ -6482,9 +6482,9 @@
     "comment": ""
   },
   {
-    "term": "Drop your override for %1 so the DMS default action re-applies?",
+    "term": "Drop your override for %1 so the ADVS default action re-applies?",
     "translation": "",
-    "context": "Drop your override for %1 so the DMS default action re-applies?",
+    "context": "Drop your override for %1 so the ADVS default action re-applies?",
     "reference": "",
     "comment": ""
   },
@@ -6825,9 +6825,9 @@
     "comment": ""
   },
   {
-    "term": "Enable compositor-targetable blur layer (namespace: dms:blurwallpaper). Requires manual niri configuration.",
+    "term": "Enable compositor-targetable blur layer (namespace: advs:blurwallpaper). Requires manual niri configuration.",
     "translation": "",
-    "context": "Enable compositor-targetable blur layer (namespace: dms:blurwallpaper). Requires manual niri configuration.",
+    "context": "Enable compositor-targetable blur layer (namespace: advs:blurwallpaper). Requires manual niri configuration.",
     "reference": "",
     "comment": ""
   },
@@ -6846,9 +6846,9 @@
     "comment": ""
   },
   {
-    "term": "Enable fingerprint or security key for DMS Greeter",
+    "term": "Enable fingerprint or security key for ADVS Greeter",
     "translation": "",
-    "context": "Enable fingerprint or security key for DMS Greeter",
+    "context": "Enable fingerprint or security key for ADVS Greeter",
     "reference": "",
     "comment": ""
   },
@@ -7686,9 +7686,9 @@
     "comment": "Phone Connect error"
   },
   {
-    "term": "Failed to run 'dms-greeter status'. Ensure the dms-greeter package is installed.",
+    "term": "Failed to run 'advs-greeter status'. Ensure the advs-greeter package is installed.",
     "translation": "",
-    "context": "Failed to run 'dms-greeter status'. Ensure the dms-greeter package is installed.",
+    "context": "Failed to run 'advs-greeter status'. Ensure the advs-greeter package is installed.",
     "reference": "",
     "comment": "greeter status error"
   },
@@ -8008,9 +8008,9 @@
     "comment": "Phone Connect file share notification"
   },
   {
-    "term": "File search requires dsearch\nInstall from github.com/AvengeMedia/danksearch",
+    "term": "File search requires dsearch\nInstall from github.com/bavanchun/advsearch",
     "translation": "",
-    "context": "File search requires dsearch\nInstall from github.com/AvengeMedia/danksearch",
+    "context": "File search requires dsearch\nInstall from github.com/bavanchun/advsearch",
     "reference": "",
     "comment": ""
   },
@@ -8372,9 +8372,9 @@
     "comment": ""
   },
   {
-    "term": "Follow DMS background color",
+    "term": "Follow ADVS background color",
     "translation": "",
-    "context": "Follow DMS background color",
+    "context": "Follow ADVS background color",
     "reference": "",
     "comment": ""
   },
@@ -8834,9 +8834,9 @@
     "comment": ""
   },
   {
-    "term": "Gamma control not available. Requires DMS API v6+.",
+    "term": "Gamma control not available. Requires ADVS API v6+.",
     "translation": "",
-    "context": "Gamma control not available. Requires DMS API v6+.",
+    "context": "Gamma control not available. Requires ADVS API v6+.",
     "reference": "",
     "comment": ""
   },
@@ -8869,9 +8869,9 @@
     "comment": ""
   },
   {
-    "term": "Generate baseline GTK3/4, QT5/QT6, or qtengine configurations to follow DMS colors (only qt6ct requires qt6ct-kde). Only needed once.<br /><br />It is recommended to configure %1 prior to applying GTK themes.",
+    "term": "Generate baseline GTK3/4, QT5/QT6, or qtengine configurations to follow ADVS colors (only qt6ct requires qt6ct-kde). Only needed once.<br /><br />It is recommended to configure %1 prior to applying GTK themes.",
     "translation": "",
-    "context": "Generate baseline GTK3/4, QT5/QT6, or qtengine configurations to follow DMS colors (only qt6ct requires qt6ct-kde). Only needed once.<br /><br />It is recommended to configure %1 prior to applying GTK themes.",
+    "context": "Generate baseline GTK3/4, QT5/QT6, or qtengine configurations to follow ADVS colors (only qt6ct requires qt6ct-kde). Only needed once.<br /><br />It is recommended to configure %1 prior to applying GTK themes.",
     "reference": "",
     "comment": ""
   },
@@ -9030,9 +9030,9 @@
     "comment": ""
   },
   {
-    "term": "Greeter group members can sync their login-screen theme with dms-greeter sync --profile after logging out and back in.",
+    "term": "Greeter group members can sync their login-screen theme with advs-greeter sync --profile after logging out and back in.",
     "translation": "",
-    "context": "Greeter group members can sync their login-screen theme with dms-greeter sync --profile after logging out and back in.",
+    "context": "Greeter group members can sync their login-screen theme with advs-greeter sync --profile after logging out and back in.",
     "reference": "",
     "comment": ""
   },
@@ -9856,11 +9856,11 @@
     "comment": ""
   },
   {
-    "term": "Icon theme changed outside DMS; switched to System Default",
+    "term": "Icon theme changed outside ADVS; switched to System Default",
     "translation": "",
-    "context": "Icon theme changed outside DMS; switched to System Default",
+    "context": "Icon theme changed outside ADVS; switched to System Default",
     "reference": "",
-    "comment": "shown when an external tool overrides the icon theme DMS applied"
+    "comment": "shown when an external tool overrides the icon theme ADVS applied"
   },
   {
     "term": "Identical alerts show as one popup instead of stacking",
@@ -9912,9 +9912,9 @@
     "comment": ""
   },
   {
-    "term": "If autostart app icons don't appear in the system tray, generate a systemd override to ensure DMS starts before autostart apps",
+    "term": "If autostart app icons don't appear in the system tray, generate a systemd override to ensure ADVS starts before autostart apps",
     "translation": "",
-    "context": "If autostart app icons don't appear in the system tray, generate a systemd override to ensure DMS starts before autostart apps",
+    "context": "If autostart app icons don't appear in the system tray, generate a systemd override to ensure ADVS starts before autostart apps",
     "reference": "",
     "comment": ""
   },
@@ -10234,9 +10234,9 @@
     "comment": "theme installation dialog title"
   },
   {
-    "term": "Install color themes from the DMS theme registry",
+    "term": "Install color themes from the ADVS theme registry",
     "translation": "",
-    "context": "Install color themes from the DMS theme registry",
+    "context": "Install color themes from the ADVS theme registry",
     "reference": "",
     "comment": "theme browser description"
   },
@@ -10262,23 +10262,23 @@
     "comment": "matugen installation hint"
   },
   {
-    "term": "Install plugin '%1' from the DMS registry?",
+    "term": "Install plugin '%1' from the ADVS registry?",
     "translation": "",
-    "context": "Install plugin '%1' from the DMS registry?",
+    "context": "Install plugin '%1' from the ADVS registry?",
     "reference": "",
     "comment": "plugin installation confirmation"
   },
   {
-    "term": "Install plugins from the DMS plugin registry",
+    "term": "Install plugins from the ADVS plugin registry",
     "translation": "",
-    "context": "Install plugins from the DMS plugin registry",
+    "context": "Install plugins from the ADVS plugin registry",
     "reference": "",
     "comment": "plugin browser description"
   },
   {
-    "term": "Install theme '%1' from the DMS registry?",
+    "term": "Install theme '%1' from the ADVS registry?",
     "translation": "",
-    "context": "Install theme '%1' from the DMS registry?",
+    "context": "Install theme '%1' from the ADVS registry?",
     "reference": "",
     "comment": "theme installation confirmation"
   },
@@ -11291,9 +11291,9 @@
     "comment": ""
   },
   {
-    "term": "Manage and configure plugins for extending DMS functionality",
+    "term": "Manage and configure plugins for extending ADVS functionality",
     "translation": "",
-    "context": "Manage and configure plugins for extending DMS functionality",
+    "context": "Manage and configure plugins for extending ADVS functionality",
     "reference": "",
     "comment": ""
   },
@@ -12495,9 +12495,9 @@
     "comment": "greeter feature card description"
   },
   {
-    "term": "Night mode failed: DMS gamma control not available",
+    "term": "Night mode failed: ADVS gamma control not available",
     "translation": "",
-    "context": "Night mode failed: DMS gamma control not available",
+    "context": "Night mode failed: ADVS gamma control not available",
     "reference": "",
     "comment": ""
   },
@@ -12558,9 +12558,9 @@
     "comment": ""
   },
   {
-    "term": "No DMS shortcuts configured",
+    "term": "No ADVS shortcuts configured",
     "translation": "",
-    "context": "No DMS shortcuts configured",
+    "context": "No ADVS shortcuts configured",
     "reference": "",
     "comment": "greeter no keybinds message"
   },
@@ -13650,9 +13650,9 @@
     "comment": ""
   },
   {
-    "term": "Opacity of floating DMS windows like Settings, Notepad, and authentication prompts",
+    "term": "Opacity of floating ADVS windows like Settings, Notepad, and authentication prompts",
     "translation": "",
-    "context": "Opacity of floating DMS windows like Settings, Notepad, and authentication prompts",
+    "context": "Opacity of floating ADVS windows like Settings, Notepad, and authentication prompts",
     "reference": "",
     "comment": ""
   },
@@ -13692,9 +13692,9 @@
     "comment": "KDE Connect open SMS app button"
   },
   {
-    "term": "Open DMS windows floating instead of tiled",
+    "term": "Open ADVS windows floating instead of tiled",
     "translation": "",
-    "context": "Open DMS windows floating instead of tiled",
+    "context": "Open ADVS windows floating instead of tiled",
     "reference": "",
     "comment": ""
   },
@@ -13731,7 +13731,7 @@
     "translation": "",
     "context": "Open Island",
     "reference": "",
-    "comment": "settings: button that opens the Dank Island tab"
+    "comment": "settings: button that opens the Adv Island tab"
   },
   {
     "term": "Open Notepad File",
@@ -15841,9 +15841,9 @@
     "comment": ""
   },
   {
-    "term": "Remove the shortcut %1? An unbind entry will be saved to dms/binds-user.lua so it stays removed across DMS updates.",
+    "term": "Remove the shortcut %1? An unbind entry will be saved to advs/binds-user.lua so it stays removed across ADVS updates.",
     "translation": "",
-    "context": "Remove the shortcut %1? An unbind entry will be saved to dms/binds-user.lua so it stays removed across DMS updates.",
+    "context": "Remove the shortcut %1? An unbind entry will be saved to advs/binds-user.lua so it stays removed across ADVS updates.",
     "reference": "",
     "comment": ""
   },
@@ -15967,16 +15967,16 @@
     "comment": ""
   },
   {
-    "term": "Requires DMS %1",
+    "term": "Requires ADVS %1",
     "translation": "",
-    "context": "Requires DMS %1",
+    "context": "Requires ADVS %1",
     "reference": "",
     "comment": ""
   },
   {
-    "term": "Requires DMS server with sysupdate capability",
+    "term": "Requires ADVS server with sysupdate capability",
     "translation": "",
-    "context": "Requires DMS server with sysupdate capability",
+    "context": "Requires ADVS server with sysupdate capability",
     "reference": "",
     "comment": ""
   },
@@ -15995,9 +15995,9 @@
     "comment": ""
   },
   {
-    "term": "Requires greetd, dms-greeter, and your user in the greeter group (plus fprintd/pam_fprintd for fingerprint, pam_u2f for security keys).",
+    "term": "Requires greetd, advs-greeter, and your user in the greeter group (plus fprintd/pam_fprintd for fingerprint, pam_u2f for security keys).",
     "translation": "",
-    "context": "Requires greetd, dms-greeter, and your user in the greeter group (plus fprintd/pam_fprintd for fingerprint, pam_u2f for security keys).",
+    "context": "Requires greetd, advs-greeter, and your user in the greeter group (plus fprintd/pam_fprintd for fingerprint, pam_u2f for security keys).",
     "reference": "",
     "comment": ""
   },
@@ -16016,9 +16016,9 @@
     "comment": ""
   },
   {
-    "term": "Requires the DMS Theme extension from the editor marketplace",
+    "term": "Requires the ADVS Theme extension from the editor marketplace",
     "translation": "",
-    "context": "Requires the DMS Theme extension from the editor marketplace",
+    "context": "Requires the ADVS Theme extension from the editor marketplace",
     "reference": "",
     "comment": "vscode matugen template description"
   },
@@ -16107,16 +16107,16 @@
     "comment": "greeter displays description"
   },
   {
-    "term": "Restart DMS",
+    "term": "Restart ADVS",
     "translation": "",
-    "context": "Restart DMS",
+    "context": "Restart ADVS",
     "reference": "",
     "comment": ""
   },
   {
-    "term": "Restart the DankMaterialShell",
+    "term": "Restart the AriadnevShell",
     "translation": "",
-    "context": "Restart the DankMaterialShell",
+    "context": "Restart the AriadnevShell",
     "reference": "",
     "comment": ""
   },
@@ -16338,9 +16338,9 @@
     "comment": ""
   },
   {
-    "term": "Rules found in your compositor config. These are read-only here, use Convert to DMS to make an editable copy.",
+    "term": "Rules found in your compositor config. These are read-only here, use Convert to ADVS to make an editable copy.",
     "translation": "",
-    "context": "Rules found in your compositor config. These are read-only here, use Convert to DMS to make an editable copy.",
+    "context": "Rules found in your compositor config. These are read-only here, use Convert to ADVS to make an editable copy.",
     "reference": "",
     "comment": ""
   },
@@ -16352,9 +16352,9 @@
     "comment": "greeter doctor page button"
   },
   {
-    "term": "Run DMS Templates",
+    "term": "Run ADVS Templates",
     "translation": "",
-    "context": "Run DMS Templates",
+    "context": "Run ADVS Templates",
     "reference": "",
     "comment": ""
   },
@@ -16625,16 +16625,16 @@
     "comment": ""
   },
   {
-    "term": "Scale DankBar font sizes independently",
+    "term": "Scale AdvBar font sizes independently",
     "translation": "",
-    "context": "Scale DankBar font sizes independently",
+    "context": "Scale AdvBar font sizes independently",
     "reference": "",
     "comment": ""
   },
   {
-    "term": "Scale DankBar icon sizes independently",
+    "term": "Scale AdvBar icon sizes independently",
     "translation": "",
-    "context": "Scale DankBar icon sizes independently",
+    "context": "Scale AdvBar icon sizes independently",
     "reference": "",
     "comment": ""
   },
@@ -17913,9 +17913,9 @@
     "comment": ""
   },
   {
-    "term": "Show Restart DMS",
+    "term": "Show Restart ADVS",
     "translation": "",
-    "context": "Show Restart DMS",
+    "context": "Show Restart ADVS",
     "reference": "",
     "comment": ""
   },
@@ -18515,9 +18515,9 @@
     "comment": "island settings: battery style description"
   },
   {
-    "term": "Some plugins require a newer version of DMS:",
+    "term": "Some plugins require a newer version of ADVS:",
     "translation": "",
-    "context": "Some plugins require a newer version of DMS:",
+    "context": "Some plugins require a newer version of ADVS:",
     "reference": "",
     "comment": ""
   },
@@ -18869,7 +18869,7 @@
     "translation": "",
     "context": "Strict auto-hide",
     "reference": "",
-    "comment": "Dank bar setting: hide the bar when the pointer leaves even if a menu or bar popover is still open"
+    "comment": "Adv bar setting: hide the bar when the pointer leaves even if a menu or bar popover is still open"
   },
   {
     "term": "Stripes",
@@ -19145,9 +19145,9 @@
     "comment": ""
   },
   {
-    "term": "Sync applies your theme and settings to the login screen. Shared users should run dms-greeter sync --profile instead of a primary user sync.",
+    "term": "Sync applies your theme and settings to the login screen. Shared users should run advs-greeter sync --profile instead of a primary user sync.",
     "translation": "",
-    "context": "Sync applies your theme and settings to the login screen. Shared users should run dms-greeter sync --profile instead of a primary user sync.",
+    "context": "Sync applies your theme and settings to the login screen. Shared users should run advs-greeter sync --profile instead of a primary user sync.",
     "reference": "",
     "comment": ""
   },
@@ -19425,16 +19425,16 @@
     "comment": ""
   },
   {
-    "term": "Terminal fallback failed. Install a supported terminal emulator or run 'dms auth sync' manually.",
+    "term": "Terminal fallback failed. Install a supported terminal emulator or run 'advs auth sync' manually.",
     "translation": "",
-    "context": "Terminal fallback failed. Install a supported terminal emulator or run 'dms auth sync' manually.",
+    "context": "Terminal fallback failed. Install a supported terminal emulator or run 'advs auth sync' manually.",
     "reference": "",
     "comment": ""
   },
   {
-    "term": "Terminal fallback failed. Install one of the supported terminal emulators or run 'dms-greeter sync' manually.",
+    "term": "Terminal fallback failed. Install one of the supported terminal emulators or run 'advs-greeter sync' manually.",
     "translation": "",
-    "context": "Terminal fallback failed. Install one of the supported terminal emulators or run 'dms-greeter sync' manually.",
+    "context": "Terminal fallback failed. Install one of the supported terminal emulators or run 'advs-greeter sync' manually.",
     "reference": "",
     "comment": ""
   },
@@ -19530,9 +19530,9 @@
     "comment": ""
   },
   {
-    "term": "The DMS_SOCKET environment variable is not set or the socket is unavailable. Automated plugin management requires the DMS_SOCKET.",
+    "term": "The ADVS_SOCKET environment variable is not set or the socket is unavailable. Automated plugin management requires the ADVS_SOCKET.",
     "translation": "",
-    "context": "The DMS_SOCKET environment variable is not set or the socket is unavailable. Automated plugin management requires the DMS_SOCKET.",
+    "context": "The ADVS_SOCKET environment variable is not set or the socket is unavailable. Automated plugin management requires the ADVS_SOCKET.",
     "reference": "",
     "comment": ""
   },
@@ -19572,9 +19572,9 @@
     "comment": ""
   },
   {
-    "term": "The greeter bundled with DMS is active (archinstall setup). It keeps working as is, but syncing theme and settings needs the standalone greeter. Install greetd-dms-greeter-bin from the AUR, then run Sync to migrate the login screen.",
+    "term": "The greeter bundled with ADVS is active (archinstall setup). It keeps working as is, but syncing theme and settings needs the standalone greeter. Install greetd-advs-greeter-bin from the AUR, then run Sync to migrate the login screen.",
     "translation": "",
-    "context": "The greeter bundled with DMS is active (archinstall setup). It keeps working as is, but syncing theme and settings needs the standalone greeter. Install greetd-dms-greeter-bin from the AUR, then run Sync to migrate the login screen.",
+    "context": "The greeter bundled with ADVS is active (archinstall setup). It keeps working as is, but syncing theme and settings needs the standalone greeter. Install greetd-advs-greeter-bin from the AUR, then run Sync to migrate the login screen.",
     "reference": "",
     "comment": "embedded greeter status"
   },
@@ -19698,9 +19698,9 @@
     "comment": ""
   },
   {
-    "term": "Third-party plugins are created by the community and are not officially supported by DankMaterialShell.\n\nThese plugins may pose security and privacy risks - install at your own risk.",
+    "term": "Third-party plugins are created by the community and are not officially supported by AriadnevShell.\n\nThese plugins may pose security and privacy risks - install at your own risk.",
     "translation": "",
-    "context": "Third-party plugins are created by the community and are not officially supported by DankMaterialShell.\n\nThese plugins may pose security and privacy risks - install at your own risk.",
+    "context": "Third-party plugins are created by the community and are not officially supported by AriadnevShell.\n\nThese plugins may pose security and privacy risks - install at your own risk.",
     "reference": "",
     "comment": ""
   },
@@ -19719,9 +19719,9 @@
     "comment": "Label for the user's own device in Tailscale"
   },
   {
-    "term": "This install is still using hyprland.conf. Run dms setup to migrate before changing these settings.",
+    "term": "This install is still using hyprland.conf. Run advs setup to migrate before changing these settings.",
     "translation": "",
-    "context": "This install is still using hyprland.conf. Run dms setup to migrate before changing these settings.",
+    "context": "This install is still using hyprland.conf. Run advs setup to migrate before changing these settings.",
     "reference": "",
     "comment": ""
   },
@@ -19985,9 +19985,9 @@
     "comment": ""
   },
   {
-    "term": "To use this DMS bind, remove or change the keybind in your config.kdl",
+    "term": "To use this ADVS bind, remove or change the keybind in your config.kdl",
     "translation": "",
-    "context": "To use this DMS bind, remove or change the keybind in your config.kdl",
+    "context": "To use this ADVS bind, remove or change the keybind in your config.kdl",
     "reference": "",
     "comment": ""
   },
@@ -21119,9 +21119,9 @@
     "comment": ""
   },
   {
-    "term": "Using DankCalendar%1",
+    "term": "Using AdvCalendar%1",
     "translation": "",
-    "context": "Using DankCalendar%1",
+    "context": "Using AdvCalendar%1",
     "reference": "",
     "comment": "calendar backend status"
   },
@@ -21539,9 +21539,9 @@
     "comment": "greeter modal window title"
   },
   {
-    "term": "Welcome to DankMaterialShell",
+    "term": "Welcome to AriadnevShell",
     "translation": "",
-    "context": "Welcome to DankMaterialShell",
+    "context": "Welcome to AriadnevShell",
     "reference": "",
     "comment": "greeter welcome page title"
   },
@@ -21746,7 +21746,7 @@
     "translation": "",
     "context": "Widgets, layout, style",
     "reference": "",
-    "comment": "greeter dankbar description"
+    "comment": "greeter advbar description"
   },
   {
     "term": "Width",
@@ -22204,9 +22204,9 @@
     "comment": "plugin discussion link"
   },
   {
-    "term": "dms-greeter is not installed. Install the dms-greeter package to manage the greeter.",
+    "term": "advs-greeter is not installed. Install the advs-greeter package to manage the greeter.",
     "translation": "",
-    "context": "dms-greeter is not installed. Install the dms-greeter package to manage the greeter.",
+    "context": "advs-greeter is not installed. Install the advs-greeter package to manage the greeter.",
     "reference": "",
     "comment": "greeter status placeholder"
   },
@@ -22309,9 +22309,9 @@
     "comment": ""
   },
   {
-    "term": "loginctl not available - lock integration requires DMS socket connection",
+    "term": "loginctl not available - lock integration requires ADVS socket connection",
     "translation": "",
-    "context": "loginctl not available - lock integration requires DMS socket connection",
+    "context": "loginctl not available - lock integration requires ADVS socket connection",
     "reference": "",
     "comment": ""
   },
@@ -22400,9 +22400,9 @@
     "comment": "greeter keybinds niri description"
   },
   {
-    "term": "niri/dms Discord",
+    "term": "niri/advs Discord",
     "translation": "",
-    "context": "niri/dms Discord",
+    "context": "niri/advs Discord",
     "reference": "",
     "comment": ""
   },
@@ -22575,9 +22575,9 @@
     "comment": "uptime prefix, e.g. 'up 4h 2m'"
   },
   {
-    "term": "update dms for NM integration.",
+    "term": "update advs for NM integration.",
     "translation": "",
-    "context": "update dms for NM integration.",
+    "context": "update advs for NM integration.",
     "reference": "",
     "comment": ""
   },

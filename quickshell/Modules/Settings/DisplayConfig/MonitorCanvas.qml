@@ -103,7 +103,7 @@ Rectangle {
         }
     }
 
-    DankActionButton {
+    AdvActionButton {
         id: identifyButton
         anchors.top: parent.top
         anchors.right: parent.right

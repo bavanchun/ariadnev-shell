@@ -1,6 +1,6 @@
 name: Prune Void R2 archive
 
-# Keeps the danklinux-void bucket inside the Cloudflare R2 free tier by
+# Keeps the ariadnev-void bucket inside the Cloudflare R2 free tier by
 # deleting the oldest archive/<repo>/<timestamp>/ snapshots written by
 # publish-void-r2.sh. Live repositories (<repo>/current/) are never touched.
 
@@ -42,13 +42,13 @@ jobs:
   prune:
     name: Prune archive snapshots
     runs-on: ubuntu-latest
-    if: github.repository == 'AvengeMedia/DankMaterialShell'
+    if: github.repository == 'bavanchun/ariadnev-shell'
     env:
       AWS_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
       AWS_DEFAULT_REGION: auto
       AWS_EC2_METADATA_DISABLED: true
-      R2_BUCKET: danklinux-void
+      R2_BUCKET: ariadnev-void
       R2_ENDPOINT: https://${{ secrets.CLOUDFLARE_ACCOUNT_ID }}.r2.cloudflarestorage.com
       ARCHIVE_PREFIX: archive/
       MAX_BUCKET_GB: ${{ github.event.inputs.max_bucket_gb || '8' }}

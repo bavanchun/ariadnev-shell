@@ -39,7 +39,7 @@ done
         }
     }
 
-    DankFlickable {
+    AdvFlickable {
         anchors.fill: parent
         clip: true
         contentHeight: mainColumn.height + Theme.spacingXL
@@ -68,7 +68,7 @@ done
                         width: parent.width
                         spacing: Theme.spacingM
 
-                        DankIcon {
+                        AdvIcon {
                             name: BatteryService.getBatteryIcon()
                             size: Theme.iconSizeLarge
                             color: root.batteryStatusColor
@@ -226,7 +226,7 @@ done
                         height: 1
                     }
 
-                    DankButton {
+                    AdvButton {
                         id: applyButton
                         text: I18n.tr("Apply to Hardware")
                         iconName: "lock"

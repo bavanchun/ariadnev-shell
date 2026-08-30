@@ -7,7 +7,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/server/models"
+	"github.com/bavanchun/ariadnev-shell/core/internal/server/models"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )
@@ -207,7 +207,7 @@ func TestHandleHotspotRequests(t *testing.T) {
 			ID:     123,
 			Method: "network.hotspot.configure",
 			Params: map[string]any{
-				"ssid":     "DMS Hotspot",
+				"ssid":     "ADVS Hotspot",
 				"password": "hunter2-password",
 				"device":   "wlan0",
 				"band":     "bg",
@@ -226,7 +226,7 @@ func TestHandleHotspotRequests(t *testing.T) {
 		assert.True(t, resp.Result.Success)
 		assert.True(t, backend.configureCalled)
 		assert.Equal(t, HotspotRequest{
-			SSID:     "DMS Hotspot",
+			SSID:     "ADVS Hotspot",
 			Password: "hunter2-password",
 			Device:   "wlan0",
 			Band:     "bg",

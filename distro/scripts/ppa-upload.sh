@@ -3,16 +3,16 @@
 # Usage: ./ppa-upload.sh [package-name] [ppa-name] [ubuntu-series] [rebuild-number] [--keep-builds] [--rebuild=N]
 #
 # Examples:
-#   ./ppa-upload.sh dms                    # Upload to resolute + stonking (default)
-#   ./ppa-upload.sh dms 2                 # Native: resolute ppa2, stonking ppa3 (auto +1 on second series)
-#   ./ppa-upload.sh dms --rebuild=2       # Rebuild with ppa2 (flag syntax)
-#   ./ppa-upload.sh dms-git               # Single package (both series)
+#   ./ppa-upload.sh advs                    # Upload to resolute + stonking (default)
+#   ./ppa-upload.sh advs 2                 # Native: resolute ppa2, stonking ppa3 (auto +1 on second series)
+#   ./ppa-upload.sh advs --rebuild=2       # Rebuild with ppa2 (flag syntax)
+#   ./ppa-upload.sh advs-git               # Single package (both series)
 #   ./ppa-upload.sh all                   # All packages (each to both series)
-#   ./ppa-upload.sh dms resolute          # 26.04 LTS only (same as "dms dms resolute")
-#   ./ppa-upload.sh dms stonking          # 26.10 only
-#   ./ppa-upload.sh dms dms resolute      # Explicit PPA name + one series (optional form)
-#   ./ppa-upload.sh dms dms resolute 2    # One series + rebuild number
-#   ./ppa-upload.sh distro/ubuntu/dms dms # Path-style (backward compatible)
+#   ./ppa-upload.sh advs resolute          # 26.04 LTS only (same as "advs advs resolute")
+#   ./ppa-upload.sh advs stonking          # 26.10 only
+#   ./ppa-upload.sh advs advs resolute      # Explicit PPA name + one series (optional form)
+#   ./ppa-upload.sh advs advs resolute 2    # One series + rebuild number
+#   ./ppa-upload.sh distro/ubuntu/advs advs # Path-style (backward compatible)
 
 set -e
 
@@ -27,7 +27,7 @@ success() { echo -e "${GREEN}[SUCCESS]${NC} $1"; }
 warn() { echo -e "${YELLOW}[WARN]${NC} $1"; }
 error() { echo -e "${RED}[ERROR]${NC} $1"; }
 
-AVAILABLE_PACKAGES=(dms dms-git)
+AVAILABLE_PACKAGES=(advs advs-git)
 
 KEEP_BUILDS=false
 REBUILD_RELEASE=""
@@ -70,7 +70,7 @@ if [[ ${#POSITIONAL_ARGS[@]} -gt 0 ]]; then
     fi
 fi
 
-# Shorthand: "dms resolute" / "dms stonking" (package + series; PPA inferred — no need for "dms dms resolute")
+# Shorthand: "advs resolute" / "advs stonking" (package + series; PPA inferred — no need for "advs advs resolute")
 if [[ ${#POSITIONAL_ARGS[@]} -eq 2 ]] && [[ "${POSITIONAL_ARGS[1]}" == "resolute" || "${POSITIONAL_ARGS[1]}" == "stonking" ]]; then
     PACKAGE_INPUT="${POSITIONAL_ARGS[0]}"
     PPA_NAME_INPUT=""
@@ -99,8 +99,8 @@ fi
 get_ppa_name() {
     local pkg="$1"
     case "$pkg" in
-        dms) echo "dms" ;;
-        dms-git) echo "dms-git" ;;
+        advs) echo "advs" ;;
+        advs-git) echo "advs-git" ;;
         *) echo "" ;;
     esac
 }
@@ -220,13 +220,13 @@ setup_launchpad_sftp() {
     if [[ -z "${LAUNCHPAD_SSH_PRIVATE_KEY:-}" ]]; then
         error "LAUNCHPAD_SSH_PRIVATE_KEY is required for CI SFTP uploads."
         error "Add a GitHub Actions secret containing a private SSH key whose public key is registered in Launchpad."
-        error "Optional: set LAUNCHPAD_SSH_LOGIN if the Launchpad login is not 'avengemedia'."
+        error "Optional: set LAUNCHPAD_SSH_LOGIN if the Launchpad login is not 'bavanchun'."
         exit 1
     fi
 
     local ssh_dir="$HOME/.ssh"
     local key_file="$ssh_dir/launchpad_ppa"
-    local login="${LAUNCHPAD_SSH_LOGIN:-avengemedia}"
+    local login="${LAUNCHPAD_SSH_LOGIN:-bavanchun}"
     local strict_host_key_checking="yes"
 
     mkdir -p "$ssh_dir"
@@ -296,7 +296,7 @@ UBUNTU_SERIES="${SERIES_LIST[0]}"
 
 info "Building and uploading: $PACKAGE_NAME"
 info "Package directory: $PACKAGE_DIR"
-info "PPA: ppa:avengemedia/$PPA_NAME"
+info "PPA: ppa:bavanchun/$PPA_NAME"
 info "Ubuntu series: $UBUNTU_SERIES"
 if [[ -n "$REBUILD_RELEASE" ]]; then
     info "Rebuild release number: ppa$REBUILD_RELEASE"
@@ -335,7 +335,7 @@ echo
 
 info "Step 2: Uploading to PPA..."
 
-if [ "$PPA_NAME" = "dms" ] || [ "$PPA_NAME" = "dms-git" ]; then
+if [ "$PPA_NAME" = "advs" ] || [ "$PPA_NAME" = "advs-git" ]; then
     warn "Using lftp for upload"
 
     BUILD_DIR=$(dirname "$CHANGES_FILE")
@@ -369,16 +369,16 @@ if [ "$PPA_NAME" = "dms" ] || [ "$PPA_NAME" = "dms-git" ]; then
         setup_launchpad_sftp
         DPUT_CONFIG=$(mktemp)
         cat >"$DPUT_CONFIG" <<EOF
-[avengemedia-${PPA_NAME}]
+[bavanchun-${PPA_NAME}]
 fqdn = ppa.launchpad.net
 method = sftp
-incoming = ~avengemedia/ubuntu/${PPA_NAME}/
-login = ${LAUNCHPAD_SSH_LOGIN:-avengemedia}
+incoming = ~bavanchun/ubuntu/${PPA_NAME}/
+login = ${LAUNCHPAD_SSH_LOGIN:-bavanchun}
 allow_unsigned_uploads = 0
 EOF
 
         info "Using dput for CI upload (SFTP)"
-        if dput -c "$DPUT_CONFIG" "avengemedia-${PPA_NAME}" "$CHANGES_FILE"; then
+        if dput -c "$DPUT_CONFIG" "bavanchun-${PPA_NAME}" "$CHANGES_FILE"; then
             success "Upload successful!"
             rm -f "$DPUT_CONFIG"
         else
@@ -389,7 +389,7 @@ EOF
     else
         LFTP_SCRIPT=$(mktemp)
         cat >"$LFTP_SCRIPT" <<EOF
-cd ~avengemedia/ubuntu/$PPA_NAME/
+cd ~bavanchun/ubuntu/$PPA_NAME/
 lcd $BUILD_DIR
 mput $CHANGES_BASENAME
 mput $DSC_FILE
@@ -408,17 +408,17 @@ EOF
         fi
     fi
 else
-    # This branch should not be reached for DMS packages
-    # All DMS packages (dms, dms-git) use lftp
+    # This branch should not be reached for ADVS packages
+    # All ADVS packages (advs, advs-git) use lftp
     error "Unknown PPA: $PPA_NAME"
-    error "DMS packages use lftp for upload. Supported PPAs: dms, dms-git"
+    error "ADVS packages use lftp for upload. Supported PPAs: advs, advs-git"
     exit 1
 fi
 
 echo
 success "Package uploaded successfully!"
 info "Monitor build progress at:"
-echo "  https://launchpad.net/~avengemedia/+archive/ubuntu/$PPA_NAME/+packages"
+echo "  https://launchpad.net/~bavanchun/+archive/ubuntu/$PPA_NAME/+packages"
 echo
 
 if [ "$KEEP_BUILDS" = "false" ]; then
@@ -452,7 +452,7 @@ if [ "$KEEP_BUILDS" = "false" ]; then
     done
 
     case "$PACKAGE_NAME" in
-    danksearch)
+    advsearch)
         if [ -f "$PACKAGE_DIR/dsearch-amd64" ]; then
             rm -f "$PACKAGE_DIR/dsearch-amd64"
             REMOVED=$((REMOVED + 1))
@@ -462,24 +462,24 @@ if [ "$KEEP_BUILDS" = "false" ]; then
             REMOVED=$((REMOVED + 1))
         fi
         ;;
-    dms)
-        if [ -f "$PACKAGE_DIR/dms-distropkg-amd64.gz" ]; then
-            rm -f "$PACKAGE_DIR/dms-distropkg-amd64.gz"
+    advs)
+        if [ -f "$PACKAGE_DIR/advs-distropkg-amd64.gz" ]; then
+            rm -f "$PACKAGE_DIR/advs-distropkg-amd64.gz"
             REMOVED=$((REMOVED + 1))
         fi
-        if [ -f "$PACKAGE_DIR/dms-distropkg-arm64.gz" ]; then
-            rm -f "$PACKAGE_DIR/dms-distropkg-arm64.gz"
+        if [ -f "$PACKAGE_DIR/advs-distropkg-arm64.gz" ]; then
+            rm -f "$PACKAGE_DIR/advs-distropkg-arm64.gz"
             REMOVED=$((REMOVED + 1))
         fi
-        if [ -f "$PACKAGE_DIR/dms-source.tar.gz" ]; then
-            rm -f "$PACKAGE_DIR/dms-source.tar.gz"
+        if [ -f "$PACKAGE_DIR/advs-source.tar.gz" ]; then
+            rm -f "$PACKAGE_DIR/advs-source.tar.gz"
             REMOVED=$((REMOVED + 1))
         fi
         ;;
-    dms-git)
+    advs-git)
         # Remove git source directory binary
-        if [ -d "$PACKAGE_DIR/dms-git-repo" ]; then
-            rm -rf "$PACKAGE_DIR/dms-git-repo"
+        if [ -d "$PACKAGE_DIR/advs-git-repo" ]; then
+            rm -rf "$PACKAGE_DIR/advs-git-repo"
             REMOVED=$((REMOVED + 1))
         fi
         ;;

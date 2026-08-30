@@ -116,7 +116,7 @@ Item {
         }
     }
 
-    DankFlickable {
+    AdvFlickable {
         anchors.fill: parent
         clip: true
         contentHeight: mainColumn.height + Theme.spacingXL
@@ -210,7 +210,7 @@ Item {
                                     horizontalAlignment: Text.AlignLeft
                                 }
 
-                                DankSlider {
+                                AdvSlider {
                                     id: maxVolSlider
                                     anchors.left: maxVolLabel.right
                                     anchors.leftMargin: Theme.spacingS
@@ -271,7 +271,7 @@ Item {
                                 anchors.verticalCenter: parent.verticalCenter
                                 spacing: Theme.spacingS
 
-                                DankIcon {
+                                AdvIcon {
                                     name: "visibility_off"
                                     size: Theme.iconSize - 4
                                     color: Theme.surfaceVariantText
@@ -286,7 +286,7 @@ Item {
                                 }
                             }
 
-                            DankIcon {
+                            AdvIcon {
                                 name: root.showHiddenOutputDevices ? "expand_less" : "expand_more"
                                 size: Theme.iconSize - 4
                                 color: Theme.surfaceVariantText
@@ -415,7 +415,7 @@ Item {
                                 anchors.verticalCenter: parent.verticalCenter
                                 spacing: Theme.spacingS
 
-                                DankIcon {
+                                AdvIcon {
                                     name: "visibility_off"
                                     size: Theme.iconSize - 4
                                     color: Theme.surfaceVariantText
@@ -430,7 +430,7 @@ Item {
                                 }
                             }
 
-                            DankIcon {
+                            AdvIcon {
                                 name: root.showHiddenInputDevices ? "expand_less" : "expand_more"
                                 size: Theme.iconSize - 4
                                 color: Theme.surfaceVariantText
@@ -494,7 +494,7 @@ Item {
                 color: Theme.primaryContainer
                 anchors.horizontalCenter: parent.horizontalCenter
 
-                DankIcon {
+                AdvIcon {
                     id: spinningIcon
                     name: "refresh"
                     size: 40
@@ -583,7 +583,7 @@ Item {
                     width: parent.width
                     spacing: Theme.spacingM
 
-                    DankIcon {
+                    AdvIcon {
                         name: root.editingDeviceType === "input" ? "mic" : "speaker"
                         size: Theme.iconSize + 8
                         color: Theme.primary
@@ -639,7 +639,7 @@ Item {
                         horizontalAlignment: Text.AlignLeft
                     }
 
-                    DankTextField {
+                    AdvTextField {
                         id: nameInput
                         width: parent.width
                         placeholderText: I18n.tr("Enter device name...", "Audio device rename dialog placeholder")
@@ -700,7 +700,7 @@ Item {
                             anchors.centerIn: parent
                             spacing: Theme.spacingS
 
-                            DankIcon {
+                            AdvIcon {
                                 name: "check"
                                 size: Theme.iconSize - 4
                                 color: Theme.onPrimary

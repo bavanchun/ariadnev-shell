@@ -52,7 +52,7 @@ StyledRect {
         isUpdating = true;
         currentUpdatingPlugin = plugin.name;
 
-        DMSService.update(plugin.name, response => {
+        ADVSService.update(plugin.name, response => {
             isUpdating = false;
             currentUpdatingPlugin = "";
             if (response.error) {
@@ -60,7 +60,7 @@ StyledRect {
             } else {
                 ToastService.showInfo(I18n.tr("Plugin updated: %1").arg(plugin.name));
                 PluginService.forceRescanPlugin(plugin.id);
-                DMSService.listInstalled();
+                ADVSService.listInstalled();
                 updatesList = updatesList.filter(p => p.id !== plugin.id);
                 if (updatesList.length === 0) {
                     root.hide();
@@ -81,7 +81,7 @@ StyledRect {
             if (idx >= list.length) {
                 isUpdating = false;
                 currentUpdatingPlugin = "";
-                DMSService.listInstalled();
+                ADVSService.listInstalled();
                 root.hide();
                 return;
             }
@@ -89,7 +89,7 @@ StyledRect {
             var plugin = list[idx];
             currentUpdatingPlugin = plugin.name;
 
-            DMSService.update(plugin.name, response => {
+            ADVSService.update(plugin.name, response => {
                 if (response.error) {
                     ToastService.showError(I18n.tr("Failed to update %1: %2").arg(plugin.name).arg(response.error));
                 } else {
@@ -114,7 +114,7 @@ StyledRect {
             width: parent.width
             spacing: Theme.spacingM
 
-            DankIcon {
+            AdvIcon {
                 name: "download"
                 size: Theme.iconSize
                 color: Theme.primary
@@ -134,7 +134,7 @@ StyledRect {
                 height: 1
             }
 
-            DankActionButton {
+            AdvActionButton {
                 id: collapseBtn
                 iconName: "close"
                 iconSize: Theme.iconSize - 2
@@ -161,7 +161,7 @@ StyledRect {
                 anchors.centerIn: parent
                 spacing: Theme.spacingM
 
-                DankSpinner {
+                AdvSpinner {
                     running: root.isUpdating
                     anchors.verticalCenter: parent.verticalCenter
                 }
@@ -175,7 +175,7 @@ StyledRect {
             }
         }
 
-        DankFlickable {
+        AdvFlickable {
             width: parent.width
             height: Math.min(listCol.implicitHeight, 300)
             clip: true
@@ -203,7 +203,7 @@ StyledRect {
                             anchors.margins: Theme.spacingM
                             spacing: Theme.spacingM
 
-                            DankIcon {
+                            AdvIcon {
                                 name: modelData.icon || "extension"
                                 size: Theme.iconSize
                                 color: Theme.primary
@@ -240,7 +240,7 @@ StyledRect {
                                 anchors.verticalCenter: parent.verticalCenter
                                 spacing: Theme.spacingS
 
-                                DankButton {
+                                AdvButton {
                                     text: I18n.tr("Diff")
                                     iconName: "open_in_new"
                                     visible: !!modelData.diffUrl || !!modelData.repo
@@ -251,7 +251,7 @@ StyledRect {
                                     }
                                 }
 
-                                DankButton {
+                                AdvButton {
                                     text: I18n.tr("Update")
                                     iconName: "download"
                                     enabled: !root.isUpdating
@@ -280,7 +280,7 @@ StyledRect {
             spacing: Theme.spacingM
             visible: !isUpdating
 
-            DankButton {
+            AdvButton {
                 text: I18n.tr("Cancel")
                 iconName: "close"
                 backgroundColor: Theme.floatingWindowFieldColor
@@ -288,7 +288,7 @@ StyledRect {
                 onClicked: root.hide()
             }
 
-            DankButton {
+            AdvButton {
                 text: I18n.tr("Update All")
                 iconName: "download"
                 enabled: root.updatesList.length > 0

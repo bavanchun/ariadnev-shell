@@ -10,7 +10,7 @@ Singleton {
     id: root
 
     readonly property bool wantsLocation: SettingsData.weatherEnabled && SettingsData.useAutoLocation
-    readonly property bool locationAvailable: DMSService.isConnected && DMSService.capabilities.includes("location")
+    readonly property bool locationAvailable: ADVSService.isConnected && ADVSService.capabilities.includes("location")
     readonly property bool valid: latitude !== 0 || longitude !== 0
 
     property var latitude: 0.0
@@ -21,8 +21,8 @@ Singleton {
     onWantsLocationChanged: {
         if (wantsLocation) {
             ensureSubscription();
-        } else if (DMSService.activeSubscriptions.includes("location")) {
-            DMSService.removeSubscription("location");
+        } else if (ADVSService.activeSubscriptions.includes("location")) {
+            ADVSService.removeSubscription("location");
         }
     }
 
@@ -31,10 +31,10 @@ Singleton {
     Component.onCompleted: ensureSubscription()
 
     Connections {
-        target: DMSService
+        target: ADVSService
 
         function onConnectionStateChanged() {
-            if (DMSService.isConnected)
+            if (ADVSService.isConnected)
                 root.ensureSubscription();
         }
 
@@ -50,12 +50,12 @@ Singleton {
             return;
         if (!locationAvailable)
             return;
-        if (DMSService.activeSubscriptions.includes("location"))
+        if (ADVSService.activeSubscriptions.includes("location"))
             return;
-        if (DMSService.activeSubscriptions.includes("all"))
+        if (ADVSService.activeSubscriptions.includes("all"))
             return;
 
-        DMSService.addSubscription("location");
+        ADVSService.addSubscription("location");
         if (!valid)
             getState();
     }
@@ -77,7 +77,7 @@ Singleton {
         if (!locationAvailable)
             return;
 
-        DMSService.sendRequest("location.getState", null, response => {
+        ADVSService.sendRequest("location.getState", null, response => {
             if (response.result)
                 handleStateUpdate(response.result);
         });

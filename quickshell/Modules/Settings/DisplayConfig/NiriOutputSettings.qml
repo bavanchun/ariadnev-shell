@@ -27,7 +27,7 @@ Column {
             anchors.rightMargin: Theme.spacingS
             spacing: Theme.spacingS
 
-            DankIcon {
+            AdvIcon {
                 name: root.expanded ? "expand_more" : "chevron_right"
                 size: Theme.iconSize
                 color: Theme.primary
@@ -63,7 +63,7 @@ Column {
             return DisplayConfigState.getNiriSetting(root.outputData, root.outputName, "disabled", false);
         }
 
-        DankToggle {
+        AdvToggle {
             width: parent.width
             text: I18n.tr("Disable Output")
             enabled: checked || DisplayConfigState.canDisableOutput()
@@ -72,7 +72,7 @@ Column {
             onToggled: checked => DisplayConfigState.setNiriSetting(root.outputData, root.outputName, "disabled", checked)
         }
 
-        DankToggle {
+        AdvToggle {
             width: parent.width
             text: I18n.tr("Focus at Startup")
             enabled: !settingsColumn.isDisabled
@@ -80,7 +80,7 @@ Column {
             onToggled: checked => DisplayConfigState.setNiriSetting(root.outputData, root.outputName, "focusAtStartup", checked)
         }
 
-        DankDropdown {
+        AdvDropdown {
             width: parent.width
             text: I18n.tr("Hot Corners")
             addHorizontalPadding: true
@@ -141,7 +141,7 @@ Column {
 
             visible: hotCornersData && !hotCornersData.off && hotCornersData.corners !== undefined
 
-            DankButtonGroup {
+            AdvButtonGroup {
                 id: hotCornersGroup
                 anchors.horizontalCenter: parent.horizontalCenter
                 selectionMode: "multi"
@@ -229,7 +229,7 @@ Column {
                             color: Theme.surfaceVariantText
                         }
 
-                        DankTextField {
+                        AdvTextField {
                             width: parent.width
                             height: 40
                             placeholderText: I18n.tr("Inherit", "inherit from global setting")
@@ -267,7 +267,7 @@ Column {
                             color: Theme.surfaceVariantText
                         }
 
-                        DankTextField {
+                        AdvTextField {
                             width: parent.width
                             height: 40
                             placeholderText: I18n.tr("Inherit", "inherit from global setting")
@@ -318,7 +318,7 @@ Column {
                         color: Theme.withAlpha(Theme.surfaceVariantText, 0.7)
                     }
 
-                    DankTextField {
+                    AdvTextField {
                         width: parent.width
                         height: 40
                         placeholderText: I18n.tr("Inherit", "inherit from global setting")
@@ -362,7 +362,7 @@ Column {
             }
         }
 
-        DankToggle {
+        AdvToggle {
             width: parent.width
             text: I18n.tr("Center Single Column")
             enabled: !settingsColumn.isDisabled

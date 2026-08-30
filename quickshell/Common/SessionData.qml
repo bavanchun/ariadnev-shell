@@ -16,7 +16,7 @@ Singleton {
 
     readonly property int sessionConfigVersion: 4
 
-    readonly property bool isGreeterMode: Quickshell.env("DMS_RUN_GREETER") === "1" || Quickshell.env("DMS_RUN_GREETER") === "true"
+    readonly property bool isGreeterMode: Quickshell.env("ADVS_RUN_GREETER") === "1" || Quickshell.env("ADVS_RUN_GREETER") === "true"
 
     signal loaded
     signal brightnessDisplayHintChanged(string deviceName)
@@ -1601,7 +1601,7 @@ Singleton {
     FileView {
         id: settingsFile
 
-        path: isGreeterMode ? "" : StandardPaths.writableLocation(StandardPaths.GenericStateLocation) + "/DankMaterialShell/session.json"
+        path: isGreeterMode ? "" : StandardPaths.writableLocation(StandardPaths.GenericStateLocation) + "/AriadnevShell/session.json"
         blockLoading: true
         blockWrites: true
         atomicWrites: true
@@ -1618,7 +1618,7 @@ Singleton {
         }
     }
 
-    readonly property string _greeterCacheDir: Quickshell.env("DMS_GREET_CFG_DIR") || "/var/cache/dms-greeter"
+    readonly property string _greeterCacheDir: Quickshell.env("ADVS_GREET_CFG_DIR") || "/var/cache/advs-greeter"
 
     property string greeterSessionBaseDir: root._greeterCacheDir
 

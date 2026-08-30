@@ -51,7 +51,7 @@ Singleton {
             "soundsAvailable": () => AudioService.soundsAvailable,
             "cupsAvailable": () => CupsService.cupsAvailable,
             "networkAvailable": () => NetworkService.networkAvailable,
-            "dmsConnected": () => DMSService.isConnected && DMSService.apiVersion >= 23,
+            "advsConnected": () => ADVSService.isConnected && ADVSService.apiVersion >= 23,
             "matugenAvailable": () => Theme.matugenAvailable,
             "greeterAvailable": () => GreeterService.available
         })

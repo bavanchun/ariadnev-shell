@@ -44,7 +44,7 @@ Item {
         }
     }
 
-    DankFlickable {
+    AdvFlickable {
         anchors.fill: parent
         clip: true
         contentHeight: mainColumn.height + Theme.spacingXL
@@ -198,7 +198,7 @@ Item {
                     anchors.margins: Theme.spacingM
                     spacing: Theme.spacingM
 
-                    DankIcon {
+                    AdvIcon {
                         name: "info"
                         size: Theme.iconSizeSmall
                         color: Theme.warning

@@ -1,5 +1,5 @@
 {
-  description = "Dank Material Shell";
+  description = "Adv Material Shell";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -7,8 +7,8 @@
       url = "github:NixOS/flake-compat";
       flake = false;
     };
-    dank-qml-common = {
-      url = "github:AvengeMedia/dank-qml-common";
+    ariadnev-qml-common = {
+      url = "github:bavanchun/ariadnev-qml-common";
       flake = false;
     };
   };
@@ -17,7 +17,7 @@
     {
       self,
       nixpkgs,
-      dank-qml-common,
+      ariadnev-qml-common,
       ...
     }:
     let
@@ -51,12 +51,12 @@
           system: fn system nixpkgs.legacyPackages.${system}
         );
 
-      mkModuleWithDmsPkgs =
+      mkModuleWithAdvsPkgs =
         modulePath:
         args@{ pkgs, ... }:
         {
           imports = [
-            (import modulePath (args // { dmsPkgs = buildDmsPkgs pkgs; }))
+            (import modulePath (args // { advsPkgs = buildAdvsPkgs pkgs; }))
           ];
         };
 
@@ -79,7 +79,7 @@
 
       # Allows downstream modules to provide their own 'pkgs' (with overlays)
       # instead of being forced to use the flake's locked nixpkgs.
-      mkDmsShell =
+      mkAdvsShell =
         pkgs:
         let
           mkDate =
@@ -109,11 +109,11 @@
             in
             {
               inherit version;
-              pname = "dms-shell";
+              pname = "ariadnev-shell";
               src = ./core;
               vendorHash = "sha256-X9DzsqrHZt4SQWCTvoxEABTSSBVPvFIJqAH3mtcEfio=";
 
-              subPackages = [ "cmd/dms" ];
+              subPackages = [ "cmd/advs" ];
 
               ldflags = [
                 "-s"
@@ -127,104 +127,104 @@
               ];
 
               postInstall = ''
-                mkdir -p $out/share/quickshell/dms
-                cp -r ${rootSrc}/quickshell/. $out/share/quickshell/dms/
+                mkdir -p $out/share/quickshell/ariadnev
+                cp -r ${rootSrc}/quickshell/. $out/share/quickshell/ariadnev/
 
-                rm -f $out/share/quickshell/dms/DankCommon
-                cp -r ${dank-qml-common}/DankCommon $out/share/quickshell/dms/DankCommon
-                chmod -R u+w $out/share/quickshell/dms/DankCommon
+                rm -f $out/share/quickshell/ariadnev/AdvCommon
+                cp -r ${ariadnev-qml-common}/AdvCommon $out/share/quickshell/ariadnev/AdvCommon
+                chmod -R u+w $out/share/quickshell/ariadnev/AdvCommon
 
-                chmod u+w $out/share/quickshell/dms/VERSION
-                echo "${version}" > $out/share/quickshell/dms/VERSION
+                chmod u+w $out/share/quickshell/ariadnev/VERSION
+                echo "${version}" > $out/share/quickshell/ariadnev/VERSION
 
                 # Install desktop file and icon
-                install -D ${rootSrc}/assets/dms-open.desktop \
-                  $out/share/applications/dms-open.desktop
-                install -D ${rootSrc}/assets/com.danklinux.dms.desktop \
-                  $out/share/applications/com.danklinux.dms.desktop
-                install -D ${rootSrc}/assets/com.danklinux.dms.notepad.desktop \
-                  $out/share/applications/com.danklinux.dms.notepad.desktop
-                install -D ${rootSrc}/core/assets/danklogo.svg \
-                  $out/share/hicolor/scalable/apps/danklogo.svg
+                install -D ${rootSrc}/assets/advs-open.desktop \
+                  $out/share/applications/advs-open.desktop
+                install -D ${rootSrc}/assets/dev.vchun.ariadnev.desktop \
+                  $out/share/applications/dev.vchun.ariadnev.desktop
+                install -D ${rootSrc}/assets/dev.vchun.ariadnev.notepad.desktop \
+                  $out/share/applications/dev.vchun.ariadnev.notepad.desktop
+                install -D ${rootSrc}/core/assets/advlogo.svg \
+                  $out/share/hicolor/scalable/apps/advlogo.svg
 
-                # Snapshot pre-wrap Qt paths so launched apps get their own, not DMS's pins.
-                wrapProgram $out/bin/dms \
-                  --add-flags "-c $out/share/quickshell/dms" \
-                  --run 'export DMS_ORIG_NIXPKGS_QT6_QML_IMPORT_PATH="''${NIXPKGS_QT6_QML_IMPORT_PATH:-}"' \
-                  --run 'export DMS_ORIG_QT_PLUGIN_PATH="''${QT_PLUGIN_PATH:-}"' \
+                # Snapshot pre-wrap Qt paths so launched apps get their own, not ADVS's pins.
+                wrapProgram $out/bin/advs \
+                  --add-flags "-c $out/share/quickshell/ariadnev" \
+                  --run 'export ADVS_ORIG_NIXPKGS_QT6_QML_IMPORT_PATH="''${NIXPKGS_QT6_QML_IMPORT_PATH:-}"' \
+                  --run 'export ADVS_ORIG_QT_PLUGIN_PATH="''${QT_PLUGIN_PATH:-}"' \
                   --prefix "NIXPKGS_QT6_QML_IMPORT_PATH" ":" "${mkQmlImportPath pkgs qtPackages}" \
                   --prefix "QT_PLUGIN_PATH" ":" "${mkQtPluginPath pkgs qtPackages}"
 
-                install -Dm644 ${rootSrc}/assets/systemd/dms.service \
-                  $out/lib/systemd/user/dms.service
+                install -Dm644 ${rootSrc}/assets/systemd/advs.service \
+                  $out/lib/systemd/user/advs.service
 
-                substituteInPlace $out/lib/systemd/user/dms.service \
-                  --replace-fail /usr/bin/dms $out/bin/dms \
+                substituteInPlace $out/lib/systemd/user/advs.service \
+                  --replace-fail /usr/bin/advs $out/bin/advs \
                   --replace-fail /bin/kill ${pkgs.coreutils}/bin/kill
 
-                substituteInPlace $out/share/quickshell/dms/assets/pam/fprint \
+                substituteInPlace $out/share/quickshell/ariadnev/assets/pam/fprint \
                   --replace-fail pam_fprintd.so ${pkgs.fprintd}/lib/security/pam_fprintd.so \
                   --replace-fail pam_deny.so ${pkgs.pam}/lib/security/pam_deny.so \
                   --replace-fail pam_permit.so ${pkgs.pam}/lib/security/pam_permit.so
 
-                substituteInPlace $out/share/quickshell/dms/assets/pam/u2f \
+                substituteInPlace $out/share/quickshell/ariadnev/assets/pam/u2f \
                   --replace-fail pam_u2f.so ${pkgs.pam_u2f}/lib/security/pam_u2f.so \
                   --replace-fail pam_deny.so ${pkgs.pam}/lib/security/pam_deny.so \
                   --replace-fail pam_permit.so ${pkgs.pam}/lib/security/pam_permit.so
 
-                substituteInPlace $out/share/quickshell/dms/assets/pam/other \
+                substituteInPlace $out/share/quickshell/ariadnev/assets/pam/other \
                   --replace-fail pam_deny.so ${pkgs.pam}/lib/security/pam_deny.so
 
-                installShellCompletion --cmd dms \
-                  --bash <($out/bin/dms completion bash) \
-                  --fish <($out/bin/dms completion fish) \
-                  --zsh <($out/bin/dms completion zsh)
+                installShellCompletion --cmd advs \
+                  --bash <($out/bin/advs completion bash) \
+                  --fish <($out/bin/advs completion fish) \
+                  --zsh <($out/bin/advs completion zsh)
               '';
 
               meta = {
                 description = "Desktop shell for wayland compositors built with Quickshell & GO";
-                homepage = "https://danklinux.com";
-                changelog = "https://github.com/AvengeMedia/DankMaterialShell/releases/tag/v${version}";
+                homepage = "https://ariadnev.vchun.dev";
+                changelog = "https://github.com/bavanchun/ariadnev-shell/releases/tag/v${version}";
                 license = pkgs.lib.licenses.mit;
-                mainProgram = "dms";
+                mainProgram = "advs";
                 platforms = pkgs.lib.platforms.linux;
               };
             }
           )
         ) { };
 
-      buildDmsPkgs = pkgs: {
-        dms-shell = mkDmsShell pkgs;
+      buildAdvsPkgs = pkgs: {
+        ariadnev-shell = mkAdvsShell pkgs;
       };
     in
     {
       packages = forEachSystem (
         system: pkgs: {
-          dms-shell = mkDmsShell pkgs;
-          default = self.packages.${system}.dms-shell;
-          quickshell = builtins.warn "dank-material-shell: the package Quickshell is not included in the DMS flake anymore. We recommend you to use the one from nixos-unstable branch of Nixpkgs or the upstream flake." pkgs.quickshell;
+          ariadnev-shell = mkAdvsShell pkgs;
+          default = self.packages.${system}.ariadnev-shell;
+          quickshell = builtins.warn "adv-material-shell: the package Quickshell is not included in the ADVS flake anymore. We recommend you to use the one from nixos-unstable branch of Nixpkgs or the upstream flake." pkgs.quickshell;
         }
       );
 
-      lib = { inherit mkDmsShell buildDmsPkgs; };
+      lib = { inherit mkAdvsShell buildAdvsPkgs; };
 
-      homeModules.dank-material-shell = mkModuleWithDmsPkgs ./distro/nix/home.nix;
+      homeModules.adv-material-shell = mkModuleWithAdvsPkgs ./distro/nix/home.nix;
 
-      homeModules.default = self.homeModules.dank-material-shell;
+      homeModules.default = self.homeModules.adv-material-shell;
 
       homeModules.niri = import ./distro/nix/niri.nix;
 
-      homeModules.dankMaterialShell.default = builtins.warn "dank-material-shell: flake output `homeModules.dankMaterialShell.default` has been renamed to `homeModules.dank-material-shell`" self.homeModules.dank-material-shell;
+      homeModules.advMaterialShell.default = builtins.warn "adv-material-shell: flake output `homeModules.advMaterialShell.default` has been renamed to `homeModules.adv-material-shell`" self.homeModules.adv-material-shell;
 
-      homeModules.dankMaterialShell.niri = builtins.warn "dank-material-shell: flake output `homeModules.dankMaterialShell.niri` has been renamed to `homeModules.niri`" self.homeModules.niri;
+      homeModules.advMaterialShell.niri = builtins.warn "adv-material-shell: flake output `homeModules.advMaterialShell.niri` has been renamed to `homeModules.niri`" self.homeModules.niri;
 
-      nixosModules.dank-material-shell = mkModuleWithDmsPkgs ./distro/nix/nixos.nix;
+      nixosModules.adv-material-shell = mkModuleWithAdvsPkgs ./distro/nix/nixos.nix;
 
-      nixosModules.default = self.nixosModules.dank-material-shell;
+      nixosModules.default = self.nixosModules.adv-material-shell;
 
-      nixosModules.greeter = builtins.warn "dank-material-shell: the greeter moved to the dank-greeter repo; use `inputs.dank-greeter.nixosModules.default` and `programs.dms-greeter` (https://github.com/AvengeMedia/dank-greeter)" { };
+      nixosModules.greeter = builtins.warn "adv-material-shell: the greeter moved to the adv-greeter repo; use `inputs.adv-greeter.nixosModules.default` and `programs.advs-greeter` (https://github.com/bavanchun/adv-greeter)" { };
 
-      nixosModules.dankMaterialShell = builtins.warn "dank-material-shell: flake output `nixosModules.dankMaterialShell` has been renamed to `nixosModules.dank-material-shell`" self.nixosModules.dank-material-shell;
+      nixosModules.advMaterialShell = builtins.warn "adv-material-shell: flake output `nixosModules.advMaterialShell` has been renamed to `nixosModules.adv-material-shell`" self.nixosModules.adv-material-shell;
 
       devShells = forEachSystem (
         system: pkgs:

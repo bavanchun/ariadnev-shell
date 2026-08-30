@@ -105,7 +105,7 @@ Item {
     function confirmRemoveBind(key, remainingKey) {
         removeBindConfirm.showWithOptions({
             title: I18n.tr("Remove Shortcut?"),
-            message: KeybindsService.currentProvider === "hyprland" ? I18n.tr("Remove the shortcut %1? An unbind entry will be saved to dms/binds-user.lua so it stays removed across DMS updates.").arg(key) : I18n.tr("Remove the shortcut %1?").arg(key),
+            message: KeybindsService.currentProvider === "hyprland" ? I18n.tr("Remove the shortcut %1? An unbind entry will be saved to advs/binds-user.lua so it stays removed across ADVS updates.").arg(key) : I18n.tr("Remove the shortcut %1?").arg(key),
             confirmText: I18n.tr("Remove"),
             confirmColor: Theme.primary,
             onConfirm: () => {
@@ -118,7 +118,7 @@ Item {
     function confirmResetBind(key, remainingKey) {
         removeBindConfirm.showWithOptions({
             title: I18n.tr("Reset to default"),
-            message: I18n.tr("Drop your override for %1 so the DMS default action re-applies?").arg(key),
+            message: I18n.tr("Drop your override for %1 so the ADVS default action re-applies?").arg(key),
             confirmText: I18n.tr("Reset"),
             confirmColor: Theme.primary,
             onConfirm: () => {
@@ -241,7 +241,7 @@ Item {
         });
     }
 
-    DankFlickable {
+    AdvFlickable {
         id: flickable
         anchors.fill: parent
         clip: true
@@ -274,7 +274,7 @@ Item {
                         width: parent.width
                         spacing: Theme.spacingM
 
-                        DankIcon {
+                        AdvIcon {
                             name: "keyboard"
                             size: Theme.iconSize
                             color: Theme.primary
@@ -296,7 +296,7 @@ Item {
                             }
 
                             StyledText {
-                                readonly property string bindsFile: KeybindsService.currentProvider === "niri" ? "dms/binds.kdl" : KeybindsService.currentProvider === "hyprland" ? "dms/binds-user.lua" : "dms/binds.conf"
+                                readonly property string bindsFile: KeybindsService.currentProvider === "niri" ? "advs/binds.kdl" : KeybindsService.currentProvider === "hyprland" ? "advs/binds-user.lua" : "advs/binds.conf"
                                 text: KeybindsService.readOnly ? I18n.tr("Hyprland conf mode is read-only in Settings") : I18n.tr("Click any shortcut to edit. Changes save to %1").arg(bindsFile)
                                 font.pixelSize: Theme.fontSizeSmall
                                 color: Theme.surfaceVariantText
@@ -311,7 +311,7 @@ Item {
                         width: parent.width
                         spacing: Theme.spacingM
 
-                        DankTextField {
+                        AdvTextField {
                             id: searchField
                             width: parent.width - addButton.width - Theme.spacingM
                             placeholderText: I18n.tr("Search keybinds...")
@@ -322,7 +322,7 @@ Item {
                             }
                         }
 
-                        DankActionButton {
+                        AdvActionButton {
                             id: addButton
                             width: searchField.height
                             height: searchField.height
@@ -346,7 +346,7 @@ Item {
                 anchors.horizontalCenter: parent.horizontalCenter
                 radius: Theme.cornerRadius
 
-                readonly property var status: KeybindsService.dmsStatus
+                readonly property var status: KeybindsService.advsStatus
                 readonly property bool showLegacy: KeybindsService.readOnly
                 readonly property bool showWarning: !showLegacy && status.included && status.overriddenBy > 0
                 readonly property bool showSetup: !showLegacy && !status.included
@@ -366,7 +366,7 @@ Item {
                         width: parent.width
                         spacing: Theme.spacingM
 
-                        DankIcon {
+                        AdvIcon {
                             name: warningBox.showWarning ? "info" : "warning"
                             size: Theme.iconSize
                             color: Theme.primary
@@ -398,12 +398,12 @@ Item {
                             StyledText {
                                 text: {
                                     if (warningBox.showLegacy)
-                                        return I18n.tr("This install is still using hyprland.conf. Run dms setup to migrate before changing these settings.");
+                                        return I18n.tr("This install is still using hyprland.conf. Run advs setup to migrate before changing these settings.");
                                     if (warningBox.showSetup)
-                                        return I18n.tr("Click 'Setup' to create %1 and add include to your compositor config.").arg("dms/binds");
+                                        return I18n.tr("Click 'Setup' to create %1 and add include to your compositor config.").arg("advs/binds");
                                     if (warningBox.showWarning) {
                                         const count = warningBox.status.overriddenBy;
-                                        return I18n.ntr("%1 DMS bind may be overridden by config binds that come after the include.", "%1 DMS binds may be overridden by config binds that come after the include.", count).arg(count);
+                                        return I18n.ntr("%1 ADVS bind may be overridden by config binds that come after the include.", "%1 ADVS binds may be overridden by config binds that come after the include.", count).arg(count);
                                     }
                                     return "";
                                 }
@@ -415,7 +415,7 @@ Item {
                             }
                         }
 
-                        DankButton {
+                        AdvButton {
                             id: fixButton
                             visible: !warningBox.showLegacy && warningBox.showSetup
                             text: KeybindsService.fixing ? I18n.tr("Setting up...") : I18n.tr("Setup")
@@ -423,7 +423,7 @@ Item {
                             textColor: Theme.primaryText
                             enabled: !KeybindsService.fixing
                             anchors.verticalCenter: parent.verticalCenter
-                            onClicked: KeybindsService.fixDmsBindsInclude()
+                            onClicked: KeybindsService.fixAdvsBindsInclude()
                         }
                     }
                 }
@@ -528,7 +528,7 @@ Item {
                         width: parent.width
                         spacing: Theme.spacingM
 
-                        DankIcon {
+                        AdvIcon {
                             name: "add"
                             size: Theme.iconSize
                             color: Theme.surfaceText
@@ -552,7 +552,7 @@ Item {
                                 keys: [
                                     {
                                         key: "",
-                                        source: "dms",
+                                        source: "advs",
                                         isOverride: true
                                     }
                                 ],
@@ -586,7 +586,7 @@ Item {
                         width: parent.width
                         spacing: Theme.spacingM
 
-                        DankIcon {
+                        AdvIcon {
                             name: "list"
                             size: Theme.iconSize
                             color: Theme.primary
@@ -612,7 +612,7 @@ Item {
                         spacing: Theme.spacingM
                         visible: KeybindsService.loading
 
-                        DankIcon {
+                        AdvIcon {
                             id: loadingIcon
                             name: "sync"
                             size: 20

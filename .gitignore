@@ -64,7 +64,7 @@ AGENTS-temp.md
 niri-colors.generated.kdl
 ghostty-colors.generated.conf
 
-# Notepad files (should be in ~/.local/state/DankMaterialShell/)
+# Notepad files (should be in ~/.local/state/AriadnevShell/)
 untitled-*.txt
 file:*
 notepad-files/
@@ -116,8 +116,8 @@ core.*
 # direnv
 .envrc
 .direnv/
-quickshell/dms-plugins
-quickshell/dms-plugins-external
+quickshell/ariadnev-plugins
+quickshell/ariadnev-plugins-external
 __pycache__
 
 .vscode/
@@ -129,6 +129,6 @@ distro/void/hostdir/
 distro/void/masterdir*/
 
 # Often gets built
-core/dms
+core/advs
 
 core/internal/shellembed/dist

@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Name=ADVS Notepad
+GenericName=Text Editor
+Comment=Quick notes and text files in the adv desktop shell
+Exec=advs ipc call notepad openFile %f
+Icon=advlogo
+Terminal=false
+NoDisplay=true
+Categories=Utility;TextEditor;
+MimeType=text/plain;text/markdown;
+StartupNotify=false

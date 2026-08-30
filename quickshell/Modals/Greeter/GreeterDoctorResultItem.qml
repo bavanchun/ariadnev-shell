@@ -37,7 +37,7 @@ Rectangle {
     radius: Theme.cornerRadius
     color: Theme.withAlpha(statusColor, 0.08)
 
-    DankIcon {
+    AdvIcon {
         id: statusIcon
         anchors.left: parent.left
         anchors.leftMargin: Theme.spacingM
@@ -94,7 +94,7 @@ Rectangle {
         }
     }
 
-    DankActionButton {
+    AdvActionButton {
         id: urlButton
         anchors.right: parent.right
         anchors.rightMargin: Theme.spacingM

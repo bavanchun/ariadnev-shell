@@ -6,8 +6,8 @@ import (
 	"os"
 	"os/exec"
 
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/proto/wlr_output_management"
-	wlhelpers "github.com/AvengeMedia/DankMaterialShell/core/internal/wayland/client"
+	"github.com/bavanchun/ariadnev-shell/core/internal/proto/wlr_output_management"
+	wlhelpers "github.com/bavanchun/ariadnev-shell/core/internal/wayland/client"
 	"github.com/AvengeMedia/dankgo/wayland/client"
 )
 

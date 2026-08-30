@@ -19,7 +19,7 @@ Column {
     enabled: !readOnly
     opacity: readOnly ? 0.55 : 1.0
 
-    DankTooltipV2 {
+    AdvTooltipV2 {
         id: sharedTooltip
     }
 
@@ -53,7 +53,7 @@ Column {
     property string highlightedId: ""
     property string highlightedSection: ""
 
-    // Absolute-Y spring drag state (mirrors DankDashTab); gapIndex is the phantom drop slot
+    // Absolute-Y spring drag state (mirrors AdvDashTab); gapIndex is the phantom drop slot
     property var workingOrder: []
     property int draggingIndex: -1
     property string draggingId: ""
@@ -360,7 +360,7 @@ Column {
             anchors.left: parent.left
             anchors.verticalCenter: parent.verticalCenter
 
-            DankIcon {
+            AdvIcon {
                 name: root.titleIcon
                 size: Theme.iconSize
                 color: Theme.primary
@@ -383,7 +383,7 @@ Column {
             anchors.verticalCenter: parent.verticalCenter
             visible: root.sectionId === "center"
 
-            DankActionButton {
+            AdvActionButton {
                 id: indexCenterButton
                 buttonSize: 28
                 iconName: "format_list_numbered"
@@ -400,7 +400,7 @@ Column {
                 }
             }
 
-            DankActionButton {
+            AdvActionButton {
                 id: geometricCenterButton
                 buttonSize: 28
                 iconName: "center_focus_weak"
@@ -514,7 +514,7 @@ Column {
                             easing.type: Easing.OutCubic
                         }
                     }
-                    DankColorAnimation {
+                    AdvColorAnimation {
                         id: itemColor
                         to: delegateItem.dragging ? Theme.secondaryContainer : Theme.withAlpha(Theme.surfaceContainerHigh, Theme.floatingWindowForegroundLayers ? Theme.floatingWindowForegroundTransparency * (modelData.enabled ? 0.7 : 0.4) : 0)
                         duration: Theme.shortDuration
@@ -537,7 +537,7 @@ Column {
                         }
                     }
 
-                    DankIcon {
+                    AdvIcon {
                         id: dragHandle
                         name: "drag_indicator"
                         size: Theme.iconSize - 4
@@ -560,7 +560,7 @@ Column {
                         }
                     }
 
-                    DankIcon {
+                    AdvIcon {
                         id: tabIcon
                         name: modelData.icon
                         size: Theme.iconSize
@@ -623,7 +623,7 @@ Column {
                         anchors.verticalCenter: parent.verticalCenter
                         spacing: Theme.spacingXS
 
-                        DankActionButton {
+                        AdvActionButton {
                             id: gpuMenuButton
                             visible: modelData.id === "gpuTemp"
                             buttonSize: 32
@@ -643,7 +643,7 @@ Column {
                             width: 120
                             height: 32
                             visible: modelData.id === "diskUsage"
-                            DankDropdown {
+                            AdvDropdown {
                                 id: diskMountDropdown
                                 anchors.fill: parent
                                 currentValue: {
@@ -671,7 +671,7 @@ Column {
                             }
                         }
 
-                        DankActionButton {
+                        AdvActionButton {
                             id: diskMenuButton
                             visible: modelData.id === "diskUsage"
                             buttonSize: 32
@@ -692,7 +692,7 @@ Column {
                             height: 32
                             visible: modelData.warning !== undefined && modelData.warning !== ""
 
-                            DankIcon {
+                            AdvIcon {
                                 name: "warning"
                                 size: 20
                                 color: Theme.error
@@ -744,7 +744,7 @@ Column {
                             }
                         }
 
-                        DankActionButton {
+                        AdvActionButton {
                             id: minimumWidthButton
                             buttonSize: 28
                             visible: modelData.id === "cpuUsage" || modelData.id === "memUsage" || modelData.id === "cpuTemp" || modelData.id === "gpuTemp" || modelData.id === "diskUsage"
@@ -765,7 +765,7 @@ Column {
                             }
                         }
 
-                        DankActionButton {
+                        AdvActionButton {
                             id: hideWhenIdleButton
                             buttonSize: 28
                             visible: modelData.id === "systemUpdate"
@@ -784,7 +784,7 @@ Column {
                             }
                         }
 
-                        DankActionButton {
+                        AdvActionButton {
                             id: memMenuButton
                             visible: modelData.id === "memUsage"
                             buttonSize: 32
@@ -800,7 +800,7 @@ Column {
                             onClicked: root.openWidgetMenu(memUsageContextMenu, memMenuButton, modelData, index)
                         }
 
-                        DankActionButton {
+                        AdvActionButton {
                             id: focusedWindowMenuButton
                             buttonSize: 32
                             visible: modelData.id === "focusedWindow"
@@ -816,7 +816,7 @@ Column {
                             onClicked: root.openWidgetMenu(focusedWindowContextMenu, focusedWindowMenuButton, modelData, index)
                         }
 
-                        DankActionButton {
+                        AdvActionButton {
                             id: musicMenuButton
                             visible: modelData.id === "music"
                             buttonSize: 32
@@ -832,7 +832,7 @@ Column {
                             onClicked: root.openWidgetMenu(musicContextMenu, musicMenuButton, modelData, index)
                         }
 
-                        DankActionButton {
+                        AdvActionButton {
                             id: runningAppsMenuButton
                             visible: modelData.id === "runningApps"
                             buttonSize: 32
@@ -848,7 +848,7 @@ Column {
                             onClicked: root.openWidgetMenu(runningAppsContextMenu, runningAppsMenuButton, modelData, index)
                         }
 
-                        DankActionButton {
+                        AdvActionButton {
                             id: batteryMenuButton
                             visible: modelData.id === "battery"
                             buttonSize: 32
@@ -868,7 +868,7 @@ Column {
                             spacing: Theme.spacingXS
                             visible: modelData.id === "clock" || modelData.id === "keyboard_layout_name" || modelData.id === "appsDock" || modelData.id === "systemTray"
 
-                            DankActionButton {
+                            AdvActionButton {
                                 id: compactModeButton
                                 buttonSize: 28
                                 visible: modelData.id === "clock" || modelData.id === "keyboard_layout_name"
@@ -931,7 +931,7 @@ Column {
                                 }
                             }
 
-                            DankActionButton {
+                            AdvActionButton {
                                 id: kbdLayoutCtxMenuButton
                                 buttonSize: 32
                                 visible: modelData.id === "keyboard_layout_name"
@@ -948,7 +948,7 @@ Column {
                                 onClicked: root.openWidgetMenu(kbdLayoutCtxMenu, kbdLayoutCtxMenuButton, modelData, index)
                             }
 
-                            DankActionButton {
+                            AdvActionButton {
                                 id: clockCtxMenuButton
                                 buttonSize: 32
                                 visible: modelData.id === "clock"
@@ -965,7 +965,7 @@ Column {
                                 onClicked: root.openWidgetMenu(clockContextMenu, clockCtxMenuButton, modelData, index)
                             }
 
-                            DankActionButton {
+                            AdvActionButton {
                                 id: appsDockMenuButton
                                 buttonSize: 32
                                 visible: modelData.id === "appsDock"
@@ -981,7 +981,7 @@ Column {
                                 onClicked: root.openWidgetMenu(appsDockContextMenu, appsDockMenuButton, modelData, index)
                             }
 
-                            DankActionButton {
+                            AdvActionButton {
                                 id: trayMenuButton
                                 buttonSize: 32
                                 visible: modelData.id === "systemTray"
@@ -1028,7 +1028,7 @@ Column {
                             }
                         }
 
-                        DankActionButton {
+                        AdvActionButton {
                             id: ccMenuButton
                             visible: modelData.id === "controlCenterButton"
                             buttonSize: 32
@@ -1047,7 +1047,7 @@ Column {
                             }
                         }
 
-                        DankActionButton {
+                        AdvActionButton {
                             id: privacyMenuButton
                             visible: modelData.id === "privacyIndicator"
                             buttonSize: 32
@@ -1063,7 +1063,7 @@ Column {
                             onClicked: root.openWidgetMenu(privacyContextMenu, privacyMenuButton, modelData, index)
                         }
 
-                        DankActionButton {
+                        AdvActionButton {
                             id: visibilityButton
                             visible: modelData.id !== "spacer"
                             buttonSize: 32
@@ -1087,7 +1087,7 @@ Column {
                             spacing: Theme.spacingXS
                             anchors.verticalCenter: parent.verticalCenter
 
-                            DankActionButton {
+                            AdvActionButton {
                                 buttonSize: 24
                                 iconName: "remove"
                                 iconSize: 14
@@ -1106,7 +1106,7 @@ Column {
                                 anchors.verticalCenter: parent.verticalCenter
                             }
 
-                            DankActionButton {
+                            AdvActionButton {
                                 buttonSize: 24
                                 iconName: "add"
                                 iconSize: 14
@@ -1119,7 +1119,7 @@ Column {
                             }
                         }
 
-                        DankActionButton {
+                        AdvActionButton {
                             id: removeWidgetButton
                             buttonSize: 32
                             iconName: "close"
@@ -1271,7 +1271,7 @@ Column {
                             spacing: Theme.spacingS
                             clip: true
 
-                            DankIcon {
+                            AdvIcon {
                                 name: modelData.icon
                                 size: 18
                                 color: isSelected() ? Theme.primary : Theme.surfaceText
@@ -1290,7 +1290,7 @@ Column {
                             }
                         }
 
-                        DankIcon {
+                        AdvIcon {
                             id: clockOrderCheck
                             anchors.right: parent.right
                             anchors.rightMargin: Theme.spacingS
@@ -1347,7 +1347,7 @@ Column {
                         spacing: Theme.spacingS
                         clip: true
 
-                        DankIcon {
+                        AdvIcon {
                             name: "swap_horiz"
                             size: 16
                             color: Theme.surfaceText
@@ -1366,7 +1366,7 @@ Column {
                         }
                     }
 
-                    DankToggle {
+                    AdvToggle {
                         id: swapToggle
                         anchors.right: parent.right
                         anchors.rightMargin: Theme.spacingS
@@ -1406,7 +1406,7 @@ Column {
                         spacing: Theme.spacingS
                         clip: true
 
-                        DankIcon {
+                        AdvIcon {
                             name: "straighten"
                             size: 16
                             color: Theme.surfaceText
@@ -1425,7 +1425,7 @@ Column {
                         }
                     }
 
-                    DankToggle {
+                    AdvToggle {
                         id: gbToggle
                         anchors.right: parent.right
                         anchors.rightMargin: Theme.spacingS
@@ -1484,7 +1484,7 @@ Column {
                         spacing: Theme.spacingS
                         clip: true
 
-                        DankIcon {
+                        AdvIcon {
                             name: "arrow_selector_tool"
                             size: 16
                             color: Theme.surfaceText
@@ -1503,7 +1503,7 @@ Column {
                         }
                     }
 
-                    DankToggle {
+                    AdvToggle {
                         id: trayOverflowToggle
                         anchors.right: parent.right
                         anchors.rightMargin: Theme.spacingS
@@ -1541,7 +1541,7 @@ Column {
                         spacing: Theme.spacingS
                         clip: true
 
-                        DankIcon {
+                        AdvIcon {
                             name: "view_week"
                             size: 16
                             color: Theme.surfaceText
@@ -1560,7 +1560,7 @@ Column {
                         }
                     }
 
-                    DankToggle {
+                    AdvToggle {
                         id: trayPopupLineToggle
                         anchors.right: parent.right
                         anchors.rightMargin: Theme.spacingS
@@ -1600,7 +1600,7 @@ Column {
                         spacing: Theme.spacingS
                         clip: true
 
-                        DankIcon {
+                        AdvIcon {
                             name: "responsive_layout"
                             size: 16
                             color: Theme.surfaceText
@@ -1619,7 +1619,7 @@ Column {
                         }
                     }
 
-                    DankToggle {
+                    AdvToggle {
                         id: trayAutoOverflowToggle
                         anchors.right: parent.right
                         anchors.rightMargin: Theme.spacingS
@@ -1657,7 +1657,7 @@ Column {
                         spacing: Theme.spacingS
                         clip: true
 
-                        DankIcon {
+                        AdvIcon {
                             name: "low_priority"
                             size: 16
                             color: Theme.surfaceText
@@ -1691,7 +1691,7 @@ Column {
                         anchors.verticalCenter: parent.verticalCenter
                         spacing: Theme.spacingXXS
 
-                        DankActionButton {
+                        AdvActionButton {
                             buttonSize: 28
                             iconName: "remove"
                             iconSize: 16
@@ -1703,7 +1703,7 @@ Column {
                             }
                         }
 
-                        DankActionButton {
+                        AdvActionButton {
                             buttonSize: 28
                             iconName: "add"
                             iconSize: 16
@@ -1739,7 +1739,7 @@ Column {
                         spacing: Theme.spacingS
                         clip: true
 
-                        DankIcon {
+                        AdvIcon {
                             name: "open_in_full"
                             size: 16
                             color: Theme.surfaceText
@@ -1773,7 +1773,7 @@ Column {
                         anchors.verticalCenter: parent.verticalCenter
                         spacing: Theme.spacingXXS
 
-                        DankActionButton {
+                        AdvActionButton {
                             buttonSize: 28
                             iconName: "remove"
                             iconSize: 16
@@ -1784,7 +1784,7 @@ Column {
                             }
                         }
 
-                        DankActionButton {
+                        AdvActionButton {
                             buttonSize: 28
                             iconName: "add"
                             iconSize: 16
@@ -1838,7 +1838,7 @@ Column {
                         spacing: Theme.spacingS
                         clip: true
 
-                        DankIcon {
+                        AdvIcon {
                             name: "visibility"
                             size: 16
                             color: Theme.surfaceText
@@ -1857,7 +1857,7 @@ Column {
                         }
                     }
 
-                    DankToggle {
+                    AdvToggle {
                         id: kbdLayoutCtxMenuIconToggle
                         anchors.right: parent.right
                         anchors.rightMargin: Theme.spacingS
@@ -1917,7 +1917,7 @@ Column {
                         spacing: Theme.spacingS
                         clip: true
 
-                        DankIcon {
+                        AdvIcon {
                             name: "zoom_in"
                             size: 16
                             color: Theme.surfaceText
@@ -1936,7 +1936,7 @@ Column {
                         }
                     }
 
-                    DankToggle {
+                    AdvToggle {
                         id: fwCompactToggle
                         anchors.right: parent.right
                         anchors.rightMargin: Theme.spacingS
@@ -1976,7 +1976,7 @@ Column {
                         spacing: Theme.spacingS
                         clip: true
 
-                        DankIcon {
+                        AdvIcon {
                             name: "visibility"
                             size: 16
                             color: Theme.surfaceText
@@ -1995,7 +1995,7 @@ Column {
                         }
                     }
 
-                    DankToggle {
+                    AdvToggle {
                         id: fwShowIconToggle
                         anchors.right: parent.right
                         anchors.rightMargin: Theme.spacingS
@@ -2068,7 +2068,7 @@ Column {
                             spacing: Theme.spacingS
                             clip: true
 
-                            DankIcon {
+                            AdvIcon {
                                 name: modelData.icon
                                 size: 18
                                 color: isSelected() ? Theme.primary : Theme.surfaceText
@@ -2087,7 +2087,7 @@ Column {
                             }
                         }
 
-                        DankIcon {
+                        AdvIcon {
                             id: fwSizeCheck
                             anchors.right: parent.right
                             anchors.rightMargin: Theme.spacingS
@@ -2193,7 +2193,7 @@ Column {
                             spacing: Theme.spacingS
                             clip: true
 
-                            DankIcon {
+                            AdvIcon {
                                 name: modelData.icon
                                 size: 16
                                 color: isSelected() ? Theme.primary : Theme.surfaceText
@@ -2212,7 +2212,7 @@ Column {
                             }
                         }
 
-                        DankIcon {
+                        AdvIcon {
                             id: diskModeCheck
                             anchors.right: parent.right
                             anchors.rightMargin: Theme.spacingS
@@ -2656,7 +2656,7 @@ Column {
                                                 height: 16
                                                 anchors.verticalCenter: parent.verticalCenter
 
-                                                DankIcon {
+                                                AdvIcon {
                                                     anchors.centerIn: parent
                                                     name: "drag_indicator"
                                                     size: 16
@@ -2696,7 +2696,7 @@ Column {
                                                 }
                                             }
 
-                                            DankIcon {
+                                            AdvIcon {
                                                 name: rowData.icon
                                                 size: 16
                                                 color: Theme.surfaceText
@@ -2715,7 +2715,7 @@ Column {
                                             }
                                         }
 
-                                        DankToggle {
+                                        AdvToggle {
                                             id: toggle
                                             anchors.right: parent.right
                                             anchors.rightMargin: Theme.spacingS
@@ -2824,7 +2824,7 @@ Column {
                         spacing: Theme.spacingS
                         clip: true
 
-                        DankIcon {
+                        AdvIcon {
                             name: "mic"
                             size: 16
                             color: Theme.surfaceText
@@ -2843,7 +2843,7 @@ Column {
                         }
                     }
 
-                    DankToggle {
+                    AdvToggle {
                         id: micToggle
                         anchors.right: parent.right
                         anchors.rightMargin: Theme.spacingS
@@ -2882,7 +2882,7 @@ Column {
                         spacing: Theme.spacingS
                         clip: true
 
-                        DankIcon {
+                        AdvIcon {
                             name: "camera_video"
                             size: 16
                             color: Theme.surfaceText
@@ -2901,7 +2901,7 @@ Column {
                         }
                     }
 
-                    DankToggle {
+                    AdvToggle {
                         id: cameraToggle
                         anchors.right: parent.right
                         anchors.rightMargin: Theme.spacingS
@@ -2940,7 +2940,7 @@ Column {
                         spacing: Theme.spacingS
                         clip: true
 
-                        DankIcon {
+                        AdvIcon {
                             name: "screen_share"
                             size: 16
                             color: Theme.surfaceText
@@ -2959,7 +2959,7 @@ Column {
                         }
                     }
 
-                    DankToggle {
+                    AdvToggle {
                         id: screenshareToggle
                         anchors.right: parent.right
                         anchors.rightMargin: Theme.spacingS
@@ -3028,7 +3028,7 @@ Column {
                             anchors.verticalCenter: parent.verticalCenter
                             spacing: Theme.spacingS
 
-                            DankIcon {
+                            AdvIcon {
                                 name: "memory"
                                 size: 18
                                 color: isSelected ? Theme.primary : Theme.surfaceText
@@ -3056,7 +3056,7 @@ Column {
                             }
                         }
 
-                        DankIcon {
+                        AdvIcon {
                             id: checkIcon
                             anchors.right: parent.right
                             anchors.rightMargin: Theme.spacingS
@@ -3114,7 +3114,7 @@ Column {
                         spacing: Theme.spacingS
                         clip: true
 
-                        DankIcon {
+                        AdvIcon {
                             name: "percent"
                             size: 18
                             color: Theme.outline
@@ -3133,7 +3133,7 @@ Column {
                         }
                     }
 
-                    DankToggle {
+                    AdvToggle {
                         id: batteryPercentToggle
                         anchors.right: parent.right
                         anchors.rightMargin: Theme.spacingS
@@ -3174,7 +3174,7 @@ Column {
                         spacing: Theme.spacingS
                         clip: true
 
-                        DankIcon {
+                        AdvIcon {
                             name: "battery_charging_full"
                             size: 18
                             color: Theme.outline
@@ -3193,7 +3193,7 @@ Column {
                         }
                     }
 
-                    DankToggle {
+                    AdvToggle {
                         id: batteryPercentOnlyOnBatteryToggle
                         anchors.right: parent.right
                         anchors.rightMargin: Theme.spacingS
@@ -3235,7 +3235,7 @@ Column {
                         spacing: Theme.spacingS
                         clip: true
 
-                        DankIcon {
+                        AdvIcon {
                             name: "schedule"
                             size: 18
                             color: Theme.outline
@@ -3254,7 +3254,7 @@ Column {
                         }
                     }
 
-                    DankToggle {
+                    AdvToggle {
                         id: batteryTimeToggle
                         anchors.right: parent.right
                         anchors.rightMargin: Theme.spacingS
@@ -3295,7 +3295,7 @@ Column {
                         spacing: Theme.spacingS
                         clip: true
 
-                        DankIcon {
+                        AdvIcon {
                             name: "battery_charging_full"
                             size: 18
                             color: Theme.outline
@@ -3314,7 +3314,7 @@ Column {
                         }
                     }
 
-                    DankToggle {
+                    AdvToggle {
                         id: batteryTimeOnlyOnBatteryToggle
                         anchors.right: parent.right
                         anchors.rightMargin: Theme.spacingS
@@ -3356,7 +3356,7 @@ Column {
                         spacing: Theme.spacingS
                         clip: true
 
-                        DankIcon {
+                        AdvIcon {
                             name: "battery_horiz_075"
                             size: 18
                             color: Theme.outline
@@ -3375,7 +3375,7 @@ Column {
                         }
                     }
 
-                    DankToggle {
+                    AdvToggle {
                         id: batteryPillToggle
                         anchors.right: parent.right
                         anchors.rightMargin: Theme.spacingS
@@ -3467,7 +3467,7 @@ Column {
                             spacing: Theme.spacingS
                             clip: true
 
-                            DankIcon {
+                            AdvIcon {
                                 name: modelData.icon
                                 size: 18
                                 color: isSelected() ? Theme.primary : Theme.surfaceText
@@ -3486,7 +3486,7 @@ Column {
                             }
                         }
 
-                        DankIcon {
+                        AdvIcon {
                             id: musicSizeCheck
                             anchors.right: parent.right
                             anchors.rightMargin: Theme.spacingS
@@ -3561,7 +3561,7 @@ Column {
                         spacing: Theme.spacingS
                         clip: true
 
-                        DankIcon {
+                        AdvIcon {
                             name: "zoom_in"
                             size: 16
                             color: Theme.surfaceText
@@ -3579,7 +3579,7 @@ Column {
                         }
                     }
 
-                    DankToggle {
+                    AdvToggle {
                         id: raCompactToggle
                         anchors.right: parent.right
                         anchors.rightMargin: Theme.spacingS
@@ -3619,7 +3619,7 @@ Column {
                         spacing: Theme.spacingS
                         clip: true
 
-                        DankIcon {
+                        AdvIcon {
                             name: "apps"
                             size: 16
                             color: Theme.surfaceText
@@ -3637,7 +3637,7 @@ Column {
                         }
                     }
 
-                    DankToggle {
+                    AdvToggle {
                         id: raGroupToggle
                         anchors.right: parent.right
                         anchors.rightMargin: Theme.spacingS
@@ -3677,7 +3677,7 @@ Column {
                         spacing: Theme.spacingS
                         clip: true
 
-                        DankIcon {
+                        AdvIcon {
                             name: "workspaces"
                             size: 16
                             color: Theme.surfaceText
@@ -3695,7 +3695,7 @@ Column {
                         }
                     }
 
-                    DankToggle {
+                    AdvToggle {
                         id: raWorkspaceToggle
                         anchors.right: parent.right
                         anchors.rightMargin: Theme.spacingS
@@ -3735,7 +3735,7 @@ Column {
                         spacing: Theme.spacingS
                         clip: true
 
-                        DankIcon {
+                        AdvIcon {
                             name: "monitor"
                             size: 16
                             color: Theme.surfaceText
@@ -3753,7 +3753,7 @@ Column {
                         }
                     }
 
-                    DankToggle {
+                    AdvToggle {
                         id: raDisplayToggle
                         anchors.right: parent.right
                         anchors.rightMargin: Theme.spacingS
@@ -3841,7 +3841,7 @@ Column {
                             spacing: Theme.spacingXS
                             anchors.verticalCenter: parent.verticalCenter
 
-                            DankActionButton {
+                            AdvActionButton {
                                 buttonSize: 24
                                 iconName: "remove"
                                 iconSize: 14
@@ -3865,7 +3865,7 @@ Column {
                                 width: 30
                             }
 
-                            DankActionButton {
+                            AdvActionButton {
                                 buttonSize: 24
                                 iconName: "add"
                                 iconSize: 14
@@ -3897,7 +3897,7 @@ Column {
                             spacing: Theme.spacingXS
                             anchors.verticalCenter: parent.verticalCenter
 
-                            DankActionButton {
+                            AdvActionButton {
                                 buttonSize: 24
                                 iconName: "remove"
                                 iconSize: 14
@@ -3921,7 +3921,7 @@ Column {
                                 width: 30
                             }
 
-                            DankActionButton {
+                            AdvActionButton {
                                 buttonSize: 24
                                 iconName: "add"
                                 iconSize: 14
@@ -3957,7 +3957,7 @@ Column {
                             spacing: Theme.spacingS
                             clip: true
 
-                            DankIcon {
+                            AdvIcon {
                                 name: "notifications"
                                 size: 16
                                 color: Theme.surfaceText
@@ -3976,7 +3976,7 @@ Column {
                             }
                         }
 
-                        DankToggle {
+                        AdvToggle {
                             id: badgeToggle
                             anchors.right: parent.right
                             anchors.rightMargin: Theme.spacingS
@@ -4035,7 +4035,7 @@ Column {
                             spacing: Theme.spacingS
                             clip: true
 
-                            DankIcon {
+                            AdvIcon {
                                 name: "visibility_off"
                                 size: 16
                                 color: Theme.surfaceText
@@ -4054,7 +4054,7 @@ Column {
                             }
                         }
 
-                        DankToggle {
+                        AdvToggle {
                             id: hideIndicatorsToggle
                             anchors.right: parent.right
                             anchors.rightMargin: Theme.spacingS
@@ -4094,7 +4094,7 @@ Column {
                             spacing: Theme.spacingS
                             clip: true
 
-                            DankIcon {
+                            AdvIcon {
                                 name: "palette"
                                 size: 16
                                 color: Theme.surfaceText
@@ -4113,7 +4113,7 @@ Column {
                             }
                         }
 
-                        DankToggle {
+                        AdvToggle {
                             id: colorizeActiveToggle
                             anchors.right: parent.right
                             anchors.rightMargin: Theme.spacingS
@@ -4154,7 +4154,7 @@ Column {
                             horizontalAlignment: Text.AlignLeft
                         }
 
-                        DankButtonGroup {
+                        AdvButtonGroup {
                             anchors.verticalCenter: parent.verticalCenter
                             model: ["pri", "sec", "pc", "err", "ok"]
                             buttonHeight: 22
@@ -4201,7 +4201,7 @@ Column {
                             spacing: Theme.spacingS
                             clip: true
 
-                            DankIcon {
+                            AdvIcon {
                                 name: "zoom_in"
                                 size: 16
                                 color: Theme.surfaceText
@@ -4220,7 +4220,7 @@ Column {
                             }
                         }
 
-                        DankToggle {
+                        AdvToggle {
                             id: enlargeOnHoverToggle
                             anchors.right: parent.right
                             anchors.rightMargin: Theme.spacingS
@@ -4264,7 +4264,7 @@ Column {
                             spacing: Theme.spacingXS
                             anchors.verticalCenter: parent.verticalCenter
 
-                            DankActionButton {
+                            AdvActionButton {
                                 buttonSize: 24
                                 iconName: "remove"
                                 iconSize: 14
@@ -4285,7 +4285,7 @@ Column {
                                 width: 50
                             }
 
-                            DankActionButton {
+                            AdvActionButton {
                                 buttonSize: 24
                                 iconName: "add"
                                 iconSize: 14
@@ -4317,7 +4317,7 @@ Column {
                             spacing: Theme.spacingXS
                             anchors.verticalCenter: parent.verticalCenter
 
-                            DankActionButton {
+                            AdvActionButton {
                                 buttonSize: 24
                                 iconName: "remove"
                                 iconSize: 14
@@ -4338,7 +4338,7 @@ Column {
                                 width: 50
                             }
 
-                            DankActionButton {
+                            AdvActionButton {
                                 buttonSize: 24
                                 iconName: "add"
                                 iconSize: 14

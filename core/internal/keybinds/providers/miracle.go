@@ -6,8 +6,8 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/keybinds"
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/utils"
+	"github.com/bavanchun/ariadnev-shell/core/internal/keybinds"
+	"github.com/bavanchun/ariadnev-shell/core/internal/utils"
 )
 
 type MiracleProvider struct {
@@ -87,7 +87,7 @@ func (m *MiracleProvider) categorizeAction(action string) string {
 		return "Execute"
 	case strings.HasPrefix(action, "magnifier_"):
 		return "Accessibility"
-	case strings.HasPrefix(action, "dms ") || strings.Contains(action, "dms ipc"):
+	case strings.HasPrefix(action, "advs ") || strings.Contains(action, "advs ipc"):
 		return "Execute"
 	default:
 		return "Execute"

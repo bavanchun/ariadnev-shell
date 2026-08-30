@@ -5,9 +5,9 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/deps"
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/distros"
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/utils"
+	"github.com/bavanchun/ariadnev-shell/core/internal/deps"
+	"github.com/bavanchun/ariadnev-shell/core/internal/distros"
+	"github.com/bavanchun/ariadnev-shell/core/internal/utils"
 	tea "github.com/charmbracelet/bubbletea"
 )
 
@@ -67,7 +67,7 @@ func (m Model) viewDependencyReview() string {
 			var reinstallMarker string
 			var variantMarker string
 
-			isDMS := dep.Name == "dms (DankMaterialShell)"
+			isADVS := dep.Name == "advs (AriadnevShell)"
 
 			if dep.CanToggle && dep.Variant == deps.VariantGit {
 				variantMarker = "[git] "
@@ -79,7 +79,7 @@ func (m Model) viewDependencyReview() string {
 			} else if m.reinstallItems[dep.Name] {
 				reinstallMarker = "🔄 "
 				status = m.styles.Warning.Render("Will upgrade")
-			} else if isDMS {
+			} else if isADVS {
 				reinstallMarker = "⚡ "
 				switch dep.Status {
 				case deps.StatusInstalled:
@@ -106,12 +106,12 @@ func (m Model) viewDependencyReview() string {
 
 			note := ""
 			switch dep.Name {
-			case "dms-greeter":
+			case "advs-greeter":
 				note = m.styles.Subtle.Render(" (selection replaces your current display manager)")
-			case "danksearch":
+			case "advsearch":
 				note = m.styles.Subtle.Render(" (file search; enables dsearch.service)")
-			case "dankcalendar":
-				note = m.styles.Subtle.Render(" (autostart managed in dankcalendar settings)")
+			case "advcalendar":
+				note = m.styles.Subtle.Render(" (autostart managed in advcalendar settings)")
 			}
 
 			var line string
@@ -177,9 +177,9 @@ func (m Model) updateDependencyReviewState(msg tea.Msg) (tea.Model, tea.Cmd) {
 		case " ":
 			if len(m.dependencies) > 0 {
 				depName := m.dependencies[m.selectedDep].Name
-				isDMS := depName == "dms (DankMaterialShell)"
+				isADVS := depName == "advs (AriadnevShell)"
 
-				if !isDMS {
+				if !isADVS {
 					isInstalled := m.dependencies[m.selectedDep].Status == deps.StatusInstalled ||
 						m.dependencies[m.selectedDep].Status == deps.StatusNeedsReinstall
 
@@ -259,20 +259,20 @@ func (m Model) installPackages() tea.Cmd {
 			for msg := range installerProgressChan {
 				// Run optional greeter setup
 				if msg.Phase == distros.PhaseComplete && msg.IsComplete && msg.Error == nil {
-					if m.optionalDepSelected("dms-greeter") {
+					if m.optionalDepSelected("advs-greeter") {
 						m.packageProgressChan <- packageInstallProgressMsg{
 							progress:  0.92,
-							step:      "Configuring DMS greeter...",
+							step:      "Configuring ADVS greeter...",
 							logOutput: "Starting automated greeter setup...",
 						}
 						greeterLogFunc := func(line string) {
 							m.packageProgressChan <- packageInstallProgressMsg{
 								progress:  0.94,
-								step:      "Configuring DMS greeter...",
+								step:      "Configuring ADVS greeter...",
 								logOutput: line,
 							}
 						}
-						if err := utils.RunDmsGreeterInstall(m.sudoPassword, greeterLogFunc); err != nil {
+						if err := utils.RunAdvsGreeterInstall(m.sudoPassword, greeterLogFunc); err != nil {
 							m.packageProgressChan <- packageInstallProgressMsg{
 								progress:  0.96,
 								step:      "Greeter setup warning",
@@ -280,24 +280,24 @@ func (m Model) installPackages() tea.Cmd {
 							}
 						}
 
-						if m.useSystemdConfig() && m.optionalDepSelected("danksearch") {
+						if m.useSystemdConfig() && m.optionalDepSelected("advsearch") {
 							m.packageProgressChan <- packageInstallProgressMsg{
 								progress:  0.97,
-								step:      "Enabling danksearch service...",
+								step:      "Enabling advsearch service...",
 								logOutput: "Setting up dsearch.service...",
 							}
 							dsearchLogFunc := func(line string) {
 								m.packageProgressChan <- packageInstallProgressMsg{
 									progress:  0.97,
-									step:      "Enabling danksearch service...",
+									step:      "Enabling advsearch service...",
 									logOutput: line,
 								}
 							}
 							if err := distros.SetupDsearchService(context.Background(), dsearchLogFunc); err != nil {
 								m.packageProgressChan <- packageInstallProgressMsg{
 									progress:  0.98,
-									step:      "danksearch service warning",
-									logOutput: fmt.Sprintf("danksearch service setup warning (non-fatal): %v", err),
+									step:      "advsearch service warning",
+									logOutput: fmt.Sprintf("advsearch service setup warning (non-fatal): %v", err),
 								}
 							}
 						}

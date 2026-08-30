@@ -460,7 +460,7 @@ Item {
             } else if (mouse.button === Qt.RightButton) {
                 if (!contextMenu)
                     return;
-                const shouldHidePin = appData.appId === "org.quickshell" || appData.appId === "com.danklinux.dms";
+                const shouldHidePin = appData.appId === "org.quickshell" || appData.appId === "dev.vchun.ariadnev";
                 contextMenu.showForButton(root, appData, root.height, shouldHidePin, cachedDesktopEntry, parentDockScreen, dockApps);
             }
         }
@@ -517,7 +517,7 @@ Item {
             id: iconImg
 
             anchors.centerIn: parent
-            implicitSize: appData && (appData.appId === "org.quickshell" || appData.appId === "com.danklinux.dms") ? actualIconSize * 0.85 : actualIconSize
+            implicitSize: appData && (appData.appId === "org.quickshell" || appData.appId === "dev.vchun.ariadnev") ? actualIconSize * 0.85 : actualIconSize
             source: {
                 if (!appData || appData.appId === "__SEPARATOR__") {
                     return "";
@@ -532,7 +532,7 @@ Item {
             asynchronous: true
             visible: status === Image.Ready && !coreIcon.visible
             opacity: root.isMinimized ? 0.4 : 1
-            layer.enabled: appData && (appData.appId === "org.quickshell" || appData.appId === "com.danklinux.dms")
+            layer.enabled: appData && (appData.appId === "org.quickshell" || appData.appId === "dev.vchun.ariadnev")
             layer.smooth: true
             layer.mipmap: true
             layer.effect: MultiEffect {
@@ -574,7 +574,7 @@ Item {
             }
         }
 
-        DankIcon {
+        AdvIcon {
             anchors.centerIn: parent
             size: actualIconSize
             name: "sports_esports"

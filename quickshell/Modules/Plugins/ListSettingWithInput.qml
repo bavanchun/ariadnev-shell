@@ -95,7 +95,7 @@ Column {
             id: inputRepeater
             model: root.fields
 
-            DankTextField {
+            AdvTextField {
                 width: modelData.width || 200
                 placeholderText: modelData.placeholder || ""
 
@@ -109,7 +109,7 @@ Column {
             }
         }
 
-        DankButton {
+        AdvButton {
             id: addButton
             width: 50
             height: 36

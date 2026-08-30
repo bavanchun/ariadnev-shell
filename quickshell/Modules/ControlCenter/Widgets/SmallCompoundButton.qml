@@ -56,20 +56,20 @@ Rectangle {
         }
     }
 
-    DankIcon {
+    AdvIcon {
         id: tileIcon
         anchors.centerIn: parent
         name: iconName
         size: Theme.iconSize
         color: isActive ? _tileIconActive : _tileIconInactive
 
-        DankBlink {
+        AdvBlink {
             target: tileIcon
             running: root.iconBlinking
         }
     }
 
-    DankRipple {
+    AdvRipple {
         id: ripple
         cornerRadius: root.radius
     }

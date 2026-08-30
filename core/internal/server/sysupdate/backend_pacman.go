@@ -11,7 +11,7 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/log"
+	"github.com/bavanchun/ariadnev-shell/core/internal/log"
 )
 
 func init() {
@@ -53,7 +53,7 @@ func pacmanUpgradeArgv(opts UpgradeOptions) []string {
 	return privilegedArgv(opts, "pacman", "-Syu", "--noconfirm", "--needed")
 }
 
-// Dont allow partial updates on arch, if they wanna break their system they can do it outside of DMS:
+// Dont allow partial updates on arch, if they wanna break their system they can do it outside of ADVS:
 // https://wiki.archlinux.org/title/System_maintenance#Partial_upgrades_are_unsupported
 // AUR packages are exempt — holding those cannot break the repo dependency graph.
 func dropPacmanRepoIgnores(ignored []string, pending []Package) []string {
@@ -96,7 +96,7 @@ func (b archHelperBackend) ID() string      { return b.id }
 func (b archHelperBackend) Repo() RepoKind  { return RepoSystem }
 func (b archHelperBackend) NeedsAuth() bool { return true }
 func (b archHelperBackend) RunsInTerminal() bool {
-	return os.Getenv("DMS_FORCE_PKEXEC") != "1"
+	return os.Getenv("ADVS_FORCE_PKEXEC") != "1"
 }
 func (b archHelperBackend) IsAvailable(_ context.Context) bool { return commandExists(b.id) }
 
@@ -133,16 +133,16 @@ func (b archHelperBackend) Upgrade(ctx context.Context, opts UpgradeOptions, onL
 	if !BackendHasTargets(b, opts.Targets, opts.IncludeAUR, opts.IncludeFlatpak) {
 		return nil
 	}
-	if os.Getenv("DMS_FORCE_PKEXEC") == "1" {
+	if os.Getenv("ADVS_FORCE_PKEXEC") == "1" {
 		argv := append([]string{"pkexec"}, archHelperUpgradeArgv(b.id, opts.IncludeAUR, opts.Ignored)...)
 		return Run(ctx, argv, RunOptions{OnLine: onLine, AttachStdio: opts.AttachStdio})
 	}
 	term := findTerminal(opts.Terminal)
 	if term == "" {
-		return fmt.Errorf("no terminal found (pick one in DMS settings, set $TERMINAL, or install kitty/ghostty/foot/alacritty)")
+		return fmt.Errorf("no terminal found (pick one in ADVS settings, set $TERMINAL, or install kitty/ghostty/foot/alacritty)")
 	}
 	cmd := strings.Join(archHelperUpgradeArgv(b.id, opts.IncludeAUR, opts.Ignored), " ")
-	title := fmt.Sprintf("DMS — System Update (%s)", b.id)
+	title := fmt.Sprintf("ADVS — System Update (%s)", b.id)
 	return Run(ctx, wrapInTerminal(term, title, cmd, opts.TerminalArgs), RunOptions{OnLine: onLine})
 }
 
@@ -255,7 +255,7 @@ func pacmanPrivateDB() (string, error) {
 	if tmp == "" {
 		tmp = "/tmp"
 	}
-	dir := filepath.Join(tmp, fmt.Sprintf("dms-checkup-db-%d", os.Getuid()))
+	dir := filepath.Join(tmp, fmt.Sprintf("advs-checkup-db-%d", os.Getuid()))
 	if err := os.MkdirAll(dir, 0o755); err != nil {
 		return "", err
 	}

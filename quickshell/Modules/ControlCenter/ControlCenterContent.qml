@@ -49,7 +49,7 @@ Rectangle {
         }
     }
 
-    DankFlickable {
+    AdvFlickable {
         id: contentFlickable
 
         anchors.fill: parent

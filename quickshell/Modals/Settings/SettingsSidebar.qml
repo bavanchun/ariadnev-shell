@@ -123,24 +123,24 @@ Rectangle {
             ]
         },
         {
-            "id": "dankbar",
+            "id": "advbar",
             "text": I18n.tr("Primary Bar"),
             "icon": "toolbar",
             "children": [
                 {
-                    "id": "dankbar_appearance",
+                    "id": "advbar_appearance",
                     "text": I18n.tr("Appearance"),
                     "icon": "palette",
                     "tabIndex": 6
                 },
                 {
-                    "id": "dankbar_settings",
+                    "id": "advbar_settings",
                     "text": I18n.tr("Settings"),
                     "icon": "tune",
                     "tabIndex": 3
                 },
                 {
-                    "id": "dankbar_widgets",
+                    "id": "advbar_widgets",
                     "text": I18n.tr("Widgets"),
                     "icon": "widgets",
                     "tabIndex": 22
@@ -158,7 +158,7 @@ Rectangle {
                     "tabIndex": 33
                 },
                 {
-                    "id": "dank_island",
+                    "id": "adv_island",
                     "text": I18n.tr("Island"),
                     "icon": "view_in_ar",
                     "tabIndex": 46
@@ -172,7 +172,7 @@ Rectangle {
             "collapsedByDefault": true,
             "children": [
                 {
-                    "id": "dank_dash",
+                    "id": "adv_dash",
                     "text": I18n.tr("Dashboard"),
                     "icon": "space_dashboard",
                     "tabIndex": 43
@@ -260,7 +260,7 @@ Rectangle {
             "id": "network",
             "text": I18n.tr("Network"),
             "icon": "wifi",
-            "dmsOnly": true,
+            "advsOnly": true,
             "children": [
                 {
                     "id": "network_status",
@@ -448,7 +448,7 @@ Rectangle {
     ]
 
     function isItemVisible(item) {
-        if (item.dmsOnly && !NetworkService.networkAvailable)
+        if (item.advsOnly && !NetworkService.networkAvailable)
             return false;
         if (item.cupsOnly && !CupsService.cupsAvailable)
             return false;
@@ -464,7 +464,7 @@ Rectangle {
             return false;
         if (item.niriOnly && !CompositorService.isNiri)
             return false;
-        if (item.clipboardOnly && (!DMSService.isConnected || DMSService.apiVersion < 23))
+        if (item.clipboardOnly && (!ADVSService.isConnected || ADVSService.apiVersion < 23))
             return false;
         if (item.updaterOnly && !SystemUpdateService.sysupdateAvailable)
             return false;
@@ -757,7 +757,7 @@ Rectangle {
         }
     }
 
-    DankFlickable {
+    AdvFlickable {
         id: sidebarFlickable
         anchors.fill: parent
         clip: true
@@ -789,7 +789,7 @@ Rectangle {
                 height: Theme.spacingXS
             }
 
-            DankTextField {
+            AdvTextField {
                 id: searchField
                 width: parent.width - parent.leftPadding - parent.rightPadding
                 placeholderText: I18n.tr("Search...")
@@ -892,7 +892,7 @@ Rectangle {
                             return "transparent";
                         }
 
-                        DankRipple {
+                        AdvRipple {
                             id: resultRipple
                             rippleColor: root.searchSelectedIndex === resultDelegate.index ? Theme.buttonText : Theme.surfaceText
                             cornerRadius: resultDelegate.radius
@@ -908,7 +908,7 @@ Rectangle {
                             anchors.verticalCenter: parent.verticalCenter
                             spacing: Theme.spacingM
 
-                            DankIcon {
+                            AdvIcon {
                                 name: resultDelegate.modelData.icon || "settings"
                                 size: Theme.iconSize - 2
                                 color: root.searchSelectedIndex === resultDelegate.index ? Theme.buttonText : Theme.surfaceText
@@ -1028,7 +1028,7 @@ Rectangle {
                             return "transparent";
                         }
 
-                        DankRipple {
+                        AdvRipple {
                             id: categoryRipple
                             rippleColor: categoryRow.isActive ? Theme.buttonText : Theme.surfaceText
                             cornerRadius: categoryRow.radius
@@ -1042,7 +1042,7 @@ Rectangle {
                             anchors.verticalCenter: parent.verticalCenter
                             spacing: Theme.spacingM
 
-                            DankIcon {
+                            AdvIcon {
                                 name: categoryDelegate.modelData.icon || ""
                                 size: Theme.iconSize - 2
                                 color: categoryRow.isActive ? Theme.buttonText : Theme.surfaceText
@@ -1058,7 +1058,7 @@ Rectangle {
                             }
                         }
 
-                        DankIcon {
+                        AdvIcon {
                             id: expandIcon
                             name: root.isCategoryExpanded(categoryDelegate.modelData.id) ? "expand_less" : "expand_more"
                             size: Theme.iconSize - 4
@@ -1131,7 +1131,7 @@ Rectangle {
                                     return "transparent";
                                 }
 
-                                DankRipple {
+                                AdvRipple {
                                     id: childRipple
                                     rippleColor: childDelegate.isActive ? Theme.buttonText : Theme.surfaceText
                                     cornerRadius: childDelegate.radius
@@ -1145,7 +1145,7 @@ Rectangle {
                                     anchors.verticalCenter: parent.verticalCenter
                                     spacing: Theme.spacingM
 
-                                    DankIcon {
+                                    AdvIcon {
                                         name: childDelegate.modelData.icon || ""
                                         size: Theme.iconSize - 4
                                         color: childDelegate.isActive ? Theme.buttonText : Theme.surfaceVariantText

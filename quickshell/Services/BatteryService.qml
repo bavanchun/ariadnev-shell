@@ -42,7 +42,7 @@ Singleton {
         PowerProfileWatcher.applyProfile(targetProfile);
     }
 
-    readonly property string preferredBatteryOverride: Quickshell.env("DMS_PREFERRED_BATTERY")
+    readonly property string preferredBatteryOverride: Quickshell.env("ADVS_PREFERRED_BATTERY")
 
     // List of laptop batteries
     readonly property var batteries: UPower.devices.values.filter(dev => dev.isLaptopBattery)
@@ -208,7 +208,7 @@ Singleton {
     function sendAlert(title, message, urgency, icon, notificationType) {
         if (notificationType === 1) {
             const dbusUrgency = urgency === "critical" ? "critical" : (urgency === "warning" ? "normal" : "low");
-            Quickshell.execDetached(["notify-send", "-u", dbusUrgency, "-a", "DMS", "-i", icon, title, message]);
+            Quickshell.execDetached(["notify-send", "-u", dbusUrgency, "-a", "ADVS", "-i", icon, title, message]);
         } else if (urgency === "critical") {
             ToastService.showError(title, message, "", icon);
         } else if (urgency === "warning") {

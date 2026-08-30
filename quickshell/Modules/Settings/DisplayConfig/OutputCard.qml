@@ -42,7 +42,7 @@ StyledRect {
             width: parent.width
             spacing: Theme.spacingM
 
-            DankIcon {
+            AdvIcon {
                 name: root.isConnected && !root.isDisabled ? "desktop_windows" : "desktop_access_disabled"
                 size: Theme.iconSize - 4
                 color: root.isConnected && !root.isDisabled ? Theme.primary : Theme.surfaceVariantText
@@ -98,7 +98,7 @@ StyledRect {
                 color: deleteArea.containsMouse ? Theme.errorHover : Theme.withAlpha(Theme.errorHover, 0)
                 anchors.verticalCenter: parent.verticalCenter
 
-                DankIcon {
+                AdvIcon {
                     anchors.centerIn: parent
                     name: "delete"
                     size: 18
@@ -133,7 +133,7 @@ StyledRect {
             }
         }
 
-        DankDropdown {
+        AdvDropdown {
             width: parent.width
             text: I18n.tr("Resolution & Refresh")
             visible: root.isConnected && !root.isDisabled
@@ -239,7 +239,7 @@ StyledRect {
                         };
                     }
 
-                    DankDropdown {
+                    AdvDropdown {
                         id: scaleDropdown
                         width: parent.width
                         dropdownWidth: parent.width
@@ -259,7 +259,7 @@ StyledRect {
                         }
                     }
 
-                    DankTextField {
+                    AdvTextField {
                         id: scaleInput
                         width: parent.width
                         height: 40
@@ -299,7 +299,7 @@ StyledRect {
                     horizontalAlignment: Text.AlignLeft
                 }
 
-                DankDropdown {
+                AdvDropdown {
                     width: parent.width
                     dropdownWidth: parent.width
                     currentValue: {
@@ -314,7 +314,7 @@ StyledRect {
             }
         }
 
-        DankToggle {
+        AdvToggle {
             width: parent.width
             text: I18n.tr("Variable Refresh Rate")
             visible: root.isConnected && !root.isDisabled && !CompositorService.isMango && !CompositorService.isHyprland && !CompositorService.isNiri && (DisplayConfigState.outputs[root.outputName]?.vrr_supported ?? false)
@@ -327,7 +327,7 @@ StyledRect {
             onToggled: checked => DisplayConfigState.setPendingChange(root.outputName, "vrr", checked)
         }
 
-        DankDropdown {
+        AdvDropdown {
             width: parent.width
             text: I18n.tr("Variable Refresh Rate")
             visible: root.isConnected && !root.isDisabled && CompositorService.isHyprland && (DisplayConfigState.outputs[root.outputName]?.vrr_supported ?? false)
@@ -350,7 +350,7 @@ StyledRect {
             }
         }
 
-        DankDropdown {
+        AdvDropdown {
             width: parent.width
             text: I18n.tr("Variable Refresh Rate")
             visible: root.isConnected && !root.isDisabled && CompositorService.isNiri && (DisplayConfigState.outputs[root.outputName]?.vrr_supported ?? false)

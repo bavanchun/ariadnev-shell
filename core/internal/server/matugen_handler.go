@@ -4,8 +4,8 @@ import (
 	"context"
 	"time"
 
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/matugen"
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/server/models"
+	"github.com/bavanchun/ariadnev-shell/core/internal/matugen"
+	"github.com/bavanchun/ariadnev-shell/core/internal/server/models"
 )
 
 type MatugenQueueResult struct {

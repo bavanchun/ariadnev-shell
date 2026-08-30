@@ -27,7 +27,7 @@ Item {
         return Array(7).fill(0).map((_, i) => new Date(Date.UTC(2026, 2, 1 + i, 0, 0, 0)).toLocaleDateString(I18n.locale(), "dddd")).map(d => d[0].toUpperCase() + d.slice(1));
     }
 
-    DankFlickable {
+    AdvFlickable {
         anchors.fill: parent
         clip: true
         contentHeight: mainColumn.height + Theme.spacingXL
@@ -140,22 +140,22 @@ Item {
 
                 SettingsDropdownRow {
                     tab: "time"
-                    tags: ["calendar", "backend", "daemon", "khal", "dankcalendar", "events"]
+                    tags: ["calendar", "backend", "daemon", "khal", "advcalendar", "events"]
                     settingKey: "calendarBackend"
                     text: I18n.tr("Calendar Backend")
                     description: {
                         const resolved = CalendarService.activeBackend;
                         switch (resolved) {
-                        case "dankcal":
-                            return I18n.tr("Using DankCalendar%1", "calendar backend status").arg(CalendarService.isDankActive && CalendarService.calendars.length > 0 ? "" : " (connecting…)");
+                        case "advcal":
+                            return I18n.tr("Using AdvCalendar%1", "calendar backend status").arg(CalendarService.isAdvActive && CalendarService.calendars.length > 0 ? "" : " (connecting…)");
                         case "khal":
                             return I18n.tr("Using khal", "calendar backend status");
                         default:
                             return I18n.tr("No calendar source available", "calendar backend status");
                         }
                     }
-                    readonly property var _backendValues: ["auto", "khal", "dankcal"]
-                    readonly property var _backendLabels: [I18n.tr("Auto", "calendar backend option"), I18n.tr("khal", "calendar backend option"), I18n.tr("DankCalendar", "calendar backend option")]
+                    readonly property var _backendValues: ["auto", "khal", "advcal"]
+                    readonly property var _backendLabels: [I18n.tr("Auto", "calendar backend option"), I18n.tr("khal", "calendar backend option"), I18n.tr("AdvCalendar", "calendar backend option")]
                     options: _backendLabels
                     currentValue: _backendLabels[Math.max(0, _backendValues.indexOf(SettingsData.calendarBackend))]
                     onValueChanged: value => {
@@ -170,7 +170,7 @@ Item {
                     tab: "time"
                     tags: ["calendar", "tasks", "list", "default", "caldav", "todo"]
                     settingKey: "defaultTaskCalendarId"
-                    visible: CalendarService.isDankActive && _taskLists.length > 0
+                    visible: CalendarService.isAdvActive && _taskLists.length > 0
                     text: I18n.tr("Default Task List")
                     description: I18n.tr("Task list used when adding tasks from the dash calendar")
                     readonly property var _taskLists: (CalendarService.calendars || []).filter(c => c.holdsTasks && !c.readOnly && !c.hidden)
@@ -260,7 +260,7 @@ Item {
                     }
                 }
 
-                DankTextField {
+                AdvTextField {
                     id: customFormatInput
                     width: parent.width - Theme.spacingM * 2
                     x: Theme.spacingM
@@ -347,7 +347,7 @@ Item {
                     }
                 }
 
-                DankTextField {
+                AdvTextField {
                     id: customLockFormatInput
                     width: parent.width - Theme.spacingM * 2
                     x: Theme.spacingM
@@ -577,7 +577,7 @@ Item {
                                             color: Theme.surfaceVariantText
                                         }
 
-                                        DankTextField {
+                                        AdvTextField {
                                             id: latitudeInput
                                             width: parent.width
                                             height: 48
@@ -631,7 +631,7 @@ Item {
                                             color: Theme.surfaceVariantText
                                         }
 
-                                        DankTextField {
+                                        AdvTextField {
                                             id: longitudeInput
                                             width: parent.width
                                             height: 48
@@ -688,7 +688,7 @@ Item {
                                         font.weight: Font.Medium
                                     }
 
-                                    DankLocationSearch {
+                                    AdvLocationSearch {
                                         id: locationSearchInput
                                         width: parent.width
                                         currentLocation: SettingsData.weatherLocation
@@ -725,7 +725,7 @@ Item {
                     spacing: Theme.spacingL
                     visible: !WeatherService.weather.available
 
-                    DankIcon {
+                    AdvIcon {
                         name: "cloud_off"
                         size: Theme.iconSize * 2
                         color: Theme.surfaceTextSecondary
@@ -749,7 +749,7 @@ Item {
                         width: parent.width
                         height: 70
 
-                        DankIcon {
+                        AdvIcon {
                             id: refreshButton
                             name: "refresh"
                             size: Theme.iconSize - 4
@@ -794,7 +794,7 @@ Item {
                             width: weatherIcon.width + tempColumn.width + sunriseColumn.width + Theme.spacingM * 2
                             height: 70
 
-                            DankIcon {
+                            AdvIcon {
                                 id: weatherIcon
                                 name: WeatherService.getWeatherIcon(WeatherService.weather.wCode)
                                 size: Theme.iconSize * 1.5
@@ -884,7 +884,7 @@ Item {
                                     width: sunriseIcon.width + sunriseText.width + Theme.spacingXS
                                     height: sunriseIcon.height
 
-                                    DankIcon {
+                                    AdvIcon {
                                         id: sunriseIcon
                                         name: "wb_twilight"
                                         size: Theme.iconSize - 6
@@ -908,7 +908,7 @@ Item {
                                     width: sunsetIcon.width + sunsetText.width + Theme.spacingXS
                                     height: sunsetIcon.height
 
-                                    DankIcon {
+                                    AdvIcon {
                                         id: sunsetIcon
                                         name: "bedtime"
                                         size: Theme.iconSize - 6
@@ -962,7 +962,7 @@ Item {
                                     radius: 16
                                     color: Theme.primaryHover
                                     anchors.horizontalCenter: parent.horizontalCenter
-                                    DankIcon {
+                                    AdvIcon {
                                         anchors.centerIn: parent
                                         name: "device_thermostat"
                                         size: Theme.iconSize - 4
@@ -1008,7 +1008,7 @@ Item {
                                     radius: 16
                                     color: Theme.primaryHover
                                     anchors.horizontalCenter: parent.horizontalCenter
-                                    DankIcon {
+                                    AdvIcon {
                                         anchors.centerIn: parent
                                         name: "humidity_low"
                                         size: Theme.iconSize - 4
@@ -1054,7 +1054,7 @@ Item {
                                     radius: 16
                                     color: Theme.primaryHover
                                     anchors.horizontalCenter: parent.horizontalCenter
-                                    DankIcon {
+                                    AdvIcon {
                                         anchors.centerIn: parent
                                         name: "air"
                                         size: Theme.iconSize - 4
@@ -1113,7 +1113,7 @@ Item {
                                     radius: 16
                                     color: Theme.primaryHover
                                     anchors.horizontalCenter: parent.horizontalCenter
-                                    DankIcon {
+                                    AdvIcon {
                                         anchors.centerIn: parent
                                         name: "speed"
                                         size: Theme.iconSize - 4
@@ -1165,7 +1165,7 @@ Item {
                                     radius: 16
                                     color: Theme.primaryHover
                                     anchors.horizontalCenter: parent.horizontalCenter
-                                    DankIcon {
+                                    AdvIcon {
                                         anchors.centerIn: parent
                                         name: "rainy"
                                         size: Theme.iconSize - 4
@@ -1211,7 +1211,7 @@ Item {
                                     radius: 16
                                     color: Theme.primaryHover
                                     anchors.horizontalCenter: parent.horizontalCenter
-                                    DankIcon {
+                                    AdvIcon {
                                         anchors.centerIn: parent
                                         name: "wb_sunny"
                                         size: Theme.iconSize - 4

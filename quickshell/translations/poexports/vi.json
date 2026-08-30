@@ -314,8 +314,8 @@
   "A separate minimal launcher action that works in Standalone, Separate Frame Mode, and Connected Frame Mode.": {
     "A separate minimal launcher action that works in Standalone, Separate Frame Mode, and Connected Frame Mode.": "Một hành động khởi chạy tối giản riêng biệt hoạt động trong Chế độ độc lập, Chế độ khung riêng biệt và Chế độ khung kết nối."
   },
-  "A slight natural settle, DMS default": {
-    "A slight natural settle, DMS default": ""
+  "A slight natural settle, ADVS default": {
+    "A slight natural settle, ADVS default": ""
   },
   "A user with that name already exists.": {
     "A user with that name already exists.": "Người dùng với tên đó đã tồn tại."
@@ -380,8 +380,8 @@
   "Activate Greeter": {
     "Activate Greeter": "Kích hoạt Màn hình chào"
   },
-  "Activate the DMS greeter? A terminal will open for sudo authentication. Run Sync after activation to apply your settings.": {
-    "Activate the DMS greeter? A terminal will open for sudo authentication. Run Sync after activation to apply your settings.": "Kích hoạt DMS màn hình chào? Một cửa sổ dòng lệnh sẽ mở ra để xác thực sudo. Hãy chạy Đồng bộ sau khi kích hoạt để áp dụng các cài đặt của bạn."
+  "Activate the ADVS greeter? A terminal will open for sudo authentication. Run Sync after activation to apply your settings.": {
+    "Activate the ADVS greeter? A terminal will open for sudo authentication. Run Sync after activation to apply your settings.": "Kích hoạt ADVS màn hình chào? Một cửa sổ dòng lệnh sẽ mở ra để xác thực sudo. Hãy chạy Đồng bộ sau khi kích hoạt để áp dụng các cài đặt của bạn."
   },
   "Activates immediately": {
     "Activates immediately": "Kích hoạt ngay lập tức"
@@ -428,11 +428,11 @@
   "Add \"%1\" to the %2 group?": {
     "Add \"%1\" to the %2 group?": "Thêm \"%1\" vào nhóm %2?"
   },
-  "Add \"%1\" to the %2 group? They must log out and back in, then run dms greeter sync --profile to publish their login-screen theme.": {
-    "Add \"%1\" to the %2 group? They must log out and back in, then run dms greeter sync --profile to publish their login-screen theme.": "Thêm \"%1\" vào nhóm %2? Họ phải đăng xuất và đăng nhập lại, sau đó chạy dms greeter sync --profile để công bố chủ đề màn hình đăng nhập của mình."
+  "Add \"%1\" to the %2 group? They must log out and back in, then run advs greeter sync --profile to publish their login-screen theme.": {
+    "Add \"%1\" to the %2 group? They must log out and back in, then run advs greeter sync --profile to publish their login-screen theme.": "Thêm \"%1\" vào nhóm %2? Họ phải đăng xuất và đăng nhập lại, sau đó chạy advs greeter sync --profile để công bố chủ đề màn hình đăng nhập của mình."
   },
-  "Add \"%1\" to the %2 group? They must log out and back in, then run dms-greeter sync --profile to publish their login-screen theme.": {
-    "Add \"%1\" to the %2 group? They must log out and back in, then run dms-greeter sync --profile to publish their login-screen theme.": "Thêm \"%1\" vào nhóm %2? Họ phải đăng xuất và quay lại, sau đó chạy dms-greeter sync --profile để xuất bản chủ đề màn hình đăng nhập của họ."
+  "Add \"%1\" to the %2 group? They must log out and back in, then run advs-greeter sync --profile to publish their login-screen theme.": {
+    "Add \"%1\" to the %2 group? They must log out and back in, then run advs-greeter sync --profile to publish their login-screen theme.": "Thêm \"%1\" vào nhóm %2? Họ phải đăng xuất và quay lại, sau đó chạy advs-greeter sync --profile để xuất bản chủ đề màn hình đăng nhập của họ."
   },
   "Add Bar": {
     "Add Bar": "Thêm thanh"
@@ -482,11 +482,11 @@
   "Add notes": {
     "Add notes": "Thêm ghi chú"
   },
-  "Add the new user to the %1 group so they can run dms greeter sync --profile.": {
-    "Add the new user to the %1 group so they can run dms greeter sync --profile.": "Thêm người dùng mới vào nhóm %1 để họ có thể chạy dms greeter sync --profile."
+  "Add the new user to the %1 group so they can run advs greeter sync --profile.": {
+    "Add the new user to the %1 group so they can run advs greeter sync --profile.": "Thêm người dùng mới vào nhóm %1 để họ có thể chạy advs greeter sync --profile."
   },
-  "Add the new user to the %1 group so they can run dms-greeter sync --profile.": {
-    "Add the new user to the %1 group so they can run dms-greeter sync --profile.": "Thêm người dùng mới vào nhóm %1 để họ có thể chạy dms-greeter sync --profile."
+  "Add the new user to the %1 group so they can run advs-greeter sync --profile.": {
+    "Add the new user to the %1 group so they can run advs-greeter sync --profile.": "Thêm người dùng mới vào nhóm %1 để họ có thể chạy advs-greeter sync --profile."
   },
   "Add the new user to the %1 group so they can use sudo.": {
     "Add the new user to the %1 group so they can use sudo.": "Thêm người dùng mới vào nhóm %1 để họ có thể sử dụng sudo."
@@ -905,8 +905,8 @@
   "Auto-Hide Timeout": {
     "Auto-Hide Timeout": "Thời gian chờ tự động ẩn"
   },
-  "Auto-close Niri overview when DMS launches or focuses a window.": {
-    "Auto-close Niri overview when DMS launches or focuses a window.": ""
+  "Auto-close Niri overview when ADVS launches or focuses a window.": {
+    "Auto-close Niri overview when ADVS launches or focuses a window.": ""
   },
   "Auto-close Niri overview when launching apps.": {
     "Auto-close Niri overview when launching apps.": "Tự động đóng phần tổng quan Niri khi khởi chạy ứng dụng."
@@ -977,8 +977,8 @@
   "Automatically lock after": {
     "Automatically lock after": "Tự động khóa sau"
   },
-  "Automatically lock the screen when DMS starts": {
-    "Automatically lock the screen when DMS starts": "Tự động khóa màn hình khi DMS khởi động"
+  "Automatically lock the screen when ADVS starts": {
+    "Automatically lock the screen when ADVS starts": "Tự động khóa màn hình khi ADVS khởi động"
   },
   "Automatically lock the screen when the system prepares to suspend": {
     "Automatically lock the screen when the system prepares to suspend": "Tự động khóa màn hình khi hệ thống chuẩn bị chuyển sang chế độ ngủ"
@@ -1415,8 +1415,8 @@
   "Center Section": {
     "Center Section": "Phần trung tâm"
   },
-  "Center Section - Reserved by Dank Island": {
-    "Center Section - Reserved by Dank Island": ""
+  "Center Section - Reserved by Adv Island": {
+    "Center Section - Reserved by Adv Island": ""
   },
   "Center Single Column": {
     "Center Single Column": "Một cột ở giữa"
@@ -1433,8 +1433,8 @@
   "Change Volume": {
     "Change Volume": "Thay đổi âm lượng"
   },
-  "Change the locale used by the DMS interface.": {
-    "Change the locale used by the DMS interface.": "Thay đổi ngôn ngữ hiển thị của giao diện DMS."
+  "Change the locale used by the ADVS interface.": {
+    "Change the locale used by the ADVS interface.": "Thay đổi ngôn ngữ hiển thị của giao diện ADVS."
   },
   "Change the locale used for date and time formatting, independent of the interface language.": {
     "Change the locale used for date and time formatting, independent of the interface language.": "Thay đổi ngôn ngữ dùng cho định dạng ngày và giờ, độc lập với ngôn ngữ giao diện."
@@ -1529,8 +1529,8 @@
   "Choose neutral or accent-colored widget text": {
     "Choose neutral or accent-colored widget text": "Chọn văn bản widget màu trung tính hoặc nhấn mạnh"
   },
-  "Choose the logo displayed on the launcher button in DankBar": {
-    "Choose the logo displayed on the launcher button in DankBar": "Chọn logo hiển thị trên nút launcher trong DankBar"
+  "Choose the logo displayed on the launcher button in AdvBar": {
+    "Choose the logo displayed on the launcher button in AdvBar": "Chọn logo hiển thị trên nút launcher trong AdvBar"
   },
   "Choose wallpaper folder": {
     "Choose wallpaper folder": "Chọn thư mục hình nền"
@@ -1742,8 +1742,8 @@
   "Color theme for syntax highlighting. %1 themes available.": {
     "Color theme for syntax highlighting. %1 themes available.": "Chủ đề màu cho làm nổi bật cú pháp. Có %1 chủ đề."
   },
-  "Color theme from DMS registry": {
-    "Color theme from DMS registry": "Chủ đề màu từ kho lưu trữ DMS"
+  "Color theme from ADVS registry": {
+    "Color theme from ADVS registry": "Chủ đề màu từ kho lưu trữ ADVS"
   },
   "Colorful": {
     "Colorful": "Đa sắc"
@@ -1853,8 +1853,8 @@
   "Configure which displays show \"%1": {
     "Configure which displays show \"%1\"": "Cấu hình màn hình nào hiển thị \"%1\""
   },
-  "Configure which displays show Dank Island as \"%1": {
-    "Configure which displays show Dank Island as \"%1\"": ""
+  "Configure which displays show Adv Island as \"%1": {
+    "Configure which displays show Adv Island as \"%1\"": ""
   },
   "Configure which displays show shell components": {
     "Configure which displays show shell components": "Cấu hình màn hình hiển thị các thành phần shell"
@@ -1982,8 +1982,8 @@
   "Convenience options for the login screen": {
     "Convenience options for the login screen": "Các tùy chọn tiện lợi cho màn hình đăng nhập"
   },
-  "Convert to DMS": {
-    "Convert to DMS": "Chuyển đổi sang DMS"
+  "Convert to ADVS": {
+    "Convert to ADVS": "Chuyển đổi sang ADVS"
   },
   "Cooldown": {
     "Cooldown": "Thời gian hồi"
@@ -2258,41 +2258,41 @@
   "DEMO MODE - Click anywhere to exit": {
     "DEMO MODE - Click anywhere to exit": "CHẾ ĐỘ DEMO - Bấm vào bất kỳ đâu để thoát"
   },
-  "DMS Chooser": {
-    "DMS Chooser": "Trình chọn DMS"
+  "ADVS Chooser": {
+    "ADVS Chooser": "Trình chọn ADVS"
   },
-  "DMS Plugin Manager Unavailable": {
-    "DMS Plugin Manager Unavailable": "Trình quản lý plugin DMS không khả dụng"
+  "ADVS Plugin Manager Unavailable": {
+    "ADVS Plugin Manager Unavailable": "Trình quản lý plugin ADVS không khả dụng"
   },
-  "DMS Settings": {
-    "DMS Settings": "Cài đặt DMS"
+  "ADVS Settings": {
+    "ADVS Settings": "Cài đặt ADVS"
   },
-  "DMS Settings writes Lua keybinds. Add the DMS include so edits apply.": {
-    "DMS Settings writes Lua keybinds. Add the DMS include so edits apply.": "Cài đặt DMS ghi các tổ hợp phím Lua. Thêm DMS bao gồm để áp dụng chỉnh sửa."
+  "ADVS Settings writes Lua keybinds. Add the ADVS include so edits apply.": {
+    "ADVS Settings writes Lua keybinds. Add the ADVS include so edits apply.": "Cài đặt ADVS ghi các tổ hợp phím Lua. Thêm ADVS bao gồm để áp dụng chỉnh sửa."
   },
-  "DMS Shortcuts": {
-    "DMS Shortcuts": "Phím tắt DMS"
+  "ADVS Shortcuts": {
+    "ADVS Shortcuts": "Phím tắt ADVS"
   },
-  "DMS is a highly customizable modern desktop shell with a %1 inspired design.<br/><br/>It is built with %2, a QT6 framework for building desktop shells, and %3, a statically typed, compiled programming language.": {
-    "DMS is a highly customizable modern desktop shell with a %1 inspired design.<br/><br/>It is built with %2, a QT6 framework for building desktop shells, and %3, a statically typed, compiled programming language.": ""
+  "ADVS is a highly customizable modern desktop shell with a %1 inspired design.<br/><br/>It is built with %2, a QT6 framework for building desktop shells, and %3, a statically typed, compiled programming language.": {
+    "ADVS is a highly customizable modern desktop shell with a %1 inspired design.<br/><br/>It is built with %2, a QT6 framework for building desktop shells, and %3, a statically typed, compiled programming language.": ""
   },
-  "DMS out of date": {
-    "DMS out of date": "DMS đã lỗi thời"
+  "ADVS out of date": {
+    "ADVS out of date": "ADVS đã lỗi thời"
   },
-  "DMS removes its managed block from /etc/pam.d/greetd and stops write services": {
-    "DMS removes its managed block from /etc/pam.d/greetd and stops write services": "DMS loại bỏ khối được quản lý của nó từ /etc/pam.d/greetd và dừng các dịch vụ ghi"
+  "ADVS removes its managed block from /etc/pam.d/greetd and stops write services": {
+    "ADVS removes its managed block from /etc/pam.d/greetd and stops write services": "ADVS loại bỏ khối được quản lý của nó từ /etc/pam.d/greetd và dừng các dịch vụ ghi"
   },
-  "DMS server is outdated (API v%1, expected v%2)": {
-    "DMS server is outdated (API v%1, expected v%2)": "Máy chủ DMS đã cũ (API v%1, mong đợi v%2)"
+  "ADVS server is outdated (API v%1, expected v%2)": {
+    "ADVS server is outdated (API v%1, expected v%2)": "Máy chủ ADVS đã cũ (API v%1, mong đợi v%2)"
   },
-  "DMS service is not connected. Clipboard settings are unavailable.": {
-    "DMS service is not connected. Clipboard settings are unavailable.": "Dịch vụ DMS chưa được kết nối. Cài đặt bảng nhớ tạm không khả dụng."
+  "ADVS service is not connected. Clipboard settings are unavailable.": {
+    "ADVS service is not connected. Clipboard settings are unavailable.": "Dịch vụ ADVS chưa được kết nối. Cài đặt bảng nhớ tạm không khả dụng."
   },
-  "DMS shell actions (launcher, clipboard, etc.)": {
-    "DMS shell actions (launcher, clipboard, etc.)": "Các hành động shell DMS (trình khởi chạy, bảng nhớ tạm, v.v.)"
+  "ADVS shell actions (launcher, clipboard, etc.)": {
+    "ADVS shell actions (launcher, clipboard, etc.)": "Các hành động shell ADVS (trình khởi chạy, bảng nhớ tạm, v.v.)"
   },
-  "DMS_SOCKET not available": {
-    "DMS_SOCKET not available": "DMS_SOCKET không khả dụng"
+  "ADVS_SOCKET not available": {
+    "ADVS_SOCKET not available": "ADVS_SOCKET không khả dụng"
   },
   "Daily": {
     "Daily": "Hàng ngày"
@@ -2303,41 +2303,41 @@
   "Damped springs settle straight to their target with no overshoot": {
     "Damped springs settle straight to their target with no overshoot": ""
   },
-  "Dank": {
-    "Dank": "Dank"
+  "Adv": {
+    "Adv": "Adv"
   },
-  "Dank Bar": {
-    "Dank Bar": "Dank Bar"
+  "Adv Bar": {
+    "Adv Bar": "Adv Bar"
   },
-  "Dank Bar Xray": {
-    "Dank Bar Xray": "Xray Thanh Dank"
+  "Adv Bar Xray": {
+    "Adv Bar Xray": "Xray Thanh Adv"
   },
-  "Dank Dash": {
-    "Dank Dash": "Dank Dash"
+  "Adv Dash": {
+    "Adv Dash": "Adv Dash"
   },
-  "Dank Island - Beta": {
-    "Dank Island - Beta": ""
+  "Adv Island - Beta": {
+    "Adv Island - Beta": ""
   },
-  "Dank Island instance": {
-    "Dank Island instance": ""
+  "Adv Island instance": {
+    "Adv Island instance": ""
   },
-  "DankBar": {
-    "DankBar": "DankBar"
+  "AdvBar": {
+    "AdvBar": "AdvBar"
   },
-  "DankCalendar": {
-    "DankCalendar": "DankCalendar"
+  "AdvCalendar": {
+    "AdvCalendar": "AdvCalendar"
   },
-  "DankCalendar isn't installed": {
-    "DankCalendar isn't installed": "DankCalendar chưa được cài đặt"
+  "AdvCalendar isn't installed": {
+    "AdvCalendar isn't installed": "AdvCalendar chưa được cài đặt"
   },
-  "DankCalendar isn't running": {
-    "DankCalendar isn't running": "DankCalendar hiện không chạy"
+  "AdvCalendar isn't running": {
+    "AdvCalendar isn't running": "AdvCalendar hiện không chạy"
   },
-  "DankMaterialShell is ready to use": {
-    "DankMaterialShell is ready to use": "DankMaterialShell đã sẵn sàng sử dụng"
+  "AriadnevShell is ready to use": {
+    "AriadnevShell is ready to use": "AriadnevShell đã sẵn sàng sử dụng"
   },
-  "DankShell & System Icons (requires restart)": {
-    "DankShell & System Icons (requires restart)": "Biểu tượng hệ thống & DankShell (yêu cầu khởi động lại)"
+  "AdvShell & System Icons (requires restart)": {
+    "AdvShell & System Icons (requires restart)": "Biểu tượng hệ thống & AdvShell (yêu cầu khởi động lại)"
   },
   "Dark Mode": {
     "Dark Mode": "Chế độ tối"
@@ -2423,8 +2423,8 @@
   "Default Width (%)": {
     "Default Width (%)": "Chiều rộng mặc định (%)"
   },
-  "Default launcher shortcuts open a native launcher activity inside Dank Island. Spotlight is used when the focused screen has no DankIsland.": {
-    "Default launcher shortcuts open a native launcher activity inside Dank Island. Spotlight is used when the focused screen has no DankIsland.": ""
+  "Default launcher shortcuts open a native launcher activity inside Adv Island. Spotlight is used when the focused screen has no AdvIsland.": {
+    "Default launcher shortcuts open a native launcher activity inside Adv Island. Spotlight is used when the focused screen has no AdvIsland.": ""
   },
   "Default launcher shortcuts open the full launcher with mode tabs, grid view, and action panel.": {
     "Default launcher shortcuts open the full launcher with mode tabs, grid view, and action panel.": "Phím tắt trình khởi chạy mặc định mở trình khởi chạy đầy đủ với các tab chế độ, chế độ xem lưới và bảng hành động."
@@ -2789,8 +2789,8 @@
   "Drop here": {
     "Drop here": "Thả ở đây"
   },
-  "Drop your override for %1 so the DMS default action re-applies?": {
-    "Drop your override for %1 so the DMS default action re-applies?": "Bỏ ghi đè cho %1 để hành động mặc định của DMS được áp dụng lại?"
+  "Drop your override for %1 so the ADVS default action re-applies?": {
+    "Drop your override for %1 so the ADVS default action re-applies?": "Bỏ ghi đè cho %1 để hành động mặc định của ADVS được áp dụng lại?"
   },
   "Duplicate": {
     "Duplicate": "Nhân bản"
@@ -2939,8 +2939,8 @@
   "Enable a custom override below to set per-bar shadow intensity, opacity, and color.": {
     "Enable a custom override below to set per-bar shadow intensity, opacity, and color.": "Bật ghi đè tùy chỉnh bên dưới để đặt cường độ bóng, độ mờ và màu sắc cho từng thanh."
   },
-  "Enable compositor-targetable blur layer (namespace: dms:blurwallpaper). Requires manual niri configuration.": {
-    "Enable compositor-targetable blur layer (namespace: dms:blurwallpaper). Requires manual niri configuration.": "Bật lớp mờ có thể nhắm mục tiêu của bộ tổng hợp (namespace: dms:blurwallpaper). Yêu cầu cấu hình niri thủ công."
+  "Enable compositor-targetable blur layer (namespace: advs:blurwallpaper). Requires manual niri configuration.": {
+    "Enable compositor-targetable blur layer (namespace: advs:blurwallpaper). Requires manual niri configuration.": "Bật lớp mờ có thể nhắm mục tiêu của bộ tổng hợp (namespace: advs:blurwallpaper). Yêu cầu cấu hình niri thủ công."
   },
   "Enable fingerprint at login": {
     "Enable fingerprint at login": "Bật vân tay khi đăng nhập"
@@ -2948,8 +2948,8 @@
   "Enable fingerprint authentication": {
     "Enable fingerprint authentication": "Bật xác minh vân tay"
   },
-  "Enable fingerprint or security key for DMS Greeter": {
-    "Enable fingerprint or security key for DMS Greeter": "Bật vân tay hoặc khóa bảo mật cho DMS Greeter"
+  "Enable fingerprint or security key for ADVS Greeter": {
+    "Enable fingerprint or security key for ADVS Greeter": "Bật vân tay hoặc khóa bảo mật cho ADVS Greeter"
   },
   "Enable loginctl lock integration": {
     "Enable loginctl lock integration": "Bật tích hợp khóa bằng loginctl"
@@ -3317,11 +3317,11 @@
   "Failed to ring device": {
     "Failed to ring device": "Đổ chuông thiết bị thất bại"
   },
-  "Failed to run 'dms greeter status'. Ensure DMS is installed and dms is in PATH.": {
-    "Failed to run 'dms greeter status'. Ensure DMS is installed and dms is in PATH.": "Chạy 'dms greeter status' thất bại. Đảm bảo DMS đã được cài đặt và dms có trong PATH."
+  "Failed to run 'advs greeter status'. Ensure ADVS is installed and advs is in PATH.": {
+    "Failed to run 'advs greeter status'. Ensure ADVS is installed and advs is in PATH.": "Chạy 'advs greeter status' thất bại. Đảm bảo ADVS đã được cài đặt và advs có trong PATH."
   },
-  "Failed to run 'dms-greeter status'. Ensure the dms-greeter package is installed.": {
-    "Failed to run 'dms-greeter status'. Ensure the dms-greeter package is installed.": "Không thể chạy 'dms-greeter status'. Đảm bảo gói dms-greeter được cài đặt."
+  "Failed to run 'advs-greeter status'. Ensure the advs-greeter package is installed.": {
+    "Failed to run 'advs-greeter status'. Ensure the advs-greeter package is installed.": "Không thể chạy 'advs-greeter status'. Đảm bảo gói advs-greeter được cài đặt."
   },
   "Failed to save VPN credentials": {
     "Failed to save VPN credentials": "Không thể lưu thông tin đăng nhập VPN"
@@ -3467,8 +3467,8 @@
   "File received from %1": {
     "File received from %1": "Tệp nhận được từ %1"
   },
-  "File search requires dsearch\nInstall from github.com/AvengeMedia/danksearch": {
-    "File search requires dsearch\nInstall from github.com/AvengeMedia/danksearch": "Tìm kiếm tệp yêu cầu dsearch\nHãy cài đặt từ github.com/AvengeMedia/danksearch"
+  "File search requires dsearch\nInstall from github.com/bavanchun/advsearch": {
+    "File search requires dsearch\nInstall from github.com/bavanchun/advsearch": "Tìm kiếm tệp yêu cầu dsearch\nHãy cài đặt từ github.com/bavanchun/advsearch"
   },
   "File search unavailable": {
     "File search unavailable": "Tìm kiếm tệp không khả dụng"
@@ -3626,8 +3626,8 @@
   "Folders": {
     "Folders": "Thư mục"
   },
-  "Follow DMS background color": {
-    "Follow DMS background color": "Theo màu nền của DMS"
+  "Follow ADVS background color": {
+    "Follow ADVS background color": "Theo màu nền của ADVS"
   },
   "Follow Monitor Focus": {
     "Follow Monitor Focus": "Theo tiêu điểm màn hình"
@@ -3824,8 +3824,8 @@
   "Gamma Control": {
     "Gamma Control": "Điều chỉnh gamma"
   },
-  "Gamma control not available. Requires DMS API v6+.": {
-    "Gamma control not available. Requires DMS API v6+.": "Điều khiển gamma không có sẵn. Yêu cầu API DMS v6+."
+  "Gamma control not available. Requires ADVS API v6+.": {
+    "Gamma control not available. Requires ADVS API v6+.": "Điều khiển gamma không có sẵn. Yêu cầu API ADVS v6+."
   },
   "Gap between the end widgets and the bar ends (0 = edge-to-edge)": {
     "Gap between the end widgets and the bar ends (0 = edge-to-edge)": "Khoảng cách giữa các widget cuối và các đầu thanh (0 = cạnh-để-cạnh)"
@@ -3839,11 +3839,11 @@
   "Generate Override": {
     "Generate Override": "Tạo ghi đè"
   },
-  "Generate baseline GTK3/4 or QT5/QT6 (requires qt6ct-kde) configurations to follow DMS colors. Only needed once.<br /><br />It is recommended to configure %1 prior to applying GTK themes.": {
-    "Generate baseline GTK3/4 or QT5/QT6 (requires qt6ct-kde) configurations to follow DMS colors. Only needed once.<br /><br />It is recommended to configure %1 prior to applying GTK themes.": ""
+  "Generate baseline GTK3/4 or QT5/QT6 (requires qt6ct-kde) configurations to follow ADVS colors. Only needed once.<br /><br />It is recommended to configure %1 prior to applying GTK themes.": {
+    "Generate baseline GTK3/4 or QT5/QT6 (requires qt6ct-kde) configurations to follow ADVS colors. Only needed once.<br /><br />It is recommended to configure %1 prior to applying GTK themes.": ""
   },
-  "Generate baseline GTK3/4, QT5/QT6, or qtengine configurations to follow DMS colors (only qt6ct requires qt6ct-kde). Only needed once.<br /><br />It is recommended to configure %1 prior to applying GTK themes.": {
-    "Generate baseline GTK3/4, QT5/QT6, or qtengine configurations to follow DMS colors (only qt6ct requires qt6ct-kde). Only needed once.<br /><br />It is recommended to configure %1 prior to applying GTK themes.": ""
+  "Generate baseline GTK3/4, QT5/QT6, or qtengine configurations to follow ADVS colors (only qt6ct requires qt6ct-kde). Only needed once.<br /><br />It is recommended to configure %1 prior to applying GTK themes.": {
+    "Generate baseline GTK3/4, QT5/QT6, or qtengine configurations to follow ADVS colors (only qt6ct requires qt6ct-kde). Only needed once.<br /><br />It is recommended to configure %1 prior to applying GTK themes.": ""
   },
   "Generic": {
     "Generic": "Chung"
@@ -3914,11 +3914,11 @@
   "Greeter font": {
     "Greeter font": "Phông chữ Màn hình chào"
   },
-  "Greeter group members can sync their login-screen theme with dms greeter sync --profile after logging out and back in.": {
-    "Greeter group members can sync their login-screen theme with dms greeter sync --profile after logging out and back in.": "Các thành viên của nhóm màn hình chào có thể đồng bộ chủ đề màn hình đăng nhập của họ bằng dms greeter sync --profile sau khi đăng xuất và đăng nhập lại."
+  "Greeter group members can sync their login-screen theme with advs greeter sync --profile after logging out and back in.": {
+    "Greeter group members can sync their login-screen theme with advs greeter sync --profile after logging out and back in.": "Các thành viên của nhóm màn hình chào có thể đồng bộ chủ đề màn hình đăng nhập của họ bằng advs greeter sync --profile sau khi đăng xuất và đăng nhập lại."
   },
-  "Greeter group members can sync their login-screen theme with dms-greeter sync --profile after logging out and back in.": {
-    "Greeter group members can sync their login-screen theme with dms-greeter sync --profile after logging out and back in.": "Các thành viên nhóm Greeter có thể đồng bộ hóa chủ đề màn hình đăng nhập của họ với dms-greeter sync --profile sau khi đăng xuất và quay lại."
+  "Greeter group members can sync their login-screen theme with advs-greeter sync --profile after logging out and back in.": {
+    "Greeter group members can sync their login-screen theme with advs-greeter sync --profile after logging out and back in.": "Các thành viên nhóm Greeter có thể đồng bộ hóa chủ đề màn hình đăng nhập của họ với advs-greeter sync --profile sau khi đăng xuất và quay lại."
   },
   "Greeter group:": {
     "Greeter group:": "Nhóm Màn hình chào:"
@@ -4262,8 +4262,8 @@
   "Icon Theme": {
     "Icon Theme": "Chủ đề biểu tượng"
   },
-  "Icon theme changed outside DMS; switched to System Default": {
-    "Icon theme changed outside DMS; switched to System Default": "Chủ đề biểu tượng thay đổi bên ngoài DMS; chuyển sang Mặc định Hệ thống"
+  "Icon theme changed outside ADVS; switched to System Default": {
+    "Icon theme changed outside ADVS; switched to System Default": "Chủ đề biểu tượng thay đổi bên ngoài ADVS; chuyển sang Mặc định Hệ thống"
   },
   "Identical alerts show as one popup instead of stacking": {
     "Identical alerts show as one popup instead of stacking": "Các cảnh báo giống nhau hiển thị thành một thông báo nổi thay vì xếp chồng"
@@ -4286,8 +4286,8 @@
   "Idle Settings": {
     "Idle Settings": "Cài đặt trạng thái rảnh"
   },
-  "If autostart app icons don't appear in the system tray, generate a systemd override to ensure DMS starts before autostart apps": {
-    "If autostart app icons don't appear in the system tray, generate a systemd override to ensure DMS starts before autostart apps": "Nếu biểu tượng ứng dụng autostart không xuất hiện trong system tray, hãy tạo systemd override để đảm bảo DMS khởi động trước các ứng dụng autostart"
+  "If autostart app icons don't appear in the system tray, generate a systemd override to ensure ADVS starts before autostart apps": {
+    "If autostart app icons don't appear in the system tray, generate a systemd override to ensure ADVS starts before autostart apps": "Nếu biểu tượng ứng dụng autostart không xuất hiện trong system tray, hãy tạo systemd override để đảm bảo ADVS khởi động trước các ứng dụng autostart"
   },
   "If the field is hidden, it will appear as soon as a key is pressed.": {
     "If the field is hidden, it will appear as soon as a key is pressed.": "Nếu trường bị ẩn, nó sẽ xuất hiện ngay khi một phím được nhấn."
@@ -4427,8 +4427,8 @@
   "Install Theme": {
     "Install Theme": "Cài đặt Chủ đề"
   },
-  "Install color themes from the DMS theme registry": {
-    "Install color themes from the DMS theme registry": "Cài đặt các chủ đề màu từ kho chủ đề DMS"
+  "Install color themes from the ADVS theme registry": {
+    "Install color themes from the ADVS theme registry": "Cài đặt các chủ đề màu từ kho chủ đề ADVS"
   },
   "Install complete. Greeter has been installed.": {
     "Install complete. Greeter has been installed.": "Cài đặt hoàn tất. Màn hình chào đã được cài đặt."
@@ -4442,20 +4442,20 @@
   "Install matugen package for dynamic theming": {
     "Install matugen package for dynamic theming": "Cài đặt gói matugen cho tạo chủ đề động"
   },
-  "Install plugin '%1' from the DMS registry?": {
-    "Install plugin '%1' from the DMS registry?": "Cài đặt plugin '%1' từ kho lưu trữ DMS?"
+  "Install plugin '%1' from the ADVS registry?": {
+    "Install plugin '%1' from the ADVS registry?": "Cài đặt plugin '%1' từ kho lưu trữ ADVS?"
   },
-  "Install plugins from the DMS plugin registry": {
-    "Install plugins from the DMS plugin registry": "Cài plugin từ kho plugin DMS"
+  "Install plugins from the ADVS plugin registry": {
+    "Install plugins from the ADVS plugin registry": "Cài plugin từ kho plugin ADVS"
   },
-  "Install the DMS greeter? A terminal will open for sudo authentication.": {
-    "Install the DMS greeter? A terminal will open for sudo authentication.": "Cài đặt DMS màn hình chào? Một cửa sổ dòng lệnh sẽ mở ra để xác thực sudo."
+  "Install the ADVS greeter? A terminal will open for sudo authentication.": {
+    "Install the ADVS greeter? A terminal will open for sudo authentication.": "Cài đặt ADVS màn hình chào? Một cửa sổ dòng lệnh sẽ mở ra để xác thực sudo."
   },
-  "Install theme '%1' from the DMS registry?": {
-    "Install theme '%1' from the DMS registry?": "Cài đặt chủ đề '%1' từ kho lưu trữ DMS?"
+  "Install theme '%1' from the ADVS registry?": {
+    "Install theme '%1' from the ADVS registry?": "Cài đặt chủ đề '%1' từ kho lưu trữ ADVS?"
   },
   "Installation and PAM setup are documented in the ": {
-    "Installation and PAM setup are documented in the ": "Cài đặt và thiết lập PAM được ghi lại trong README dms-greeter."
+    "Installation and PAM setup are documented in the ": "Cài đặt và thiết lập PAM được ghi lại trong README advs-greeter."
   },
   "Installed": {
     "Installed": "Đã cài đặt"
@@ -4886,8 +4886,8 @@
   "Make the bar background fully transparent": {
     "Make the bar background fully transparent": "Làm cho nền của thanh hoàn toàn trong suốt"
   },
-  "Manage and configure plugins for extending DMS functionality": {
-    "Manage and configure plugins for extending DMS functionality": "Quản lý & cấu hình plugin để mở rộng tính năng DMS"
+  "Manage and configure plugins for extending ADVS functionality": {
+    "Manage and configure plugins for extending ADVS functionality": "Quản lý & cấu hình plugin để mở rộng tính năng ADVS"
   },
   "Manage up to 4 independent bar configurations. Each bar has its own position, widgets, styling, and display assignment.": {
     "Manage up to 4 independent bar configurations. Each bar has its own position, widgets, styling, and display assignment.": "Quản lý tối đa 4 cấu hình thanh độc lập. Mỗi thanh có vị trí, tiện ích, kiểu dáng và chỉ định hiển thị riêng."
@@ -4991,8 +4991,8 @@
   "Material inspired shadows and elevation on modals, popouts, and dialogs": {
     "Material inspired shadows and elevation on modals, popouts, and dialogs": "Đổ bóng và độ cao lấy cảm hứng từ Material trên các bảng thông báo, cửa sổ nổi và hộp thoại"
   },
-  "Material: Material Design 3 Expressive bezier curves. The DMS default feel.": {
-    "Material: Material Design 3 Expressive bezier curves. The DMS default feel.": "Material: Các đường cong bezier đầy biểu cảm của Material Design 3. Cảm giác mặc định của DMS."
+  "Material: Material Design 3 Expressive bezier curves. The ADVS default feel.": {
+    "Material: Material Design 3 Expressive bezier curves. The ADVS default feel.": "Material: Các đường cong bezier đầy biểu cảm của Material Design 3. Cảm giác mặc định của ADVS."
   },
   "Matugen Contrast": {
     "Matugen Contrast": "Độ tương phản Matugen"
@@ -5405,8 +5405,8 @@
   "Night mode & gamma": {
     "Night mode & gamma": "Chế độ ban đêm & gamma"
   },
-  "Night mode failed: DMS gamma control not available": {
-    "Night mode failed: DMS gamma control not available": "Chế độ ban đêm thất bại: Điều khiển gamma DMS không khả dụng"
+  "Night mode failed: ADVS gamma control not available": {
+    "Night mode failed: ADVS gamma control not available": "Chế độ ban đêm thất bại: Điều khiển gamma ADVS không khả dụng"
   },
   "Niri Integration": {
     "Niri Integration": "Tích hợp Niri"
@@ -5435,8 +5435,8 @@
   "No Border": {
     "No Border": "Không viền"
   },
-  "No DMS shortcuts configured": {
-    "No DMS shortcuts configured": "Chưa có phím tắt DMS nào được cấu hình"
+  "No ADVS shortcuts configured": {
+    "No ADVS shortcuts configured": "Chưa có phím tắt ADVS nào được cấu hình"
   },
   "No Dim": {
     "No Dim": "Không làm mờ tối"
@@ -5903,8 +5903,8 @@
   "Opacity of cards and nested surfaces inside floating windows": {
     "Opacity of cards and nested surfaces inside floating windows": ""
   },
-  "Opacity of floating DMS windows like Settings, Notepad, and authentication prompts": {
-    "Opacity of floating DMS windows like Settings, Notepad, and authentication prompts": ""
+  "Opacity of floating ADVS windows like Settings, Notepad, and authentication prompts": {
+    "Opacity of floating ADVS windows like Settings, Notepad, and authentication prompts": ""
   },
   "Opacity of foreground cards and nested surfaces on shell panels": {
     "Opacity of foreground cards and nested surfaces on shell panels": ""
@@ -5918,8 +5918,8 @@
   "Open App": {
     "Open App": "Mở ứng dụng"
   },
-  "Open DMS windows floating instead of tiled": {
-    "Open DMS windows floating instead of tiled": ""
+  "Open ADVS windows floating instead of tiled": {
+    "Open ADVS windows floating instead of tiled": ""
   },
   "Open Delay": {
     "Open Delay": "Độ trễ Mở"
@@ -6839,8 +6839,8 @@
   "Remove the shortcut %1?": {
     "Remove the shortcut %1?": "Gỡ phím tắt %1?"
   },
-  "Remove the shortcut %1? An unbind entry will be saved to dms/binds-user.lua so it stays removed across DMS updates.": {
-    "Remove the shortcut %1? An unbind entry will be saved to dms/binds-user.lua so it stays removed across DMS updates.": "Gỡ phím tắt %1? Một mục hủy gán sẽ được lưu vào dms/binds-user.lua để nó vẫn được gỡ bỏ qua các bản cập nhật DMS."
+  "Remove the shortcut %1? An unbind entry will be saved to advs/binds-user.lua so it stays removed across ADVS updates.": {
+    "Remove the shortcut %1? An unbind entry will be saved to advs/binds-user.lua so it stays removed across ADVS updates.": "Gỡ phím tắt %1? Một mục hủy gán sẽ được lưu vào advs/binds-user.lua để nó vẫn được gỡ bỏ qua các bản cập nhật ADVS."
   },
   "Removed administrator privileges": {
     "Removed administrator privileges": "Đã gỡ quyền quản trị viên"
@@ -6893,11 +6893,11 @@
   "Requires 'dgop' tool": {
     "Requires 'dgop' tool": "Yêu cầu công cụ 'dgop'"
   },
-  "Requires DMS %1": {
-    "Requires DMS %1": "Yêu cầu DMS %1"
+  "Requires ADVS %1": {
+    "Requires ADVS %1": "Yêu cầu ADVS %1"
   },
-  "Requires DMS server with sysupdate capability": {
-    "Requires DMS server with sysupdate capability": "Yêu cầu máy chủ DMS với khả năng sysupdate"
+  "Requires ADVS server with sysupdate capability": {
+    "Requires ADVS server with sysupdate capability": "Yêu cầu máy chủ ADVS với khả năng sysupdate"
   },
   "Requires MangoWC compositor": {
     "Requires MangoWC compositor": "Yêu cầu trình tổng hợp MangoWC"
@@ -6905,8 +6905,8 @@
   "Requires a newer version of Quickshell": {
     "Requires a newer version of Quickshell": "Yêu cầu phiên bản Quickshell mới hơn"
   },
-  "Requires greetd, dms-greeter, and your user in the greeter group (plus fprintd/pam_fprintd for fingerprint, pam_u2f for security keys).": {
-    "Requires greetd, dms-greeter, and your user in the greeter group (plus fprintd/pam_fprintd for fingerprint, pam_u2f for security keys).": "Yêu cầu greetd, dms-greeter, và người dùng của bạn trong nhóm greeter (cộng với fprintd/pam_fprintd cho vân tay, pam_u2f cho khóa bảo mật)."
+  "Requires greetd, advs-greeter, and your user in the greeter group (plus fprintd/pam_fprintd for fingerprint, pam_u2f for security keys).": {
+    "Requires greetd, advs-greeter, and your user in the greeter group (plus fprintd/pam_fprintd for fingerprint, pam_u2f for security keys).": "Yêu cầu greetd, advs-greeter, và người dùng của bạn trong nhóm greeter (cộng với fprintd/pam_fprintd cho vân tay, pam_u2f cho khóa bảo mật)."
   },
   "Requires night mode support": {
     "Requires night mode support": "Yêu cầu hỗ trợ chế độ ban đêm"
@@ -6914,8 +6914,8 @@
   "Requires remembering the last user and session. Enable those options first.": {
     "Requires remembering the last user and session. Enable those options first.": "Yêu cầu ghi nhớ người dùng và phiên làm việc cuối. Hãy bật các tùy chọn đó trước."
   },
-  "Requires the DMS Theme extension from the editor marketplace": {
-    "Requires the DMS Theme extension from the editor marketplace": "Yêu cầu tiện ích Chủ đề DMS từ kho tiện ích của trình soạn thảo"
+  "Requires the ADVS Theme extension from the editor marketplace": {
+    "Requires the ADVS Theme extension from the editor marketplace": "Yêu cầu tiện ích Chủ đề ADVS từ kho tiện ích của trình soạn thảo"
   },
   "Reserved Height": {
     "Reserved Height": ""
@@ -6953,11 +6953,11 @@
   "Resolution, position, scale": {
     "Resolution, position, scale": "Độ phân giải, vị trí, tỷ lệ"
   },
-  "Restart DMS": {
-    "Restart DMS": "Khởi động lại DMS"
+  "Restart ADVS": {
+    "Restart ADVS": "Khởi động lại ADVS"
   },
-  "Restart the DankMaterialShell": {
-    "Restart the DankMaterialShell": "Khởi động lại DankMaterialShell"
+  "Restart the AriadnevShell": {
+    "Restart the AriadnevShell": "Khởi động lại AriadnevShell"
   },
   "Restart userspace without rebooting the kernel, requires systemd": {
     "Restart userspace without rebooting the kernel, requires systemd": ""
@@ -7052,14 +7052,14 @@
   "Rules (%1)": {
     "Rules (%1)": "Quy tắc (%1)"
   },
-  "Rules found in your compositor config. These are read-only here, use Convert to DMS to make an editable copy.": {
-    "Rules found in your compositor config. These are read-only here, use Convert to DMS to make an editable copy.": "Các quy tắc được tìm thấy trong cấu hình compositor. Chúng chỉ đọc tại đây, dùng Chuyển sang DMS để tạo bản có thể chỉnh sửa."
+  "Rules found in your compositor config. These are read-only here, use Convert to ADVS to make an editable copy.": {
+    "Rules found in your compositor config. These are read-only here, use Convert to ADVS to make an editable copy.": "Các quy tắc được tìm thấy trong cấu hình compositor. Chúng chỉ đọc tại đây, dùng Chuyển sang ADVS để tạo bản có thể chỉnh sửa."
   },
   "Run Again": {
     "Run Again": "Chạy lại"
   },
-  "Run DMS Templates": {
-    "Run DMS Templates": "Chạy các mẫu DMS"
+  "Run ADVS Templates": {
+    "Run ADVS Templates": "Chạy các mẫu ADVS"
   },
   "Run User Templates": {
     "Run User Templates": "Chạy mẫu người dùng"
@@ -7172,11 +7172,11 @@
   "Scale": {
     "Scale": "Tỷ lệ"
   },
-  "Scale DankBar font sizes independently": {
-    "Scale DankBar font sizes independently": "Điều chỉnh riêng kích thước phông chữ trên thanh Dank"
+  "Scale AdvBar font sizes independently": {
+    "Scale AdvBar font sizes independently": "Điều chỉnh riêng kích thước phông chữ trên thanh Adv"
   },
-  "Scale DankBar icon sizes independently": {
-    "Scale DankBar icon sizes independently": "Tỷ lệ kích thước biểu tượng DankBar độc lập"
+  "Scale AdvBar icon sizes independently": {
+    "Scale AdvBar icon sizes independently": "Tỷ lệ kích thước biểu tượng AdvBar độc lập"
   },
   "Scale all font sizes throughout the shell": {
     "Scale all font sizes throughout the shell": "Tỷ lệ tất cả kích thước phông chữ trong toàn bộ shell"
@@ -7721,8 +7721,8 @@
   "Show Remaining Time": {
     "Show Remaining Time": "Hiển thị Thời gian Còn lại"
   },
-  "Show Restart DMS": {
-    "Show Restart DMS": "Hiển thị Khởi động lại DMS"
+  "Show Restart ADVS": {
+    "Show Restart ADVS": "Hiển thị Khởi động lại ADVS"
   },
   "Show Satellite Widgets": {
     "Show Satellite Widgets": ""
@@ -7976,8 +7976,8 @@
   "Solid material type or Outline": {
     "Solid material type or Outline": ""
   },
-  "Some plugins require a newer version of DMS:": {
-    "Some plugins require a newer version of DMS:": "Một số plugin yêu cầu phiên bản DMS mới hơn:"
+  "Some plugins require a newer version of ADVS:": {
+    "Some plugins require a newer version of ADVS:": "Một số plugin yêu cầu phiên bản ADVS mới hơn:"
   },
   "Some settings are managed by the island": {
     "Some settings are managed by the island": ""
@@ -8075,14 +8075,14 @@
   "Standard": {
     "Standard": "Tiêu chuẩn"
   },
-  "Standard: Classic Material Design 3 — panels rise from below with a subtle scale. The DMS default.": {
-    "Standard: Classic Material Design 3 — panels rise from below with a subtle scale. The DMS default.": "Tiêu chuẩn: Material Design 3 cổ điển — các bảng nâng lên từ bên dưới với tỷ lệ tinh tế. Mặc định của DMS."
+  "Standard: Classic Material Design 3 — panels rise from below with a subtle scale. The ADVS default.": {
+    "Standard: Classic Material Design 3 — panels rise from below with a subtle scale. The ADVS default.": "Tiêu chuẩn: Material Design 3 cổ điển — các bảng nâng lên từ bên dưới với tỷ lệ tinh tế. Mặc định của ADVS."
   },
   "Start": {
     "Start": "Bắt đầu"
   },
-  "Start DankConnect, KDE Connect, or Valent to use this plugin": {
-    "Start DankConnect, KDE Connect, or Valent to use this plugin": ""
+  "Start AdvConnect, KDE Connect, or Valent to use this plugin": {
+    "Start AdvConnect, KDE Connect, or Valent to use this plugin": ""
   },
   "Start Hotspot?": {
     "Start Hotspot?": "Bắt đầu Điểm nóng?"
@@ -8243,11 +8243,11 @@
   "Sync Position Across Screens": {
     "Sync Position Across Screens": "Đồng bộ vị trí qua các màn hình"
   },
-  "Sync applies your theme and settings to the login screen. Shared users should run dms greeter sync --profile instead of a primary user sync.": {
-    "Sync applies your theme and settings to the login screen. Shared users should run dms greeter sync --profile instead of a primary user sync.": "Đồng bộ hóa áp dụng chủ đề và cài đặt của bạn vào màn hình đăng nhập. Những người dùng chia sẻ nên chạy dms greeter sync --profile thay vì đồng bộ hóa người dùng chính."
+  "Sync applies your theme and settings to the login screen. Shared users should run advs greeter sync --profile instead of a primary user sync.": {
+    "Sync applies your theme and settings to the login screen. Shared users should run advs greeter sync --profile instead of a primary user sync.": "Đồng bộ hóa áp dụng chủ đề và cài đặt của bạn vào màn hình đăng nhập. Những người dùng chia sẻ nên chạy advs greeter sync --profile thay vì đồng bộ hóa người dùng chính."
   },
-  "Sync applies your theme and settings to the login screen. Shared users should run dms-greeter sync --profile instead of a primary user sync.": {
-    "Sync applies your theme and settings to the login screen. Shared users should run dms-greeter sync --profile instead of a primary user sync.": "Đồng bộ hóa áp dụng chủ đề và cài đặt của bạn vào màn hình đăng nhập. Những người dùng chia sẻ nên chạy dms-greeter sync --profile thay vì đồng bộ hóa người dùng chính."
+  "Sync applies your theme and settings to the login screen. Shared users should run advs-greeter sync --profile instead of a primary user sync.": {
+    "Sync applies your theme and settings to the login screen. Shared users should run advs-greeter sync --profile instead of a primary user sync.": "Đồng bộ hóa áp dụng chủ đề và cài đặt của bạn vào màn hình đăng nhập. Những người dùng chia sẻ nên chạy advs-greeter sync --profile thay vì đồng bộ hóa người dùng chính."
   },
   "Sync completed successfully.": {
     "Sync completed successfully.": "Đồng bộ hoàn tất thành công."
@@ -8363,14 +8363,14 @@
   "Terminal additional parameters": {
     "Terminal additional parameters": "Các tham số bổ sung cho cửa sổ dòng lệnh"
   },
-  "Terminal fallback failed. Install a supported terminal emulator or run 'dms auth sync' manually.": {
-    "Terminal fallback failed. Install a supported terminal emulator or run 'dms auth sync' manually.": "Chế độ dự phòng dòng lệnh thất bại. Hãy cài đặt một trình giả lập dòng lệnh được hỗ trợ hoặc chạy 'dms auth sync' thủ công."
+  "Terminal fallback failed. Install a supported terminal emulator or run 'advs auth sync' manually.": {
+    "Terminal fallback failed. Install a supported terminal emulator or run 'advs auth sync' manually.": "Chế độ dự phòng dòng lệnh thất bại. Hãy cài đặt một trình giả lập dòng lệnh được hỗ trợ hoặc chạy 'advs auth sync' thủ công."
   },
-  "Terminal fallback failed. Install one of the supported terminal emulators or run 'dms greeter sync' manually.": {
-    "Terminal fallback failed. Install one of the supported terminal emulators or run 'dms greeter sync' manually.": "Chế độ dự phòng dòng lệnh thất bại. Hãy cài đặt một trong những trình giả lập dòng lệnh được hỗ trợ hoặc chạy 'dms greeter sync' thủ công."
+  "Terminal fallback failed. Install one of the supported terminal emulators or run 'advs greeter sync' manually.": {
+    "Terminal fallback failed. Install one of the supported terminal emulators or run 'advs greeter sync' manually.": "Chế độ dự phòng dòng lệnh thất bại. Hãy cài đặt một trong những trình giả lập dòng lệnh được hỗ trợ hoặc chạy 'advs greeter sync' thủ công."
   },
-  "Terminal fallback failed. Install one of the supported terminal emulators or run 'dms-greeter sync' manually.": {
-    "Terminal fallback failed. Install one of the supported terminal emulators or run 'dms-greeter sync' manually.": "Fallback Terminal thất bại. Cài đặt một trong các trình giả lập terminal được hỗ trợ hoặc chạy 'dms-greeter sync' theo cách thủ công."
+  "Terminal fallback failed. Install one of the supported terminal emulators or run 'advs-greeter sync' manually.": {
+    "Terminal fallback failed. Install one of the supported terminal emulators or run 'advs-greeter sync' manually.": "Fallback Terminal thất bại. Cài đặt một trong các trình giả lập terminal được hỗ trợ hoặc chạy 'advs-greeter sync' theo cách thủ công."
   },
   "Terminal fallback opened. Complete authentication there; it will close automatically when done.": {
     "Terminal fallback opened. Complete authentication there; it will close automatically when done.": "Fallback Terminal đã mở. Hoàn tất xác thực ở đó; nó sẽ đóng tự động khi hoàn thành."
@@ -8414,8 +8414,8 @@
   "The 'dgop' tool is required for system monitoring.\nPlease install dgop to use this feature.": {
     "The 'dgop' tool is required for system monitoring.\nPlease install dgop to use this feature.": "Công cụ 'dgop' là bắt buộc để giám sát hệ thống.\nVui lòng cài đặt dgop để sử dụng tính năng này."
   },
-  "The DMS_SOCKET environment variable is not set or the socket is unavailable. Automated plugin management requires the DMS_SOCKET.": {
-    "The DMS_SOCKET environment variable is not set or the socket is unavailable. Automated plugin management requires the DMS_SOCKET.": "DMS_SOCKET chưa được thiết lập hoặc socket không khả dụng. Quản lý plugin tự động cần DMS_SOCKET."
+  "The ADVS_SOCKET environment variable is not set or the socket is unavailable. Automated plugin management requires the ADVS_SOCKET.": {
+    "The ADVS_SOCKET environment variable is not set or the socket is unavailable. Automated plugin management requires the ADVS_SOCKET.": "ADVS_SOCKET chưa được thiết lập hoặc socket không khả dụng. Quản lý plugin tự động cần ADVS_SOCKET."
   },
   "The Island anchors to the top or bottom edge": {
     "The Island anchors to the top or bottom edge": ""
@@ -8435,8 +8435,8 @@
   "The custom command used when attaching to sessions (receives the session name as the first argument)": {
     "The custom command used when attaching to sessions (receives the session name as the first argument)": "Lệnh tùy chỉnh được sử dụng khi đính kèm vào các phiên (nhận tên phiên làm đối số đầu tiên)"
   },
-  "The greeter bundled with DMS is active (archinstall setup). It keeps working as is, but syncing theme and settings needs the standalone greeter. Install greetd-dms-greeter-bin from the AUR, then run Sync to migrate the login screen.": {
-    "The greeter bundled with DMS is active (archinstall setup). It keeps working as is, but syncing theme and settings needs the standalone greeter. Install greetd-dms-greeter-bin from the AUR, then run Sync to migrate the login screen.": ""
+  "The greeter bundled with ADVS is active (archinstall setup). It keeps working as is, but syncing theme and settings needs the standalone greeter. Install greetd-advs-greeter-bin from the AUR, then run Sync to migrate the login screen.": {
+    "The greeter bundled with ADVS is active (archinstall setup). It keeps working as is, but syncing theme and settings needs the standalone greeter. Install greetd-advs-greeter-bin from the AUR, then run Sync to migrate the login screen.": ""
   },
   "The island draws its own surface": {
     "The island draws its own surface": ""
@@ -8489,8 +8489,8 @@
   "Third-Party Plugin Warning": {
     "Third-Party Plugin Warning": "Cảnh báo plugin Bên thứ ba"
   },
-  "Third-party plugins are created by the community and are not officially supported by DankMaterialShell.\n\nThese plugins may pose security and privacy risks - install at your own risk.": {
-    "Third-party plugins are created by the community and are not officially supported by DankMaterialShell.\n\nThese plugins may pose security and privacy risks - install at your own risk.": "Các plugin Bên thứ ba được tạo ra bởi cộng đồng và không được hỗ trợ chính thức bởi DankMaterialShell.\n\nCác plugin này có thể tiềm ẩn rủi ro bảo mật và riêng tư - hãy tự chịu rủi ro khi cài đặt."
+  "Third-party plugins are created by the community and are not officially supported by AriadnevShell.\n\nThese plugins may pose security and privacy risks - install at your own risk.": {
+    "Third-party plugins are created by the community and are not officially supported by AriadnevShell.\n\nThese plugins may pose security and privacy risks - install at your own risk.": "Các plugin Bên thứ ba được tạo ra bởi cộng đồng và không được hỗ trợ chính thức bởi AriadnevShell.\n\nCác plugin này có thể tiềm ẩn rủi ro bảo mật và riêng tư - hãy tự chịu rủi ro khi cài đặt."
   },
   "This bind is overridden by config.kdl": {
     "This bind is overridden by config.kdl": "Phím tắt này bị ghi đè bởi config.kdl"
@@ -8498,8 +8498,8 @@
   "This device": {
     "This device": "Thiết bị này"
   },
-  "This install is still using hyprland.conf. Run dms setup to migrate before changing these settings.": {
-    "This install is still using hyprland.conf. Run dms setup to migrate before changing these settings.": "Cài đặt này vẫn đang sử dụng hyprland.conf. Chạy dms setup để di chuyển trước khi thay đổi những cài đặt này."
+  "This install is still using hyprland.conf. Run advs setup to migrate before changing these settings.": {
+    "This install is still using hyprland.conf. Run advs setup to migrate before changing these settings.": "Cài đặt này vẫn đang sử dụng hyprland.conf. Chạy advs setup để di chuyển trước khi thay đổi những cài đặt này."
   },
   "This may take a few seconds": {
     "This may take a few seconds": "Việc này có thể mất vài giây"
@@ -8612,8 +8612,8 @@
   "To update, run the following command:": {
     "To update, run the following command:": "Để cập nhật, hãy chạy lệnh sau:"
   },
-  "To use this DMS bind, remove or change the keybind in your config.kdl": {
-    "To use this DMS bind, remove or change the keybind in your config.kdl": "Để sử dụng phím tắt DMS này, hãy xóa hoặc thay đổi phím tắt trong tệp config.kdl của bạn"
+  "To use this ADVS bind, remove or change the keybind in your config.kdl": {
+    "To use this ADVS bind, remove or change the keybind in your config.kdl": "Để sử dụng phím tắt ADVS này, hãy xóa hoặc thay đổi phím tắt trong tệp config.kdl của bạn"
   },
   "Toast": {
     "Toast": "Thông báo nhỏ"
@@ -8813,8 +8813,8 @@
   "Uninstall failed: %1": {
     "Uninstall failed: %1": "Gỡ cài đặt thất bại: %1"
   },
-  "Uninstall the DMS greeter? This will remove configuration and restore your previous display manager. A terminal will open for sudo authentication.": {
-    "Uninstall the DMS greeter? This will remove configuration and restore your previous display manager. A terminal will open for sudo authentication.": "Gỡ cài đặt DMS màn hình chào? Việc này sẽ xóa cấu hình và khôi phục trình quản lý hiển thị trước đó của bạn. Một cửa sổ dòng lệnh sẽ mở ra để xác thực sudo."
+  "Uninstall the ADVS greeter? This will remove configuration and restore your previous display manager. A terminal will open for sudo authentication.": {
+    "Uninstall the ADVS greeter? This will remove configuration and restore your previous display manager. A terminal will open for sudo authentication.": "Gỡ cài đặt ADVS màn hình chào? Việc này sẽ xóa cấu hình và khôi phục trình quản lý hiển thị trước đó của bạn. Một cửa sổ dòng lệnh sẽ mở ra để xác thực sudo."
   },
   "Uninstalled: %1": {
     "Uninstalled: %1": "Đã gỡ cài đặt: %1"
@@ -9104,8 +9104,8 @@
   "Uses the spotlight-bar IPC action and always opens the minimal bar.": {
     "Uses the spotlight-bar IPC action and always opens the minimal bar.": "Sử dụng hành động IPC spotlight-bar và luôn mở thanh tối giản."
   },
-  "Using DankCalendar%1": {
-    "Using DankCalendar%1": "Đang sử dụng DankCalendar%1"
+  "Using AdvCalendar%1": {
+    "Using AdvCalendar%1": "Đang sử dụng AdvCalendar%1"
   },
   "Using global monospace font from Settings → Personalization": {
     "Using global monospace font from Settings → Personalization": "Sử dụng phông chữ đơn cách toàn cầu từ Cài đặt → Cá nhân hóa"
@@ -9287,8 +9287,8 @@
   "Welcome": {
     "Welcome": "Chào mừng"
   },
-  "Welcome to DankMaterialShell": {
-    "Welcome to DankMaterialShell": "Chào mừng bạn đến với DankMaterialShell"
+  "Welcome to AriadnevShell": {
+    "Welcome to AriadnevShell": "Chào mừng bạn đến với AriadnevShell"
   },
   "When clicking a dock window in a Hyprland special workspace, bring that special workspace back before focusing the window": {
     "When clicking a dock window in a Hyprland special workspace, bring that special workspace back before focusing the window": "Khi nhấp vào một cửa sổ dock trong một không gian làm việc đặc biệt Hyprland, hãy đưa không gian làm việc đặc biệt đó quay lại trước khi tập trung vào cửa sổ"
@@ -9575,8 +9575,8 @@
   "display rotation option": {
     "Normal": "Bình thường"
   },
-  "dms-greeter is not installed. Install the dms-greeter package to manage the greeter.": {
-    "dms-greeter is not installed. Install the dms-greeter package to manage the greeter.": ""
+  "advs-greeter is not installed. Install the advs-greeter package to manage the greeter.": {
+    "advs-greeter is not installed. Install the advs-greeter package to manage the greeter.": ""
   },
   "e.g. /usr/bin/my-script --flag": {
     "e.g. /usr/bin/my-script --flag": "vd. /usr/bin/my-script --flag"
@@ -9620,8 +9620,8 @@
   "loginctl activate failed (exit %1)": {
     "loginctl activate failed (exit %1)": "loginctl activate thất bại (thoát %1)"
   },
-  "loginctl not available - lock integration requires DMS socket connection": {
-    "loginctl not available - lock integration requires DMS socket connection": "loginctl không khả dụng - tích hợp khóa yêu cầu kết nối socket DMS"
+  "loginctl not available - lock integration requires ADVS socket connection": {
+    "loginctl not available - lock integration requires ADVS socket connection": "loginctl không khả dụng - tích hợp khóa yêu cầu kết nối socket ADVS"
   },
   "mango: config reloaded": {
     "mango: config reloaded": "mango: đã tải lại cấu hình"
@@ -9662,8 +9662,8 @@
   "niri shortcuts config": {
     "niri shortcuts config": "cấu hình phím tắt niri"
   },
-  "niri/dms Discord": {
-    "niri/dms Discord": "Discord niri/dms"
+  "niri/advs Discord": {
+    "niri/advs Discord": "Discord niri/advs"
   },
   "niri: config reloaded": {
     "niri: config reloaded": "niri: đã tải lại cấu hình"
@@ -9740,8 +9740,8 @@
   "up": {
     "up": "lên"
   },
-  "update dms for NM integration.": {
-    "update dms for NM integration.": "cập nhật DMS để tích hợp với NM."
+  "update advs for NM integration.": {
+    "update advs for NM integration.": "cập nhật ADVS để tích hợp với NM."
   },
   "useradd failed (exit %1)": {
     "useradd failed (exit %1)": "useradd thất bại (thoát %1)"

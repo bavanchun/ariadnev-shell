@@ -3,7 +3,7 @@ package themes
 import (
 	"fmt"
 
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/server/models"
+	"github.com/bavanchun/ariadnev-shell/core/internal/server/models"
 )
 
 func HandleRequest(conn *models.Conn, req models.Request) {

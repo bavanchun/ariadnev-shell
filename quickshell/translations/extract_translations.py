@@ -77,8 +77,8 @@ def extract_qstr_strings(root_dir):
         (re.compile(r"I18n\.trFor\(\s*'(?:\\.|[^'\\])*'\s*,\s*'((?:\\.|[^'\\])*)'\s*\)"), "'")
     ]
 
-    # DankCommon terms are owned by the dank-qml-common repo (synced through
-    # the DMS POEditor project); rglob not following the symlink is load-bearing.
+    # AdvCommon terms are owned by the ariadnev-qml-common repo (synced through
+    # the ADVS POEditor project); rglob not following the symlink is load-bearing.
     for qml_file in Path(root_dir).rglob('*.qml'):
         relative_path = qml_file.relative_to(root_dir)
 
@@ -87,8 +87,8 @@ def extract_qstr_strings(root_dir):
         if relative_path.parts[0] == 'PLUGINS':
             continue
 
-        # Modules/Greetd terms are owned by the dank-greeter repo (tagged
-        # dms-greeter in POEditor); the embedded copy exists only for
+        # Modules/Greetd terms are owned by the adv-greeter repo (tagged
+        # advs-greeter in POEditor); the embedded copy exists only for
         # archinstall compatibility and must not upload untagged duplicates.
         if relative_path.parts[:2] == ('Modules', 'Greetd'):
             continue
@@ -140,7 +140,7 @@ def area_tags(occurrences):
     tags = set()
     for occ in occurrences:
         path = occ['file']
-        if path.startswith(('dms-plugins/', 'dms-plugins-external/')):
+        if path.startswith(('advs-plugins/', 'advs-plugins-external/')):
             tags.add('plugin-' + path.split('/')[1].lower())
         elif path.startswith(('Modules/Settings/', 'Modals/Settings/')):
             tags.add('settings')

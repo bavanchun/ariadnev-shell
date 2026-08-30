@@ -4,10 +4,10 @@ import qs.Modals.Common
 import qs.Services
 import qs.Widgets
 
-DankModal {
+AdvModal {
     id: root
 
-    layerNamespace: "dms:wifi-password"
+    layerNamespace: "advs:wifi-password"
     keepPopoutsOpen: true
     allowStacking: true
     shouldBeVisible: false
@@ -408,7 +408,7 @@ DankModal {
                     anchors.right: parent.right
                     spacing: Theme.spacingXS
 
-                    DankActionButton {
+                    AdvActionButton {
                         iconName: "close"
                         iconSize: Theme.iconSize - 4
                         iconColor: Theme.surfaceText
@@ -470,7 +470,7 @@ DankModal {
                     onClicked: ssidInput.forceActiveFocus()
                 }
 
-                DankTextField {
+                AdvTextField {
                     id: ssidInput
 
                     anchors.fill: parent
@@ -499,7 +499,7 @@ DankModal {
                     border.color: fieldInput.activeFocus ? Theme.primary : Theme.outlineStrong
                     border.width: fieldInput.activeFocus ? 2 : 1
 
-                    DankTextField {
+                    AdvTextField {
                         id: fieldInput
                         anchors.fill: parent
                         font.pixelSize: Theme.fontSizeMedium
@@ -572,7 +572,7 @@ DankModal {
                         color: Theme.surfaceVariantText
                     }
 
-                    DankDropdown {
+                    AdvDropdown {
                         width: parent.width
                         dropdownWidth: parent.width
                         compactMode: true
@@ -596,7 +596,7 @@ DankModal {
                         color: Theme.surfaceVariantText
                     }
 
-                    DankDropdown {
+                    AdvDropdown {
                         width: parent.width
                         dropdownWidth: parent.width
                         compactMode: true
@@ -621,7 +621,7 @@ DankModal {
                     onClicked: usernameInput.forceActiveFocus()
                 }
 
-                DankTextField {
+                AdvTextField {
                     id: usernameInput
 
                     anchors.fill: parent
@@ -652,7 +652,7 @@ DankModal {
                     onClicked: passwordInput.forceActiveFocus()
                 }
 
-                DankTextField {
+                AdvTextField {
                     id: passwordInput
 
                     anchors.fill: parent
@@ -691,7 +691,7 @@ DankModal {
                     onClicked: anonInput.forceActiveFocus()
                 }
 
-                DankTextField {
+                AdvTextField {
                     id: anonInput
 
                     anchors.fill: parent
@@ -722,7 +722,7 @@ DankModal {
                     onClicked: domainMatchInput.forceActiveFocus()
                 }
 
-                DankTextField {
+                AdvTextField {
                     id: domainMatchInput
 
                     anchors.fill: parent
@@ -755,7 +755,7 @@ DankModal {
                     border.color: checked ? Theme.primary : Theme.outlineButton
                     border.width: 2
 
-                    DankIcon {
+                    AdvIcon {
                         anchors.centerIn: parent
                         name: "check"
                         size: 12

@@ -1,8 +1,8 @@
 import QtQuick
 import Quickshell
 import qs.Common
-import qs.Modules.DankBar
-import qs.Modules.DankIsland
+import qs.Modules.AdvBar
+import qs.Modules.AdvIsland
 import qs.Modules.Frame
 import qs.Modules.WorkspaceOverlays
 import qs.Services
@@ -16,7 +16,7 @@ Item {
     property int pendingFrameTransitionRevision: 0
     property bool frameSurfacesLoaded: true
 
-    property alias dankBarRepeater: dankBarRepeater
+    property alias advBarRepeater: advBarRepeater
     property alias hyprlandOverviewLoader: hyprlandOverviewLoader
 
     signal surfaceRecoveryPass
@@ -84,7 +84,7 @@ Item {
 
     Connections {
         target: SettingsData
-        function onForceDankBarLayoutRefresh() {
+        function onForceAdvBarLayoutRefresh() {
             root.recreateBarSurfaces();
         }
     }
@@ -107,13 +107,13 @@ Item {
     }
 
     Repeater {
-        id: dankBarRepeater
+        id: advBarRepeater
         model: ScriptModel {
             id: barRepeaterModel
             values: JSON.parse(root._barLayoutStateJson)
         }
 
-        Component.onCompleted: BarWidgetService.dankBarRepeater = dankBarRepeater
+        Component.onCompleted: BarWidgetService.advBarRepeater = advBarRepeater
 
         property var hyprlandOverviewLoaderRef: hyprlandOverviewLoader
 
@@ -136,21 +136,21 @@ Item {
             required property var modelData
             property var barConfig: SettingsData.barConfigs.find(cfg => cfg.id === modelData.id) || null
             readonly property bool isVertical: modelData.position === SettingsData.Position.Left || modelData.position === SettingsData.Position.Right
-            active: root.barSurfacesLoaded && (barConfig?.enabled ?? false) && (!isVertical || dankBarRepeater.horizontalReady >= dankBarRepeater.horizontalWanted)
+            active: root.barSurfacesLoaded && (barConfig?.enabled ?? false) && (!isVertical || advBarRepeater.horizontalReady >= advBarRepeater.horizontalWanted)
             asynchronous: false
-            onItemChanged: dankBarRepeater.recountHorizontalReady()
+            onItemChanged: advBarRepeater.recountHorizontalReady()
 
-            sourceComponent: DankBar {
+            sourceComponent: AdvBar {
                 barConfig: barLoader.barConfig
-                hyprlandOverviewLoader: dankBarRepeater.hyprlandOverviewLoaderRef
+                hyprlandOverviewLoader: advBarRepeater.hyprlandOverviewLoaderRef
             }
         }
     }
 
     Loader {
-        active: SettingsData.dankIslandEnabled
+        active: SettingsData.advIslandEnabled
         asynchronous: false
-        sourceComponent: DankIsland {
+        sourceComponent: AdvIsland {
             screenModel: SettingsData.getIslandScreens()
         }
     }

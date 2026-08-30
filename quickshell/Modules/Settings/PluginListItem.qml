@@ -34,8 +34,8 @@ StyledRect {
     property bool isDesktopPlugin: pluginData ? (pluginData.type === "desktop") : false
     property bool showSettings: hasSettings && !isDesktopPlugin
     property bool isSystemPlugin: pluginData ? (pluginData.source === "system") : false
-    property string requiresDms: pluginData ? (pluginData.requires_dms || "") : ""
-    property bool meetsRequirements: requiresDms ? PluginService.checkPluginCompatibility(requiresDms) : true
+    property string requiresAdvs: pluginData ? (pluginData.requires_advs || "") : ""
+    property bool meetsRequirements: requiresAdvs ? PluginService.checkPluginCompatibility(requiresAdvs) : true
 
     Connections {
         target: ShellVersionService
@@ -81,7 +81,7 @@ StyledRect {
             width: parent.width
             spacing: Theme.spacingM
 
-            DankIcon {
+            AdvIcon {
                 name: root.pluginIcon
                 size: Theme.iconSize
                 color: root.isLoaded ? Theme.primary : Theme.surfaceVariantText
@@ -117,7 +117,7 @@ StyledRect {
                             anchors.centerIn: parent
                             spacing: Theme.spacingXXS
 
-                            DankIcon {
+                            AdvIcon {
                                 id: incompatIcon
                                 name: "warning"
                                 size: 12
@@ -131,7 +131,7 @@ StyledRect {
                             hoverEnabled: true
                             onEntered: {
                                 if (root.sharedTooltip)
-                                    root.sharedTooltip.show(I18n.tr("Requires DMS %1").arg(root.requiresDms), parent, 0, 0, "top");
+                                    root.sharedTooltip.show(I18n.tr("Requires ADVS %1").arg(root.requiresAdvs), parent, 0, 0, "top");
                             }
                             onExited: {
                                 if (root.sharedTooltip)
@@ -140,7 +140,7 @@ StyledRect {
                         }
                     }
 
-                    DankIcon {
+                    AdvIcon {
                         name: root.showSettings ? (root.isExpanded ? "expand_less" : "expand_more") : ""
                         size: 16
                         color: root.showSettings ? Theme.primary : Theme.withAlpha(Theme.primary, 0)
@@ -185,9 +185,9 @@ StyledRect {
                     height: 28
                     radius: 14
                     color: updateArea.containsMouse ? Theme.surfaceContainerHighest : Theme.withAlpha(Theme.surfaceContainerHighest, 0)
-                    visible: DMSService.dmsAvailable && root.isLoaded && root.hasUpdate && !root.isSystemPlugin
+                    visible: ADVSService.advsAvailable && root.isLoaded && root.hasUpdate && !root.isSystemPlugin
 
-                    DankIcon {
+                    AdvIcon {
                         anchors.centerIn: parent
                         name: "download"
                         size: 16
@@ -202,15 +202,15 @@ StyledRect {
                         onClicked: {
                             const currentPluginName = root.pluginName;
                             const currentPluginId = root.pluginId;
-                            DMSService.update(currentPluginName, response => {
+                            ADVSService.update(currentPluginName, response => {
                                 if (response.error) {
                                     ToastService.showError(I18n.tr("Update failed: %1").arg(response.error));
                                     return;
                                 }
                                 ToastService.showInfo(I18n.tr("Plugin updated: %1").arg(currentPluginName));
                                 PluginService.forceRescanPlugin(currentPluginId);
-                                if (DMSService.apiVersion >= 8)
-                                    DMSService.listInstalled();
+                                if (ADVSService.apiVersion >= 8)
+                                    ADVSService.listInstalled();
                             });
                         }
                         onEntered: {
@@ -229,9 +229,9 @@ StyledRect {
                     height: 28
                     radius: 14
                     color: uninstallArea.containsMouse ? Theme.surfaceContainerHighest : Theme.withAlpha(Theme.surfaceContainerHighest, 0)
-                    visible: DMSService.dmsAvailable && !root.isSystemPlugin
+                    visible: ADVSService.advsAvailable && !root.isSystemPlugin
 
-                    DankIcon {
+                    AdvIcon {
                         anchors.centerIn: parent
                         name: "delete"
                         size: 16
@@ -245,7 +245,7 @@ StyledRect {
                         cursorShape: Qt.PointingHandCursor
                         onClicked: {
                             const currentPluginName = root.pluginName;
-                            DMSService.uninstall(currentPluginName, response => {
+                            ADVSService.uninstall(currentPluginName, response => {
                                 if (response.error) {
                                     ToastService.showError(I18n.tr("Uninstall failed: %1").arg(response.error));
                                     return;
@@ -274,7 +274,7 @@ StyledRect {
                     color: reloadArea.containsMouse ? Theme.surfaceContainerHighest : Theme.withAlpha(Theme.surfaceContainerHighest, 0)
                     visible: root.isLoaded
 
-                    DankIcon {
+                    AdvIcon {
                         anchors.centerIn: parent
                         name: "refresh"
                         size: 16
@@ -308,7 +308,7 @@ StyledRect {
                     }
                 }
 
-                DankToggle {
+                AdvToggle {
                     id: pluginToggle
                     anchors.verticalCenter: parent.verticalCenter
                     checked: root.isLoaded

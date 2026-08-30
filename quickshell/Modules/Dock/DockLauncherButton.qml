@@ -144,7 +144,7 @@ Item {
             if (wasDragging || mouse.button !== Qt.LeftButton)
                 return;
 
-            PopoutService.toggleDankLauncherV2(dockApps?.usesOverlayLayer ?? false);
+            PopoutService.toggleAdvLauncherV2(dockApps?.usesOverlayLayer ?? false);
         }
         onPositionChanged: mouse => {
             if (longPressing && !dragging) {

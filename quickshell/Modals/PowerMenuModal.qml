@@ -3,10 +3,10 @@ import qs.Common
 import qs.Modals.Common
 import qs.Modules.PowerMenu
 
-DankModal {
+AdvModal {
     id: root
 
-    layerNamespace: "dms:power-menu"
+    layerNamespace: "advs:power-menu"
     keepPopoutsOpen: true
     useOverlayLayer: true
 
@@ -49,8 +49,8 @@ DankModal {
             let targetX = parentBounds.x + (parentBounds.width - modalWidth) / 2;
             let targetY = parentBounds.y + (parentBounds.height - modalHeight) / 2;
 
-            const topChrome = Math.max(bar && barPosition === SettingsData.Position.Top ? barExclusionZone : 0, SettingsData.dankIslandEdgeOffset(parentScreen, "top"));
-            const bottomChrome = Math.max(bar && barPosition === SettingsData.Position.Bottom ? barExclusionZone : 0, SettingsData.dankIslandEdgeOffset(parentScreen, "bottom"));
+            const topChrome = Math.max(bar && barPosition === SettingsData.Position.Top ? barExclusionZone : 0, SettingsData.advIslandEdgeOffset(parentScreen, "top"));
+            const bottomChrome = Math.max(bar && barPosition === SettingsData.Position.Bottom ? barExclusionZone : 0, SettingsData.advIslandEdgeOffset(parentScreen, "bottom"));
             const minY = topChrome + margin;
             const maxY = screenH - modalHeight - bottomChrome - margin;
 

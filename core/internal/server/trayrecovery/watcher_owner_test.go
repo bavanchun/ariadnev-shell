@@ -9,10 +9,10 @@ import (
 )
 
 // Claims the real watcher name, so it only runs on a scratch bus:
-// dbus-run-session -- env DMS_TEST_SCRATCH_BUS=1 go test ./internal/server/trayrecovery/ -run TestWatchWatcherOwner -v
+// dbus-run-session -- env ADVS_TEST_SCRATCH_BUS=1 go test ./internal/server/trayrecovery/ -run TestWatchWatcherOwner -v
 func TestWatchWatcherOwnerRescansOnRestart(t *testing.T) {
-	if os.Getenv("DMS_TEST_SCRATCH_BUS") != "1" {
-		t.Skip("needs a scratch session bus (DMS_TEST_SCRATCH_BUS=1 under dbus-run-session)")
+	if os.Getenv("ADVS_TEST_SCRATCH_BUS") != "1" {
+		t.Skip("needs a scratch session bus (ADVS_TEST_SCRATCH_BUS=1 under dbus-run-session)")
 	}
 
 	m, err := NewManager()

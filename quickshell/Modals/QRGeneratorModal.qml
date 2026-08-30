@@ -9,10 +9,10 @@ import qs.Common
 import qs.Services
 import qs.Widgets
 
-DankModal {
+AdvModal {
     id: root
     visible: false
-    layerNamespace: "dms:qr-generator"
+    layerNamespace: "advs:qr-generator"
 
     property bool disablePopupTransparency: true
     property bool generating: false
@@ -63,11 +63,11 @@ DankModal {
 
     function deleteQrCodeFiles(themed, normal) {
         if (themed.length > 0)
-            DMSService.sendRequest("network.delete-qrcode", {
+            ADVSService.sendRequest("network.delete-qrcode", {
                 path: themed
             });
         if (normal.length > 0)
-            DMSService.sendRequest("network.delete-qrcode", {
+            ADVSService.sendRequest("network.delete-qrcode", {
                 path: normal
             });
     }
@@ -87,7 +87,7 @@ DankModal {
         _generatingPayload = trimmed;
         generating = true;
 
-        DMSService.sendRequest("network.generate-qrcode", {
+        ADVSService.sendRequest("network.generate-qrcode", {
             text: trimmed
         }, response => {
             root.generating = false;
@@ -180,7 +180,7 @@ DankModal {
                         Layout.fillWidth: true
                     }
 
-                    DankActionButton {
+                    AdvActionButton {
                         iconName: "close"
                         iconSize: Theme.iconSize - 4
                         iconColor: Theme.surfaceText
@@ -189,7 +189,7 @@ DankModal {
                     }
                 }
 
-                DankTextField {
+                AdvTextField {
                     id: textInput
                     width: parent.width
                     placeholderText: I18n.tr("Enter text to encode")
@@ -249,7 +249,7 @@ DankModal {
                         Layout.fillWidth: true
                     }
 
-                    DankButton {
+                    AdvButton {
                         text: I18n.tr("Save")
                         iconName: "save"
                         backgroundColor: Theme.surfaceContainer
@@ -262,14 +262,14 @@ DankModal {
                         }
                     }
 
-                    DankButton {
+                    AdvButton {
                         text: I18n.tr("Copy")
                         iconName: "content_copy"
                         backgroundColor: Theme.primary
                         textColor: Theme.onPrimary
                         onClicked: {
                             if (root.normalQrCodePath.length > 0)
-                                DMSService.sendRequest("clipboard.copyFile", {
+                                ADVSService.sendRequest("clipboard.copyFile", {
                                     filePath: root.normalQrCodePath
                                 });
                         }

@@ -15,11 +15,11 @@ import (
 	wlclient "github.com/AvengeMedia/dankgo/wayland/client"
 	"github.com/godbus/dbus/v5"
 
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/errdefs"
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/geolocation"
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/log"
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/proto/wlr_gamma_control"
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/wayland/shm"
+	"github.com/bavanchun/ariadnev-shell/core/internal/errdefs"
+	"github.com/bavanchun/ariadnev-shell/core/internal/geolocation"
+	"github.com/bavanchun/ariadnev-shell/core/internal/log"
+	"github.com/bavanchun/ariadnev-shell/core/internal/proto/wlr_gamma_control"
+	"github.com/bavanchun/ariadnev-shell/core/internal/wayland/shm"
 )
 
 const animKelvinStep = 25

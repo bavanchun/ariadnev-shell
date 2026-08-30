@@ -62,7 +62,7 @@ Rectangle {
                 fallbackBottomMargin: root.iconFallbackBottomMargin
             }
 
-            DankIcon {
+            AdvIcon {
                 visible: model.pinned === true
                 anchors.right: parent.right
                 anchors.bottom: parent.bottom

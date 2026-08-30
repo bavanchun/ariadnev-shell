@@ -26,9 +26,9 @@ StyledRect {
         const configDir = Paths.strip(StandardPaths.writableLocation(StandardPaths.ConfigLocation));
         return {
             "configFile": configDir + "/niri/config.kdl",
-            "layoutFile": configDir + "/niri/dms/input.kdl",
-            "grepPattern": 'include.*"dms/input.kdl"',
-            "includeLine": 'include "dms/input.kdl"'
+            "layoutFile": configDir + "/niri/advs/input.kdl",
+            "grepPattern": 'include.*"advs/input.kdl"',
+            "includeLine": 'include "advs/input.kdl"'
         };
     }
 
@@ -44,7 +44,7 @@ StyledRect {
         }
 
         checking = true;
-        Proc.runCommand("check-input-include", [Proc.dmsBin, "config", "resolve-include", "niri", "input.kdl"], (output, exitCode) => {
+        Proc.runCommand("check-input-include", [Proc.advsBin, "config", "resolve-include", "niri", "input.kdl"], (output, exitCode) => {
             checking = false;
             if (exitCode !== 0) {
                 includeStatus = {
@@ -111,7 +111,7 @@ StyledRect {
         anchors.margins: Theme.spacingL
         spacing: Theme.spacingM
 
-        DankIcon {
+        AdvIcon {
             name: "warning"
             size: Theme.iconSize
             color: Theme.primary
@@ -133,7 +133,7 @@ StyledRect {
             }
 
             StyledText {
-                text: I18n.tr("Click 'Setup' to create %1 and add include to your compositor config.").arg("dms/input")
+                text: I18n.tr("Click 'Setup' to create %1 and add include to your compositor config.").arg("advs/input")
                 font.pixelSize: Theme.fontSizeSmall
                 color: Theme.surfaceVariantText
                 wrapMode: Text.WordWrap
@@ -142,7 +142,7 @@ StyledRect {
             }
         }
 
-        DankButton {
+        AdvButton {
             id: fixButton
             visible: root.showSetup
             text: root.fixing ? I18n.tr("Setting up...") : I18n.tr("Setup")

@@ -1,16 +1,16 @@
-# DMS Backend & CLI
+# ADVS Backend & CLI
 
-Go-based backend for DankMaterialShell providing system integration, IPC, and installation tools.
+Go-based backend for AriadnevShell providing system integration, IPC, and installation tools.
 
 **See [root README](../README.md) for project overview and installation.**
 
 ## Components
 
-**dms CLI**
+**advs CLI**
 Command-line interface and daemon for shell management and system control.
 
-**dankinstall**
-Distribution-aware installer for deploying DMS and compositor configurations on Arch, Fedora, Debian, Ubuntu, openSUSE, Gentoo, and Void. Supports both an interactive TUI and a headless (unattended) mode via CLI flags.
+**advinstall**
+Distribution-aware installer for deploying ADVS and compositor configurations on Arch, Fedora, Debian, Ubuntu, openSUSE, Gentoo, and Void. Supports both an interactive TUI and a headless (unattended) mode via CLI flags.
 
 ## System Integration
 
@@ -71,25 +71,25 @@ Custom IPC via unix socket (JSON API) for shell communication.
 
 ## CLI Commands
 
-- `dms run [-d]` - Start shell (optionally as daemon)
-- `dms restart` / `dms kill` - Manage running processes
-- `dms ipc <command>` - Send IPC commands (toggle launcher, notifications, etc.)
-- `dms plugins [install|browse|search|lock|restore]` - Plugin management and portable exact-revision lockfiles
-- `dms brightness [list|set]` - Control display/monitor brightness
-- `dms color pick` - Native color picker (see below)
-- `dms update` - Update DMS and dependencies (disabled in distro packages)
-- `dms greeter` - Deprecated; forwards to the standalone [dms-greeter](https://github.com/AvengeMedia/dank-greeter) binary
+- `advs run [-d]` - Start shell (optionally as daemon)
+- `advs restart` / `advs kill` - Manage running processes
+- `advs ipc <command>` - Send IPC commands (toggle launcher, notifications, etc.)
+- `advs plugins [install|browse|search|lock|restore]` - Plugin management and portable exact-revision lockfiles
+- `advs brightness [list|set]` - Control display/monitor brightness
+- `advs color pick` - Native color picker (see below)
+- `advs update` - Update ADVS and dependencies (disabled in distro packages)
+- `advs greeter` - Deprecated; forwards to the standalone [advs-greeter](https://github.com/bavanchun/adv-greeter) binary
 
 ### Color Picker
 
 Native Wayland color picker with magnifier, no external dependencies. Supports HiDPI and fractional scaling.
 
 ```bash
-dms color pick              # Pick color, output hex
-dms color pick --rgb        # Output as RGB (255 128 64)
-dms color pick --hsv        # Output as HSV (24 75% 100%)
-dms color pick --json       # Output all formats as JSON
-dms color pick -a           # Auto-copy to clipboard
+advs color pick              # Pick color, output hex
+advs color pick --rgb        # Output as RGB (255 128 64)
+advs color pick --hsv        # Output as HSV (24 75% 100%)
+advs color pick --json       # Output all formats as JSON
+advs color pick -a           # Auto-copy to clipboard
 ```
 
 The on-screen preview displays the selected format. JSON output includes hex, RGB, HSL, HSV, and CMYK values.
@@ -101,8 +101,8 @@ Requires Go 1.25+
 **Development build:**
 
 ```bash
-make              # Build dms CLI
-make dankinstall  # Build installer
+make              # Build advs CLI
+make advinstall  # Build installer
 make test         # Run tests
 ```
 
@@ -112,12 +112,12 @@ make test         # Run tests
 make dist         # Build without update features
 ```
 
-Produces `bin/dms-linux-amd64` and `bin/dms-linux-arm64`
+Produces `bin/advs-linux-amd64` and `bin/advs-linux-arm64`
 
 **Installation:**
 
 ```bash
-sudo make install  # Install to /usr/local/bin/dms
+sudo make install  # Install to /usr/local/bin/advs
 ```
 
 ## Development
@@ -142,17 +142,17 @@ go run github.com/AvengeMedia/dankgo/cmd/go-wayland-scanner@latest \
 
 **Module Structure:**
 
-- `cmd/` - Binary entrypoints (dms, dankinstall)
+- `cmd/` - Binary entrypoints (advs, advinstall)
 - `internal/distros/` - Distribution-specific installation logic
 - `internal/proto/` - Wayland protocol bindings
 - `pkg/` - Shared packages
 
-## Installation via dankinstall
+## Installation via advinstall
 
 **Interactive (TUI):**
 
 ```bash
-curl -fsSL https://install.danklinux.com | sh
+curl -fsSL https://install.ariadnev.vchun.dev | sh
 ```
 
 **Headless (unattended):**
@@ -160,9 +160,9 @@ curl -fsSL https://install.danklinux.com | sh
 Headless mode requires cached credentials or a passwordless rule for your privilege escalation tool (sudo, doas, or run0). With sudo, run `sudo -v` first:
 
 ```bash
-sudo -v && curl -fsSL https://install.danklinux.com | sh -s -- -c niri -t ghostty -y
-sudo -v && curl -fsSL https://install.danklinux.com | sh -s -- -c hyprland -t kitty --dms-greeter -y
-sudo -v && curl -fsSL https://install.danklinux.com | sh -s -- -c niri -t ghostty --git-deps niri,quickshell --all-features -y
+sudo -v && curl -fsSL https://install.ariadnev.vchun.dev | sh -s -- -c niri -t ghostty -y
+sudo -v && curl -fsSL https://install.ariadnev.vchun.dev | sh -s -- -c hyprland -t kitty --advs-greeter -y
+sudo -v && curl -fsSL https://install.ariadnev.vchun.dev | sh -s -- -c niri -t ghostty --git-deps niri,quickshell --all-features -y
 ```
 
 | Flag | Short | Description |
@@ -172,11 +172,11 @@ sudo -v && curl -fsSL https://install.danklinux.com | sh -s -- -c niri -t ghostt
 | `--privesc <sudo\|doas\|run0>` | | Privilege escalation tool (default: autodetect) |
 | `--git` | | Install the git version of every dependency that has one |
 | `--git-deps <name,...>` | | Install the git version of specific dependencies (e.g. `niri,quickshell`) |
-| `--all-features` | | Enable all optional dependencies (`dms-greeter`, `danksearch`, `dankcalendar`) |
-| `--dms-greeter` | | Install dms-greeter |
-| `--danksearch` | | Install danksearch and enable its user indexing service |
-| `--dankcalendar` | | Install dankcalendar |
-| `--include-deps <name,...>` | | Enable optional dependencies (e.g. `dms-greeter`) |
+| `--all-features` | | Enable all optional dependencies (`advs-greeter`, `advsearch`, `advcalendar`) |
+| `--advs-greeter` | | Install advs-greeter |
+| `--advsearch` | | Install advsearch and enable its user indexing service |
+| `--advcalendar` | | Install advcalendar |
+| `--include-deps <name,...>` | | Enable optional dependencies (e.g. `advs-greeter`) |
 | `--exclude-deps <name,...>` | | Skip specific dependencies |
 | `--replace-configs <name,...>` | | Replace specific configuration files (mutually exclusive with `--replace-configs-all`) |
 | `--replace-configs-all` | | Replace all configuration files (mutually exclusive with `--replace-configs`) |
@@ -184,22 +184,22 @@ sudo -v && curl -fsSL https://install.danklinux.com | sh -s -- -c niri -t ghostt
 
 Headless mode requires `--yes` to proceed; without it, the installer exits with an error.
 Configuration files are not replaced by default unless `--replace-configs` or `--replace-configs-all` is specified.
-Optional packages (`dms-greeter`, `danksearch`, `dankcalendar`) are disabled by default; enable them with their dedicated flags, `--include-deps`, or `--all-features`.
+Optional packages (`advs-greeter`, `advsearch`, `advcalendar`) are disabled by default; enable them with their dedicated flags, `--include-deps`, or `--all-features`.
 
-When no flags are provided, `dankinstall` launches the interactive TUI.
+When no flags are provided, `advinstall` launches the interactive TUI.
 
 ### Headless mode validation rules
 
 Headless mode activates when `--compositor` or `--term` is provided.
 
 - Both `--compositor` and `--term` are required; providing only one results in an error.
-- Headless-only flags (`--privesc`, `--git`, `--git-deps`, `--all-features`, `--include-deps`, `--exclude-deps`, `--replace-configs`, `--replace-configs-all`, `--yes`, `--danksearch`, `--dankcalendar`, `--dms-greeter`) are rejected in TUI mode.
+- Headless-only flags (`--privesc`, `--git`, `--git-deps`, `--all-features`, `--include-deps`, `--exclude-deps`, `--replace-configs`, `--replace-configs-all`, `--yes`, `--advsearch`, `--advcalendar`, `--advs-greeter`) are rejected in TUI mode.
 - Positional arguments are not accepted.
 
 ### Log file location
 
-`dankinstall` writes logs to `/tmp` by default.
-Set the `DANKINSTALL_LOG_DIR` environment variable to override the log directory.
+`advinstall` writes logs to `/tmp` by default.
+Set the `ADVINSTALL_LOG_DIR` environment variable to override the log directory.
 
 ## Supported Distributions
 
@@ -210,7 +210,7 @@ Uses `pacman` for system packages, builds AUR packages via `makepkg`, no AUR hel
 
 **Fedora**
 
-Uses COPR repositories (`avengemedia/danklinux`, `avengemedia/dms`).
+Uses COPR repositories (`bavanchun/ariadnev`, `bavanchun/advs`).
 
 **Ubuntu**
 Requires PPA support. Most packages built from source (slow first install).
@@ -225,6 +225,6 @@ Most packages available in standard repos. Minimal building required.
 Uses Portage with GURU overlay. Automatically configures USE flags. Variable success depending on system configuration.
 
 **Void Linux**
-Uses XBPS with the DMS and DankLinux self-hosted repositories.
+Uses XBPS with the ADVS and AdvLinux self-hosted repositories.
 
 See installer output for distribution-specific details during installation.

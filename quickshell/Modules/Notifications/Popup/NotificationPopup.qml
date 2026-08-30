@@ -55,7 +55,7 @@ PanelWindow {
         clipHeight: innerH
     }
 
-    WlrLayershell.namespace: "dms:notification-popup"
+    WlrLayershell.namespace: "advs:notification-popup"
 
     required property var notificationData
     required property string notificationId
@@ -199,7 +199,7 @@ PanelWindow {
     WlrLayershell.layer: {
         const shouldUseOverlay = CompositorService.framePeerSurfacesUseOverlayForScreen(win.screen) || (notificationData && (SettingsData.notificationOverlayEnabled || notificationData.urgency === NotificationUrgency.Critical));
         const fallback = shouldUseOverlay ? WlrLayer.Overlay : WlrLayer.Top;
-        return LayerShell.fromEnv("DMS_NOTIFICATION_LAYER", fallback);
+        return LayerShell.fromEnv("ADVS_NOTIFICATION_LAYER", fallback);
     }
     WlrLayershell.exclusiveZone: -1
     WlrLayershell.keyboardFocus: WlrKeyboardFocus.None
@@ -846,7 +846,7 @@ PanelWindow {
                 height: effectiveCollapsedHeight + extraHeight
                 clip: SettingsData.notificationPopupPrivacyMode && !descriptionExpanded
 
-                DankCircularImage {
+                AdvCircularImage {
                     id: iconContainer
                     cacheImages: false
 
@@ -1007,7 +1007,7 @@ PanelWindow {
                 }
             }
 
-            DankActionButton {
+            AdvActionButton {
                 id: closeButton
 
                 anchors.right: parent.right
@@ -1024,7 +1024,7 @@ PanelWindow {
                 }
             }
 
-            DankActionButton {
+            AdvActionButton {
                 id: expandButton
 
                 anchors.right: closeButton.left

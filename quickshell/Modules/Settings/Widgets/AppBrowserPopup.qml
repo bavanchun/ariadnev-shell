@@ -3,7 +3,7 @@ import Quickshell
 import qs.Common
 import qs.Widgets
 
-DankFloatingWindow {
+AdvFloatingWindow {
     id: root
 
     property string searchQuery: ""
@@ -79,7 +79,7 @@ DankFloatingWindow {
                     anchors.verticalCenter: parent.verticalCenter
                     spacing: Theme.spacingM
 
-                    DankIcon {
+                    AdvIcon {
                         name: "add_circle"
                         size: Theme.iconSize
                         color: Theme.primary
@@ -101,7 +101,7 @@ DankFloatingWindow {
                     anchors.verticalCenter: parent.verticalCenter
                     spacing: Theme.spacingXS
 
-                    DankActionButton {
+                    AdvActionButton {
                         iconName: "close"
                         iconSize: Theme.iconSize - 4
                         iconColor: Theme.surfaceText
@@ -119,7 +119,7 @@ DankFloatingWindow {
                     anchors.margins: Theme.spacingL
                     spacing: Theme.spacingM
 
-                    DankTextField {
+                    AdvTextField {
                         id: searchField
                         width: parent.width
                         height: 48
@@ -138,7 +138,7 @@ DankFloatingWindow {
                         }
                     }
 
-                    DankListView {
+                    AdvListView {
                         id: appList
                         width: parent.width
                         height: parent.height - searchField.height - Theme.spacingM
@@ -207,7 +207,7 @@ DankFloatingWindow {
                                     }
                                 }
 
-                                DankIcon {
+                                AdvIcon {
                                     name: "add"
                                     size: Theme.iconSize - 4
                                     color: Theme.primary

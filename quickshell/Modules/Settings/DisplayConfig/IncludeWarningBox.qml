@@ -30,7 +30,7 @@ StyledRect {
             width: parent.width
             spacing: Theme.spacingM
 
-            DankIcon {
+            AdvIcon {
                 name: "warning"
                 size: Theme.iconSize
                 color: Theme.primary
@@ -60,9 +60,9 @@ StyledRect {
                 StyledText {
                     text: {
                         if (root.showLegacy)
-                            return I18n.tr("This install is still using hyprland.conf. Run dms setup to migrate before changing these settings.");
+                            return I18n.tr("This install is still using hyprland.conf. Run advs setup to migrate before changing these settings.");
                         if (root.showSetup)
-                            return I18n.tr("Click 'Setup' to create %1 and add include to your compositor config.").arg("dms/outputs");
+                            return I18n.tr("Click 'Setup' to create %1 and add include to your compositor config.").arg("advs/outputs");
                         return "";
                     }
                     font.pixelSize: Theme.fontSizeSmall
@@ -73,7 +73,7 @@ StyledRect {
                 }
             }
 
-            DankButton {
+            AdvButton {
                 id: fixButton
                 visible: !root.showLegacy && root.showSetup
                 text: DisplayConfigState.fixingInclude ? I18n.tr("Setting up...") : I18n.tr("Setup")

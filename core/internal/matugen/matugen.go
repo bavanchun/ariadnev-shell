@@ -15,9 +15,9 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/dank16"
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/log"
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/utils"
+	"github.com/bavanchun/ariadnev-shell/core/internal/adv16"
+	"github.com/bavanchun/ariadnev-shell/core/internal/log"
+	"github.com/bavanchun/ariadnev-shell/core/internal/utils"
 	"github.com/godbus/dbus/v5"
 	"github.com/lucasb-eyer/go-colorful"
 )
@@ -200,7 +200,7 @@ func smartSchemePreview(fallback SchemePreview, contrast float64, imagePath stri
 }
 
 func (o *Options) ColorsOutput() string {
-	return filepath.Join(o.StateDir, "dms-colors.json")
+	return filepath.Join(o.StateDir, "advs-colors.json")
 }
 
 func (o *Options) colorsStaging() string {
@@ -342,7 +342,7 @@ func buildOnce(opts *Options) (bool, error) {
 	oldColors, _ := os.ReadFile(opts.ColorsOutput())
 
 	var primaryDark, primaryLight, surface string
-	var dank16JSON string
+	var adv16JSON string
 	var importArgs []string
 
 	if opts.StockColors != "" {
@@ -358,8 +358,8 @@ func buildOnce(opts *Options) (bool, error) {
 			primaryLight = primaryDark
 		}
 
-		dank16JSON = generateDank16Variants(primaryDark, primaryLight, surface, opts.Mode)
-		importData := fmt.Sprintf(`{"colors": %s, "dank16": %s}`, opts.StockColors, dank16JSON)
+		adv16JSON = generateAdv16Variants(primaryDark, primaryLight, surface, opts.Mode)
+		importData := fmt.Sprintf(`{"colors": %s, "adv16": %s}`, opts.StockColors, adv16JSON)
 		importArgs = []string{"--import-json-string", importData}
 
 		log.Info("Running matugen color hex with stock color overrides")
@@ -388,11 +388,11 @@ func buildOnce(opts *Options) (bool, error) {
 			primaryLight = primaryDark
 		}
 
-		dank16JSON = generateDank16Variants(primaryDark, primaryLight, surface, opts.Mode)
-		importData := fmt.Sprintf(`{"dank16": %s}`, dank16JSON)
+		adv16JSON = generateAdv16Variants(primaryDark, primaryLight, surface, opts.Mode)
+		importData := fmt.Sprintf(`{"adv16": %s}`, adv16JSON)
 		importArgs = []string{"--import-json-string", importData}
 
-		log.Infof("Running matugen %s with dank16 injection", opts.Kind)
+		log.Infof("Running matugen %s with adv16 injection", opts.Kind)
 		var args []string
 		switch opts.Kind {
 		case "hex":
@@ -423,7 +423,7 @@ func buildOnce(opts *Options) (bool, error) {
 		return true, nil
 	}
 
-	if isDMSGTKActive(opts.ConfigDir) {
+	if isADVSGTKActive(opts.ConfigDir) {
 		switch opts.Mode {
 		case ColorModeLight:
 			syncAccentColor(primaryLight)
@@ -434,7 +434,7 @@ func buildOnce(opts *Options) (bool, error) {
 		refreshGTKColorScheme()
 	}
 
-	if isDMSKDEColorSchemeActive(opts.ConfigDir) {
+	if isADVSKDEColorSchemeActive(opts.ConfigDir) {
 		applyKDEColorScheme(opts.Mode)
 	}
 
@@ -444,7 +444,7 @@ func buildOnce(opts *Options) (bool, error) {
 
 	// kcolorscheme writes the .colors file qtengine is pointed at, so with that
 	// template off there is nothing to point to and the config would name a
-	// scheme DMS no longer generates.
+	// scheme ADVS no longer generates.
 	if !opts.ShouldSkipTemplate("qtengine") && !opts.ShouldSkipTemplate("kcolorscheme") && QtengineActive() {
 		if err := SyncQtengineConfigAt(opts.ConfigDir, opts.IconTheme); err != nil {
 			log.Warnf("Failed to sync qtengine config: %v", err)
@@ -497,8 +497,8 @@ func buildMergedConfig(opts *Options, cfgFile *os.File, tmpDir string) error {
 		cfgFile.WriteString("\n")
 	}
 
-	fmt.Fprintf(cfgFile, `[templates.dank]
-input_path = '%s/matugen/templates/dank.json'
+	fmt.Fprintf(cfgFile, `[templates.adv]
+input_path = '%s/matugen/templates/adv.json'
 output_path = '%s'
 
 `, opts.ShellDir, opts.colorsStaging())
@@ -556,7 +556,7 @@ output_path = '%s'
 		}
 	}
 
-	userPluginConfigDir := filepath.Join(opts.ConfigDir, "matugen", "dms", "configs")
+	userPluginConfigDir := filepath.Join(opts.ConfigDir, "matugen", "advs", "configs")
 	if entries, err := os.ReadDir(userPluginConfigDir); err == nil {
 		for _, entry := range entries {
 			if !strings.HasSuffix(entry.Name(), ".toml") {
@@ -740,7 +740,7 @@ func (e vscodeEditor) extensionsDir(homeDir string) string {
 }
 
 func appendVSCodeConfig(cfgFile *os.File, name, extBaseDir, shellDir string) {
-	pattern := filepath.Join(extBaseDir, "danklinux.dms-theme-*")
+	pattern := filepath.Join(extBaseDir, "ariadnev.advs-theme-*")
 	matches, err := filepath.Glob(pattern)
 	if err != nil || len(matches) == 0 {
 		return
@@ -748,17 +748,17 @@ func appendVSCodeConfig(cfgFile *os.File, name, extBaseDir, shellDir string) {
 
 	extDir := matches[0]
 	templateDir := filepath.Join(shellDir, "matugen", "templates")
-	fmt.Fprintf(cfgFile, `[templates.dms%sdefault]
+	fmt.Fprintf(cfgFile, `[templates.advs%sdefault]
 input_path = '%s/vscode-color-theme-default.json'
-output_path = '%s/themes/dankshell-default.json'
+output_path = '%s/themes/advshell-default.json'
 
-[templates.dms%sdark]
+[templates.advs%sdark]
 input_path = '%s/vscode-color-theme-dark.json'
-output_path = '%s/themes/dankshell-dark.json'
+output_path = '%s/themes/advshell-dark.json'
 
-[templates.dms%slight]
+[templates.advs%slight]
 input_path = '%s/vscode-color-theme-light.json'
-output_path = '%s/themes/dankshell-light.json'
+output_path = '%s/themes/advshell-light.json'
 
 `, name, templateDir, extDir,
 		name, templateDir, extDir,
@@ -1052,19 +1052,19 @@ func extractNestedColor(jsonStr, colorName, variant string) string {
 	return color
 }
 
-func generateDank16Variants(primaryDark, primaryLight, surface string, mode ColorMode) string {
-	variantOpts := dank16.VariantOptions{
+func generateAdv16Variants(primaryDark, primaryLight, surface string, mode ColorMode) string {
+	variantOpts := adv16.VariantOptions{
 		PrimaryDark:  primaryDark,
 		PrimaryLight: primaryLight,
 		Background:   surface,
 		UseDPS:       true,
 		IsLightMode:  mode == ColorModeLight,
 	}
-	variantColors := dank16.GenerateVariantPalette(variantOpts)
-	return dank16.GenerateVariantJSON(variantColors)
+	variantColors := adv16.GenerateVariantPalette(variantOpts)
+	return adv16.GenerateVariantJSON(variantColors)
 }
 
-func isDMSGTKActive(configDir string) bool {
+func isADVSGTKActive(configDir string) bool {
 	gtkCSS := filepath.Join(configDir, "gtk-4.0", "gtk.css")
 
 	info, err := os.Lstat(gtkCSS)
@@ -1074,16 +1074,16 @@ func isDMSGTKActive(configDir string) bool {
 
 	if info.Mode()&os.ModeSymlink != 0 {
 		target, err := os.Readlink(gtkCSS)
-		return err == nil && strings.Contains(target, "dank-colors.css")
+		return err == nil && strings.Contains(target, "adv-colors.css")
 	}
 
 	data, err := os.ReadFile(gtkCSS)
-	return err == nil && strings.Contains(string(data), "dank-colors.css")
+	return err == nil && strings.Contains(string(data), "adv-colors.css")
 }
 
-// isDMSKDEColorSchemeActive only flips the scheme when the user is already on a
-// DankMatugen one, leaving Breeze (or anything else) untouched.
-func isDMSKDEColorSchemeActive(configDir string) bool {
+// isADVSKDEColorSchemeActive only flips the scheme when the user is already on a
+// AdvMatugen one, leaving Breeze (or anything else) untouched.
+func isADVSKDEColorSchemeActive(configDir string) bool {
 	data, err := os.ReadFile(filepath.Join(configDir, "kdeglobals"))
 	if err != nil {
 		return false
@@ -1100,7 +1100,7 @@ func isDMSKDEColorSchemeActive(configDir string) bool {
 			continue
 		}
 		if name, ok := strings.CutPrefix(line, "ColorScheme="); ok {
-			return strings.HasPrefix(strings.TrimSpace(name), "DankMatugen")
+			return strings.HasPrefix(strings.TrimSpace(name), "AdvMatugen")
 		}
 	}
 	return false
@@ -1111,9 +1111,9 @@ func applyKDEColorScheme(mode ColorMode) {
 		return
 	}
 
-	scheme := "DankMatugenDark"
+	scheme := "AdvMatugenDark"
 	if mode == ColorModeLight {
-		scheme = "DankMatugenLight"
+		scheme = "AdvMatugenLight"
 	}
 
 	log.Infof("Applying KDE color scheme: %s", scheme)
@@ -1169,7 +1169,7 @@ func expectColorSchemeEcho(scheme string) {
 // following the portal color-scheme (Chromium) can drop the restore signal
 // mid-repaint and latch the wrong mode, so this is opt-in.
 func refreshGTKColorScheme() {
-	if os.Getenv("DMS_ENABLE_GTK_REFRESH") != "1" {
+	if os.Getenv("ADVS_ENABLE_GTK_REFRESH") != "1" {
 		return
 	}
 	output, err := utils.GsettingsGet("org.gnome.desktop.interface", "color-scheme")
@@ -1342,7 +1342,7 @@ func CheckTemplates(checker utils.AppChecker) []TemplateCheck {
 
 func checkVSCodeExtension(homeDir string) bool {
 	for _, editor := range vscodeEditors {
-		pattern := filepath.Join(editor.extensionsDir(homeDir), "danklinux.dms-theme-*")
+		pattern := filepath.Join(editor.extensionsDir(homeDir), "ariadnev.advs-theme-*")
 		if matches, err := filepath.Glob(pattern); err == nil && len(matches) > 0 {
 			return true
 		}

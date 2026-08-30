@@ -61,7 +61,7 @@ Rectangle {
     height: baseCardHeight + contentItem.extraHeight
     radius: Theme.cornerRadius
     clip: false
-    readonly property bool shadowsAllowed: Theme.elevationEnabled && Quickshell.env("DMS_DISABLE_LAYER") !== "true" && Quickshell.env("DMS_DISABLE_LAYER") !== "1"
+    readonly property bool shadowsAllowed: Theme.elevationEnabled && Quickshell.env("ADVS_DISABLE_LAYER") !== "true" && Quickshell.env("ADVS_DISABLE_LAYER") !== "1"
 
     ElevationShadow {
         id: shadowLayer
@@ -141,7 +141,7 @@ Rectangle {
         anchors.rightMargin: Theme.spacingL + Theme.notificationHoverRevealMargin
         height: collapsedContentHeight + extraHeight
 
-        DankCircularImage {
+        AdvCircularImage {
             id: iconContainer
             cacheImages: false
 
@@ -271,7 +271,7 @@ Rectangle {
         }
     }
 
-    DankActionButton {
+    AdvActionButton {
         anchors.top: parent.top
         anchors.right: parent.right
         anchors.topMargin: cardPadding

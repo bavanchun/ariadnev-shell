@@ -68,7 +68,7 @@ PluginComponent {
                             anchors.centerIn: parent
                             spacing: Theme.spacingS
 
-                            DankIcon {
+                            AdvIcon {
                                 name: "vpn_key_off"
                                 size: 36
                                 color: Theme.surfaceVariantText
@@ -145,7 +145,7 @@ PluginComponent {
                                     anchors.centerIn: parent
                                     spacing: Theme.spacingXS
 
-                                    DankIcon {
+                                    AdvIcon {
                                         name: connButton.isConnected ? "link_off" : "link"
                                         size: Theme.fontSizeSmall
                                         color: connButton.isConnected ? Theme.surfaceText : Theme.primary
@@ -186,7 +186,7 @@ PluginComponent {
 
                             readonly property string noneLabel: I18n.tr("None", "Tailscale exit node: none selected")
 
-                            DankDropdown {
+                            AdvDropdown {
                                 width: parent.width
                                 text: I18n.tr("Exit node", "Tailscale exit node selector label")
                                 currentValue: TailscaleService.currentExitNode ? TailscaleService.currentExitNode.hostname : controlsColumn.noneLabel
@@ -207,7 +207,7 @@ PluginComponent {
                                 }
                             }
 
-                            DankToggle {
+                            AdvToggle {
                                 width: parent.width
                                 text: I18n.tr("Allow LAN access", "Tailscale allow LAN access toggle")
                                 description: I18n.tr("Reach local network devices while using an exit node", "Tailscale allow LAN access description")
@@ -222,7 +222,7 @@ PluginComponent {
                             width: parent.width
                             spacing: Theme.spacingS
 
-                            DankTextField {
+                            AdvTextField {
                                 Layout.fillWidth: true
                                 placeholderText: I18n.tr("Search devices...", "Tailscale device search placeholder")
                                 leftIconName: "search"
@@ -231,7 +231,7 @@ PluginComponent {
                                 onTextEdited: detailRoot.searchQuery = text
                             }
 
-                            DankActionButton {
+                            AdvActionButton {
                                 iconName: "sync"
                                 buttonSize: 28
                                 iconSize: 16
@@ -242,7 +242,7 @@ PluginComponent {
                         }
 
                         // Filter chips
-                        DankFilterChips {
+                        AdvFilterChips {
                             width: parent.width
                             currentIndex: detailRoot.filterIndex
                             showCounts: true
@@ -268,7 +268,7 @@ PluginComponent {
                     }
 
                     // Scrollable peer list — fills remaining space below header
-                    DankFlickable {
+                    AdvFlickable {
                         anchors.top: headerColumn.bottom
                         anchors.topMargin: Theme.spacingS
                         anchors.left: parent.left
@@ -312,7 +312,7 @@ PluginComponent {
                                     anchors.centerIn: parent
                                     spacing: Theme.spacingXS
 
-                                    DankIcon {
+                                    AdvIcon {
                                         name: "devices"
                                         size: 28
                                         color: Theme.surfaceVariantText
@@ -395,13 +395,13 @@ PluginComponent {
                                                 Layout.fillWidth: true
                                             }
 
-                                            DankActionButton {
+                                            AdvActionButton {
                                                 iconName: "content_copy"
                                                 buttonSize: 20
                                                 iconSize: 11
                                                 iconColor: Theme.surfaceVariantText
                                                 tooltipText: I18n.tr("Copy", "Copy to clipboard")
-                                                onClicked: Quickshell.execDetached(["dms", "cl", "copy", modelData.tailscaleIp])
+                                                onClicked: Quickshell.execDetached(["advs", "cl", "copy", modelData.tailscaleIp])
                                             }
                                         }
 
@@ -443,12 +443,12 @@ PluginComponent {
                                                     elide: Text.ElideRight
                                                 }
 
-                                                DankActionButton {
+                                                AdvActionButton {
                                                     iconName: "content_copy"
                                                     buttonSize: 20
                                                     iconSize: 11
                                                     iconColor: Theme.surfaceVariantText
-                                                    onClicked: Quickshell.execDetached(["dms", "cl", "copy", modelData.dnsName])
+                                                    onClicked: Quickshell.execDetached(["advs", "cl", "copy", modelData.dnsName])
                                                 }
                                             }
 

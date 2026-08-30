@@ -18,7 +18,7 @@ Item {
         desktopApps = [];
     }
 
-    DankFlickable {
+    AdvFlickable {
         anchors.fill: parent
         clip: true
         contentHeight: mainColumn.height + Theme.spacingXL
@@ -132,7 +132,7 @@ Item {
                             horizontalAlignment: Text.AlignLeft
                         }
 
-                        DankTextField {
+                        AdvTextField {
                             anchors.left: parent.left
                             width: 100
                             height: 28
@@ -187,7 +187,7 @@ Item {
                         width: parent.width
                         spacing: Theme.spacingS
 
-                        DankTextField {
+                        AdvTextField {
                             id: newExcludePlayerField
                             width: parent.width - addBtn.width - selectAppBtn.width - Theme.spacingS * 2
                             height: 36
@@ -201,7 +201,7 @@ Item {
                             }
                         }
 
-                        DankActionButton {
+                        AdvActionButton {
                             id: addBtn
                             buttonSize: 36
                             iconName: "add"
@@ -216,7 +216,7 @@ Item {
                             }
                         }
 
-                        DankActionButton {
+                        AdvActionButton {
                             id: selectAppBtn
                             buttonSize: 36
                             iconName: "apps"
@@ -251,7 +251,7 @@ Item {
                                         height: parent.height
                                         spacing: Theme.spacingS
 
-                                        DankIcon {
+                                        AdvIcon {
                                             name: "music_off"
                                             size: 20
                                             color: Theme.surfaceVariantText
@@ -266,7 +266,7 @@ Item {
                                         }
                                     }
 
-                                    DankActionButton {
+                                    AdvActionButton {
                                         id: deleteBtn
                                         buttonSize: 32
                                         iconName: "delete"

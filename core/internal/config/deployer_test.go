@@ -6,7 +6,7 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/deps"
+	"github.com/bavanchun/ariadnev-shell/core/internal/deps"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )
@@ -20,17 +20,17 @@ func TestCleanupStrayHyprlandConfFile(t *testing.T) {
 		td := t.TempDir()
 		t.Setenv("HOME", td)
 		configDir := filepath.Join(td, ".config", "hypr")
-		dmsDir := filepath.Join(configDir, "dms")
-		require.NoError(t, os.MkdirAll(dmsDir, 0o755))
+		advsDir := filepath.Join(configDir, "advs")
+		require.NoError(t, os.MkdirAll(advsDir, 0o755))
 		confPath := filepath.Join(configDir, "hyprland.conf")
-		dmsConfPath := filepath.Join(dmsDir, "colors.conf")
+		advsConfPath := filepath.Join(advsDir, "colors.conf")
 		require.NoError(t, os.WriteFile(confPath, []byte("# legacy user config\n"), 0o644))
-		require.NoError(t, os.WriteFile(dmsConfPath, []byte("$primary = rgba(d0bcffFF)\n"), 0o644))
+		require.NoError(t, os.WriteFile(advsConfPath, []byte("$primary = rgba(d0bcffFF)\n"), 0o644))
 
 		CleanupStrayHyprlandConfFile(nil)
 
 		assert.FileExists(t, confPath, "must not touch hyprland.conf when user has not migrated")
-		assert.FileExists(t, dmsConfPath, "must not touch dms/*.conf when user has not migrated")
+		assert.FileExists(t, advsConfPath, "must not touch advs/*.conf when user has not migrated")
 		assert.NoDirExists(t, filepath.Join(configDir, hyprlandBackupDirName))
 	})
 
@@ -38,25 +38,25 @@ func TestCleanupStrayHyprlandConfFile(t *testing.T) {
 		td := t.TempDir()
 		t.Setenv("HOME", td)
 		configDir := filepath.Join(td, ".config", "hypr")
-		dmsDir := filepath.Join(configDir, "dms")
-		require.NoError(t, os.MkdirAll(dmsDir, 0o755))
+		advsDir := filepath.Join(configDir, "advs")
+		require.NoError(t, os.MkdirAll(advsDir, 0o755))
 		luaPath := filepath.Join(configDir, "hyprland.lua")
-		require.NoError(t, os.WriteFile(luaPath, []byte("-- dms managed\n"), 0o644))
+		require.NoError(t, os.WriteFile(luaPath, []byte("-- advs managed\n"), 0o644))
 		confPath := filepath.Join(configDir, "hyprland.conf")
-		dmsConfPath := filepath.Join(dmsDir, "colors.conf")
+		advsConfPath := filepath.Join(advsDir, "colors.conf")
 		require.NoError(t, os.WriteFile(confPath, []byte("# autogen\n"), 0o644))
-		require.NoError(t, os.WriteFile(dmsConfPath, []byte("$primary = rgba(d0bcffFF)\n"), 0o644))
+		require.NoError(t, os.WriteFile(advsConfPath, []byte("$primary = rgba(d0bcffFF)\n"), 0o644))
 
 		CleanupStrayHyprlandConfFile(nil)
 
 		assert.NoFileExists(t, confPath)
-		assert.NoFileExists(t, dmsConfPath)
+		assert.NoFileExists(t, advsConfPath)
 		assert.FileExists(t, luaPath)
 		entries, err := os.ReadDir(filepath.Join(configDir, hyprlandBackupDirName))
 		require.NoError(t, err)
 		require.Len(t, entries, 1)
 		assert.FileExists(t, filepath.Join(configDir, hyprlandBackupDirName, entries[0].Name(), "hyprland.conf"))
-		assert.FileExists(t, filepath.Join(configDir, hyprlandBackupDirName, entries[0].Name(), "dms", "colors.conf"))
+		assert.FileExists(t, filepath.Join(configDir, hyprlandBackupDirName, entries[0].Name(), "advs", "colors.conf"))
 	})
 }
 
@@ -231,7 +231,7 @@ layout {
 }
 
 func TestConfigDeploymentFlow(t *testing.T) {
-	tempDir, err := os.MkdirTemp("", "dankinstall-test")
+	tempDir, err := os.MkdirTemp("", "advinstall-test")
 	require.NoError(t, err)
 	defer os.RemoveAll(tempDir)
 
@@ -361,7 +361,7 @@ func TestHyprlangMonitorLineToLuaPreservesOptions(t *testing.T) {
 }
 
 func TestHyprlandConfigDeployment(t *testing.T) {
-	tempDir, err := os.MkdirTemp("", "dankinstall-hyprland-test")
+	tempDir, err := os.MkdirTemp("", "advinstall-hyprland-test")
 	require.NoError(t, err)
 	defer os.RemoveAll(tempDir)
 
@@ -373,7 +373,7 @@ func TestHyprlandConfigDeployment(t *testing.T) {
 	cd := NewConfigDeployer(logChan)
 
 	t.Run("deploy hyprland config to empty directory", func(t *testing.T) {
-		td, err := os.MkdirTemp("", "dankinstall-hyprland-empty")
+		td, err := os.MkdirTemp("", "advinstall-hyprland-empty")
 		require.NoError(t, err)
 		defer os.RemoveAll(td)
 		os.Setenv("HOME", td)
@@ -387,13 +387,13 @@ func TestHyprlandConfigDeployment(t *testing.T) {
 
 		content, err := os.ReadFile(result.Path)
 		require.NoError(t, err)
-		assert.Contains(t, string(content), `require("dms.binds")`)
-		assert.Contains(t, string(content), "DMS_STARTUP_BEGIN")
+		assert.Contains(t, string(content), `require("advs.binds")`)
+		assert.Contains(t, string(content), "ADVS_STARTUP_BEGIN")
 		assert.Contains(t, string(content), "hl.config(")
 	})
 
 	t.Run("deploy hyprland config with existing monitors", func(t *testing.T) {
-		td, err := os.MkdirTemp("", "dankinstall-hyprland-merge")
+		td, err := os.MkdirTemp("", "advinstall-hyprland-merge")
 		require.NoError(t, err)
 		defer os.RemoveAll(td)
 		os.Setenv("HOME", td)
@@ -410,13 +410,13 @@ general {
 		require.NoError(t, err)
 		err = os.WriteFile(hyprPath, []byte(existingContent), 0o644)
 		require.NoError(t, err)
-		dmsDir := filepath.Join(td, ".config", "hypr", "dms")
-		require.NoError(t, os.MkdirAll(dmsDir, 0o755))
-		require.NoError(t, os.WriteFile(filepath.Join(dmsDir, "binds.conf"), []byte("bind = SUPER, T, exec, foot\n"), 0o644))
-		require.NoError(t, os.WriteFile(filepath.Join(dmsDir, "colors.conf"), []byte("$primary = rgba(d0bcffFF)\n"), 0o644))
-		require.NoError(t, os.WriteFile(filepath.Join(dmsDir, "cursor.conf"), []byte("env = XCURSOR_SIZE,24\n"), 0o644))
+		advsDir := filepath.Join(td, ".config", "hypr", "advs")
+		require.NoError(t, os.MkdirAll(advsDir, 0o755))
+		require.NoError(t, os.WriteFile(filepath.Join(advsDir, "binds.conf"), []byte("bind = SUPER, T, exec, foot\n"), 0o644))
+		require.NoError(t, os.WriteFile(filepath.Join(advsDir, "colors.conf"), []byte("$primary = rgba(d0bcffFF)\n"), 0o644))
+		require.NoError(t, os.WriteFile(filepath.Join(advsDir, "cursor.conf"), []byte("env = XCURSOR_SIZE,24\n"), 0o644))
 		require.NoError(t, os.WriteFile(filepath.Join(filepath.Dir(hyprPath), "hyprland.conf.backup.old"), []byte("old backup\n"), 0o644))
-		require.NoError(t, os.WriteFile(filepath.Join(dmsDir, "binds.conf.backup.old"), []byte("old dms backup\n"), 0o644))
+		require.NoError(t, os.WriteFile(filepath.Join(advsDir, "binds.conf.backup.old"), []byte("old advs backup\n"), 0o644))
 
 		result, err := cd.deployHyprlandConfig(deps.TerminalKitty, true)
 		require.NoError(t, err)
@@ -432,22 +432,22 @@ general {
 		assert.Equal(t, existingContent, string(backupContent))
 		assert.Contains(t, result.BackupPath, hyprlandBackupDirName)
 		assert.NoFileExists(t, hyprPath)
-		assert.FileExists(t, filepath.Join(filepath.Dir(result.BackupPath), "dms", "binds.conf"))
-		assert.FileExists(t, filepath.Join(filepath.Dir(result.BackupPath), "dms", "colors.conf"))
-		assert.FileExists(t, filepath.Join(filepath.Dir(result.BackupPath), "dms", "cursor.conf"))
+		assert.FileExists(t, filepath.Join(filepath.Dir(result.BackupPath), "advs", "binds.conf"))
+		assert.FileExists(t, filepath.Join(filepath.Dir(result.BackupPath), "advs", "colors.conf"))
+		assert.FileExists(t, filepath.Join(filepath.Dir(result.BackupPath), "advs", "cursor.conf"))
 		assert.FileExists(t, filepath.Join(filepath.Dir(result.BackupPath), "hyprland.conf.backup.old"))
-		assert.FileExists(t, filepath.Join(filepath.Dir(result.BackupPath), "dms", "binds.conf.backup.old"))
-		assert.NoFileExists(t, filepath.Join(dmsDir, "binds.conf"))
-		assert.NoFileExists(t, filepath.Join(dmsDir, "colors.conf"))
-		assert.NoFileExists(t, filepath.Join(dmsDir, "cursor.conf"))
+		assert.FileExists(t, filepath.Join(filepath.Dir(result.BackupPath), "advs", "binds.conf.backup.old"))
+		assert.NoFileExists(t, filepath.Join(advsDir, "binds.conf"))
+		assert.NoFileExists(t, filepath.Join(advsDir, "colors.conf"))
+		assert.NoFileExists(t, filepath.Join(advsDir, "cursor.conf"))
 		assert.NoFileExists(t, filepath.Join(filepath.Dir(hyprPath), "hyprland.conf.backup.old"))
-		assert.NoFileExists(t, filepath.Join(dmsDir, "binds.conf.backup.old"))
+		assert.NoFileExists(t, filepath.Join(advsDir, "binds.conf.backup.old"))
 
 		newContent, err := os.ReadFile(result.Path)
 		require.NoError(t, err)
-		assert.Contains(t, string(newContent), `require("dms.binds")`)
+		assert.Contains(t, string(newContent), `require("advs.binds")`)
 
-		outputsPath := filepath.Join(td, ".config", "hypr", "dms", "outputs.lua")
+		outputsPath := filepath.Join(td, ".config", "hypr", "advs", "outputs.lua")
 		outBytes, err := os.ReadFile(outputsPath)
 		require.NoError(t, err)
 		outs := string(outBytes)
@@ -457,7 +457,7 @@ general {
 	})
 
 	t.Run("deploy hyprland config removes root legacy symlink when lua exists", func(t *testing.T) {
-		td, err := os.MkdirTemp("", "dankinstall-hyprland-lua-conf-symlink")
+		td, err := os.MkdirTemp("", "advinstall-hyprland-lua-conf-symlink")
 		require.NoError(t, err)
 		defer os.RemoveAll(td)
 		os.Setenv("HOME", td)
@@ -466,7 +466,7 @@ general {
 		require.NoError(t, os.MkdirAll(configDir, 0o755))
 		luaPath := filepath.Join(configDir, "hyprland.lua")
 		confPath := filepath.Join(configDir, "hyprland.conf")
-		require.NoError(t, os.WriteFile(luaPath, []byte(`require("dms.binds")`+"\n"), 0o644))
+		require.NoError(t, os.WriteFile(luaPath, []byte(`require("advs.binds")`+"\n"), 0o644))
 		require.NoError(t, os.Symlink(filepath.Join(configDir, "missing-legacy.conf"), confPath))
 
 		result, err := cd.deployHyprlandConfig(deps.TerminalKitty, true)
@@ -480,26 +480,26 @@ general {
 	})
 
 	t.Run("deploy hyprland config refreshes managed binds but preserves user binds", func(t *testing.T) {
-		td, err := os.MkdirTemp("", "dankinstall-hyprland-refresh-binds")
+		td, err := os.MkdirTemp("", "advinstall-hyprland-refresh-binds")
 		require.NoError(t, err)
 		defer os.RemoveAll(td)
 		os.Setenv("HOME", td)
 
-		dmsDir := filepath.Join(td, ".config", "hypr", "dms")
-		require.NoError(t, os.MkdirAll(dmsDir, 0o755))
-		require.NoError(t, os.WriteFile(filepath.Join(dmsDir, "binds.lua"), []byte("-- stale managed binds\n"), 0o644))
+		advsDir := filepath.Join(td, ".config", "hypr", "advs")
+		require.NoError(t, os.MkdirAll(advsDir, 0o755))
+		require.NoError(t, os.WriteFile(filepath.Join(advsDir, "binds.lua"), []byte("-- stale managed binds\n"), 0o644))
 		userBinds := "-- custom user binds\n"
-		require.NoError(t, os.WriteFile(filepath.Join(dmsDir, "binds-user.lua"), []byte(userBinds), 0o644))
+		require.NoError(t, os.WriteFile(filepath.Join(advsDir, "binds-user.lua"), []byte(userBinds), 0o644))
 
 		_, err = cd.deployHyprlandConfig(deps.TerminalKitty, true)
 		require.NoError(t, err)
 
-		managed, err := os.ReadFile(filepath.Join(dmsDir, "binds.lua"))
+		managed, err := os.ReadFile(filepath.Join(advsDir, "binds.lua"))
 		require.NoError(t, err)
 		assert.Contains(t, string(managed), `hl.bind("SUPER + F", hl.dsp.window.fullscreen({ mode = "maximized", action = "toggle" }))`)
 		assert.Contains(t, string(managed), `hl.bind("SUPER + minus", hl.dsp.window.resize({ x = -100, y = 0, relative = true }), { repeating = true })`)
 
-		user, err := os.ReadFile(filepath.Join(dmsDir, "binds-user.lua"))
+		user, err := os.ReadFile(filepath.Join(advsDir, "binds-user.lua"))
 		require.NoError(t, err)
 		assert.Equal(t, userBinds, string(user))
 	})
@@ -514,16 +514,16 @@ func TestNiriConfigStructure(t *testing.T) {
 }
 
 func TestHyprlandConfigStructure(t *testing.T) {
-	assert.Contains(t, HyprlandLuaConfig, `require("dms.binds")`)
-	assert.Contains(t, HyprlandLuaConfig, "DMS_STARTUP_BEGIN")
+	assert.Contains(t, HyprlandLuaConfig, `require("advs.binds")`)
+	assert.Contains(t, HyprlandLuaConfig, "ADVS_STARTUP_BEGIN")
 	assert.Contains(t, HyprlandLuaConfig, "hl.config(")
 	assert.Contains(t, HyprlandLuaConfig, "input =")
 }
 
 func TestMangoConfigStructure(t *testing.T) {
-	assert.Contains(t, MangoConfig, "exec-once=dms run")
-	assert.NotContains(t, MangoConfig, "exec_once=dms run")
-	assert.Contains(t, MangoConfig, "source=./dms/binds.conf")
+	assert.Contains(t, MangoConfig, "exec-once=advs run")
+	assert.NotContains(t, MangoConfig, "exec_once=advs run")
+	assert.Contains(t, MangoConfig, "source=./advs/binds.conf")
 	assert.Contains(t, MangoBindsConfig, "bind=SUPER,H,focusdir,left")
 	assert.Contains(t, MangoBindsConfig, "bind=SUPER,J,focusdir,down")
 	assert.Contains(t, MangoBindsConfig, "bind=SUPER,K,focusdir,up")
@@ -535,7 +535,7 @@ func TestMangoConfigStructure(t *testing.T) {
 func TestGhosttyConfigStructure(t *testing.T) {
 	assert.Contains(t, GhosttyConfig, "window-decoration = false")
 	assert.Contains(t, GhosttyConfig, "background-opacity = 1.0")
-	assert.Contains(t, GhosttyConfig, "theme = dankcolors")
+	assert.Contains(t, GhosttyConfig, "theme = advcolors")
 }
 
 func TestGhosttyColorConfigStructure(t *testing.T) {
@@ -550,8 +550,8 @@ func TestKittyConfigStructure(t *testing.T) {
 	assert.Contains(t, KittyConfig, "font_size 12.0")
 	assert.Contains(t, KittyConfig, "window_padding_width 12")
 	assert.Contains(t, KittyConfig, "background_opacity 1.0")
-	assert.Contains(t, KittyConfig, "include dank-tabs.conf")
-	assert.Contains(t, KittyConfig, "include dank-theme.conf")
+	assert.Contains(t, KittyConfig, "include adv-tabs.conf")
+	assert.Contains(t, KittyConfig, "include adv-theme.conf")
 }
 
 func TestKittyThemeConfigStructure(t *testing.T) {
@@ -571,7 +571,7 @@ func TestKittyTabsConfigStructure(t *testing.T) {
 
 func TestAlacrittyConfigStructure(t *testing.T) {
 	assert.Contains(t, AlacrittyConfig, "[general]")
-	assert.Contains(t, AlacrittyConfig, "~/.config/alacritty/dank-theme.toml")
+	assert.Contains(t, AlacrittyConfig, "~/.config/alacritty/adv-theme.toml")
 	assert.Contains(t, AlacrittyConfig, "[window]")
 	assert.Contains(t, AlacrittyConfig, "decorations = \"None\"")
 	assert.Contains(t, AlacrittyConfig, "padding = { x = 12, y = 12 }")
@@ -590,7 +590,7 @@ func TestAlacrittyThemeConfigStructure(t *testing.T) {
 }
 
 func TestKittyConfigDeployment(t *testing.T) {
-	tempDir, err := os.MkdirTemp("", "dankinstall-kitty-test")
+	tempDir, err := os.MkdirTemp("", "advinstall-kitty-test")
 	require.NoError(t, err)
 	defer os.RemoveAll(tempDir)
 
@@ -613,7 +613,7 @@ func TestKittyConfigDeployment(t *testing.T) {
 
 		content, err := os.ReadFile(mainResult.Path)
 		require.NoError(t, err)
-		assert.Contains(t, string(content), "include dank-theme.conf")
+		assert.Contains(t, string(content), "include adv-theme.conf")
 
 		themeResult := results[1]
 		assert.Equal(t, "Kitty Theme", themeResult.ConfigType)
@@ -628,7 +628,7 @@ func TestKittyConfigDeployment(t *testing.T) {
 }
 
 func TestAlacrittyConfigDeployment(t *testing.T) {
-	tempDir, err := os.MkdirTemp("", "dankinstall-alacritty-test")
+	tempDir, err := os.MkdirTemp("", "advinstall-alacritty-test")
 	require.NoError(t, err)
 	defer os.RemoveAll(tempDir)
 
@@ -651,7 +651,7 @@ func TestAlacrittyConfigDeployment(t *testing.T) {
 
 		content, err := os.ReadFile(mainResult.Path)
 		require.NoError(t, err)
-		assert.Contains(t, string(content), "~/.config/alacritty/dank-theme.toml")
+		assert.Contains(t, string(content), "~/.config/alacritty/adv-theme.toml")
 		assert.Contains(t, string(content), "[window]")
 
 		themeResult := results[1]
@@ -703,7 +703,7 @@ func TestShouldReplaceConfigDeployIfMissing(t *testing.T) {
 	}
 
 	t.Run("replaceConfigs nil deploys config", func(t *testing.T) {
-		tempDir, err := os.MkdirTemp("", "dankinstall-replace-nil-test")
+		tempDir, err := os.MkdirTemp("", "advinstall-replace-nil-test")
 		require.NoError(t, err)
 		defer os.RemoveAll(tempDir)
 
@@ -736,7 +736,7 @@ func TestShouldReplaceConfigDeployIfMissing(t *testing.T) {
 	})
 
 	t.Run("replaceConfigs all false and config missing deploys config", func(t *testing.T) {
-		tempDir, err := os.MkdirTemp("", "dankinstall-replace-missing-test")
+		tempDir, err := os.MkdirTemp("", "advinstall-replace-missing-test")
 		require.NoError(t, err)
 		defer os.RemoveAll(tempDir)
 
@@ -769,7 +769,7 @@ func TestShouldReplaceConfigDeployIfMissing(t *testing.T) {
 	})
 
 	t.Run("replaceConfigs false and config exists skips config", func(t *testing.T) {
-		tempDir, err := os.MkdirTemp("", "dankinstall-replace-exists-test")
+		tempDir, err := os.MkdirTemp("", "advinstall-replace-exists-test")
 		require.NoError(t, err)
 		defer os.RemoveAll(tempDir)
 
@@ -811,7 +811,7 @@ func TestShouldReplaceConfigDeployIfMissing(t *testing.T) {
 	})
 
 	t.Run("replaceConfigs true and config exists deploys config", func(t *testing.T) {
-		tempDir, err := os.MkdirTemp("", "dankinstall-replace-true-test")
+		tempDir, err := os.MkdirTemp("", "advinstall-replace-true-test")
 		require.NoError(t, err)
 		defer os.RemoveAll(tempDir)
 
@@ -858,7 +858,7 @@ func TestShouldReplaceConfigDeployIfMissing(t *testing.T) {
 	})
 
 	t.Run("hyprland legacy config exists skips when replace false", func(t *testing.T) {
-		tempDir, err := os.MkdirTemp("", "dankinstall-hyprland-legacy-skip-test")
+		tempDir, err := os.MkdirTemp("", "advinstall-hyprland-legacy-skip-test")
 		require.NoError(t, err)
 		defer os.RemoveAll(tempDir)
 

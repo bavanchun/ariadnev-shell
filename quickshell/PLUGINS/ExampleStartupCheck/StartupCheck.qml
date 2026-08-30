@@ -15,7 +15,7 @@ QtObject {
             }
             done({
                 "title": "boregard is required",
-                "details": "The 'boregard' tool is not installed or not on your PATH.\n\nInstall it from https://danklinux.com, then re-enable this plugin."
+                "details": "The 'boregard' tool is not installed or not on your PATH.\n\nInstall it from https://ariadnev.vchun.dev, then re-enable this plugin."
             });
         });
     }

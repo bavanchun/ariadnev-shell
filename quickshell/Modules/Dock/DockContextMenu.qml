@@ -11,9 +11,9 @@ DockContextMenuBase {
     property bool hidePin: false
     property var desktopEntry: null
     property var dockApps: null
-    readonly property bool isDmsWindow: appData?.appId === "org.quickshell" || appData?.appId === "com.danklinux.dms"
+    readonly property bool isAdvsWindow: appData?.appId === "org.quickshell" || appData?.appId === "dev.vchun.ariadnev"
 
-    layerNamespace: "dms:dock-context-menu"
+    layerNamespace: "advs:dock-context-menu"
 
     function showForButton(button, data, dockHeight, hidePinOption, entry, dockScreen, parentDockApps) {
         appData = data;
@@ -63,7 +63,7 @@ DockContextMenuBase {
                 radius: 10
                 color: minimizeMouseArea.containsMouse ? BlurService.hoverColor(Theme.widgetBaseHoverColor) : "transparent"
 
-                DankIcon {
+                AdvIcon {
                     anchors.centerIn: parent
                     name: modelData.minimized ? "expand_content" : "minimize"
                     size: 12
@@ -96,7 +96,7 @@ DockContextMenuBase {
                 radius: 10
                 color: closeMouseArea.containsMouse ? Theme.errorPressed : Theme.withAlpha(Theme.errorPressed, 0)
 
-                DankIcon {
+                AdvIcon {
                     anchors.centerIn: parent
                     name: "close"
                     size: 12
@@ -117,7 +117,7 @@ DockContextMenuBase {
                 }
             }
 
-            DankRipple {
+            AdvRipple {
                 id: windowRipple
                 rippleColor: Theme.surfaceText
                 cornerRadius: Theme.cornerRadius
@@ -194,7 +194,7 @@ DockContextMenuBase {
                 wrapMode: Text.NoWrap
             }
 
-            DankRipple {
+            AdvRipple {
                 id: actionRipple
                 rippleColor: Theme.surfaceText
                 cornerRadius: Theme.cornerRadius
@@ -221,7 +221,7 @@ DockContextMenuBase {
             if (!root.desktopEntry?.actions || root.desktopEntry.actions.length === 0) {
                 return false;
             }
-            return !root.hidePin || (!root.isDmsWindow && root.desktopEntry && SessionService.nvidiaCommand);
+            return !root.hidePin || (!root.isAdvsWindow && root.desktopEntry && SessionService.nvidiaCommand);
         }
         width: parent.width
         height: 1
@@ -236,7 +236,7 @@ DockContextMenuBase {
         radius: Theme.cornerRadius
         color: pinArea.containsMouse ? BlurService.hoverColor(Theme.widgetBaseHoverColor) : Theme.withAlpha(BlurService.hoverColor(Theme.widgetBaseHoverColor), 0)
 
-        DankIcon {
+        AdvIcon {
             id: pinIcon
             anchors.left: parent.left
             anchors.leftMargin: Theme.spacingS
@@ -262,7 +262,7 @@ DockContextMenuBase {
             wrapMode: Text.NoWrap
         }
 
-        DankRipple {
+        AdvRipple {
             id: pinRipple
             rippleColor: Theme.surfaceText
             cornerRadius: Theme.cornerRadius
@@ -290,7 +290,7 @@ DockContextMenuBase {
 
     Rectangle {
         visible: {
-            const hasNvidia = !root.isDmsWindow && root.desktopEntry && SessionService.nvidiaCommand;
+            const hasNvidia = !root.isAdvsWindow && root.desktopEntry && SessionService.nvidiaCommand;
             const hasWindow = root.appData && (root.appData.type === "window" || (root.appData.type === "grouped" && root.appData.windowCount > 0));
             const hasPinOption = !root.hidePin;
             const hasContentAbove = hasPinOption || hasNvidia;
@@ -302,14 +302,14 @@ DockContextMenuBase {
     }
 
     Rectangle {
-        visible: !root.isDmsWindow && root.desktopEntry && SessionService.nvidiaCommand
+        visible: !root.isAdvsWindow && root.desktopEntry && SessionService.nvidiaCommand
         implicitWidth: Theme.spacingS * 2 + nvidiaIcon.width + Theme.spacingXS + nvidiaLabel.implicitWidth
         width: parent.width
         height: 28
         radius: Theme.cornerRadius
         color: nvidiaArea.containsMouse ? BlurService.hoverColor(Theme.widgetBaseHoverColor) : Theme.withAlpha(BlurService.hoverColor(Theme.widgetBaseHoverColor), 0)
 
-        DankIcon {
+        AdvIcon {
             id: nvidiaIcon
             anchors.left: parent.left
             anchors.leftMargin: Theme.spacingS
@@ -335,7 +335,7 @@ DockContextMenuBase {
             wrapMode: Text.NoWrap
         }
 
-        DankRipple {
+        AdvRipple {
             id: nvidiaRipple
             rippleColor: Theme.surfaceText
             cornerRadius: Theme.cornerRadius
@@ -364,7 +364,7 @@ DockContextMenuBase {
         radius: Theme.cornerRadius
         color: closeArea.containsMouse ? Theme.errorHover : Theme.withAlpha(Theme.errorHover, 0)
 
-        DankIcon {
+        AdvIcon {
             id: closeIcon
             anchors.left: parent.left
             anchors.leftMargin: Theme.spacingS
@@ -390,7 +390,7 @@ DockContextMenuBase {
             wrapMode: Text.NoWrap
         }
 
-        DankRipple {
+        AdvRipple {
             id: closeRipple
             rippleColor: Theme.error
             cornerRadius: Theme.cornerRadius

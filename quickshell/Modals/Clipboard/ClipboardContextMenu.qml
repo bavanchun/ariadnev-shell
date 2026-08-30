@@ -226,7 +226,7 @@ Item {
         visible: root.renderActive
         color: "transparent"
 
-        WlrLayershell.namespace: "dms:clipboard-context-menu"
+        WlrLayershell.namespace: "advs:clipboard-context-menu"
         WlrLayershell.layer: WlrLayershell.Overlay
         WlrLayershell.exclusiveZone: -1
         WlrLayershell.keyboardFocus: WlrKeyboardFocus.None
@@ -359,7 +359,7 @@ Item {
                                             height: Theme.iconSize - 2
                                             anchors.verticalCenter: parent.verticalCenter
 
-                                            DankIcon {
+                                            AdvIcon {
                                                 visible: (menuItemDelegate.modelData?.icon ?? "").length > 0
                                                 name: menuItemDelegate.modelData?.icon ?? ""
                                                 size: Theme.iconSize - 2
@@ -380,7 +380,7 @@ Item {
                                         }
                                     }
 
-                                    DankRipple {
+                                    AdvRipple {
                                         id: menuItemRipple
                                         rippleColor: Theme.surfaceText
                                         cornerRadius: Theme.cornerRadius

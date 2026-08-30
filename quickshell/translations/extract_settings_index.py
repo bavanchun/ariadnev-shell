@@ -61,7 +61,7 @@ CATEGORY_KEYWORDS = {
     "Personalization": ["customize", "custom", "personal", "appearance"],
     "Time & Weather": ["clock", "forecast", "date"],
     "Keyboard Shortcuts": ["keys", "bindings", "hotkey"],
-    "Dank Bar": ["panel", "topbar", "statusbar"],
+    "Adv Bar": ["panel", "topbar", "statusbar"],
     "Applications": ["apps", "programs", "window", "rules", "matching", "floating"],
     "Dock": ["taskbar", "launcher bar"],
     "Network": ["connectivity", "online"],
@@ -86,7 +86,7 @@ CATEGORY_KEYWORDS = {
     "Greeter": ["login", "greetd", "display manager"],
     "Multiplexers": ["tmux", "zellij", "terminal"],
     "Frame": ["window", "border", "decoration"],
-    "Dank Island": ["island", "activities", "dynamic island"],
+    "Adv Island": ["island", "activities", "dynamic island"],
     "Default Apps": ["browser", "terminal", "handlers", "mime"],
     "Users": ["accounts", "user", "profile"],
     "Autostart": ["startup", "launch", "boot"],
@@ -96,13 +96,13 @@ TAB_INDEX_MAP = {
     "WallpaperTab.qml": 0,
     "TimeWeatherTab.qml": 1,
     "KeybindsTab.qml": 2,
-    "DankBarTab.qml": 3,
-    "DankIslandTab.qml": 46,
+    "AdvBarTab.qml": 3,
+    "AdvIslandTab.qml": 46,
     "WorkspacesTab.qml": 4,
     "CompositorLayoutTab.qml": 37,
     "WindowRulesTab.qml": 38,
     "DockTab.qml": 5,
-    "DankBarAppearanceTab.qml": 6,
+    "AdvBarAppearanceTab.qml": 6,
     "WorkspaceAppearanceCard.qml": 4,
     "NetworkStatusTab.qml": 7,
     "NetworkEthernetTab.qml": 39,
@@ -152,10 +152,10 @@ TAB_CATEGORY_MAP = {
     0: "Personalization",
     1: "Time & Weather",
     2: "Keyboard Shortcuts",
-    3: "Dank Bar",
-    4: "Dank Bar",
+    3: "Adv Bar",
+    4: "Adv Bar",
     5: "Dock",
-    6: "Dank Bar",
+    6: "Adv Bar",
     7: "Network",
     8: "System",
     9: "Launcher",
@@ -171,7 +171,7 @@ TAB_CATEGORY_MAP = {
     19: "Running Apps",
     20: "System Updater",
     21: "Power & Sleep",
-    22: "Dank Bar",
+    22: "Adv Bar",
     23: "System",
     24: "Displays",
     25: "Displays",
@@ -191,10 +191,10 @@ TAB_CATEGORY_MAP = {
     40: "Network",
     41: "Network",
     42: "Power & Security",
-    43: "Dank Dash",
+    43: "Adv Dash",
     44: "System",
     45: "System",
-    46: "Dank Island",
+    46: "Adv Island",
     47: "Network",
 }
 
@@ -418,8 +418,8 @@ def find_settings_components(content, filename, wrappers):
                     condition_key = "cupsAvailable"
                 elif "NetworkService.networkAvailable" in visible_raw:
                     condition_key = "networkAvailable"
-                elif "DMSService.isConnected" in visible_raw:
-                    condition_key = "dmsConnected"
+                elif "ADVSService.isConnected" in visible_raw:
+                    condition_key = "advsConnected"
                 elif "Theme.matugenAvailable" in visible_raw:
                     condition_key = "matugenAvailable"
                 elif "CompositorService.isDwl" in visible_raw:
@@ -473,9 +473,9 @@ def parse_tabs_from_sidebar(sidebar_file):
             ("soundsOnly", "soundsAvailable"),
             ("cupsOnly", "cupsAvailable"),
             ("greeterOnly", "greeterAvailable"),
-            ("dmsOnly", "dmsConnected"),
+            ("advsOnly", "advsConnected"),
             ("hyprlandNiriOnly", "isHyprlandOrNiri"),
-            ("clipboardOnly", "dmsConnected"),
+            ("clipboardOnly", "advsConnected"),
             ("niriOnly", "isNiri"),
             ("windowRulesCapable", "windowRulesCapable"),
             ("layoutCapable", "layoutCapable"),

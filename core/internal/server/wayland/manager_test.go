@@ -8,8 +8,8 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
-	mocks_wlclient "github.com/AvengeMedia/DankMaterialShell/core/internal/mocks/wlclient"
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/proto/wlr_gamma_control"
+	mocks_wlclient "github.com/bavanchun/ariadnev-shell/core/internal/mocks/wlclient"
+	"github.com/bavanchun/ariadnev-shell/core/internal/proto/wlr_gamma_control"
 )
 
 func TestManager_ActorSerializesOutputStateAccess(t *testing.T) {

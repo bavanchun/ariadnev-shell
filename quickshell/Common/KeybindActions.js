@@ -1,140 +1,140 @@
 .pragma library
 
 const ACTION_TYPES = [
-    { id: "dms", label: "DMS Action", icon: "widgets" },
+    { id: "advs", label: "ADVS Action", icon: "widgets" },
     { id: "compositor", label: "Compositor", icon: "desktop_windows" },
     { id: "spawn", label: "Run Command", icon: "terminal" },
     { id: "shell", label: "Shell Command", icon: "code" }
 ];
 
-const DMS_ACTIONS = [
-    { id: "spawn dms ipc call spotlight toggle", label: "Default Launcher: Toggle" },
-    { id: "spawn dms ipc call spotlight open", label: "Default Launcher: Open" },
-    { id: "spawn dms ipc call spotlight close", label: "Default Launcher: Close" },
-    { id: "spawn dms ipc call island toggle home", label: "DankIsland: Toggle" },
-    { id: "spawn dms ipc call island open home", label: "DankIsland: Open Clock" },
-    { id: "spawn dms ipc call island open media", label: "DankIsland: Open Media" },
-    { id: "spawn dms ipc call island open launcher", label: "DankIsland: Open Launcher" },
-    { id: "spawn dms ipc call island open controlcenter", label: "DankIsland: Open Control Center" },
-    { id: "spawn dms ipc call island open wallpaper", label: "DankIsland: Open Wallpapers" },
-    { id: "spawn dms ipc call island open weather", label: "DankIsland: Open Weather" },
-    { id: "spawn dms ipc call island open notificationcenter", label: "DankIsland: Open Notification Center" },
-    { id: "spawn dms ipc call island cycle", label: "DankIsland: Cycle Activity" },
-    { id: "spawn dms ipc call island close", label: "DankIsland: Close" },
-    { id: "spawn dms ipc call defaultApp browser", label: "Default Web Browser: Open" },
-    { id: "spawn dms ipc call defaultApp fileManager", label: "Default File Manager: Open" },
-    { id: "spawn dms ipc call defaultApp mail", label: "Default Mail: Open" },
-    { id: "spawn dms ipc call defaultApp calendar", label: "Default Calendar: Open" },
-    { id: "spawn dms ipc call defaultApp textEditor", label: "Default Text Editor: Open" },
-    { id: "spawn dms ipc call defaultApp pdfReader", label: "Default PDF Reader: Open" },
-    { id: "spawn dms ipc call defaultApp imageViewer", label: "Default Image Viewer: Open" },
-    { id: "spawn dms ipc call defaultApp videoPlayer", label: "Default Video Player: Open" },
-    { id: "spawn dms ipc call defaultApp musicPlayer", label: "Default Music Player: Open" },
-    { id: "spawn dms ipc call spotlight-bar toggle", label: "Spotlight Bar: Toggle" },
-    { id: "spawn dms ipc call spotlight-bar open", label: "Spotlight Bar: Open" },
-    { id: "spawn dms ipc call spotlight-bar close", label: "Spotlight Bar: Close" },
-    { id: "spawn dms ipc call clipboard toggle", label: "Clipboard: Toggle" },
-    { id: "spawn dms ipc call clipboard open", label: "Clipboard: Open" },
-    { id: "spawn dms ipc call clipboard close", label: "Clipboard: Close" },
-    { id: "spawn dms ipc call notifications toggle", label: "Notifications: Toggle" },
-    { id: "spawn dms ipc call notifications open", label: "Notifications: Open" },
-    { id: "spawn dms ipc call notifications close", label: "Notifications: Close" },
-    { id: "spawn dms ipc call processlist toggle", label: "Task Manager: Toggle" },
-    { id: "spawn dms ipc call processlist open", label: "Task Manager: Open" },
-    { id: "spawn dms ipc call processlist close", label: "Task Manager: Close" },
-    { id: "spawn dms ipc call processlist focusOrToggle", label: "Task Manager: Focus or Toggle" },
-    { id: "spawn dms ipc call settings toggle", label: "Settings: Toggle" },
-    { id: "spawn dms ipc call settings open", label: "Settings: Open" },
-    { id: "spawn dms ipc call settings close", label: "Settings: Close" },
-    { id: "spawn dms ipc call settings focusOrToggle", label: "Settings: Focus or Toggle" },
-    { id: "spawn dms ipc call powermenu toggle", label: "Power Menu: Toggle" },
-    { id: "spawn dms ipc call powermenu open", label: "Power Menu: Open" },
-    { id: "spawn dms ipc call powermenu close", label: "Power Menu: Close" },
-    { id: "spawn dms ipc call control-center toggle", label: "Control Center: Toggle" },
-    { id: "spawn dms ipc call control-center open", label: "Control Center: Open" },
-    { id: "spawn dms ipc call control-center close", label: "Control Center: Close" },
-    { id: "spawn dms ipc call notepad toggle", label: "Notepad: Toggle" },
-    { id: "spawn dms ipc call notepad open", label: "Notepad: Open" },
-    { id: "spawn dms ipc call notepad close", label: "Notepad: Close" },
-    { id: "spawn dms ipc call notepad expand", label: "Notepad: Expand" },
-    { id: "spawn dms ipc call notepad collapse", label: "Notepad: Collapse" },
-    { id: "spawn dms ipc call notepad toggleExpand", label: "Notepad: Toggle Expand" },
-    { id: "spawn dms ipc call dash toggle \"\"", label: "Dashboard: Toggle" },
-    { id: "spawn dms ipc call dash open overview", label: "Dashboard: Overview" },
-    { id: "spawn dms ipc call dash open media", label: "Dashboard: Media" },
-    { id: "spawn dms ipc call dash open weather", label: "Dashboard: Weather" },
-    { id: "spawn dms ipc call dankdash wallpaper", label: "Wallpaper Browser" },
-    { id: "spawn dms ipc call file browse wallpaper", label: "File: Browse Wallpaper" },
-    { id: "spawn dms ipc call file browse profile", label: "File: Browse Profile" },
-    { id: "spawn dms ipc call color-picker toggle", label: "Color Picker: Toggle" },
-    { id: "spawn dms ipc call color-picker open", label: "Color Picker: Open" },
-    { id: "spawn dms ipc call color-picker close", label: "Color Picker: Close" },
-    { id: "spawn dms ipc call keybinds toggle niri", label: "Keybinds Cheatsheet: Toggle", compositor: "niri" },
-    { id: "spawn dms ipc call keybinds open niri", label: "Keybinds Cheatsheet: Open", compositor: "niri" },
-    { id: "spawn dms ipc call keybinds close", label: "Keybinds Cheatsheet: Close" },
-    { id: "spawn dms ipc call lock lock", label: "Lock Screen" },
-    { id: "spawn dms ipc call lock lockAndOutputsOff", label: "Lock Screen & Outputs Off" },
-    { id: "spawn dms ipc call lock demo", label: "Lock Screen: Demo" },
-    { id: "spawn dms ipc call inhibit toggle", label: "Idle Inhibit: Toggle" },
-    { id: "spawn dms ipc call inhibit enable", label: "Idle Inhibit: Enable" },
-    { id: "spawn dms ipc call inhibit disable", label: "Idle Inhibit: Disable" },
-    { id: "spawn dms ipc call audio increment 5", label: "Volume Up" },
-    { id: "spawn dms ipc call audio increment 1", label: "Volume Up (1%)" },
-    { id: "spawn dms ipc call audio increment 5", label: "Volume Up (5%)" },
-    { id: "spawn dms ipc call audio increment 10", label: "Volume Up (10%)" },
-    { id: "spawn dms ipc call audio decrement 5", label: "Volume Down" },
-    { id: "spawn dms ipc call audio decrement 1", label: "Volume Down (1%)" },
-    { id: "spawn dms ipc call audio decrement 5", label: "Volume Down (5%)" },
-    { id: "spawn dms ipc call audio decrement 10", label: "Volume Down (10%)" },
-    { id: "spawn dms ipc call mpris increment 5", label: "Player Volume Up (5%)" },
-    { id: "spawn dms ipc call mpris decrement 5", label: "Player Volume Down (5%)" },
-    { id: "spawn dms ipc call audio mute", label: "Volume Mute Toggle" },
-    { id: "spawn dms ipc call mic mute", label: "Microphone Mute Toggle" },
-    { id: "spawn dms ipc call audio cycleoutput", label: "Audio Output: Cycle" },
-    { id: "spawn dms ipc call brightness increment 5 \"\"", label: "Brightness Up" },
-    { id: "spawn dms ipc call brightness increment 1 \"\"", label: "Brightness Up (1%)" },
-    { id: "spawn dms ipc call brightness increment 5 \"\"", label: "Brightness Up (5%)" },
-    { id: "spawn dms ipc call brightness increment 10 \"\"", label: "Brightness Up (10%)" },
-    { id: "spawn dms ipc call brightness decrement 5 \"\"", label: "Brightness Down" },
-    { id: "spawn dms ipc call brightness decrement 1 \"\"", label: "Brightness Down (1%)" },
-    { id: "spawn dms ipc call brightness decrement 5 \"\"", label: "Brightness Down (5%)" },
-    { id: "spawn dms ipc call brightness decrement 10 \"\"", label: "Brightness Down (10%)" },
-    { id: "spawn dms ipc call brightness toggleExponential \"\"", label: "Brightness: Toggle Exponential" },
-    { id: "spawn dms ipc call theme toggle", label: "Theme: Toggle Light/Dark" },
-    { id: "spawn dms ipc call theme light", label: "Theme: Light Mode" },
-    { id: "spawn dms ipc call theme dark", label: "Theme: Dark Mode" },
-    { id: "spawn dms ipc call night toggle", label: "Night Mode: Toggle" },
-    { id: "spawn dms ipc call night enable", label: "Night Mode: Enable" },
-    { id: "spawn dms ipc call night disable", label: "Night Mode: Disable" },
-    { id: "spawn dms ipc call bar toggle index 0", label: "Bar: Toggle (Primary)" },
-    { id: "spawn dms ipc call bar reveal index 0", label: "Bar: Reveal (Primary)" },
-    { id: "spawn dms ipc call bar hide index 0", label: "Bar: Hide (Primary)" },
-    { id: "spawn dms ipc call bar toggleReveal index 0", label: "Bar: Toggle Autohide Reveal (Primary)" },
-    { id: "spawn dms ipc call bar toggleAutoHide index 0", label: "Bar: Toggle Auto-Hide (Primary)" },
-    { id: "spawn dms ipc call bar autoHide index 0", label: "Bar: Enable Auto-Hide (Primary)" },
-    { id: "spawn dms ipc call bar manualHide index 0", label: "Bar: Disable Auto-Hide (Primary)" },
-    { id: "spawn dms ipc call dock toggle", label: "Dock: Toggle" },
-    { id: "spawn dms ipc call dock reveal", label: "Dock: Reveal" },
-    { id: "spawn dms ipc call dock hide", label: "Dock: Hide" },
-    { id: "spawn dms ipc call dock toggleAutoHide", label: "Dock: Toggle Auto-Hide" },
-    { id: "spawn dms ipc call dock autoHide", label: "Dock: Enable Auto-Hide" },
-    { id: "spawn dms ipc call dock manualHide", label: "Dock: Disable Auto-Hide" },
-    { id: "spawn dms ipc call mpris playPause", label: "Media: Play/Pause" },
-    { id: "spawn dms ipc call mpris play", label: "Media: Play" },
-    { id: "spawn dms ipc call mpris pause", label: "Media: Pause" },
-    { id: "spawn dms ipc call mpris previous", label: "Media: Previous Track" },
-    { id: "spawn dms ipc call mpris next", label: "Media: Next Track" },
-    { id: "spawn dms ipc call mpris stop", label: "Media: Stop" },
-    { id: "spawn dms screenshot", label: "Screenshot: Region" },
-    { id: "spawn dms screenshot full", label: "Screenshot: Full Screen" },
-    { id: "spawn dms screenshot all", label: "Screenshot: All Screens" },
-    { id: "spawn dms screenshot window", label: "Screenshot: Window" },
-    { id: "spawn dms ipc call hypr toggleOverview", label: "Hyprland: Toggle Overview", compositor: "hyprland" },
-    { id: "spawn dms ipc call hypr openOverview", label: "Hyprland: Open Overview", compositor: "hyprland" },
-    { id: "spawn dms ipc call hypr closeOverview", label: "Hyprland: Close Overview", compositor: "hyprland" },
-    { id: "spawn dms ipc call wallpaper next", label: "Wallpaper: Next" },
-    { id: "spawn dms ipc call wallpaper prev", label: "Wallpaper: Previous" },
-    { id: "spawn dms ipc call workspace-rename open", label: "Workspace: Rename" }
+const ADVS_ACTIONS = [
+    { id: "spawn advs ipc call spotlight toggle", label: "Default Launcher: Toggle" },
+    { id: "spawn advs ipc call spotlight open", label: "Default Launcher: Open" },
+    { id: "spawn advs ipc call spotlight close", label: "Default Launcher: Close" },
+    { id: "spawn advs ipc call island toggle home", label: "AdvIsland: Toggle" },
+    { id: "spawn advs ipc call island open home", label: "AdvIsland: Open Clock" },
+    { id: "spawn advs ipc call island open media", label: "AdvIsland: Open Media" },
+    { id: "spawn advs ipc call island open launcher", label: "AdvIsland: Open Launcher" },
+    { id: "spawn advs ipc call island open controlcenter", label: "AdvIsland: Open Control Center" },
+    { id: "spawn advs ipc call island open wallpaper", label: "AdvIsland: Open Wallpapers" },
+    { id: "spawn advs ipc call island open weather", label: "AdvIsland: Open Weather" },
+    { id: "spawn advs ipc call island open notificationcenter", label: "AdvIsland: Open Notification Center" },
+    { id: "spawn advs ipc call island cycle", label: "AdvIsland: Cycle Activity" },
+    { id: "spawn advs ipc call island close", label: "AdvIsland: Close" },
+    { id: "spawn advs ipc call defaultApp browser", label: "Default Web Browser: Open" },
+    { id: "spawn advs ipc call defaultApp fileManager", label: "Default File Manager: Open" },
+    { id: "spawn advs ipc call defaultApp mail", label: "Default Mail: Open" },
+    { id: "spawn advs ipc call defaultApp calendar", label: "Default Calendar: Open" },
+    { id: "spawn advs ipc call defaultApp textEditor", label: "Default Text Editor: Open" },
+    { id: "spawn advs ipc call defaultApp pdfReader", label: "Default PDF Reader: Open" },
+    { id: "spawn advs ipc call defaultApp imageViewer", label: "Default Image Viewer: Open" },
+    { id: "spawn advs ipc call defaultApp videoPlayer", label: "Default Video Player: Open" },
+    { id: "spawn advs ipc call defaultApp musicPlayer", label: "Default Music Player: Open" },
+    { id: "spawn advs ipc call spotlight-bar toggle", label: "Spotlight Bar: Toggle" },
+    { id: "spawn advs ipc call spotlight-bar open", label: "Spotlight Bar: Open" },
+    { id: "spawn advs ipc call spotlight-bar close", label: "Spotlight Bar: Close" },
+    { id: "spawn advs ipc call clipboard toggle", label: "Clipboard: Toggle" },
+    { id: "spawn advs ipc call clipboard open", label: "Clipboard: Open" },
+    { id: "spawn advs ipc call clipboard close", label: "Clipboard: Close" },
+    { id: "spawn advs ipc call notifications toggle", label: "Notifications: Toggle" },
+    { id: "spawn advs ipc call notifications open", label: "Notifications: Open" },
+    { id: "spawn advs ipc call notifications close", label: "Notifications: Close" },
+    { id: "spawn advs ipc call processlist toggle", label: "Task Manager: Toggle" },
+    { id: "spawn advs ipc call processlist open", label: "Task Manager: Open" },
+    { id: "spawn advs ipc call processlist close", label: "Task Manager: Close" },
+    { id: "spawn advs ipc call processlist focusOrToggle", label: "Task Manager: Focus or Toggle" },
+    { id: "spawn advs ipc call settings toggle", label: "Settings: Toggle" },
+    { id: "spawn advs ipc call settings open", label: "Settings: Open" },
+    { id: "spawn advs ipc call settings close", label: "Settings: Close" },
+    { id: "spawn advs ipc call settings focusOrToggle", label: "Settings: Focus or Toggle" },
+    { id: "spawn advs ipc call powermenu toggle", label: "Power Menu: Toggle" },
+    { id: "spawn advs ipc call powermenu open", label: "Power Menu: Open" },
+    { id: "spawn advs ipc call powermenu close", label: "Power Menu: Close" },
+    { id: "spawn advs ipc call control-center toggle", label: "Control Center: Toggle" },
+    { id: "spawn advs ipc call control-center open", label: "Control Center: Open" },
+    { id: "spawn advs ipc call control-center close", label: "Control Center: Close" },
+    { id: "spawn advs ipc call notepad toggle", label: "Notepad: Toggle" },
+    { id: "spawn advs ipc call notepad open", label: "Notepad: Open" },
+    { id: "spawn advs ipc call notepad close", label: "Notepad: Close" },
+    { id: "spawn advs ipc call notepad expand", label: "Notepad: Expand" },
+    { id: "spawn advs ipc call notepad collapse", label: "Notepad: Collapse" },
+    { id: "spawn advs ipc call notepad toggleExpand", label: "Notepad: Toggle Expand" },
+    { id: "spawn advs ipc call dash toggle \"\"", label: "Dashboard: Toggle" },
+    { id: "spawn advs ipc call dash open overview", label: "Dashboard: Overview" },
+    { id: "spawn advs ipc call dash open media", label: "Dashboard: Media" },
+    { id: "spawn advs ipc call dash open weather", label: "Dashboard: Weather" },
+    { id: "spawn advs ipc call advdash wallpaper", label: "Wallpaper Browser" },
+    { id: "spawn advs ipc call file browse wallpaper", label: "File: Browse Wallpaper" },
+    { id: "spawn advs ipc call file browse profile", label: "File: Browse Profile" },
+    { id: "spawn advs ipc call color-picker toggle", label: "Color Picker: Toggle" },
+    { id: "spawn advs ipc call color-picker open", label: "Color Picker: Open" },
+    { id: "spawn advs ipc call color-picker close", label: "Color Picker: Close" },
+    { id: "spawn advs ipc call keybinds toggle niri", label: "Keybinds Cheatsheet: Toggle", compositor: "niri" },
+    { id: "spawn advs ipc call keybinds open niri", label: "Keybinds Cheatsheet: Open", compositor: "niri" },
+    { id: "spawn advs ipc call keybinds close", label: "Keybinds Cheatsheet: Close" },
+    { id: "spawn advs ipc call lock lock", label: "Lock Screen" },
+    { id: "spawn advs ipc call lock lockAndOutputsOff", label: "Lock Screen & Outputs Off" },
+    { id: "spawn advs ipc call lock demo", label: "Lock Screen: Demo" },
+    { id: "spawn advs ipc call inhibit toggle", label: "Idle Inhibit: Toggle" },
+    { id: "spawn advs ipc call inhibit enable", label: "Idle Inhibit: Enable" },
+    { id: "spawn advs ipc call inhibit disable", label: "Idle Inhibit: Disable" },
+    { id: "spawn advs ipc call audio increment 5", label: "Volume Up" },
+    { id: "spawn advs ipc call audio increment 1", label: "Volume Up (1%)" },
+    { id: "spawn advs ipc call audio increment 5", label: "Volume Up (5%)" },
+    { id: "spawn advs ipc call audio increment 10", label: "Volume Up (10%)" },
+    { id: "spawn advs ipc call audio decrement 5", label: "Volume Down" },
+    { id: "spawn advs ipc call audio decrement 1", label: "Volume Down (1%)" },
+    { id: "spawn advs ipc call audio decrement 5", label: "Volume Down (5%)" },
+    { id: "spawn advs ipc call audio decrement 10", label: "Volume Down (10%)" },
+    { id: "spawn advs ipc call mpris increment 5", label: "Player Volume Up (5%)" },
+    { id: "spawn advs ipc call mpris decrement 5", label: "Player Volume Down (5%)" },
+    { id: "spawn advs ipc call audio mute", label: "Volume Mute Toggle" },
+    { id: "spawn advs ipc call mic mute", label: "Microphone Mute Toggle" },
+    { id: "spawn advs ipc call audio cycleoutput", label: "Audio Output: Cycle" },
+    { id: "spawn advs ipc call brightness increment 5 \"\"", label: "Brightness Up" },
+    { id: "spawn advs ipc call brightness increment 1 \"\"", label: "Brightness Up (1%)" },
+    { id: "spawn advs ipc call brightness increment 5 \"\"", label: "Brightness Up (5%)" },
+    { id: "spawn advs ipc call brightness increment 10 \"\"", label: "Brightness Up (10%)" },
+    { id: "spawn advs ipc call brightness decrement 5 \"\"", label: "Brightness Down" },
+    { id: "spawn advs ipc call brightness decrement 1 \"\"", label: "Brightness Down (1%)" },
+    { id: "spawn advs ipc call brightness decrement 5 \"\"", label: "Brightness Down (5%)" },
+    { id: "spawn advs ipc call brightness decrement 10 \"\"", label: "Brightness Down (10%)" },
+    { id: "spawn advs ipc call brightness toggleExponential \"\"", label: "Brightness: Toggle Exponential" },
+    { id: "spawn advs ipc call theme toggle", label: "Theme: Toggle Light/Dark" },
+    { id: "spawn advs ipc call theme light", label: "Theme: Light Mode" },
+    { id: "spawn advs ipc call theme dark", label: "Theme: Dark Mode" },
+    { id: "spawn advs ipc call night toggle", label: "Night Mode: Toggle" },
+    { id: "spawn advs ipc call night enable", label: "Night Mode: Enable" },
+    { id: "spawn advs ipc call night disable", label: "Night Mode: Disable" },
+    { id: "spawn advs ipc call bar toggle index 0", label: "Bar: Toggle (Primary)" },
+    { id: "spawn advs ipc call bar reveal index 0", label: "Bar: Reveal (Primary)" },
+    { id: "spawn advs ipc call bar hide index 0", label: "Bar: Hide (Primary)" },
+    { id: "spawn advs ipc call bar toggleReveal index 0", label: "Bar: Toggle Autohide Reveal (Primary)" },
+    { id: "spawn advs ipc call bar toggleAutoHide index 0", label: "Bar: Toggle Auto-Hide (Primary)" },
+    { id: "spawn advs ipc call bar autoHide index 0", label: "Bar: Enable Auto-Hide (Primary)" },
+    { id: "spawn advs ipc call bar manualHide index 0", label: "Bar: Disable Auto-Hide (Primary)" },
+    { id: "spawn advs ipc call dock toggle", label: "Dock: Toggle" },
+    { id: "spawn advs ipc call dock reveal", label: "Dock: Reveal" },
+    { id: "spawn advs ipc call dock hide", label: "Dock: Hide" },
+    { id: "spawn advs ipc call dock toggleAutoHide", label: "Dock: Toggle Auto-Hide" },
+    { id: "spawn advs ipc call dock autoHide", label: "Dock: Enable Auto-Hide" },
+    { id: "spawn advs ipc call dock manualHide", label: "Dock: Disable Auto-Hide" },
+    { id: "spawn advs ipc call mpris playPause", label: "Media: Play/Pause" },
+    { id: "spawn advs ipc call mpris play", label: "Media: Play" },
+    { id: "spawn advs ipc call mpris pause", label: "Media: Pause" },
+    { id: "spawn advs ipc call mpris previous", label: "Media: Previous Track" },
+    { id: "spawn advs ipc call mpris next", label: "Media: Next Track" },
+    { id: "spawn advs ipc call mpris stop", label: "Media: Stop" },
+    { id: "spawn advs screenshot", label: "Screenshot: Region" },
+    { id: "spawn advs screenshot full", label: "Screenshot: Full Screen" },
+    { id: "spawn advs screenshot all", label: "Screenshot: All Screens" },
+    { id: "spawn advs screenshot window", label: "Screenshot: Window" },
+    { id: "spawn advs ipc call hypr toggleOverview", label: "Hyprland: Toggle Overview", compositor: "hyprland" },
+    { id: "spawn advs ipc call hypr openOverview", label: "Hyprland: Open Overview", compositor: "hyprland" },
+    { id: "spawn advs ipc call hypr closeOverview", label: "Hyprland: Close Overview", compositor: "hyprland" },
+    { id: "spawn advs ipc call wallpaper next", label: "Wallpaper: Next" },
+    { id: "spawn advs ipc call wallpaper prev", label: "Wallpaper: Previous" },
+    { id: "spawn advs ipc call workspace-rename open", label: "Workspace: Rename" }
 ];
 
 const NIRI_ACTIONS = {
@@ -458,7 +458,7 @@ const COMPOSITOR_ACTIONS = {
     hyprland: HYPRLAND_ACTIONS
 };
 
-const CATEGORY_ORDER = ["DMS", "Execute", "Workspace", "Tags", "Window", "Move/Resize", "Focus", "Move", "Layout", "Groups", "Monitor", "Scratchpad", "Screenshot", "System", "Pass-through", "Overview", "Alt-Tab", "Other"];
+const CATEGORY_ORDER = ["ADVS", "Execute", "Workspace", "Tags", "Window", "Move/Resize", "Focus", "Move", "Layout", "Groups", "Monitor", "Scratchpad", "Screenshot", "System", "Pass-through", "Overview", "Alt-Tab", "Other"];
 
 const NIRI_ACTION_ARGS = {
     "quit": {
@@ -759,56 +759,56 @@ const SCREENSHOT_FLAGS = [
     { name: "cursor", type: "flag", flag: "--cursor=on", label: "Pointer" }
 ];
 
-const DMS_ACTION_ARGS = {
+const ADVS_ACTION_ARGS = {
     "audio increment": {
-        base: "spawn dms ipc call audio increment",
+        base: "spawn advs ipc call audio increment",
         args: [{ name: "amount", type: "number", label: "Amount %", placeholder: "5", default: "5" }]
     },
     "audio decrement": {
-        base: "spawn dms ipc call audio decrement",
+        base: "spawn advs ipc call audio decrement",
         args: [{ name: "amount", type: "number", label: "Amount %", placeholder: "5", default: "5" }]
     },
     "player increment": {
-        base: "spawn dms ipc call mpris increment",
+        base: "spawn advs ipc call mpris increment",
         args: [{ name: "amount", type: "number", label: "Amount %", placeholder: "5", default: "5" }]
     },
     "player decrement": {
-        base: "spawn dms ipc call mpris decrement",
+        base: "spawn advs ipc call mpris decrement",
         args: [{ name: "amount", type: "number", label: "Amount %", placeholder: "5", default: "5" }]
     },
     "brightness increment": {
-        base: "spawn dms ipc call brightness increment",
+        base: "spawn advs ipc call brightness increment",
         args: [
             { name: "amount", type: "number", label: "Amount %", placeholder: "5", default: "5" },
             { name: "device", type: "text", label: "Device", placeholder: "leave empty for default", default: "" }
         ]
     },
     "brightness decrement": {
-        base: "spawn dms ipc call brightness decrement",
+        base: "spawn advs ipc call brightness decrement",
         args: [
             { name: "amount", type: "number", label: "Amount %", placeholder: "5", default: "5" },
             { name: "device", type: "text", label: "Device", placeholder: "leave empty for default", default: "" }
         ]
     },
     "brightness toggleExponential": {
-        base: "spawn dms ipc call brightness toggleExponential",
+        base: "spawn advs ipc call brightness toggleExponential",
         args: [
             { name: "device", type: "text", label: "Device", placeholder: "leave empty for default", default: "" }
         ]
     },
     "dash toggle": {
-        base: "spawn dms ipc call dash toggle",
+        base: "spawn advs ipc call dash toggle",
         args: [
             { name: "tab", type: "text", label: "Tab", placeholder: "overview, media, wallpaper, weather", default: "" }
         ]
     },
-    "screenshot": { base: "spawn dms screenshot", args: SCREENSHOT_FLAGS },
-    "screenshot full": { base: "spawn dms screenshot full", args: SCREENSHOT_FLAGS },
-    "screenshot all": { base: "spawn dms screenshot all", args: SCREENSHOT_FLAGS },
-    "screenshot window": { base: "spawn dms screenshot window", args: SCREENSHOT_FLAGS }
+    "screenshot": { base: "spawn advs screenshot", args: SCREENSHOT_FLAGS },
+    "screenshot full": { base: "spawn advs screenshot full", args: SCREENSHOT_FLAGS },
+    "screenshot all": { base: "spawn advs screenshot all", args: SCREENSHOT_FLAGS },
+    "screenshot window": { base: "spawn advs screenshot window", args: SCREENSHOT_FLAGS }
 };
 
-const DMS_AMOUNT_LABELS = {
+const ADVS_AMOUNT_LABELS = {
     "audio increment": "Volume Up",
     "audio decrement": "Volume Down",
     "mpris increment": "Player Volume Up",
@@ -817,9 +817,9 @@ const DMS_AMOUNT_LABELS = {
     "brightness decrement": "Brightness Down"
 };
 
-function getDmsAmountLabel(action) {
-    var parsed = parseDmsActionArgs(action);
-    var label = DMS_AMOUNT_LABELS[parsed.base];
+function getAdvsAmountLabel(action) {
+    var parsed = parseAdvsActionArgs(action);
+    var label = ADVS_AMOUNT_LABELS[parsed.base];
     if (!label)
         return null;
     var amount = parsed.args?.amount;
@@ -832,14 +832,14 @@ function getActionTypes() {
     return ACTION_TYPES;
 }
 
-function getDmsActionArgs() {
-    return DMS_ACTION_ARGS;
+function getAdvsActionArgs() {
+    return ADVS_ACTION_ARGS;
 }
 
-function getDmsActions(isNiri, isHyprland) {
+function getAdvsActions(isNiri, isHyprland) {
     const result = [];
-    for (let i = 0; i < DMS_ACTIONS.length; i++) {
-        const action = DMS_ACTIONS[i];
+    for (let i = 0; i < ADVS_ACTIONS.length; i++) {
+        const action = ADVS_ACTIONS[i];
         if (!action.compositor) {
             result.push(action);
             continue;
@@ -876,10 +876,10 @@ function getCategoryOrder() {
     return CATEGORY_ORDER;
 }
 
-function findDmsAction(actionId) {
-    for (let i = 0; i < DMS_ACTIONS.length; i++) {
-        if (DMS_ACTIONS[i].id === actionId)
-            return DMS_ACTIONS[i];
+function findAdvsAction(actionId) {
+    for (let i = 0; i < ADVS_ACTIONS.length; i++) {
+        if (ADVS_ACTIONS[i].id === actionId)
+            return ADVS_ACTIONS[i];
     }
     return null;
 }
@@ -902,16 +902,16 @@ function getActionLabel(action, compositor) {
     if (!action)
         return "";
 
-    var amountLabel = getDmsAmountLabel(action);
+    var amountLabel = getAdvsAmountLabel(action);
     if (amountLabel)
         return amountLabel;
 
-    var dmsAct = findDmsAction(action);
-    if (dmsAct)
-        return dmsAct.label;
+    var advsAct = findAdvsAction(action);
+    if (advsAct)
+        return advsAct.label;
 
-    var dmsKey = findDmsArgKey(action);
-    var baseAct = dmsKey ? findDmsAction(DMS_ACTION_ARGS[dmsKey].base) : null;
+    var advsKey = findAdvsArgKey(action);
+    var baseAct = advsKey ? findAdvsAction(ADVS_ACTION_ARGS[advsKey].base) : null;
     if (baseAct)
         return baseAct.label;
 
@@ -935,8 +935,8 @@ function getActionLabel(action, compositor) {
 function getActionType(action) {
     if (!action)
         return "compositor";
-    if (isDmsAction(action))
-        return "dms";
+    if (isAdvsAction(action))
+        return "advs";
     if (/^spawn \w+ -c /.test(action) || action.startsWith("spawn_shell "))
         return "shell";
     if (action.startsWith("spawn "))
@@ -944,10 +944,10 @@ function getActionType(action) {
     return "compositor";
 }
 
-function isDmsAction(action) {
+function isAdvsAction(action) {
     if (!action)
         return false;
-    return action.startsWith("spawn dms ipc call ") || /^spawn dms screenshot( |$)/.test(action);
+    return action.startsWith("spawn advs ipc call ") || /^spawn advs screenshot( |$)/.test(action);
 }
 
 function isValidAction(action) {
@@ -1035,20 +1035,20 @@ function getActionArgConfig(compositor, action) {
     if (compositorArgs && compositorArgs[baseAction])
         return { type: "compositor", base: baseAction, config: compositorArgs[baseAction] };
 
-    var dmsKey = findDmsArgKey(action);
-    if (dmsKey)
-        return { type: "dms", base: dmsKey, config: DMS_ACTION_ARGS[dmsKey] };
+    var advsKey = findAdvsArgKey(action);
+    if (advsKey)
+        return { type: "advs", base: advsKey, config: ADVS_ACTION_ARGS[advsKey] };
 
     return null;
 }
 
-function findDmsArgKey(action) {
+function findAdvsArgKey(action) {
     var best = null;
-    for (var key in DMS_ACTION_ARGS) {
-        var base = DMS_ACTION_ARGS[key].base;
+    for (var key in ADVS_ACTION_ARGS) {
+        var base = ADVS_ACTION_ARGS[key].base;
         if (action !== base && !action.startsWith(base + " "))
             continue;
-        if (!best || base.length > DMS_ACTION_ARGS[best].base.length)
+        if (!best || base.length > ADVS_ACTION_ARGS[best].base.length)
             best = key;
     }
     return best;
@@ -1360,15 +1360,15 @@ function buildCompositorAction(compositor, base, args) {
     return parts.join(" ");
 }
 
-function parseDmsActionArgs(action) {
+function parseAdvsActionArgs(action) {
     if (!action)
         return { base: "", args: {} };
 
-    var key = findDmsArgKey(action);
+    var key = findAdvsArgKey(action);
     if (!key)
         return { base: action, args: {} };
 
-    var config = DMS_ACTION_ARGS[key];
+    var config = ADVS_ACTION_ARGS[key];
     var rest = action.slice(config.base.length).trim();
     var result = { base: key, args: {} };
 
@@ -1419,8 +1419,8 @@ function parseDmsActionArgs(action) {
     return result;
 }
 
-function buildDmsAction(baseKey, args) {
-    var config = DMS_ACTION_ARGS[baseKey];
+function buildAdvsAction(baseKey, args) {
+    var config = ADVS_ACTION_ARGS[baseKey];
     if (!config)
         return "";
 

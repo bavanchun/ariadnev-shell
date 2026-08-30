@@ -3,7 +3,7 @@ import qs.Common
 import qs.Services
 import qs.Widgets
 
-DankOSD {
+AdvOSD {
     id: root
 
     readonly property bool useVertical: isVerticalLayout
@@ -120,7 +120,7 @@ DankOSD {
                 anchors.horizontalCenter: parent.horizontalCenter
                 y: gap
 
-                DankIcon {
+                AdvIcon {
                     anchors.centerIn: parent
                     name: getVolumeIcon(player?.volume ?? 0)
                     size: Theme.iconSize

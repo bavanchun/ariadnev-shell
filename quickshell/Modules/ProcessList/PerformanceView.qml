@@ -236,7 +236,7 @@ Item {
                 Layout.fillWidth: true
                 spacing: Theme.spacingS
 
-                DankIcon {
+                AdvIcon {
                     name: card.icon
                     size: Theme.iconSize
                     color: card.accentColor

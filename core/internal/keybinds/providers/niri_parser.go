@@ -38,16 +38,16 @@ type NiriParser struct {
 	bindMap            map[string]*NiriKeyBinding
 	bindOrder          []string
 	currentSource      string
-	dmsBindsIncluded   bool
-	dmsBindsExists     bool
+	advsBindsIncluded   bool
+	advsBindsExists     bool
 	includeCount       int
-	dmsIncludePos      int
-	bindsBeforeDMS     int
-	bindsAfterDMS      int
-	dmsBindKeys        map[string]bool
+	advsIncludePos      int
+	bindsBeforeADVS     int
+	bindsAfterADVS      int
+	advsBindKeys        map[string]bool
 	configBindKeys     map[string]bool
-	dmsProcessed       bool
-	dmsBindMap         map[string]*NiriKeyBinding
+	advsProcessed       bool
+	advsBindMap         map[string]*NiriKeyBinding
 	conflictingConfigs map[string]*NiriKeyBinding
 }
 
@@ -102,7 +102,7 @@ func normalizeKDLBraces(input string) string {
 // this the whole config fails to parse and no keybinds load. Quoting lets
 // kdl-go parse it; this is safe because the niri parser only dispatches on
 // fixed node/section names (binds, recent-windows, include, ...) that never
-// start with '_', so re-quoting such a name cannot change what DMS reads.
+// start with '_', so re-quoting such a name cannot change what ADVS reads.
 // Underscores elsewhere in an identifier (XDG_CURRENT_DESKTOP) are left
 // untouched, and underscores inside strings or comments are skipped. Only a
 // leading '_' is handled; other start characters kdl-go over-rejects (e.g. '.'
@@ -243,10 +243,10 @@ func NewNiriParser(configDir string) *NiriParser {
 		bindMap:            make(map[string]*NiriKeyBinding),
 		bindOrder:          []string{},
 		currentSource:      "",
-		dmsIncludePos:      -1,
-		dmsBindKeys:        make(map[string]bool),
+		advsIncludePos:      -1,
+		advsBindKeys:        make(map[string]bool),
 		configBindKeys:     make(map[string]bool),
-		dmsBindMap:         make(map[string]*NiriKeyBinding),
+		advsBindMap:         make(map[string]*NiriKeyBinding),
 		conflictingConfigs: make(map[string]*NiriKeyBinding),
 	}
 }
@@ -260,9 +260,9 @@ func normalizeNiriBindKey(key string) string {
 }
 
 func (p *NiriParser) Parse() (*NiriSection, error) {
-	dmsBindsPath := filepath.Join(p.configDir, "dms", "binds.kdl")
-	if _, err := os.Stat(dmsBindsPath); err == nil {
-		p.dmsBindsExists = true
+	advsBindsPath := filepath.Join(p.configDir, "advs", "binds.kdl")
+	if _, err := os.Stat(advsBindsPath); err == nil {
+		p.advsBindsExists = true
 	}
 
 	configPath := filepath.Join(p.configDir, "config.kdl")
@@ -271,16 +271,16 @@ func (p *NiriParser) Parse() (*NiriSection, error) {
 		return nil, err
 	}
 
-	if p.dmsBindsExists && !p.dmsProcessed {
-		p.parseDMSBindsDirectly(dmsBindsPath, section)
+	if p.advsBindsExists && !p.advsProcessed {
+		p.parseADVSBindsDirectly(advsBindsPath, section)
 	}
 
 	section.Keybinds = p.finalizeBinds()
 	return section, nil
 }
 
-func (p *NiriParser) parseDMSBindsDirectly(dmsBindsPath string, section *NiriSection) {
-	data, err := os.ReadFile(dmsBindsPath)
+func (p *NiriParser) parseADVSBindsDirectly(advsBindsPath string, section *NiriSection) {
+	data, err := os.ReadFile(advsBindsPath)
 	if err != nil {
 		return
 	}
@@ -291,11 +291,11 @@ func (p *NiriParser) parseDMSBindsDirectly(dmsBindsPath string, section *NiriSec
 	}
 
 	prevSource := p.currentSource
-	p.currentSource = dmsBindsPath
-	baseDir := filepath.Dir(dmsBindsPath)
+	p.currentSource = advsBindsPath
+	baseDir := filepath.Dir(advsBindsPath)
 	p.processNodes(doc.Nodes, section, baseDir)
 	p.currentSource = prevSource
-	p.dmsProcessed = true
+	p.advsProcessed = true
 }
 
 func (p *NiriParser) finalizeBinds() []NiriKeyBinding {
@@ -311,13 +311,13 @@ func (p *NiriParser) finalizeBinds() []NiriKeyBinding {
 func (p *NiriParser) addBind(kb *NiriKeyBinding) {
 	key := p.formatBindKey(kb)
 	normalizedKey := normalizeNiriBindKey(key)
-	isDMSBind := strings.Contains(kb.Source, "dms/binds.kdl")
+	isADVSBind := strings.Contains(kb.Source, "advs/binds.kdl")
 
-	if isDMSBind {
-		p.dmsBindKeys[normalizedKey] = true
-		p.dmsBindMap[normalizedKey] = kb
-	} else if p.dmsBindKeys[normalizedKey] {
-		p.bindsAfterDMS++
+	if isADVSBind {
+		p.advsBindKeys[normalizedKey] = true
+		p.advsBindMap[normalizedKey] = kb
+	} else if p.advsBindKeys[normalizedKey] {
+		p.bindsAfterADVS++
 		p.conflictingConfigs[normalizedKey] = kb
 		p.configBindKeys[normalizedKey] = true
 		return
@@ -408,13 +408,13 @@ func (p *NiriParser) handleInclude(node *document.Node, section *NiriSection, ba
 	}
 
 	includePath := strings.Trim(node.Arguments[0].String(), "\"")
-	isDMSInclude := includePath == "dms/binds.kdl" || strings.HasSuffix(includePath, "/dms/binds.kdl")
+	isADVSInclude := includePath == "advs/binds.kdl" || strings.HasSuffix(includePath, "/advs/binds.kdl")
 
 	p.includeCount++
-	if isDMSInclude {
-		p.dmsBindsIncluded = true
-		p.dmsIncludePos = p.includeCount
-		p.bindsBeforeDMS = len(p.bindMap)
+	if isADVSInclude {
+		p.advsBindsIncluded = true
+		p.advsIncludePos = p.includeCount
+		p.bindsBeforeADVS = len(p.bindMap)
 	}
 
 	fullPath := filepath.Join(baseDir, includePath)
@@ -422,8 +422,8 @@ func (p *NiriParser) handleInclude(node *document.Node, section *NiriSection, ba
 		fullPath = includePath
 	}
 
-	if isDMSInclude {
-		p.dmsProcessed = true
+	if isADVSInclude {
+		p.advsProcessed = true
 	}
 
 	includedSection, err := p.parseFile(fullPath, "")
@@ -434,8 +434,8 @@ func (p *NiriParser) handleInclude(node *document.Node, section *NiriSection, ba
 	section.Children = append(section.Children, includedSection.Children...)
 }
 
-func (p *NiriParser) HasDMSBindsIncluded() bool {
-	return p.dmsBindsIncluded
+func (p *NiriParser) HasADVSBindsIncluded() bool {
+	return p.advsBindsIncluded
 }
 
 func (p *NiriParser) handleRecentWindows(node *document.Node) {
@@ -552,45 +552,45 @@ func (p *NiriParser) parseKeyCombo(combo string) ([]string, string) {
 type NiriParseResult struct {
 	Section            *NiriSection
 	ModKey             string
-	DMSBindsIncluded   bool
-	DMSStatus          *DMSBindsStatusInfo
+	ADVSBindsIncluded   bool
+	ADVSStatus          *ADVSBindsStatusInfo
 	ConflictingConfigs map[string]*NiriKeyBinding
 }
 
-type DMSBindsStatusInfo struct {
+type ADVSBindsStatusInfo struct {
 	Exists          bool
 	Included        bool
 	IncludePosition int
 	TotalIncludes   int
-	BindsAfterDMS   int
+	BindsAfterADVS   int
 	Effective       bool
 	OverriddenBy    int
 	StatusMessage   string
 }
 
-func (p *NiriParser) buildDMSStatus() *DMSBindsStatusInfo {
-	status := &DMSBindsStatusInfo{
-		Exists:          p.dmsBindsExists,
-		Included:        p.dmsBindsIncluded,
-		IncludePosition: p.dmsIncludePos,
+func (p *NiriParser) buildADVSStatus() *ADVSBindsStatusInfo {
+	status := &ADVSBindsStatusInfo{
+		Exists:          p.advsBindsExists,
+		Included:        p.advsBindsIncluded,
+		IncludePosition: p.advsIncludePos,
 		TotalIncludes:   p.includeCount,
-		BindsAfterDMS:   p.bindsAfterDMS,
+		BindsAfterADVS:   p.bindsAfterADVS,
 	}
 
 	switch {
-	case !p.dmsBindsExists:
+	case !p.advsBindsExists:
 		status.Effective = false
-		status.StatusMessage = "dms/binds.kdl does not exist"
-	case !p.dmsBindsIncluded:
+		status.StatusMessage = "advs/binds.kdl does not exist"
+	case !p.advsBindsIncluded:
 		status.Effective = false
-		status.StatusMessage = "dms/binds.kdl is not included in config.kdl"
-	case p.bindsAfterDMS > 0:
+		status.StatusMessage = "advs/binds.kdl is not included in config.kdl"
+	case p.bindsAfterADVS > 0:
 		status.Effective = true
-		status.OverriddenBy = p.bindsAfterDMS
-		status.StatusMessage = "Some DMS binds may be overridden by config binds"
+		status.OverriddenBy = p.bindsAfterADVS
+		status.StatusMessage = "Some ADVS binds may be overridden by config binds"
 	default:
 		status.Effective = true
-		status.StatusMessage = "DMS binds are active"
+		status.StatusMessage = "ADVS binds are active"
 	}
 
 	return status
@@ -605,8 +605,8 @@ func ParseNiriKeys(configDir string) (*NiriParseResult, error) {
 	return &NiriParseResult{
 		Section:            section,
 		ModKey:             parser.modKey,
-		DMSBindsIncluded:   parser.HasDMSBindsIncluded(),
-		DMSStatus:          parser.buildDMSStatus(),
+		ADVSBindsIncluded:   parser.HasADVSBindsIncluded(),
+		ADVSStatus:          parser.buildADVSStatus(),
 		ConflictingConfigs: parser.conflictingConfigs,
 	}, nil
 }

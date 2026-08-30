@@ -51,7 +51,7 @@ Rectangle {
             width: parent.width - headerText.width - settingsButton.width
         }
 
-        DankActionButton {
+        AdvActionButton {
             id: settingsButton
             anchors.verticalCenter: parent.verticalCenter
             iconName: "settings"
@@ -84,7 +84,7 @@ Rectangle {
             radius: (Theme.iconSize + Theme.spacingS * 2) / 2
             color: iconArea.containsMouse ? Theme.primaryHover : Theme.withAlpha(Theme.primaryHover, 0)
 
-            DankRipple {
+            AdvRipple {
                 id: muteRipple
                 cornerRadius: parent.radius
             }
@@ -102,7 +102,7 @@ Rectangle {
                 }
             }
 
-            DankIcon {
+            AdvIcon {
                 anchors.centerIn: parent
                 name: AudioService.sinkVolumeIconName
                 size: Theme.iconSize
@@ -110,7 +110,7 @@ Rectangle {
             }
         }
 
-        DankSlider {
+        AdvSlider {
             readonly property real actualVolumePercent: AudioService.sink && AudioService.sink.audio ? Math.round(AudioService.sink.audio.volume * 100) : 0
 
             anchors.verticalCenter: parent.verticalCenter
@@ -138,7 +138,7 @@ Rectangle {
         }
     }
 
-    DankFlickable {
+    AdvFlickable {
         id: audioContent
         anchors.top: volumeSlider.visible ? volumeSlider.bottom : headerRow.bottom
         anchors.left: parent.left
@@ -210,7 +210,7 @@ Rectangle {
                     border.color: modelData === AudioService.sink ? Theme.primary : Theme.outlineLight
                     border.width: modelData === AudioService.sink ? 2 : 1
 
-                    DankRipple {
+                    AdvRipple {
                         id: deviceRipple
                         cornerRadius: outputDelegate.radius
                     }
@@ -221,7 +221,7 @@ Rectangle {
                         anchors.leftMargin: Theme.spacingM
                         spacing: Theme.spacingS
 
-                        DankIcon {
+                        AdvIcon {
                             name: AudioService.sinkIcon(modelData)
                             size: Theme.iconSize - 4
                             color: modelData === AudioService.sink ? Theme.primary : Theme.surfaceText
@@ -259,7 +259,7 @@ Rectangle {
                         }
                     }
 
-                    DankActionButton {
+                    AdvActionButton {
                         id: portButton
                         anchors.right: pinPill.left
                         anchors.rightMargin: Theme.spacingXS
@@ -291,7 +291,7 @@ Rectangle {
                             anchors.centerIn: parent
                             spacing: Theme.spacingXS
 
-                            DankIcon {
+                            AdvIcon {
                                 name: "push_pin"
                                 size: 16
                                 color: {
@@ -315,7 +315,7 @@ Rectangle {
                             }
                         }
 
-                        DankRipple {
+                        AdvRipple {
                             id: pinRipple
                             cornerRadius: parent.radius
                         }
@@ -410,7 +410,7 @@ Rectangle {
                         anchors.leftMargin: Theme.spacingM
                         spacing: Theme.spacingS
 
-                        DankIcon {
+                        AdvIcon {
                             name: "album"
                             size: Theme.iconSize - 4
                             color: !modelData.audio.muted ? Theme.primary : Theme.surfaceText
@@ -466,7 +466,7 @@ Rectangle {
                                 radius: Theme.cornerRadius
                                 color: appIconArea.containsMouse ? Theme.primaryHover : Theme.withAlpha(Theme.primary, 0)
 
-                                DankRipple {
+                                AdvRipple {
                                     id: appMuteRipple
                                     cornerRadius: parent.radius
                                 }
@@ -486,7 +486,7 @@ Rectangle {
                                     }
                                 }
 
-                                DankIcon {
+                                AdvIcon {
                                     anchors.centerIn: parent
                                     name: AudioService.volumeIconName(modelData)
                                     size: Theme.iconSize
@@ -494,7 +494,7 @@ Rectangle {
                                 }
                             }
 
-                            DankSlider {
+                            AdvSlider {
                                 readonly property real actualVolumePercent: modelData ? Math.round(modelData.audio.volume * 100) : 0
 
                                 anchors.verticalCenter: parent.verticalCenter

@@ -11,7 +11,7 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/log"
+	"github.com/bavanchun/ariadnev-shell/core/internal/log"
 	"github.com/AvengeMedia/dankgo/syncmap"
 )
 
@@ -395,7 +395,7 @@ func (m *Manager) runUpgrade(ctx context.Context, opts UpgradeOptions) {
 func (m *Manager) runCustomUpgrade(ctx context.Context, opts UpgradeOptions) {
 	term := findTerminal(opts.Terminal)
 	if term == "" {
-		m.setError(ErrCodeBackendFailed, "no terminal found (pick one in DMS settings, set $TERMINAL, or install kitty/ghostty/foot/alacritty)")
+		m.setError(ErrCodeBackendFailed, "no terminal found (pick one in ADVS settings, set $TERMINAL, or install kitty/ghostty/foot/alacritty)")
 		return
 	}
 
@@ -410,7 +410,7 @@ func (m *Manager) runCustomUpgrade(ctx context.Context, opts UpgradeOptions) {
 	m.markDirty()
 
 	onLine := func(line string) { m.appendLog(line) }
-	argv := wrapInTerminal(term, "DMS — System Update (custom)", opts.CustomCommand, opts.TerminalArgs)
+	argv := wrapInTerminal(term, "ADVS — System Update (custom)", opts.CustomCommand, opts.TerminalArgs)
 	if err := Run(ctx, argv, RunOptions{OnLine: onLine}); err != nil {
 		switch {
 		case errors.Is(ctx.Err(), context.DeadlineExceeded):

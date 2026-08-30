@@ -314,8 +314,8 @@
   "A separate minimal launcher action that works in Standalone, Separate Frame Mode, and Connected Frame Mode.": {
     "A separate minimal launcher action that works in Standalone, Separate Frame Mode, and Connected Frame Mode.": "スタンドアロン、分離フレームモード、接続フレームモードで使える、独立した最小ランチャーアクションです。"
   },
-  "A slight natural settle, DMS default": {
-    "A slight natural settle, DMS default": ""
+  "A slight natural settle, ADVS default": {
+    "A slight natural settle, ADVS default": ""
   },
   "A user with that name already exists.": {
     "A user with that name already exists.": "その名前のユーザーはすでに存在します。"
@@ -380,8 +380,8 @@
   "Activate Greeter": {
     "Activate Greeter": "Greeter を有効にする"
   },
-  "Activate the DMS greeter? A terminal will open for sudo authentication. Run Sync after activation to apply your settings.": {
-    "Activate the DMS greeter? A terminal will open for sudo authentication. Run Sync after activation to apply your settings.": "DMS greeter を有効にしますか? sudo 認証用の端末が開きます。有効化後に設定を適用するには Sync を実行してください。"
+  "Activate the ADVS greeter? A terminal will open for sudo authentication. Run Sync after activation to apply your settings.": {
+    "Activate the ADVS greeter? A terminal will open for sudo authentication. Run Sync after activation to apply your settings.": "ADVS greeter を有効にしますか? sudo 認証用の端末が開きます。有効化後に設定を適用するには Sync を実行してください。"
   },
   "Activates immediately": {
     "Activates immediately": ""
@@ -428,11 +428,11 @@
   "Add \"%1\" to the %2 group?": {
     "Add \"%1\" to the %2 group?": "\"%1\" を %2 グループに追加しますか？"
   },
-  "Add \"%1\" to the %2 group? They must log out and back in, then run dms greeter sync --profile to publish their login-screen theme.": {
-    "Add \"%1\" to the %2 group? They must log out and back in, then run dms greeter sync --profile to publish their login-screen theme.": "\"%1\" を %2 グループに追加しますか？ログイン画面のテーマを公開するには、一度ログアウトして再ログインし、dms greeter sync --profile を実行する必要があります。"
+  "Add \"%1\" to the %2 group? They must log out and back in, then run advs greeter sync --profile to publish their login-screen theme.": {
+    "Add \"%1\" to the %2 group? They must log out and back in, then run advs greeter sync --profile to publish their login-screen theme.": "\"%1\" を %2 グループに追加しますか？ログイン画面のテーマを公開するには、一度ログアウトして再ログインし、advs greeter sync --profile を実行する必要があります。"
   },
-  "Add \"%1\" to the %2 group? They must log out and back in, then run dms-greeter sync --profile to publish their login-screen theme.": {
-    "Add \"%1\" to the %2 group? They must log out and back in, then run dms-greeter sync --profile to publish their login-screen theme.": ""
+  "Add \"%1\" to the %2 group? They must log out and back in, then run advs-greeter sync --profile to publish their login-screen theme.": {
+    "Add \"%1\" to the %2 group? They must log out and back in, then run advs-greeter sync --profile to publish their login-screen theme.": ""
   },
   "Add Bar": {
     "Add Bar": "バーを追加"
@@ -482,11 +482,11 @@
   "Add notes": {
     "Add notes": "メモを追加"
   },
-  "Add the new user to the %1 group so they can run dms greeter sync --profile.": {
-    "Add the new user to the %1 group so they can run dms greeter sync --profile.": "新しいユーザーを %1 グループに追加して、dms greeter sync --profile を実行できるようにします。"
+  "Add the new user to the %1 group so they can run advs greeter sync --profile.": {
+    "Add the new user to the %1 group so they can run advs greeter sync --profile.": "新しいユーザーを %1 グループに追加して、advs greeter sync --profile を実行できるようにします。"
   },
-  "Add the new user to the %1 group so they can run dms-greeter sync --profile.": {
-    "Add the new user to the %1 group so they can run dms-greeter sync --profile.": ""
+  "Add the new user to the %1 group so they can run advs-greeter sync --profile.": {
+    "Add the new user to the %1 group so they can run advs-greeter sync --profile.": ""
   },
   "Add the new user to the %1 group so they can use sudo.": {
     "Add the new user to the %1 group so they can use sudo.": "新しいユーザーを %1 グループに追加して、sudo を使えるようにします。"
@@ -905,8 +905,8 @@
   "Auto-Hide Timeout": {
     "Auto-Hide Timeout": "自動非表示までの時間"
   },
-  "Auto-close Niri overview when DMS launches or focuses a window.": {
-    "Auto-close Niri overview when DMS launches or focuses a window.": ""
+  "Auto-close Niri overview when ADVS launches or focuses a window.": {
+    "Auto-close Niri overview when ADVS launches or focuses a window.": ""
   },
   "Auto-close Niri overview when launching apps.": {
     "Auto-close Niri overview when launching apps.": "アプリ起動時に Niri の概要を自動的に閉じます。"
@@ -977,8 +977,8 @@
   "Automatically lock after": {
     "Automatically lock after": "自動的にロック"
   },
-  "Automatically lock the screen when DMS starts": {
-    "Automatically lock the screen when DMS starts": "DMS 起動時に自動的に画面をロック"
+  "Automatically lock the screen when ADVS starts": {
+    "Automatically lock the screen when ADVS starts": "ADVS 起動時に自動的に画面をロック"
   },
   "Automatically lock the screen when the system prepares to suspend": {
     "Automatically lock the screen when the system prepares to suspend": "システムが一時停止の準備中に自動的に画面をロック"
@@ -1415,8 +1415,8 @@
   "Center Section": {
     "Center Section": "センターセクション"
   },
-  "Center Section - Reserved by Dank Island": {
-    "Center Section - Reserved by Dank Island": ""
+  "Center Section - Reserved by Adv Island": {
+    "Center Section - Reserved by Adv Island": ""
   },
   "Center Single Column": {
     "Center Single Column": "中央の単一列"
@@ -1433,8 +1433,8 @@
   "Change Volume": {
     "Change Volume": "音量を変更"
   },
-  "Change the locale used by the DMS interface.": {
-    "Change the locale used by the DMS interface.": "DMS インターフェースで使用するロケールを変更します。"
+  "Change the locale used by the ADVS interface.": {
+    "Change the locale used by the ADVS interface.": "ADVS インターフェースで使用するロケールを変更します。"
   },
   "Change the locale used for date and time formatting, independent of the interface language.": {
     "Change the locale used for date and time formatting, independent of the interface language.": "日時の書式設定に使用するロケールを、インターフェース言語とは独立して変更します。"
@@ -1529,8 +1529,8 @@
   "Choose neutral or accent-colored widget text": {
     "Choose neutral or accent-colored widget text": "ウィジェット文字色をニュートラルかアクセント色から選択"
   },
-  "Choose the logo displayed on the launcher button in DankBar": {
-    "Choose the logo displayed on the launcher button in DankBar": "Dank Barのランチャーボタンに表示されるロゴを選ぶ"
+  "Choose the logo displayed on the launcher button in AdvBar": {
+    "Choose the logo displayed on the launcher button in AdvBar": "Adv Barのランチャーボタンに表示されるロゴを選ぶ"
   },
   "Choose wallpaper folder": {
     "Choose wallpaper folder": ""
@@ -1742,8 +1742,8 @@
   "Color theme for syntax highlighting. %1 themes available.": {
     "Color theme for syntax highlighting. %1 themes available.": "シンタックスハイライト用のカラーテーマ。%1 個のテーマが利用可能です。"
   },
-  "Color theme from DMS registry": {
-    "Color theme from DMS registry": "DMS レジストリのカラーテーマ"
+  "Color theme from ADVS registry": {
+    "Color theme from ADVS registry": "ADVS レジストリのカラーテーマ"
   },
   "Colorful": {
     "Colorful": "カラフル"
@@ -1853,8 +1853,8 @@
   "Configure which displays show \"%1": {
     "Configure which displays show \"%1\"": "\"%1\" を表示するディスプレイを設定"
   },
-  "Configure which displays show Dank Island as \"%1": {
-    "Configure which displays show Dank Island as \"%1\"": ""
+  "Configure which displays show Adv Island as \"%1": {
+    "Configure which displays show Adv Island as \"%1\"": ""
   },
   "Configure which displays show shell components": {
     "Configure which displays show shell components": "シェルコンポーネントを表示するディスプレイを配置"
@@ -1982,8 +1982,8 @@
   "Convenience options for the login screen": {
     "Convenience options for the login screen": ""
   },
-  "Convert to DMS": {
-    "Convert to DMS": "DMS に変換"
+  "Convert to ADVS": {
+    "Convert to ADVS": "ADVS に変換"
   },
   "Cooldown": {
     "Cooldown": "クールダウン"
@@ -2258,41 +2258,41 @@
   "DEMO MODE - Click anywhere to exit": {
     "DEMO MODE - Click anywhere to exit": "デモモード -任意の場所をクリックして 終了"
   },
-  "DMS Chooser": {
-    "DMS Chooser": "DMS セレクター"
+  "ADVS Chooser": {
+    "ADVS Chooser": "ADVS セレクター"
   },
-  "DMS Plugin Manager Unavailable": {
-    "DMS Plugin Manager Unavailable": "DMS プラグイン マネージャーが利用できません"
+  "ADVS Plugin Manager Unavailable": {
+    "ADVS Plugin Manager Unavailable": "ADVS プラグイン マネージャーが利用できません"
   },
-  "DMS Settings": {
-    "DMS Settings": "DMS 設定"
+  "ADVS Settings": {
+    "ADVS Settings": "ADVS 設定"
   },
-  "DMS Settings writes Lua keybinds. Add the DMS include so edits apply.": {
-    "DMS Settings writes Lua keybinds. Add the DMS include so edits apply.": "DMS 設定は Lua キーバインドを書き込みます。変更を反映するには DMS include を追加してください。"
+  "ADVS Settings writes Lua keybinds. Add the ADVS include so edits apply.": {
+    "ADVS Settings writes Lua keybinds. Add the ADVS include so edits apply.": "ADVS 設定は Lua キーバインドを書き込みます。変更を反映するには ADVS include を追加してください。"
   },
-  "DMS Shortcuts": {
-    "DMS Shortcuts": "DMS ショートカット"
+  "ADVS Shortcuts": {
+    "ADVS Shortcuts": "ADVS ショートカット"
   },
-  "DMS is a highly customizable modern desktop shell with a %1 inspired design.<br/><br/>It is built with %2, a QT6 framework for building desktop shells, and %3, a statically typed, compiled programming language.": {
-    "DMS is a highly customizable modern desktop shell with a %1 inspired design.<br/><br/>It is built with %2, a QT6 framework for building desktop shells, and %3, a statically typed, compiled programming language.": ""
+  "ADVS is a highly customizable modern desktop shell with a %1 inspired design.<br/><br/>It is built with %2, a QT6 framework for building desktop shells, and %3, a statically typed, compiled programming language.": {
+    "ADVS is a highly customizable modern desktop shell with a %1 inspired design.<br/><br/>It is built with %2, a QT6 framework for building desktop shells, and %3, a statically typed, compiled programming language.": ""
   },
-  "DMS out of date": {
-    "DMS out of date": "DMSに更新があります"
+  "ADVS out of date": {
+    "ADVS out of date": "ADVSに更新があります"
   },
-  "DMS removes its managed block from /etc/pam.d/greetd and stops write services": {
-    "DMS removes its managed block from /etc/pam.d/greetd and stops write services": ""
+  "ADVS removes its managed block from /etc/pam.d/greetd and stops write services": {
+    "ADVS removes its managed block from /etc/pam.d/greetd and stops write services": ""
   },
-  "DMS server is outdated (API v%1, expected v%2)": {
-    "DMS server is outdated (API v%1, expected v%2)": "DMS サーバーのバージョンが古い（APIバージョン %1、本来はバージョン %2 が必要）"
+  "ADVS server is outdated (API v%1, expected v%2)": {
+    "ADVS server is outdated (API v%1, expected v%2)": "ADVS サーバーのバージョンが古い（APIバージョン %1、本来はバージョン %2 が必要）"
   },
-  "DMS service is not connected. Clipboard settings are unavailable.": {
-    "DMS service is not connected. Clipboard settings are unavailable.": "DMS サービスに接続されていません。クリップボード設定は利用できません。"
+  "ADVS service is not connected. Clipboard settings are unavailable.": {
+    "ADVS service is not connected. Clipboard settings are unavailable.": "ADVS サービスに接続されていません。クリップボード設定は利用できません。"
   },
-  "DMS shell actions (launcher, clipboard, etc.)": {
-    "DMS shell actions (launcher, clipboard, etc.)": "DMS シェルアクション（ランチャー、クリップボードなど）"
+  "ADVS shell actions (launcher, clipboard, etc.)": {
+    "ADVS shell actions (launcher, clipboard, etc.)": "ADVS シェルアクション（ランチャー、クリップボードなど）"
   },
-  "DMS_SOCKET not available": {
-    "DMS_SOCKET not available": "DMS_SOCKETが利用できません"
+  "ADVS_SOCKET not available": {
+    "ADVS_SOCKET not available": "ADVS_SOCKETが利用できません"
   },
   "Daily": {
     "Daily": "毎日"
@@ -2303,41 +2303,41 @@
   "Damped springs settle straight to their target with no overshoot": {
     "Damped springs settle straight to their target with no overshoot": ""
   },
-  "Dank": {
-    "Dank": "Dank"
+  "Adv": {
+    "Adv": "Adv"
   },
-  "Dank Bar": {
-    "Dank Bar": "Dank Bar"
+  "Adv Bar": {
+    "Adv Bar": "Adv Bar"
   },
-  "Dank Bar Xray": {
-    "Dank Bar Xray": ""
+  "Adv Bar Xray": {
+    "Adv Bar Xray": ""
   },
-  "Dank Dash": {
-    "Dank Dash": ""
+  "Adv Dash": {
+    "Adv Dash": ""
   },
-  "Dank Island - Beta": {
-    "Dank Island - Beta": ""
+  "Adv Island - Beta": {
+    "Adv Island - Beta": ""
   },
-  "Dank Island instance": {
-    "Dank Island instance": ""
+  "Adv Island instance": {
+    "Adv Island instance": ""
   },
-  "DankBar": {
-    "DankBar": "DankBar"
+  "AdvBar": {
+    "AdvBar": "AdvBar"
   },
-  "DankCalendar": {
-    "DankCalendar": "DankCalendar"
+  "AdvCalendar": {
+    "AdvCalendar": "AdvCalendar"
   },
-  "DankCalendar isn't installed": {
-    "DankCalendar isn't installed": "DankCalendar がインストールされていません"
+  "AdvCalendar isn't installed": {
+    "AdvCalendar isn't installed": "AdvCalendar がインストールされていません"
   },
-  "DankCalendar isn't running": {
-    "DankCalendar isn't running": "DankCalendar が実行されていません"
+  "AdvCalendar isn't running": {
+    "AdvCalendar isn't running": "AdvCalendar が実行されていません"
   },
-  "DankMaterialShell is ready to use": {
-    "DankMaterialShell is ready to use": "DankMaterialShell は使用可能です"
+  "AriadnevShell is ready to use": {
+    "AriadnevShell is ready to use": "AriadnevShell は使用可能です"
   },
-  "DankShell & System Icons (requires restart)": {
-    "DankShell & System Icons (requires restart)": "DankShell とシステムアイコン（再起動が必要）"
+  "AdvShell & System Icons (requires restart)": {
+    "AdvShell & System Icons (requires restart)": "AdvShell とシステムアイコン（再起動が必要）"
   },
   "Dark Mode": {
     "Dark Mode": "ダークモード"
@@ -2423,8 +2423,8 @@
   "Default Width (%)": {
     "Default Width (%)": "デフォルト幅（%）"
   },
-  "Default launcher shortcuts open a native launcher activity inside Dank Island. Spotlight is used when the focused screen has no DankIsland.": {
-    "Default launcher shortcuts open a native launcher activity inside Dank Island. Spotlight is used when the focused screen has no DankIsland.": ""
+  "Default launcher shortcuts open a native launcher activity inside Adv Island. Spotlight is used when the focused screen has no AdvIsland.": {
+    "Default launcher shortcuts open a native launcher activity inside Adv Island. Spotlight is used when the focused screen has no AdvIsland.": ""
   },
   "Default launcher shortcuts open the full launcher with mode tabs, grid view, and action panel.": {
     "Default launcher shortcuts open the full launcher with mode tabs, grid view, and action panel.": "既定のランチャーショートカットで、モードタブ、グリッド表示、アクションパネル付きのフルランチャーを開きます。"
@@ -2789,8 +2789,8 @@
   "Drop here": {
     "Drop here": ""
   },
-  "Drop your override for %1 so the DMS default action re-applies?": {
-    "Drop your override for %1 so the DMS default action re-applies?": "%1 の上書きを破棄して、DMS の既定アクションを再適用しますか？"
+  "Drop your override for %1 so the ADVS default action re-applies?": {
+    "Drop your override for %1 so the ADVS default action re-applies?": "%1 の上書きを破棄して、ADVS の既定アクションを再適用しますか？"
   },
   "Duplicate": {
     "Duplicate": "複製"
@@ -2939,8 +2939,8 @@
   "Enable a custom override below to set per-bar shadow intensity, opacity, and color.": {
     "Enable a custom override below to set per-bar shadow intensity, opacity, and color.": "以下のカスタムオーバーライドを有効にして、バーごとの影の強さ、透明度、色を設定します。"
   },
-  "Enable compositor-targetable blur layer (namespace: dms:blurwallpaper). Requires manual niri configuration.": {
-    "Enable compositor-targetable blur layer (namespace: dms:blurwallpaper). Requires manual niri configuration.": "コンポジターをターゲットに設定できるぼかしレイヤー(名前空間：dms:blurwallpaper)を有効にします。Niri を手動で設定する必要があります。"
+  "Enable compositor-targetable blur layer (namespace: advs:blurwallpaper). Requires manual niri configuration.": {
+    "Enable compositor-targetable blur layer (namespace: advs:blurwallpaper). Requires manual niri configuration.": "コンポジターをターゲットに設定できるぼかしレイヤー(名前空間：advs:blurwallpaper)を有効にします。Niri を手動で設定する必要があります。"
   },
   "Enable fingerprint at login": {
     "Enable fingerprint at login": "ログイン時に指紋認証を有効にする"
@@ -2948,8 +2948,8 @@
   "Enable fingerprint authentication": {
     "Enable fingerprint authentication": "指紋認証を有効に"
   },
-  "Enable fingerprint or security key for DMS Greeter": {
-    "Enable fingerprint or security key for DMS Greeter": ""
+  "Enable fingerprint or security key for ADVS Greeter": {
+    "Enable fingerprint or security key for ADVS Greeter": ""
   },
   "Enable loginctl lock integration": {
     "Enable loginctl lock integration": "ログインロックの統合を有効に"
@@ -3317,11 +3317,11 @@
   "Failed to ring device": {
     "Failed to ring device": "デバイスの呼び出しに失敗しました"
   },
-  "Failed to run 'dms greeter status'. Ensure DMS is installed and dms is in PATH.": {
-    "Failed to run 'dms greeter status'. Ensure DMS is installed and dms is in PATH.": "'dms greeter status' の実行に失敗しました。DMS がインストールされ、dms が PATH にあることを確認してください。"
+  "Failed to run 'advs greeter status'. Ensure ADVS is installed and advs is in PATH.": {
+    "Failed to run 'advs greeter status'. Ensure ADVS is installed and advs is in PATH.": "'advs greeter status' の実行に失敗しました。ADVS がインストールされ、advs が PATH にあることを確認してください。"
   },
-  "Failed to run 'dms-greeter status'. Ensure the dms-greeter package is installed.": {
-    "Failed to run 'dms-greeter status'. Ensure the dms-greeter package is installed.": ""
+  "Failed to run 'advs-greeter status'. Ensure the advs-greeter package is installed.": {
+    "Failed to run 'advs-greeter status'. Ensure the advs-greeter package is installed.": ""
   },
   "Failed to save VPN credentials": {
     "Failed to save VPN credentials": "VPN 認証情報の保存に失敗しました"
@@ -3467,8 +3467,8 @@
   "File received from %1": {
     "File received from %1": ""
   },
-  "File search requires dsearch\nInstall from github.com/AvengeMedia/danksearch": {
-    "File search requires dsearch\nInstall from github.com/AvengeMedia/danksearch": "ファイル検索には dsearch が必要です\ngithub.com/AvengeMedia/danksearch からインストールしてください"
+  "File search requires dsearch\nInstall from github.com/bavanchun/advsearch": {
+    "File search requires dsearch\nInstall from github.com/bavanchun/advsearch": "ファイル検索には dsearch が必要です\ngithub.com/bavanchun/advsearch からインストールしてください"
   },
   "File search unavailable": {
     "File search unavailable": "ファイル検索は利用できません"
@@ -3626,8 +3626,8 @@
   "Folders": {
     "Folders": "フォルダー"
   },
-  "Follow DMS background color": {
-    "Follow DMS background color": "DMS の背景色に従う"
+  "Follow ADVS background color": {
+    "Follow ADVS background color": "ADVS の背景色に従う"
   },
   "Follow Monitor Focus": {
     "Follow Monitor Focus": "モニターフォーカスに従う"
@@ -3824,8 +3824,8 @@
   "Gamma Control": {
     "Gamma Control": "ガンマ設定"
   },
-  "Gamma control not available. Requires DMS API v6+.": {
-    "Gamma control not available. Requires DMS API v6+.": "ガンマ制御は使用できません。DMS API v6+ が必要です。"
+  "Gamma control not available. Requires ADVS API v6+.": {
+    "Gamma control not available. Requires ADVS API v6+.": "ガンマ制御は使用できません。ADVS API v6+ が必要です。"
   },
   "Gap between the end widgets and the bar ends (0 = edge-to-edge)": {
     "Gap between the end widgets and the bar ends (0 = edge-to-edge)": "端のウィジェットとバー端の間隔（0 = 端まで）"
@@ -3839,11 +3839,11 @@
   "Generate Override": {
     "Generate Override": "Override を生成"
   },
-  "Generate baseline GTK3/4 or QT5/QT6 (requires qt6ct-kde) configurations to follow DMS colors. Only needed once.<br /><br />It is recommended to configure %1 prior to applying GTK themes.": {
-    "Generate baseline GTK3/4 or QT5/QT6 (requires qt6ct-kde) configurations to follow DMS colors. Only needed once.<br /><br />It is recommended to configure %1 prior to applying GTK themes.": ""
+  "Generate baseline GTK3/4 or QT5/QT6 (requires qt6ct-kde) configurations to follow ADVS colors. Only needed once.<br /><br />It is recommended to configure %1 prior to applying GTK themes.": {
+    "Generate baseline GTK3/4 or QT5/QT6 (requires qt6ct-kde) configurations to follow ADVS colors. Only needed once.<br /><br />It is recommended to configure %1 prior to applying GTK themes.": ""
   },
-  "Generate baseline GTK3/4, QT5/QT6, or qtengine configurations to follow DMS colors (only qt6ct requires qt6ct-kde). Only needed once.<br /><br />It is recommended to configure %1 prior to applying GTK themes.": {
-    "Generate baseline GTK3/4, QT5/QT6, or qtengine configurations to follow DMS colors (only qt6ct requires qt6ct-kde). Only needed once.<br /><br />It is recommended to configure %1 prior to applying GTK themes.": ""
+  "Generate baseline GTK3/4, QT5/QT6, or qtengine configurations to follow ADVS colors (only qt6ct requires qt6ct-kde). Only needed once.<br /><br />It is recommended to configure %1 prior to applying GTK themes.": {
+    "Generate baseline GTK3/4, QT5/QT6, or qtengine configurations to follow ADVS colors (only qt6ct requires qt6ct-kde). Only needed once.<br /><br />It is recommended to configure %1 prior to applying GTK themes.": ""
   },
   "Generic": {
     "Generic": "プリセット"
@@ -3914,11 +3914,11 @@
   "Greeter font": {
     "Greeter font": "Greeter フォント"
   },
-  "Greeter group members can sync their login-screen theme with dms greeter sync --profile after logging out and back in.": {
-    "Greeter group members can sync their login-screen theme with dms greeter sync --profile after logging out and back in.": "Greeter グループのメンバーは、ログアウトして再ログインしたあと dms greeter sync --profile でログイン画面テーマを同期できます。"
+  "Greeter group members can sync their login-screen theme with advs greeter sync --profile after logging out and back in.": {
+    "Greeter group members can sync their login-screen theme with advs greeter sync --profile after logging out and back in.": "Greeter グループのメンバーは、ログアウトして再ログインしたあと advs greeter sync --profile でログイン画面テーマを同期できます。"
   },
-  "Greeter group members can sync their login-screen theme with dms-greeter sync --profile after logging out and back in.": {
-    "Greeter group members can sync their login-screen theme with dms-greeter sync --profile after logging out and back in.": ""
+  "Greeter group members can sync their login-screen theme with advs-greeter sync --profile after logging out and back in.": {
+    "Greeter group members can sync their login-screen theme with advs-greeter sync --profile after logging out and back in.": ""
   },
   "Greeter group:": {
     "Greeter group:": "Greeter グループ:"
@@ -4262,8 +4262,8 @@
   "Icon Theme": {
     "Icon Theme": "アイコンテーマ"
   },
-  "Icon theme changed outside DMS; switched to System Default": {
-    "Icon theme changed outside DMS; switched to System Default": "アイコンテーマが DMS 外で変更されたため、システム既定に切り替えました"
+  "Icon theme changed outside ADVS; switched to System Default": {
+    "Icon theme changed outside ADVS; switched to System Default": "アイコンテーマが ADVS 外で変更されたため、システム既定に切り替えました"
   },
   "Identical alerts show as one popup instead of stacking": {
     "Identical alerts show as one popup instead of stacking": "同一アラートは積み重ねず 1 つのポップアップとして表示"
@@ -4286,8 +4286,8 @@
   "Idle Settings": {
     "Idle Settings": "アイドル設定"
   },
-  "If autostart app icons don't appear in the system tray, generate a systemd override to ensure DMS starts before autostart apps": {
-    "If autostart app icons don't appear in the system tray, generate a systemd override to ensure DMS starts before autostart apps": "自動起動アプリのアイコンがシステムトレイに出ない場合、DMS が自動起動アプリより先に起動するよう systemd override を生成します"
+  "If autostart app icons don't appear in the system tray, generate a systemd override to ensure ADVS starts before autostart apps": {
+    "If autostart app icons don't appear in the system tray, generate a systemd override to ensure ADVS starts before autostart apps": "自動起動アプリのアイコンがシステムトレイに出ない場合、ADVS が自動起動アプリより先に起動するよう systemd override を生成します"
   },
   "If the field is hidden, it will appear as soon as a key is pressed.": {
     "If the field is hidden, it will appear as soon as a key is pressed.": "フィールドが非表示の場合、キーが押されるとすぐに表示されます。"
@@ -4427,8 +4427,8 @@
   "Install Theme": {
     "Install Theme": "テーマをインストール"
   },
-  "Install color themes from the DMS theme registry": {
-    "Install color themes from the DMS theme registry": "DMS テーマレジストリからカラーテーマをインストール"
+  "Install color themes from the ADVS theme registry": {
+    "Install color themes from the ADVS theme registry": "ADVS テーマレジストリからカラーテーマをインストール"
   },
   "Install complete. Greeter has been installed.": {
     "Install complete. Greeter has been installed.": "インストールが完了しました。Greeter がインストールされました。"
@@ -4442,17 +4442,17 @@
   "Install matugen package for dynamic theming": {
     "Install matugen package for dynamic theming": "動的テーマ用に matugen パッケージをインストール"
   },
-  "Install plugin '%1' from the DMS registry?": {
-    "Install plugin '%1' from the DMS registry?": "DMS レジストリからプラグイン '%1' をインストールしますか?"
+  "Install plugin '%1' from the ADVS registry?": {
+    "Install plugin '%1' from the ADVS registry?": "ADVS レジストリからプラグイン '%1' をインストールしますか?"
   },
-  "Install plugins from the DMS plugin registry": {
-    "Install plugins from the DMS plugin registry": "DMSプラグインレジストリからプラグインをインストールする"
+  "Install plugins from the ADVS plugin registry": {
+    "Install plugins from the ADVS plugin registry": "ADVSプラグインレジストリからプラグインをインストールする"
   },
-  "Install the DMS greeter? A terminal will open for sudo authentication.": {
-    "Install the DMS greeter? A terminal will open for sudo authentication.": "DMS Greeter をインストールしますか? sudo 認証用の端末が開きます。"
+  "Install the ADVS greeter? A terminal will open for sudo authentication.": {
+    "Install the ADVS greeter? A terminal will open for sudo authentication.": "ADVS Greeter をインストールしますか? sudo 認証用の端末が開きます。"
   },
-  "Install theme '%1' from the DMS registry?": {
-    "Install theme '%1' from the DMS registry?": "DMS レジストリからテーマ '%1' をインストールしますか?"
+  "Install theme '%1' from the ADVS registry?": {
+    "Install theme '%1' from the ADVS registry?": "ADVS レジストリからテーマ '%1' をインストールしますか?"
   },
   "Installation and PAM setup are documented in the ": {
     "Installation and PAM setup are documented in the ": ""
@@ -4886,8 +4886,8 @@
   "Make the bar background fully transparent": {
     "Make the bar background fully transparent": "バー背景を完全に透明にする"
   },
-  "Manage and configure plugins for extending DMS functionality": {
-    "Manage and configure plugins for extending DMS functionality": "DMS 機能を拡張するためのプラグインを管理および構成"
+  "Manage and configure plugins for extending ADVS functionality": {
+    "Manage and configure plugins for extending ADVS functionality": "ADVS 機能を拡張するためのプラグインを管理および構成"
   },
   "Manage up to 4 independent bar configurations. Each bar has its own position, widgets, styling, and display assignment.": {
     "Manage up to 4 independent bar configurations. Each bar has its own position, widgets, styling, and display assignment.": "最大4つの独立したバー構成を管理できます。各バーには独自の位置、ウィジェット、スタイリング、表示割り当てがあります。"
@@ -4991,8 +4991,8 @@
   "Material inspired shadows and elevation on modals, popouts, and dialogs": {
     "Material inspired shadows and elevation on modals, popouts, and dialogs": "モーダル、ポップアウト、ダイアログに Material 風の影とエレベーションを適用"
   },
-  "Material: Material Design 3 Expressive bezier curves. The DMS default feel.": {
-    "Material: Material Design 3 Expressive bezier curves. The DMS default feel.": "素材：マテリアルデザイン3　表現力豊かなベジェ曲線。DMSのデフォルト感。"
+  "Material: Material Design 3 Expressive bezier curves. The ADVS default feel.": {
+    "Material: Material Design 3 Expressive bezier curves. The ADVS default feel.": "素材：マテリアルデザイン3　表現力豊かなベジェ曲線。ADVSのデフォルト感。"
   },
   "Matugen Contrast": {
     "Matugen Contrast": "Matugen コントラスト"
@@ -5405,8 +5405,8 @@
   "Night mode & gamma": {
     "Night mode & gamma": "ナイトモードとガンマ"
   },
-  "Night mode failed: DMS gamma control not available": {
-    "Night mode failed: DMS gamma control not available": "ナイトモードが失敗しました：DMSガンマ制御が利用できません"
+  "Night mode failed: ADVS gamma control not available": {
+    "Night mode failed: ADVS gamma control not available": "ナイトモードが失敗しました：ADVSガンマ制御が利用できません"
   },
   "Niri Integration": {
     "Niri Integration": "Niri 統合"
@@ -5435,8 +5435,8 @@
   "No Border": {
     "No Border": "ボーダーなし"
   },
-  "No DMS shortcuts configured": {
-    "No DMS shortcuts configured": "DMS ショートカットが設定されていません"
+  "No ADVS shortcuts configured": {
+    "No ADVS shortcuts configured": "ADVS ショートカットが設定されていません"
   },
   "No Dim": {
     "No Dim": "暗転なし"
@@ -5903,8 +5903,8 @@
   "Opacity of cards and nested surfaces inside floating windows": {
     "Opacity of cards and nested surfaces inside floating windows": ""
   },
-  "Opacity of floating DMS windows like Settings, Notepad, and authentication prompts": {
-    "Opacity of floating DMS windows like Settings, Notepad, and authentication prompts": ""
+  "Opacity of floating ADVS windows like Settings, Notepad, and authentication prompts": {
+    "Opacity of floating ADVS windows like Settings, Notepad, and authentication prompts": ""
   },
   "Opacity of foreground cards and nested surfaces on shell panels": {
     "Opacity of foreground cards and nested surfaces on shell panels": ""
@@ -5918,8 +5918,8 @@
   "Open App": {
     "Open App": "アプリを開く"
   },
-  "Open DMS windows floating instead of tiled": {
-    "Open DMS windows floating instead of tiled": ""
+  "Open ADVS windows floating instead of tiled": {
+    "Open ADVS windows floating instead of tiled": ""
   },
   "Open Delay": {
     "Open Delay": ""
@@ -6839,8 +6839,8 @@
   "Remove the shortcut %1?": {
     "Remove the shortcut %1?": "ショートカット %1 を削除しますか？"
   },
-  "Remove the shortcut %1? An unbind entry will be saved to dms/binds-user.lua so it stays removed across DMS updates.": {
-    "Remove the shortcut %1? An unbind entry will be saved to dms/binds-user.lua so it stays removed across DMS updates.": "ショートカット %1 を削除しますか？DMS 更新後も削除状態を保つため、unbind エントリが dms/binds-user.lua に保存されます。"
+  "Remove the shortcut %1? An unbind entry will be saved to advs/binds-user.lua so it stays removed across ADVS updates.": {
+    "Remove the shortcut %1? An unbind entry will be saved to advs/binds-user.lua so it stays removed across ADVS updates.": "ショートカット %1 を削除しますか？ADVS 更新後も削除状態を保つため、unbind エントリが advs/binds-user.lua に保存されます。"
   },
   "Removed administrator privileges": {
     "Removed administrator privileges": "管理者権限を削除しました"
@@ -6893,11 +6893,11 @@
   "Requires 'dgop' tool": {
     "Requires 'dgop' tool": "'dgop' ツールが必要"
   },
-  "Requires DMS %1": {
-    "Requires DMS %1": "DMS %1 が必要"
+  "Requires ADVS %1": {
+    "Requires ADVS %1": "ADVS %1 が必要"
   },
-  "Requires DMS server with sysupdate capability": {
-    "Requires DMS server with sysupdate capability": "sysupdate 機能に対応した DMS サーバーが必要です"
+  "Requires ADVS server with sysupdate capability": {
+    "Requires ADVS server with sysupdate capability": "sysupdate 機能に対応した ADVS サーバーが必要です"
   },
   "Requires MangoWC compositor": {
     "Requires MangoWC compositor": "MangoWC コンポジターが必要です"
@@ -6905,8 +6905,8 @@
   "Requires a newer version of Quickshell": {
     "Requires a newer version of Quickshell": "より新しいバージョンの Quickshell が必要"
   },
-  "Requires greetd, dms-greeter, and your user in the greeter group (plus fprintd/pam_fprintd for fingerprint, pam_u2f for security keys).": {
-    "Requires greetd, dms-greeter, and your user in the greeter group (plus fprintd/pam_fprintd for fingerprint, pam_u2f for security keys).": ""
+  "Requires greetd, advs-greeter, and your user in the greeter group (plus fprintd/pam_fprintd for fingerprint, pam_u2f for security keys).": {
+    "Requires greetd, advs-greeter, and your user in the greeter group (plus fprintd/pam_fprintd for fingerprint, pam_u2f for security keys).": ""
   },
   "Requires night mode support": {
     "Requires night mode support": "ナイトモード対応が必要"
@@ -6914,8 +6914,8 @@
   "Requires remembering the last user and session. Enable those options first.": {
     "Requires remembering the last user and session. Enable those options first.": "最後のユーザーとセッションの記憶が必要です。先にそれらのオプションを有効にしてください。"
   },
-  "Requires the DMS Theme extension from the editor marketplace": {
-    "Requires the DMS Theme extension from the editor marketplace": ""
+  "Requires the ADVS Theme extension from the editor marketplace": {
+    "Requires the ADVS Theme extension from the editor marketplace": ""
   },
   "Reserved Height": {
     "Reserved Height": ""
@@ -6953,11 +6953,11 @@
   "Resolution, position, scale": {
     "Resolution, position, scale": "解像度、位置、スケール"
   },
-  "Restart DMS": {
-    "Restart DMS": "DMSを再起動"
+  "Restart ADVS": {
+    "Restart ADVS": "ADVSを再起動"
   },
-  "Restart the DankMaterialShell": {
-    "Restart the DankMaterialShell": "DankMaterialShellを再起動"
+  "Restart the AriadnevShell": {
+    "Restart the AriadnevShell": "AriadnevShellを再起動"
   },
   "Restart userspace without rebooting the kernel, requires systemd": {
     "Restart userspace without rebooting the kernel, requires systemd": ""
@@ -7052,14 +7052,14 @@
   "Rules (%1)": {
     "Rules (%1)": "ルール（%1）"
   },
-  "Rules found in your compositor config. These are read-only here, use Convert to DMS to make an editable copy.": {
-    "Rules found in your compositor config. These are read-only here, use Convert to DMS to make an editable copy.": "コンポジター設定内に見つかったルールです。ここでは読み取り専用です。編集可能なコピーを作るには DMS に変換を使ってください。"
+  "Rules found in your compositor config. These are read-only here, use Convert to ADVS to make an editable copy.": {
+    "Rules found in your compositor config. These are read-only here, use Convert to ADVS to make an editable copy.": "コンポジター設定内に見つかったルールです。ここでは読み取り専用です。編集可能なコピーを作るには ADVS に変換を使ってください。"
   },
   "Run Again": {
     "Run Again": "再実行"
   },
-  "Run DMS Templates": {
-    "Run DMS Templates": "DMS テンプレートを実行"
+  "Run ADVS Templates": {
+    "Run ADVS Templates": "ADVS テンプレートを実行"
   },
   "Run User Templates": {
     "Run User Templates": "ユーザーのテンプレを実行"
@@ -7172,11 +7172,11 @@
   "Scale": {
     "Scale": "スケール"
   },
-  "Scale DankBar font sizes independently": {
-    "Scale DankBar font sizes independently": "Dank Bar のフォントサイズを個別に調整"
+  "Scale AdvBar font sizes independently": {
+    "Scale AdvBar font sizes independently": "Adv Bar のフォントサイズを個別に調整"
   },
-  "Scale DankBar icon sizes independently": {
-    "Scale DankBar icon sizes independently": "DankBar のアイコンサイズを個別に調整"
+  "Scale AdvBar icon sizes independently": {
+    "Scale AdvBar icon sizes independently": "AdvBar のアイコンサイズを個別に調整"
   },
   "Scale all font sizes throughout the shell": {
     "Scale all font sizes throughout the shell": "シェル全体のフォントサイズを調整"
@@ -7721,8 +7721,8 @@
   "Show Remaining Time": {
     "Show Remaining Time": "残り時間を表示"
   },
-  "Show Restart DMS": {
-    "Show Restart DMS": "DMS再起動を表示"
+  "Show Restart ADVS": {
+    "Show Restart ADVS": "ADVS再起動を表示"
   },
   "Show Satellite Widgets": {
     "Show Satellite Widgets": ""
@@ -7976,8 +7976,8 @@
   "Solid material type or Outline": {
     "Solid material type or Outline": ""
   },
-  "Some plugins require a newer version of DMS:": {
-    "Some plugins require a newer version of DMS:": "一部のプラグインにはより新しいバージョンの DMS が必要です:"
+  "Some plugins require a newer version of ADVS:": {
+    "Some plugins require a newer version of ADVS:": "一部のプラグインにはより新しいバージョンの ADVS が必要です:"
   },
   "Some settings are managed by the island": {
     "Some settings are managed by the island": ""
@@ -8075,14 +8075,14 @@
   "Standard": {
     "Standard": "標準"
   },
-  "Standard: Classic Material Design 3 — panels rise from below with a subtle scale. The DMS default.": {
-    "Standard: Classic Material Design 3 — panels rise from below with a subtle scale. The DMS default.": "標準：クラシックマテリアルデザイン3 ― パネルが下から微妙なスケールで立ち上がる。DMSのデフォルト設定。"
+  "Standard: Classic Material Design 3 — panels rise from below with a subtle scale. The ADVS default.": {
+    "Standard: Classic Material Design 3 — panels rise from below with a subtle scale. The ADVS default.": "標準：クラシックマテリアルデザイン3 ― パネルが下から微妙なスケールで立ち上がる。ADVSのデフォルト設定。"
   },
   "Start": {
     "Start": "始める"
   },
-  "Start DankConnect, KDE Connect, or Valent to use this plugin": {
-    "Start DankConnect, KDE Connect, or Valent to use this plugin": ""
+  "Start AdvConnect, KDE Connect, or Valent to use this plugin": {
+    "Start AdvConnect, KDE Connect, or Valent to use this plugin": ""
   },
   "Start Hotspot?": {
     "Start Hotspot?": ""
@@ -8243,11 +8243,11 @@
   "Sync Position Across Screens": {
     "Sync Position Across Screens": "画面間で位置を同期"
   },
-  "Sync applies your theme and settings to the login screen. Shared users should run dms greeter sync --profile instead of a primary user sync.": {
-    "Sync applies your theme and settings to the login screen. Shared users should run dms greeter sync --profile instead of a primary user sync.": ""
+  "Sync applies your theme and settings to the login screen. Shared users should run advs greeter sync --profile instead of a primary user sync.": {
+    "Sync applies your theme and settings to the login screen. Shared users should run advs greeter sync --profile instead of a primary user sync.": ""
   },
-  "Sync applies your theme and settings to the login screen. Shared users should run dms-greeter sync --profile instead of a primary user sync.": {
-    "Sync applies your theme and settings to the login screen. Shared users should run dms-greeter sync --profile instead of a primary user sync.": ""
+  "Sync applies your theme and settings to the login screen. Shared users should run advs-greeter sync --profile instead of a primary user sync.": {
+    "Sync applies your theme and settings to the login screen. Shared users should run advs-greeter sync --profile instead of a primary user sync.": ""
   },
   "Sync completed successfully.": {
     "Sync completed successfully.": "同期が正常に完了しました。"
@@ -8363,14 +8363,14 @@
   "Terminal additional parameters": {
     "Terminal additional parameters": "端末の追加パラメーター"
   },
-  "Terminal fallback failed. Install a supported terminal emulator or run 'dms auth sync' manually.": {
-    "Terminal fallback failed. Install a supported terminal emulator or run 'dms auth sync' manually.": "端末フォールバックに失敗しました。対応する端末エミュレーターをインストールするか、'dms auth sync' を手動で実行してください。"
+  "Terminal fallback failed. Install a supported terminal emulator or run 'advs auth sync' manually.": {
+    "Terminal fallback failed. Install a supported terminal emulator or run 'advs auth sync' manually.": "端末フォールバックに失敗しました。対応する端末エミュレーターをインストールするか、'advs auth sync' を手動で実行してください。"
   },
-  "Terminal fallback failed. Install one of the supported terminal emulators or run 'dms greeter sync' manually.": {
-    "Terminal fallback failed. Install one of the supported terminal emulators or run 'dms greeter sync' manually.": "端末フォールバックに失敗しました。対応する端末エミュレーターのいずれかをインストールするか、'dms greeter sync' を手動で実行してください。"
+  "Terminal fallback failed. Install one of the supported terminal emulators or run 'advs greeter sync' manually.": {
+    "Terminal fallback failed. Install one of the supported terminal emulators or run 'advs greeter sync' manually.": "端末フォールバックに失敗しました。対応する端末エミュレーターのいずれかをインストールするか、'advs greeter sync' を手動で実行してください。"
   },
-  "Terminal fallback failed. Install one of the supported terminal emulators or run 'dms-greeter sync' manually.": {
-    "Terminal fallback failed. Install one of the supported terminal emulators or run 'dms-greeter sync' manually.": ""
+  "Terminal fallback failed. Install one of the supported terminal emulators or run 'advs-greeter sync' manually.": {
+    "Terminal fallback failed. Install one of the supported terminal emulators or run 'advs-greeter sync' manually.": ""
   },
   "Terminal fallback opened. Complete authentication there; it will close automatically when done.": {
     "Terminal fallback opened. Complete authentication there; it will close automatically when done.": ""
@@ -8414,8 +8414,8 @@
   "The 'dgop' tool is required for system monitoring.\nPlease install dgop to use this feature.": {
     "The 'dgop' tool is required for system monitoring.\nPlease install dgop to use this feature.": "システム監視には 'dgop' ツールが必要です。\nこの機能を使うには dgop をインストールしてください。"
   },
-  "The DMS_SOCKET environment variable is not set or the socket is unavailable. Automated plugin management requires the DMS_SOCKET.": {
-    "The DMS_SOCKET environment variable is not set or the socket is unavailable. Automated plugin management requires the DMS_SOCKET.": "DMS_SOCKET環境変数が設定されていないか、ソケットが利用できません。自動プラグイン管理にはDMS_SOCKETが必要です。"
+  "The ADVS_SOCKET environment variable is not set or the socket is unavailable. Automated plugin management requires the ADVS_SOCKET.": {
+    "The ADVS_SOCKET environment variable is not set or the socket is unavailable. Automated plugin management requires the ADVS_SOCKET.": "ADVS_SOCKET環境変数が設定されていないか、ソケットが利用できません。自動プラグイン管理にはADVS_SOCKETが必要です。"
   },
   "The Island anchors to the top or bottom edge": {
     "The Island anchors to the top or bottom edge": ""
@@ -8435,8 +8435,8 @@
   "The custom command used when attaching to sessions (receives the session name as the first argument)": {
     "The custom command used when attaching to sessions (receives the session name as the first argument)": "セッション接続時に使うカスタムコマンド（第1引数としてセッション名を受け取ります）"
   },
-  "The greeter bundled with DMS is active (archinstall setup). It keeps working as is, but syncing theme and settings needs the standalone greeter. Install greetd-dms-greeter-bin from the AUR, then run Sync to migrate the login screen.": {
-    "The greeter bundled with DMS is active (archinstall setup). It keeps working as is, but syncing theme and settings needs the standalone greeter. Install greetd-dms-greeter-bin from the AUR, then run Sync to migrate the login screen.": ""
+  "The greeter bundled with ADVS is active (archinstall setup). It keeps working as is, but syncing theme and settings needs the standalone greeter. Install greetd-advs-greeter-bin from the AUR, then run Sync to migrate the login screen.": {
+    "The greeter bundled with ADVS is active (archinstall setup). It keeps working as is, but syncing theme and settings needs the standalone greeter. Install greetd-advs-greeter-bin from the AUR, then run Sync to migrate the login screen.": ""
   },
   "The island draws its own surface": {
     "The island draws its own surface": ""
@@ -8489,8 +8489,8 @@
   "Third-Party Plugin Warning": {
     "Third-Party Plugin Warning": "サードパーティ製プラグインの警告"
   },
-  "Third-party plugins are created by the community and are not officially supported by DankMaterialShell.\n\nThese plugins may pose security and privacy risks - install at your own risk.": {
-    "Third-party plugins are created by the community and are not officially supported by DankMaterialShell.\n\nThese plugins may pose security and privacy risks - install at your own risk.": "サードパーティ製プラグインはコミュニティによって作成されており、DankMaterialShell では公式にサポートされていません。\n\nこれらのプラグインにはセキュリティおよびプライバシー上のリスクがある可能性があります。自己責任でインストールしてください。"
+  "Third-party plugins are created by the community and are not officially supported by AriadnevShell.\n\nThese plugins may pose security and privacy risks - install at your own risk.": {
+    "Third-party plugins are created by the community and are not officially supported by AriadnevShell.\n\nThese plugins may pose security and privacy risks - install at your own risk.": "サードパーティ製プラグインはコミュニティによって作成されており、AriadnevShell では公式にサポートされていません。\n\nこれらのプラグインにはセキュリティおよびプライバシー上のリスクがある可能性があります。自己責任でインストールしてください。"
   },
   "This bind is overridden by config.kdl": {
     "This bind is overridden by config.kdl": "このバインドは config.kdl によって上書きされています"
@@ -8498,8 +8498,8 @@
   "This device": {
     "This device": "このデバイス"
   },
-  "This install is still using hyprland.conf. Run dms setup to migrate before changing these settings.": {
-    "This install is still using hyprland.conf. Run dms setup to migrate before changing these settings.": ""
+  "This install is still using hyprland.conf. Run advs setup to migrate before changing these settings.": {
+    "This install is still using hyprland.conf. Run advs setup to migrate before changing these settings.": ""
   },
   "This may take a few seconds": {
     "This may take a few seconds": "これには数秒かかる場合があります"
@@ -8612,8 +8612,8 @@
   "To update, run the following command:": {
     "To update, run the following command:": "更新するには以下のコマンドを実行："
   },
-  "To use this DMS bind, remove or change the keybind in your config.kdl": {
-    "To use this DMS bind, remove or change the keybind in your config.kdl": "この DMS バインドを使うには、config.kdl 内のキーバインドを削除または変更してください"
+  "To use this ADVS bind, remove or change the keybind in your config.kdl": {
+    "To use this ADVS bind, remove or change the keybind in your config.kdl": "この ADVS バインドを使うには、config.kdl 内のキーバインドを削除または変更してください"
   },
   "Toast": {
     "Toast": "トースト"
@@ -8813,8 +8813,8 @@
   "Uninstall failed: %1": {
     "Uninstall failed: %1": "アンインストールに失敗しました: %1"
   },
-  "Uninstall the DMS greeter? This will remove configuration and restore your previous display manager. A terminal will open for sudo authentication.": {
-    "Uninstall the DMS greeter? This will remove configuration and restore your previous display manager. A terminal will open for sudo authentication.": "DMS Greeter をアンインストールしますか ?  設定を削除し、以前のディスプレイマネージャーを復元します。sudo 認証のために端末が開きます。"
+  "Uninstall the ADVS greeter? This will remove configuration and restore your previous display manager. A terminal will open for sudo authentication.": {
+    "Uninstall the ADVS greeter? This will remove configuration and restore your previous display manager. A terminal will open for sudo authentication.": "ADVS Greeter をアンインストールしますか ?  設定を削除し、以前のディスプレイマネージャーを復元します。sudo 認証のために端末が開きます。"
   },
   "Uninstalled: %1": {
     "Uninstalled: %1": "アンインストールしました: %1"
@@ -9104,8 +9104,8 @@
   "Uses the spotlight-bar IPC action and always opens the minimal bar.": {
     "Uses the spotlight-bar IPC action and always opens the minimal bar.": "spotlight-bar IPC アクションを使い、常に最小バーを開きます。"
   },
-  "Using DankCalendar%1": {
-    "Using DankCalendar%1": "DankCalendar%1 を使用中"
+  "Using AdvCalendar%1": {
+    "Using AdvCalendar%1": "AdvCalendar%1 を使用中"
   },
   "Using global monospace font from Settings → Personalization": {
     "Using global monospace font from Settings → Personalization": "設定 → パーソナライズからグローバル等幅フォントを使用する"
@@ -9287,8 +9287,8 @@
   "Welcome": {
     "Welcome": "ようこそ"
   },
-  "Welcome to DankMaterialShell": {
-    "Welcome to DankMaterialShell": "DankMaterialShell へようこそ"
+  "Welcome to AriadnevShell": {
+    "Welcome to AriadnevShell": "AriadnevShell へようこそ"
   },
   "When clicking a dock window in a Hyprland special workspace, bring that special workspace back before focusing the window": {
     "When clicking a dock window in a Hyprland special workspace, bring that special workspace back before focusing the window": "Hyprland の特殊ワークスペースでドックのウィンドウをクリックしたときは、ウィンドウにフォーカスする前にその特殊ワークスペースを戻します"
@@ -9575,8 +9575,8 @@
   "display rotation option": {
     "Normal": ""
   },
-  "dms-greeter is not installed. Install the dms-greeter package to manage the greeter.": {
-    "dms-greeter is not installed. Install the dms-greeter package to manage the greeter.": ""
+  "advs-greeter is not installed. Install the advs-greeter package to manage the greeter.": {
+    "advs-greeter is not installed. Install the advs-greeter package to manage the greeter.": ""
   },
   "e.g. /usr/bin/my-script --flag": {
     "e.g. /usr/bin/my-script --flag": "例: /usr/bin/my-script --flag"
@@ -9620,8 +9620,8 @@
   "loginctl activate failed (exit %1)": {
     "loginctl activate failed (exit %1)": "loginctl activate に失敗しました（終了 %1）"
   },
-  "loginctl not available - lock integration requires DMS socket connection": {
-    "loginctl not available - lock integration requires DMS socket connection": "loginctlが利用できません- ロック統合のためにDMS socketの接続が必要です。"
+  "loginctl not available - lock integration requires ADVS socket connection": {
+    "loginctl not available - lock integration requires ADVS socket connection": "loginctlが利用できません- ロック統合のためにADVS socketの接続が必要です。"
   },
   "mango: config reloaded": {
     "mango: config reloaded": "mango: 設定を再読み込みしました"
@@ -9662,8 +9662,8 @@
   "niri shortcuts config": {
     "niri shortcuts config": "niri ショートカット設定"
   },
-  "niri/dms Discord": {
-    "niri/dms Discord": "niri/dms Discord"
+  "niri/advs Discord": {
+    "niri/advs Discord": "niri/advs Discord"
   },
   "niri: config reloaded": {
     "niri: config reloaded": "niri: 設定が再読み込みされました"
@@ -9740,8 +9740,8 @@
   "up": {
     "up": "稼働時間"
   },
-  "update dms for NM integration.": {
-    "update dms for NM integration.": "NM統合のためにDMSを更新します。"
+  "update advs for NM integration.": {
+    "update advs for NM integration.": "NM統合のためにADVSを更新します。"
   },
   "useradd failed (exit %1)": {
     "useradd failed (exit %1)": "useradd に失敗しました（終了 %1）"

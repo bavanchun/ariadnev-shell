@@ -38,7 +38,7 @@ Rectangle {
             color: Theme.primaryContainer
             anchors.verticalCenter: parent.verticalCenter
 
-            DankIcon {
+            AdvIcon {
                 anchors.centerIn: parent
                 name: root.iconName
                 size: Theme.iconSize - 6

@@ -1,11 +1,11 @@
-[templates.dmsfcitx5]
+[templates.advsfcitx5]
 input_path = 'SHELL_DIR/matugen/templates/fcitx5/theme.conf'
-output_path = 'DATA_DIR/fcitx5/themes/dms/theme.conf'
+output_path = 'DATA_DIR/fcitx5/themes/advs/theme.conf'
 
-[templates.dmsfcitx5panel]
+[templates.advsfcitx5panel]
 input_path = 'SHELL_DIR/matugen/templates/fcitx5/panel.svg'
-output_path = 'DATA_DIR/fcitx5/themes/dms/panel.svg'
+output_path = 'DATA_DIR/fcitx5/themes/advs/panel.svg'
 
-[templates.dmsfcitx5highlight]
+[templates.advsfcitx5highlight]
 input_path = 'SHELL_DIR/matugen/templates/fcitx5/highlight.svg'
-output_path = 'DATA_DIR/fcitx5/themes/dms/highlight.svg'
+output_path = 'DATA_DIR/fcitx5/themes/advs/highlight.svg'

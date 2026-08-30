@@ -38,7 +38,7 @@ Item {
                     Row {
                         spacing: Theme.spacingS
 
-                        DankIcon {
+                        AdvIcon {
                             name: "storage"
                             size: Theme.iconSize
                             color: Theme.primary
@@ -111,7 +111,7 @@ Item {
                 Row {
                     spacing: Theme.spacingS
 
-                    DankIcon {
+                    AdvIcon {
                         name: "folder"
                         size: Theme.iconSize - 2
                         color: Theme.secondary
@@ -133,7 +133,7 @@ Item {
                     color: Theme.outlineLight
                 }
 
-                DankListView {
+                AdvListView {
                     id: mountListView
 
                     Layout.fillWidth: true
@@ -175,7 +175,7 @@ Item {
                                 Row {
                                     spacing: Theme.spacingS
 
-                                    DankIcon {
+                                    AdvIcon {
                                         name: {
                                             const mp = modelData?.mount ?? "";
                                             if (mp === "/")
@@ -315,7 +315,7 @@ Item {
                             anchors.centerIn: parent
                             spacing: Theme.spacingM
 
-                            DankIcon {
+                            AdvIcon {
                                 name: "storage"
                                 size: 32
                                 color: Theme.surfaceVariantText

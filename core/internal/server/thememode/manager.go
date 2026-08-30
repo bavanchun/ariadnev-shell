@@ -5,9 +5,9 @@ import (
 	"sync"
 	"time"
 
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/geolocation"
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/server/loginctl"
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/server/wayland"
+	"github.com/bavanchun/ariadnev-shell/core/internal/geolocation"
+	"github.com/bavanchun/ariadnev-shell/core/internal/server/loginctl"
+	"github.com/bavanchun/ariadnev-shell/core/internal/server/wayland"
 	"github.com/AvengeMedia/dankgo/syncmap"
 )
 

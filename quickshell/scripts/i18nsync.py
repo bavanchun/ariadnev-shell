@@ -13,17 +13,17 @@ TEMPLATE_JSON = REPO_ROOT / "translations" / "template.json"
 POEXPORTS_DIR = REPO_ROOT / "translations" / "poexports"
 SYNC_STATE = REPO_ROOT / ".git" / "i18n_sync_state.json"
 
-# dank-qml-common terms live in the same DMS POEditor project (tagged
-# dank-qml-common); their translations ship inside the submodule so every
-# consumer gets them with the pointer. dankcalendar merges from this project.
-COMMON_ROOT = REPO_ROOT.parent / "dank-qml-common"
+# ariadnev-qml-common terms live in the same ADVS POEditor project (tagged
+# ariadnev-qml-common); their translations ship inside the submodule so every
+# consumer gets them with the pointer. advcalendar merges from this project.
+COMMON_ROOT = REPO_ROOT.parent / "ariadnev-qml-common"
 COMMON_EN_JSON = COMMON_ROOT / "translations" / "en.json"
-COMMON_POEXPORTS_DIR = COMMON_ROOT / "DankCommon" / "translations" / "poexports"
+COMMON_POEXPORTS_DIR = COMMON_ROOT / "AdvCommon" / "translations" / "poexports"
 
 # Plugin checkouts under quickshell/ are scanned by extraction (terms tagged
 # plugin-<dir>); their per-language exports are written back into each
 # checkout's translations/ dir, which ships with the plugin repo.
-PLUGIN_CHECKOUT_DIRS = [REPO_ROOT / "dms-plugins", REPO_ROOT / "dms-plugins-external"]
+PLUGIN_CHECKOUT_DIRS = [REPO_ROOT / "advs-plugins", REPO_ROOT / "advs-plugins-external"]
 
 # Flip once official plugins ship their own translations/ dirs: app poexports
 # then stop carrying terms owned exclusively by plugins.
@@ -109,16 +109,16 @@ def json_changed(file_path, new_data):
 
 def load_common_entries():
     if not COMMON_EN_JSON.exists():
-        error("dank-qml-common submodule not initialized (git submodule update --init)")
+        error("ariadnev-qml-common submodule not initialized (git submodule update --init)")
     with open(COMMON_EN_JSON) as f:
         entries = json.load(f)
-    return [{**e, "tags": sorted(set(e.get("tags", [])) | {"dank-qml-common"})} for e in entries]
+    return [{**e, "tags": sorted(set(e.get("tags", [])) | {"ariadnev-qml-common"})} for e in entries]
 
-# dms-greeter terms live in this POEditor project but are owned by the
-# dank-greeter repo. They must ride along in every upload so prune
+# advs-greeter terms live in this POEditor project but are owned by the
+# adv-greeter repo. They must ride along in every upload so prune
 # (sync_terms) does not delete them and tag-less uploads do not strip
 # their tag.
-GREETER_TAG = "dms-greeter"
+GREETER_TAG = "advs-greeter"
 
 def load_greeter_entries(api_token, project_id):
     resp = poeditor_request('terms/list', {
@@ -306,7 +306,7 @@ def download_translations(api_token, project_id, common_keys, greeter_keys, plug
             info(f"No changes for {filename}")
 
         if write_if_changed(common_file, common_part):
-            success(f"Updated dank-qml-common {filename}")
+            success(f"Updated ariadnev-qml-common {filename}")
             common_changed.append(filename)
 
         for tag, part in sorted(plugin_parts.items()):
@@ -439,9 +439,9 @@ def main():
         prune = "--prune" in sys.argv[2:]
         if prune:
             warn("--prune deletes every POEditor term missing from the local en.json, including its translations.")
-            warn("Terms from dms-plugins/ and dms-plugins-external/ are machine-dependent: make sure all official and approved external plugins are present before pruning.")
-            warn("dank-qml-common terms are included from the submodule, so pruning keeps them as long as the submodule is current.")
-            warn("dms-greeter terms are fetched from POEditor and re-included, so pruning keeps them.")
+            warn("Terms from advs-plugins/ and advs-plugins-external/ are machine-dependent: make sure all official and approved external plugins are present before pruning.")
+            warn("ariadnev-qml-common terms are included from the submodule, so pruning keeps them as long as the submodule is current.")
+            warn("advs-greeter terms are fetched from POEditor and re-included, so pruning keeps them.")
 
         common_entries = load_common_entries()
         common_keys = entry_keys(common_entries)
@@ -492,13 +492,13 @@ def main():
             info("Already in sync")
 
         if common_files_changed:
-            info(f"dank-qml-common poexports updated: {', '.join(common_files_changed)}")
-            info("Commit those in dank-qml-common and bump the pointer here (make update-common).")
+            info(f"ariadnev-qml-common poexports updated: {', '.join(common_files_changed)}")
+            info("Commit those in ariadnev-qml-common and bump the pointer here (make update-common).")
 
         for checkout_name, files in sorted(plugin_files_changed.items()):
             info(f"{checkout_name} translations updated: {', '.join(files)}")
         if plugin_files_changed:
-            info("Commit those in each plugin checkout - they ship with the plugin repo, not with DMS.")
+            info("Commit those in each plugin checkout - they ship with the plugin repo, not with ADVS.")
 
     elif command == "local":
         info("Updating en.json locally (no POEditor sync)")

@@ -4,12 +4,12 @@ import qs.Common
 import qs.Modals.Common
 import qs.Services
 
-DankModal {
+AdvModal {
     id: root
 
     property var parentPopout: null
 
-    layerNamespace: "dms:polkit-auth-surface"
+    layerNamespace: "advs:polkit-auth-surface"
     modalWidth: 460
     modalHeight: 220
     backgroundColor: Theme.withAlpha(Theme.surfaceContainer, Theme.popupTransparency)

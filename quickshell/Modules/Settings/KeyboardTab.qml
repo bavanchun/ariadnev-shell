@@ -10,7 +10,7 @@ Item {
     LayoutMirroring.enabled: I18n.isRtl
     LayoutMirroring.childrenInherit: true
 
-    DankFlickable {
+    AdvFlickable {
         anchors.fill: parent
         clip: true
         contentHeight: settingsColumn.height + Theme.spacingXL
@@ -55,7 +55,7 @@ Item {
                         wrapMode: Text.WordWrap
                     }
 
-                    DankTextField {
+                    AdvTextField {
                         width: parent.width
                         text: SettingsData.keyboardLayouts
                         placeholderText: "us,de"
@@ -127,7 +127,7 @@ Item {
                         wrapMode: Text.WordWrap
                     }
 
-                    DankTextField {
+                    AdvTextField {
                         width: parent.width
                         text: SettingsData.keyboardOptions
                         placeholderText: "compose:ralt,ctrl:nocaps"
@@ -147,7 +147,7 @@ Item {
                         color: Theme.surfaceText
                     }
 
-                    DankTextField {
+                    AdvTextField {
                         width: parent.width
                         text: SettingsData.keyboardVariants
                         placeholderText: "colemak"
@@ -167,7 +167,7 @@ Item {
                         color: Theme.surfaceText
                     }
 
-                    DankTextField {
+                    AdvTextField {
                         width: parent.width
                         text: SettingsData.keyboardModel
                         placeholderText: "pc104"
@@ -195,7 +195,7 @@ Item {
                         wrapMode: Text.WordWrap
                     }
 
-                    DankTextField {
+                    AdvTextField {
                         width: parent.width
                         text: SettingsData.keyboardKeymapFile
                         placeholderText: "~/.config/keymap.xkb"

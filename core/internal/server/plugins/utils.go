@@ -5,7 +5,7 @@ import (
 	"sort"
 	"strings"
 
-	coreplugins "github.com/AvengeMedia/DankMaterialShell/core/internal/plugins"
+	coreplugins "github.com/bavanchun/ariadnev-shell/core/internal/plugins"
 )
 
 func pluginInfoFromPlugin(plugin coreplugins.Plugin) PluginInfo {
@@ -23,12 +23,12 @@ func pluginInfoFromPlugin(plugin coreplugins.Plugin) PluginInfo {
 		Dependencies: plugin.Dependencies,
 		FirstParty:   isFirstPartyRepo(plugin.Repo),
 		Featured:     plugin.Featured,
-		RequiresDMS:  plugin.RequiresDMS,
+		RequiresADVS:  plugin.RequiresADVS,
 	}
 }
 
 func isFirstPartyRepo(repo string) bool {
-	return strings.HasPrefix(repo, "https://github.com/AvengeMedia")
+	return strings.HasPrefix(repo, "https://github.com/bavanchun")
 }
 
 func normalizeScreenshotURL(raw string) string {

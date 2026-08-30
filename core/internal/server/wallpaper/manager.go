@@ -7,7 +7,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/server/loginctl"
+	"github.com/bavanchun/ariadnev-shell/core/internal/server/loginctl"
 	"github.com/AvengeMedia/dankgo/syncmap"
 )
 
@@ -185,7 +185,7 @@ func (m *Manager) schedulerLoop() {
 						m.lastFires[key] = now
 						firesDirty = true
 					case valid && last.Before(prev):
-						// Scheduled time passed while dms wasn't running.
+						// Scheduled time passed while advs wasn't running.
 						s.nextFire = now.Add(catchUpDelay)
 					}
 				}

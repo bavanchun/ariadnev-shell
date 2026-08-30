@@ -47,7 +47,7 @@ Rectangle {
             width: parent.width - headerText.width - settingsButton.width
         }
 
-        DankActionButton {
+        AdvActionButton {
             id: settingsButton
             anchors.verticalCenter: parent.verticalCenter
             iconName: "settings"
@@ -80,7 +80,7 @@ Rectangle {
             radius: (Theme.iconSize + Theme.spacingS * 2) / 2
             color: iconArea.containsMouse ? Theme.primaryHover : Theme.withAlpha(Theme.primaryHover, 0)
 
-            DankRipple {
+            AdvRipple {
                 id: iconRipple
                 cornerRadius: parent.radius
             }
@@ -98,7 +98,7 @@ Rectangle {
                 }
             }
 
-            DankIcon {
+            AdvIcon {
                 anchors.centerIn: parent
                 name: {
                     if (!AudioService.source || !AudioService.source.audio)
@@ -111,7 +111,7 @@ Rectangle {
             }
         }
 
-        DankSlider {
+        AdvSlider {
             readonly property real actualVolumePercent: AudioService.source && AudioService.source.audio ? Math.round(AudioService.source.audio.volume * 100) : 0
 
             anchors.verticalCenter: parent.verticalCenter
@@ -138,7 +138,7 @@ Rectangle {
         }
     }
 
-    DankFlickable {
+    AdvFlickable {
         id: audioContent
         anchors.top: hasInputVolumeSliderInCC ? headerRow.bottom : volumeSlider.bottom
         anchors.left: parent.left
@@ -212,7 +212,7 @@ Rectangle {
                         anchors.leftMargin: Theme.spacingM
                         spacing: Theme.spacingS
 
-                        DankIcon {
+                        AdvIcon {
                             name: {
                                 if (modelData.name.includes("bluez"))
                                     return "headset";
@@ -274,7 +274,7 @@ Rectangle {
                             anchors.centerIn: parent
                             spacing: Theme.spacingXS
 
-                            DankIcon {
+                            AdvIcon {
                                 name: "push_pin"
                                 size: 16
                                 color: {
@@ -298,7 +298,7 @@ Rectangle {
                             }
                         }
 
-                        DankRipple {
+                        AdvRipple {
                             id: pinRipple
                             cornerRadius: parent.radius
                         }
@@ -330,7 +330,7 @@ Rectangle {
                         }
                     }
 
-                    DankRipple {
+                    AdvRipple {
                         id: deviceRipple
                         cornerRadius: parent.radius
                     }

@@ -17,7 +17,7 @@ Singleton {
     Process {
         id: detectProcess
 
-        command: ["sh", "-c", "command -v dms-greeter >/dev/null 2>&1 || grep -qs dms-greeter /etc/greetd/config.toml"]
+        command: ["sh", "-c", "command -v advs-greeter >/dev/null 2>&1 || grep -qs advs-greeter /etc/greetd/config.toml"]
         running: true
 
         onExited: exitCode => {

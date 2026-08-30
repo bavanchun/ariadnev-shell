@@ -314,8 +314,8 @@
   "A separate minimal launcher action that works in Standalone, Separate Frame Mode, and Connected Frame Mode.": {
     "A separate minimal launcher action that works in Standalone, Separate Frame Mode, and Connected Frame Mode.": "Aparta minimuma lanĉila ago, kiu funkcias en Memstara, Aparta Kadra Reĝimo kaj Konektita Kadra Reĝimo."
   },
-  "A slight natural settle, DMS default": {
-    "A slight natural settle, DMS default": ""
+  "A slight natural settle, ADVS default": {
+    "A slight natural settle, ADVS default": ""
   },
   "A user with that name already exists.": {
     "A user with that name already exists.": "Uzanto kun tiu nomo jam ekzistas."
@@ -380,8 +380,8 @@
   "Activate Greeter": {
     "Activate Greeter": "Aktivigi salutekranon"
   },
-  "Activate the DMS greeter? A terminal will open for sudo authentication. Run Sync after activation to apply your settings.": {
-    "Activate the DMS greeter? A terminal will open for sudo authentication. Run Sync after activation to apply your settings.": "Ĉu aktivigi la salutekranon de DMS? Terminalo malfermiĝos por sudo-aŭtentigo. Plenumu la sinkronigon post aktivigo por apliki viajn agordojn."
+  "Activate the ADVS greeter? A terminal will open for sudo authentication. Run Sync after activation to apply your settings.": {
+    "Activate the ADVS greeter? A terminal will open for sudo authentication. Run Sync after activation to apply your settings.": "Ĉu aktivigi la salutekranon de ADVS? Terminalo malfermiĝos por sudo-aŭtentigo. Plenumu la sinkronigon post aktivigo por apliki viajn agordojn."
   },
   "Activates immediately": {
     "Activates immediately": ""
@@ -428,11 +428,11 @@
   "Add \"%1\" to the %2 group?": {
     "Add \"%1\" to the %2 group?": "Ĉu aldoni \"%1\" al la grupo %2?"
   },
-  "Add \"%1\" to the %2 group? They must log out and back in, then run dms greeter sync --profile to publish their login-screen theme.": {
-    "Add \"%1\" to the %2 group? They must log out and back in, then run dms greeter sync --profile to publish their login-screen theme.": "Ĉu aldoni \"%1\" al la grupo %2? "
+  "Add \"%1\" to the %2 group? They must log out and back in, then run advs greeter sync --profile to publish their login-screen theme.": {
+    "Add \"%1\" to the %2 group? They must log out and back in, then run advs greeter sync --profile to publish their login-screen theme.": "Ĉu aldoni \"%1\" al la grupo %2? "
   },
-  "Add \"%1\" to the %2 group? They must log out and back in, then run dms-greeter sync --profile to publish their login-screen theme.": {
-    "Add \"%1\" to the %2 group? They must log out and back in, then run dms-greeter sync --profile to publish their login-screen theme.": ""
+  "Add \"%1\" to the %2 group? They must log out and back in, then run advs-greeter sync --profile to publish their login-screen theme.": {
+    "Add \"%1\" to the %2 group? They must log out and back in, then run advs-greeter sync --profile to publish their login-screen theme.": ""
   },
   "Add Bar": {
     "Add Bar": "Aldoni breton"
@@ -482,11 +482,11 @@
   "Add notes": {
     "Add notes": "Aldoni noto-blokon"
   },
-  "Add the new user to the %1 group so they can run dms greeter sync --profile.": {
-    "Add the new user to the %1 group so they can run dms greeter sync --profile.": "Aldonu la novan uzanton al la grupo %1 por ke ili povu ruli dms greeter sync --profile."
+  "Add the new user to the %1 group so they can run advs greeter sync --profile.": {
+    "Add the new user to the %1 group so they can run advs greeter sync --profile.": "Aldonu la novan uzanton al la grupo %1 por ke ili povu ruli advs greeter sync --profile."
   },
-  "Add the new user to the %1 group so they can run dms-greeter sync --profile.": {
-    "Add the new user to the %1 group so they can run dms-greeter sync --profile.": ""
+  "Add the new user to the %1 group so they can run advs-greeter sync --profile.": {
+    "Add the new user to the %1 group so they can run advs-greeter sync --profile.": ""
   },
   "Add the new user to the %1 group so they can use sudo.": {
     "Add the new user to the %1 group so they can use sudo.": "Aldonu la novan uzanton al la grupo %1 por ke ili povu uzi sudo."
@@ -905,8 +905,8 @@
   "Auto-Hide Timeout": {
     "Auto-Hide Timeout": "Templimo de aŭtomata kaŝo"
   },
-  "Auto-close Niri overview when DMS launches or focuses a window.": {
-    "Auto-close Niri overview when DMS launches or focuses a window.": ""
+  "Auto-close Niri overview when ADVS launches or focuses a window.": {
+    "Auto-close Niri overview when ADVS launches or focuses a window.": ""
   },
   "Auto-close Niri overview when launching apps.": {
     "Auto-close Niri overview when launching apps.": "Aŭtomate fermi la superrigardon de Niri kiam oni lanĉas aplikaĵojn."
@@ -977,8 +977,8 @@
   "Automatically lock after": {
     "Automatically lock after": "Aŭtomate ŝlosi post"
   },
-  "Automatically lock the screen when DMS starts": {
-    "Automatically lock the screen when DMS starts": "Aŭtomate ŝlosi la ekranon kiam DMS lanĉiĝas"
+  "Automatically lock the screen when ADVS starts": {
+    "Automatically lock the screen when ADVS starts": "Aŭtomate ŝlosi la ekranon kiam ADVS lanĉiĝas"
   },
   "Automatically lock the screen when the system prepares to suspend": {
     "Automatically lock the screen when the system prepares to suspend": "Aŭtomate ŝlosi la ekranon kiam la sistemo prepariĝas por dormeti"
@@ -1415,8 +1415,8 @@
   "Center Section": {
     "Center Section": "Centra sekcio"
   },
-  "Center Section - Reserved by Dank Island": {
-    "Center Section - Reserved by Dank Island": ""
+  "Center Section - Reserved by Adv Island": {
+    "Center Section - Reserved by Adv Island": ""
   },
   "Center Single Column": {
     "Center Single Column": "Centrigi unuopan kolumnon"
@@ -1433,8 +1433,8 @@
   "Change Volume": {
     "Change Volume": "Ŝanĝi laŭtecon"
   },
-  "Change the locale used by the DMS interface.": {
-    "Change the locale used by the DMS interface.": "Ŝanĝi la lokaĵaron uzatan de la DMS-fasado."
+  "Change the locale used by the ADVS interface.": {
+    "Change the locale used by the ADVS interface.": "Ŝanĝi la lokaĵaron uzatan de la ADVS-fasado."
   },
   "Change the locale used for date and time formatting, independent of the interface language.": {
     "Change the locale used for date and time formatting, independent of the interface language.": "Ŝanĝi la lokaĵaron uzatan por dat- kaj temp-formato, sendepende de la fasada lingvo."
@@ -1529,8 +1529,8 @@
   "Choose neutral or accent-colored widget text": {
     "Choose neutral or accent-colored widget text": ""
   },
-  "Choose the logo displayed on the launcher button in DankBar": {
-    "Choose the logo displayed on the launcher button in DankBar": "Elekti la emblemon montratan sur la lanĉila butono en DankBar"
+  "Choose the logo displayed on the launcher button in AdvBar": {
+    "Choose the logo displayed on the launcher button in AdvBar": "Elekti la emblemon montratan sur la lanĉila butono en AdvBar"
   },
   "Choose wallpaper folder": {
     "Choose wallpaper folder": ""
@@ -1742,8 +1742,8 @@
   "Color theme for syntax highlighting. %1 themes available.": {
     "Color theme for syntax highlighting. %1 themes available.": "Kolortemo por sintaksa reliefigo. %1 temoj haveblas."
   },
-  "Color theme from DMS registry": {
-    "Color theme from DMS registry": "Kolora etoso el DMS-registro"
+  "Color theme from ADVS registry": {
+    "Color theme from ADVS registry": "Kolora etoso el ADVS-registro"
   },
   "Colorful": {
     "Colorful": "Koloreca"
@@ -1853,8 +1853,8 @@
   "Configure which displays show \"%1": {
     "Configure which displays show \"%1\"": "Agordi kiuj ekranoj montras \"%1\""
   },
-  "Configure which displays show Dank Island as \"%1": {
-    "Configure which displays show Dank Island as \"%1\"": ""
+  "Configure which displays show Adv Island as \"%1": {
+    "Configure which displays show Adv Island as \"%1\"": ""
   },
   "Configure which displays show shell components": {
     "Configure which displays show shell components": "Agordi kiuj ekranoj montras ŝel-erojn"
@@ -1982,8 +1982,8 @@
   "Convenience options for the login screen": {
     "Convenience options for the login screen": ""
   },
-  "Convert to DMS": {
-    "Convert to DMS": "Konverti al DMS"
+  "Convert to ADVS": {
+    "Convert to ADVS": "Konverti al ADVS"
   },
   "Cooldown": {
     "Cooldown": "Malvarmiĝo"
@@ -2258,41 +2258,41 @@
   "DEMO MODE - Click anywhere to exit": {
     "DEMO MODE - Click anywhere to exit": "DEMO-REĜIMO - Klaku ie ajn por eliri"
   },
-  "DMS Chooser": {
-    "DMS Chooser": "DMS Elektilo"
+  "ADVS Chooser": {
+    "ADVS Chooser": "ADVS Elektilo"
   },
-  "DMS Plugin Manager Unavailable": {
-    "DMS Plugin Manager Unavailable": "DMS-kromprogramestraro ne disponeblas"
+  "ADVS Plugin Manager Unavailable": {
+    "ADVS Plugin Manager Unavailable": "ADVS-kromprogramestraro ne disponeblas"
   },
-  "DMS Settings": {
-    "DMS Settings": "DMS-agordoj"
+  "ADVS Settings": {
+    "ADVS Settings": "ADVS-agordoj"
   },
-  "DMS Settings writes Lua keybinds. Add the DMS include so edits apply.": {
-    "DMS Settings writes Lua keybinds. Add the DMS include so edits apply.": "DMS Agordoj skribas Lua klavbindojn. "
+  "ADVS Settings writes Lua keybinds. Add the ADVS include so edits apply.": {
+    "ADVS Settings writes Lua keybinds. Add the ADVS include so edits apply.": "ADVS Agordoj skribas Lua klavbindojn. "
   },
-  "DMS Shortcuts": {
-    "DMS Shortcuts": "DMS-mallongigoj"
+  "ADVS Shortcuts": {
+    "ADVS Shortcuts": "ADVS-mallongigoj"
   },
-  "DMS is a highly customizable modern desktop shell with a %1 inspired design.<br/><br/>It is built with %2, a QT6 framework for building desktop shells, and %3, a statically typed, compiled programming language.": {
-    "DMS is a highly customizable modern desktop shell with a %1 inspired design.<br/><br/>It is built with %2, a QT6 framework for building desktop shells, and %3, a statically typed, compiled programming language.": ""
+  "ADVS is a highly customizable modern desktop shell with a %1 inspired design.<br/><br/>It is built with %2, a QT6 framework for building desktop shells, and %3, a statically typed, compiled programming language.": {
+    "ADVS is a highly customizable modern desktop shell with a %1 inspired design.<br/><br/>It is built with %2, a QT6 framework for building desktop shells, and %3, a statically typed, compiled programming language.": ""
   },
-  "DMS out of date": {
-    "DMS out of date": "DMS malaktualas"
+  "ADVS out of date": {
+    "ADVS out of date": "ADVS malaktualas"
   },
-  "DMS removes its managed block from /etc/pam.d/greetd and stops write services": {
-    "DMS removes its managed block from /etc/pam.d/greetd and stops write services": ""
+  "ADVS removes its managed block from /etc/pam.d/greetd and stops write services": {
+    "ADVS removes its managed block from /etc/pam.d/greetd and stops write services": ""
   },
-  "DMS server is outdated (API v%1, expected v%2)": {
-    "DMS server is outdated (API v%1, expected v%2)": "DMS-servilo estas malaktuala (API v%1, atendata v%2)"
+  "ADVS server is outdated (API v%1, expected v%2)": {
+    "ADVS server is outdated (API v%1, expected v%2)": "ADVS-servilo estas malaktuala (API v%1, atendata v%2)"
   },
-  "DMS service is not connected. Clipboard settings are unavailable.": {
-    "DMS service is not connected. Clipboard settings are unavailable.": "DMS-servo ne konektiĝis. Tondujaj agordoj ne disponeblas."
+  "ADVS service is not connected. Clipboard settings are unavailable.": {
+    "ADVS service is not connected. Clipboard settings are unavailable.": "ADVS-servo ne konektiĝis. Tondujaj agordoj ne disponeblas."
   },
-  "DMS shell actions (launcher, clipboard, etc.)": {
-    "DMS shell actions (launcher, clipboard, etc.)": "DMS-ŝelagoj (lanĉilo, tondujo, ktp.)"
+  "ADVS shell actions (launcher, clipboard, etc.)": {
+    "ADVS shell actions (launcher, clipboard, etc.)": "ADVS-ŝelagoj (lanĉilo, tondujo, ktp.)"
   },
-  "DMS_SOCKET not available": {
-    "DMS_SOCKET not available": "DMS_SOCKET ne disponeblas"
+  "ADVS_SOCKET not available": {
+    "ADVS_SOCKET not available": "ADVS_SOCKET ne disponeblas"
   },
   "Daily": {
     "Daily": "Ĉiutage"
@@ -2303,41 +2303,41 @@
   "Damped springs settle straight to their target with no overshoot": {
     "Damped springs settle straight to their target with no overshoot": ""
   },
-  "Dank": {
-    "Dank": "Dank"
+  "Adv": {
+    "Adv": "Adv"
   },
-  "Dank Bar": {
-    "Dank Bar": "Dank-breto"
+  "Adv Bar": {
+    "Adv Bar": "Adv-breto"
   },
-  "Dank Bar Xray": {
-    "Dank Bar Xray": ""
+  "Adv Bar Xray": {
+    "Adv Bar Xray": ""
   },
-  "Dank Dash": {
-    "Dank Dash": ""
+  "Adv Dash": {
+    "Adv Dash": ""
   },
-  "Dank Island - Beta": {
-    "Dank Island - Beta": ""
+  "Adv Island - Beta": {
+    "Adv Island - Beta": ""
   },
-  "Dank Island instance": {
-    "Dank Island instance": ""
+  "Adv Island instance": {
+    "Adv Island instance": ""
   },
-  "DankBar": {
-    "DankBar": "DankBar"
+  "AdvBar": {
+    "AdvBar": "AdvBar"
   },
-  "DankCalendar": {
-    "DankCalendar": "DankCalendar"
+  "AdvCalendar": {
+    "AdvCalendar": "AdvCalendar"
   },
-  "DankCalendar isn't installed": {
-    "DankCalendar isn't installed": "DankCalendar ne estas instalita"
+  "AdvCalendar isn't installed": {
+    "AdvCalendar isn't installed": "AdvCalendar ne estas instalita"
   },
-  "DankCalendar isn't running": {
-    "DankCalendar isn't running": "DankCalendar ne funkcias"
+  "AdvCalendar isn't running": {
+    "AdvCalendar isn't running": "AdvCalendar ne funkcias"
   },
-  "DankMaterialShell is ready to use": {
-    "DankMaterialShell is ready to use": "DankMaterialShell pretas por uzo"
+  "AriadnevShell is ready to use": {
+    "AriadnevShell is ready to use": "AriadnevShell pretas por uzo"
   },
-  "DankShell & System Icons (requires restart)": {
-    "DankShell & System Icons (requires restart)": "DankShell- kaj sistem-piktogramoj (postulas restarton)"
+  "AdvShell & System Icons (requires restart)": {
+    "AdvShell & System Icons (requires restart)": "AdvShell- kaj sistem-piktogramoj (postulas restarton)"
   },
   "Dark Mode": {
     "Dark Mode": "Nokta reĝimo"
@@ -2423,8 +2423,8 @@
   "Default Width (%)": {
     "Default Width (%)": "Defaŭlta larĝo (%)"
   },
-  "Default launcher shortcuts open a native launcher activity inside Dank Island. Spotlight is used when the focused screen has no DankIsland.": {
-    "Default launcher shortcuts open a native launcher activity inside Dank Island. Spotlight is used when the focused screen has no DankIsland.": ""
+  "Default launcher shortcuts open a native launcher activity inside Adv Island. Spotlight is used when the focused screen has no AdvIsland.": {
+    "Default launcher shortcuts open a native launcher activity inside Adv Island. Spotlight is used when the focused screen has no AdvIsland.": ""
   },
   "Default launcher shortcuts open the full launcher with mode tabs, grid view, and action panel.": {
     "Default launcher shortcuts open the full launcher with mode tabs, grid view, and action panel.": "Defaŭltaj lanĉilaj ŝparvojoj malfermas la plenan lanĉilon kun reĝimlangetoj, kradvido kaj agadpanelo."
@@ -2789,8 +2789,8 @@
   "Drop here": {
     "Drop here": ""
   },
-  "Drop your override for %1 so the DMS default action re-applies?": {
-    "Drop your override for %1 so the DMS default action re-applies?": "Forigi vian anstataŭigon por %1 do la defaŭlta ago de DMS denove aplikas?"
+  "Drop your override for %1 so the ADVS default action re-applies?": {
+    "Drop your override for %1 so the ADVS default action re-applies?": "Forigi vian anstataŭigon por %1 do la defaŭlta ago de ADVS denove aplikas?"
   },
   "Duplicate": {
     "Duplicate": "Duobligi"
@@ -2939,8 +2939,8 @@
   "Enable a custom override below to set per-bar shadow intensity, opacity, and color.": {
     "Enable a custom override below to set per-bar shadow intensity, opacity, and color.": "Ŝaltu propran preterpason sube por agordi ombran intensecon, opakecon, kaj koloron por ĉiu breto."
   },
-  "Enable compositor-targetable blur layer (namespace: dms:blurwallpaper). Requires manual niri configuration.": {
-    "Enable compositor-targetable blur layer (namespace: dms:blurwallpaper). Requires manual niri configuration.": "Ŝalti komponant-trakeblan malklarecan tavolon (nomspaco: dms:blurwallpaper). Postulas manan niri-agordadon."
+  "Enable compositor-targetable blur layer (namespace: advs:blurwallpaper). Requires manual niri configuration.": {
+    "Enable compositor-targetable blur layer (namespace: advs:blurwallpaper). Requires manual niri configuration.": "Ŝalti komponant-trakeblan malklarecan tavolon (nomspaco: advs:blurwallpaper). Postulas manan niri-agordadon."
   },
   "Enable fingerprint at login": {
     "Enable fingerprint at login": "Ŝalti fingrospuron dum saluto"
@@ -2948,8 +2948,8 @@
   "Enable fingerprint authentication": {
     "Enable fingerprint authentication": "Ŝalti fingrospuran aŭtentigon"
   },
-  "Enable fingerprint or security key for DMS Greeter": {
-    "Enable fingerprint or security key for DMS Greeter": ""
+  "Enable fingerprint or security key for ADVS Greeter": {
+    "Enable fingerprint or security key for ADVS Greeter": ""
   },
   "Enable loginctl lock integration": {
     "Enable loginctl lock integration": "Ŝalti loginctl-ŝlos-integriĝon"
@@ -3317,11 +3317,11 @@
   "Failed to ring device": {
     "Failed to ring device": "Malsukcesis sonorigi aparaton"
   },
-  "Failed to run 'dms greeter status'. Ensure DMS is installed and dms is in PATH.": {
-    "Failed to run 'dms greeter status'. Ensure DMS is installed and dms is in PATH.": "Malsukcesis lanĉi 'dms greeter status'. Certigu ke DMS estas instalita kaj ke dms estas en PATH."
+  "Failed to run 'advs greeter status'. Ensure ADVS is installed and advs is in PATH.": {
+    "Failed to run 'advs greeter status'. Ensure ADVS is installed and advs is in PATH.": "Malsukcesis lanĉi 'advs greeter status'. Certigu ke ADVS estas instalita kaj ke advs estas en PATH."
   },
-  "Failed to run 'dms-greeter status'. Ensure the dms-greeter package is installed.": {
-    "Failed to run 'dms-greeter status'. Ensure the dms-greeter package is installed.": ""
+  "Failed to run 'advs-greeter status'. Ensure the advs-greeter package is installed.": {
+    "Failed to run 'advs-greeter status'. Ensure the advs-greeter package is installed.": ""
   },
   "Failed to save VPN credentials": {
     "Failed to save VPN credentials": ""
@@ -3467,8 +3467,8 @@
   "File received from %1": {
     "File received from %1": ""
   },
-  "File search requires dsearch\nInstall from github.com/AvengeMedia/danksearch": {
-    "File search requires dsearch\nInstall from github.com/AvengeMedia/danksearch": "Dosier-serĉado postulas dsearch\nInstalu el github.com/AvengeMedia/danksearch"
+  "File search requires dsearch\nInstall from github.com/bavanchun/advsearch": {
+    "File search requires dsearch\nInstall from github.com/bavanchun/advsearch": "Dosier-serĉado postulas dsearch\nInstalu el github.com/bavanchun/advsearch"
   },
   "File search unavailable": {
     "File search unavailable": "Dosiera serĉo ne disponebla"
@@ -3626,8 +3626,8 @@
   "Folders": {
     "Folders": "Dosierujoj"
   },
-  "Follow DMS background color": {
-    "Follow DMS background color": "Sekvi fonkoloron de DMS"
+  "Follow ADVS background color": {
+    "Follow ADVS background color": "Sekvi fonkoloron de ADVS"
   },
   "Follow Monitor Focus": {
     "Follow Monitor Focus": "Sekvi ekranan fokuson"
@@ -3824,8 +3824,8 @@
   "Gamma Control": {
     "Gamma Control": "Gama-regado"
   },
-  "Gamma control not available. Requires DMS API v6+.": {
-    "Gamma control not available. Requires DMS API v6+.": "Gama-regado ne disponeblas. Postulas DMS-API v6+."
+  "Gamma control not available. Requires ADVS API v6+.": {
+    "Gamma control not available. Requires ADVS API v6+.": "Gama-regado ne disponeblas. Postulas ADVS-API v6+."
   },
   "Gap between the end widgets and the bar ends (0 = edge-to-edge)": {
     "Gap between the end widgets and the bar ends (0 = edge-to-edge)": ""
@@ -3839,11 +3839,11 @@
   "Generate Override": {
     "Generate Override": "Generu Override"
   },
-  "Generate baseline GTK3/4 or QT5/QT6 (requires qt6ct-kde) configurations to follow DMS colors. Only needed once.<br /><br />It is recommended to configure %1 prior to applying GTK themes.": {
-    "Generate baseline GTK3/4 or QT5/QT6 (requires qt6ct-kde) configurations to follow DMS colors. Only needed once.<br /><br />It is recommended to configure %1 prior to applying GTK themes.": ""
+  "Generate baseline GTK3/4 or QT5/QT6 (requires qt6ct-kde) configurations to follow ADVS colors. Only needed once.<br /><br />It is recommended to configure %1 prior to applying GTK themes.": {
+    "Generate baseline GTK3/4 or QT5/QT6 (requires qt6ct-kde) configurations to follow ADVS colors. Only needed once.<br /><br />It is recommended to configure %1 prior to applying GTK themes.": ""
   },
-  "Generate baseline GTK3/4, QT5/QT6, or qtengine configurations to follow DMS colors (only qt6ct requires qt6ct-kde). Only needed once.<br /><br />It is recommended to configure %1 prior to applying GTK themes.": {
-    "Generate baseline GTK3/4, QT5/QT6, or qtengine configurations to follow DMS colors (only qt6ct requires qt6ct-kde). Only needed once.<br /><br />It is recommended to configure %1 prior to applying GTK themes.": ""
+  "Generate baseline GTK3/4, QT5/QT6, or qtengine configurations to follow ADVS colors (only qt6ct requires qt6ct-kde). Only needed once.<br /><br />It is recommended to configure %1 prior to applying GTK themes.": {
+    "Generate baseline GTK3/4, QT5/QT6, or qtengine configurations to follow ADVS colors (only qt6ct requires qt6ct-kde). Only needed once.<br /><br />It is recommended to configure %1 prior to applying GTK themes.": ""
   },
   "Generic": {
     "Generic": "Ĝenerala"
@@ -3914,11 +3914,11 @@
   "Greeter font": {
     "Greeter font": "Tiparo de salutekrano"
   },
-  "Greeter group members can sync their login-screen theme with dms greeter sync --profile after logging out and back in.": {
-    "Greeter group members can sync their login-screen theme with dms greeter sync --profile after logging out and back in.": "Greeter-grupanoj povas sinkronigi sian ensalut-ekranan temon kun dms greeter sync --profile post elsalutiĝo kaj reeniro."
+  "Greeter group members can sync their login-screen theme with advs greeter sync --profile after logging out and back in.": {
+    "Greeter group members can sync their login-screen theme with advs greeter sync --profile after logging out and back in.": "Greeter-grupanoj povas sinkronigi sian ensalut-ekranan temon kun advs greeter sync --profile post elsalutiĝo kaj reeniro."
   },
-  "Greeter group members can sync their login-screen theme with dms-greeter sync --profile after logging out and back in.": {
-    "Greeter group members can sync their login-screen theme with dms-greeter sync --profile after logging out and back in.": ""
+  "Greeter group members can sync their login-screen theme with advs-greeter sync --profile after logging out and back in.": {
+    "Greeter group members can sync their login-screen theme with advs-greeter sync --profile after logging out and back in.": ""
   },
   "Greeter group:": {
     "Greeter group:": "Salutgrupo:"
@@ -4262,8 +4262,8 @@
   "Icon Theme": {
     "Icon Theme": "Piktograma etoso"
   },
-  "Icon theme changed outside DMS; switched to System Default": {
-    "Icon theme changed outside DMS; switched to System Default": ""
+  "Icon theme changed outside ADVS; switched to System Default": {
+    "Icon theme changed outside ADVS; switched to System Default": ""
   },
   "Identical alerts show as one popup instead of stacking": {
     "Identical alerts show as one popup instead of stacking": "Identaj atentigoj montriĝas kiel unu ŝprucfenestro anstataŭ stakiĝi"
@@ -4286,8 +4286,8 @@
   "Idle Settings": {
     "Idle Settings": "Senokupaj agordoj"
   },
-  "If autostart app icons don't appear in the system tray, generate a systemd override to ensure DMS starts before autostart apps": {
-    "If autostart app icons don't appear in the system tray, generate a systemd override to ensure DMS starts before autostart apps": "Se la piktogramoj de aŭtomata starta aplikaĵo ne aperas en la sistempleto, generu systemd-anstataŭigon por certigi ke DMS komenciĝas antaŭ aŭtomata lanĉado de aplikaĵoj."
+  "If autostart app icons don't appear in the system tray, generate a systemd override to ensure ADVS starts before autostart apps": {
+    "If autostart app icons don't appear in the system tray, generate a systemd override to ensure ADVS starts before autostart apps": "Se la piktogramoj de aŭtomata starta aplikaĵo ne aperas en la sistempleto, generu systemd-anstataŭigon por certigi ke ADVS komenciĝas antaŭ aŭtomata lanĉado de aplikaĵoj."
   },
   "If the field is hidden, it will appear as soon as a key is pressed.": {
     "If the field is hidden, it will appear as soon as a key is pressed.": "Se la kampo estas kaŝita, ĝi aperos tuj kiam klavo estas premita."
@@ -4427,8 +4427,8 @@
   "Install Theme": {
     "Install Theme": "Instali etoson"
   },
-  "Install color themes from the DMS theme registry": {
-    "Install color themes from the DMS theme registry": "Instali kolor-etosojn el la DMS-etosa registro"
+  "Install color themes from the ADVS theme registry": {
+    "Install color themes from the ADVS theme registry": "Instali kolor-etosojn el la ADVS-etosa registro"
   },
   "Install complete. Greeter has been installed.": {
     "Install complete. Greeter has been installed.": "Instalado finita. Salutekrano estis instalita."
@@ -4442,17 +4442,17 @@
   "Install matugen package for dynamic theming": {
     "Install matugen package for dynamic theming": "Instali pakaĵon matugen por dinamika etosigo"
   },
-  "Install plugin '%1' from the DMS registry?": {
-    "Install plugin '%1' from the DMS registry?": "Ĉu instali kromprogramon '%1' el la DMS-registro?"
+  "Install plugin '%1' from the ADVS registry?": {
+    "Install plugin '%1' from the ADVS registry?": "Ĉu instali kromprogramon '%1' el la ADVS-registro?"
   },
-  "Install plugins from the DMS plugin registry": {
-    "Install plugins from the DMS plugin registry": "Instali kromprogramojn el la DMS-kromprograma registro"
+  "Install plugins from the ADVS plugin registry": {
+    "Install plugins from the ADVS plugin registry": "Instali kromprogramojn el la ADVS-kromprograma registro"
   },
-  "Install the DMS greeter? A terminal will open for sudo authentication.": {
-    "Install the DMS greeter? A terminal will open for sudo authentication.": "Ĉu instali la DMS-salutekranon? Terminalo malfermiĝos por sudo-aŭtentigo."
+  "Install the ADVS greeter? A terminal will open for sudo authentication.": {
+    "Install the ADVS greeter? A terminal will open for sudo authentication.": "Ĉu instali la ADVS-salutekranon? Terminalo malfermiĝos por sudo-aŭtentigo."
   },
-  "Install theme '%1' from the DMS registry?": {
-    "Install theme '%1' from the DMS registry?": "Ĉu instali etoson '%1' el la DMS-registro?"
+  "Install theme '%1' from the ADVS registry?": {
+    "Install theme '%1' from the ADVS registry?": "Ĉu instali etoson '%1' el la ADVS-registro?"
   },
   "Installation and PAM setup are documented in the ": {
     "Installation and PAM setup are documented in the ": ""
@@ -4886,8 +4886,8 @@
   "Make the bar background fully transparent": {
     "Make the bar background fully transparent": "Faru la barfonon plene travidebla"
   },
-  "Manage and configure plugins for extending DMS functionality": {
-    "Manage and configure plugins for extending DMS functionality": "Mastrumi kaj agordi kromprogramojn por etendi la funkciojn de DMS"
+  "Manage and configure plugins for extending ADVS functionality": {
+    "Manage and configure plugins for extending ADVS functionality": "Mastrumi kaj agordi kromprogramojn por etendi la funkciojn de ADVS"
   },
   "Manage up to 4 independent bar configurations. Each bar has its own position, widgets, styling, and display assignment.": {
     "Manage up to 4 independent bar configurations. Each bar has its own position, widgets, styling, and display assignment.": "Mastrumi ĝis 4 sendependajn agordojn de bretoj. Ĉiu breto havas sian propran pozicion, fenestraĵojn, stilon, kaj ekranan asignon."
@@ -4991,8 +4991,8 @@
   "Material inspired shadows and elevation on modals, popouts, and dialogs": {
     "Material inspired shadows and elevation on modals, popouts, and dialogs": "Ombroj kaj altigo inspiritaj de Material sur modaloj, ŝprucfenestroj, kaj dialogoj"
   },
-  "Material: Material Design 3 Expressive bezier curves. The DMS default feel.": {
-    "Material: Material Design 3 Expressive bezier curves. The DMS default feel.": "Materialo: Materiala Dezajno 3 Esprimplenaj bezier-kurboj. "
+  "Material: Material Design 3 Expressive bezier curves. The ADVS default feel.": {
+    "Material: Material Design 3 Expressive bezier curves. The ADVS default feel.": "Materialo: Materiala Dezajno 3 Esprimplenaj bezier-kurboj. "
   },
   "Matugen Contrast": {
     "Matugen Contrast": "Kontrasto de Matugen"
@@ -5405,8 +5405,8 @@
   "Night mode & gamma": {
     "Night mode & gamma": "Nokta reĝimo kaj gamao"
   },
-  "Night mode failed: DMS gamma control not available": {
-    "Night mode failed: DMS gamma control not available": "Nokta reĝimo malsukcesis: DMS gama-kontrolo ne havebla"
+  "Night mode failed: ADVS gamma control not available": {
+    "Night mode failed: ADVS gamma control not available": "Nokta reĝimo malsukcesis: ADVS gama-kontrolo ne havebla"
   },
   "Niri Integration": {
     "Niri Integration": "Niri-integriĝo"
@@ -5435,8 +5435,8 @@
   "No Border": {
     "No Border": "Sen bordo"
   },
-  "No DMS shortcuts configured": {
-    "No DMS shortcuts configured": "Neniuj DMS-mallongigoj agorditaj"
+  "No ADVS shortcuts configured": {
+    "No ADVS shortcuts configured": "Neniuj ADVS-mallongigoj agorditaj"
   },
   "No Dim": {
     "No Dim": "Sen malheligo"
@@ -5903,8 +5903,8 @@
   "Opacity of cards and nested surfaces inside floating windows": {
     "Opacity of cards and nested surfaces inside floating windows": ""
   },
-  "Opacity of floating DMS windows like Settings, Notepad, and authentication prompts": {
-    "Opacity of floating DMS windows like Settings, Notepad, and authentication prompts": ""
+  "Opacity of floating ADVS windows like Settings, Notepad, and authentication prompts": {
+    "Opacity of floating ADVS windows like Settings, Notepad, and authentication prompts": ""
   },
   "Opacity of foreground cards and nested surfaces on shell panels": {
     "Opacity of foreground cards and nested surfaces on shell panels": ""
@@ -5918,8 +5918,8 @@
   "Open App": {
     "Open App": "Malfermi Aplikaĵon"
   },
-  "Open DMS windows floating instead of tiled": {
-    "Open DMS windows floating instead of tiled": ""
+  "Open ADVS windows floating instead of tiled": {
+    "Open ADVS windows floating instead of tiled": ""
   },
   "Open Delay": {
     "Open Delay": ""
@@ -6839,8 +6839,8 @@
   "Remove the shortcut %1?": {
     "Remove the shortcut %1?": "Ĉu forigi la ŝparvojon %1?"
   },
-  "Remove the shortcut %1? An unbind entry will be saved to dms/binds-user.lua so it stays removed across DMS updates.": {
-    "Remove the shortcut %1? An unbind entry will be saved to dms/binds-user.lua so it stays removed across DMS updates.": "Ĉu forigi la ŝparvojon %1? "
+  "Remove the shortcut %1? An unbind entry will be saved to advs/binds-user.lua so it stays removed across ADVS updates.": {
+    "Remove the shortcut %1? An unbind entry will be saved to advs/binds-user.lua so it stays removed across ADVS updates.": "Ĉu forigi la ŝparvojon %1? "
   },
   "Removed administrator privileges": {
     "Removed administrator privileges": "Forigis administrantajn privilegiojn"
@@ -6893,11 +6893,11 @@
   "Requires 'dgop' tool": {
     "Requires 'dgop' tool": "Postulas ilon 'dgop'"
   },
-  "Requires DMS %1": {
-    "Requires DMS %1": "Postulas DMS %1"
+  "Requires ADVS %1": {
+    "Requires ADVS %1": "Postulas ADVS %1"
   },
-  "Requires DMS server with sysupdate capability": {
-    "Requires DMS server with sysupdate capability": "Postulas DMS-servilon kun sysupdate-kapablo"
+  "Requires ADVS server with sysupdate capability": {
+    "Requires ADVS server with sysupdate capability": "Postulas ADVS-servilon kun sysupdate-kapablo"
   },
   "Requires MangoWC compositor": {
     "Requires MangoWC compositor": "Postulas MangoWC-komponiston"
@@ -6905,8 +6905,8 @@
   "Requires a newer version of Quickshell": {
     "Requires a newer version of Quickshell": "Postulas pli novan version de Quickshell"
   },
-  "Requires greetd, dms-greeter, and your user in the greeter group (plus fprintd/pam_fprintd for fingerprint, pam_u2f for security keys).": {
-    "Requires greetd, dms-greeter, and your user in the greeter group (plus fprintd/pam_fprintd for fingerprint, pam_u2f for security keys).": ""
+  "Requires greetd, advs-greeter, and your user in the greeter group (plus fprintd/pam_fprintd for fingerprint, pam_u2f for security keys).": {
+    "Requires greetd, advs-greeter, and your user in the greeter group (plus fprintd/pam_fprintd for fingerprint, pam_u2f for security keys).": ""
   },
   "Requires night mode support": {
     "Requires night mode support": "Postulas subtenon de nokta reĝimo"
@@ -6914,8 +6914,8 @@
   "Requires remembering the last user and session. Enable those options first.": {
     "Requires remembering the last user and session. Enable those options first.": "Necesas memori la lastan uzanton kaj sesion. "
   },
-  "Requires the DMS Theme extension from the editor marketplace": {
-    "Requires the DMS Theme extension from the editor marketplace": ""
+  "Requires the ADVS Theme extension from the editor marketplace": {
+    "Requires the ADVS Theme extension from the editor marketplace": ""
   },
   "Reserved Height": {
     "Reserved Height": ""
@@ -6953,11 +6953,11 @@
   "Resolution, position, scale": {
     "Resolution, position, scale": "Distingivo, pozicio, skalo"
   },
-  "Restart DMS": {
-    "Restart DMS": "Restartigi DMS"
+  "Restart ADVS": {
+    "Restart ADVS": "Restartigi ADVS"
   },
-  "Restart the DankMaterialShell": {
-    "Restart the DankMaterialShell": "Restartigi la DankMaterialShell"
+  "Restart the AriadnevShell": {
+    "Restart the AriadnevShell": "Restartigi la AriadnevShell"
   },
   "Restart userspace without rebooting the kernel, requires systemd": {
     "Restart userspace without rebooting the kernel, requires systemd": ""
@@ -7052,14 +7052,14 @@
   "Rules (%1)": {
     "Rules (%1)": "Reguloj (%1)"
   },
-  "Rules found in your compositor config. These are read-only here, use Convert to DMS to make an editable copy.": {
-    "Rules found in your compositor config. These are read-only here, use Convert to DMS to make an editable copy.": "Reguloj trovitaj en via kompostista agordo. "
+  "Rules found in your compositor config. These are read-only here, use Convert to ADVS to make an editable copy.": {
+    "Rules found in your compositor config. These are read-only here, use Convert to ADVS to make an editable copy.": "Reguloj trovitaj en via kompostista agordo. "
   },
   "Run Again": {
     "Run Again": "Lanĉi denove"
   },
-  "Run DMS Templates": {
-    "Run DMS Templates": "Lanĉi DMS-ŝablonojn"
+  "Run ADVS Templates": {
+    "Run ADVS Templates": "Lanĉi ADVS-ŝablonojn"
   },
   "Run User Templates": {
     "Run User Templates": "Lanĉi uzantajn ŝablonojn"
@@ -7172,11 +7172,11 @@
   "Scale": {
     "Scale": "Skalo"
   },
-  "Scale DankBar font sizes independently": {
-    "Scale DankBar font sizes independently": "Skali tiparajn grandojn de DankBar memstare"
+  "Scale AdvBar font sizes independently": {
+    "Scale AdvBar font sizes independently": "Skali tiparajn grandojn de AdvBar memstare"
   },
-  "Scale DankBar icon sizes independently": {
-    "Scale DankBar icon sizes independently": "Skali piktogramajn grandojn de DankBar memstare"
+  "Scale AdvBar icon sizes independently": {
+    "Scale AdvBar icon sizes independently": "Skali piktogramajn grandojn de AdvBar memstare"
   },
   "Scale all font sizes throughout the shell": {
     "Scale all font sizes throughout the shell": "Skali ĉiujn tiparajn grandojn en la tuta ŝelo"
@@ -7721,8 +7721,8 @@
   "Show Remaining Time": {
     "Show Remaining Time": ""
   },
-  "Show Restart DMS": {
-    "Show Restart DMS": "Montri restartigon de DMS"
+  "Show Restart ADVS": {
+    "Show Restart ADVS": "Montri restartigon de ADVS"
   },
   "Show Satellite Widgets": {
     "Show Satellite Widgets": ""
@@ -7976,8 +7976,8 @@
   "Solid material type or Outline": {
     "Solid material type or Outline": ""
   },
-  "Some plugins require a newer version of DMS:": {
-    "Some plugins require a newer version of DMS:": "Iuj kromprogramoj postulas pli novan version de DMS:"
+  "Some plugins require a newer version of ADVS:": {
+    "Some plugins require a newer version of ADVS:": "Iuj kromprogramoj postulas pli novan version de ADVS:"
   },
   "Some settings are managed by the island": {
     "Some settings are managed by the island": ""
@@ -8075,14 +8075,14 @@
   "Standard": {
     "Standard": "Norma"
   },
-  "Standard: Classic Material Design 3 — panels rise from below with a subtle scale. The DMS default.": {
-    "Standard: Classic Material Design 3 — panels rise from below with a subtle scale. The DMS default.": "Normo: Klasika Materiala Dezajno 3 - paneloj leviĝas de malsupre kun subtila skalo. "
+  "Standard: Classic Material Design 3 — panels rise from below with a subtle scale. The ADVS default.": {
+    "Standard: Classic Material Design 3 — panels rise from below with a subtle scale. The ADVS default.": "Normo: Klasika Materiala Dezajno 3 - paneloj leviĝas de malsupre kun subtila skalo. "
   },
   "Start": {
     "Start": "Komenco"
   },
-  "Start DankConnect, KDE Connect, or Valent to use this plugin": {
-    "Start DankConnect, KDE Connect, or Valent to use this plugin": ""
+  "Start AdvConnect, KDE Connect, or Valent to use this plugin": {
+    "Start AdvConnect, KDE Connect, or Valent to use this plugin": ""
   },
   "Start Hotspot?": {
     "Start Hotspot?": ""
@@ -8243,11 +8243,11 @@
   "Sync Position Across Screens": {
     "Sync Position Across Screens": "Sinkronigi pozicion tra ekranoj"
   },
-  "Sync applies your theme and settings to the login screen. Shared users should run dms greeter sync --profile instead of a primary user sync.": {
-    "Sync applies your theme and settings to the login screen. Shared users should run dms greeter sync --profile instead of a primary user sync.": ""
+  "Sync applies your theme and settings to the login screen. Shared users should run advs greeter sync --profile instead of a primary user sync.": {
+    "Sync applies your theme and settings to the login screen. Shared users should run advs greeter sync --profile instead of a primary user sync.": ""
   },
-  "Sync applies your theme and settings to the login screen. Shared users should run dms-greeter sync --profile instead of a primary user sync.": {
-    "Sync applies your theme and settings to the login screen. Shared users should run dms-greeter sync --profile instead of a primary user sync.": ""
+  "Sync applies your theme and settings to the login screen. Shared users should run advs-greeter sync --profile instead of a primary user sync.": {
+    "Sync applies your theme and settings to the login screen. Shared users should run advs-greeter sync --profile instead of a primary user sync.": ""
   },
   "Sync completed successfully.": {
     "Sync completed successfully.": "Sinkronigo finiĝis sukcese."
@@ -8363,14 +8363,14 @@
   "Terminal additional parameters": {
     "Terminal additional parameters": "Finaj kromaj parametroj"
   },
-  "Terminal fallback failed. Install a supported terminal emulator or run 'dms auth sync' manually.": {
-    "Terminal fallback failed. Install a supported terminal emulator or run 'dms auth sync' manually.": "Terminala retropaŝo malsukcesis. Instalu subtenatan terminal-imitilon aŭ lanĉu 'dms auth sync' mane."
+  "Terminal fallback failed. Install a supported terminal emulator or run 'advs auth sync' manually.": {
+    "Terminal fallback failed. Install a supported terminal emulator or run 'advs auth sync' manually.": "Terminala retropaŝo malsukcesis. Instalu subtenatan terminal-imitilon aŭ lanĉu 'advs auth sync' mane."
   },
-  "Terminal fallback failed. Install one of the supported terminal emulators or run 'dms greeter sync' manually.": {
-    "Terminal fallback failed. Install one of the supported terminal emulators or run 'dms greeter sync' manually.": "Terminala retropaŝo malsukcesis. Instalu unu el la subtenataj terminal-imitiloj aŭ lanĉu 'dms greeter sync' mane."
+  "Terminal fallback failed. Install one of the supported terminal emulators or run 'advs greeter sync' manually.": {
+    "Terminal fallback failed. Install one of the supported terminal emulators or run 'advs greeter sync' manually.": "Terminala retropaŝo malsukcesis. Instalu unu el la subtenataj terminal-imitiloj aŭ lanĉu 'advs greeter sync' mane."
   },
-  "Terminal fallback failed. Install one of the supported terminal emulators or run 'dms-greeter sync' manually.": {
-    "Terminal fallback failed. Install one of the supported terminal emulators or run 'dms-greeter sync' manually.": ""
+  "Terminal fallback failed. Install one of the supported terminal emulators or run 'advs-greeter sync' manually.": {
+    "Terminal fallback failed. Install one of the supported terminal emulators or run 'advs-greeter sync' manually.": ""
   },
   "Terminal fallback opened. Complete authentication there; it will close automatically when done.": {
     "Terminal fallback opened. Complete authentication there; it will close automatically when done.": ""
@@ -8414,8 +8414,8 @@
   "The 'dgop' tool is required for system monitoring.\nPlease install dgop to use this feature.": {
     "The 'dgop' tool is required for system monitoring.\nPlease install dgop to use this feature.": "La ilo 'dgop' estas postulata por sistem-monitorado.\nBonvolu instali dgop por uzi ĉi tiun trajton."
   },
-  "The DMS_SOCKET environment variable is not set or the socket is unavailable. Automated plugin management requires the DMS_SOCKET.": {
-    "The DMS_SOCKET environment variable is not set or the socket is unavailable. Automated plugin management requires the DMS_SOCKET.": "La media variablo DMS_SOCKET ne estas agordita aŭ la kontaktskatolo ne estas disponebla. Aŭtomata mastrumado de kromprogramoj postulas la DMS_SOCKET."
+  "The ADVS_SOCKET environment variable is not set or the socket is unavailable. Automated plugin management requires the ADVS_SOCKET.": {
+    "The ADVS_SOCKET environment variable is not set or the socket is unavailable. Automated plugin management requires the ADVS_SOCKET.": "La media variablo ADVS_SOCKET ne estas agordita aŭ la kontaktskatolo ne estas disponebla. Aŭtomata mastrumado de kromprogramoj postulas la ADVS_SOCKET."
   },
   "The Island anchors to the top or bottom edge": {
     "The Island anchors to the top or bottom edge": ""
@@ -8435,8 +8435,8 @@
   "The custom command used when attaching to sessions (receives the session name as the first argument)": {
     "The custom command used when attaching to sessions (receives the session name as the first argument)": "La propra komando uzata kiam oni aligas al seancoj (ricevas la seanc-nomon kiel la unuan argumenton)"
   },
-  "The greeter bundled with DMS is active (archinstall setup). It keeps working as is, but syncing theme and settings needs the standalone greeter. Install greetd-dms-greeter-bin from the AUR, then run Sync to migrate the login screen.": {
-    "The greeter bundled with DMS is active (archinstall setup). It keeps working as is, but syncing theme and settings needs the standalone greeter. Install greetd-dms-greeter-bin from the AUR, then run Sync to migrate the login screen.": ""
+  "The greeter bundled with ADVS is active (archinstall setup). It keeps working as is, but syncing theme and settings needs the standalone greeter. Install greetd-advs-greeter-bin from the AUR, then run Sync to migrate the login screen.": {
+    "The greeter bundled with ADVS is active (archinstall setup). It keeps working as is, but syncing theme and settings needs the standalone greeter. Install greetd-advs-greeter-bin from the AUR, then run Sync to migrate the login screen.": ""
   },
   "The island draws its own surface": {
     "The island draws its own surface": ""
@@ -8489,8 +8489,8 @@
   "Third-Party Plugin Warning": {
     "Third-Party Plugin Warning": "Averto pri triaj kromprogramoj"
   },
-  "Third-party plugins are created by the community and are not officially supported by DankMaterialShell.\n\nThese plugins may pose security and privacy risks - install at your own risk.": {
-    "Third-party plugins are created by the community and are not officially supported by DankMaterialShell.\n\nThese plugins may pose security and privacy risks - install at your own risk.": "Triaj kromprogramoj estas kreitaj de la komunumo kaj ne estas oficiale subtenataj de DankMaterialShell.\n\nĈi tiuj kromprogramoj eble riskas sekurecon kaj privatecon - instalu je via propra risko."
+  "Third-party plugins are created by the community and are not officially supported by AriadnevShell.\n\nThese plugins may pose security and privacy risks - install at your own risk.": {
+    "Third-party plugins are created by the community and are not officially supported by AriadnevShell.\n\nThese plugins may pose security and privacy risks - install at your own risk.": "Triaj kromprogramoj estas kreitaj de la komunumo kaj ne estas oficiale subtenataj de AriadnevShell.\n\nĈi tiuj kromprogramoj eble riskas sekurecon kaj privatecon - instalu je via propra risko."
   },
   "This bind is overridden by config.kdl": {
     "This bind is overridden by config.kdl": "Ĉi tiu klavkombino estas preterpasita de config.kdl"
@@ -8498,8 +8498,8 @@
   "This device": {
     "This device": "Ĉi tiu aparato"
   },
-  "This install is still using hyprland.conf. Run dms setup to migrate before changing these settings.": {
-    "This install is still using hyprland.conf. Run dms setup to migrate before changing these settings.": ""
+  "This install is still using hyprland.conf. Run advs setup to migrate before changing these settings.": {
+    "This install is still using hyprland.conf. Run advs setup to migrate before changing these settings.": ""
   },
   "This may take a few seconds": {
     "This may take a few seconds": "Ĉi tio eble prenos kelkajn sekundojn"
@@ -8612,8 +8612,8 @@
   "To update, run the following command:": {
     "To update, run the following command:": "Por ĝisdatigi, lanĉu la jenan komandon:"
   },
-  "To use this DMS bind, remove or change the keybind in your config.kdl": {
-    "To use this DMS bind, remove or change the keybind in your config.kdl": "Por uzi ĉi tiun DMS-klavkombinon, forigu aŭ ŝanĝu la klavkombinon en via config.kdl"
+  "To use this ADVS bind, remove or change the keybind in your config.kdl": {
+    "To use this ADVS bind, remove or change the keybind in your config.kdl": "Por uzi ĉi tiun ADVS-klavkombinon, forigu aŭ ŝanĝu la klavkombinon en via config.kdl"
   },
   "Toast": {
     "Toast": ""
@@ -8813,8 +8813,8 @@
   "Uninstall failed: %1": {
     "Uninstall failed: %1": "Malinstalado malsukcesis: %1"
   },
-  "Uninstall the DMS greeter? This will remove configuration and restore your previous display manager. A terminal will open for sudo authentication.": {
-    "Uninstall the DMS greeter? This will remove configuration and restore your previous display manager. A terminal will open for sudo authentication.": "Ĉu malinstali la DMS-salutekranon? Ĉi tio forigos agordon kaj restarigos vian antaŭan seancmastrumilon. Terminalo malfermiĝos por sudo-aŭtentigo."
+  "Uninstall the ADVS greeter? This will remove configuration and restore your previous display manager. A terminal will open for sudo authentication.": {
+    "Uninstall the ADVS greeter? This will remove configuration and restore your previous display manager. A terminal will open for sudo authentication.": "Ĉu malinstali la ADVS-salutekranon? Ĉi tio forigos agordon kaj restarigos vian antaŭan seancmastrumilon. Terminalo malfermiĝos por sudo-aŭtentigo."
   },
   "Uninstalled: %1": {
     "Uninstalled: %1": "Malinstalita: %1"
@@ -9104,8 +9104,8 @@
   "Uses the spotlight-bar IPC action and always opens the minimal bar.": {
     "Uses the spotlight-bar IPC action and always opens the minimal bar.": "Uzas la agadon de spotlight-bar IPC kaj ĉiam malfermas la minimuman trinkejon."
   },
-  "Using DankCalendar%1": {
-    "Using DankCalendar%1": "Uzante DankCalendar%1"
+  "Using AdvCalendar%1": {
+    "Using AdvCalendar%1": "Uzante AdvCalendar%1"
   },
   "Using global monospace font from Settings → Personalization": {
     "Using global monospace font from Settings → Personalization": "Uzante tutmondan monospacan tiparon de Agordoj → Personigo"
@@ -9287,8 +9287,8 @@
   "Welcome": {
     "Welcome": "Bonvenon"
   },
-  "Welcome to DankMaterialShell": {
-    "Welcome to DankMaterialShell": "Bonvenon al DankMaterialShell"
+  "Welcome to AriadnevShell": {
+    "Welcome to AriadnevShell": "Bonvenon al AriadnevShell"
   },
   "When clicking a dock window in a Hyprland special workspace, bring that special workspace back before focusing the window": {
     "When clicking a dock window in a Hyprland special workspace, bring that special workspace back before focusing the window": "Kiam oni klakas dok-fenestron en speciala laborspaco de Hyprland, restaŭru tiun specialan laborspacon antaŭ fokusiĝi al la fenestro"
@@ -9575,8 +9575,8 @@
   "display rotation option": {
     "Normal": ""
   },
-  "dms-greeter is not installed. Install the dms-greeter package to manage the greeter.": {
-    "dms-greeter is not installed. Install the dms-greeter package to manage the greeter.": ""
+  "advs-greeter is not installed. Install the advs-greeter package to manage the greeter.": {
+    "advs-greeter is not installed. Install the advs-greeter package to manage the greeter.": ""
   },
   "e.g. /usr/bin/my-script --flag": {
     "e.g. /usr/bin/my-script --flag": "ekz. "
@@ -9620,8 +9620,8 @@
   "loginctl activate failed (exit %1)": {
     "loginctl activate failed (exit %1)": "loginctl-aktivigo malsukcesis (eliro %1)"
   },
-  "loginctl not available - lock integration requires DMS socket connection": {
-    "loginctl not available - lock integration requires DMS socket connection": "loginctl ne disponeblas - ŝlos-integriĝo postulas DMS-kontaktskatolan konekton"
+  "loginctl not available - lock integration requires ADVS socket connection": {
+    "loginctl not available - lock integration requires ADVS socket connection": "loginctl ne disponeblas - ŝlos-integriĝo postulas ADVS-kontaktskatolan konekton"
   },
   "mango: config reloaded": {
     "mango: config reloaded": "mango: agordo reŝargita"
@@ -9662,8 +9662,8 @@
   "niri shortcuts config": {
     "niri shortcuts config": "agordo de niri-mallongigoj"
   },
-  "niri/dms Discord": {
-    "niri/dms Discord": "Discord de niri/dms"
+  "niri/advs Discord": {
+    "niri/advs Discord": "Discord de niri/advs"
   },
   "niri: config reloaded": {
     "niri: config reloaded": "niri: agordo reŝargita"
@@ -9740,8 +9740,8 @@
   "up": {
     "up": "supren"
   },
-  "update dms for NM integration.": {
-    "update dms for NM integration.": "ĝisdatigu DMS-on por NM-integriĝo."
+  "update advs for NM integration.": {
+    "update advs for NM integration.": "ĝisdatigu ADVS-on por NM-integriĝo."
   },
   "useradd failed (exit %1)": {
     "useradd failed (exit %1)": "useradd malsukcesis (eliro %1)"

@@ -407,7 +407,7 @@ Item {
                             visible: root.hasOverride && !root.hasConfigConflict
                         }
 
-                        DankIcon {
+                        AdvIcon {
                             name: "warning"
                             size: Theme.iconSizeSmall
                             color: Theme.primary
@@ -427,7 +427,7 @@ Item {
                     }
                 }
 
-                DankIcon {
+                AdvIcon {
                     name: root.isExpanded ? "expand_less" : "expand_more"
                     size: Theme.iconSize - 4
                     color: Theme.surfaceVariantText
@@ -496,7 +496,7 @@ Item {
                             width: parent.width
                             spacing: Theme.spacingS
 
-                            DankIcon {
+                            AdvIcon {
                                 name: "warning"
                                 size: Theme.iconSizeSmall
                                 color: Theme.primary
@@ -521,7 +521,7 @@ Item {
                         }
 
                         StyledText {
-                            text: I18n.tr("To use this DMS bind, remove or change the keybind in your config.kdl")
+                            text: I18n.tr("To use this ADVS bind, remove or change the keybind in your config.kdl")
                             font.pixelSize: Theme.fontSizeSmall
                             color: Theme.surfaceVariantText
                             width: parent.width
@@ -600,7 +600,7 @@ Item {
                                 color: addKeyArea.pressed ? Theme.surfaceTextHover : (addKeyArea.containsMouse && !root.addingNewKey ? Theme.surfaceTextHover : Theme.withAlpha(Theme.surfaceTextHover, 0))
                             }
 
-                            DankIcon {
+                            AdvIcon {
                                 name: "add"
                                 size: Theme.iconSizeSmall
                                 color: root.addingNewKey ? Theme.primaryText : Theme.surfaceVariantText
@@ -673,7 +673,7 @@ Item {
                                     elide: Text.ElideRight
                                 }
 
-                                DankActionButton {
+                                AdvActionButton {
                                     id: recordBtn
                                     width: root._chipHeight
                                     height: root._chipHeight
@@ -804,7 +804,7 @@ Item {
                             color: singleAddKeyArea.pressed ? Theme.surfaceTextHover : (singleAddKeyArea.containsMouse && !root.addingNewKey ? Theme.surfaceTextHover : Theme.withAlpha(Theme.surfaceTextHover, 0))
                         }
 
-                        DankIcon {
+                        AdvIcon {
                             name: "add"
                             size: Theme.iconSizeSmall + 2
                             color: root.addingNewKey ? Theme.primaryText : Theme.surfaceVariantText
@@ -827,7 +827,7 @@ Item {
                     visible: root.hasConflict
                     Layout.leftMargin: root._labelWidth + Theme.spacingM
 
-                    DankIcon {
+                    AdvIcon {
                         name: "warning"
                         size: Theme.iconSizeSmall
                         color: Theme.primary
@@ -868,7 +868,7 @@ Item {
                                 required property int index
 
                                 readonly property var tooltipTexts: ({
-                                        "dms": I18n.tr("DMS shell actions (launcher, clipboard, etc.)"),
+                                        "advs": I18n.tr("ADVS shell actions (launcher, clipboard, etc.)"),
                                         "compositor": I18n.tr("Compositor actions (focus, move, etc.)", "keybind action type tooltip"),
                                         "spawn": I18n.tr("Run a program (e.g., firefox, kitty)"),
                                         "shell": I18n.tr("Run a shell command (e.g., notify-send)")
@@ -888,7 +888,7 @@ Item {
                                     anchors.rightMargin: Theme.spacingS
                                     spacing: Theme.spacingXS
 
-                                    DankIcon {
+                                    AdvIcon {
                                         name: typeDelegate.modelData.icon
                                         size: Theme.iconSizeSmall
                                         color: root._actionType === typeDelegate.modelData.id ? Theme.surfaceText : Theme.surfaceVariantText
@@ -914,10 +914,10 @@ Item {
                                         if (root.readOnly)
                                             return;
                                         switch (typeDelegate.modelData.id) {
-                                        case "dms":
+                                        case "advs":
                                             root.updateEdit({
-                                                "action": KeybindsService.dmsActions[0].id,
-                                                "desc": KeybindsService.dmsActions[0].label
+                                                "action": KeybindsService.advsActions[0].id,
+                                                "desc": KeybindsService.advsActions[0].label
                                             });
                                             break;
                                         case "compositor":
@@ -952,7 +952,7 @@ Item {
                         }
                     }
 
-                    DankTooltipV2 {
+                    AdvTooltipV2 {
                         id: typeTooltip
                     }
                 }
@@ -960,7 +960,7 @@ Item {
                 RowLayout {
                     Layout.fillWidth: true
                     spacing: Theme.spacingM
-                    visible: root._actionType === "dms"
+                    visible: root._actionType === "advs"
 
                     StyledText {
                         text: I18n.tr("Action")
@@ -970,17 +970,17 @@ Item {
                         Layout.preferredWidth: root._labelWidth
                     }
 
-                    DankDropdown {
+                    AdvDropdown {
                         Layout.fillWidth: true
                         compactMode: true
                         currentValue: KeybindsService.getActionLabel(root.editAction) || I18n.tr("Select...")
-                        options: KeybindsService.getDmsActions().map(a => a.label)
+                        options: KeybindsService.getAdvsActions().map(a => a.label)
                         enableFuzzySearch: true
                         maxPopupHeight: 300
                         onValueChanged: value => {
                             if (root.readOnly)
                                 return;
-                            const actions = KeybindsService.getDmsActions();
+                            const actions = KeybindsService.getAdvsActions();
                             for (const act of actions) {
                                 if (act.label === value) {
                                     root.updateEdit({
@@ -995,17 +995,17 @@ Item {
                 }
 
                 RowLayout {
-                    id: dmsArgsRow
+                    id: advsArgsRow
                     Layout.fillWidth: true
                     spacing: Theme.spacingM
 
                     readonly property var argConfig: Actions.getActionArgConfig(KeybindsService.currentProvider, root.editAction)
-                    readonly property var parsedArgs: argConfig?.type === "dms" ? Actions.parseDmsActionArgs(root.editAction) : null
-                    readonly property var dmsActionArgs: Actions.getDmsActionArgs()
-                    readonly property bool hasAmountArg: parsedArgs?.base ? (dmsActionArgs[parsedArgs.base]?.args?.some(a => a.name === "amount") ?? false) : false
-                    readonly property bool hasDeviceArg: parsedArgs?.base ? (dmsActionArgs[parsedArgs.base]?.args?.some(a => a.name === "device") ?? false) : false
-                    readonly property bool hasTabArg: parsedArgs?.base ? (dmsActionArgs[parsedArgs.base]?.args?.some(a => a.name === "tab") ?? false) : false
-                    readonly property var flagArgs: parsedArgs?.base ? (dmsActionArgs[parsedArgs.base]?.args?.filter(a => a.type === "flag") ?? []) : []
+                    readonly property var parsedArgs: argConfig?.type === "advs" ? Actions.parseAdvsActionArgs(root.editAction) : null
+                    readonly property var advsActionArgs: Actions.getAdvsActionArgs()
+                    readonly property bool hasAmountArg: parsedArgs?.base ? (advsActionArgs[parsedArgs.base]?.args?.some(a => a.name === "amount") ?? false) : false
+                    readonly property bool hasDeviceArg: parsedArgs?.base ? (advsActionArgs[parsedArgs.base]?.args?.some(a => a.name === "device") ?? false) : false
+                    readonly property bool hasTabArg: parsedArgs?.base ? (advsActionArgs[parsedArgs.base]?.args?.some(a => a.name === "tab") ?? false) : false
+                    readonly property var flagArgs: parsedArgs?.base ? (advsActionArgs[parsedArgs.base]?.args?.filter(a => a.type === "flag") ?? []) : []
 
                     function flagLabel(name) {
                         switch (name) {
@@ -1020,7 +1020,7 @@ Item {
                         }
                     }
 
-                    visible: root._actionType === "dms" && argConfig?.type === "dms"
+                    visible: root._actionType === "advs" && argConfig?.type === "advs"
 
                     StyledText {
                         text: I18n.tr("Amount")
@@ -1028,36 +1028,36 @@ Item {
                         font.weight: Font.Medium
                         color: Theme.surfaceVariantText
                         Layout.preferredWidth: root._labelWidth
-                        visible: dmsArgsRow.hasAmountArg
+                        visible: advsArgsRow.hasAmountArg
                     }
 
-                    DankTextField {
-                        id: dmsAmountField
+                    AdvTextField {
+                        id: advsAmountField
                         Layout.preferredWidth: Math.round(Theme.fontSizeMedium * 5.5)
                         Layout.preferredHeight: root._inputHeight
                         placeholderText: "5"
-                        visible: dmsArgsRow.hasAmountArg
+                        visible: advsArgsRow.hasAmountArg
 
                         Connections {
-                            target: dmsArgsRow
+                            target: advsArgsRow
                             function onParsedArgsChanged() {
-                                const newText = dmsArgsRow.parsedArgs?.args?.amount || "";
-                                if (dmsAmountField.text !== newText)
-                                    dmsAmountField.text = newText;
+                                const newText = advsArgsRow.parsedArgs?.args?.amount || "";
+                                if (advsAmountField.text !== newText)
+                                    advsAmountField.text = newText;
                             }
                         }
 
                         Component.onCompleted: {
-                            text = dmsArgsRow.parsedArgs?.args?.amount || "";
+                            text = advsArgsRow.parsedArgs?.args?.amount || "";
                         }
 
                         onEditingFinished: {
-                            if (!dmsArgsRow.parsedArgs)
+                            if (!advsArgsRow.parsedArgs)
                                 return;
                             const oldAction = root.editAction;
-                            const newArgs = Object.assign({}, dmsArgsRow.parsedArgs.args);
+                            const newArgs = Object.assign({}, advsArgsRow.parsedArgs.args);
                             newArgs.amount = text || "5";
-                            const newAction = Actions.buildDmsAction(dmsArgsRow.parsedArgs.base, newArgs);
+                            const newAction = Actions.buildAdvsAction(advsArgsRow.parsedArgs.base, newArgs);
                             const changes = {
                                 "action": newAction
                             };
@@ -1071,7 +1071,7 @@ Item {
                         text: "%"
                         font.pixelSize: Theme.fontSizeSmall
                         color: Theme.surfaceVariantText
-                        visible: dmsArgsRow.hasAmountArg
+                        visible: advsArgsRow.hasAmountArg
                     }
 
                     StyledText {
@@ -1079,45 +1079,45 @@ Item {
                         font.pixelSize: Theme.fontSizeSmall
                         font.weight: Font.Medium
                         color: Theme.surfaceVariantText
-                        Layout.leftMargin: dmsArgsRow.hasAmountArg ? Theme.spacingM : 0
-                        Layout.preferredWidth: dmsArgsRow.hasAmountArg ? -1 : root._labelWidth
-                        visible: dmsArgsRow.hasDeviceArg
+                        Layout.leftMargin: advsArgsRow.hasAmountArg ? Theme.spacingM : 0
+                        Layout.preferredWidth: advsArgsRow.hasAmountArg ? -1 : root._labelWidth
+                        visible: advsArgsRow.hasDeviceArg
                     }
 
-                    DankTextField {
-                        id: dmsDeviceField
+                    AdvTextField {
+                        id: advsDeviceField
                         Layout.fillWidth: true
                         Layout.preferredHeight: root._inputHeight
                         placeholderText: I18n.tr("leave empty for default")
-                        visible: dmsArgsRow.hasDeviceArg
+                        visible: advsArgsRow.hasDeviceArg
 
                         Connections {
-                            target: dmsArgsRow
+                            target: advsArgsRow
                             function onParsedArgsChanged() {
-                                const newText = dmsArgsRow.parsedArgs?.args?.device || "";
-                                if (dmsDeviceField.text !== newText)
-                                    dmsDeviceField.text = newText;
+                                const newText = advsArgsRow.parsedArgs?.args?.device || "";
+                                if (advsDeviceField.text !== newText)
+                                    advsDeviceField.text = newText;
                             }
                         }
 
                         Component.onCompleted: {
-                            text = dmsArgsRow.parsedArgs?.args?.device || "";
+                            text = advsArgsRow.parsedArgs?.args?.device || "";
                         }
 
                         onEditingFinished: {
-                            if (!dmsArgsRow.parsedArgs)
+                            if (!advsArgsRow.parsedArgs)
                                 return;
-                            const newArgs = Object.assign({}, dmsArgsRow.parsedArgs.args);
+                            const newArgs = Object.assign({}, advsArgsRow.parsedArgs.args);
                             newArgs.device = text;
                             root.updateEdit({
-                                "action": Actions.buildDmsAction(dmsArgsRow.parsedArgs.base, newArgs)
+                                "action": Actions.buildAdvsAction(advsArgsRow.parsedArgs.base, newArgs)
                             });
                         }
                     }
 
                     Item {
                         Layout.fillWidth: true
-                        visible: !dmsArgsRow.hasDeviceArg && !dmsArgsRow.hasTabArg
+                        visible: !advsArgsRow.hasDeviceArg && !advsArgsRow.hasTabArg
                     }
 
                     StyledText {
@@ -1126,16 +1126,16 @@ Item {
                         font.weight: Font.Medium
                         color: Theme.surfaceVariantText
                         Layout.preferredWidth: root._labelWidth
-                        visible: dmsArgsRow.hasTabArg
+                        visible: advsArgsRow.hasTabArg
                     }
 
-                    DankDropdown {
-                        id: dmsTabDropdown
+                    AdvDropdown {
+                        id: advsTabDropdown
                         Layout.fillWidth: true
                         compactMode: true
-                        visible: dmsArgsRow.hasTabArg
+                        visible: advsArgsRow.hasTabArg
                         currentValue: {
-                            const tab = dmsArgsRow.parsedArgs?.args?.tab || "";
+                            const tab = advsArgsRow.parsedArgs?.args?.tab || "";
                             switch (tab) {
                             case "media":
                                 return I18n.tr("Media");
@@ -1149,9 +1149,9 @@ Item {
                         }
                         options: [I18n.tr("Overview"), I18n.tr("Media"), I18n.tr("Wallpaper"), I18n.tr("Weather")]
                         onValueChanged: value => {
-                            if (!dmsArgsRow.parsedArgs)
+                            if (!advsArgsRow.parsedArgs)
                                 return;
-                            const newArgs = Object.assign({}, dmsArgsRow.parsedArgs.args);
+                            const newArgs = Object.assign({}, advsArgsRow.parsedArgs.args);
                             switch (value) {
                             case I18n.tr("Media"):
                                 newArgs.tab = "media";
@@ -1167,7 +1167,7 @@ Item {
                                 break;
                             }
                             root.updateEdit({
-                                "action": Actions.buildDmsAction(dmsArgsRow.parsedArgs.base, newArgs)
+                                "action": Actions.buildAdvsAction(advsArgsRow.parsedArgs.base, newArgs)
                             });
                         }
                     }
@@ -1178,35 +1178,35 @@ Item {
                         font.weight: Font.Medium
                         color: Theme.surfaceVariantText
                         Layout.preferredWidth: root._labelWidth
-                        visible: dmsArgsRow.flagArgs.length > 0
+                        visible: advsArgsRow.flagArgs.length > 0
                     }
 
                     Repeater {
-                        model: dmsArgsRow.flagArgs
+                        model: advsArgsRow.flagArgs
 
                         delegate: RowLayout {
                             id: flagToggle
                             required property var modelData
                             spacing: Theme.spacingXS
 
-                            DankToggle {
+                            AdvToggle {
                                 checked: {
-                                    const set = dmsArgsRow.parsedArgs?.args[flagToggle.modelData.name] === true;
+                                    const set = advsArgsRow.parsedArgs?.args[flagToggle.modelData.name] === true;
                                     return flagToggle.modelData.inverted ? !set : set;
                                 }
                                 onToggled: newChecked => {
-                                    if (root.readOnly || !dmsArgsRow.parsedArgs)
+                                    if (root.readOnly || !advsArgsRow.parsedArgs)
                                         return;
-                                    const newArgs = Object.assign({}, dmsArgsRow.parsedArgs.args);
+                                    const newArgs = Object.assign({}, advsArgsRow.parsedArgs.args);
                                     newArgs[flagToggle.modelData.name] = flagToggle.modelData.inverted ? !newChecked : newChecked;
                                     root.updateEdit({
-                                        "action": Actions.buildDmsAction(dmsArgsRow.parsedArgs.base, newArgs)
+                                        "action": Actions.buildAdvsAction(advsArgsRow.parsedArgs.base, newArgs)
                                     });
                                 }
                             }
 
                             StyledText {
-                                text: dmsArgsRow.flagLabel(flagToggle.modelData.name)
+                                text: advsArgsRow.flagLabel(flagToggle.modelData.name)
                                 font.pixelSize: Theme.fontSizeSmall
                                 color: Theme.surfaceVariantText
                             }
@@ -1215,7 +1215,7 @@ Item {
 
                     Item {
                         Layout.fillWidth: true
-                        visible: dmsArgsRow.flagArgs.length > 0
+                        visible: advsArgsRow.flagArgs.length > 0
                     }
                 }
 
@@ -1232,7 +1232,7 @@ Item {
                         Layout.preferredWidth: root._labelWidth
                     }
 
-                    DankDropdown {
+                    AdvDropdown {
                         id: compositorCatDropdown
                         Layout.preferredWidth: Math.round(Theme.fontSizeMedium * 8.5)
                         compactMode: true
@@ -1251,7 +1251,7 @@ Item {
                         options: KeybindsService.getCompositorCategories()
                     }
 
-                    DankDropdown {
+                    AdvDropdown {
                         Layout.fillWidth: true
                         compactMode: true
                         currentValue: KeybindsService.getActionLabel(root.editAction) || I18n.tr("Select...")
@@ -1284,7 +1284,7 @@ Item {
                             color: customToggleArea.pressed ? Theme.surfaceTextHover : (customToggleArea.containsMouse ? Theme.surfaceTextHover : Theme.withAlpha(Theme.surfaceTextHover, 0))
                         }
 
-                        DankIcon {
+                        AdvIcon {
                             name: "edit"
                             size: Theme.iconSizeSmall + 2
                             color: Theme.surfaceVariantText
@@ -1407,7 +1407,7 @@ Item {
                                     visible: optionsRow.argEditorCount > 1
                                 }
 
-                                DankTextField {
+                                AdvTextField {
                                     id: argField
 
                                     Layout.fillWidth: true
@@ -1469,7 +1469,7 @@ Item {
                             }
                             spacing: Theme.spacingXS
 
-                            DankToggle {
+                            AdvToggle {
                                 id: focusToggle
                                 checked: optionsRow.parsedArgs?.args?.focus !== false
                                 onToggled: newChecked => {
@@ -1503,7 +1503,7 @@ Item {
                                 visible: optionsRow.argConfig?.base !== "screenshot-window"
                                 spacing: Theme.spacingXS
 
-                                DankToggle {
+                                AdvToggle {
                                     id: showPointerToggle
                                     checked: optionsRow.parsedArgs?.args["show-pointer"] === true
                                     onToggled: newChecked => {
@@ -1528,7 +1528,7 @@ Item {
                                 visible: optionsRow.argConfig?.base !== "screenshot"
                                 spacing: Theme.spacingXS
 
-                                DankToggle {
+                                AdvToggle {
                                     id: writeToDiskToggle
                                     checked: optionsRow.parsedArgs?.args["write-to-disk"] === true
                                     onToggled: newChecked => {
@@ -1554,7 +1554,7 @@ Item {
                             visible: optionsRow.argConfig?.base === "quit"
                             spacing: Theme.spacingXS
 
-                            DankToggle {
+                            AdvToggle {
                                 checked: optionsRow.parsedArgs?.args["skip-confirmation"] === true
                                 onToggled: newChecked => {
                                     const args = newChecked ? {
@@ -1588,7 +1588,7 @@ Item {
                         Layout.preferredWidth: root._labelWidth
                     }
 
-                    DankTextField {
+                    AdvTextField {
                         id: customCompositorField
                         Layout.fillWidth: true
                         Layout.preferredHeight: root._inputHeight
@@ -1615,7 +1615,7 @@ Item {
                             color: presetToggleArea.pressed ? Theme.surfaceTextHover : (presetToggleArea.containsMouse ? Theme.surfaceTextHover : Theme.withAlpha(Theme.surfaceTextHover, 0))
                         }
 
-                        DankIcon {
+                        AdvIcon {
                             name: "list"
                             size: Theme.iconSizeSmall + 2
                             color: Theme.surfaceVariantText
@@ -1653,7 +1653,7 @@ Item {
                         Layout.preferredWidth: root._labelWidth
                     }
 
-                    DankTextField {
+                    AdvTextField {
                         id: spawnTextField
                         Layout.fillWidth: true
                         Layout.preferredHeight: root._inputHeight
@@ -1685,7 +1685,7 @@ Item {
                         Layout.preferredWidth: root._labelWidth
                     }
 
-                    DankTextField {
+                    AdvTextField {
                         id: shellTextField
                         Layout.fillWidth: true
                         Layout.preferredHeight: root._inputHeight
@@ -1714,7 +1714,7 @@ Item {
                         Layout.preferredWidth: root._labelWidth
                     }
 
-                    DankTextField {
+                    AdvTextField {
                         id: titleField
                         Layout.fillWidth: true
                         Layout.preferredHeight: root._inputHeight
@@ -1746,7 +1746,7 @@ Item {
                         RowLayout {
                             spacing: Theme.spacingXS
 
-                            DankToggle {
+                            AdvToggle {
                                 checked: root.editFlags.indexOf("e") !== -1
                                 onToggled: newChecked => {
                                     let flags = root.editFlags.split("").filter(f => f !== "e");
@@ -1768,7 +1768,7 @@ Item {
                         RowLayout {
                             spacing: Theme.spacingXS
 
-                            DankToggle {
+                            AdvToggle {
                                 checked: root.editFlags.indexOf("l") !== -1
                                 onToggled: newChecked => {
                                     let flags = root.editFlags.split("").filter(f => f !== "l");
@@ -1790,7 +1790,7 @@ Item {
                         RowLayout {
                             spacing: Theme.spacingXS
 
-                            DankToggle {
+                            AdvToggle {
                                 checked: root.editFlags.indexOf("r") !== -1
                                 onToggled: newChecked => {
                                     let flags = root.editFlags.split("").filter(f => f !== "r");
@@ -1812,7 +1812,7 @@ Item {
                         RowLayout {
                             spacing: Theme.spacingXS
 
-                            DankToggle {
+                            AdvToggle {
                                 checked: root.editFlags.indexOf("o") !== -1
                                 onToggled: newChecked => {
                                     let flags = root.editFlags.split("").filter(f => f !== "o");
@@ -1846,7 +1846,7 @@ Item {
                         Layout.preferredWidth: root._labelWidth
                     }
 
-                    DankTextField {
+                    AdvTextField {
                         id: cooldownField
                         Layout.preferredWidth: Math.round(Theme.fontSizeMedium * 7)
                         Layout.preferredHeight: root._inputHeight
@@ -1905,7 +1905,7 @@ Item {
                         RowLayout {
                             spacing: Theme.spacingXS
 
-                            DankToggle {
+                            AdvToggle {
                                 checked: root.editRepeat !== false
                                 onToggled: newChecked => {
                                     root.updateEdit({
@@ -1924,7 +1924,7 @@ Item {
                         RowLayout {
                             spacing: Theme.spacingXS
 
-                            DankToggle {
+                            AdvToggle {
                                 checked: root.editAllowWhenLocked
                                 onToggled: newChecked => {
                                     root.updateEdit({
@@ -1943,7 +1943,7 @@ Item {
                         RowLayout {
                             spacing: Theme.spacingXS
 
-                            DankToggle {
+                            AdvToggle {
                                 checked: root.editAllowInhibiting !== false
                                 onToggled: newChecked => {
                                     root.updateEdit({
@@ -1971,18 +1971,18 @@ Item {
                     Layout.fillWidth: true
                     spacing: Theme.spacingM
 
-                    DankActionButton {
+                    AdvActionButton {
                         Layout.preferredWidth: root._buttonHeight
                         Layout.preferredHeight: root._buttonHeight
                         circular: false
                         iconName: "delete"
                         iconSize: Theme.iconSize - 4
                         iconColor: Theme.error
-                        visible: root.editingKeyIndex >= 0 && root.editingKeyIndex < root.keys.length && (root.keys[root.editingKeyIndex].isDMSManaged || root.keys[root.editingKeyIndex].isOverride) && !root.isNew && !root.readOnly
+                        visible: root.editingKeyIndex >= 0 && root.editingKeyIndex < root.keys.length && (root.keys[root.editingKeyIndex].isADVSManaged || root.keys[root.editingKeyIndex].isOverride) && !root.isNew && !root.readOnly
                         onClicked: root.removeBind(root._originalKey)
                     }
 
-                    DankButton {
+                    AdvButton {
                         text: I18n.tr("Reset to default")
                         buttonHeight: root._buttonHeight
                         backgroundColor: Theme.floatingWindowFieldColor
@@ -2002,7 +2002,7 @@ Item {
                         visible: !root.isNew
                     }
 
-                    DankButton {
+                    AdvButton {
                         text: I18n.tr("Cancel")
                         buttonHeight: root._buttonHeight
                         backgroundColor: Theme.floatingWindowFieldColor
@@ -2018,7 +2018,7 @@ Item {
                         }
                     }
 
-                    DankButton {
+                    AdvButton {
                         text: root.isNew ? I18n.tr("Add") : I18n.tr("Save")
                         buttonHeight: root._buttonHeight
                         enabled: root.canSave()

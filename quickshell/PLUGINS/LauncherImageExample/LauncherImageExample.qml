@@ -12,33 +12,33 @@ QtObject {
 
     readonly property var images: [
         {
-            name: "DankDash",
-            imageUrl: "https://danklinux.com/img/dankdash.png",
-            comment: "DankMaterialShell Dashboard"
+            name: "AdvDash",
+            imageUrl: "https://ariadnev.vchun.dev/img/advdash.png",
+            comment: "AriadnevShell Dashboard"
         },
         {
             name: "Control Center",
-            imageUrl: "https://danklinux.com/img/cc.png",
+            imageUrl: "https://ariadnev.vchun.dev/img/cc.png",
             comment: "System Control Center"
         },
         {
             name: "Desktop",
-            imageUrl: "https://danklinux.com/img/desktop.png",
+            imageUrl: "https://ariadnev.vchun.dev/img/desktop.png",
             comment: "Desktop Environment"
         },
         {
             name: "Search",
-            imageUrl: "https://danklinux.com/img/dsearch.png",
+            imageUrl: "https://ariadnev.vchun.dev/img/dsearch.png",
             comment: "Application Search"
         },
         {
             name: "Theme Registry",
-            imageUrl: "https://danklinux.com/img/blog/v1.2/themeregistry.png",
+            imageUrl: "https://ariadnev.vchun.dev/img/blog/v1.2/themeregistry.png",
             comment: "Theme Registry Browser"
         },
         {
             name: "Monitor Settings",
-            imageUrl: "https://danklinux.com/img/blog/v1.2/monitordark.png",
+            imageUrl: "https://ariadnev.vchun.dev/img/blog/v1.2/monitordark.png",
             comment: "Display Configuration"
         }
     ]
@@ -101,7 +101,7 @@ QtObject {
                 action: () => {
                     const url = item.imageUrl || "";
                     if (url) {
-                        Quickshell.execDetached(["dms", "cl", "copy", url]);
+                        Quickshell.execDetached(["advs", "cl", "copy", url]);
                         if (typeof ToastService !== "undefined") {
                             ToastService.showInfo("Copied", url);
                         }

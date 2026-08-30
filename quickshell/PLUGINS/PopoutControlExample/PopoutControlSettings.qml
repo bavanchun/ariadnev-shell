@@ -45,8 +45,8 @@ PluginSettings {
                 value: "processList"
             },
             {
-                label: "DankDash",
-                value: "dankDash"
+                label: "AdvDash",
+                value: "advDash"
             },
             {
                 label: "Battery Info",

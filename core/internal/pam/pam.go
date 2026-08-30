@@ -9,19 +9,19 @@ import (
 	"slices"
 	"strings"
 
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/privesc"
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/utils"
+	"github.com/bavanchun/ariadnev-shell/core/internal/privesc"
+	"github.com/bavanchun/ariadnev-shell/core/internal/utils"
 )
 
 const (
-	LockscreenPamManagedBlockStart = "# BEGIN DMS LOCKSCREEN AUTH (managed by dms greeter sync)"
-	LockscreenPamManagedBlockEnd   = "# END DMS LOCKSCREEN AUTH"
+	LockscreenPamManagedBlockStart = "# BEGIN ADVS LOCKSCREEN AUTH (managed by advs greeter sync)"
+	LockscreenPamManagedBlockEnd   = "# END ADVS LOCKSCREEN AUTH"
 
-	LockscreenU2FPamManagedBlockStart = "# BEGIN DMS LOCKSCREEN U2F AUTH (managed by dms auth sync)"
-	LockscreenU2FPamManagedBlockEnd   = "# END DMS LOCKSCREEN U2F AUTH"
+	LockscreenU2FPamManagedBlockStart = "# BEGIN ADVS LOCKSCREEN U2F AUTH (managed by advs auth sync)"
+	LockscreenU2FPamManagedBlockEnd   = "# END ADVS LOCKSCREEN U2F AUTH"
 
-	DankshellPamPath    = "/etc/pam.d/dankshell"
-	DankshellU2FPamPath = "/etc/pam.d/dankshell-u2f"
+	AdvshellPamPath    = "/etc/pam.d/advshell"
+	AdvshellU2FPamPath = "/etc/pam.d/advshell-u2f"
 )
 
 // lockscreenPamEntryCandidates are the /etc/pam.d entry-point services tried in
@@ -75,8 +75,8 @@ type SyncAuthOptions struct {
 
 type syncDeps struct {
 	pamDir           string
-	dankshellPath    string
-	dankshellU2fPath string
+	advshellPath    string
+	advshellU2fPath string
 	isNixOS          func() bool
 	readFile         func(string) ([]byte, error)
 	stat             func(string) (os.FileInfo, error)
@@ -138,8 +138,8 @@ func (r lockscreenPamResolver) locate(target string) (string, error) {
 func defaultSyncDeps() syncDeps {
 	return syncDeps{
 		pamDir:           "/etc/pam.d",
-		dankshellPath:    DankshellPamPath,
-		dankshellU2fPath: DankshellU2FPamPath,
+		advshellPath:    AdvshellPamPath,
+		advshellU2fPath: AdvshellU2FPamPath,
 		isNixOS:          IsNixOS,
 		readFile:         os.ReadFile,
 		stat:             os.Stat,
@@ -157,7 +157,7 @@ func IsNixOS() bool {
 }
 
 func ReadAuthSettings(homeDir string) (AuthSettings, error) {
-	settingsPath := filepath.Join(homeDir, ".config", "DankMaterialShell", "settings.json")
+	settingsPath := filepath.Join(homeDir, ".config", "AriadnevShell", "settings.json")
 	data, err := os.ReadFile(settingsPath)
 	if err != nil {
 		if os.IsNotExist(err) {
@@ -719,10 +719,10 @@ func validateLockscreenPam(serviceName string, path string, deps lockscreenPamVa
 	}
 
 	if analysis.inlineFingerprint {
-		result.Warnings = append(result.Warnings, "pam_fprintd is present in the resolved stack; may double-prompt with DMS's separate fingerprint context")
+		result.Warnings = append(result.Warnings, "pam_fprintd is present in the resolved stack; may double-prompt with ADVS's separate fingerprint context")
 	}
 	if analysis.inlineU2f {
-		result.Warnings = append(result.Warnings, "pam_u2f is present in the resolved stack; may double-prompt with DMS's separate U2F context")
+		result.Warnings = append(result.Warnings, "pam_u2f is present in the resolved stack; may double-prompt with ADVS's separate U2F context")
 	}
 
 	result.Valid = len(result.Errors) == 0
@@ -795,7 +795,7 @@ func moduleReferenceExists(ref string, deps lockscreenPamValidateDeps) bool {
 	return deps.pamModuleExists(ref)
 }
 
-const UserLockscreenPamService = "dankshell"
+const UserLockscreenPamService = "advshell"
 
 const UserLockscreenPamFallbackService = "other"
 
@@ -807,7 +807,7 @@ session  required    pam_deny.so
 `
 
 func UserLockscreenPamDir() string {
-	return filepath.Join(utils.XDGStateHome(), "DankMaterialShell", "pam")
+	return filepath.Join(utils.XDGStateHome(), "AriadnevShell", "pam")
 }
 
 // WriteUserLockscreenPamConfig resolves the distro's real auth stack into a
@@ -871,53 +871,53 @@ func buildManagedLockscreenU2FPamContent() string {
 
 func syncLockscreenPamConfigWithDeps(logFunc func(string), sudoPassword string, deps syncDeps) error {
 	if deps.isNixOS() {
-		logFunc("ℹ NixOS detected. DMS does not write /etc/pam.d/dankshell; the lock screen uses a sanitized password-only service in the user state directory unless you select a custom PAM source.")
+		logFunc("ℹ NixOS detected. ADVS does not write /etc/pam.d/advshell; the lock screen uses a sanitized password-only service in the user state directory unless you select a custom PAM source.")
 		return nil
 	}
 
-	existingData, err := deps.readFile(deps.dankshellPath)
+	existingData, err := deps.readFile(deps.advshellPath)
 	if err == nil {
 		if !hasManagedLockscreenPamFile(string(existingData)) {
-			logFunc("ℹ Custom /etc/pam.d/dankshell found (no DMS block). Skipping.")
+			logFunc("ℹ Custom /etc/pam.d/advshell found (no ADVS block). Skipping.")
 			return nil
 		}
 	} else if !os.IsNotExist(err) {
-		return fmt.Errorf("failed to read %s: %w", deps.dankshellPath, err)
+		return fmt.Errorf("failed to read %s: %w", deps.advshellPath, err)
 	}
 
 	content, err := buildManagedLockscreenPamContent([]string{deps.pamDir}, deps.readFile)
 	if err != nil {
-		return fmt.Errorf("failed to build %s from %s: %w", deps.dankshellPath, filepath.Join(deps.pamDir, "login"), err)
+		return fmt.Errorf("failed to build %s from %s: %w", deps.advshellPath, filepath.Join(deps.pamDir, "login"), err)
 	}
 
-	if err := writeManagedPamFile(content, deps.dankshellPath, sudoPassword, deps); err != nil {
-		return fmt.Errorf("failed to write %s: %w", deps.dankshellPath, err)
+	if err := writeManagedPamFile(content, deps.advshellPath, sudoPassword, deps); err != nil {
+		return fmt.Errorf("failed to write %s: %w", deps.advshellPath, err)
 	}
 
-	logFunc("✓ Created or updated /etc/pam.d/dankshell for lock screen authentication")
+	logFunc("✓ Created or updated /etc/pam.d/advshell for lock screen authentication")
 	return nil
 }
 
 func syncLockscreenU2FPamConfigWithDeps(logFunc func(string), sudoPassword string, enabled bool, deps syncDeps) error {
 	if deps.isNixOS() {
-		logFunc("ℹ NixOS detected. DMS does not manage /etc/pam.d/dankshell-u2f on NixOS. Keep using the bundled U2F helper or configure a custom PAM service yourself.")
+		logFunc("ℹ NixOS detected. ADVS does not manage /etc/pam.d/advshell-u2f on NixOS. Keep using the bundled U2F helper or configure a custom PAM service yourself.")
 		return nil
 	}
 
-	existingData, err := deps.readFile(deps.dankshellU2fPath)
+	existingData, err := deps.readFile(deps.advshellU2fPath)
 	if err != nil && !os.IsNotExist(err) {
-		return fmt.Errorf("failed to read %s: %w", deps.dankshellU2fPath, err)
+		return fmt.Errorf("failed to read %s: %w", deps.advshellU2fPath, err)
 	}
 
 	if enabled {
 		if err == nil && !hasManagedLockscreenU2FPamFile(string(existingData)) {
-			logFunc("ℹ Custom /etc/pam.d/dankshell-u2f found (no DMS block). Skipping.")
+			logFunc("ℹ Custom /etc/pam.d/advshell-u2f found (no ADVS block). Skipping.")
 			return nil
 		}
-		if err := writeManagedPamFile(buildManagedLockscreenU2FPamContent(), deps.dankshellU2fPath, sudoPassword, deps); err != nil {
-			return fmt.Errorf("failed to write %s: %w", deps.dankshellU2fPath, err)
+		if err := writeManagedPamFile(buildManagedLockscreenU2FPamContent(), deps.advshellU2fPath, sudoPassword, deps); err != nil {
+			return fmt.Errorf("failed to write %s: %w", deps.advshellU2fPath, err)
 		}
-		logFunc("✓ Created or updated /etc/pam.d/dankshell-u2f for lock screen security-key authentication")
+		logFunc("✓ Created or updated /etc/pam.d/advshell-u2f for lock screen security-key authentication")
 		return nil
 	}
 
@@ -925,19 +925,19 @@ func syncLockscreenU2FPamConfigWithDeps(logFunc func(string), sudoPassword strin
 		return nil
 	}
 	if err == nil && !hasManagedLockscreenU2FPamFile(string(existingData)) {
-		logFunc("ℹ Custom /etc/pam.d/dankshell-u2f found (no DMS block). Leaving it untouched.")
+		logFunc("ℹ Custom /etc/pam.d/advshell-u2f found (no ADVS block). Leaving it untouched.")
 		return nil
 	}
 
-	if err := deps.runSudoCmd(sudoPassword, "rm", "-f", deps.dankshellU2fPath); err != nil {
-		return fmt.Errorf("failed to remove %s: %w", deps.dankshellU2fPath, err)
+	if err := deps.runSudoCmd(sudoPassword, "rm", "-f", deps.advshellU2fPath); err != nil {
+		return fmt.Errorf("failed to remove %s: %w", deps.advshellU2fPath, err)
 	}
-	logFunc("✓ Removed DMS-managed /etc/pam.d/dankshell-u2f")
+	logFunc("✓ Removed ADVS-managed /etc/pam.d/advshell-u2f")
 	return nil
 }
 
 func writeManagedPamFile(content string, destPath string, sudoPassword string, deps syncDeps) error {
-	tmpFile, err := deps.createTemp("", "dms-pam-*.conf")
+	tmpFile, err := deps.createTemp("", "advs-pam-*.conf")
 	if err != nil {
 		return err
 	}

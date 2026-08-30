@@ -137,7 +137,7 @@ Column {
                     border.width: 1
                     anchors.verticalCenter: parent.verticalCenter
 
-                    DankIcon {
+                    AdvIcon {
                         anchors.centerIn: parent
                         name: "colorize"
                         size: 16
@@ -169,7 +169,7 @@ Column {
                     }
                 }
 
-                DankIcon {
+                AdvIcon {
                     id: editIcon
                     name: "edit"
                     size: Theme.iconSizeSmall

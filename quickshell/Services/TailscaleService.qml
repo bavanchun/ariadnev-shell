@@ -14,21 +14,21 @@ Singleton {
     onRefCountChanged: {
         if (refCount > 0) {
             ensureSubscription();
-        } else if (refCount === 0 && DMSService.activeSubscriptions.includes("tailscale")) {
-            DMSService.removeSubscription("tailscale");
+        } else if (refCount === 0 && ADVSService.activeSubscriptions.includes("tailscale")) {
+            ADVSService.removeSubscription("tailscale");
         }
     }
 
     function ensureSubscription() {
         if (refCount <= 0)
             return;
-        if (!DMSService.isConnected)
+        if (!ADVSService.isConnected)
             return;
-        if (DMSService.activeSubscriptions.includes("tailscale"))
+        if (ADVSService.activeSubscriptions.includes("tailscale"))
             return;
-        if (DMSService.activeSubscriptions.includes("all"))
+        if (ADVSService.activeSubscriptions.includes("all"))
             return;
-        DMSService.addSubscription("tailscale");
+        ADVSService.addSubscription("tailscale");
         if (available) {
             getStatus();
         }
@@ -84,28 +84,28 @@ Singleton {
 
     readonly property int onlinePeerCount: onlinePeers.length
 
-    readonly property string socketPath: Quickshell.env("DMS_SOCKET")
+    readonly property string socketPath: Quickshell.env("ADVS_SOCKET")
 
     Component.onCompleted: {
         if (socketPath && socketPath.length > 0) {
-            checkDMSCapabilities();
+            checkADVSCapabilities();
         }
     }
 
     Connections {
-        target: DMSService
+        target: ADVSService
 
         function onConnectionStateChanged() {
-            if (DMSService.isConnected) {
-                checkDMSCapabilities();
+            if (ADVSService.isConnected) {
+                checkADVSCapabilities();
                 ensureSubscription();
             }
         }
     }
 
     Connections {
-        target: DMSService
-        enabled: DMSService.isConnected
+        target: ADVSService
+        enabled: ADVSService.isConnected
 
         function onTailscaleStateUpdate(data) {
             root.log.debug("Subscription update received");
@@ -113,17 +113,17 @@ Singleton {
         }
 
         function onCapabilitiesReceived() {
-            checkDMSCapabilities();
+            checkADVSCapabilities();
         }
     }
 
-    function checkDMSCapabilities() {
-        if (!DMSService.isConnected)
+    function checkADVSCapabilities() {
+        if (!ADVSService.isConnected)
             return;
-        if (DMSService.capabilities.length === 0)
+        if (ADVSService.capabilities.length === 0)
             return;
         const wasAvailable = available;
-        available = DMSService.capabilities.includes("tailscale");
+        available = ADVSService.capabilities.includes("tailscale");
 
         if (!available)
             return;
@@ -138,7 +138,7 @@ Singleton {
     function getStatus() {
         if (!available)
             return;
-        DMSService.sendRequest("tailscale.getStatus", null, response => {
+        ADVSService.sendRequest("tailscale.getStatus", null, response => {
             if (response.result) {
                 updateState(response.result);
             }
@@ -161,7 +161,7 @@ Singleton {
     function refresh(callback) {
         if (!available)
             return;
-        DMSService.sendRequest("tailscale.refresh", null, response => {
+        ADVSService.sendRequest("tailscale.refresh", null, response => {
             if (callback)
                 callback(response);
         });
@@ -172,7 +172,7 @@ Singleton {
     function sendAction(method, params, callback) {
         if (!available)
             return;
-        DMSService.sendRequest(method, params, response => {
+        ADVSService.sendRequest(method, params, response => {
             if (response.error) {
                 root.log.warn(method + " failed: " + response.error);
                 ToastService.showError(I18n.tr("Tailscale action failed", "Toast shown when a Tailscale write action is rejected"), response.error);

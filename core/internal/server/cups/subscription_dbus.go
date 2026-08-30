@@ -5,8 +5,8 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/log"
-	"github.com/AvengeMedia/DankMaterialShell/core/pkg/ipp"
+	"github.com/bavanchun/ariadnev-shell/core/internal/log"
+	"github.com/bavanchun/ariadnev-shell/core/pkg/ipp"
 	"github.com/godbus/dbus/v5"
 )
 
@@ -81,7 +81,7 @@ func (sm *DBusSubscriptionManager) Start() error {
 func (sm *DBusSubscriptionManager) createDBusSubscription() (int, error) {
 	req := ipp.NewRequest(ipp.OperationCreatePrinterSubscriptions, 2)
 	req.OperationAttributes[ipp.AttributePrinterURI] = fmt.Sprintf("%s/", sm.baseURL)
-	req.OperationAttributes[ipp.AttributeRequestingUserName] = "dms"
+	req.OperationAttributes[ipp.AttributeRequestingUserName] = "advs"
 
 	req.SubscriptionAttributes = map[string]any{
 		"notify-events": []string{
@@ -291,7 +291,7 @@ func (sm *DBusSubscriptionManager) Stop() {
 func (sm *DBusSubscriptionManager) cancelSubscription() {
 	req := ipp.NewRequest(ipp.OperationCancelSubscription, 1)
 	req.OperationAttributes[ipp.AttributePrinterURI] = fmt.Sprintf("%s/", sm.baseURL)
-	req.OperationAttributes[ipp.AttributeRequestingUserName] = "dms"
+	req.OperationAttributes[ipp.AttributeRequestingUserName] = "advs"
 	req.OperationAttributes["notify-subscription-id"] = sm.subscriptionID
 
 	_, err := sm.client.SendRequest(fmt.Sprintf("%s/", sm.baseURL), req, nil)

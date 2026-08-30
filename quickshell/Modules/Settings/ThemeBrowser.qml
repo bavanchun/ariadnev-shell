@@ -6,7 +6,7 @@ import qs.Modals.Common
 import qs.Services
 import qs.Widgets
 
-DankFloatingWindow {
+AdvFloatingWindow {
     id: root
 
     property var allThemes: []
@@ -63,7 +63,7 @@ DankFloatingWindow {
 
     function installTheme(themeId, themeName, applyAfterInstall) {
         ToastService.showInfo(I18n.tr("Installing: %1", "installation progress").arg(themeName));
-        DMSService.installTheme(themeId, response => {
+        ADVSService.installTheme(themeId, response => {
             if (response.error) {
                 ToastService.showError(I18n.tr("Install failed: %1", "installation error").arg(response.error));
                 return;
@@ -80,7 +80,7 @@ DankFloatingWindow {
             var theme = installedThemes[i];
             if (theme.id === themeId) {
                 var sourceDir = theme.sourceDir || theme.id;
-                var themePath = Quickshell.env("HOME") + "/.config/DankMaterialShell/themes/" + sourceDir + "/theme.json";
+                var themePath = Quickshell.env("HOME") + "/.config/AriadnevShell/themes/" + sourceDir + "/theme.json";
                 SettingsData.set("customThemeFile", themePath);
                 Theme.switchThemeCategory("registry", "custom");
                 Theme.switchTheme("custom", true, true);
@@ -92,7 +92,7 @@ DankFloatingWindow {
 
     function uninstallTheme(themeId, themeName) {
         ToastService.showInfo(I18n.tr("Uninstalling: %1", "uninstallation progress").arg(themeName));
-        DMSService.uninstallTheme(themeId, response => {
+        ADVSService.uninstallTheme(themeId, response => {
             if (response.error) {
                 ToastService.showError(I18n.tr("Uninstall failed: %1", "uninstallation error").arg(response.error));
                 return;
@@ -104,8 +104,8 @@ DankFloatingWindow {
 
     function refreshThemes() {
         isLoading = true;
-        DMSService.listThemes();
-        DMSService.listInstalledThemes();
+        ADVSService.listThemes();
+        ADVSService.listInstalledThemes();
     }
 
     function checkPendingInstall() {
@@ -116,7 +116,7 @@ DankFloatingWindow {
         PopoutService.pendingThemeInstall = "";
         urlInstallConfirm.showWithOptions({
             "title": I18n.tr("Install Theme", "theme installation dialog title"),
-            "message": I18n.tr("Install theme '%1' from the DMS registry?", "theme installation confirmation").arg(themeId),
+            "message": I18n.tr("Install theme '%1' from the ADVS registry?", "theme installation confirmation").arg(themeId),
             "confirmText": I18n.tr("Install", "install action button"),
             "cancelText": I18n.tr("Cancel"),
             "onConfirm": () => installTheme(themeId, themeId, true),
@@ -172,7 +172,7 @@ DankFloatingWindow {
     }
 
     Connections {
-        target: DMSService
+        target: ADVSService
         function onThemesListReceived(themes) {
             isLoading = false;
             allThemes = themes;
@@ -228,7 +228,7 @@ DankFloatingWindow {
                     onDoubleClicked: windowControls.tryToggleMaximize()
                 }
 
-                DankIcon {
+                AdvIcon {
                     id: headerIcon
                     name: "palette"
                     size: Theme.iconSize
@@ -253,7 +253,7 @@ DankFloatingWindow {
                     anchors.verticalCenter: parent.verticalCenter
                     spacing: Theme.spacingXS
 
-                    DankActionButton {
+                    AdvActionButton {
                         id: refreshButton
                         iconName: "refresh"
                         iconSize: 18
@@ -262,7 +262,7 @@ DankFloatingWindow {
                         onClicked: root.refreshThemes()
                     }
 
-                    DankActionButton {
+                    AdvActionButton {
                         visible: windowControls.canMaximize
                         iconName: root.maximized ? "fullscreen_exit" : "fullscreen"
                         iconSize: Theme.iconSize - 2
@@ -270,7 +270,7 @@ DankFloatingWindow {
                         onClicked: windowControls.tryToggleMaximize()
                     }
 
-                    DankActionButton {
+                    AdvActionButton {
                         id: closeButton
                         iconName: "close"
                         iconSize: Theme.iconSize - 2
@@ -286,13 +286,13 @@ DankFloatingWindow {
                 anchors.right: parent.right
                 anchors.top: headerArea.bottom
                 anchors.topMargin: Theme.spacingM
-                text: I18n.tr("Install color themes from the DMS theme registry", "theme browser description")
+                text: I18n.tr("Install color themes from the ADVS theme registry", "theme browser description")
                 font.pixelSize: Theme.fontSizeSmall
                 color: Theme.outline
                 wrapMode: Text.WordWrap
             }
 
-            DankTextField {
+            AdvTextField {
                 id: browserSearchField
                 anchors.left: parent.left
                 anchors.right: parent.right
@@ -329,13 +329,13 @@ DankFloatingWindow {
                     anchors.fill: parent
                     visible: root.isLoading
 
-                    DankSpinner {
+                    AdvSpinner {
                         anchors.centerIn: parent
                         running: root.isLoading
                     }
                 }
 
-                DankListView {
+                AdvListView {
                     id: themeBrowserList
 
                     anchors.fill: parent
@@ -346,7 +346,7 @@ DankFloatingWindow {
                     clip: true
                     visible: !root.isLoading
 
-                    ScrollBar.vertical: DankScrollbar {
+                    ScrollBar.vertical: AdvScrollbar {
                         id: browserScrollbar
                     }
 
@@ -371,7 +371,7 @@ DankFloatingWindow {
                             return variants.default || (variants.options?.[0]?.id ?? "");
                         }
                         property string previewPath: {
-                            const baseDir = "/tmp/dankdots-plugin-registry/themes/" + (modelData.sourceDir || modelData.id);
+                            const baseDir = "/tmp/advdots-plugin-registry/themes/" + (modelData.sourceDir || modelData.id);
                             const mode = Theme.isLightMode ? "light" : "dark";
                             if (hasVariants && selectedVariantId) {
                                 if (variants?.type === "multi")
@@ -409,7 +409,7 @@ DankFloatingWindow {
                                 }
                             }
 
-                            DankIcon {
+                            AdvIcon {
                                 name: "palette"
                                 size: 48
                                 color: Theme.primary
@@ -562,7 +562,7 @@ DankFloatingWindow {
                                                 font.weight: Font.Medium
                                             }
 
-                                            DankIcon {
+                                            AdvIcon {
                                                 anchors.verticalCenter: parent.verticalCenter
                                                 name: "info"
                                                 size: 12
@@ -710,7 +710,7 @@ DankFloatingWindow {
                                             border.color: Theme.outline
                                             border.width: 1
 
-                                            DankTooltipV2 {
+                                            AdvTooltipV2 {
                                                 id: accentTooltip
                                             }
 
@@ -753,7 +753,7 @@ DankFloatingWindow {
                                     anchors.centerIn: parent
                                     spacing: Theme.spacingXS
 
-                                    DankIcon {
+                                    AdvIcon {
                                         name: isInstalled ? (uninstallMouseArea.containsMouse ? "delete" : "check") : "download"
                                         size: 16
                                         color: isInstalled ? (uninstallMouseArea.containsMouse ? "white" : Theme.surfaceText) : Theme.surface

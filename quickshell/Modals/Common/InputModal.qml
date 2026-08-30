@@ -3,10 +3,10 @@ import qs.Common
 import qs.Modals.Common
 import qs.Widgets
 
-DankModal {
+AdvModal {
     id: root
 
-    layerNamespace: "dms:input-modal"
+    layerNamespace: "advs:input-modal"
     keepPopoutsOpen: true
 
     property string inputTitle: ""
@@ -191,7 +191,7 @@ DankModal {
                     visible: root.inputMessage !== ""
                 }
 
-                DankTextField {
+                AdvTextField {
                     id: textInput
 
                     width: parent.width

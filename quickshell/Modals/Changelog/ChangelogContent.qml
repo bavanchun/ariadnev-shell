@@ -29,7 +29,7 @@ Column {
                 smooth: true
                 mipmap: true
                 asynchronous: true
-                source: "file://" + Theme.shellDir + "/assets/danklogonormal.svg"
+                source: "file://" + Theme.shellDir + "/assets/advlogonormal.svg"
                 layer.enabled: true
                 layer.smooth: true
                 layer.mipmap: true
@@ -48,7 +48,7 @@ Column {
                     spacing: Theme.spacingS
 
                     StyledText {
-                        text: "DMS " + ChangelogService.currentVersion
+                        text: "ADVS " + ChangelogService.currentVersion
                         font.pixelSize: Theme.fontSizeXLarge + 2
                         font.weight: Font.Bold
                         color: Theme.surfaceText
@@ -74,7 +74,7 @@ Column {
                 }
 
                 StyledText {
-                    text: "Frame Mode, DankCalendar, Spotlight, & more"
+                    text: "Frame Mode, AdvCalendar, Spotlight, & more"
                     font.pixelSize: Theme.fontSizeMedium
                     color: Theme.surfaceVariantText
                 }
@@ -117,9 +117,9 @@ Column {
             ChangelogFeatureCard {
                 width: (parent.width - Theme.spacingS) / 2
                 iconName: "calendar_month"
-                title: "DankCalendar"
+                title: "AdvCalendar"
                 description: "Native calendar & events"
-                onClicked: Qt.openUrlExternally("https://github.com/AvengeMedia/dankcalendar")
+                onClicked: Qt.openUrlExternally("https://github.com/bavanchun/advcalendar")
             }
 
             ChangelogFeatureCard {
@@ -218,7 +218,7 @@ Column {
         Row {
             spacing: Theme.spacingS
 
-            DankIcon {
+            AdvIcon {
                 name: "warning"
                 size: Theme.iconSizeSmall
                 color: Theme.warning
@@ -252,7 +252,7 @@ Column {
 
                 ChangelogUpgradeNote {
                     width: parent.width
-                    text: "App ID changed to com.danklinux.dms — update any compositor window rules targeting the old ID"
+                    text: "App ID changed to dev.vchun.ariadnev — update any compositor window rules targeting the old ID"
                 }
             }
         }

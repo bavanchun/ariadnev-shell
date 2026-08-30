@@ -60,7 +60,7 @@ Rectangle {
         anchors.rightMargin: Theme.spacingM
         spacing: Theme.spacingM
 
-        DankIcon {
+        AdvIcon {
             name: root.iconName
             size: Theme.iconSize
             color: isActive ? Theme.ccTileActiveText : Theme.ccTileInactiveIcon
@@ -104,7 +104,7 @@ Rectangle {
         }
     }
 
-    DankRipple {
+    AdvRipple {
         id: ripple
         cornerRadius: root.radius
     }

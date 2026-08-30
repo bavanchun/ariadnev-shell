@@ -9,8 +9,8 @@ Item {
     id: root
 
     property var parentModal: null
-    readonly property string defaultLauncherAction: "spawn dms ipc call spotlight toggle"
-    readonly property string spotlightBarAction: "spawn dms ipc call spotlight-bar toggle"
+    readonly property string defaultLauncherAction: "spawn advs ipc call spotlight toggle"
+    readonly property string spotlightBarAction: "spawn advs ipc call spotlight-bar toggle"
     readonly property int keybindDataVersion: KeybindsService._dataVersion
     readonly property bool keybindsAvailable: KeybindsService.available
     readonly property string defaultLauncherKeybindSearch: "spotlight toggle"
@@ -50,7 +50,7 @@ Item {
         onFileSelected: path => SettingsData.set("launcherLogoCustomPath", path.replace("file://", ""))
     }
 
-    DankFlickable {
+    AdvFlickable {
         anchors.fill: parent
         clip: true
         contentHeight: mainColumn.height + Theme.spacingXL
@@ -79,7 +79,7 @@ Item {
                 StyledText {
                     width: parent.width
                     visible: !SettingsData.connectedFrameModeActive
-                    text: SettingsData.launcherStyle === "island" ? I18n.tr("Default launcher shortcuts open a native launcher activity inside Dank Island. Spotlight is used when the focused screen has no DankIsland.") : SettingsData.launcherStyle === "spotlight" ? I18n.tr("Default launcher shortcuts open the minimal Spotlight Bar. The dedicated Spotlight Bar shortcut below stays independent.") : I18n.tr("Default launcher shortcuts open the full launcher with mode tabs, grid view, and action panel.")
+                    text: SettingsData.launcherStyle === "island" ? I18n.tr("Default launcher shortcuts open a native launcher activity inside Adv Island. Spotlight is used when the focused screen has no AdvIsland.") : SettingsData.launcherStyle === "spotlight" ? I18n.tr("Default launcher shortcuts open the minimal Spotlight Bar. The dedicated Spotlight Bar shortcut below stays independent.") : I18n.tr("Default launcher shortcuts open the full launcher with mode tabs, grid view, and action panel.")
                     font.pixelSize: Theme.fontSizeSmall
                     color: Theme.surfaceVariantText
                     wrapMode: Text.WordWrap
@@ -88,7 +88,7 @@ Item {
                 SettingsButtonGroupRow {
                     visible: !SettingsData.connectedFrameModeActive
                     settingKey: "launcherStyleSelector"
-                    tags: ["launcher", "style", "default", "spotlight", "full", "minimal", "island", "dankisland"]
+                    tags: ["launcher", "style", "default", "spotlight", "full", "minimal", "island", "advisland"]
                     text: I18n.tr("Default Opens")
                     model: [I18n.tr("Full"), I18n.tr("Spotlight"), I18n.tr("Island")]
                     currentIndex: SettingsData.launcherStyle === "island" ? 2 : SettingsData.launcherStyle === "spotlight" ? 1 : 0
@@ -117,7 +117,7 @@ Item {
                         anchors.rightMargin: Theme.spacingM
                         spacing: Theme.spacingM
 
-                        DankIcon {
+                        AdvIcon {
                             name: "keyboard"
                             size: Theme.iconSize
                             color: Theme.primary
@@ -210,7 +210,7 @@ Item {
                         anchors.rightMargin: Theme.spacingM
                         spacing: Theme.spacingM
 
-                        DankIcon {
+                        AdvIcon {
                             name: "keyboard"
                             size: Theme.iconSize
                             color: Theme.primary
@@ -280,7 +280,7 @@ Item {
 
                 StyledText {
                     width: parent.width
-                    text: I18n.tr("Choose the logo displayed on the launcher button in DankBar")
+                    text: I18n.tr("Choose the logo displayed on the launcher button in AdvBar")
                     font.pixelSize: Theme.fontSizeSmall
                     color: Theme.surfaceVariantText
                     wrapMode: Text.WordWrap
@@ -291,7 +291,7 @@ Item {
                     height: logoModeGroup.implicitHeight
                     clip: true
 
-                    DankButtonGroup {
+                    AdvButtonGroup {
                         id: logoModeGroup
                         anchors.horizontalCenter: parent.horizontalCenter
                         maximumWidth: parent.width
@@ -299,7 +299,7 @@ Item {
                         minButtonWidth: parent.width < 480 ? 44 : 64
                         textSize: parent.width < 480 ? Theme.fontSizeSmall : Theme.fontSizeMedium
                         model: {
-                            const modes = [I18n.tr("Apps Icon"), I18n.tr("OS Logo"), I18n.tr("Dank")];
+                            const modes = [I18n.tr("Apps Icon"), I18n.tr("OS Logo"), I18n.tr("Adv")];
                             if (CompositorService.isNiri) {
                                 modes.push("niri");
                             } else if (CompositorService.isHyprland) {
@@ -323,7 +323,7 @@ Item {
                                 return 0;
                             if (SettingsData.launcherLogoMode === "os")
                                 return 1;
-                            if (SettingsData.launcherLogoMode === "dank")
+                            if (SettingsData.launcherLogoMode === "adv")
                                 return 2;
                             if (SettingsData.launcherLogoMode === "compositor")
                                 return 3;
@@ -342,7 +342,7 @@ Item {
                                 SettingsData.set("launcherLogoMode", "os");
                                 break;
                             case 2:
-                                SettingsData.set("launcherLogoMode", "dank");
+                                SettingsData.set("launcherLogoMode", "adv");
                                 break;
                             case 3:
                                 SettingsData.set("launcherLogoMode", "compositor");
@@ -382,7 +382,7 @@ Item {
                         }
                     }
 
-                    DankActionButton {
+                    AdvActionButton {
                         id: selectButton
                         iconName: "folder_open"
                         width: 36
@@ -418,7 +418,7 @@ Item {
                                 anchors.horizontalCenter: parent.horizontalCenter
                                 spacing: Theme.spacingM
 
-                                DankButtonGroup {
+                                AdvButtonGroup {
                                     id: colorModeGroup
                                     maximumWidth: parent.parent.width - (colorPickerCircle.visible ? colorPickerCircle.width + Theme.spacingM : 0)
                                     buttonPadding: parent.parent.width < 480 ? Theme.spacingS : Theme.spacingL
@@ -565,7 +565,7 @@ Item {
                     wrapMode: Text.WordWrap
                 }
 
-                DankTextField {
+                AdvTextField {
                     width: parent.width
                     text: SettingsData.launchPrefix
                     placeholderText: I18n.tr("Enter launch prefix (e.g., 'uwsm-app')")
@@ -607,7 +607,7 @@ Item {
                 width: parent.width
                 iconName: "tune"
                 title: I18n.tr("Appearance", "launcher appearance settings")
-                settingKey: "dankLauncherV2Appearance"
+                settingKey: "advLauncherV2Appearance"
 
                 Column {
                     width: parent.width
@@ -626,7 +626,7 @@ Item {
                         height: sizeGroup.implicitHeight
                         clip: true
 
-                        DankButtonGroup {
+                        AdvButtonGroup {
                             id: sizeGroup
                             anchors.horizontalCenter: parent.horizontalCenter
                             maximumWidth: parent.width
@@ -635,7 +635,7 @@ Item {
                             textSize: parent.width < 400 ? Theme.fontSizeSmall : Theme.fontSizeMedium
                             model: ["1", "2", "3", "4"]
                             currentIndex: {
-                                switch (SettingsData.dankLauncherV2Size) {
+                                switch (SettingsData.advLauncherV2Size) {
                                 case "micro":
                                     return 0;
                                 case "compact":
@@ -650,63 +650,63 @@ Item {
                                 if (!selected)
                                     return;
                                 var sizes = ["micro", "compact", "medium", "large"];
-                                SettingsData.set("dankLauncherV2Size", sizes[index]);
+                                SettingsData.set("advLauncherV2Size", sizes[index]);
                             }
                         }
                     }
                 }
 
                 SettingsToggleRow {
-                    settingKey: "dankLauncherV2ShowFooter"
+                    settingKey: "advLauncherV2ShowFooter"
                     tags: ["launcher", "footer", "hints", "shortcuts"]
                     text: I18n.tr("Show Footer", "launcher footer visibility")
                     description: I18n.tr("Show mode tabs and keyboard hints at the bottom.", "launcher footer description")
-                    checked: SettingsData.dankLauncherV2ShowFooter
-                    enabled: SettingsData.dankLauncherV2Size !== "micro"
-                    onToggled: checked => SettingsData.set("dankLauncherV2ShowFooter", checked)
+                    checked: SettingsData.advLauncherV2ShowFooter
+                    enabled: SettingsData.advLauncherV2Size !== "micro"
+                    onToggled: checked => SettingsData.set("advLauncherV2ShowFooter", checked)
                 }
 
                 SettingsToggleRow {
-                    settingKey: "dankLauncherV2UnloadOnClose"
+                    settingKey: "advLauncherV2UnloadOnClose"
                     tags: ["launcher", "unload", "close", "memory", "vram"]
                     text: I18n.tr("Unload on Close")
                     description: I18n.tr("Free VRAM/memory when the launcher is closed. May cause a slight delay when reopening.")
-                    checked: SettingsData.dankLauncherV2UnloadOnClose
-                    onToggled: checked => SettingsData.set("dankLauncherV2UnloadOnClose", checked)
+                    checked: SettingsData.advLauncherV2UnloadOnClose
+                    onToggled: checked => SettingsData.set("advLauncherV2UnloadOnClose", checked)
                 }
 
                 SettingsToggleRow {
-                    settingKey: "dankLauncherV2ShowSourceBadges"
+                    settingKey: "advLauncherV2ShowSourceBadges"
                     tags: ["launcher", "appearance", "badge", "source", "flatpak"]
                     text: I18n.tr("Show Package Source Badges")
                     description: I18n.tr("Show Flatpak, Snap, AppImage, or Nix badge icons on launcher items.")
-                    checked: SettingsData.dankLauncherV2ShowSourceBadges
-                    onToggled: checked => SettingsData.set("dankLauncherV2ShowSourceBadges", checked)
+                    checked: SettingsData.advLauncherV2ShowSourceBadges
+                    onToggled: checked => SettingsData.set("advLauncherV2ShowSourceBadges", checked)
                 }
 
                 SettingsToggleRow {
-                    settingKey: "dankLauncherV2BorderEnabled"
+                    settingKey: "advLauncherV2BorderEnabled"
                     tags: ["launcher", "border", "outline"]
                     text: I18n.tr("Border", "launcher border option")
-                    checked: SettingsData.dankLauncherV2BorderEnabled
-                    onToggled: checked => SettingsData.set("dankLauncherV2BorderEnabled", checked)
+                    checked: SettingsData.advLauncherV2BorderEnabled
+                    onToggled: checked => SettingsData.set("advLauncherV2BorderEnabled", checked)
                 }
 
                 Column {
                     width: parent.width
                     spacing: Theme.spacingM
-                    visible: SettingsData.dankLauncherV2BorderEnabled
+                    visible: SettingsData.advLauncherV2BorderEnabled
 
                     SettingsSliderRow {
-                        settingKey: "dankLauncherV2BorderThickness"
+                        settingKey: "advLauncherV2BorderThickness"
                         tags: ["launcher", "border", "thickness"]
                         text: I18n.tr("Thickness", "border thickness")
                         minimum: 1
                         maximum: 6
-                        value: SettingsData.dankLauncherV2BorderThickness
+                        value: SettingsData.advLauncherV2BorderThickness
                         defaultValue: 2
                         unit: "px"
-                        onSliderValueChanged: newValue => SettingsData.set("dankLauncherV2BorderThickness", newValue)
+                        onSliderValueChanged: newValue => SettingsData.set("advLauncherV2BorderThickness", newValue)
                     }
 
                     Column {
@@ -726,7 +726,7 @@ Item {
                             height: borderColorGroup.implicitHeight
                             clip: true
 
-                            DankButtonGroup {
+                            AdvButtonGroup {
                                 id: borderColorGroup
                                 anchors.horizontalCenter: parent.horizontalCenter
                                 maximumWidth: parent.width
@@ -734,11 +734,11 @@ Item {
                                 minButtonWidth: parent.width < 400 ? 50 : 70
                                 textSize: parent.width < 400 ? Theme.fontSizeSmall : Theme.fontSizeMedium
                                 model: [I18n.tr("Primary", "primary color"), I18n.tr("Secondary", "secondary color"), I18n.tr("Outline", "outline color"), I18n.tr("Text", "text color")]
-                                currentIndex: SettingsData.dankLauncherV2BorderColor === "secondary" ? 1 : SettingsData.dankLauncherV2BorderColor === "outline" ? 2 : SettingsData.dankLauncherV2BorderColor === "surfaceText" ? 3 : 0
+                                currentIndex: SettingsData.advLauncherV2BorderColor === "secondary" ? 1 : SettingsData.advLauncherV2BorderColor === "outline" ? 2 : SettingsData.advLauncherV2BorderColor === "surfaceText" ? 3 : 0
                                 onSelectionChanged: (index, selected) => {
                                     if (!selected)
                                         return;
-                                    SettingsData.set("dankLauncherV2BorderColor", index === 1 ? "secondary" : index === 2 ? "outline" : index === 3 ? "surfaceText" : "primary");
+                                    SettingsData.set("advLauncherV2BorderColor", index === 1 ? "secondary" : index === 2 ? "outline" : index === 3 ? "surfaceText" : "primary");
                                 }
                             }
                         }
@@ -805,7 +805,7 @@ Item {
                 id: builtInPluginsCard
                 width: parent.width
                 iconName: "extension"
-                title: "DMS"
+                title: "ADVS"
                 settingKey: "builtInPlugins"
 
                 Column {
@@ -813,7 +813,7 @@ Item {
                     spacing: Theme.spacingS
 
                     Repeater {
-                        model: ["dms_settings", "dms_notepad", "dms_sysmon", "dms_settings_search", "dms_clipboard_search", "dms_power", "dms_colorpicker", "dms_qr_generator"]
+                        model: ["advs_settings", "advs_notepad", "advs_sysmon", "advs_settings_search", "advs_clipboard_search", "advs_power", "advs_colorpicker", "advs_qr_generator"]
 
                         delegate: Rectangle {
                             id: pluginDelegate
@@ -832,7 +832,7 @@ Item {
                                 anchors.verticalCenter: parent.verticalCenter
                                 spacing: Theme.spacingM
 
-                                DankIcon {
+                                AdvIcon {
                                     name: pluginDelegate.plugin?.cornerIcon ?? "extension"
                                     size: Theme.iconSize
                                     color: Theme.primary
@@ -863,7 +863,7 @@ Item {
                                 anchors.verticalCenter: parent.verticalCenter
                                 spacing: Theme.spacingM
 
-                                DankTextField {
+                                AdvTextField {
                                     id: triggerField
                                     width: 60
                                     visible: pluginDelegate.plugin?.isLauncher === true
@@ -873,7 +873,7 @@ Item {
                                     Component.onCompleted: text = SettingsData.getBuiltInPluginSetting(pluginDelegate.modelData, "trigger", pluginDelegate.plugin?.defaultTrigger ?? "")
                                 }
 
-                                DankToggle {
+                                AdvToggle {
                                     id: enableToggle
                                     anchors.verticalCenter: parent.verticalCenter
                                     checked: SettingsData.getBuiltInPluginSetting(pluginDelegate.modelData, "enabled", true)
@@ -895,8 +895,8 @@ Item {
                 property var allLauncherPlugins: {
                     SettingsData.launcherPluginVisibility;
                     SettingsData.launcherPluginOrder;
-                    SettingsData.dankLauncherV2IncludeFilesInAll;
-                    SettingsData.dankLauncherV2IncludeFoldersInAll;
+                    SettingsData.advLauncherV2IncludeFilesInAll;
+                    SettingsData.advLauncherV2IncludeFoldersInAll;
                     var plugins = [];
                     var builtIn = AppSearchService.getBuiltInLauncherPlugins() || {};
                     for (var pluginId in builtIn) {
@@ -925,7 +925,7 @@ Item {
                             trigger: PluginService.getPluginTrigger(pluginId) || ""
                         });
                     }
-                    if (SettingsData.dankLauncherV2IncludeFilesInAll) {
+                    if (SettingsData.advLauncherV2IncludeFilesInAll) {
                         plugins.push({
                             id: "__files",
                             name: I18n.tr("Files"),
@@ -936,7 +936,7 @@ Item {
                             trigger: "/"
                         });
                     }
-                    if (SettingsData.dankLauncherV2IncludeFoldersInAll) {
+                    if (SettingsData.advLauncherV2IncludeFoldersInAll) {
                         plugins.push({
                             id: "__folders",
                             name: I18n.tr("Folders"),
@@ -1005,7 +1005,7 @@ Item {
                                         height: Theme.iconSize
                                         anchors.verticalCenter: parent.verticalCenter
 
-                                        DankIcon {
+                                        AdvIcon {
                                             anchors.centerIn: parent
                                             visible: visibilityDelegateItem.modelData.iconType !== "unicode"
                                             name: visibilityDelegateItem.modelData.icon
@@ -1037,16 +1037,16 @@ Item {
 
                                             Rectangle {
                                                 visible: visibilityDelegateItem.modelData.isBuiltIn
-                                                width: dmsBadgeLabel.implicitWidth + Theme.spacingS
+                                                width: advsBadgeLabel.implicitWidth + Theme.spacingS
                                                 height: 16
                                                 radius: 8
                                                 color: Theme.primaryContainer
                                                 anchors.verticalCenter: parent.verticalCenter
 
                                                 StyledText {
-                                                    id: dmsBadgeLabel
+                                                    id: advsBadgeLabel
                                                     anchors.centerIn: parent
-                                                    text: "DMS"
+                                                    text: "ADVS"
                                                     font.pixelSize: Theme.fontSizeSmall - 2
                                                     color: Theme.primary
                                                 }
@@ -1061,16 +1061,16 @@ Item {
                                     }
                                 }
 
-                                DankToggle {
+                                AdvToggle {
                                     anchors.right: parent.right
                                     anchors.rightMargin: Theme.spacingM
                                     anchors.verticalCenter: parent.verticalCenter
                                     checked: {
                                         switch (visibilityDelegateItem.modelData.id) {
                                         case "__files":
-                                            return SettingsData.dankLauncherV2IncludeFilesInAll;
+                                            return SettingsData.advLauncherV2IncludeFilesInAll;
                                         case "__folders":
-                                            return SettingsData.dankLauncherV2IncludeFoldersInAll;
+                                            return SettingsData.advLauncherV2IncludeFoldersInAll;
                                         default:
                                             return SettingsData.getPluginAllowWithoutTrigger(visibilityDelegateItem.modelData.id);
                                         }
@@ -1078,10 +1078,10 @@ Item {
                                     onToggled: function (isChecked) {
                                         switch (visibilityDelegateItem.modelData.id) {
                                         case "__files":
-                                            SettingsData.set("dankLauncherV2IncludeFilesInAll", isChecked);
+                                            SettingsData.set("advLauncherV2IncludeFilesInAll", isChecked);
                                             break;
                                         case "__folders":
-                                            SettingsData.set("dankLauncherV2IncludeFoldersInAll", isChecked);
+                                            SettingsData.set("advLauncherV2IncludeFoldersInAll", isChecked);
                                             break;
                                         default:
                                             SettingsData.setPluginAllowWithoutTrigger(visibilityDelegateItem.modelData.id, isChecked);
@@ -1120,7 +1120,7 @@ Item {
                                 }
                             }
 
-                            DankIcon {
+                            AdvIcon {
                                 x: Theme.spacingXS
                                 anchors.verticalCenter: parent.verticalCenter
                                 name: "drag_indicator"
@@ -1184,21 +1184,21 @@ Item {
                 }
 
                 SettingsToggleRow {
-                    settingKey: "dankLauncherV2IncludeFilesInAll"
+                    settingKey: "advLauncherV2IncludeFilesInAll"
                     tags: ["launcher", "files", "dsearch", "all", "results", "indexed"]
                     text: I18n.tr("Include Files in All Tab")
                     description: I18n.tr("Merge indexed file results into the All tab (requires dsearch).")
-                    checked: SettingsData.dankLauncherV2IncludeFilesInAll
-                    onToggled: checked => SettingsData.set("dankLauncherV2IncludeFilesInAll", checked)
+                    checked: SettingsData.advLauncherV2IncludeFilesInAll
+                    onToggled: checked => SettingsData.set("advLauncherV2IncludeFilesInAll", checked)
                 }
 
                 SettingsToggleRow {
-                    settingKey: "dankLauncherV2IncludeFoldersInAll"
+                    settingKey: "advLauncherV2IncludeFoldersInAll"
                     tags: ["launcher", "folders", "dirs", "dsearch", "all", "results", "indexed"]
                     text: I18n.tr("Include Folders in All Tab")
                     description: I18n.tr("Merge indexed folder results into the All tab (requires dsearch).")
-                    checked: SettingsData.dankLauncherV2IncludeFoldersInAll
-                    onToggled: checked => SettingsData.set("dankLauncherV2IncludeFoldersInAll", checked)
+                    checked: SettingsData.advLauncherV2IncludeFoldersInAll
+                    onToggled: checked => SettingsData.set("advLauncherV2IncludeFoldersInAll", checked)
                 }
             }
 
@@ -1297,7 +1297,7 @@ Item {
                                 }
                             }
 
-                            DankActionButton {
+                            AdvActionButton {
                                 anchors.right: parent.right
                                 anchors.rightMargin: Theme.spacingM
                                 anchors.verticalCenter: parent.verticalCenter
@@ -1407,7 +1407,7 @@ Item {
                                 }
                             }
 
-                            DankActionButton {
+                            AdvActionButton {
                                 anchors.right: parent.right
                                 anchors.rightMargin: Theme.spacingM
                                 anchors.verticalCenter: parent.verticalCenter
@@ -1477,7 +1477,7 @@ Item {
                         anchors.verticalCenter: parent.verticalCenter
                     }
 
-                    DankActionButton {
+                    AdvActionButton {
                         id: clearAllButton
                         iconName: "delete_sweep"
                         iconSize: Theme.iconSize - 2
@@ -1571,7 +1571,7 @@ Item {
                                 }
                             }
 
-                            DankActionButton {
+                            AdvActionButton {
                                 anchors.right: parent.right
                                 anchors.rightMargin: Theme.spacingM
                                 anchors.verticalCenter: parent.verticalCenter

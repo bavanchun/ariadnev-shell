@@ -1,3 +1,3 @@
-[templates.dmsemacs]
-input_path = 'SHELL_DIR/matugen/templates/dank-emacs.el'
-output_path = 'EMACS_DIR/themes/dank-emacs-theme.el'
+[templates.advsemacs]
+input_path = 'SHELL_DIR/matugen/templates/adv-emacs.el'
+output_path = 'EMACS_DIR/themes/adv-emacs-theme.el'

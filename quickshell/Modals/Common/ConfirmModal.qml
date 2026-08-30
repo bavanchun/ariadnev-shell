@@ -3,10 +3,10 @@ import qs.Common
 import qs.Modals.Common
 import qs.Widgets
 
-DankModal {
+AdvModal {
     id: root
 
-    layerNamespace: "dms:confirm-modal"
+    layerNamespace: "advs:confirm-modal"
     keepPopoutsOpen: true
 
     property string confirmTitle: ""

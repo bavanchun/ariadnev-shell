@@ -7,7 +7,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/log"
+	"github.com/bavanchun/ariadnev-shell/core/internal/log"
 )
 
 func NewManager() (*Manager, error) {
@@ -42,8 +42,8 @@ func (m *Manager) initLogind() {
 }
 
 func (m *Manager) initDDC() {
-	if os.Getenv("DMS_NO_DDC") != "" {
-		log.Info("DDC backend disabled via DMS_NO_DDC")
+	if os.Getenv("ADVS_NO_DDC") != "" {
+		log.Info("DDC backend disabled via ADVS_NO_DDC")
 		return
 	}
 	ddc, err := NewDDCBackend()

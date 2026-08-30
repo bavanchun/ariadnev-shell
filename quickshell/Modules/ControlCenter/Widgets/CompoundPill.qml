@@ -66,7 +66,7 @@ Rectangle {
         }
     }
 
-    DankRipple {
+    AdvRipple {
         id: bodyRipple
         cornerRadius: root.radius
     }
@@ -104,20 +104,20 @@ Rectangle {
                 }
             }
 
-            DankIcon {
+            AdvIcon {
                 id: pillIcon
                 anchors.centerIn: parent
                 name: iconName
                 size: Theme.iconSize
                 color: isActive ? _tileIconActive : _tileIconInactive
 
-                DankBlink {
+                AdvBlink {
                     target: pillIcon
                     running: root.iconBlinking
                 }
             }
 
-            DankRipple {
+            AdvRipple {
                 id: tileRipple
                 cornerRadius: _tileRadius
             }

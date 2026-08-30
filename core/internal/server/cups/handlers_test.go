@@ -8,9 +8,9 @@ import (
 	"testing"
 	"time"
 
-	mocks_cups "github.com/AvengeMedia/DankMaterialShell/core/internal/mocks/cups"
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/server/models"
-	"github.com/AvengeMedia/DankMaterialShell/core/pkg/ipp"
+	mocks_cups "github.com/bavanchun/ariadnev-shell/core/internal/mocks/cups"
+	"github.com/bavanchun/ariadnev-shell/core/internal/server/models"
+	"github.com/bavanchun/ariadnev-shell/core/pkg/ipp"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/mock"
 )

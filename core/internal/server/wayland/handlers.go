@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/server/models"
+	"github.com/bavanchun/ariadnev-shell/core/internal/server/models"
 	"github.com/AvengeMedia/dankgo/ipc/params"
 )
 

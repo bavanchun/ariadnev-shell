@@ -79,14 +79,14 @@ FocusScope {
                 Layout.fillWidth: true
             }
 
-            DankActionButton {
+            AdvActionButton {
                 visible: content.showFloatingToggle
                 iconName: content.floating ? "close_fullscreen" : "open_in_new"
                 tooltipText: content.floating ? I18n.tr("Dock window") : I18n.tr("Open as window")
                 onClicked: content.floatingToggleRequested()
             }
 
-            DankTextField {
+            AdvTextField {
                 id: searchField
                 Layout.alignment: Qt.AlignRight
                 leftIconName: "search"
@@ -108,7 +108,7 @@ FocusScope {
             }
         }
 
-        DankFlickable {
+        AdvFlickable {
             id: mainFlickable
             width: parent.width
             height: parent.height - parent.spacing - 40

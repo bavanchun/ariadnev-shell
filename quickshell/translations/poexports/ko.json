@@ -314,8 +314,8 @@
   "A separate minimal launcher action that works in Standalone, Separate Frame Mode, and Connected Frame Mode.": {
     "A separate minimal launcher action that works in Standalone, Separate Frame Mode, and Connected Frame Mode.": "독립 실행형, 개별 프레임 모드 및 연결된 프레임 모드에서 작동하는 분리된 최소 런처 작업입니다."
   },
-  "A slight natural settle, DMS default": {
-    "A slight natural settle, DMS default": ""
+  "A slight natural settle, ADVS default": {
+    "A slight natural settle, ADVS default": ""
   },
   "A user with that name already exists.": {
     "A user with that name already exists.": "해당 이름의 사용자가 이미 존재합니다."
@@ -380,8 +380,8 @@
   "Activate Greeter": {
     "Activate Greeter": "Greeter 활성화"
   },
-  "Activate the DMS greeter? A terminal will open for sudo authentication. Run Sync after activation to apply your settings.": {
-    "Activate the DMS greeter? A terminal will open for sudo authentication. Run Sync after activation to apply your settings.": "DMS Greeter를 활성화하시겠습니까? sudo 인증을 위해 터미널이 열립니다. 활성화 후 동기화를 실행하여 설정을 적용하세요."
+  "Activate the ADVS greeter? A terminal will open for sudo authentication. Run Sync after activation to apply your settings.": {
+    "Activate the ADVS greeter? A terminal will open for sudo authentication. Run Sync after activation to apply your settings.": "ADVS Greeter를 활성화하시겠습니까? sudo 인증을 위해 터미널이 열립니다. 활성화 후 동기화를 실행하여 설정을 적용하세요."
   },
   "Activates immediately": {
     "Activates immediately": ""
@@ -428,11 +428,11 @@
   "Add \"%1\" to the %2 group?": {
     "Add \"%1\" to the %2 group?": "\"%1\" 사용자를 %2 그룹에 추가하시겠습니까?"
   },
-  "Add \"%1\" to the %2 group? They must log out and back in, then run dms greeter sync --profile to publish their login-screen theme.": {
-    "Add \"%1\" to the %2 group? They must log out and back in, then run dms greeter sync --profile to publish their login-screen theme.": "\"%1\" 사용자를 %2 그룹에 추가하시겠습니까? 로그아웃 후 다시 로그인한 다음 `dms greeter sync --profile`을 실행해야 로그인 화면 테마가 게시됩니다."
+  "Add \"%1\" to the %2 group? They must log out and back in, then run advs greeter sync --profile to publish their login-screen theme.": {
+    "Add \"%1\" to the %2 group? They must log out and back in, then run advs greeter sync --profile to publish their login-screen theme.": "\"%1\" 사용자를 %2 그룹에 추가하시겠습니까? 로그아웃 후 다시 로그인한 다음 `advs greeter sync --profile`을 실행해야 로그인 화면 테마가 게시됩니다."
   },
-  "Add \"%1\" to the %2 group? They must log out and back in, then run dms-greeter sync --profile to publish their login-screen theme.": {
-    "Add \"%1\" to the %2 group? They must log out and back in, then run dms-greeter sync --profile to publish their login-screen theme.": ""
+  "Add \"%1\" to the %2 group? They must log out and back in, then run advs-greeter sync --profile to publish their login-screen theme.": {
+    "Add \"%1\" to the %2 group? They must log out and back in, then run advs-greeter sync --profile to publish their login-screen theme.": ""
   },
   "Add Bar": {
     "Add Bar": "표시줄 추가"
@@ -482,11 +482,11 @@
   "Add notes": {
     "Add notes": "메모 추가"
   },
-  "Add the new user to the %1 group so they can run dms greeter sync --profile.": {
-    "Add the new user to the %1 group so they can run dms greeter sync --profile.": "새 사용자를 %1 그룹에 추가하여 `dms greeter sync --profile`을 실행할 수 있도록 합니다."
+  "Add the new user to the %1 group so they can run advs greeter sync --profile.": {
+    "Add the new user to the %1 group so they can run advs greeter sync --profile.": "새 사용자를 %1 그룹에 추가하여 `advs greeter sync --profile`을 실행할 수 있도록 합니다."
   },
-  "Add the new user to the %1 group so they can run dms-greeter sync --profile.": {
-    "Add the new user to the %1 group so they can run dms-greeter sync --profile.": ""
+  "Add the new user to the %1 group so they can run advs-greeter sync --profile.": {
+    "Add the new user to the %1 group so they can run advs-greeter sync --profile.": ""
   },
   "Add the new user to the %1 group so they can use sudo.": {
     "Add the new user to the %1 group so they can use sudo.": "새 사용자를 %1 그룹에 추가하여 sudo를 사용할 수 있도록 합니다."
@@ -905,8 +905,8 @@
   "Auto-Hide Timeout": {
     "Auto-Hide Timeout": "자동 숨기기 시간 제한"
   },
-  "Auto-close Niri overview when DMS launches or focuses a window.": {
-    "Auto-close Niri overview when DMS launches or focuses a window.": ""
+  "Auto-close Niri overview when ADVS launches or focuses a window.": {
+    "Auto-close Niri overview when ADVS launches or focuses a window.": ""
   },
   "Auto-close Niri overview when launching apps.": {
     "Auto-close Niri overview when launching apps.": "앱을 실행할 때 niri 오버뷰를 자동으로 닫습니다."
@@ -977,8 +977,8 @@
   "Automatically lock after": {
     "Automatically lock after": "이후 자동 잠금"
   },
-  "Automatically lock the screen when DMS starts": {
-    "Automatically lock the screen when DMS starts": "DMS가 시작될 때 화면을 자동으로 잠금"
+  "Automatically lock the screen when ADVS starts": {
+    "Automatically lock the screen when ADVS starts": "ADVS가 시작될 때 화면을 자동으로 잠금"
   },
   "Automatically lock the screen when the system prepares to suspend": {
     "Automatically lock the screen when the system prepares to suspend": "시스템이 대기 모드를 준비할 때 화면을 자동으로 잠금"
@@ -1415,8 +1415,8 @@
   "Center Section": {
     "Center Section": "중앙 구역"
   },
-  "Center Section - Reserved by Dank Island": {
-    "Center Section - Reserved by Dank Island": ""
+  "Center Section - Reserved by Adv Island": {
+    "Center Section - Reserved by Adv Island": ""
   },
   "Center Single Column": {
     "Center Single Column": "중앙 단일 열"
@@ -1433,8 +1433,8 @@
   "Change Volume": {
     "Change Volume": "볼륨 변경"
   },
-  "Change the locale used by the DMS interface.": {
-    "Change the locale used by the DMS interface.": "DMS 인터페이스에서 사용하는 로케일을 변경합니다."
+  "Change the locale used by the ADVS interface.": {
+    "Change the locale used by the ADVS interface.": "ADVS 인터페이스에서 사용하는 로케일을 변경합니다."
   },
   "Change the locale used for date and time formatting, independent of the interface language.": {
     "Change the locale used for date and time formatting, independent of the interface language.": "인터페이스 언어와 독립적으로 날짜 및 시간 형식에 사용되는 로케일을 변경합니다."
@@ -1529,8 +1529,8 @@
   "Choose neutral or accent-colored widget text": {
     "Choose neutral or accent-colored widget text": "중립적 또는 강조 색상의 위젯 텍스트를 선택하세요"
   },
-  "Choose the logo displayed on the launcher button in DankBar": {
-    "Choose the logo displayed on the launcher button in DankBar": "DankBar의 런처 버튼에 표시되는 로고를 선택하세요"
+  "Choose the logo displayed on the launcher button in AdvBar": {
+    "Choose the logo displayed on the launcher button in AdvBar": "AdvBar의 런처 버튼에 표시되는 로고를 선택하세요"
   },
   "Choose wallpaper folder": {
     "Choose wallpaper folder": "배경화면 폴더 선택"
@@ -1742,8 +1742,8 @@
   "Color theme for syntax highlighting. %1 themes available.": {
     "Color theme for syntax highlighting. %1 themes available.": "구문 강조를 위한 색상 테마입니다. %1개의 테마를 사용할 수 있습니다."
   },
-  "Color theme from DMS registry": {
-    "Color theme from DMS registry": "DMS 레지스트리의 색상 테마"
+  "Color theme from ADVS registry": {
+    "Color theme from ADVS registry": "ADVS 레지스트리의 색상 테마"
   },
   "Colorful": {
     "Colorful": "다채로움"
@@ -1853,8 +1853,8 @@
   "Configure which displays show \"%1": {
     "Configure which displays show \"%1\"": "\"%1\"을(를) 표시할 디스플레이 구성"
   },
-  "Configure which displays show Dank Island as \"%1": {
-    "Configure which displays show Dank Island as \"%1\"": ""
+  "Configure which displays show Adv Island as \"%1": {
+    "Configure which displays show Adv Island as \"%1\"": ""
   },
   "Configure which displays show shell components": {
     "Configure which displays show shell components": "셸 구성 요소를 표시할 디스플레이 구성"
@@ -1982,8 +1982,8 @@
   "Convenience options for the login screen": {
     "Convenience options for the login screen": ""
   },
-  "Convert to DMS": {
-    "Convert to DMS": "DMS로 변환"
+  "Convert to ADVS": {
+    "Convert to ADVS": "ADVS로 변환"
   },
   "Cooldown": {
     "Cooldown": "재사용 대기시간"
@@ -2258,41 +2258,41 @@
   "DEMO MODE - Click anywhere to exit": {
     "DEMO MODE - Click anywhere to exit": "데모 모드 - 종료하려면 아무 곳이나 클릭하세요"
   },
-  "DMS Chooser": {
-    "DMS Chooser": "DMS 선택기"
+  "ADVS Chooser": {
+    "ADVS Chooser": "ADVS 선택기"
   },
-  "DMS Plugin Manager Unavailable": {
-    "DMS Plugin Manager Unavailable": "DMS 플러그인 관리자를 사용할 수 없음"
+  "ADVS Plugin Manager Unavailable": {
+    "ADVS Plugin Manager Unavailable": "ADVS 플러그인 관리자를 사용할 수 없음"
   },
-  "DMS Settings": {
-    "DMS Settings": "DMS 설정"
+  "ADVS Settings": {
+    "ADVS Settings": "ADVS 설정"
   },
-  "DMS Settings writes Lua keybinds. Add the DMS include so edits apply.": {
-    "DMS Settings writes Lua keybinds. Add the DMS include so edits apply.": "DMS 설정은 Lua 키 바인딩을 작성합니다. 편집 내용이 적용되도록 DMS include를 추가하세요."
+  "ADVS Settings writes Lua keybinds. Add the ADVS include so edits apply.": {
+    "ADVS Settings writes Lua keybinds. Add the ADVS include so edits apply.": "ADVS 설정은 Lua 키 바인딩을 작성합니다. 편집 내용이 적용되도록 ADVS include를 추가하세요."
   },
-  "DMS Shortcuts": {
-    "DMS Shortcuts": "DMS 바로 가기"
+  "ADVS Shortcuts": {
+    "ADVS Shortcuts": "ADVS 바로 가기"
   },
-  "DMS is a highly customizable modern desktop shell with a %1 inspired design.<br/><br/>It is built with %2, a QT6 framework for building desktop shells, and %3, a statically typed, compiled programming language.": {
-    "DMS is a highly customizable modern desktop shell with a %1 inspired design.<br/><br/>It is built with %2, a QT6 framework for building desktop shells, and %3, a statically typed, compiled programming language.": ""
+  "ADVS is a highly customizable modern desktop shell with a %1 inspired design.<br/><br/>It is built with %2, a QT6 framework for building desktop shells, and %3, a statically typed, compiled programming language.": {
+    "ADVS is a highly customizable modern desktop shell with a %1 inspired design.<br/><br/>It is built with %2, a QT6 framework for building desktop shells, and %3, a statically typed, compiled programming language.": ""
   },
-  "DMS out of date": {
-    "DMS out of date": "DMS가 구버전임"
+  "ADVS out of date": {
+    "ADVS out of date": "ADVS가 구버전임"
   },
-  "DMS removes its managed block from /etc/pam.d/greetd and stops write services": {
-    "DMS removes its managed block from /etc/pam.d/greetd and stops write services": ""
+  "ADVS removes its managed block from /etc/pam.d/greetd and stops write services": {
+    "ADVS removes its managed block from /etc/pam.d/greetd and stops write services": ""
   },
-  "DMS server is outdated (API v%1, expected v%2)": {
-    "DMS server is outdated (API v%1, expected v%2)": "DMS 서버가 구버전입니다(API v%1, 예상 v%2)."
+  "ADVS server is outdated (API v%1, expected v%2)": {
+    "ADVS server is outdated (API v%1, expected v%2)": "ADVS 서버가 구버전입니다(API v%1, 예상 v%2)."
   },
-  "DMS service is not connected. Clipboard settings are unavailable.": {
-    "DMS service is not connected. Clipboard settings are unavailable.": "DMS 서비스가 연결되지 않았습니다. 클립보드 설정을 사용할 수 없습니다."
+  "ADVS service is not connected. Clipboard settings are unavailable.": {
+    "ADVS service is not connected. Clipboard settings are unavailable.": "ADVS 서비스가 연결되지 않았습니다. 클립보드 설정을 사용할 수 없습니다."
   },
-  "DMS shell actions (launcher, clipboard, etc.)": {
-    "DMS shell actions (launcher, clipboard, etc.)": "DMS 셸 작업(런처, 클립보드 등)"
+  "ADVS shell actions (launcher, clipboard, etc.)": {
+    "ADVS shell actions (launcher, clipboard, etc.)": "ADVS 셸 작업(런처, 클립보드 등)"
   },
-  "DMS_SOCKET not available": {
-    "DMS_SOCKET not available": "DMS_SOCKET을 사용할 수 없음"
+  "ADVS_SOCKET not available": {
+    "ADVS_SOCKET not available": "ADVS_SOCKET을 사용할 수 없음"
   },
   "Daily": {
     "Daily": "매일"
@@ -2303,41 +2303,41 @@
   "Damped springs settle straight to their target with no overshoot": {
     "Damped springs settle straight to their target with no overshoot": ""
   },
-  "Dank": {
-    "Dank": "Dank"
+  "Adv": {
+    "Adv": "Adv"
   },
-  "Dank Bar": {
-    "Dank Bar": "Dank Bar"
+  "Adv Bar": {
+    "Adv Bar": "Adv Bar"
   },
-  "Dank Bar Xray": {
-    "Dank Bar Xray": "Dank Bar Xray"
+  "Adv Bar Xray": {
+    "Adv Bar Xray": "Adv Bar Xray"
   },
-  "Dank Dash": {
-    "Dank Dash": "Dank Dash"
+  "Adv Dash": {
+    "Adv Dash": "Adv Dash"
   },
-  "Dank Island - Beta": {
-    "Dank Island - Beta": ""
+  "Adv Island - Beta": {
+    "Adv Island - Beta": ""
   },
-  "Dank Island instance": {
-    "Dank Island instance": ""
+  "Adv Island instance": {
+    "Adv Island instance": ""
   },
-  "DankBar": {
-    "DankBar": "DankBar"
+  "AdvBar": {
+    "AdvBar": "AdvBar"
   },
-  "DankCalendar": {
-    "DankCalendar": "DankCalendar"
+  "AdvCalendar": {
+    "AdvCalendar": "AdvCalendar"
   },
-  "DankCalendar isn't installed": {
-    "DankCalendar isn't installed": "DankCalendar가 설치되지 않음"
+  "AdvCalendar isn't installed": {
+    "AdvCalendar isn't installed": "AdvCalendar가 설치되지 않음"
   },
-  "DankCalendar isn't running": {
-    "DankCalendar isn't running": "DankCalendar가 실행 중이 아님"
+  "AdvCalendar isn't running": {
+    "AdvCalendar isn't running": "AdvCalendar가 실행 중이 아님"
   },
-  "DankMaterialShell is ready to use": {
-    "DankMaterialShell is ready to use": "DankMaterialShell을 사용할 준비가 되었습니다"
+  "AriadnevShell is ready to use": {
+    "AriadnevShell is ready to use": "AriadnevShell을 사용할 준비가 되었습니다"
   },
-  "DankShell & System Icons (requires restart)": {
-    "DankShell & System Icons (requires restart)": "DankShell 및 시스템 아이콘(재시작 필요)"
+  "AdvShell & System Icons (requires restart)": {
+    "AdvShell & System Icons (requires restart)": "AdvShell 및 시스템 아이콘(재시작 필요)"
   },
   "Dark Mode": {
     "Dark Mode": "다크 모드"
@@ -2423,8 +2423,8 @@
   "Default Width (%)": {
     "Default Width (%)": "기본 너비(%)"
   },
-  "Default launcher shortcuts open a native launcher activity inside Dank Island. Spotlight is used when the focused screen has no DankIsland.": {
-    "Default launcher shortcuts open a native launcher activity inside Dank Island. Spotlight is used when the focused screen has no DankIsland.": ""
+  "Default launcher shortcuts open a native launcher activity inside Adv Island. Spotlight is used when the focused screen has no AdvIsland.": {
+    "Default launcher shortcuts open a native launcher activity inside Adv Island. Spotlight is used when the focused screen has no AdvIsland.": ""
   },
   "Default launcher shortcuts open the full launcher with mode tabs, grid view, and action panel.": {
     "Default launcher shortcuts open the full launcher with mode tabs, grid view, and action panel.": "기본 런처 바로 가기는 모드 탭, 그리드 보기 및 작업 패널이 있는 전체 런처를 엽니다."
@@ -2789,8 +2789,8 @@
   "Drop here": {
     "Drop here": "여기에 놓기"
   },
-  "Drop your override for %1 so the DMS default action re-applies?": {
-    "Drop your override for %1 so the DMS default action re-applies?": "DMS 기본 작업을 다시 적용하도록 %1의 덮어쓰기를 취소하시겠습니까?"
+  "Drop your override for %1 so the ADVS default action re-applies?": {
+    "Drop your override for %1 so the ADVS default action re-applies?": "ADVS 기본 작업을 다시 적용하도록 %1의 덮어쓰기를 취소하시겠습니까?"
   },
   "Duplicate": {
     "Duplicate": "복제"
@@ -2939,8 +2939,8 @@
   "Enable a custom override below to set per-bar shadow intensity, opacity, and color.": {
     "Enable a custom override below to set per-bar shadow intensity, opacity, and color.": "아래에서 사용자 지정 덮어쓰기를 활성화하여 표시줄별 그림자 강도, 불투명도 및 색상을 설정하세요."
   },
-  "Enable compositor-targetable blur layer (namespace: dms:blurwallpaper). Requires manual niri configuration.": {
-    "Enable compositor-targetable blur layer (namespace: dms:blurwallpaper). Requires manual niri configuration.": "컴포지터 대상 지정 블러 레이어를 활성화합니다(네임스페이스: dms:blurwallpaper). 수동 niri 구성이 필요합니다."
+  "Enable compositor-targetable blur layer (namespace: advs:blurwallpaper). Requires manual niri configuration.": {
+    "Enable compositor-targetable blur layer (namespace: advs:blurwallpaper). Requires manual niri configuration.": "컴포지터 대상 지정 블러 레이어를 활성화합니다(네임스페이스: advs:blurwallpaper). 수동 niri 구성이 필요합니다."
   },
   "Enable fingerprint at login": {
     "Enable fingerprint at login": "로그인 시 지문 활성화"
@@ -2948,8 +2948,8 @@
   "Enable fingerprint authentication": {
     "Enable fingerprint authentication": "지문 인증 활성화"
   },
-  "Enable fingerprint or security key for DMS Greeter": {
-    "Enable fingerprint or security key for DMS Greeter": ""
+  "Enable fingerprint or security key for ADVS Greeter": {
+    "Enable fingerprint or security key for ADVS Greeter": ""
   },
   "Enable loginctl lock integration": {
     "Enable loginctl lock integration": "loginctl 잠금 통합 활성화"
@@ -3317,11 +3317,11 @@
   "Failed to ring device": {
     "Failed to ring device": "기기 소리 울리기 실패"
   },
-  "Failed to run 'dms greeter status'. Ensure DMS is installed and dms is in PATH.": {
-    "Failed to run 'dms greeter status'. Ensure DMS is installed and dms is in PATH.": "'dms greeter status' 실행에 실패했습니다. DMS가 설치되어 있고 PATH에 dms가 있는지 확인하세요."
+  "Failed to run 'advs greeter status'. Ensure ADVS is installed and advs is in PATH.": {
+    "Failed to run 'advs greeter status'. Ensure ADVS is installed and advs is in PATH.": "'advs greeter status' 실행에 실패했습니다. ADVS가 설치되어 있고 PATH에 advs가 있는지 확인하세요."
   },
-  "Failed to run 'dms-greeter status'. Ensure the dms-greeter package is installed.": {
-    "Failed to run 'dms-greeter status'. Ensure the dms-greeter package is installed.": ""
+  "Failed to run 'advs-greeter status'. Ensure the advs-greeter package is installed.": {
+    "Failed to run 'advs-greeter status'. Ensure the advs-greeter package is installed.": ""
   },
   "Failed to save VPN credentials": {
     "Failed to save VPN credentials": "VPN 자격 증명 저장 실패"
@@ -3467,8 +3467,8 @@
   "File received from %1": {
     "File received from %1": ""
   },
-  "File search requires dsearch\nInstall from github.com/AvengeMedia/danksearch": {
-    "File search requires dsearch\nInstall from github.com/AvengeMedia/danksearch": "파일 검색에는 dsearch가 필요합니다\ngithub.com/AvengeMedia/danksearch에서 설치하세요"
+  "File search requires dsearch\nInstall from github.com/bavanchun/advsearch": {
+    "File search requires dsearch\nInstall from github.com/bavanchun/advsearch": "파일 검색에는 dsearch가 필요합니다\ngithub.com/bavanchun/advsearch에서 설치하세요"
   },
   "File search unavailable": {
     "File search unavailable": "파일 검색을 사용할 수 없음"
@@ -3626,8 +3626,8 @@
   "Folders": {
     "Folders": "폴더"
   },
-  "Follow DMS background color": {
-    "Follow DMS background color": "DMS 배경색 따르기"
+  "Follow ADVS background color": {
+    "Follow ADVS background color": "ADVS 배경색 따르기"
   },
   "Follow Monitor Focus": {
     "Follow Monitor Focus": "모니터 포커스 따르기"
@@ -3824,8 +3824,8 @@
   "Gamma Control": {
     "Gamma Control": "감마 제어"
   },
-  "Gamma control not available. Requires DMS API v6+.": {
-    "Gamma control not available. Requires DMS API v6+.": "감마 제어를 사용할 수 없습니다. DMS API v6+가 필요합니다."
+  "Gamma control not available. Requires ADVS API v6+.": {
+    "Gamma control not available. Requires ADVS API v6+.": "감마 제어를 사용할 수 없습니다. ADVS API v6+가 필요합니다."
   },
   "Gap between the end widgets and the bar ends (0 = edge-to-edge)": {
     "Gap between the end widgets and the bar ends (0 = edge-to-edge)": "양쪽 끝 위젯과 바 끝 사이의 간격(0 = 가장자리에 맞춤)"
@@ -3839,11 +3839,11 @@
   "Generate Override": {
     "Generate Override": "오버라이드 생성"
   },
-  "Generate baseline GTK3/4 or QT5/QT6 (requires qt6ct-kde) configurations to follow DMS colors. Only needed once.<br /><br />It is recommended to configure %1 prior to applying GTK themes.": {
-    "Generate baseline GTK3/4 or QT5/QT6 (requires qt6ct-kde) configurations to follow DMS colors. Only needed once.<br /><br />It is recommended to configure %1 prior to applying GTK themes.": ""
+  "Generate baseline GTK3/4 or QT5/QT6 (requires qt6ct-kde) configurations to follow ADVS colors. Only needed once.<br /><br />It is recommended to configure %1 prior to applying GTK themes.": {
+    "Generate baseline GTK3/4 or QT5/QT6 (requires qt6ct-kde) configurations to follow ADVS colors. Only needed once.<br /><br />It is recommended to configure %1 prior to applying GTK themes.": ""
   },
-  "Generate baseline GTK3/4, QT5/QT6, or qtengine configurations to follow DMS colors (only qt6ct requires qt6ct-kde). Only needed once.<br /><br />It is recommended to configure %1 prior to applying GTK themes.": {
-    "Generate baseline GTK3/4, QT5/QT6, or qtengine configurations to follow DMS colors (only qt6ct requires qt6ct-kde). Only needed once.<br /><br />It is recommended to configure %1 prior to applying GTK themes.": ""
+  "Generate baseline GTK3/4, QT5/QT6, or qtengine configurations to follow ADVS colors (only qt6ct requires qt6ct-kde). Only needed once.<br /><br />It is recommended to configure %1 prior to applying GTK themes.": {
+    "Generate baseline GTK3/4, QT5/QT6, or qtengine configurations to follow ADVS colors (only qt6ct requires qt6ct-kde). Only needed once.<br /><br />It is recommended to configure %1 prior to applying GTK themes.": ""
   },
   "Generic": {
     "Generic": "일반"
@@ -3914,11 +3914,11 @@
   "Greeter font": {
     "Greeter font": "로그인 화면 글꼴"
   },
-  "Greeter group members can sync their login-screen theme with dms greeter sync --profile after logging out and back in.": {
-    "Greeter group members can sync their login-screen theme with dms greeter sync --profile after logging out and back in.": "로그인 화면 그룹 구성원은 로그아웃했다가 다시 로그인한 후 dms greeter sync --profile을 사용하여 로그인 화면 테마를 동기화할 수 있습니다."
+  "Greeter group members can sync their login-screen theme with advs greeter sync --profile after logging out and back in.": {
+    "Greeter group members can sync their login-screen theme with advs greeter sync --profile after logging out and back in.": "로그인 화면 그룹 구성원은 로그아웃했다가 다시 로그인한 후 advs greeter sync --profile을 사용하여 로그인 화면 테마를 동기화할 수 있습니다."
   },
-  "Greeter group members can sync their login-screen theme with dms-greeter sync --profile after logging out and back in.": {
-    "Greeter group members can sync their login-screen theme with dms-greeter sync --profile after logging out and back in.": ""
+  "Greeter group members can sync their login-screen theme with advs-greeter sync --profile after logging out and back in.": {
+    "Greeter group members can sync their login-screen theme with advs-greeter sync --profile after logging out and back in.": ""
   },
   "Greeter group:": {
     "Greeter group:": "로그인 화면 그룹:"
@@ -4262,8 +4262,8 @@
   "Icon Theme": {
     "Icon Theme": "아이콘 테마"
   },
-  "Icon theme changed outside DMS; switched to System Default": {
-    "Icon theme changed outside DMS; switched to System Default": "외부에서 아이콘 테마가 변경됨; 시스템 기본값으로 전환됨"
+  "Icon theme changed outside ADVS; switched to System Default": {
+    "Icon theme changed outside ADVS; switched to System Default": "외부에서 아이콘 테마가 변경됨; 시스템 기본값으로 전환됨"
   },
   "Identical alerts show as one popup instead of stacking": {
     "Identical alerts show as one popup instead of stacking": "동일한 알림이 쌓이지 않고 하나의 팝업으로 표시됨"
@@ -4286,8 +4286,8 @@
   "Idle Settings": {
     "Idle Settings": "대기 설정"
   },
-  "If autostart app icons don't appear in the system tray, generate a systemd override to ensure DMS starts before autostart apps": {
-    "If autostart app icons don't appear in the system tray, generate a systemd override to ensure DMS starts before autostart apps": "자동 시작 앱 아이콘이 시스템 트레이에 나타나지 않으면 자동 시작 앱보다 DMS가 먼저 시작되도록 systemd 오버라이드를 생성합니다"
+  "If autostart app icons don't appear in the system tray, generate a systemd override to ensure ADVS starts before autostart apps": {
+    "If autostart app icons don't appear in the system tray, generate a systemd override to ensure ADVS starts before autostart apps": "자동 시작 앱 아이콘이 시스템 트레이에 나타나지 않으면 자동 시작 앱보다 ADVS가 먼저 시작되도록 systemd 오버라이드를 생성합니다"
   },
   "If the field is hidden, it will appear as soon as a key is pressed.": {
     "If the field is hidden, it will appear as soon as a key is pressed.": "필드가 숨겨져 있어도 키를 누르는 즉시 나타납니다."
@@ -4427,8 +4427,8 @@
   "Install Theme": {
     "Install Theme": "테마 설치"
   },
-  "Install color themes from the DMS theme registry": {
-    "Install color themes from the DMS theme registry": "DMS 테마 레지스트리에서 색상 테마 설치"
+  "Install color themes from the ADVS theme registry": {
+    "Install color themes from the ADVS theme registry": "ADVS 테마 레지스트리에서 색상 테마 설치"
   },
   "Install complete. Greeter has been installed.": {
     "Install complete. Greeter has been installed.": "설치 완료. 로그인 화면이 설치되었습니다."
@@ -4442,17 +4442,17 @@
   "Install matugen package for dynamic theming": {
     "Install matugen package for dynamic theming": "동적 테마를 위해 matugen 패키지 설치"
   },
-  "Install plugin '%1' from the DMS registry?": {
-    "Install plugin '%1' from the DMS registry?": "DMS 레지스트리에서 플러그인 '%1'을(를) 설치하시겠습니까?"
+  "Install plugin '%1' from the ADVS registry?": {
+    "Install plugin '%1' from the ADVS registry?": "ADVS 레지스트리에서 플러그인 '%1'을(를) 설치하시겠습니까?"
   },
-  "Install plugins from the DMS plugin registry": {
-    "Install plugins from the DMS plugin registry": "DMS 플러그인 레지스트리에서 플러그인 설치"
+  "Install plugins from the ADVS plugin registry": {
+    "Install plugins from the ADVS plugin registry": "ADVS 플러그인 레지스트리에서 플러그인 설치"
   },
-  "Install the DMS greeter? A terminal will open for sudo authentication.": {
-    "Install the DMS greeter? A terminal will open for sudo authentication.": "DMS 로그인 화면을 설치하시겠습니까? sudo 인증을 위해 터미널이 열립니다."
+  "Install the ADVS greeter? A terminal will open for sudo authentication.": {
+    "Install the ADVS greeter? A terminal will open for sudo authentication.": "ADVS 로그인 화면을 설치하시겠습니까? sudo 인증을 위해 터미널이 열립니다."
   },
-  "Install theme '%1' from the DMS registry?": {
-    "Install theme '%1' from the DMS registry?": "DMS 레지스트리에서 테마 '%1'을(를) 설치하시겠습니까?"
+  "Install theme '%1' from the ADVS registry?": {
+    "Install theme '%1' from the ADVS registry?": "ADVS 레지스트리에서 테마 '%1'을(를) 설치하시겠습니까?"
   },
   "Installation and PAM setup are documented in the ": {
     "Installation and PAM setup are documented in the ": ""
@@ -4886,8 +4886,8 @@
   "Make the bar background fully transparent": {
     "Make the bar background fully transparent": "바 배경을 완전히 투명하게 만들기"
   },
-  "Manage and configure plugins for extending DMS functionality": {
-    "Manage and configure plugins for extending DMS functionality": "DMS 기능을 확장하기 위한 플러그인 관리 및 구성"
+  "Manage and configure plugins for extending ADVS functionality": {
+    "Manage and configure plugins for extending ADVS functionality": "ADVS 기능을 확장하기 위한 플러그인 관리 및 구성"
   },
   "Manage up to 4 independent bar configurations. Each bar has its own position, widgets, styling, and display assignment.": {
     "Manage up to 4 independent bar configurations. Each bar has its own position, widgets, styling, and display assignment.": "최대 4개의 독립적인 바 구성을 관리합니다. 각 바에는 고유한 위치, 위젯, 스타일 지정 및 디스플레이 할당이 있습니다."
@@ -4991,8 +4991,8 @@
   "Material inspired shadows and elevation on modals, popouts, and dialogs": {
     "Material inspired shadows and elevation on modals, popouts, and dialogs": "모달, 팝아웃, 대화 상자의 Material에서 영감을 받은 그림자와 고도"
   },
-  "Material: Material Design 3 Expressive bezier curves. The DMS default feel.": {
-    "Material: Material Design 3 Expressive bezier curves. The DMS default feel.": "Material: Material Design 3 표현형 베지에 곡선. DMS의 기본 느낌."
+  "Material: Material Design 3 Expressive bezier curves. The ADVS default feel.": {
+    "Material: Material Design 3 Expressive bezier curves. The ADVS default feel.": "Material: Material Design 3 표현형 베지에 곡선. ADVS의 기본 느낌."
   },
   "Matugen Contrast": {
     "Matugen Contrast": "Matugen 대비"
@@ -5405,8 +5405,8 @@
   "Night mode & gamma": {
     "Night mode & gamma": "야간 모드 및 감마"
   },
-  "Night mode failed: DMS gamma control not available": {
-    "Night mode failed: DMS gamma control not available": "야간 모드 실패: DMS 감마 제어를 사용할 수 없음"
+  "Night mode failed: ADVS gamma control not available": {
+    "Night mode failed: ADVS gamma control not available": "야간 모드 실패: ADVS 감마 제어를 사용할 수 없음"
   },
   "Niri Integration": {
     "Niri Integration": "Niri 통합"
@@ -5435,8 +5435,8 @@
   "No Border": {
     "No Border": "테두리 없음"
   },
-  "No DMS shortcuts configured": {
-    "No DMS shortcuts configured": "구성된 DMS 바로 가기 없음"
+  "No ADVS shortcuts configured": {
+    "No ADVS shortcuts configured": "구성된 ADVS 바로 가기 없음"
   },
   "No Dim": {
     "No Dim": "어둡게 하지 않음"
@@ -5903,8 +5903,8 @@
   "Opacity of cards and nested surfaces inside floating windows": {
     "Opacity of cards and nested surfaces inside floating windows": ""
   },
-  "Opacity of floating DMS windows like Settings, Notepad, and authentication prompts": {
-    "Opacity of floating DMS windows like Settings, Notepad, and authentication prompts": ""
+  "Opacity of floating ADVS windows like Settings, Notepad, and authentication prompts": {
+    "Opacity of floating ADVS windows like Settings, Notepad, and authentication prompts": ""
   },
   "Opacity of foreground cards and nested surfaces on shell panels": {
     "Opacity of foreground cards and nested surfaces on shell panels": ""
@@ -5918,8 +5918,8 @@
   "Open App": {
     "Open App": "앱 열기"
   },
-  "Open DMS windows floating instead of tiled": {
-    "Open DMS windows floating instead of tiled": ""
+  "Open ADVS windows floating instead of tiled": {
+    "Open ADVS windows floating instead of tiled": ""
   },
   "Open Delay": {
     "Open Delay": "열기 지연"
@@ -6839,8 +6839,8 @@
   "Remove the shortcut %1?": {
     "Remove the shortcut %1?": "바로 가기 %1을(를) 제거하시겠습니까?"
   },
-  "Remove the shortcut %1? An unbind entry will be saved to dms/binds-user.lua so it stays removed across DMS updates.": {
-    "Remove the shortcut %1? An unbind entry will be saved to dms/binds-user.lua so it stays removed across DMS updates.": "바로 가기 %1을(를) 제거하시겠습니까? 바인딩 해제 항목이 dms/binds-user.lua에 저장되므로 DMS 업데이트 후에도 제거된 상태로 유지됩니다."
+  "Remove the shortcut %1? An unbind entry will be saved to advs/binds-user.lua so it stays removed across ADVS updates.": {
+    "Remove the shortcut %1? An unbind entry will be saved to advs/binds-user.lua so it stays removed across ADVS updates.": "바로 가기 %1을(를) 제거하시겠습니까? 바인딩 해제 항목이 advs/binds-user.lua에 저장되므로 ADVS 업데이트 후에도 제거된 상태로 유지됩니다."
   },
   "Removed administrator privileges": {
     "Removed administrator privileges": "관리자 권한 제거됨"
@@ -6893,11 +6893,11 @@
   "Requires 'dgop' tool": {
     "Requires 'dgop' tool": "'dgop' 도구 필요"
   },
-  "Requires DMS %1": {
-    "Requires DMS %1": "DMS %1 필요"
+  "Requires ADVS %1": {
+    "Requires ADVS %1": "ADVS %1 필요"
   },
-  "Requires DMS server with sysupdate capability": {
-    "Requires DMS server with sysupdate capability": "sysupdate 기능이 있는 DMS 서버 필요"
+  "Requires ADVS server with sysupdate capability": {
+    "Requires ADVS server with sysupdate capability": "sysupdate 기능이 있는 ADVS 서버 필요"
   },
   "Requires MangoWC compositor": {
     "Requires MangoWC compositor": "MangoWC 컴포지터 필요"
@@ -6905,8 +6905,8 @@
   "Requires a newer version of Quickshell": {
     "Requires a newer version of Quickshell": "최신 버전의 Quickshell 필요"
   },
-  "Requires greetd, dms-greeter, and your user in the greeter group (plus fprintd/pam_fprintd for fingerprint, pam_u2f for security keys).": {
-    "Requires greetd, dms-greeter, and your user in the greeter group (plus fprintd/pam_fprintd for fingerprint, pam_u2f for security keys).": ""
+  "Requires greetd, advs-greeter, and your user in the greeter group (plus fprintd/pam_fprintd for fingerprint, pam_u2f for security keys).": {
+    "Requires greetd, advs-greeter, and your user in the greeter group (plus fprintd/pam_fprintd for fingerprint, pam_u2f for security keys).": ""
   },
   "Requires night mode support": {
     "Requires night mode support": "야간 모드 지원 필요"
@@ -6914,8 +6914,8 @@
   "Requires remembering the last user and session. Enable those options first.": {
     "Requires remembering the last user and session. Enable those options first.": "마지막 사용자 및 세션을 기억해야 합니다. 먼저 해당 옵션을 활성화하세요."
   },
-  "Requires the DMS Theme extension from the editor marketplace": {
-    "Requires the DMS Theme extension from the editor marketplace": ""
+  "Requires the ADVS Theme extension from the editor marketplace": {
+    "Requires the ADVS Theme extension from the editor marketplace": ""
   },
   "Reserved Height": {
     "Reserved Height": ""
@@ -6953,11 +6953,11 @@
   "Resolution, position, scale": {
     "Resolution, position, scale": "해상도, 위치, 배율"
   },
-  "Restart DMS": {
-    "Restart DMS": "DMS 다시 시작"
+  "Restart ADVS": {
+    "Restart ADVS": "ADVS 다시 시작"
   },
-  "Restart the DankMaterialShell": {
-    "Restart the DankMaterialShell": "DankMaterialShell 다시 시작"
+  "Restart the AriadnevShell": {
+    "Restart the AriadnevShell": "AriadnevShell 다시 시작"
   },
   "Restart userspace without rebooting the kernel, requires systemd": {
     "Restart userspace without rebooting the kernel, requires systemd": ""
@@ -7052,14 +7052,14 @@
   "Rules (%1)": {
     "Rules (%1)": "규칙(%1)"
   },
-  "Rules found in your compositor config. These are read-only here, use Convert to DMS to make an editable copy.": {
-    "Rules found in your compositor config. These are read-only here, use Convert to DMS to make an editable copy.": "컴포지터 구성에서 규칙을 찾았습니다. 여기서는 읽기 전용이므로 편집 가능한 복사본을 만들려면 DMS로 변환을 사용하세요."
+  "Rules found in your compositor config. These are read-only here, use Convert to ADVS to make an editable copy.": {
+    "Rules found in your compositor config. These are read-only here, use Convert to ADVS to make an editable copy.": "컴포지터 구성에서 규칙을 찾았습니다. 여기서는 읽기 전용이므로 편집 가능한 복사본을 만들려면 ADVS로 변환을 사용하세요."
   },
   "Run Again": {
     "Run Again": "다시 실행"
   },
-  "Run DMS Templates": {
-    "Run DMS Templates": "DMS 템플릿 실행"
+  "Run ADVS Templates": {
+    "Run ADVS Templates": "ADVS 템플릿 실행"
   },
   "Run User Templates": {
     "Run User Templates": "사용자 템플릿 실행"
@@ -7172,11 +7172,11 @@
   "Scale": {
     "Scale": "배율"
   },
-  "Scale DankBar font sizes independently": {
-    "Scale DankBar font sizes independently": "DankBar 글꼴 크기 독립적으로 배율 조정"
+  "Scale AdvBar font sizes independently": {
+    "Scale AdvBar font sizes independently": "AdvBar 글꼴 크기 독립적으로 배율 조정"
   },
-  "Scale DankBar icon sizes independently": {
-    "Scale DankBar icon sizes independently": "DankBar 아이콘 크기 독립적으로 배율 조정"
+  "Scale AdvBar icon sizes independently": {
+    "Scale AdvBar icon sizes independently": "AdvBar 아이콘 크기 독립적으로 배율 조정"
   },
   "Scale all font sizes throughout the shell": {
     "Scale all font sizes throughout the shell": "셸 전체의 모든 글꼴 크기 배율 조정"
@@ -7721,8 +7721,8 @@
   "Show Remaining Time": {
     "Show Remaining Time": "남은 시간 표시"
   },
-  "Show Restart DMS": {
-    "Show Restart DMS": "DMS 다시 시작 표시"
+  "Show Restart ADVS": {
+    "Show Restart ADVS": "ADVS 다시 시작 표시"
   },
   "Show Satellite Widgets": {
     "Show Satellite Widgets": ""
@@ -7976,8 +7976,8 @@
   "Solid material type or Outline": {
     "Solid material type or Outline": ""
   },
-  "Some plugins require a newer version of DMS:": {
-    "Some plugins require a newer version of DMS:": "일부 플러그인에는 최신 버전의 DMS가 필요합니다:"
+  "Some plugins require a newer version of ADVS:": {
+    "Some plugins require a newer version of ADVS:": "일부 플러그인에는 최신 버전의 ADVS가 필요합니다:"
   },
   "Some settings are managed by the island": {
     "Some settings are managed by the island": ""
@@ -8075,14 +8075,14 @@
   "Standard": {
     "Standard": "표준"
   },
-  "Standard: Classic Material Design 3 — panels rise from below with a subtle scale. The DMS default.": {
-    "Standard: Classic Material Design 3 — panels rise from below with a subtle scale. The DMS default.": "표준: 클래식 Material Design 3 — 패널이 미묘한 비율로 아래에서 올라옵니다. DMS 기본값."
+  "Standard: Classic Material Design 3 — panels rise from below with a subtle scale. The ADVS default.": {
+    "Standard: Classic Material Design 3 — panels rise from below with a subtle scale. The ADVS default.": "표준: 클래식 Material Design 3 — 패널이 미묘한 비율로 아래에서 올라옵니다. ADVS 기본값."
   },
   "Start": {
     "Start": "시작"
   },
-  "Start DankConnect, KDE Connect, or Valent to use this plugin": {
-    "Start DankConnect, KDE Connect, or Valent to use this plugin": ""
+  "Start AdvConnect, KDE Connect, or Valent to use this plugin": {
+    "Start AdvConnect, KDE Connect, or Valent to use this plugin": ""
   },
   "Start Hotspot?": {
     "Start Hotspot?": ""
@@ -8243,11 +8243,11 @@
   "Sync Position Across Screens": {
     "Sync Position Across Screens": "화면 간 위치 동기화"
   },
-  "Sync applies your theme and settings to the login screen. Shared users should run dms greeter sync --profile instead of a primary user sync.": {
-    "Sync applies your theme and settings to the login screen. Shared users should run dms greeter sync --profile instead of a primary user sync.": ""
+  "Sync applies your theme and settings to the login screen. Shared users should run advs greeter sync --profile instead of a primary user sync.": {
+    "Sync applies your theme and settings to the login screen. Shared users should run advs greeter sync --profile instead of a primary user sync.": ""
   },
-  "Sync applies your theme and settings to the login screen. Shared users should run dms-greeter sync --profile instead of a primary user sync.": {
-    "Sync applies your theme and settings to the login screen. Shared users should run dms-greeter sync --profile instead of a primary user sync.": ""
+  "Sync applies your theme and settings to the login screen. Shared users should run advs-greeter sync --profile instead of a primary user sync.": {
+    "Sync applies your theme and settings to the login screen. Shared users should run advs-greeter sync --profile instead of a primary user sync.": ""
   },
   "Sync completed successfully.": {
     "Sync completed successfully.": "동기화가 성공적으로 완료되었습니다."
@@ -8363,14 +8363,14 @@
   "Terminal additional parameters": {
     "Terminal additional parameters": "터미널 추가 매개변수"
   },
-  "Terminal fallback failed. Install a supported terminal emulator or run 'dms auth sync' manually.": {
-    "Terminal fallback failed. Install a supported terminal emulator or run 'dms auth sync' manually.": "터미널 대체를 실패했습니다. 지원되는 터미널 에뮬레이터를 설치하거나 'dms auth sync'를 수동으로 실행하세요."
+  "Terminal fallback failed. Install a supported terminal emulator or run 'advs auth sync' manually.": {
+    "Terminal fallback failed. Install a supported terminal emulator or run 'advs auth sync' manually.": "터미널 대체를 실패했습니다. 지원되는 터미널 에뮬레이터를 설치하거나 'advs auth sync'를 수동으로 실행하세요."
   },
-  "Terminal fallback failed. Install one of the supported terminal emulators or run 'dms greeter sync' manually.": {
-    "Terminal fallback failed. Install one of the supported terminal emulators or run 'dms greeter sync' manually.": "터미널 대체를 실패했습니다. 지원되는 터미널 에뮬레이터 중 하나를 설치하거나 'dms greeter sync'를 수동으로 실행하세요."
+  "Terminal fallback failed. Install one of the supported terminal emulators or run 'advs greeter sync' manually.": {
+    "Terminal fallback failed. Install one of the supported terminal emulators or run 'advs greeter sync' manually.": "터미널 대체를 실패했습니다. 지원되는 터미널 에뮬레이터 중 하나를 설치하거나 'advs greeter sync'를 수동으로 실행하세요."
   },
-  "Terminal fallback failed. Install one of the supported terminal emulators or run 'dms-greeter sync' manually.": {
-    "Terminal fallback failed. Install one of the supported terminal emulators or run 'dms-greeter sync' manually.": ""
+  "Terminal fallback failed. Install one of the supported terminal emulators or run 'advs-greeter sync' manually.": {
+    "Terminal fallback failed. Install one of the supported terminal emulators or run 'advs-greeter sync' manually.": ""
   },
   "Terminal fallback opened. Complete authentication there; it will close automatically when done.": {
     "Terminal fallback opened. Complete authentication there; it will close automatically when done.": ""
@@ -8414,8 +8414,8 @@
   "The 'dgop' tool is required for system monitoring.\nPlease install dgop to use this feature.": {
     "The 'dgop' tool is required for system monitoring.\nPlease install dgop to use this feature.": "시스템 모니터링을 위해서는 'dgop' 도구가 필요합니다.\n이 기능을 사용하려면 dgop를 설치하세요."
   },
-  "The DMS_SOCKET environment variable is not set or the socket is unavailable. Automated plugin management requires the DMS_SOCKET.": {
-    "The DMS_SOCKET environment variable is not set or the socket is unavailable. Automated plugin management requires the DMS_SOCKET.": "DMS_SOCKET 환경 변수가 설정되지 않았거나 소켓을 사용할 수 없습니다. 자동 플러그인 관리에는 DMS_SOCKET이 필요합니다."
+  "The ADVS_SOCKET environment variable is not set or the socket is unavailable. Automated plugin management requires the ADVS_SOCKET.": {
+    "The ADVS_SOCKET environment variable is not set or the socket is unavailable. Automated plugin management requires the ADVS_SOCKET.": "ADVS_SOCKET 환경 변수가 설정되지 않았거나 소켓을 사용할 수 없습니다. 자동 플러그인 관리에는 ADVS_SOCKET이 필요합니다."
   },
   "The Island anchors to the top or bottom edge": {
     "The Island anchors to the top or bottom edge": ""
@@ -8435,8 +8435,8 @@
   "The custom command used when attaching to sessions (receives the session name as the first argument)": {
     "The custom command used when attaching to sessions (receives the session name as the first argument)": "세션에 연결할 때 사용되는 사용자 지정 명령어(세션 이름을 첫 번째 인수로 받음)"
   },
-  "The greeter bundled with DMS is active (archinstall setup). It keeps working as is, but syncing theme and settings needs the standalone greeter. Install greetd-dms-greeter-bin from the AUR, then run Sync to migrate the login screen.": {
-    "The greeter bundled with DMS is active (archinstall setup). It keeps working as is, but syncing theme and settings needs the standalone greeter. Install greetd-dms-greeter-bin from the AUR, then run Sync to migrate the login screen.": ""
+  "The greeter bundled with ADVS is active (archinstall setup). It keeps working as is, but syncing theme and settings needs the standalone greeter. Install greetd-advs-greeter-bin from the AUR, then run Sync to migrate the login screen.": {
+    "The greeter bundled with ADVS is active (archinstall setup). It keeps working as is, but syncing theme and settings needs the standalone greeter. Install greetd-advs-greeter-bin from the AUR, then run Sync to migrate the login screen.": ""
   },
   "The island draws its own surface": {
     "The island draws its own surface": ""
@@ -8489,8 +8489,8 @@
   "Third-Party Plugin Warning": {
     "Third-Party Plugin Warning": "타사 플러그인 경고"
   },
-  "Third-party plugins are created by the community and are not officially supported by DankMaterialShell.\n\nThese plugins may pose security and privacy risks - install at your own risk.": {
-    "Third-party plugins are created by the community and are not officially supported by DankMaterialShell.\n\nThese plugins may pose security and privacy risks - install at your own risk.": "타사 플러그인은 커뮤니티에서 만들었으며 DankMaterialShell에서 공식적으로 지원하지 않습니다.\n\n이러한 플러그인은 보안 및 개인 정보 보호 위험을 초래할 수 있습니다. 본인의 책임하에 설치하세요."
+  "Third-party plugins are created by the community and are not officially supported by AriadnevShell.\n\nThese plugins may pose security and privacy risks - install at your own risk.": {
+    "Third-party plugins are created by the community and are not officially supported by AriadnevShell.\n\nThese plugins may pose security and privacy risks - install at your own risk.": "타사 플러그인은 커뮤니티에서 만들었으며 AriadnevShell에서 공식적으로 지원하지 않습니다.\n\n이러한 플러그인은 보안 및 개인 정보 보호 위험을 초래할 수 있습니다. 본인의 책임하에 설치하세요."
   },
   "This bind is overridden by config.kdl": {
     "This bind is overridden by config.kdl": "이 바인딩은 config.kdl에 의해 오버라이드됨"
@@ -8498,8 +8498,8 @@
   "This device": {
     "This device": "이 기기"
   },
-  "This install is still using hyprland.conf. Run dms setup to migrate before changing these settings.": {
-    "This install is still using hyprland.conf. Run dms setup to migrate before changing these settings.": ""
+  "This install is still using hyprland.conf. Run advs setup to migrate before changing these settings.": {
+    "This install is still using hyprland.conf. Run advs setup to migrate before changing these settings.": ""
   },
   "This may take a few seconds": {
     "This may take a few seconds": "몇 초 정도 걸릴 수 있습니다"
@@ -8612,8 +8612,8 @@
   "To update, run the following command:": {
     "To update, run the following command:": "업데이트하려면 다음 명령을 실행하세요:"
   },
-  "To use this DMS bind, remove or change the keybind in your config.kdl": {
-    "To use this DMS bind, remove or change the keybind in your config.kdl": "이 DMS 바인딩을 사용하려면 config.kdl에서 단축키를 제거하거나 변경하세요"
+  "To use this ADVS bind, remove or change the keybind in your config.kdl": {
+    "To use this ADVS bind, remove or change the keybind in your config.kdl": "이 ADVS 바인딩을 사용하려면 config.kdl에서 단축키를 제거하거나 변경하세요"
   },
   "Toast": {
     "Toast": "토스트"
@@ -8813,8 +8813,8 @@
   "Uninstall failed: %1": {
     "Uninstall failed: %1": "제거 실패: %1"
   },
-  "Uninstall the DMS greeter? This will remove configuration and restore your previous display manager. A terminal will open for sudo authentication.": {
-    "Uninstall the DMS greeter? This will remove configuration and restore your previous display manager. A terminal will open for sudo authentication.": "DMS 로그인 화면을 제거하시겠습니까? 구성을 제거하고 이전 디스플레이 관리자를 복원합니다. sudo 인증을 위해 터미널이 열립니다."
+  "Uninstall the ADVS greeter? This will remove configuration and restore your previous display manager. A terminal will open for sudo authentication.": {
+    "Uninstall the ADVS greeter? This will remove configuration and restore your previous display manager. A terminal will open for sudo authentication.": "ADVS 로그인 화면을 제거하시겠습니까? 구성을 제거하고 이전 디스플레이 관리자를 복원합니다. sudo 인증을 위해 터미널이 열립니다."
   },
   "Uninstalled: %1": {
     "Uninstalled: %1": "제거됨: %1"
@@ -9104,8 +9104,8 @@
   "Uses the spotlight-bar IPC action and always opens the minimal bar.": {
     "Uses the spotlight-bar IPC action and always opens the minimal bar.": "스포트라이트 바 IPC 작업을 사용하며 항상 최소 바를 엽니다."
   },
-  "Using DankCalendar%1": {
-    "Using DankCalendar%1": "DankCalendar 사용 중%1"
+  "Using AdvCalendar%1": {
+    "Using AdvCalendar%1": "AdvCalendar 사용 중%1"
   },
   "Using global monospace font from Settings → Personalization": {
     "Using global monospace font from Settings → Personalization": "설정 → 개인 설정에서 전역 고정폭 글꼴 사용 중"
@@ -9287,8 +9287,8 @@
   "Welcome": {
     "Welcome": "환영합니다"
   },
-  "Welcome to DankMaterialShell": {
-    "Welcome to DankMaterialShell": "DankMaterialShell에 오신 것을 환영합니다"
+  "Welcome to AriadnevShell": {
+    "Welcome to AriadnevShell": "AriadnevShell에 오신 것을 환영합니다"
   },
   "When clicking a dock window in a Hyprland special workspace, bring that special workspace back before focusing the window": {
     "When clicking a dock window in a Hyprland special workspace, bring that special workspace back before focusing the window": "Hyprland 특수 작업 공간에서 독 창을 클릭할 때 창에 포커스를 맞추기 전에 해당 특수 작업 공간을 다시 가져옵니다."
@@ -9575,8 +9575,8 @@
   "display rotation option": {
     "Normal": ""
   },
-  "dms-greeter is not installed. Install the dms-greeter package to manage the greeter.": {
-    "dms-greeter is not installed. Install the dms-greeter package to manage the greeter.": ""
+  "advs-greeter is not installed. Install the advs-greeter package to manage the greeter.": {
+    "advs-greeter is not installed. Install the advs-greeter package to manage the greeter.": ""
   },
   "e.g. /usr/bin/my-script --flag": {
     "e.g. /usr/bin/my-script --flag": "예: /usr/bin/my-script --flag"
@@ -9620,8 +9620,8 @@
   "loginctl activate failed (exit %1)": {
     "loginctl activate failed (exit %1)": "loginctl 활성화 실패(종료 %1)"
   },
-  "loginctl not available - lock integration requires DMS socket connection": {
-    "loginctl not available - lock integration requires DMS socket connection": "loginctl을 사용할 수 없음 - 잠금 통합에는 DMS 소켓 연결이 필요합니다"
+  "loginctl not available - lock integration requires ADVS socket connection": {
+    "loginctl not available - lock integration requires ADVS socket connection": "loginctl을 사용할 수 없음 - 잠금 통합에는 ADVS 소켓 연결이 필요합니다"
   },
   "mango: config reloaded": {
     "mango: config reloaded": "mango: 구성이 다시 로드됨"
@@ -9662,8 +9662,8 @@
   "niri shortcuts config": {
     "niri shortcuts config": "niri 바로 가기 구성"
   },
-  "niri/dms Discord": {
-    "niri/dms Discord": "niri/dms Discord"
+  "niri/advs Discord": {
+    "niri/advs Discord": "niri/advs Discord"
   },
   "niri: config reloaded": {
     "niri: config reloaded": "niri: 구성 다시 로드됨"
@@ -9740,8 +9740,8 @@
   "up": {
     "up": "가동"
   },
-  "update dms for NM integration.": {
-    "update dms for NM integration.": "NM 통합을 위해 dms를 업데이트하세요."
+  "update advs for NM integration.": {
+    "update advs for NM integration.": "NM 통합을 위해 advs를 업데이트하세요."
   },
   "useradd failed (exit %1)": {
     "useradd failed (exit %1)": "useradd 실패(종료 %1)"

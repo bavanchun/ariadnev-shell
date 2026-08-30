@@ -13,7 +13,7 @@ import (
 
 const (
 	OfficialName = "official"
-	officialURL  = "https://github.com/AvengeMedia/dms-plugin-registry.git"
+	officialURL  = "https://github.com/bavanchun/advs-plugin-registry.git"
 )
 
 // Source identifies a registry repository. Name doubles as the per-registry
@@ -34,7 +34,7 @@ func configPath() (string, error) {
 	if err != nil {
 		return "", fmt.Errorf("failed to get user config dir: %w", err)
 	}
-	return filepath.Join(configDir, "DankMaterialShell", "registries.json"), nil
+	return filepath.Join(configDir, "AriadnevShell", "registries.json"), nil
 }
 
 // Load returns the official registry followed by any user-configured extras.

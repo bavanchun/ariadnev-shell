@@ -42,11 +42,11 @@ popoutService.closeProcessList()
 popoutService.toggleProcessList()
 ```
 
-#### DankDash
+#### AdvDash
 ```qml
-popoutService.openDankDash(tabIndex)    // tabIndex: 0=Calendar, 1=Media, 2=Weather
-popoutService.closeDankDash()
-popoutService.toggleDankDash(tabIndex)
+popoutService.openAdvDash(tabIndex)    // tabIndex: 0=Calendar, 1=Media, 2=Weather
+popoutService.closeAdvDash()
+popoutService.toggleAdvDash(tabIndex)
 ```
 
 #### Battery Popout
@@ -86,9 +86,9 @@ popoutService.closeClipboardHistory()
 
 #### Launcher Modal
 ```qml
-popoutService.openDankLauncherV2()
-popoutService.closeDankLauncherV2()
-popoutService.toggleDankLauncherV2()
+popoutService.openAdvLauncherV2()
+popoutService.closeAdvLauncherV2()
+popoutService.toggleAdvLauncherV2()
 ```
 
 #### Power Menu Modal
@@ -194,11 +194,11 @@ Error: Cannot assign to non-existent property "popoutService"
 
 ## Installation
 
-1. Copy the plugin directory to `~/.config/DankMaterialShell/plugins/`
+1. Copy the plugin directory to `~/.config/AriadnevShell/plugins/`
 2. Open Settings → Plugins
 3. Click "Scan for Plugins"
 4. Enable "Popout Control Example"
-5. Add `popoutControlExample` to your DankBar widget list
+5. Add `popoutControlExample` to your AdvBar widget list
 
 ## Notes
 

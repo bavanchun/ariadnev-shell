@@ -315,7 +315,7 @@ Item {
                     Layout.fillWidth: true
                     spacing: Theme.spacingM
 
-                    DankIcon {
+                    AdvIcon {
                         Layout.alignment: Qt.AlignVCenter
                         name: "sync_problem"
                         size: Theme.iconSize - 2
@@ -333,7 +333,7 @@ Item {
                         elide: Text.ElideRight
                     }
 
-                    DankActionButton {
+                    AdvActionButton {
                         Layout.alignment: Qt.AlignVCenter
                         iconName: "close"
                         iconSize: Theme.iconSizeSmall
@@ -657,7 +657,7 @@ Item {
         id: confirmationDialogLoader
         active: false
 
-        DankModal {
+        AdvModal {
             id: confirmationDialog
 
             modalWidth: 400
@@ -800,7 +800,7 @@ Item {
                         }
                     }
 
-                    DankActionButton {
+                    AdvActionButton {
                         anchors.top: parent.top
                         anchors.right: parent.right
                         anchors.topMargin: Theme.spacingM

@@ -1,0 +1,19 @@
+hotkey-overlay {
+    skip-at-startup
+}
+
+environment {
+    ADVS_RUN_GREETER "1"
+}
+
+spawn-at-startup "sh" "-c" "qs -p _ADVS_PATH_; niri msg action quit --skip-confirmation"
+
+gestures {
+   hot-corners {
+     off
+   }
+}
+
+layout {
+  background-color "#000000"
+}

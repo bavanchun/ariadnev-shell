@@ -86,7 +86,7 @@ Item {
         }
 
         const requestedId = newEntry.id;
-        DMSService.sendRequest("clipboard.getEntry", {
+        ADVSService.sendRequest("clipboard.getEntry", {
             "id": requestedId
         }, function (response) {
             if (response.error) {
@@ -129,7 +129,7 @@ Item {
 
     function saveEntry(action) {
         const saveAction = action ?? "history";
-        DMSService.sendRequest("clipboard.copy", {
+        ADVSService.sendRequest("clipboard.copy", {
             "text": root.editorText
         }, function (response) {
             if (response.error) {
@@ -204,7 +204,7 @@ Item {
             width: parent.width
             height: ClipboardConstants.headerHeight
 
-            DankActionButton {
+            AdvActionButton {
                 iconName: "arrow_back"
                 iconSize: Theme.iconSize - 4
                 iconColor: Theme.surfaceText
@@ -221,7 +221,7 @@ Item {
                 anchors.centerIn: parent
             }
 
-            DankActionButton {
+            AdvActionButton {
                 iconName: "close"
                 iconSize: Theme.iconSize - 4
                 iconColor: Theme.surfaceText
@@ -231,7 +231,7 @@ Item {
             }
         }
 
-        DankTextEdit {
+        AdvTextEdit {
             id: editField
             width: parent.width
             height: Math.max(Theme.fontSizeMedium * 8, parent.height - editorHeader.height - editorActions.height - Theme.spacingM * 2)
@@ -276,7 +276,7 @@ Item {
                 height: 1
             }
 
-            DankButton {
+            AdvButton {
                 id: cancelButton
                 text: I18n.tr("Cancel")
                 backgroundColor: Theme.surfaceContainerHigh
@@ -331,7 +331,7 @@ Item {
                     anchors.verticalCenter: parent.verticalCenter
                 }
 
-                DankIcon {
+                AdvIcon {
                     name: saveMenu.visible ? "expand_less" : "expand_more"
                     size: Theme.iconSizeSmall
                     color: Theme.onPrimary
@@ -387,7 +387,7 @@ Item {
                         anchors.verticalCenter: parent.verticalCenter
                         spacing: Theme.spacingS
 
-                        DankIcon {
+                        AdvIcon {
                             name: "save"
                             size: Theme.iconSizeSmall
                             color: Theme.surfaceText
@@ -425,7 +425,7 @@ Item {
                         anchors.verticalCenter: parent.verticalCenter
                         spacing: Theme.spacingS
 
-                        DankIcon {
+                        AdvIcon {
                             name: "close"
                             size: Theme.iconSizeSmall
                             color: Theme.surfaceText
@@ -464,7 +464,7 @@ Item {
                         anchors.verticalCenter: parent.verticalCenter
                         spacing: Theme.spacingS
 
-                        DankIcon {
+                        AdvIcon {
                             name: "content_paste"
                             size: Theme.iconSizeSmall
                             color: Theme.surfaceText

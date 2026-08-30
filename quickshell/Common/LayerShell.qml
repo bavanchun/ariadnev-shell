@@ -39,8 +39,8 @@ Singleton {
         return "top";
     }
 
-    // Resolve a WlrLayer from a DMS_*_LAYER env override.
-    //   name:     env var to read, e.g. "DMS_OSD_LAYER"
+    // Resolve a WlrLayer from a ADVS_*_LAYER env override.
+    //   name:     env var to read, e.g. "ADVS_OSD_LAYER"
     //   fallback: WlrLayer used when the var is unset or unrecognized
     //   opts (optional):
     //     allow:        array of honored layer names; recognized names outside it

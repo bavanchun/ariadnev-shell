@@ -66,9 +66,9 @@ Scope {
         IdleService.lockPowerOffRequested = false;
     }
 
-    // Avoid startup lock when using dms-greeter (#2952)
+    // Avoid startup lock when using advs-greeter (#2952)
     function freshGreeterLogin() {
-        const authTime = Number(Quickshell.env("DMS_GREETER_AUTH_TIME") || 0);
+        const authTime = Number(Quickshell.env("ADVS_GREETER_AUTH_TIME") || 0);
         if (!authTime)
             return false;
         return (Date.now() / 1000 - authTime) < 120;
@@ -81,24 +81,24 @@ Scope {
     }
 
     function notifyLockedHint(locked: bool) {
-        if (!SettingsData.loginctlLockIntegration || !DMSService.isConnected)
+        if (!SettingsData.loginctlLockIntegration || !ADVSService.isConnected)
             return;
-        DMSService.setLockedHint(locked, () => {});
+        ADVSService.setLockedHint(locked, () => {});
     }
 
     function notifyLoginctl(lockAction: bool) {
-        if (!SettingsData.loginctlLockIntegration || !DMSService.isConnected)
+        if (!SettingsData.loginctlLockIntegration || !ADVSService.isConnected)
             return;
         if (lockAction)
-            DMSService.lockSession(() => {});
+            ADVSService.lockSession(() => {});
         else
-            DMSService.unlockSession(() => {});
+            ADVSService.unlockSession(() => {});
     }
 
     function spawnCustomLocker() {
         IdleService.lockPowerOffRequested = false;
         Quickshell.execDetached(["sh", "-c", SettingsData.customPowerActionLock]);
-        // The custom locker manages its own surface; DMS never engages
+        // The custom locker manages its own surface; ADVS never engages
         // WlSessionLock here, so isShellLocked stays false and the fade
         // overlay would never be dismissed. Hand off by dismissing it now.
         IdleService.dismissFadeToLock();

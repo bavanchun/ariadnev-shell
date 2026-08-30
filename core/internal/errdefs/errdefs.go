@@ -1,15 +1,15 @@
 package errdefs
 
 import (
-	dankerrdefs "github.com/AvengeMedia/dankgo/errdefs"
+	adverrdefs "github.com/AvengeMedia/dankgo/errdefs"
 )
 
-type ErrorType = dankerrdefs.ErrorType
+type ErrorType = adverrdefs.ErrorType
 
-type CustomError = dankerrdefs.CustomError
+type CustomError = adverrdefs.CustomError
 
 const (
-	ErrTypeNotLinux ErrorType = dankerrdefs.AppErrorBase + iota
+	ErrTypeNotLinux ErrorType = adverrdefs.AppErrorBase + iota
 	ErrTypeInvalidArchitecture
 	ErrTypeUnsupportedDistribution
 	ErrTypeUnsupportedVersion
@@ -30,7 +30,7 @@ const (
 )
 
 func NewCustomError(errType ErrorType, message string) error {
-	return dankerrdefs.NewCustomError(errType, message)
+	return adverrdefs.NewCustomError(errType, message)
 }
 
 const (

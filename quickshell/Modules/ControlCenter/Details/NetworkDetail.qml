@@ -99,9 +99,9 @@ Rectangle {
     }
 
     property int currentPreferenceIndex: {
-        if (DMSService.apiVersion < 5)
+        if (ADVSService.apiVersion < 5)
             return 1;
-        if (NetworkService.backend !== "networkmanager" || DMSService.apiVersion <= 10)
+        if (NetworkService.backend !== "networkmanager" || ADVSService.apiVersion <= 10)
             return 1;
         const pref = NetworkService.userPreference;
         if (connectionTypes.indexOf(pref) !== -1)
@@ -141,7 +141,7 @@ Rectangle {
             anchors.verticalCenter: parent.verticalCenter
             spacing: Theme.spacingS
 
-            DankDropdown {
+            AdvDropdown {
                 id: wifiDeviceDropdown
                 anchors.verticalCenter: parent.verticalCenter
                 visible: currentConnectionType === "wifi" && (NetworkService.wifiDevices?.length ?? 0) > 1
@@ -165,7 +165,7 @@ Rectangle {
                 }
             }
 
-            DankButtonGroup {
+            AdvButtonGroup {
                 id: preferenceControls
                 anchors.verticalCenter: parent.verticalCenter
                 buttonHeight: 28
@@ -177,7 +177,7 @@ Rectangle {
                     "cellular": I18n.tr("Cellular")
                 })
 
-                visible: connectionTypes.length > 1 && NetworkService.backend === "networkmanager" && DMSService.apiVersion > 10
+                visible: connectionTypes.length > 1 && NetworkService.backend === "networkmanager" && ADVSService.apiVersion > 10
                 model: connectionTypes.map(t => labelsByType[t] || t)
                 currentIndex: Math.max(0, connectionTypes.indexOf(currentConnectionType))
                 selectionMode: "single"
@@ -189,7 +189,7 @@ Rectangle {
                 }
             }
 
-            DankToggle {
+            AdvToggle {
                 anchors.verticalCenter: parent.verticalCenter
                 visible: currentConnectionType === "cellular" && NetworkService.backend === "networkmanager"
                 checked: NetworkService.cellularEnabled
@@ -197,7 +197,7 @@ Rectangle {
                 onToggled: NetworkService.toggleCellularRadio()
             }
 
-            DankActionButton {
+            AdvActionButton {
                 anchors.verticalCenter: parent.verticalCenter
                 iconName: "settings"
                 buttonSize: 28
@@ -241,7 +241,7 @@ Rectangle {
                 anchors.verticalCenter: parent.verticalCenter
                 spacing: Theme.spacingS
 
-                DankIcon {
+                AdvIcon {
                     name: NetworkService.hotspotEnabled ? "wifi_tethering" : "wifi_tethering_off"
                     size: Theme.iconSize - 4
                     color: NetworkService.hotspotEnabled ? Theme.primary : Theme.surfaceText
@@ -332,7 +332,7 @@ Rectangle {
                     anchors.verticalCenter: parent.verticalCenter
                 }
 
-                DankIcon {
+                AdvIcon {
                     name: "chevron_right"
                     size: 20
                     color: Theme.primary
@@ -340,7 +340,7 @@ Rectangle {
                     anchors.verticalCenter: parent.verticalCenter
                 }
 
-                DankSpinner {
+                AdvSpinner {
                     readonly property bool hotspotWorking: NetworkService.hotspotBusy || NetworkService.hotspotActivating
                     size: 20
                     strokeWidth: 2
@@ -350,7 +350,7 @@ Rectangle {
                     anchors.verticalCenter: parent.verticalCenter
                 }
 
-                DankToggle {
+                AdvToggle {
                     readonly property bool hotspotWorking: NetworkService.hotspotBusy || NetworkService.hotspotActivating
                     checked: NetworkService.hotspotEnabled
                     enabled: NetworkService.hotspotConfigured && !hotspotWorking
@@ -369,7 +369,7 @@ Rectangle {
                 }
             }
 
-            DankRipple {
+            AdvRipple {
                 id: hotspotRipple
                 cornerRadius: parent.radius
             }
@@ -402,7 +402,7 @@ Rectangle {
             anchors.centerIn: parent
             spacing: Theme.spacingM
 
-            DankIcon {
+            AdvIcon {
                 anchors.horizontalCenter: parent.horizontalCenter
                 name: "sync"
                 size: 32
@@ -444,7 +444,7 @@ Rectangle {
             spacing: Theme.spacingL
             width: parent.width
 
-            DankIcon {
+            AdvIcon {
                 anchors.horizontalCenter: parent.horizontalCenter
                 name: "wifi_off"
                 size: 48
@@ -521,7 +521,7 @@ Rectangle {
             anchors.centerIn: parent
             spacing: Theme.spacingM
 
-            DankIcon {
+            AdvIcon {
                 anchors.horizontalCenter: parent.horizontalCenter
                 name: "sync"
                 size: 32
@@ -563,7 +563,7 @@ Rectangle {
             spacing: Theme.spacingL
             width: parent.width
 
-            DankIcon {
+            AdvIcon {
                 anchors.horizontalCenter: parent.horizontalCenter
                 name: "network_cell"
                 size: 48
@@ -608,7 +608,7 @@ Rectangle {
         }
     }
 
-    DankFlickable {
+    AdvFlickable {
         id: cellularContent
         anchors.top: headerRow.bottom
         anchors.left: parent.left
@@ -650,7 +650,7 @@ Rectangle {
                         anchors.rightMargin: Theme.spacingS
                         spacing: Theme.spacingS
 
-                        DankIcon {
+                        AdvIcon {
                             name: "network_cell"
                             size: Theme.iconSize - 4
                             color: cellularDeviceDelegate.isActive ? Theme.primary : Theme.surfaceText
@@ -681,7 +681,7 @@ Rectangle {
                         }
                     }
 
-                    DankActionButton {
+                    AdvActionButton {
                         id: cellularDeviceAction
                         anchors.right: parent.right
                         anchors.rightMargin: Theme.spacingS
@@ -730,7 +730,7 @@ Rectangle {
                         anchors.rightMargin: Theme.spacingS
                         spacing: Theme.spacingS
 
-                        DankIcon {
+                        AdvIcon {
                             name: "network_cell"
                             size: Theme.iconSize - 4
                             color: cellularDelegate.isActive ? Theme.primary : Theme.surfaceText
@@ -761,7 +761,7 @@ Rectangle {
                         }
                     }
 
-                    DankActionButton {
+                    AdvActionButton {
                         id: cellularActionButton
                         anchors.right: parent.right
                         anchors.rightMargin: Theme.spacingS
@@ -778,7 +778,7 @@ Rectangle {
                         }
                     }
 
-                    DankRipple {
+                    AdvRipple {
                         id: cellularRipple
                         cornerRadius: parent.radius
                     }
@@ -829,7 +829,7 @@ Rectangle {
         }
     }
 
-    DankFlickable {
+    AdvFlickable {
         id: wiredContent
         anchors.top: headerRow.bottom
         anchors.left: parent.left
@@ -837,7 +837,7 @@ Rectangle {
         anchors.bottom: parent.bottom
         anchors.margins: Theme.spacingM
         anchors.topMargin: Theme.spacingM
-        visible: currentConnectionType === "ethernet" && NetworkService.backend === "networkmanager" && DMSService.apiVersion > 10
+        visible: currentConnectionType === "ethernet" && NetworkService.backend === "networkmanager" && ADVSService.apiVersion > 10
         contentHeight: wiredColumn.height
         clip: true
 
@@ -871,7 +871,7 @@ Rectangle {
                         anchors.leftMargin: Theme.spacingM
                         spacing: Theme.spacingS
 
-                        DankIcon {
+                        AdvIcon {
                             name: "lan"
                             size: Theme.iconSize - 4
                             color: wiredDelegate.isActive ? Theme.primary : Theme.surfaceText
@@ -893,7 +893,7 @@ Rectangle {
                         }
                     }
 
-                    DankActionButton {
+                    AdvActionButton {
                         id: wiredOptionsButton
                         anchors.right: parent.right
                         anchors.rightMargin: Theme.spacingS
@@ -912,7 +912,7 @@ Rectangle {
                         }
                     }
 
-                    DankRipple {
+                    AdvRipple {
                         id: wiredRipple
                         cornerRadius: parent.radius
                     }
@@ -1040,7 +1040,7 @@ Rectangle {
         anchors.topMargin: hotspotRow.visible ? Theme.spacingS : Theme.spacingM
         visible: currentConnectionType === "wifi" && NetworkService.wifiEnabled && !NetworkService.wifiToggling && NetworkService.wifiInterface && (NetworkService.wifiNetworks?.length ?? 0) < 1 && NetworkService.isScanning
 
-        DankIcon {
+        AdvIcon {
             anchors.centerIn: parent
             name: "refresh"
             size: 48
@@ -1057,7 +1057,7 @@ Rectangle {
         }
     }
 
-    DankListView {
+    AdvListView {
         id: wifiContent
         anchors.top: hotspotRow.visible ? hotspotRow.bottom : headerRow.bottom
         anchors.left: parent.left
@@ -1134,7 +1134,7 @@ Rectangle {
                 anchors.leftMargin: Theme.spacingM
                 spacing: Theme.spacingS
 
-                DankSpinner {
+                AdvSpinner {
                     size: Theme.iconSize - 4
                     strokeWidth: 2
                     color: Theme.warning
@@ -1143,7 +1143,7 @@ Rectangle {
                     anchors.verticalCenter: parent.verticalCenter
                 }
 
-                DankIcon {
+                AdvIcon {
                     visible: !wifiDelegate.isConnecting
                     name: {
                         if (wifiDelegate.signalStrength >= 50)
@@ -1195,7 +1195,7 @@ Rectangle {
                 }
             }
 
-            DankActionButton {
+            AdvActionButton {
                 id: optionsButton
                 anchors.right: parent.right
                 anchors.rightMargin: Theme.spacingS
@@ -1235,7 +1235,7 @@ Rectangle {
                     anchors.centerIn: parent
                     spacing: Theme.spacingXS
 
-                    DankIcon {
+                    AdvIcon {
                         name: "push_pin"
                         size: 16
                         color: wifiDelegate.isPinned ? Theme.primary : Theme.surfaceText
@@ -1250,7 +1250,7 @@ Rectangle {
                     }
                 }
 
-                DankRipple {
+                AdvRipple {
                     id: pinRipple
                     cornerRadius: parent.radius
                 }
@@ -1282,7 +1282,7 @@ Rectangle {
                 }
             }
 
-            DankActionButton {
+            AdvActionButton {
                 id: qrCodeButton
                 visible: modelData.secured && modelData.saved && !(modelData.enterprise || false)
                 anchors.right: parent.right
@@ -1295,7 +1295,7 @@ Rectangle {
                 }
             }
 
-            DankRipple {
+            AdvRipple {
                 id: wifiRipple
                 cornerRadius: parent.radius
             }
@@ -1400,8 +1400,8 @@ Rectangle {
 
         MenuItem {
             text: networkContextMenu.currentAutoconnect ? I18n.tr("Disable Autoconnect") : I18n.tr("Enable Autoconnect")
-            height: networkContextMenu.showSavedOptions && DMSService.apiVersion > 13 ? 32 : 0
-            visible: networkContextMenu.showSavedOptions && DMSService.apiVersion > 13
+            height: networkContextMenu.showSavedOptions && ADVSService.apiVersion > 13 ? 32 : 0
+            visible: networkContextMenu.showSavedOptions && ADVSService.apiVersion > 13
 
             contentItem: StyledText {
                 text: parent.text

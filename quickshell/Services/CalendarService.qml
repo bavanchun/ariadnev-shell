@@ -16,11 +16,11 @@ Singleton {
         switch (backendPref) {
         case "khal":
             return "khal";
-        case "dankcal":
-            return "dankcal";
+        case "advcal":
+            return "advcal";
         default:
-            if (dankBackend.connected)
-                return "dankcal";
+            if (advBackend.connected)
+                return "advcal";
             if (khalBackend.installed)
                 return "khal";
             return "none";
@@ -28,15 +28,15 @@ Singleton {
     }
 
     readonly property bool calendarAvailable: activeBackend !== "none"
-    readonly property bool isDankActive: activeBackend === "dankcal"
-    readonly property bool canCreateEvents: isDankActive && dankBackend.connected
+    readonly property bool isAdvActive: activeBackend === "advcal"
+    readonly property bool canCreateEvents: isAdvActive && advBackend.connected
     property bool khalAvailable: true // compatibility alias - calendar card UI gate
 
-    readonly property bool dankConnected: dankBackend.connected
-    readonly property bool dankBinaryExists: dankBackend.binaryExists
-    readonly property bool dankNeedsLaunch: backendPref === "dankcal" && !dankBackend.connected && !dankBackend.socketFound
+    readonly property bool advConnected: advBackend.connected
+    readonly property bool advBinaryExists: advBackend.binaryExists
+    readonly property bool advNeedsLaunch: backendPref === "advcal" && !advBackend.connected && !advBackend.socketFound
 
-    property var calendars: dankBackend.calendars
+    property var calendars: advBackend.calendars
     property var eventsByDate: ({})
     property var taskEventsByDate: ({})
     property var localTasks: ({})
@@ -59,9 +59,9 @@ Singleton {
         onEventsByDateChanged: root.mergeEvents()
     }
 
-    CalendarDankBackend {
-        id: dankBackend
-        enabled: root.backendPref === "dankcal" || root.backendPref === "auto"
+    CalendarAdvBackend {
+        id: advBackend
+        enabled: root.backendPref === "advcal" || root.backendPref === "auto"
         onEventsByDateChanged: root.mergeEvents()
         onTasksByDateChanged: root.mergeEvents()
         onConnectedChanged: {
@@ -75,8 +75,8 @@ Singleton {
         root.lastEndDate = endDate;
         root._rangeSet = true;
         switch (activeBackend) {
-        case "dankcal":
-            dankBackend.loadEvents(startDate, endDate);
+        case "advcal":
+            advBackend.loadEvents(startDate, endDate);
             break;
         case "khal":
             khalBackend.loadEvents(startDate, endDate);
@@ -86,8 +86,8 @@ Singleton {
 
     function _activeBackendEventsByDate() {
         switch (activeBackend) {
-        case "dankcal":
-            return dankBackend.eventsByDate;
+        case "advcal":
+            return advBackend.eventsByDate;
         case "khal":
             return khalBackend.eventsByDate;
         default:
@@ -105,20 +105,20 @@ Singleton {
     }
 
     function writableCalendars() {
-        return isDankActive ? dankBackend.writableCalendars() : [];
+        return isAdvActive ? advBackend.writableCalendars() : [];
     }
 
     function defaultCalendar() {
-        return isDankActive ? dankBackend.defaultCalendar() : null;
+        return isAdvActive ? advBackend.defaultCalendar() : null;
     }
 
-    function launchDankCalendar() {
-        dankBackend.launch();
+    function launchAdvCalendar() {
+        advBackend.launch();
     }
 
     function createEvent(fields, callback) {
-        if (isDankActive) {
-            dankBackend.createEvent(fields, callback);
+        if (isAdvActive) {
+            advBackend.createEvent(fields, callback);
             return;
         }
         if (callback)
@@ -128,8 +128,8 @@ Singleton {
     }
 
     function updateEvent(id, fields, callback) {
-        if (isDankActive) {
-            dankBackend.updateEvent(id, fields, callback);
+        if (isAdvActive) {
+            advBackend.updateEvent(id, fields, callback);
             return;
         }
         if (callback)
@@ -139,8 +139,8 @@ Singleton {
     }
 
     function deleteEvent(id, callback) {
-        if (isDankActive) {
-            dankBackend.deleteEvent(id, callback);
+        if (isAdvActive) {
+            advBackend.deleteEvent(id, callback);
             return;
         }
         if (callback)
@@ -199,10 +199,10 @@ Singleton {
     }
 
     function addTaskForDate(date, text) {
-        const taskCal = isDankActive && dankBackend.connected ? dankBackend.defaultTaskCalendar() : null;
+        const taskCal = isAdvActive && advBackend.connected ? advBackend.defaultTaskCalendar() : null;
         if (taskCal) {
             const due = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
-            dankBackend.createTask({
+            advBackend.createTask({
                 "calendarId": taskCal.id,
                 "summary": text,
                 "allDay": true,
@@ -214,7 +214,7 @@ Singleton {
         let tasks = Object.assign({}, root.localTasks);
         if (!tasks[dateKey])
             tasks[dateKey] = [];
-        let taskId = (new Date().getTime()) + "-dms";
+        let taskId = (new Date().getTime()) + "-advs";
         tasks[dateKey].push({
             "id": taskId,
             "text": text,
@@ -228,9 +228,9 @@ Singleton {
     function toggleTask(taskId) {
         if (taskId.startsWith("vtodo_")) {
             const id = taskId.slice(6);
-            const task = dankBackend.taskById(id);
+            const task = advBackend.taskById(id);
             if (task)
-                dankBackend.completeTask(id, !task.completed);
+                advBackend.completeTask(id, !task.completed);
             return;
         }
         let cleanId = taskId.replace("task_", "");
@@ -257,7 +257,7 @@ Singleton {
 
     function removeTask(taskId) {
         if (taskId.startsWith("vtodo_")) {
-            dankBackend.deleteTask(taskId.slice(6));
+            advBackend.deleteTask(taskId.slice(6));
             return;
         }
         let cleanId = taskId.replace("task_", "");
@@ -307,7 +307,7 @@ Singleton {
 
     function editTask(taskId, newText) {
         if (taskId.startsWith("vtodo_")) {
-            dankBackend.updateTask(taskId.slice(6), {
+            advBackend.updateTask(taskId.slice(6), {
                 "summary": newText
             });
             return;
@@ -353,8 +353,8 @@ Singleton {
             merged[dateKey] = [].concat(backendEvents[dateKey]);
 
         _mergeInto(merged, root.taskEventsByDate);
-        if (isDankActive)
-            _mergeInto(merged, dankBackend.tasksByDate);
+        if (isAdvActive)
+            _mergeInto(merged, advBackend.tasksByDate);
 
         for (let dateKey in merged) {
             let list = merged[dateKey];

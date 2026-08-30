@@ -5,7 +5,7 @@ import (
 	"io"
 	"os"
 
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/utils"
+	"github.com/bavanchun/ariadnev-shell/core/internal/utils"
 	"github.com/godbus/dbus/v5"
 )
 
@@ -45,7 +45,7 @@ func stageIconFile(iconPath string) (string, func(), error) {
 	}
 	defer src.Close()
 
-	tmp, err := os.CreateTemp("", "dms-profile-icon-*")
+	tmp, err := os.CreateTemp("", "advs-profile-icon-*")
 	if err != nil {
 		return "", noop, fmt.Errorf("failed to stage icon file: %w", err)
 	}

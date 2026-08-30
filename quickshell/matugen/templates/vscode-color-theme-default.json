@@ -1,6 +1,6 @@
 {
   "$schema": "vscode://schemas/color-theme",
-  "name": "Dynamic Base16 DankShell",
+  "name": "Dynamic Base16 AdvShell",
   "semanticHighlighting": true,
   "colors": {
     "foreground": "{{colors.on_surface.default.hex}}",
@@ -121,22 +121,22 @@
     "scrollbarSlider.activeBackground": "{{colors.on_surface_variant.default.hex}}AA",
     "terminal.background": "{{colors.background.default.hex}}",
     "terminal.foreground": "{{colors.on_surface.default.hex}}",
-    "terminal.ansiBlack": "{{dank16.color0.default.hex}}",
-    "terminal.ansiRed": "{{dank16.color1.default.hex}}",
-    "terminal.ansiGreen": "{{dank16.color2.default.hex}}",
-    "terminal.ansiYellow": "{{dank16.color3.default.hex}}",
-    "terminal.ansiBlue": "{{dank16.color4.default.hex}}",
-    "terminal.ansiMagenta": "{{dank16.color5.default.hex}}",
-    "terminal.ansiCyan": "{{dank16.color6.default.hex}}",
-    "terminal.ansiWhite": "{{dank16.color7.default.hex}}",
-    "terminal.ansiBrightBlack": "{{dank16.color8.default.hex}}",
-    "terminal.ansiBrightRed": "{{dank16.color9.default.hex}}",
-    "terminal.ansiBrightGreen": "{{dank16.color10.default.hex}}",
-    "terminal.ansiBrightYellow": "{{dank16.color11.default.hex}}",
-    "terminal.ansiBrightBlue": "{{dank16.color12.default.hex}}",
-    "terminal.ansiBrightMagenta": "{{dank16.color13.default.hex}}",
-    "terminal.ansiBrightCyan": "{{dank16.color14.default.hex}}",
-    "terminal.ansiBrightWhite": "{{dank16.color15.default.hex}}",
+    "terminal.ansiBlack": "{{adv16.color0.default.hex}}",
+    "terminal.ansiRed": "{{adv16.color1.default.hex}}",
+    "terminal.ansiGreen": "{{adv16.color2.default.hex}}",
+    "terminal.ansiYellow": "{{adv16.color3.default.hex}}",
+    "terminal.ansiBlue": "{{adv16.color4.default.hex}}",
+    "terminal.ansiMagenta": "{{adv16.color5.default.hex}}",
+    "terminal.ansiCyan": "{{adv16.color6.default.hex}}",
+    "terminal.ansiWhite": "{{adv16.color7.default.hex}}",
+    "terminal.ansiBrightBlack": "{{adv16.color8.default.hex}}",
+    "terminal.ansiBrightRed": "{{adv16.color9.default.hex}}",
+    "terminal.ansiBrightGreen": "{{adv16.color10.default.hex}}",
+    "terminal.ansiBrightYellow": "{{adv16.color11.default.hex}}",
+    "terminal.ansiBrightBlue": "{{adv16.color12.default.hex}}",
+    "terminal.ansiBrightMagenta": "{{adv16.color13.default.hex}}",
+    "terminal.ansiBrightCyan": "{{adv16.color14.default.hex}}",
+    "terminal.ansiBrightWhite": "{{adv16.color15.default.hex}}",
     "terminal.selectionBackground": "{{colors.primary_container.default.hex}}99"
   },
   "tokenColors": [
@@ -149,19 +149,19 @@
     {
       "scope": ["keyword"],
       "settings": {
-        "foreground": "{{dank16.color6.default.hex}}"
+        "foreground": "{{adv16.color6.default.hex}}"
       }
     },
     {
       "scope": ["string"],
       "settings": {
-        "foreground": "{{dank16.color2.default.hex}}"
+        "foreground": "{{adv16.color2.default.hex}}"
       }
     },
     {
       "scope": ["constant", "constant.language", "constant.numeric"],
       "settings": {
-        "foreground": "{{dank16.color12.default.hex}}"
+        "foreground": "{{adv16.color12.default.hex}}"
       }
     },
     {
@@ -173,7 +173,7 @@
     {
       "scope": ["entity.name.function"],
       "settings": {
-        "foreground": "{{dank16.color4.default.hex}}"
+        "foreground": "{{adv16.color4.default.hex}}"
       }
     },
     {
@@ -204,13 +204,13 @@
     {
       "scope": ["source.yaml string.unquoted", "source.yaml string.quoted"],
       "settings": {
-        "foreground": "{{dank16.color3.default.hex}}"
+        "foreground": "{{adv16.color3.default.hex}}"
       }
     },
     {
       "scope": ["constant.language.boolean.yaml", "constant.language.null.yaml"],
       "settings": {
-        "foreground": "{{dank16.color12.default.hex}}"
+        "foreground": "{{adv16.color12.default.hex}}"
       }
     },
     {
@@ -228,13 +228,13 @@
     {
       "scope": ["string.quoted.single.basic.line.toml", "string.quoted.double.basic.line.toml"],
       "settings": {
-        "foreground": "{{dank16.color2.default.hex}}"
+        "foreground": "{{adv16.color2.default.hex}}"
       }
     },
     {
       "scope": ["constant.language.boolean.toml", "constant.numeric.toml"],
       "settings": {
-        "foreground": "{{dank16.color12.default.hex}}"
+        "foreground": "{{adv16.color12.default.hex}}"
       }
     },
     {
@@ -252,13 +252,13 @@
       "foreground": "{{colors.on_surface.default.hex}}"
     },
     "property": {
-      "foreground": "{{dank16.color4.default.hex}}"
+      "foreground": "{{adv16.color4.default.hex}}"
     },
     "function": {
-      "foreground": "{{dank16.color4.default.hex}}"
+      "foreground": "{{adv16.color4.default.hex}}"
     },
     "method": {
-      "foreground": "{{dank16.color4.default.hex}}"
+      "foreground": "{{adv16.color4.default.hex}}"
     },
     "type": {
       "foreground": "{{colors.secondary.default.hex}}"
@@ -267,13 +267,13 @@
       "foreground": "{{colors.secondary.default.hex}}"
     },
     "string": {
-      "foreground": "{{dank16.color2.default.hex}}"
+      "foreground": "{{adv16.color2.default.hex}}"
     },
     "number": {
-      "foreground": "{{dank16.color12.default.hex}}"
+      "foreground": "{{adv16.color12.default.hex}}"
     },
     "keyword": {
-      "foreground": "{{dank16.color6.default.hex}}"
+      "foreground": "{{adv16.color6.default.hex}}"
     },
     "comment": {
       "foreground": "{{colors.outline.default.hex}}"

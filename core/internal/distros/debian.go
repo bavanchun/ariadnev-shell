@@ -7,8 +7,8 @@ import (
 	"os/exec"
 	"strings"
 
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/deps"
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/privesc"
+	"github.com/bavanchun/ariadnev-shell/core/internal/deps"
+	"github.com/bavanchun/ariadnev-shell/core/internal/privesc"
 )
 
 func init() {
@@ -55,14 +55,14 @@ func (d *DebianDistribution) DetectDependencies(ctx context.Context, wm deps.Win
 func (d *DebianDistribution) DetectDependenciesWithTerminal(ctx context.Context, wm deps.WindowManager, terminal deps.Terminal) ([]deps.Dependency, error) {
 	var dependencies []deps.Dependency
 
-	dependencies = append(dependencies, d.detectDMS())
+	dependencies = append(dependencies, d.detectADVS())
 
 	dependencies = append(dependencies, d.detectSpecificTerminal(terminal))
 
 	dependencies = append(dependencies, d.detectGit())
 	dependencies = append(dependencies, d.detectWindowManager(wm))
 	dependencies = append(dependencies, d.detectQuickshell())
-	dependencies = append(dependencies, d.detectDMSGreeter())
+	dependencies = append(dependencies, d.detectAriadnevGreeter())
 	dependencies = append(dependencies, d.detectXDGPortal())
 	dependencies = append(dependencies, d.detectAccountsService())
 
@@ -71,8 +71,8 @@ func (d *DebianDistribution) DetectDependenciesWithTerminal(ctx context.Context,
 	}
 
 	dependencies = append(dependencies, d.detectMatugen())
-	dependencies = append(dependencies, d.detectDanksearch())
-	dependencies = append(dependencies, d.detectDankCalendar())
+	dependencies = append(dependencies, d.detectAdvsearch())
+	dependencies = append(dependencies, d.detectAdvCalendar())
 
 	return dependencies, nil
 }
@@ -89,8 +89,8 @@ func (d *DebianDistribution) detectAccountsService() deps.Dependency {
 	return d.detectPackage("accountsservice", "D-Bus interface for user account query and manipulation", d.packageInstalled("accountsservice"))
 }
 
-func (d *DebianDistribution) detectDMSGreeter() deps.Dependency {
-	return d.detectOptionalPackage("dms-greeter", "DankMaterialShell greetd greeter", d.packageInstalled("dms-greeter"))
+func (d *DebianDistribution) detectAriadnevGreeter() deps.Dependency {
+	return d.detectOptionalPackage("advs-greeter", "AriadnevShell greetd greeter", d.packageInstalled("advs-greeter"))
 }
 
 func (d *DebianDistribution) packageInstalled(pkg string) bool {
@@ -130,14 +130,14 @@ func (d *DebianDistribution) GetPackageMappingWithVariants(wm deps.WindowManager
 		"xdg-desktop-portal-gtk": {Name: "xdg-desktop-portal-gtk", Repository: RepoTypeSystem},
 		"accountsservice":        {Name: "accountsservice", Repository: RepoTypeSystem},
 
-		// DMS packages from OBS with variant support
-		"dms (DankMaterialShell)": d.getDmsMapping(variants["dms (DankMaterialShell)"]),
+		// ADVS packages from OBS with variant support
+		"advs (AriadnevShell)": d.getAdvsMapping(variants["advs (AriadnevShell)"]),
 		"quickshell":              d.getQuickshellMapping(variants["quickshell"]),
-		"dms-greeter":             {Name: "dms-greeter", Repository: RepoTypeOBS, RepoURL: "home:AvengeMedia:danklinux"},
-		"matugen":                 {Name: "matugen", Repository: RepoTypeOBS, RepoURL: "home:AvengeMedia:danklinux"},
-		"ghostty":                 {Name: "ghostty", Repository: RepoTypeOBS, RepoURL: "home:AvengeMedia:danklinux"},
-		"danksearch":              {Name: "danksearch", Repository: RepoTypeOBS, RepoURL: "home:AvengeMedia:danklinux"},
-		"dankcalendar":            {Name: "dankcalendar-git", Repository: RepoTypeOBS, RepoURL: "home:AvengeMedia:danklinux"},
+		"advs-greeter":             {Name: "advs-greeter", Repository: RepoTypeOBS, RepoURL: "home:bavanchun:ariadnev"},
+		"matugen":                 {Name: "matugen", Repository: RepoTypeOBS, RepoURL: "home:bavanchun:ariadnev"},
+		"ghostty":                 {Name: "ghostty", Repository: RepoTypeOBS, RepoURL: "home:bavanchun:ariadnev"},
+		"advsearch":              {Name: "advsearch", Repository: RepoTypeOBS, RepoURL: "home:bavanchun:ariadnev"},
+		"advcalendar":            {Name: "advcalendar-git", Repository: RepoTypeOBS, RepoURL: "home:bavanchun:ariadnev"},
 	}
 
 	if wm == deps.WindowManagerNiri {
@@ -149,16 +149,16 @@ func (d *DebianDistribution) GetPackageMappingWithVariants(wm deps.WindowManager
 	return packages
 }
 
-func (d *DebianDistribution) getDmsMapping(variant deps.PackageVariant) PackageMapping {
+func (d *DebianDistribution) getAdvsMapping(variant deps.PackageVariant) PackageMapping {
 	if variant == deps.VariantGit {
-		return PackageMapping{Name: "dms-git", Repository: RepoTypeOBS, RepoURL: "home:AvengeMedia:dms-git"}
+		return PackageMapping{Name: "ariadnev-shell-git", Repository: RepoTypeOBS, RepoURL: "home:bavanchun:ariadnev-shell-git"}
 	}
-	return PackageMapping{Name: "dms", Repository: RepoTypeOBS, RepoURL: "home:AvengeMedia:dms"}
+	return PackageMapping{Name: "advs", Repository: RepoTypeOBS, RepoURL: "home:bavanchun:advs"}
 }
 
 func (d *DebianDistribution) getQuickshellMapping(variant deps.PackageVariant) PackageMapping {
 	if forceQuickshellGit || variant == deps.VariantGit {
-		return PackageMapping{Name: "quickshell-git", Repository: RepoTypeOBS, RepoURL: "home:AvengeMedia:danklinux"}
+		return PackageMapping{Name: "quickshell-git", Repository: RepoTypeOBS, RepoURL: "home:bavanchun:ariadnev"}
 	}
 	// Debian 13 ships stable quickshell in trixie-backports only.
 	if d.debianNeedsQuickshellBackports() {
@@ -218,16 +218,16 @@ func (d *DebianDistribution) ensureQuickshellBackports(ctx context.Context, syst
 
 func (d *DebianDistribution) getNiriMapping(variant deps.PackageVariant) PackageMapping {
 	if variant == deps.VariantGit {
-		return PackageMapping{Name: "niri-git", Repository: RepoTypeOBS, RepoURL: "home:AvengeMedia:danklinux"}
+		return PackageMapping{Name: "niri-git", Repository: RepoTypeOBS, RepoURL: "home:bavanchun:ariadnev"}
 	}
-	return PackageMapping{Name: "niri", Repository: RepoTypeOBS, RepoURL: "home:AvengeMedia:danklinux"}
+	return PackageMapping{Name: "niri", Repository: RepoTypeOBS, RepoURL: "home:bavanchun:ariadnev"}
 }
 
 func (d *DebianDistribution) getXwaylandSatelliteMapping(variant deps.PackageVariant) PackageMapping {
 	if variant == deps.VariantGit {
-		return PackageMapping{Name: "xwayland-satellite-git", Repository: RepoTypeOBS, RepoURL: "home:AvengeMedia:danklinux"}
+		return PackageMapping{Name: "xwayland-satellite-git", Repository: RepoTypeOBS, RepoURL: "home:bavanchun:ariadnev"}
 	}
-	return PackageMapping{Name: "xwayland-satellite", Repository: RepoTypeOBS, RepoURL: "home:AvengeMedia:danklinux"}
+	return PackageMapping{Name: "xwayland-satellite", Repository: RepoTypeOBS, RepoURL: "home:bavanchun:ariadnev"}
 }
 
 func (d *DebianDistribution) InstallPrerequisites(ctx context.Context, sudoPassword string, progressChan chan<- InstallProgressMsg) error {
@@ -394,8 +394,8 @@ func (d *DebianDistribution) InstallPackages(ctx context.Context, dependencies [
 		d.log(fmt.Sprintf("Warning: failed to write window manager config: %v", err))
 	}
 
-	if err := d.EnableDMSService(ctx, wm); err != nil {
-		d.log(fmt.Sprintf("Warning: failed to enable dms service: %v", err))
+	if err := d.EnableADVSService(ctx, wm); err != nil {
+		d.log(fmt.Sprintf("Warning: failed to enable advs service: %v", err))
 	}
 
 	progressChan <- InstallProgressMsg{
@@ -480,7 +480,7 @@ func (d *DebianDistribution) enableOBSRepos(ctx context.Context, obsPkgs []Packa
 		if pkg.RepoURL != "" && !enabledRepos[pkg.RepoURL] {
 			d.log(fmt.Sprintf("Enabling OBS repository: %s", pkg.RepoURL))
 
-			// RepoURL format: "home:AvengeMedia:danklinux"
+			// RepoURL format: "home:bavanchun:ariadnev"
 			repoPath := strings.ReplaceAll(pkg.RepoURL, ":", ":/")
 			repoName := strings.ReplaceAll(pkg.RepoURL, ":", "-")
 			baseURL := fmt.Sprintf("https://download.opensuse.org/repositories/%s/%s", repoPath, obsRepo)

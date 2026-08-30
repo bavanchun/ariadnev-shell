@@ -3,7 +3,7 @@ package location
 import (
 	"sync"
 
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/geolocation"
+	"github.com/bavanchun/ariadnev-shell/core/internal/geolocation"
 	"github.com/AvengeMedia/dankgo/syncmap"
 )
 

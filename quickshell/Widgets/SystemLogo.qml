@@ -1,3 +1,3 @@
-import qs.DankCommon.Widgets as DankCommon
+import qs.AdvCommon.Widgets as AdvCommon
 
-DankCommon.SystemLogo {}
+AdvCommon.SystemLogo {}

@@ -17,7 +17,7 @@ Variants {
         screen: modelData
 
         WlrLayershell.layer: WlrLayer.Background
-        WlrLayershell.namespace: "dms:blurwallpaper"
+        WlrLayershell.namespace: "advs:blurwallpaper"
         WlrLayershell.exclusionMode: ExclusionMode.Ignore
 
         anchors.top: true
@@ -240,7 +240,7 @@ Variants {
                 }
             }
 
-            // Theme changes repaint DankBackdrop but nothing else wakes the render loop
+            // Theme changes repaint AdvBackdrop but nothing else wakes the render loop
             Connections {
                 target: Theme
                 enabled: root.isColorSource || root.loadFailed
@@ -280,7 +280,7 @@ Variants {
                 active: !root.source || root.isColorSource || root.loadFailed
                 asynchronous: true
 
-                sourceComponent: DankBackdrop {
+                sourceComponent: AdvBackdrop {
                     screenName: modelData.name
                 }
             }

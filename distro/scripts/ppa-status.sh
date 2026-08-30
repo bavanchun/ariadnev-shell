@@ -1,27 +1,27 @@
 #!/bin/bash
-# Unified PPA status checker for DMS packages
+# Unified PPA status checker for ADVS packages
 # Checks build status for packages across multiple PPAs via Launchpad API
 # Usage: ./distro/scripts/ppa-status.sh [package-name] [ppa-name]
 #
 # Examples:
 #   ./distro/scripts/ppa-status.sh              # Check all packages in all PPAs
-#   ./distro/scripts/ppa-status.sh dms          # Check dms package
-#   ./distro/scripts/ppa-status.sh all dms-git  # Check all packages in dms-git PPA
+#   ./distro/scripts/ppa-status.sh advs          # Check advs package
+#   ./distro/scripts/ppa-status.sh all advs-git  # Check all packages in advs-git PPA
 
-PPA_OWNER="avengemedia"
+PPA_OWNER="bavanchun"
 LAUNCHPAD_API="https://api.launchpad.net/1.0"
 # Supported Ubuntu series for PPA builds (26.04 LTS resolute + 26.10 stonking)
 DISTRO_SERIES_LIST=(resolute stonking)
 
 # Define packages (sync with ppa-upload.sh)
-ALL_PACKAGES=(dms dms-git)
+ALL_PACKAGES=(advs advs-git)
 
 # Function to get PPA name for a package
 get_ppa_name() {
     local pkg="$1"
     case "$pkg" in
-        dms) echo "dms" ;;
-        dms-git) echo "dms-git" ;;
+        advs) echo "advs" ;;
+        advs-git) echo "advs-git" ;;
         *) echo "" ;;
     esac
 }
@@ -71,7 +71,7 @@ elif [[ -n "$PPA_INPUT" ]]; then
 else
     # Check all packages in all PPAs
     PACKAGES=("${ALL_PACKAGES[@]}")
-    PPAS=("dms" "dms-git")
+    PPAS=("advs" "advs-git")
 fi
 
 # Function to get build status color and symbol

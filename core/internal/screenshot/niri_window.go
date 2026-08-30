@@ -28,7 +28,7 @@ func CaptureNiriWindowImage(showPointer bool) (image.Image, error) {
 	if dir == "" {
 		dir = os.TempDir()
 	}
-	path := filepath.Join(dir, fmt.Sprintf("dms-window-%d.png", os.Getpid()))
+	path := filepath.Join(dir, fmt.Sprintf("advs-window-%d.png", os.Getpid()))
 
 	events, err := subscribeNiriEvents(socket)
 	if err != nil {

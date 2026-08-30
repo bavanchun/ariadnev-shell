@@ -27,7 +27,7 @@ Column {
             anchors.rightMargin: Theme.spacingS
             spacing: Theme.spacingS
 
-            DankIcon {
+            AdvIcon {
                 name: root.expanded ? "expand_more" : "chevron_right"
                 size: Theme.iconSize
                 color: Theme.primary
@@ -75,7 +75,7 @@ Column {
             return DisplayConfigState.getHyprlandSetting(root.outputData, root.outputName, "disabled", false);
         }
 
-        DankToggle {
+        AdvToggle {
             width: parent.width
             text: I18n.tr("Disable Output")
             enabled: checked || DisplayConfigState.canDisableOutput()
@@ -84,7 +84,7 @@ Column {
             onToggled: checked => DisplayConfigState.setHyprlandSetting(root.outputData, root.outputName, "disabled", checked)
         }
 
-        DankDropdown {
+        AdvDropdown {
             width: parent.width
             text: I18n.tr("Mirror Display")
             enabled: !settingsColumn.isDisabled
@@ -113,7 +113,7 @@ Column {
             }
         }
 
-        DankToggle {
+        AdvToggle {
             width: parent.width
             text: I18n.tr("10-bit Color")
             description: I18n.tr("Enable 10-bit color depth for wider color gamut and HDR support")
@@ -141,7 +141,7 @@ Column {
                 color: Theme.withAlpha(Theme.outline, 0.15)
             }
 
-            DankDropdown {
+            AdvDropdown {
                 width: parent.width
                 text: I18n.tr("Color Gamut")
                 addHorizontalPadding: true
@@ -199,7 +199,7 @@ Column {
 
                     Row {
                         spacing: Theme.spacingS
-                        DankIcon {
+                        AdvIcon {
                             name: "warning"
                             size: Theme.iconSize - 4
                             color: Theme.warning
@@ -257,7 +257,7 @@ Column {
                             color: Theme.surfaceVariantText
                         }
 
-                        DankTextField {
+                        AdvTextField {
                             width: parent.width
                             height: 40
                             placeholderText: "1.0 - 2.0"
@@ -291,7 +291,7 @@ Column {
                             color: Theme.surfaceVariantText
                         }
 
-                        DankTextField {
+                        AdvTextField {
                             width: parent.width
                             height: 40
                             placeholderText: "0.5 - 1.5"

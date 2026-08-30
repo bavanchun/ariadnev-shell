@@ -848,8 +848,8 @@ Singleton {
 
         const clampedValue = Math.max(minValue, Math.min(maxValue, percentage));
 
-        if (!DMSService.isConnected) {
-            log.warn("Not connected to DMS");
+        if (!ADVSService.isConnected) {
+            log.warn("Not connected to ADVS");
             return;
         }
 
@@ -886,7 +886,7 @@ Singleton {
             params.exponent = SessionData.getBrightnessExponent(actualDevice);
         }
 
-        DMSService.sendRequest("brightness.setBrightness", params, response => {
+        ADVSService.sendRequest("brightness.setBrightness", params, response => {
             if (response.error) {
                 log.error("Failed to set brightness:", response.error);
                 ToastService.showError(I18n.tr("Failed to set brightness"), response.error, "", "brightness");
@@ -1058,14 +1058,14 @@ Singleton {
     // Night Mode Functions - Simplified
     function enableNightMode() {
         if (!gammaControlAvailable) {
-            ToastService.showWarning(I18n.tr("Night mode failed: DMS gamma control not available"));
+            ToastService.showWarning(I18n.tr("Night mode failed: ADVS gamma control not available"));
             return;
         }
 
         nightModeEnabled = true;
         SessionData.setNightModeEnabled(true);
 
-        DMSService.sendRequest("wayland.gamma.setEnabled", {
+        ADVSService.sendRequest("wayland.gamma.setEnabled", {
             "enabled": true
         }, response => {
             if (response.error) {
@@ -1093,7 +1093,7 @@ Singleton {
             return;
         }
 
-        DMSService.sendRequest("wayland.gamma.setEnabled", {
+        ADVSService.sendRequest("wayland.gamma.setEnabled", {
             "enabled": false
         }, response => {
             if (response.error) {
@@ -1116,7 +1116,7 @@ Singleton {
     function applyNightModeDirectly() {
         const temperature = SessionData.nightModeTemperature || 4000;
 
-        DMSService.sendRequest("wayland.gamma.setManualTimes", {
+        ADVSService.sendRequest("wayland.gamma.setManualTimes", {
             "sunrise": null,
             "sunset": null
         }, response => {
@@ -1125,7 +1125,7 @@ Singleton {
                 return;
             }
 
-            DMSService.sendRequest("wayland.gamma.setUseIPLocation", {
+            ADVSService.sendRequest("wayland.gamma.setUseIPLocation", {
                 "use": false
             }, response => {
                 if (response.error) {
@@ -1133,7 +1133,7 @@ Singleton {
                     return;
                 }
 
-                DMSService.sendRequest("wayland.gamma.setTemperature", {
+                ADVSService.sendRequest("wayland.gamma.setTemperature", {
                     "low": temperature,
                     "high": temperature
                 }, response => {
@@ -1176,7 +1176,7 @@ Singleton {
         const sunrise = `${String(sunriseHour).padStart(2, '0')}:${String(sunriseMinute).padStart(2, '0')}`;
         const sunset = `${String(sunsetHour).padStart(2, '0')}:${String(sunsetMinute).padStart(2, '0')}`;
 
-        DMSService.sendRequest("wayland.gamma.setUseIPLocation", {
+        ADVSService.sendRequest("wayland.gamma.setUseIPLocation", {
             "use": false
         }, response => {
             if (response.error) {
@@ -1184,7 +1184,7 @@ Singleton {
                 return;
             }
 
-            DMSService.sendRequest("wayland.gamma.setTemperature", {
+            ADVSService.sendRequest("wayland.gamma.setTemperature", {
                 "low": temperature,
                 "high": highTemp
             }, response => {
@@ -1194,7 +1194,7 @@ Singleton {
                     return;
                 }
 
-                DMSService.sendRequest("wayland.gamma.setManualTimes", {
+                ADVSService.sendRequest("wayland.gamma.setManualTimes", {
                     "sunrise": sunrise,
                     "sunset": sunset,
                     "durationMinutes": SessionData.nightModeTransitionMinutes
@@ -1214,7 +1214,7 @@ Singleton {
         const temperature = SessionData.nightModeTemperature || 4000;
         const highTemp = SessionData.nightModeHighTemperature || 6500;
 
-        DMSService.sendRequest("wayland.gamma.setManualTimes", {
+        ADVSService.sendRequest("wayland.gamma.setManualTimes", {
             "sunrise": null,
             "sunset": null
         }, response => {
@@ -1223,7 +1223,7 @@ Singleton {
                 return;
             }
 
-            DMSService.sendRequest("wayland.gamma.setTemperature", {
+            ADVSService.sendRequest("wayland.gamma.setTemperature", {
                 "low": temperature,
                 "high": highTemp
             }, response => {
@@ -1234,7 +1234,7 @@ Singleton {
                 }
 
                 if (SessionData.nightModeUseIPLocation) {
-                    DMSService.sendRequest("wayland.gamma.setUseIPLocation", {
+                    ADVSService.sendRequest("wayland.gamma.setUseIPLocation", {
                         "use": true
                     }, response => {
                         if (response.error) {
@@ -1245,7 +1245,7 @@ Singleton {
                         }
                     });
                 } else if (SessionData.latitude !== 0.0 && SessionData.longitude !== 0.0) {
-                    DMSService.sendRequest("wayland.gamma.setUseIPLocation", {
+                    ADVSService.sendRequest("wayland.gamma.setUseIPLocation", {
                         "use": false
                     }, response => {
                         if (response.error) {
@@ -1253,7 +1253,7 @@ Singleton {
                             return;
                         }
 
-                        DMSService.sendRequest("wayland.gamma.setLocation", {
+                        ADVSService.sendRequest("wayland.gamma.setLocation", {
                             "latitude": SessionData.latitude,
                             "longitude": SessionData.longitude
                         }, response => {
@@ -1296,23 +1296,23 @@ Singleton {
     }
 
     function checkGammaControlAvailability() {
-        if (!DMSService.isConnected) {
+        if (!ADVSService.isConnected) {
             return;
         }
 
-        if (DMSService.apiVersion < 6) {
+        if (ADVSService.apiVersion < 6) {
             gammaControlAvailable = false;
             automationAvailable = false;
             return;
         }
 
-        if (!DMSService.capabilities.includes("gamma")) {
+        if (!ADVSService.capabilities.includes("gamma")) {
             gammaControlAvailable = false;
             automationAvailable = false;
             return;
         }
 
-        DMSService.sendRequest("wayland.gamma.getState", null, response => {
+        ADVSService.sendRequest("wayland.gamma.getState", null, response => {
             if (response.error) {
                 gammaControlAvailable = false;
                 automationAvailable = false;
@@ -1322,7 +1322,7 @@ Singleton {
                 automationAvailable = true;
 
                 if (nightModeEnabled) {
-                    DMSService.sendRequest("wayland.gamma.setEnabled", {
+                    ADVSService.sendRequest("wayland.gamma.setEnabled", {
                         "enabled": true
                     }, enableResponse => {
                         if (enableResponse.error) {
@@ -1379,11 +1379,11 @@ Singleton {
     }
 
     function rescanDevices() {
-        if (!DMSService.isConnected) {
+        if (!ADVSService.isConnected) {
             return;
         }
 
-        DMSService.sendRequest("brightness.rescan", null, response => {
+        ADVSService.sendRequest("brightness.rescan", null, response => {
             if (response.error) {
                 log.error("Failed to rescan brightness devices:", response.error);
             }
@@ -1391,11 +1391,11 @@ Singleton {
     }
 
     function requestBrightnessState() {
-        if (!DMSService.isConnected) {
+        if (!ADVSService.isConnected) {
             return;
         }
 
-        DMSService.sendRequest("brightness.getState", null, response => {
+        ADVSService.sendRequest("brightness.getState", null, response => {
             if (response.error) {
                 log.error("Failed to request brightness state:", response.error);
                 return;
@@ -1429,7 +1429,7 @@ Singleton {
     Component.onCompleted: {
         nightModeEnabled = SessionData.nightModeEnabled;
         deviceBrightnessUserSet = Object.assign({}, SessionData.brightnessUserSetValues);
-        if (DMSService.isConnected) {
+        if (ADVSService.isConnected) {
             checkGammaControlAvailability();
             requestBrightnessState();
         }
@@ -1466,10 +1466,10 @@ Singleton {
     }
 
     Connections {
-        target: DMSService
+        target: ADVSService
 
         function onConnectionStateChanged() {
-            if (DMSService.isConnected) {
+            if (ADVSService.isConnected) {
                 checkGammaControlAvailability();
                 requestBrightnessState();
             } else {

@@ -108,7 +108,7 @@ Item {
         }
     }
 
-    DankButtonGroup {
+    AdvButtonGroup {
         id: buttonGroup
         x: root.compact ? (root.width - width) / 2 : root.width - width - Theme.spacingM
         y: root.compact ? textColumn.y + textColumn.implicitHeight + Theme.spacingS : (root.height - height) / 2

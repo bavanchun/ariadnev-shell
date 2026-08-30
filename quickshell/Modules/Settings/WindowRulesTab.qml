@@ -32,7 +32,7 @@ Item {
     property var externalRules: []
     property var activeWindows: getActiveWindows()
     property string expandedExternalId: ""
-    readonly property string dmsRulesFileName: CompositorService.isNiri ? "dms/windowrules.kdl" : CompositorService.isMango ? "dms/windowrules.conf" : "dms/windowrules.lua"
+    readonly property string advsRulesFileName: CompositorService.isNiri ? "advs/windowrules.kdl" : CompositorService.isMango ? "advs/windowrules.conf" : "advs/windowrules.lua"
 
     Component.onDestruction: SettingsSearchService.unregisterCard("windowRules")
 
@@ -167,23 +167,23 @@ Item {
         case "niri":
             return {
                 "configFile": configDir + "/niri/config.kdl",
-                "rulesFile": configDir + "/niri/dms/windowrules.kdl",
-                "grepPattern": 'include.*"dms/windowrules.kdl"',
-                "includeLine": 'include "dms/windowrules.kdl"'
+                "rulesFile": configDir + "/niri/advs/windowrules.kdl",
+                "grepPattern": 'include.*"advs/windowrules.kdl"',
+                "includeLine": 'include "advs/windowrules.kdl"'
             };
         case "hyprland":
             return {
                 "configFile": configDir + "/hypr/hyprland.lua",
-                "rulesFile": configDir + "/hypr/dms/windowrules.lua",
-                "grepPattern": "dms.windowrules",
-                "includeLine": "require(\"dms.windowrules\")"
+                "rulesFile": configDir + "/hypr/advs/windowrules.lua",
+                "grepPattern": "advs.windowrules",
+                "includeLine": "require(\"advs.windowrules\")"
             };
         case "mango":
             return {
                 "configFile": configDir + "/mango/config.conf",
-                "rulesFile": configDir + "/mango/dms/windowrules.conf",
-                "grepPattern": "dms/windowrules.conf",
-                "includeLine": "source=./dms/windowrules.conf"
+                "rulesFile": configDir + "/mango/advs/windowrules.conf",
+                "grepPattern": "advs/windowrules.conf",
+                "includeLine": "source=./advs/windowrules.conf"
             };
         default:
             return null;
@@ -200,7 +200,7 @@ Item {
         }
 
         checkingInclude = true;
-        Proc.runCommand("load-windowrules", [Proc.dmsBin, "config", "windowrules", "list", compositor], (output, exitCode) => {
+        Proc.runCommand("load-windowrules", [Proc.advsBin, "config", "windowrules", "list", compositor], (output, exitCode) => {
             checkingInclude = false;
             if (exitCode !== 0) {
                 windowRules = [];
@@ -210,14 +210,14 @@ Item {
             try {
                 const result = JSON.parse(output.trim());
                 const allRules = result.rules || [];
-                windowRules = allRules.filter(r => (r.source || "").includes("dms/windowrules"));
-                externalRules = allRules.filter(r => !(r.source || "").includes("dms/windowrules"));
-                if (result.dmsStatus) {
+                windowRules = allRules.filter(r => (r.source || "").includes("advs/windowrules"));
+                externalRules = allRules.filter(r => !(r.source || "").includes("advs/windowrules"));
+                if (result.advsStatus) {
                     windowRulesIncludeStatus = {
-                        "exists": result.dmsStatus.exists,
-                        "included": result.dmsStatus.included,
-                        "configFormat": result.dmsStatus.configFormat ?? "",
-                        "readOnly": result.dmsStatus.readOnly === true
+                        "exists": result.advsStatus.exists,
+                        "included": result.advsStatus.included,
+                        "configFormat": result.advsStatus.configFormat ?? "",
+                        "readOnly": result.advsStatus.readOnly === true
                     };
                 }
             } catch (e) {
@@ -236,7 +236,7 @@ Item {
         if (compositor !== "niri" && compositor !== "hyprland" && compositor !== "mango")
             return;
 
-        Proc.runCommand("remove-windowrule", [Proc.dmsBin, "config", "windowrules", "remove", compositor, ruleId], (output, exitCode) => {
+        Proc.runCommand("remove-windowrule", [Proc.advsBin, "config", "windowrules", "remove", compositor, ruleId], (output, exitCode) => {
             if (exitCode === 0) {
                 if (CompositorService.isMango)
                     MangoService.reloadConfig();
@@ -262,7 +262,7 @@ Item {
         const [moved] = ids.splice(fromIndex, 1);
         ids.splice(toIndex, 0, moved);
 
-        Proc.runCommand("reorder-windowrules", [Proc.dmsBin, "config", "windowrules", "reorder", compositor, JSON.stringify(ids)], (output, exitCode) => {
+        Proc.runCommand("reorder-windowrules", [Proc.advsBin, "config", "windowrules", "reorder", compositor, JSON.stringify(ids)], (output, exitCode) => {
             if (exitCode === 0) {
                 if (CompositorService.isMango)
                     MangoService.reloadConfig();
@@ -328,7 +328,7 @@ Item {
         }
     }
 
-    function copyRuleToDms(rule) {
+    function copyRuleToAdvs(rule) {
         if (readOnly) {
             showHyprlandReadOnlyWarning();
             return;
@@ -343,7 +343,7 @@ Item {
     }
 
     function showHyprlandReadOnlyWarning() {
-        ToastService.showWarning(I18n.tr("Hyprland conf mode"), I18n.tr("This install is still using hyprland.conf. Run dms setup to migrate before changing these settings."), "dms setup", "hyprland-migration");
+        ToastService.showWarning(I18n.tr("Hyprland conf mode"), I18n.tr("This install is still using hyprland.conf. Run advs setup to migrate before changing these settings."), "advs setup", "hyprland-migration");
     }
 
     Component.onCompleted: {
@@ -355,7 +355,7 @@ Item {
         });
     }
 
-    DankFlickable {
+    AdvFlickable {
         id: flickable
         anchors.fill: parent
         clip: true
@@ -388,7 +388,7 @@ Item {
                         width: parent.width
                         spacing: Theme.spacingM
 
-                        DankIcon {
+                        AdvIcon {
                             name: "select_window"
                             size: Theme.iconSize
                             color: Theme.primary
@@ -408,7 +408,7 @@ Item {
                             }
 
                             StyledText {
-                                text: I18n.tr("Define rules for window behavior. Saves to %1").arg(root.dmsRulesFileName)
+                                text: I18n.tr("Define rules for window behavior. Saves to %1").arg(root.advsRulesFileName)
                                 font.pixelSize: Theme.fontSizeSmall
                                 color: Theme.surfaceVariantText
                                 wrapMode: Text.WordWrap
@@ -416,7 +416,7 @@ Item {
                             }
                         }
 
-                        DankActionButton {
+                        AdvActionButton {
                             Layout.preferredWidth: 40
                             Layout.preferredHeight: 40
                             circular: false
@@ -443,7 +443,7 @@ Item {
                             Layout.alignment: Qt.AlignVCenter
                         }
 
-                        DankDropdown {
+                        AdvDropdown {
                             id: windowSelector
                             Layout.fillWidth: true
                             dropdownWidth: 400
@@ -489,7 +489,7 @@ Item {
                     anchors.margins: Theme.spacingL
                     spacing: Theme.spacingM
 
-                    DankIcon {
+                    AdvIcon {
                         name: "warning"
                         size: Theme.iconSize
                         color: Theme.primary
@@ -511,7 +511,7 @@ Item {
                         }
 
                         StyledText {
-                            text: warningBox.showLegacy ? I18n.tr("This install is still using hyprland.conf. Run dms setup to migrate before changing these settings.") : I18n.tr("Click 'Setup' to create %1 and add include to your compositor config.").arg("dms/windowrules")
+                            text: warningBox.showLegacy ? I18n.tr("This install is still using hyprland.conf. Run advs setup to migrate before changing these settings.") : I18n.tr("Click 'Setup' to create %1 and add include to your compositor config.").arg("advs/windowrules")
                             font.pixelSize: Theme.fontSizeSmall
                             color: Theme.surfaceVariantText
                             wrapMode: Text.WordWrap
@@ -520,7 +520,7 @@ Item {
                         }
                     }
 
-                    DankButton {
+                    AdvButton {
                         id: fixButton
                         visible: !warningBox.showLegacy && warningBox.showSetup
                         text: root.fixingInclude ? I18n.tr("Setting up...") : I18n.tr("Setup")
@@ -552,7 +552,7 @@ Item {
                         width: parent.width
                         spacing: Theme.spacingM
 
-                        DankIcon {
+                        AdvIcon {
                             name: "list"
                             size: Theme.iconSize
                             color: Theme.primary
@@ -578,7 +578,7 @@ Item {
                             height: Theme.spacingM
                         }
 
-                        DankIcon {
+                        AdvIcon {
                             name: "select_window"
                             size: 40
                             color: Theme.surfaceVariantText
@@ -725,7 +725,7 @@ Item {
                                             Layout.alignment: Qt.AlignVCenter
                                             spacing: Theme.spacingXXS
 
-                                            DankActionButton {
+                                            AdvActionButton {
                                                 buttonSize: 28
                                                 iconName: "edit"
                                                 iconSize: 16
@@ -738,7 +738,7 @@ Item {
                                                 onClicked: root.editRule(ruleDelegateItem.liveRuleData)
                                             }
 
-                                            DankActionButton {
+                                            AdvActionButton {
                                                 id: deleteBtn
                                                 property bool hovered: false
                                                 buttonSize: 28
@@ -790,7 +790,7 @@ Item {
                                     }
                                 }
 
-                                DankIcon {
+                                AdvIcon {
                                     x: Theme.spacingM - 2
                                     y: (ruleCard.height / 2) - (size / 2)
                                     name: "drag_indicator"
@@ -832,7 +832,7 @@ Item {
                         width: parent.width
                         spacing: Theme.spacingM
 
-                        DankIcon {
+                        AdvIcon {
                             name: "description"
                             size: Theme.iconSize
                             color: Theme.primary
@@ -852,7 +852,7 @@ Item {
                             }
 
                             StyledText {
-                                text: I18n.tr("Rules found in your compositor config. These are read-only here, use Convert to DMS to make an editable copy.")
+                                text: I18n.tr("Rules found in your compositor config. These are read-only here, use Convert to ADVS to make an editable copy.")
                                 font.pixelSize: Theme.fontSizeSmall
                                 color: Theme.surfaceVariantText
                                 wrapMode: Text.WordWrap
@@ -1002,14 +1002,14 @@ Item {
                                             }
                                         }
 
-                                        DankIcon {
+                                        AdvIcon {
                                             name: externalCard.expanded ? "expand_less" : "expand_more"
                                             size: 20
                                             color: Theme.surfaceVariantText
                                             Layout.alignment: Qt.AlignVCenter
                                         }
 
-                                        DankActionButton {
+                                        AdvActionButton {
                                             buttonSize: 28
                                             iconName: "content_copy"
                                             iconSize: 16
@@ -1018,9 +1018,9 @@ Item {
                                             enabled: !root.readOnly
                                             opacity: enabled ? 1 : 0.5
                                             Layout.alignment: Qt.AlignVCenter
-                                            tooltipText: I18n.tr("Convert to DMS")
+                                            tooltipText: I18n.tr("Convert to ADVS")
                                             tooltipSide: "left"
-                                            onClicked: root.copyRuleToDms(externalCard.modelData)
+                                            onClicked: root.copyRuleToAdvs(externalCard.modelData)
                                         }
                                     }
 

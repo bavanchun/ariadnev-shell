@@ -11,7 +11,7 @@ import (
 	"time"
 )
 
-const dirName = "DankMaterialShell"
+const dirName = "AriadnevShell"
 
 func ConfigDir() (string, error) {
 	configDir, err := os.UserConfigDir()
@@ -22,7 +22,7 @@ func ConfigDir() (string, error) {
 }
 
 func DefaultArchiveName() string {
-	return fmt.Sprintf("dms-backup-%s.tar.gz", time.Now().Format("20060102-150405"))
+	return fmt.Sprintf("advs-backup-%s.tar.gz", time.Now().Format("20060102-150405"))
 }
 
 func Create(outputPath string) error {
@@ -31,7 +31,7 @@ func Create(outputPath string) error {
 		return err
 	}
 	if _, err := os.Stat(srcDir); err != nil {
-		return fmt.Errorf("no DMS configuration found at %s: %w", srcDir, err)
+		return fmt.Errorf("no ADVS configuration found at %s: %w", srcDir, err)
 	}
 
 	out, err := os.Create(outputPath)
@@ -124,7 +124,7 @@ func validateArchive(archivePath string) error {
 			return fmt.Errorf("unsafe path in archive: %s", header.Name)
 		}
 		if !strings.HasPrefix(name, dirName+"/") && name != dirName {
-			return fmt.Errorf("not a DMS backup: unexpected entry %s", header.Name)
+			return fmt.Errorf("not a ADVS backup: unexpected entry %s", header.Name)
 		}
 		if name == dirName+"/settings.json" {
 			hasSettings = true
@@ -135,7 +135,7 @@ func validateArchive(archivePath string) error {
 		return err
 	}
 	if !hasSettings {
-		return fmt.Errorf("not a DMS backup: settings.json missing from archive")
+		return fmt.Errorf("not a ADVS backup: settings.json missing from archive")
 	}
 	return nil
 }

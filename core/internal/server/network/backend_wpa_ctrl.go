@@ -34,7 +34,7 @@ func wpaCtrlLocalSocketBase() string {
 }
 
 func newWpaCtrlConn(sockPath string) (*wpaCtrlConn, error) {
-	localDir, err := os.MkdirTemp(wpaCtrlLocalSocketBase(), "dms-wpa-")
+	localDir, err := os.MkdirTemp(wpaCtrlLocalSocketBase(), "advs-wpa-")
 	if err != nil {
 		return nil, fmt.Errorf("create wpa_ctrl socket dir: %w", err)
 	}

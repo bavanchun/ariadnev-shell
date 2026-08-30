@@ -10,13 +10,13 @@ Singleton {
     id: root
 
     property var widgetRegistry: ({})
-    property var dankBarRepeater: null
+    property var advBarRepeater: null
 
-    // Bars rendered inside the frame surface (connected mode) have no DankBarWindow in the
-    // repeater, so they self-register here (screenName -> DankBarBody) for trigger routing.
+    // Bars rendered inside the frame surface (connected mode) have no AdvBarWindow in the
+    // repeater, so they self-register here (screenName -> AdvBarBody) for trigger routing.
     property var frameHostedBars: ({})
 
-    // Shared dock context-menu windows (created in DMSShell) so a frame-hosted dock can reach them.
+    // Shared dock context-menu windows (created in AriadnevShell) so a frame-hosted dock can reach them.
     property var dockContextMenu: null
     property var dockTrashContextMenu: null
 
@@ -36,24 +36,24 @@ Singleton {
         frameHostedBars = next;
     }
 
-    // DankBar items self-register here (barConfig id -> DankBar) so frame-hosted bars can
+    // AdvBar items self-register here (barConfig id -> AdvBar) so frame-hosted bars can
     // resolve their models/rootWindow reactively, independent of repeater load ordering.
-    property var dankBarItems: ({})
+    property var advBarItems: ({})
 
-    function registerDankBarItem(barId, item) {
+    function registerAdvBarItem(barId, item) {
         if (!barId || !item)
             return;
-        const next = Object.assign({}, dankBarItems);
+        const next = Object.assign({}, advBarItems);
         next[barId] = item;
-        dankBarItems = next;
+        advBarItems = next;
     }
 
-    function unregisterDankBarItem(barId, item) {
-        if (!barId || dankBarItems[barId] !== item)
+    function unregisterAdvBarItem(barId, item) {
+        if (!barId || advBarItems[barId] !== item)
             return;
-        const next = Object.assign({}, dankBarItems);
+        const next = Object.assign({}, advBarItems);
         delete next[barId];
-        dankBarItems = next;
+        advBarItems = next;
     }
 
     signal widgetRegistered(string widgetId, string screenName)
@@ -188,11 +188,11 @@ Singleton {
         if (frameHostedBars[screenName])
             return frameHostedBars[screenName];
 
-        if (!dankBarRepeater)
+        if (!advBarRepeater)
             return null;
 
-        for (var i = 0; i < dankBarRepeater.count; i++) {
-            const loader = dankBarRepeater.itemAt(i);
+        for (var i = 0; i < advBarRepeater.count; i++) {
+            const loader = advBarRepeater.itemAt(i);
             if (!loader?.item)
                 continue;
 
@@ -217,9 +217,9 @@ Singleton {
     }
 
     function getFirstBarWindow() {
-        if (dankBarRepeater) {
-            for (var i = 0; i < dankBarRepeater.count; i++) {
-                const barItem = dankBarRepeater.itemAt(i)?.item;
+        if (advBarRepeater) {
+            for (var i = 0; i < advBarRepeater.count; i++) {
+                const barItem = advBarRepeater.itemAt(i)?.item;
                 if (barItem?.barVariants?.instances?.length > 0)
                     return barItem.barVariants.instances[0];
             }

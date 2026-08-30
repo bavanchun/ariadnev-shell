@@ -8,8 +8,8 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/luaconfig"
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/utils"
+	"github.com/bavanchun/ariadnev-shell/core/internal/luaconfig"
+	"github.com/bavanchun/ariadnev-shell/core/internal/utils"
 )
 
 const (
@@ -41,20 +41,20 @@ type HyprlandParser struct {
 	readingLine        int
 	configDir          string
 	currentSource      string
-	dmsBindsExists     bool
-	dmsBindsIncluded   bool
+	advsBindsExists     bool
+	advsBindsIncluded   bool
 	includeCount       int
-	dmsIncludePos      int
-	bindsAfterDMS      int
-	dmsBindKeys        map[string]bool
+	advsIncludePos      int
+	bindsAfterADVS      int
+	advsBindKeys        map[string]bool
 	configBindKeys     map[string]bool
 	conflictingConfigs map[string]*HyprlandKeyBinding
 	bindMap            map[string]*HyprlandKeyBinding
 	bindOrder          []string
 	processedFiles     map[string]bool
-	dmsProcessed       bool
+	advsProcessed       bool
 	removedKeys        map[string]bool // bare hl.unbind targets (negative overrides)
-	defaultDMSKeys     map[string]bool // keys present in dms/binds.{lua,conf}
+	defaultADVSKeys     map[string]bool // keys present in advs/binds.{lua,conf}
 	configFormat       string
 	readOnly           bool
 }
@@ -64,15 +64,15 @@ func NewHyprlandParser(configDir string) *HyprlandParser {
 		contentLines:       []string{},
 		readingLine:        0,
 		configDir:          configDir,
-		dmsIncludePos:      -1,
-		dmsBindKeys:        make(map[string]bool),
+		advsIncludePos:      -1,
+		advsBindKeys:        make(map[string]bool),
 		configBindKeys:     make(map[string]bool),
 		conflictingConfigs: make(map[string]*HyprlandKeyBinding),
 		bindMap:            make(map[string]*HyprlandKeyBinding),
 		bindOrder:          []string{},
 		processedFiles:     make(map[string]bool),
 		removedKeys:        make(map[string]bool),
-		defaultDMSKeys:     make(map[string]bool),
+		defaultADVSKeys:     make(map[string]bool),
 	}
 }
 
@@ -298,18 +298,18 @@ func ParseHyprlandKeys(path string) (*HyprlandSection, error) {
 
 type HyprlandParseResult struct {
 	Section            *HyprlandSection
-	DMSBindsIncluded   bool
-	DMSStatus          *HyprlandDMSStatus
+	ADVSBindsIncluded   bool
+	ADVSStatus          *HyprlandADVSStatus
 	ConflictingConfigs map[string]*HyprlandKeyBinding
-	DefaultDMSKeys     map[string]bool // keys with a DMS default in binds.{lua,conf}
+	DefaultADVSKeys     map[string]bool // keys with a ADVS default in binds.{lua,conf}
 }
 
-type HyprlandDMSStatus struct {
+type HyprlandADVSStatus struct {
 	Exists          bool
 	Included        bool
 	IncludePosition int
 	TotalIncludes   int
-	BindsAfterDMS   int
+	BindsAfterADVS   int
 	Effective       bool
 	OverriddenBy    int
 	StatusMessage   string
@@ -317,31 +317,31 @@ type HyprlandDMSStatus struct {
 	ReadOnly        bool
 }
 
-func (p *HyprlandParser) buildDMSStatus() *HyprlandDMSStatus {
-	status := &HyprlandDMSStatus{
-		Exists:          p.dmsBindsExists,
-		Included:        p.dmsBindsIncluded,
-		IncludePosition: p.dmsIncludePos,
+func (p *HyprlandParser) buildADVSStatus() *HyprlandADVSStatus {
+	status := &HyprlandADVSStatus{
+		Exists:          p.advsBindsExists,
+		Included:        p.advsBindsIncluded,
+		IncludePosition: p.advsIncludePos,
 		TotalIncludes:   p.includeCount,
-		BindsAfterDMS:   p.bindsAfterDMS,
+		BindsAfterADVS:   p.bindsAfterADVS,
 		ConfigFormat:    p.configFormat,
 		ReadOnly:        p.readOnly,
 	}
 
 	switch {
-	case !p.dmsBindsExists:
+	case !p.advsBindsExists:
 		status.Effective = false
-		status.StatusMessage = "dms/binds.lua (or legacy binds.conf) does not exist"
-	case !p.dmsBindsIncluded:
+		status.StatusMessage = "advs/binds.lua (or legacy binds.conf) does not exist"
+	case !p.advsBindsIncluded:
 		status.Effective = false
-		status.StatusMessage = "dms binds are not loaded from Hyprland config (require / source)"
-	case p.bindsAfterDMS > 0:
+		status.StatusMessage = "advs binds are not loaded from Hyprland config (require / source)"
+	case p.bindsAfterADVS > 0:
 		status.Effective = true
-		status.OverriddenBy = p.bindsAfterDMS
-		status.StatusMessage = "Some DMS binds may be overridden by config binds"
+		status.OverriddenBy = p.bindsAfterADVS
+		status.StatusMessage = "Some ADVS binds may be overridden by config binds"
 	default:
 		status.Effective = true
-		status.StatusMessage = "DMS binds are active"
+		status.StatusMessage = "ADVS binds are active"
 	}
 
 	return status
@@ -365,15 +365,15 @@ func (p *HyprlandParser) normalizeKey(key string) string {
 func (p *HyprlandParser) addBind(kb *HyprlandKeyBinding) bool {
 	key := p.formatBindKey(kb)
 	normalizedKey := p.normalizeKey(key)
-	isDMSBind := isDMSBindsSourcePath(kb.Source)
+	isADVSBind := isADVSBindsSourcePath(kb.Source)
 
-	if isDMSBindsPrimarySourcePath(kb.Source) {
-		p.defaultDMSKeys[normalizedKey] = true
+	if isADVSBindsPrimarySourcePath(kb.Source) {
+		p.defaultADVSKeys[normalizedKey] = true
 	}
-	if isDMSBind {
-		p.dmsBindKeys[normalizedKey] = true
-	} else if p.dmsBindKeys[normalizedKey] {
-		p.bindsAfterDMS++
+	if isADVSBind {
+		p.advsBindKeys[normalizedKey] = true
+	} else if p.advsBindKeys[normalizedKey] {
+		p.bindsAfterADVS++
 		p.conflictingConfigs[normalizedKey] = kb
 		p.configBindKeys[normalizedKey] = true
 		return false
@@ -388,21 +388,21 @@ func (p *HyprlandParser) addBind(kb *HyprlandKeyBinding) bool {
 	return true
 }
 
-func (p *HyprlandParser) ParseWithDMS() (*HyprlandSection, error) {
+func (p *HyprlandParser) ParseWithADVS() (*HyprlandSection, error) {
 	expandedDir, err := utils.ExpandPath(p.configDir)
 	if err != nil {
 		return nil, err
 	}
 
-	dmsBindsLua := filepath.Join(expandedDir, "dms", "binds.lua")
-	dmsBindsConf := filepath.Join(expandedDir, "dms", "binds.conf")
-	dmsBindsPath := ""
-	if _, err := os.Stat(dmsBindsLua); err == nil {
-		p.dmsBindsExists = true
-		dmsBindsPath = dmsBindsLua
-	} else if _, err := os.Stat(dmsBindsConf); err == nil {
-		p.dmsBindsExists = true
-		dmsBindsPath = dmsBindsConf
+	advsBindsLua := filepath.Join(expandedDir, "advs", "binds.lua")
+	advsBindsConf := filepath.Join(expandedDir, "advs", "binds.conf")
+	advsBindsPath := ""
+	if _, err := os.Stat(advsBindsLua); err == nil {
+		p.advsBindsExists = true
+		advsBindsPath = advsBindsLua
+	} else if _, err := os.Stat(advsBindsConf); err == nil {
+		p.advsBindsExists = true
+		advsBindsPath = advsBindsConf
 	}
 
 	mainConfig, err := hyprlandMainConfigPath(p.configDir)
@@ -421,57 +421,57 @@ func (p *HyprlandParser) ParseWithDMS() (*HyprlandSection, error) {
 		return nil, err
 	}
 
-	if p.dmsBindsExists && !p.dmsProcessed {
-		p.parseDMSBindsDirectly(dmsBindsPath, section)
+	if p.advsBindsExists && !p.advsProcessed {
+		p.parseADVSBindsDirectly(advsBindsPath, section)
 	}
-	p.removeShadowedDMSBinds(section)
-	p.removeUnboundDMSBinds(section)
+	p.removeShadowedADVSBinds(section)
+	p.removeUnboundADVSBinds(section)
 
 	return section, nil
 }
 
-func (p *HyprlandParser) removeUnboundDMSBinds(section *HyprlandSection) {
+func (p *HyprlandParser) removeUnboundADVSBinds(section *HyprlandSection) {
 	if len(p.removedKeys) == 0 {
 		return
 	}
 	filtered := section.Keybinds[:0]
 	for i := range section.Keybinds {
 		kb := section.Keybinds[i]
-		if isDMSBindsSourcePath(kb.Source) && p.removedKeys[p.normalizeKey(p.formatBindKey(&kb))] {
+		if isADVSBindsSourcePath(kb.Source) && p.removedKeys[p.normalizeKey(p.formatBindKey(&kb))] {
 			continue
 		}
 		filtered = append(filtered, kb)
 	}
 	section.Keybinds = filtered
 	for i := range section.Children {
-		p.removeUnboundDMSBinds(&section.Children[i])
+		p.removeUnboundADVSBinds(&section.Children[i])
 	}
 }
 
-func (p *HyprlandParser) removeShadowedDMSBinds(section *HyprlandSection) {
+func (p *HyprlandParser) removeShadowedADVSBinds(section *HyprlandSection) {
 	counts := make(map[string]int)
-	p.countDMSBinds(section, counts)
-	p.filterShadowedDMSBinds(section, counts)
+	p.countADVSBinds(section, counts)
+	p.filterShadowedADVSBinds(section, counts)
 }
 
-func (p *HyprlandParser) countDMSBinds(section *HyprlandSection, counts map[string]int) {
+func (p *HyprlandParser) countADVSBinds(section *HyprlandSection, counts map[string]int) {
 	for i := range section.Keybinds {
 		kb := &section.Keybinds[i]
-		if isDMSBindsSourcePath(kb.Source) {
+		if isADVSBindsSourcePath(kb.Source) {
 			counts[p.normalizeKey(p.formatBindKey(kb))]++
 		}
 	}
 	for i := range section.Children {
-		p.countDMSBinds(&section.Children[i], counts)
+		p.countADVSBinds(&section.Children[i], counts)
 	}
 }
 
-func (p *HyprlandParser) filterShadowedDMSBinds(section *HyprlandSection, counts map[string]int) {
+func (p *HyprlandParser) filterShadowedADVSBinds(section *HyprlandSection, counts map[string]int) {
 	filtered := section.Keybinds[:0]
 	for i := range section.Keybinds {
 		kb := section.Keybinds[i]
 		key := p.normalizeKey(p.formatBindKey(&kb))
-		if isDMSBindsSourcePath(kb.Source) && counts[key] > 1 {
+		if isADVSBindsSourcePath(kb.Source) && counts[key] > 1 {
 			counts[key]--
 			continue
 		}
@@ -479,7 +479,7 @@ func (p *HyprlandParser) filterShadowedDMSBinds(section *HyprlandSection, counts
 	}
 	section.Keybinds = filtered
 	for i := range section.Children {
-		p.filterShadowedDMSBinds(&section.Children[i], counts)
+		p.filterShadowedADVSBinds(&section.Children[i], counts)
 	}
 }
 
@@ -542,13 +542,13 @@ func (p *HyprlandParser) handleSource(line string, section *HyprlandSection, bas
 	}
 
 	sourcePath := strings.TrimSpace(parts[1])
-	isDMSSource := isDMSBindsPrimarySourcePath(sourcePath)
+	isADVSSource := isADVSBindsPrimarySourcePath(sourcePath)
 
 	p.includeCount++
-	if isDMSSource {
-		p.dmsBindsIncluded = true
-		p.dmsIncludePos = p.includeCount
-		p.dmsProcessed = true
+	if isADVSSource {
+		p.advsBindsIncluded = true
+		p.advsIncludePos = p.includeCount
+		p.advsProcessed = true
 	}
 
 	fullPath := sourcePath
@@ -569,25 +569,25 @@ func (p *HyprlandParser) handleSource(line string, section *HyprlandSection, bas
 	section.Children = append(section.Children, *includedSection)
 }
 
-func (p *HyprlandParser) parseDMSBindsDirectly(dmsBindsPath string, section *HyprlandSection) {
-	if strings.EqualFold(filepath.Ext(dmsBindsPath), ".lua") {
-		sub, err := p.parseLuaLinesFromPath(dmsBindsPath)
+func (p *HyprlandParser) parseADVSBindsDirectly(advsBindsPath string, section *HyprlandSection) {
+	if strings.EqualFold(filepath.Ext(advsBindsPath), ".lua") {
+		sub, err := p.parseLuaLinesFromPath(advsBindsPath)
 		if err != nil {
 			return
 		}
 		section.Keybinds = append(section.Keybinds, sub.Keybinds...)
 		section.Children = append(section.Children, sub.Children...)
-		p.dmsProcessed = true
+		p.advsProcessed = true
 		return
 	}
 
-	data, err := os.ReadFile(dmsBindsPath)
+	data, err := os.ReadFile(advsBindsPath)
 	if err != nil {
 		return
 	}
 
 	prevSource := p.currentSource
-	p.currentSource = dmsBindsPath
+	p.currentSource = advsBindsPath
 
 	lines := strings.SplitSeq(string(data), "\n")
 	for line := range lines {
@@ -600,14 +600,14 @@ func (p *HyprlandParser) parseDMSBindsDirectly(dmsBindsPath string, section *Hyp
 		if kb == nil {
 			continue
 		}
-		kb.Source = dmsBindsPath
+		kb.Source = advsBindsPath
 		if p.addBind(kb) {
 			section.Keybinds = append(section.Keybinds, *kb)
 		}
 	}
 
 	p.currentSource = prevSource
-	p.dmsProcessed = true
+	p.advsProcessed = true
 }
 
 func (p *HyprlandParser) parseLuaLinesFromPath(absPath string) (*HyprlandSection, error) {
@@ -651,12 +651,12 @@ func (p *HyprlandParser) parseLuaLines(content string, baseDir, absPath, section
 				if rel == "" {
 					continue
 				}
-				isDMS := isDMSBindsPrimarySourcePath(rel)
+				isADVS := isADVSBindsPrimarySourcePath(rel)
 				p.includeCount++
-				if isDMS {
-					p.dmsBindsIncluded = true
-					p.dmsIncludePos = p.includeCount
-					p.dmsProcessed = true
+				if isADVS {
+					p.advsBindsIncluded = true
+					p.advsIncludePos = p.includeCount
+					p.advsProcessed = true
 				}
 				fullPath := luaconfig.ModuleToPath(rootDir, mod)
 				expanded, err := utils.ExpandPath(fullPath)
@@ -830,19 +830,19 @@ func extractBindFlags(bindType string) string {
 	return bindType[4:] // Everything after "bind"
 }
 
-func ParseHyprlandKeysWithDMS(path string) (*HyprlandParseResult, error) {
+func ParseHyprlandKeysWithADVS(path string) (*HyprlandParseResult, error) {
 	parser := NewHyprlandParser(path)
-	section, err := parser.ParseWithDMS()
+	section, err := parser.ParseWithADVS()
 	if err != nil {
 		return nil, err
 	}
 
 	return &HyprlandParseResult{
 		Section:            section,
-		DMSBindsIncluded:   parser.dmsBindsIncluded,
-		DMSStatus:          parser.buildDMSStatus(),
+		ADVSBindsIncluded:   parser.advsBindsIncluded,
+		ADVSStatus:          parser.buildADVSStatus(),
 		ConflictingConfigs: parser.conflictingConfigs,
-		DefaultDMSKeys:     parser.defaultDMSKeys,
+		DefaultADVSKeys:     parser.defaultADVSKeys,
 	}, nil
 }
 
@@ -1528,29 +1528,29 @@ func luaLineTrailingComment(line string) string {
 	return ""
 }
 
-func isDMSBindsSourcePath(p string) bool {
+func isADVSBindsSourcePath(p string) bool {
 	p = filepath.ToSlash(strings.TrimSpace(p))
-	if isDMSBindsPrimarySourcePath(p) {
+	if isADVSBindsPrimarySourcePath(p) {
 		return true
 	}
-	return isDMSBindsUserOverridePath(p)
+	return isADVSBindsUserOverridePath(p)
 }
 
-func isDMSBindsUserOverridePath(p string) bool {
+func isADVSBindsUserOverridePath(p string) bool {
 	p = filepath.ToSlash(strings.TrimSpace(p))
-	return p == "dms/binds-user.lua" || p == "./dms/binds-user.lua" ||
-		strings.HasSuffix(p, "/dms/binds-user.lua")
+	return p == "advs/binds-user.lua" || p == "./advs/binds-user.lua" ||
+		strings.HasSuffix(p, "/advs/binds-user.lua")
 }
 
-func isDMSBindsPrimarySourcePath(p string) bool {
+func isADVSBindsPrimarySourcePath(p string) bool {
 	p = filepath.ToSlash(strings.TrimSpace(p))
-	if strings.Contains(p, "/dms/binds.lua") || strings.HasSuffix(p, "dms/binds.lua") || p == "dms/binds.lua" || p == "./dms/binds.lua" {
+	if strings.Contains(p, "/advs/binds.lua") || strings.HasSuffix(p, "advs/binds.lua") || p == "advs/binds.lua" || p == "./advs/binds.lua" {
 		return true
 	}
-	if strings.Contains(p, "/dms/binds.conf") || strings.HasSuffix(p, "dms/binds.conf") {
+	if strings.Contains(p, "/advs/binds.conf") || strings.HasSuffix(p, "advs/binds.conf") {
 		return true
 	}
-	return p == "dms/binds.conf" || p == "./dms/binds.conf"
+	return p == "advs/binds.conf" || p == "./advs/binds.conf"
 }
 
 // hyprlandMainConfigPath returns hyprland.lua if present, else hyprland.conf if present.

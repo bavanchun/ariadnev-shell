@@ -3,8 +3,8 @@ package mime
 import (
 	"fmt"
 
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/desktop"
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/server/models"
+	"github.com/bavanchun/ariadnev-shell/core/internal/desktop"
+	"github.com/bavanchun/ariadnev-shell/core/internal/server/models"
 	"github.com/AvengeMedia/dankgo/ipc/params"
 )
 

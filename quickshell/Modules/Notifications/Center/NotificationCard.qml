@@ -49,7 +49,7 @@ Rectangle {
     readonly property real targetHeight: expanded ? (expandedContent.height + cardPadding * 2) : (baseCardHeight + collapsedContent.extraHeight)
     radius: connectedFrameMode ? Theme.connectedSurfaceRadius : Theme.cornerRadius
     scale: lightweight ? 1 : (cardHoverHandler.hovered ? 1.004 : 1.0) * listLevelAdjacentScaleInfluence
-    readonly property bool shadowsAllowed: !lightweight && Theme.elevationEnabled && Quickshell.env("DMS_DISABLE_LAYER") !== "true" && Quickshell.env("DMS_DISABLE_LAYER") !== "1"
+    readonly property bool shadowsAllowed: !lightweight && Theme.elevationEnabled && Quickshell.env("ADVS_DISABLE_LAYER") !== "true" && Quickshell.env("ADVS_DISABLE_LAYER") !== "1"
     readonly property var shadowElevation: Theme.elevationLevel1
     readonly property real baseShadowBlurPx: (shadowElevation && shadowElevation.blurPx !== undefined) ? shadowElevation.blurPx : 4
     readonly property real hoverShadowBlurBoost: cardHoverHandler.hovered ? Math.min(2, baseShadowBlurPx * 0.25) : 0
@@ -268,7 +268,7 @@ Rectangle {
         visible: renderCollapsedContent
         opacity: root.collapsedContentOpacity
 
-        DankCircularImage {
+        AdvCircularImage {
             id: iconContainer
             cacheImages: root.lightweight
 
@@ -584,7 +584,7 @@ Rectangle {
                             anchors.margins: compactMode ? Theme.spacingS : Theme.spacingM
                             anchors.bottomMargin: contentSpacing
 
-                            DankCircularImage {
+                            AdvCircularImage {
                                 id: messageIcon
                                 cacheImages: root.lightweight
 
@@ -974,7 +974,7 @@ Rectangle {
         width: compactMode ? 52 : 60
         height: compactMode ? 24 : 28
 
-        DankActionButton {
+        AdvActionButton {
             anchors.left: parent.left
             anchors.top: parent.top
             visible: (notificationGroup?.count || 0) > 1
@@ -988,7 +988,7 @@ Rectangle {
             }
         }
 
-        DankActionButton {
+        AdvActionButton {
             anchors.right: parent.right
             anchors.top: parent.top
             iconName: "close"

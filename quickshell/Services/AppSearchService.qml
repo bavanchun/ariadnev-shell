@@ -163,70 +163,70 @@ Singleton {
         });
     }
 
-    readonly property string dmsLogoPath: Qt.resolvedUrl("../assets/danklogo2.svg")
+    readonly property string advsLogoPath: Qt.resolvedUrl("../assets/advlogo2.svg")
 
     readonly property var builtInPlugins: ({
-            "dms_settings": {
-                id: "dms_settings",
+            "advs_settings": {
+                id: "advs_settings",
                 name: I18n.tr("Settings", "settings window title"),
-                icon: "svg+corner:" + dmsLogoPath + "|settings",
+                icon: "svg+corner:" + advsLogoPath + "|settings",
                 cornerIcon: "settings",
-                comment: "DMS",
+                comment: "ADVS",
                 action: "ipc:settings",
                 categories: ["Settings", "System"],
                 defaultTrigger: "",
                 isLauncher: false
             },
-            "dms_notepad": {
-                id: "dms_notepad",
+            "advs_notepad": {
+                id: "advs_notepad",
                 name: I18n.tr("Notepad", "Notepad"),
-                icon: "svg+corner:" + dmsLogoPath + "|description",
+                icon: "svg+corner:" + advsLogoPath + "|description",
                 cornerIcon: "description",
-                comment: "DMS",
+                comment: "ADVS",
                 action: "ipc:notepad",
                 categories: ["Office", "Utility"],
                 defaultTrigger: "",
                 isLauncher: false
             },
-            "dms_sysmon": {
-                id: "dms_sysmon",
+            "advs_sysmon": {
+                id: "advs_sysmon",
                 name: I18n.tr("System Monitor", "sysmon window title"),
-                icon: "svg+corner:" + dmsLogoPath + "|monitor_heart",
+                icon: "svg+corner:" + advsLogoPath + "|monitor_heart",
                 cornerIcon: "monitor_heart",
-                comment: "DMS",
+                comment: "ADVS",
                 action: "ipc:processlist",
                 categories: ["System", "Monitor"],
                 defaultTrigger: "",
                 isLauncher: false
             },
-            "dms_colorpicker": {
-                id: "dms_colorpicker",
+            "advs_colorpicker": {
+                id: "advs_colorpicker",
                 name: I18n.tr("Color Picker"),
-                icon: "svg+corner:" + dmsLogoPath + "|palette",
+                icon: "svg+corner:" + advsLogoPath + "|palette",
                 cornerIcon: "palette",
-                comment: "DMS",
+                comment: "ADVS",
                 action: "ipc:color-picker",
                 categories: ["Graphics", "Utility"],
                 defaultTrigger: "",
                 isLauncher: false
             },
-            "dms_power": {
-                id: "dms_power",
+            "advs_power": {
+                id: "advs_power",
                 name: I18n.tr("Power"),
                 cornerIcon: "power_settings_new",
-                comment: "DMS",
+                comment: "ADVS",
                 defaultTrigger: "pw",
                 isLauncher: true,
                 viewMode: "list",
                 viewModeEnforced: true,
                 defaultSectionPriority: 2.3
             },
-            "dms_qr_generator": {
-                id: "dms_qr_generator",
+            "advs_qr_generator": {
+                id: "advs_qr_generator",
                 name: I18n.tr("QR Generator"),
-                icon: "svg+corner:" + dmsLogoPath + "|qr_code",
+                icon: "svg+corner:" + advsLogoPath + "|qr_code",
                 cornerIcon: "qr_code",
-                comment: "DMS",
+                comment: "ADVS",
                 action: "ipc:qr-generator",
                 categories: ["Utility"],
                 defaultTrigger: "qrg",
@@ -234,19 +234,19 @@ Singleton {
                 viewMode: "list",
                 viewModeEnforced: true
             },
-            "dms_settings_search": {
-                id: "dms_settings_search",
+            "advs_settings_search": {
+                id: "advs_settings_search",
                 name: I18n.tr("Settings Search"),
                 cornerIcon: "search",
-                comment: I18n.tr("DMS Settings"),
+                comment: I18n.tr("ADVS Settings"),
                 defaultTrigger: "?",
                 isLauncher: true
             },
-            "dms_clipboard_search": {
-                id: "dms_clipboard_search",
+            "advs_clipboard_search": {
+                id: "advs_clipboard_search",
                 name: I18n.tr("Clipboard"),
                 cornerIcon: "content_paste",
-                comment: "DMS",
+                comment: "ADVS",
                 defaultTrigger: "cb",
                 isLauncher: true,
                 viewMode: "list",
@@ -345,7 +345,7 @@ Singleton {
     }
 
     function getBuiltInLauncherItems(pluginId, query) {
-        if (pluginId === "dms_power") {
+        if (pluginId === "advs_power") {
             const q = (query || "").toString().trim().toLowerCase();
             return getPowerLauncherActions().filter(a => {
                 if (!q)
@@ -364,7 +364,7 @@ Singleton {
                     }));
         }
 
-        if (pluginId === "dms_clipboard_search") {
+        if (pluginId === "advs_clipboard_search") {
             const trimmed = (query || "").toString().trim();
             const entries = ClipboardService.getCachedLauncherSearchEntries(trimmed, 20).slice().sort((a, b) => {
                 if (a.pinned !== b.pinned)
@@ -377,7 +377,7 @@ Singleton {
                     }));
         }
 
-        if (pluginId === "dms_qr_generator") {
+        if (pluginId === "advs_qr_generator") {
             const text = (query || "").toString().trim();
             return [
                 {
@@ -391,7 +391,7 @@ Singleton {
             ];
         }
 
-        if (pluginId !== "dms_settings_search")
+        if (pluginId !== "advs_settings_search")
             return [];
 
         const results = SettingsSearchService.searchForLauncher(query);
@@ -832,7 +832,7 @@ Singleton {
             appCategories.forEach(cat => categories.add(cat));
         }
 
-        // Include categories from core apps (e.g. DMS Settings)
+        // Include categories from core apps (e.g. ADVS Settings)
         for (const app of coreApps) {
             const appCategories = getCategoriesForApp(app);
             appCategories.forEach(cat => categories.add(cat));
@@ -955,7 +955,7 @@ Singleton {
         if (typeof instance.getPasteText === "function") {
             const text = instance.getPasteText(item);
             if (text)
-                return ["dms", "cl", "copy", text];
+                return ["advs", "cl", "copy", text];
         }
 
         return null;

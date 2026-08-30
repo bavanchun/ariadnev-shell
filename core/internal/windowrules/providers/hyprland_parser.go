@@ -8,9 +8,9 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/luaconfig"
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/utils"
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/windowrules"
+	"github.com/bavanchun/ariadnev-shell/core/internal/luaconfig"
+	"github.com/bavanchun/ariadnev-shell/core/internal/utils"
+	"github.com/bavanchun/ariadnev-shell/core/internal/windowrules"
 )
 
 type HyprlandWindowRule struct {
@@ -37,17 +37,17 @@ type HyprlandRulesParser struct {
 	processedFiles   map[string]bool
 	rules            []HyprlandWindowRule
 	currentSource    string
-	dmsRulesExists   bool
-	dmsPrimaryPath   string // dms/windowrules.lua preferred, else dms/windowrules.conf when present
-	dmsRulesIncluded bool
+	advsRulesExists   bool
+	advsPrimaryPath   string // advs/windowrules.lua preferred, else advs/windowrules.conf when present
+	advsRulesIncluded bool
 	includeCount     int
-	dmsIncludePos    int
-	rulesAfterDMS    int
-	dmsProcessed     bool
+	advsIncludePos    int
+	rulesAfterADVS    int
+	advsProcessed     bool
 	configFormat     string
 	readOnly         bool
 
-	requireLineInMain int    // hyprland.lua line (1-based) where require("dms.windowrules") occurs; else -1
+	requireLineInMain int    // hyprland.lua line (1-based) where require("advs.windowrules") occurs; else -1
 	primaryHyprLua    string // absolute path to ~/.config/hypr/hyprland.lua when that is the main config
 }
 
@@ -56,7 +56,7 @@ func NewHyprlandRulesParser(configDir string) *HyprlandRulesParser {
 		configDir:         configDir,
 		processedFiles:    make(map[string]bool),
 		rules:             []HyprlandWindowRule{},
-		dmsIncludePos:     -1,
+		advsIncludePos:     -1,
 		requireLineInMain: -1,
 	}
 }
@@ -67,15 +67,15 @@ func (p *HyprlandRulesParser) Parse() ([]HyprlandWindowRule, error) {
 		return nil, err
 	}
 
-	dmsLua := filepath.Join(expandedDir, "dms", "windowrules.lua")
-	dmsConf := filepath.Join(expandedDir, "dms", "windowrules.conf")
+	advsLua := filepath.Join(expandedDir, "advs", "windowrules.lua")
+	advsConf := filepath.Join(expandedDir, "advs", "windowrules.conf")
 
-	if _, err := os.Stat(dmsLua); err == nil {
-		p.dmsRulesExists = true
-		p.dmsPrimaryPath = dmsLua
-	} else if _, err := os.Stat(dmsConf); err == nil {
-		p.dmsRulesExists = true
-		p.dmsPrimaryPath = dmsConf
+	if _, err := os.Stat(advsLua); err == nil {
+		p.advsRulesExists = true
+		p.advsPrimaryPath = advsLua
+	} else if _, err := os.Stat(advsConf); err == nil {
+		p.advsRulesExists = true
+		p.advsPrimaryPath = advsConf
 	}
 
 	mainConfig, err := hyprlandMainConfigPath(expandedDir)
@@ -99,22 +99,22 @@ func (p *HyprlandRulesParser) Parse() ([]HyprlandWindowRule, error) {
 		return nil, err
 	}
 
-	if p.dmsRulesExists && !p.dmsProcessed {
-		p.parseDMSRulesDirectly(p.dmsPrimaryPath)
+	if p.advsRulesExists && !p.advsProcessed {
+		p.parseADVSRulesDirectly(p.advsPrimaryPath)
 	}
 
 	return p.rules, nil
 }
 
-func (p *HyprlandRulesParser) parseDMSRulesDirectly(dmsRulesPath string) {
-	data, err := os.ReadFile(dmsRulesPath)
+func (p *HyprlandRulesParser) parseADVSRulesDirectly(advsRulesPath string) {
+	data, err := os.ReadFile(advsRulesPath)
 	if err != nil {
 		return
 	}
 
-	abs, err := filepath.Abs(dmsRulesPath)
+	abs, err := filepath.Abs(advsRulesPath)
 	if err != nil {
-		abs = dmsRulesPath
+		abs = advsRulesPath
 	}
 
 	prevSource := p.currentSource
@@ -130,7 +130,7 @@ func (p *HyprlandRulesParser) parseDMSRulesDirectly(dmsRulesPath string) {
 	}
 
 	p.currentSource = prevSource
-	p.dmsProcessed = true
+	p.advsProcessed = true
 }
 
 func (p *HyprlandRulesParser) parseFile(filePath string) error {
@@ -180,13 +180,13 @@ func (p *HyprlandRulesParser) handleSource(line string, baseDir string) {
 	}
 
 	sourcePath := strings.TrimSpace(parts[1])
-	isDMSSource := isDMSWindowRulesSourcePath(sourcePath)
+	isADVSSource := isADVSWindowRulesSourcePath(sourcePath)
 
 	p.includeCount++
-	if isDMSSource {
-		p.dmsRulesIncluded = true
-		p.dmsIncludePos = p.includeCount
-		p.dmsProcessed = true
+	if isADVSSource {
+		p.advsRulesIncluded = true
+		p.advsIncludePos = p.includeCount
+		p.advsProcessed = true
 	}
 
 	fullPath := sourcePath
@@ -296,35 +296,35 @@ func (p *HyprlandRulesParser) parseWindowRuleV2(content string, rule *HyprlandWi
 	}
 }
 
-func (p *HyprlandRulesParser) HasDMSRulesIncluded() bool {
-	return p.dmsRulesIncluded
+func (p *HyprlandRulesParser) HasADVSRulesIncluded() bool {
+	return p.advsRulesIncluded
 }
 
-func (p *HyprlandRulesParser) buildDMSStatus() *windowrules.DMSRulesStatus {
-	status := &windowrules.DMSRulesStatus{
-		Exists:          p.dmsRulesExists,
-		Included:        p.dmsRulesIncluded,
-		IncludePosition: p.dmsIncludePos,
+func (p *HyprlandRulesParser) buildADVSStatus() *windowrules.ADVSRulesStatus {
+	status := &windowrules.ADVSRulesStatus{
+		Exists:          p.advsRulesExists,
+		Included:        p.advsRulesIncluded,
+		IncludePosition: p.advsIncludePos,
 		TotalIncludes:   p.includeCount,
-		RulesAfterDMS:   p.rulesAfterDMS,
+		RulesAfterADVS:   p.rulesAfterADVS,
 		ConfigFormat:    p.configFormat,
 		ReadOnly:        p.readOnly,
 	}
 
 	switch {
-	case !p.dmsRulesExists:
+	case !p.advsRulesExists:
 		status.Effective = false
-		status.StatusMessage = "dms window rules fragment (windowrules.lua / windowrules.conf) does not exist"
-	case !p.dmsRulesIncluded:
+		status.StatusMessage = "advs window rules fragment (windowrules.lua / windowrules.conf) does not exist"
+	case !p.advsRulesIncluded:
 		status.Effective = false
-		status.StatusMessage = "dms window rules are not loaded (missing require/source for dms/windowrules)"
-	case p.rulesAfterDMS > 0:
+		status.StatusMessage = "advs window rules are not loaded (missing require/source for advs/windowrules)"
+	case p.rulesAfterADVS > 0:
 		status.Effective = true
-		status.OverriddenBy = p.rulesAfterDMS
-		status.StatusMessage = "Some DMS rules may be overridden by config rules"
+		status.OverriddenBy = p.rulesAfterADVS
+		status.StatusMessage = "Some ADVS rules may be overridden by config rules"
 	default:
 		status.Effective = true
-		status.StatusMessage = "DMS window rules are active"
+		status.StatusMessage = "ADVS window rules are active"
 	}
 
 	return status
@@ -332,8 +332,8 @@ func (p *HyprlandRulesParser) buildDMSStatus() *windowrules.DMSRulesStatus {
 
 type HyprlandRulesParseResult struct {
 	Rules            []HyprlandWindowRule
-	DMSRulesIncluded bool
-	DMSStatus        *windowrules.DMSRulesStatus
+	ADVSRulesIncluded bool
+	ADVSStatus        *windowrules.ADVSRulesStatus
 }
 
 func ParseHyprlandWindowRules(configDir string) (*HyprlandRulesParseResult, error) {
@@ -344,8 +344,8 @@ func ParseHyprlandWindowRules(configDir string) (*HyprlandRulesParseResult, erro
 	}
 	return &HyprlandRulesParseResult{
 		Rules:            rules,
-		DMSRulesIncluded: parser.HasDMSRulesIncluded(),
-		DMSStatus:        parser.buildDMSStatus(),
+		ADVSRulesIncluded: parser.HasADVSRulesIncluded(),
+		ADVSStatus:        parser.buildADVSStatus(),
 	}, nil
 }
 
@@ -438,7 +438,7 @@ func (p *HyprlandWritableProvider) Name() string {
 
 func (p *HyprlandWritableProvider) GetOverridePath() string {
 	expanded, _ := utils.ExpandPath(p.configDir)
-	return filepath.Join(expanded, "dms", "windowrules.lua")
+	return filepath.Join(expanded, "advs", "windowrules.lua")
 }
 
 func (p *HyprlandWritableProvider) GetRuleSet() (*windowrules.RuleSet, error) {
@@ -450,8 +450,8 @@ func (p *HyprlandWritableProvider) GetRuleSet() (*windowrules.RuleSet, error) {
 		Title:            "Hyprland Window Rules",
 		Provider:         "hyprland",
 		Rules:            ConvertHyprlandRulesToWindowRules(result.Rules),
-		DMSRulesIncluded: result.DMSRulesIncluded,
-		DMSStatus:        result.DMSStatus,
+		ADVSRulesIncluded: result.ADVSRulesIncluded,
+		ADVSStatus:        result.ADVSStatus,
 	}, nil
 }
 
@@ -459,7 +459,7 @@ func (p *HyprlandWritableProvider) SetRule(rule windowrules.WindowRule) error {
 	if err := p.ensureWritableConfig(); err != nil {
 		return err
 	}
-	rules, err := p.LoadDMSRules()
+	rules, err := p.LoadADVSRules()
 	if err != nil {
 		rules = []windowrules.WindowRule{}
 	}
@@ -476,14 +476,14 @@ func (p *HyprlandWritableProvider) SetRule(rule windowrules.WindowRule) error {
 		rules = append(rules, rule)
 	}
 
-	return p.writeDMSRules(rules)
+	return p.writeADVSRules(rules)
 }
 
 func (p *HyprlandWritableProvider) RemoveRule(id string) error {
 	if err := p.ensureWritableConfig(); err != nil {
 		return err
 	}
-	rules, err := p.LoadDMSRules()
+	rules, err := p.LoadADVSRules()
 	if err != nil {
 		return err
 	}
@@ -495,14 +495,14 @@ func (p *HyprlandWritableProvider) RemoveRule(id string) error {
 		}
 	}
 
-	return p.writeDMSRules(newRules)
+	return p.writeADVSRules(newRules)
 }
 
 func (p *HyprlandWritableProvider) ReorderRules(ids []string) error {
 	if err := p.ensureWritableConfig(); err != nil {
 		return err
 	}
-	rules, err := p.LoadDMSRules()
+	rules, err := p.LoadADVSRules()
 	if err != nil {
 		return err
 	}
@@ -524,12 +524,12 @@ func (p *HyprlandWritableProvider) ReorderRules(ids []string) error {
 		newRules = append(newRules, r)
 	}
 
-	return p.writeDMSRules(newRules)
+	return p.writeADVSRules(newRules)
 }
 
 func (p *HyprlandWritableProvider) ensureWritableConfig() error {
 	if p.isLegacyConfigReadOnly() {
-		return fmt.Errorf("hyprland legacy conf configs are read-only; run dms setup to migrate to Lua before editing window rules")
+		return fmt.Errorf("hyprland legacy conf configs are read-only; run advs setup to migrate to Lua before editing window rules")
 	}
 	return nil
 }
@@ -550,8 +550,8 @@ func (p *HyprlandWritableProvider) isLegacyConfigReadOnly() bool {
 	return false
 }
 
-var dmsRuleCommentRegex = regexp.MustCompile(`^#\s*DMS-RULE:\s*id=([^,]+),\s*name=(.*)$`)
-var dmsRuleLuaHDRRegex = regexp.MustCompile(`^\s*--\s*DMS-RULE:\s*id=([^,]+),\s*name=(.*)$`)
+var advsRuleCommentRegex = regexp.MustCompile(`^#\s*ADVS-RULE:\s*id=([^,]+),\s*name=(.*)$`)
+var advsRuleLuaHDRRegex = regexp.MustCompile(`^\s*--\s*ADVS-RULE:\s*id=([^,]+),\s*name=(.*)$`)
 
 func hyprLuaBoolStr(b bool) string {
 	if b {
@@ -666,7 +666,7 @@ func formatLuaManagedHyprRule(rule windowrules.WindowRule) []string {
 	}
 	luaAppendActions(rule.Actions, &body)
 
-	out := []string{fmt.Sprintf("-- DMS-RULE: id=%s, name=%s", rule.ID, rule.Name)}
+	out := []string{fmt.Sprintf("-- ADVS-RULE: id=%s, name=%s", rule.ID, rule.Name)}
 	if len(body) == 0 {
 		out = append(out, fmt.Sprintf("-- (no matchers/actions for rule %s)", rule.ID))
 	} else {
@@ -676,13 +676,13 @@ func formatLuaManagedHyprRule(rule windowrules.WindowRule) []string {
 	return out
 }
 
-func (p *HyprlandWritableProvider) LoadDMSRules() ([]windowrules.WindowRule, error) {
+func (p *HyprlandWritableProvider) LoadADVSRules() ([]windowrules.WindowRule, error) {
 	luaPath := p.GetOverridePath()
 	expanded, err := utils.ExpandPath(p.configDir)
 	if err != nil {
 		return nil, err
 	}
-	confPath := filepath.Join(expanded, "dms", "windowrules.conf")
+	confPath := filepath.Join(expanded, "advs", "windowrules.conf")
 
 	var data []byte
 	var loadedFrom string
@@ -700,12 +700,12 @@ func (p *HyprlandWritableProvider) LoadDMSRules() ([]windowrules.WindowRule, err
 	}
 
 	if strings.EqualFold(filepath.Ext(loadedFrom), ".lua") {
-		return p.loadDMSRulesFromLua(data, luaPath)
+		return p.loadADVSRulesFromLua(data, luaPath)
 	}
-	return p.loadDMSRulesFromConf(data, loadedFrom)
+	return p.loadADVSRulesFromConf(data, loadedFrom)
 }
 
-func (p *HyprlandWritableProvider) loadDMSRulesFromConf(data []byte, rulesPath string) ([]windowrules.WindowRule, error) {
+func (p *HyprlandWritableProvider) loadADVSRulesFromConf(data []byte, rulesPath string) ([]windowrules.WindowRule, error) {
 	var rules []windowrules.WindowRule
 	var currentID, currentName string
 	lines := strings.SplitSeq(string(data), "\n")
@@ -713,7 +713,7 @@ func (p *HyprlandWritableProvider) loadDMSRulesFromConf(data []byte, rulesPath s
 	for line := range lines {
 		trimmed := strings.TrimSpace(line)
 
-		if matches := dmsRuleCommentRegex.FindStringSubmatch(trimmed); matches != nil {
+		if matches := advsRuleCommentRegex.FindStringSubmatch(trimmed); matches != nil {
 			currentID = matches[1]
 			currentName = matches[2]
 			continue
@@ -759,7 +759,7 @@ func (p *HyprlandWritableProvider) loadDMSRulesFromConf(data []byte, rulesPath s
 	return rules, nil
 }
 
-func (p *HyprlandWritableProvider) loadDMSRulesFromLua(data []byte, rulesPath string) ([]windowrules.WindowRule, error) {
+func (p *HyprlandWritableProvider) loadADVSRulesFromLua(data []byte, rulesPath string) ([]windowrules.WindowRule, error) {
 	var rules []windowrules.WindowRule
 	lines := strings.Split(string(data), "\n")
 
@@ -768,7 +768,7 @@ func (p *HyprlandWritableProvider) loadDMSRulesFromLua(data []byte, rulesPath st
 	for li := 0; li < len(lines); {
 		trimmed := strings.TrimSpace(lines[li])
 		if strings.HasPrefix(trimmed, "--") {
-			if m := dmsRuleLuaHDRRegex.FindStringSubmatch(trimmed); m != nil {
+			if m := advsRuleLuaHDRRegex.FindStringSubmatch(trimmed); m != nil {
 				curID, curName = m[1], m[2]
 				li++
 				continue
@@ -802,7 +802,7 @@ func (p *HyprlandWritableProvider) loadDMSRulesFromLua(data []byte, rulesPath st
 					Actions:       *acts,
 				}
 				if wr.ID == "" {
-					wr.ID = fmt.Sprintf("dms_rule_%d", len(rules))
+					wr.ID = fmt.Sprintf("advs_rule_%d", len(rules))
 				}
 				rules = append(rules, wr)
 			}
@@ -827,7 +827,7 @@ func (p *HyprlandWritableProvider) loadDMSRulesFromLua(data []byte, rulesPath st
 	return rules, nil
 }
 
-func (p *HyprlandWritableProvider) writeDMSRules(rules []windowrules.WindowRule) error {
+func (p *HyprlandWritableProvider) writeADVSRules(rules []windowrules.WindowRule) error {
 	rulesPath := p.GetOverridePath()
 
 	if err := os.MkdirAll(filepath.Dir(rulesPath), 0755); err != nil {
@@ -835,7 +835,7 @@ func (p *HyprlandWritableProvider) writeDMSRules(rules []windowrules.WindowRule)
 	}
 
 	var lines []string
-	lines = append(lines, "-- DMS Window Rules — managed by DankMaterialShell")
+	lines = append(lines, "-- ADVS Window Rules — managed by AriadnevShell")
 	lines = append(lines, "-- Do not edit manually; changes may be overwritten")
 	lines = append(lines, "")
 
@@ -871,15 +871,15 @@ func hyprlandMainConfigPath(dir string) (string, error) {
 	return "", os.ErrNotExist
 }
 
-func isDMSWindowRulesSourcePath(sourcePath string) bool {
+func isADVSWindowRulesSourcePath(sourcePath string) bool {
 	p := filepath.ToSlash(strings.TrimSpace(sourcePath))
-	return p == "dms/windowrules.lua" || strings.HasSuffix(p, "/dms/windowrules.lua") ||
-		p == "dms/windowrules.conf" || strings.HasSuffix(p, "/dms/windowrules.conf") ||
-		p == "./dms/windowrules.lua" || p == "./dms/windowrules.conf"
+	return p == "advs/windowrules.lua" || strings.HasSuffix(p, "/advs/windowrules.lua") ||
+		p == "advs/windowrules.conf" || strings.HasSuffix(p, "/advs/windowrules.conf") ||
+		p == "./advs/windowrules.lua" || p == "./advs/windowrules.conf"
 }
 
-func isDMSWindowRulesRequireModule(mod string) bool {
-	return isDMSWindowRulesSourcePath(luaconfig.ModuleToRelPath(mod))
+func isADVSWindowRulesRequireModule(mod string) bool {
+	return isADVSWindowRulesSourcePath(luaconfig.ModuleToRelPath(mod))
 }
 
 func (p *HyprlandRulesParser) probeRequireWindowrulesLine(mainLua string) {
@@ -889,7 +889,7 @@ func (p *HyprlandRulesParser) probeRequireWindowrulesLine(mainLua string) {
 	}
 	lines := strings.Split(string(data), "\n")
 	for i, line := range lines {
-		if mod, ok := luaconfig.Require(line); ok && isDMSWindowRulesRequireModule(mod) {
+		if mod, ok := luaconfig.Require(line); ok && isADVSWindowRulesRequireModule(mod) {
 			p.requireLineInMain = i + 1
 			return
 		}
@@ -943,10 +943,10 @@ func (p *HyprlandRulesParser) parseLuaWindowRules(content, baseDir, absPath stri
 					continue
 				}
 				p.includeCount++
-				if isDMSWindowRulesRequireModule(mod) {
-					p.dmsRulesIncluded = true
-					p.dmsIncludePos = p.includeCount
-					p.dmsProcessed = true
+				if isADVSWindowRulesRequireModule(mod) {
+					p.advsRulesIncluded = true
+					p.advsIncludePos = p.includeCount
+					p.advsProcessed = true
 				}
 				_ = p.parseFile(expanded)
 			}
@@ -985,7 +985,7 @@ func (p *HyprlandRulesParser) parseLuaWindowRules(content, baseDir, absPath stri
 				p.rules = append(p.rules, hr)
 
 				if p.requireLineInMain > 0 && mainAbs != "" && curAbs == mainAbs && startLine > p.requireLineInMain {
-					p.rulesAfterDMS++
+					p.rulesAfterADVS++
 				}
 			}
 			advance := strings.Count(tail[:idx+consumedFrag], "\n")
@@ -1387,7 +1387,7 @@ func applyLuaActionKey(a *windowrules.Actions, key, raw string) bool {
 		a.Idleinhibit = strings.TrimSpace(luaStringValue(raw))
 		return true
 	default:
-		// Unsupported keys are left to Hyprland; DMS only round-trips managed fields.
+		// Unsupported keys are left to Hyprland; ADVS only round-trips managed fields.
 	}
 	return false
 }

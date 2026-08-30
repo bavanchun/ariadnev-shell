@@ -79,14 +79,14 @@ Column {
             anchors.rightMargin: Theme.spacingM
             spacing: Theme.spacingS
 
-            DankIcon {
+            AdvIcon {
                 name: section.collapsed ? "expand_more" : "expand_less"
                 size: Theme.iconSize
                 color: Theme.surfaceText
                 anchors.verticalCenter: parent.verticalCenter
             }
 
-            DankIcon {
+            AdvIcon {
                 name: section.isUngrouped ? "widgets" : "folder"
                 size: Theme.iconSize
                 color: Theme.primary
@@ -209,7 +209,7 @@ Column {
                         }
                     }
 
-                    DankIcon {
+                    AdvIcon {
                         x: Theme.spacingL - 2
                         y: Theme.spacingL + (Theme.iconSize / 2) - (size / 2)
                         name: "drag_indicator"

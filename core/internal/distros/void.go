@@ -8,13 +8,13 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/deps"
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/privesc"
+	"github.com/bavanchun/ariadnev-shell/core/internal/deps"
+	"github.com/bavanchun/ariadnev-shell/core/internal/privesc"
 )
 
 const (
-	VoidDMSRepo       = "https://void.danklinux.com/dms/current"
-	VoidDankLinuxRepo = "https://void.danklinux.com/danklinux/current"
+	VoidADVSRepo       = "https://void.ariadnev.vchun.dev/advs/current"
+	VoidAdvLinuxRepo = "https://void.ariadnev.vchun.dev/ariadnev/current"
 	VoidHyprlandRepo  = "https://mirror.black-hole.dev/x86_64"
 
 	voidRunitSvDir      = "/etc/sv"
@@ -62,12 +62,12 @@ func (v *VoidDistribution) DetectDependencies(ctx context.Context, wm deps.Windo
 func (v *VoidDistribution) DetectDependenciesWithTerminal(ctx context.Context, wm deps.WindowManager, terminal deps.Terminal) ([]deps.Dependency, error) {
 	var dependencies []deps.Dependency
 
-	dependencies = append(dependencies, v.detectDMS())
+	dependencies = append(dependencies, v.detectADVS())
 	dependencies = append(dependencies, v.detectSpecificTerminal(terminal))
 	dependencies = append(dependencies, v.detectGit())
 	dependencies = append(dependencies, v.detectWindowManager(wm))
 	dependencies = append(dependencies, v.detectQuickshell())
-	dependencies = append(dependencies, v.detectDMSGreeter())
+	dependencies = append(dependencies, v.detectAriadnevGreeter())
 	dependencies = append(dependencies, v.detectXDGPortal())
 	dependencies = append(dependencies, v.detectAccountsService())
 	dependencies = append(dependencies, v.detectDBus())
@@ -83,30 +83,30 @@ func (v *VoidDistribution) DetectDependenciesWithTerminal(ctx context.Context, w
 	}
 
 	dependencies = append(dependencies, v.detectMatugen())
-	dependencies = append(dependencies, v.detectDanksearch())
-	dependencies = append(dependencies, v.detectDankCalendar())
+	dependencies = append(dependencies, v.detectAdvsearch())
+	dependencies = append(dependencies, v.detectAdvCalendar())
 
 	return dependencies, nil
 }
 
-func (v *VoidDistribution) detectDMS() deps.Dependency {
+func (v *VoidDistribution) detectADVS() deps.Dependency {
 	status := deps.StatusMissing
 	version := ""
 	variant := deps.VariantStable
 
-	if v.packageInstalled("dms-git") {
+	if v.packageInstalled("ariadnev-shell-git") {
 		status = deps.StatusInstalled
-		version = v.packageVersion("dms-git")
+		version = v.packageVersion("ariadnev-shell-git")
 		variant = deps.VariantGit
-	} else if v.packageInstalled("dms") {
+	} else if v.packageInstalled("advs") {
 		status = deps.StatusInstalled
-		version = v.packageVersion("dms")
-	} else if v.commandExists("dms") {
+		version = v.packageVersion("advs")
+	} else if v.commandExists("advs") {
 		status = deps.StatusInstalled
 	}
 
 	return deps.Dependency{
-		Name:        "dms (DankMaterialShell)",
+		Name:        "advs (AriadnevShell)",
 		Status:      status,
 		Version:     version,
 		Description: "Desktop Management System package",
@@ -126,8 +126,8 @@ func (v *VoidDistribution) detectXDGPortal() deps.Dependency {
 	return v.detectPackage("xdg-desktop-portal-gtk", "Desktop integration portal for GTK", v.packageInstalled("xdg-desktop-portal-gtk"))
 }
 
-func (v *VoidDistribution) detectDMSGreeter() deps.Dependency {
-	return v.detectOptionalPackage("dms-greeter", "DankMaterialShell greetd greeter", v.packageInstalled("dms-greeter"))
+func (v *VoidDistribution) detectAriadnevGreeter() deps.Dependency {
+	return v.detectOptionalPackage("advs-greeter", "AriadnevShell greetd greeter", v.packageInstalled("advs-greeter"))
 }
 
 func (v *VoidDistribution) detectAccountsService() deps.Dependency {
@@ -180,10 +180,10 @@ func (v *VoidDistribution) GetPackageMappingWithVariants(wm deps.WindowManager, 
 
 		"quickshell":              {Name: "quickshell", Repository: RepoTypeSystem},
 		"matugen":                 {Name: "matugen", Repository: RepoTypeSystem},
-		"dms (DankMaterialShell)": v.getDmsMapping(variants["dms (DankMaterialShell)"]),
-		"dms-greeter":             {Name: "dms-greeter", Repository: RepoTypeXBPS, RepoURL: VoidDMSRepo},
-		"danksearch":              {Name: "danksearch", Repository: RepoTypeXBPS, RepoURL: VoidDankLinuxRepo},
-		"dankcalendar":            {Name: "dankcalendar", Repository: RepoTypeXBPS, RepoURL: VoidDankLinuxRepo},
+		"advs (AriadnevShell)": v.getAdvsMapping(variants["advs (AriadnevShell)"]),
+		"advs-greeter":             {Name: "advs-greeter", Repository: RepoTypeXBPS, RepoURL: VoidADVSRepo},
+		"advsearch":              {Name: "advsearch", Repository: RepoTypeXBPS, RepoURL: VoidAdvLinuxRepo},
+		"advcalendar":            {Name: "advcalendar", Repository: RepoTypeXBPS, RepoURL: VoidAdvLinuxRepo},
 	}
 
 	switch wm {
@@ -202,11 +202,11 @@ func (v *VoidDistribution) GetPackageMappingWithVariants(wm deps.WindowManager, 
 	return packages
 }
 
-func (v *VoidDistribution) getDmsMapping(variant deps.PackageVariant) PackageMapping {
+func (v *VoidDistribution) getAdvsMapping(variant deps.PackageVariant) PackageMapping {
 	if variant == deps.VariantStable {
-		return PackageMapping{Name: "dms", Repository: RepoTypeXBPS, RepoURL: VoidDMSRepo}
+		return PackageMapping{Name: "advs", Repository: RepoTypeXBPS, RepoURL: VoidADVSRepo}
 	}
-	return PackageMapping{Name: "dms-git", Repository: RepoTypeXBPS, RepoURL: VoidDMSRepo}
+	return PackageMapping{Name: "ariadnev-shell-git", Repository: RepoTypeXBPS, RepoURL: VoidADVSRepo}
 }
 
 func (v *VoidDistribution) InstallPrerequisites(ctx context.Context, sudoPassword string, progressChan chan<- InstallProgressMsg) error {
@@ -254,10 +254,10 @@ func (v *VoidDistribution) InstallPackages(ctx context.Context, dependencies []d
 		progressChan <- InstallProgressMsg{
 			Phase:      PhaseSystemPackages,
 			Progress:   0.15,
-			Step:       "Enabling DMS XBPS repositories...",
+			Step:       "Enabling ADVS XBPS repositories...",
 			IsComplete: false,
 			NeedsSudo:  true,
-			LogOutput:  "Setting up custom XBPS repositories for DMS packages",
+			LogOutput:  "Setting up custom XBPS repositories for ADVS packages",
 		}
 		if err := v.enableXBPSRepos(ctx, xbpsPkgs, sudoPassword, progressChan); err != nil {
 			return fmt.Errorf("failed to enable XBPS repositories: %w", err)
@@ -287,7 +287,7 @@ func (v *VoidDistribution) InstallPackages(ctx context.Context, dependencies []d
 		LogOutput:  "Starting post-installation configuration...",
 	}
 
-	v.log("Void Linux detected; DMS environment and autostart will be configured in the compositor config instead of systemd")
+	v.log("Void Linux detected; ADVS environment and autostart will be configured in the compositor config instead of systemd")
 	if err := v.ensureSessionServices(ctx, sudoPassword, progressChan); err != nil {
 		return fmt.Errorf("failed to enable Void session services: %w", err)
 	}
@@ -474,10 +474,10 @@ func (v *VoidDistribution) enableXBPSRepos(ctx context.Context, xbpsPkgs []Packa
 
 func (v *VoidDistribution) xbpsRepoName(repoURL string) string {
 	switch repoURL {
-	case VoidDMSRepo:
-		return "dms"
-	case VoidDankLinuxRepo:
-		return "danklinux"
+	case VoidADVSRepo:
+		return "advs"
+	case VoidAdvLinuxRepo:
+		return "ariadnev"
 	case VoidHyprlandRepo:
 		return "hyprland"
 	default:

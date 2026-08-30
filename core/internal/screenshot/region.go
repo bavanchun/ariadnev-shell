@@ -4,13 +4,13 @@ import (
 	"fmt"
 	"sync"
 
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/log"
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/proto/keyboard_shortcuts_inhibit"
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/proto/wlr_layer_shell"
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/proto/wlr_screencopy"
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/proto/wp_cursor_shape"
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/proto/wp_viewporter"
-	wlhelpers "github.com/AvengeMedia/DankMaterialShell/core/internal/wayland/client"
+	"github.com/bavanchun/ariadnev-shell/core/internal/log"
+	"github.com/bavanchun/ariadnev-shell/core/internal/proto/keyboard_shortcuts_inhibit"
+	"github.com/bavanchun/ariadnev-shell/core/internal/proto/wlr_layer_shell"
+	"github.com/bavanchun/ariadnev-shell/core/internal/proto/wlr_screencopy"
+	"github.com/bavanchun/ariadnev-shell/core/internal/proto/wp_cursor_shape"
+	"github.com/bavanchun/ariadnev-shell/core/internal/proto/wp_viewporter"
+	wlhelpers "github.com/bavanchun/ariadnev-shell/core/internal/wayland/client"
 	"github.com/AvengeMedia/dankgo/wayland/client"
 )
 
@@ -654,7 +654,7 @@ func (r *RegionSelector) createOutputSurface(output *WaylandOutput) (*OutputSurf
 		surface,
 		output.wlOutput,
 		uint32(wlr_layer_shell.ZwlrLayerShellV1LayerOverlay),
-		"dms-screenshot",
+		"advs-screenshot",
 	)
 	if err != nil {
 		return nil, fmt.Errorf("get layer surface: %w", err)

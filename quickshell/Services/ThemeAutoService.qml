@@ -104,8 +104,8 @@ Singleton {
 
         function onLatitudeChanged() {
             if (root.active && SessionData.themeModeAutoMode === "location") {
-                if (!SessionData.nightModeUseIPLocation && SessionData.latitude !== 0.0 && SessionData.longitude !== 0.0 && typeof DMSService !== "undefined") {
-                    DMSService.sendRequest("wayland.gamma.setLocation", {
+                if (!SessionData.nightModeUseIPLocation && SessionData.latitude !== 0.0 && SessionData.longitude !== 0.0 && typeof ADVSService !== "undefined") {
+                    ADVSService.sendRequest("wayland.gamma.setLocation", {
                         "latitude": SessionData.latitude,
                         "longitude": SessionData.longitude
                     });
@@ -117,8 +117,8 @@ Singleton {
 
         function onLongitudeChanged() {
             if (root.active && SessionData.themeModeAutoMode === "location") {
-                if (!SessionData.nightModeUseIPLocation && SessionData.latitude !== 0.0 && SessionData.longitude !== 0.0 && typeof DMSService !== "undefined") {
-                    DMSService.sendRequest("wayland.gamma.setLocation", {
+                if (!SessionData.nightModeUseIPLocation && SessionData.latitude !== 0.0 && SessionData.longitude !== 0.0 && typeof ADVSService !== "undefined") {
+                    ADVSService.sendRequest("wayland.gamma.setLocation", {
                         "latitude": SessionData.latitude,
                         "longitude": SessionData.longitude
                     });
@@ -130,12 +130,12 @@ Singleton {
 
         function onNightModeUseIPLocationChanged() {
             if (root.active && SessionData.themeModeAutoMode === "location") {
-                if (typeof DMSService !== "undefined") {
-                    DMSService.sendRequest("wayland.gamma.setUseIPLocation", {
+                if (typeof ADVSService !== "undefined") {
+                    ADVSService.sendRequest("wayland.gamma.setUseIPLocation", {
                         "use": SessionData.nightModeUseIPLocation
                     }, response => {
                         if (!response.error && !SessionData.nightModeUseIPLocation && SessionData.latitude !== 0.0 && SessionData.longitude !== 0.0) {
-                            DMSService.sendRequest("wayland.gamma.setLocation", {
+                            ADVSService.sendRequest("wayland.gamma.setLocation", {
                                 "latitude": SessionData.latitude,
                                 "longitude": SessionData.longitude
                             });
@@ -160,7 +160,7 @@ Singleton {
     }
 
     Connections {
-        target: DMSService
+        target: ADVSService
 
         function onThemeAutoStateUpdate(data) {
             if (!SessionData.themeModeAutoEnabled) {
@@ -170,16 +170,16 @@ Singleton {
         }
 
         function onConnectionStateChanged() {
-            if (DMSService.isConnected && SessionData.themeModeAutoMode === "time") {
+            if (ADVSService.isConnected && SessionData.themeModeAutoMode === "time") {
                 root.syncTimeSchedule();
             }
 
-            if (DMSService.isConnected && SessionData.themeModeAutoMode === "location") {
+            if (ADVSService.isConnected && SessionData.themeModeAutoMode === "location") {
                 root.syncLocationSchedule();
             }
 
             if (root.backendAvailable() && SessionData.themeModeAutoEnabled) {
-                DMSService.sendRequest("theme.auto.getState", null, response => {
+                ADVSService.sendRequest("theme.auto.getState", null, response => {
                     if (response && response.result) {
                         root.applyBackendState(response.result);
                     }
@@ -190,9 +190,9 @@ Singleton {
                 return;
             }
 
-            if (DMSService.isConnected && SessionData.themeModeAutoMode === "location") {
+            if (ADVSService.isConnected && SessionData.themeModeAutoMode === "location") {
                 if (SessionData.nightModeUseIPLocation) {
-                    DMSService.sendRequest("wayland.gamma.setUseIPLocation", {
+                    ADVSService.sendRequest("wayland.gamma.setUseIPLocation", {
                         "use": true
                     }, response => {
                         if (!response.error) {
@@ -200,11 +200,11 @@ Singleton {
                         }
                     });
                 } else if (SessionData.latitude !== 0.0 && SessionData.longitude !== 0.0) {
-                    DMSService.sendRequest("wayland.gamma.setUseIPLocation", {
+                    ADVSService.sendRequest("wayland.gamma.setUseIPLocation", {
                         "use": false
                     }, response => {
                         if (!response.error) {
-                            DMSService.sendRequest("wayland.gamma.setLocation", {
+                            ADVSService.sendRequest("wayland.gamma.setLocation", {
                                 "latitude": SessionData.latitude,
                                 "longitude": SessionData.longitude
                             }, locationResponse => {
@@ -239,11 +239,11 @@ Singleton {
             evaluate();
             return;
         }
-        DMSService.sendRequest("theme.auto.trigger", {});
+        ADVSService.sendRequest("theme.auto.trigger", {});
     }
 
     function backendAvailable() {
-        return typeof DMSService !== "undefined" && DMSService.isConnected && Array.isArray(DMSService.capabilities) && DMSService.capabilities.includes("theme.auto");
+        return typeof ADVSService !== "undefined" && ADVSService.isConnected && Array.isArray(ADVSService.capabilities) && ADVSService.capabilities.includes("theme.auto");
     }
 
     function applyBackendState(state) {
@@ -262,11 +262,11 @@ Singleton {
     }
 
     function syncTimeSchedule() {
-        if (typeof SessionData === "undefined" || typeof DMSService === "undefined") {
+        if (typeof SessionData === "undefined" || typeof ADVSService === "undefined") {
             return;
         }
 
-        if (!DMSService.isConnected) {
+        if (!ADVSService.isConnected) {
             return;
         }
 
@@ -276,7 +276,7 @@ Singleton {
             return;
         }
 
-        DMSService.sendRequest("theme.auto.setMode", {
+        ADVSService.sendRequest("theme.auto.setMode", {
             "mode": "time"
         });
 
@@ -286,7 +286,7 @@ Singleton {
         const endHour = shareSettings ? SessionData.nightModeEndHour : SessionData.themeModeEndHour;
         const endMinute = shareSettings ? SessionData.nightModeEndMinute : SessionData.themeModeEndMinute;
 
-        DMSService.sendRequest("theme.auto.setSchedule", {
+        ADVSService.sendRequest("theme.auto.setSchedule", {
             "startHour": startHour,
             "startMinute": startMinute,
             "endHour": endHour,
@@ -297,18 +297,18 @@ Singleton {
             }
         });
 
-        DMSService.sendRequest("theme.auto.setEnabled", {
+        ADVSService.sendRequest("theme.auto.setEnabled", {
             "enabled": true
         });
-        DMSService.sendRequest("theme.auto.trigger", {});
+        ADVSService.sendRequest("theme.auto.trigger", {});
     }
 
     function syncLocationSchedule() {
-        if (typeof SessionData === "undefined" || typeof DMSService === "undefined") {
+        if (typeof SessionData === "undefined" || typeof ADVSService === "undefined") {
             return;
         }
 
-        if (!DMSService.isConnected) {
+        if (!ADVSService.isConnected) {
             return;
         }
 
@@ -318,30 +318,30 @@ Singleton {
             return;
         }
 
-        DMSService.sendRequest("theme.auto.setMode", {
+        ADVSService.sendRequest("theme.auto.setMode", {
             "mode": "location"
         });
 
         if (SessionData.nightModeUseIPLocation) {
-            DMSService.sendRequest("theme.auto.setUseIPLocation", {
+            ADVSService.sendRequest("theme.auto.setUseIPLocation", {
                 "use": true
             });
         } else {
-            DMSService.sendRequest("theme.auto.setUseIPLocation", {
+            ADVSService.sendRequest("theme.auto.setUseIPLocation", {
                 "use": false
             });
             if (SessionData.latitude !== 0.0 && SessionData.longitude !== 0.0) {
-                DMSService.sendRequest("theme.auto.setLocation", {
+                ADVSService.sendRequest("theme.auto.setLocation", {
                     "latitude": SessionData.latitude,
                     "longitude": SessionData.longitude
                 });
             }
         }
 
-        DMSService.sendRequest("theme.auto.setEnabled", {
+        ADVSService.sendRequest("theme.auto.setEnabled", {
             "enabled": true
         });
-        DMSService.sendRequest("theme.auto.trigger", {});
+        ADVSService.sendRequest("theme.auto.trigger", {});
     }
 
     function evaluate() {
@@ -350,7 +350,7 @@ Singleton {
         }
 
         if (backendAvailable()) {
-            DMSService.sendRequest("theme.auto.getState", null, response => {
+            ADVSService.sendRequest("theme.auto.getState", null, response => {
                 if (response && response.result) {
                     applyBackendState(response.result);
                 }
@@ -456,16 +456,16 @@ Singleton {
     }
 
     function sendLocationToBackend() {
-        if (typeof SessionData === "undefined" || typeof DMSService === "undefined") {
+        if (typeof SessionData === "undefined" || typeof ADVSService === "undefined") {
             return false;
         }
 
-        if (!DMSService.isConnected) {
+        if (!ADVSService.isConnected) {
             return false;
         }
 
         if (SessionData.nightModeUseIPLocation) {
-            DMSService.sendRequest("wayland.gamma.setUseIPLocation", {
+            ADVSService.sendRequest("wayland.gamma.setUseIPLocation", {
                 "use": true
             }, response => {
                 if (response?.error) {
@@ -474,11 +474,11 @@ Singleton {
             });
             return true;
         } else if (SessionData.latitude !== 0.0 && SessionData.longitude !== 0.0) {
-            DMSService.sendRequest("wayland.gamma.setUseIPLocation", {
+            ADVSService.sendRequest("wayland.gamma.setUseIPLocation", {
                 "use": false
             }, response => {
                 if (!response.error) {
-                    DMSService.sendRequest("wayland.gamma.setLocation", {
+                    ADVSService.sendRequest("wayland.gamma.setLocation", {
                         "latitude": SessionData.latitude,
                         "longitude": SessionData.longitude
                     }, locResp => {
@@ -532,8 +532,8 @@ Singleton {
 
     function stop() {
         root.active = false;
-        if (typeof DMSService !== "undefined" && DMSService.isConnected) {
-            DMSService.sendRequest("theme.auto.setEnabled", {
+        if (typeof ADVSService !== "undefined" && ADVSService.isConnected) {
+            ADVSService.sendRequest("theme.auto.setEnabled", {
                 "enabled": false
             });
         }

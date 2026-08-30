@@ -8,7 +8,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/registries"
+	"github.com/bavanchun/ariadnev-shell/core/internal/registries"
 	"github.com/go-git/go-git/v6"
 	"github.com/go-git/go-git/v6/plumbing/object"
 	"github.com/spf13/afero"
@@ -80,7 +80,7 @@ func TestNewRegistry(t *testing.T) {
 
 func TestGetCacheDir(t *testing.T) {
 	cacheDir := getCacheDir()
-	assert.Contains(t, cacheDir, "/tmp/dankdots-plugin-registry")
+	assert.Contains(t, cacheDir, "/tmp/advdots-plugin-registry")
 }
 
 func TestRealGitClientRevisionCheckout(t *testing.T) {
@@ -93,7 +93,7 @@ func TestRealGitClientRevisionCheckout(t *testing.T) {
 	worktree, err := repo.Worktree()
 	require.NoError(t, err)
 	filePath := filepath.Join(repoPath, "value.txt")
-	signature := &object.Signature{Name: "DMS Test", Email: "test@example.com", When: time.Unix(1, 0)}
+	signature := &object.Signature{Name: "ADVS Test", Email: "test@example.com", When: time.Unix(1, 0)}
 
 	require.NoError(t, os.WriteFile(filePath, []byte("one"), 0o644))
 	_, err = worktree.Add("value.txt")
@@ -153,7 +153,7 @@ func TestLoadPlugins(t *testing.T) {
 
 		plugin1 := Plugin{
 			Name:         "TestPlugin1",
-			Capabilities: []string{"dankbar-widget"},
+			Capabilities: []string{"advbar-widget"},
 			Category:     "monitoring",
 			Repo:         "https://github.com/test/plugin1",
 			Author:       "Test Author",
@@ -184,7 +184,7 @@ func TestLoadPlugins(t *testing.T) {
 
 		assert.Equal(t, "TestPlugin1", plugins[0].Name)
 		assert.Equal(t, "TestPlugin2", plugins[1].Name)
-		assert.Equal(t, []string{"dankbar-widget"}, plugins[0].Capabilities)
+		assert.Equal(t, []string{"advbar-widget"}, plugins[0].Capabilities)
 		assert.Equal(t, []string{"dep1", "dep2"}, plugins[1].Dependencies)
 	})
 

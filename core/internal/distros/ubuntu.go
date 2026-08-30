@@ -6,8 +6,8 @@ import (
 	"os/exec"
 	"strings"
 
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/deps"
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/privesc"
+	"github.com/bavanchun/ariadnev-shell/core/internal/deps"
+	"github.com/bavanchun/ariadnev-shell/core/internal/privesc"
 )
 
 func init() {
@@ -54,8 +54,8 @@ func (u *UbuntuDistribution) DetectDependencies(ctx context.Context, wm deps.Win
 func (u *UbuntuDistribution) DetectDependenciesWithTerminal(ctx context.Context, wm deps.WindowManager, terminal deps.Terminal) ([]deps.Dependency, error) {
 	var dependencies []deps.Dependency
 
-	// DMS at the top (shell is prominent)
-	dependencies = append(dependencies, u.detectDMS())
+	// ADVS at the top (shell is prominent)
+	dependencies = append(dependencies, u.detectADVS())
 
 	// Terminal with choice support
 	dependencies = append(dependencies, u.detectSpecificTerminal(terminal))
@@ -64,7 +64,7 @@ func (u *UbuntuDistribution) DetectDependenciesWithTerminal(ctx context.Context,
 	dependencies = append(dependencies, u.detectGit())
 	dependencies = append(dependencies, u.detectWindowManager(wm))
 	dependencies = append(dependencies, u.detectQuickshell())
-	dependencies = append(dependencies, u.detectDMSGreeter())
+	dependencies = append(dependencies, u.detectAriadnevGreeter())
 	dependencies = append(dependencies, u.detectXDGPortal())
 	dependencies = append(dependencies, u.detectAccountsService())
 
@@ -79,8 +79,8 @@ func (u *UbuntuDistribution) DetectDependenciesWithTerminal(ctx context.Context,
 	}
 
 	dependencies = append(dependencies, u.detectMatugen())
-	dependencies = append(dependencies, u.detectDanksearch())
-	dependencies = append(dependencies, u.detectDankCalendar())
+	dependencies = append(dependencies, u.detectAdvsearch())
+	dependencies = append(dependencies, u.detectAdvCalendar())
 
 	return dependencies, nil
 }
@@ -97,8 +97,8 @@ func (u *UbuntuDistribution) detectAccountsService() deps.Dependency {
 	return u.detectPackage("accountsservice", "D-Bus interface for user account query and manipulation", u.packageInstalled("accountsservice"))
 }
 
-func (u *UbuntuDistribution) detectDMSGreeter() deps.Dependency {
-	return u.detectOptionalPackage("dms-greeter", "DankMaterialShell greetd greeter", u.packageInstalled("dms-greeter"))
+func (u *UbuntuDistribution) detectAriadnevGreeter() deps.Dependency {
+	return u.detectOptionalPackage("advs-greeter", "AriadnevShell greetd greeter", u.packageInstalled("advs-greeter"))
 }
 
 func (u *UbuntuDistribution) packageInstalled(pkg string) bool {
@@ -118,14 +118,14 @@ func (u *UbuntuDistribution) GetPackageMappingWithVariants(wm deps.WindowManager
 		"xdg-desktop-portal-gtk": {Name: "xdg-desktop-portal-gtk", Repository: RepoTypeSystem},
 		"accountsservice":        {Name: "accountsservice", Repository: RepoTypeSystem},
 
-		// DMS packages from PPAs
-		"dms (DankMaterialShell)": u.getDmsMapping(variants["dms (DankMaterialShell)"]),
+		// ADVS packages from PPAs
+		"advs (AriadnevShell)": u.getAdvsMapping(variants["advs (AriadnevShell)"]),
 		"quickshell":              u.getQuickshellMapping(variants["quickshell"]),
-		"dms-greeter":             {Name: "dms-greeter", Repository: RepoTypePPA, RepoURL: "ppa:avengemedia/danklinux"},
-		"matugen":                 {Name: "matugen", Repository: RepoTypePPA, RepoURL: "ppa:avengemedia/danklinux"},
-		"ghostty":                 {Name: "ghostty", Repository: RepoTypePPA, RepoURL: "ppa:avengemedia/danklinux"},
-		"danksearch":              {Name: "danksearch", Repository: RepoTypePPA, RepoURL: "ppa:avengemedia/danklinux"},
-		"dankcalendar":            {Name: "dankcalendar-git", Repository: RepoTypePPA, RepoURL: "ppa:avengemedia/danklinux"},
+		"advs-greeter":             {Name: "advs-greeter", Repository: RepoTypePPA, RepoURL: "ppa:bavanchun/ariadnev"},
+		"matugen":                 {Name: "matugen", Repository: RepoTypePPA, RepoURL: "ppa:bavanchun/ariadnev"},
+		"ghostty":                 {Name: "ghostty", Repository: RepoTypePPA, RepoURL: "ppa:bavanchun/ariadnev"},
+		"advsearch":              {Name: "advsearch", Repository: RepoTypePPA, RepoURL: "ppa:bavanchun/ariadnev"},
+		"advcalendar":            {Name: "advcalendar-git", Repository: RepoTypePPA, RepoURL: "ppa:bavanchun/ariadnev"},
 	}
 
 	switch wm {
@@ -143,32 +143,32 @@ func (u *UbuntuDistribution) GetPackageMappingWithVariants(wm deps.WindowManager
 	return packages
 }
 
-func (u *UbuntuDistribution) getDmsMapping(variant deps.PackageVariant) PackageMapping {
+func (u *UbuntuDistribution) getAdvsMapping(variant deps.PackageVariant) PackageMapping {
 	if variant == deps.VariantGit {
-		return PackageMapping{Name: "dms-git", Repository: RepoTypePPA, RepoURL: "ppa:avengemedia/dms-git"}
+		return PackageMapping{Name: "ariadnev-shell-git", Repository: RepoTypePPA, RepoURL: "ppa:bavanchun/ariadnev-shell-git"}
 	}
-	return PackageMapping{Name: "dms", Repository: RepoTypePPA, RepoURL: "ppa:avengemedia/dms"}
+	return PackageMapping{Name: "advs", Repository: RepoTypePPA, RepoURL: "ppa:bavanchun/advs"}
 }
 
 func (u *UbuntuDistribution) getQuickshellMapping(variant deps.PackageVariant) PackageMapping {
 	if forceQuickshellGit || variant == deps.VariantGit {
-		return PackageMapping{Name: "quickshell-git", Repository: RepoTypePPA, RepoURL: "ppa:avengemedia/danklinux"}
+		return PackageMapping{Name: "quickshell-git", Repository: RepoTypePPA, RepoURL: "ppa:bavanchun/ariadnev"}
 	}
-	return PackageMapping{Name: "quickshell", Repository: RepoTypePPA, RepoURL: "ppa:avengemedia/danklinux"}
+	return PackageMapping{Name: "quickshell", Repository: RepoTypePPA, RepoURL: "ppa:bavanchun/ariadnev"}
 }
 
 func (u *UbuntuDistribution) getNiriMapping(variant deps.PackageVariant) PackageMapping {
 	if variant == deps.VariantGit {
-		return PackageMapping{Name: "niri-git", Repository: RepoTypePPA, RepoURL: "ppa:avengemedia/danklinux"}
+		return PackageMapping{Name: "niri-git", Repository: RepoTypePPA, RepoURL: "ppa:bavanchun/ariadnev"}
 	}
-	return PackageMapping{Name: "niri", Repository: RepoTypePPA, RepoURL: "ppa:avengemedia/danklinux"}
+	return PackageMapping{Name: "niri", Repository: RepoTypePPA, RepoURL: "ppa:bavanchun/ariadnev"}
 }
 
 func (u *UbuntuDistribution) getXwaylandSatelliteMapping(variant deps.PackageVariant) PackageMapping {
 	if variant == deps.VariantGit {
-		return PackageMapping{Name: "xwayland-satellite-git", Repository: RepoTypePPA, RepoURL: "ppa:avengemedia/danklinux"}
+		return PackageMapping{Name: "xwayland-satellite-git", Repository: RepoTypePPA, RepoURL: "ppa:bavanchun/ariadnev"}
 	}
-	return PackageMapping{Name: "xwayland-satellite", Repository: RepoTypePPA, RepoURL: "ppa:avengemedia/danklinux"}
+	return PackageMapping{Name: "xwayland-satellite", Repository: RepoTypePPA, RepoURL: "ppa:bavanchun/ariadnev"}
 }
 
 func (u *UbuntuDistribution) InstallPrerequisites(ctx context.Context, sudoPassword string, progressChan chan<- InstallProgressMsg) error {
@@ -334,8 +334,8 @@ func (u *UbuntuDistribution) InstallPackages(ctx context.Context, dependencies [
 		u.log(fmt.Sprintf("Warning: failed to write window manager config: %v", err))
 	}
 
-	if err := u.EnableDMSService(ctx, wm); err != nil {
-		u.log(fmt.Sprintf("Warning: failed to enable dms service: %v", err))
+	if err := u.EnableADVSService(ctx, wm); err != nil {
+		u.log(fmt.Sprintf("Warning: failed to enable advs service: %v", err))
 	}
 
 	// Phase 7: Complete

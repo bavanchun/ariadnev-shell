@@ -5,10 +5,10 @@ import qs.Services
 import qs.Widgets
 import Quickshell.Services.UPower
 
-DankModal {
+AdvModal {
     id: root
 
-    layerNamespace: "dms:power-profiles"
+    layerNamespace: "advs:power-profiles"
     keepPopoutsOpen: true
 
     property int selectedIndex: 0
@@ -156,7 +156,7 @@ DankModal {
                         }
                     }
 
-                    DankActionButton {
+                    AdvActionButton {
                         iconName: "close"
                         iconSize: Theme.iconSize - 4
                         iconColor: Theme.surfaceText
@@ -223,7 +223,7 @@ DankModal {
                                 anchors.centerIn: parent
                                 spacing: Theme.spacingS
 
-                                DankIcon {
+                                AdvIcon {
                                     name: Theme.getPowerProfileIcon(modelData)
                                     size: Theme.iconSize + 16
                                     color: isActive ? Theme.primary : Theme.surfaceText
@@ -272,7 +272,7 @@ DankModal {
                     spacing: Theme.spacingXS
                     opacity: 0.5
 
-                    DankIcon {
+                    AdvIcon {
                         name: "keyboard"
                         size: Theme.fontSizeSmall
                         color: Theme.surfaceText

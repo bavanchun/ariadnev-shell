@@ -4,7 +4,7 @@ import qs.Common
 import qs.Services
 import qs.Widgets
 
-DankFloatingWindow {
+AdvFloatingWindow {
     id: root
     readonly property var log: Log.scoped("WorkspaceRenameModal")
 
@@ -95,7 +95,7 @@ DankFloatingWindow {
                     anchors.right: parent.right
                     spacing: Theme.spacingXS
 
-                    DankActionButton {
+                    AdvActionButton {
                         visible: windowControls.canMaximize
                         iconName: root.maximized ? "fullscreen_exit" : "fullscreen"
                         iconSize: Theme.iconSize - 4
@@ -103,7 +103,7 @@ DankFloatingWindow {
                         onClicked: windowControls.tryToggleMaximize()
                     }
 
-                    DankActionButton {
+                    AdvActionButton {
                         iconName: "close"
                         iconSize: Theme.iconSize - 4
                         iconColor: Theme.surfaceText
@@ -125,7 +125,7 @@ DankFloatingWindow {
                     onClicked: nameInput.forceActiveFocus()
                 }
 
-                DankTextField {
+                AdvTextField {
                     id: nameInput
 
                     anchors.fill: parent

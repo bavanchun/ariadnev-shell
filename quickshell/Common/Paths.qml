@@ -15,10 +15,10 @@ Singleton {
     readonly property url pictures: StandardPaths.standardLocations(StandardPaths.PicturesLocation)[0]
     readonly property url xdgCache: StandardPaths.standardLocations(StandardPaths.GenericCacheLocation)[0]
 
-    readonly property url data: `${StandardPaths.standardLocations(StandardPaths.GenericDataLocation)[0]}/DankMaterialShell`
-    readonly property url state: `${StandardPaths.standardLocations(StandardPaths.GenericStateLocation)[0]}/DankMaterialShell`
-    readonly property url cache: `${StandardPaths.standardLocations(StandardPaths.GenericCacheLocation)[0]}/DankMaterialShell`
-    readonly property url config: `${StandardPaths.standardLocations(StandardPaths.GenericConfigLocation)[0]}/DankMaterialShell`
+    readonly property url data: `${StandardPaths.standardLocations(StandardPaths.GenericDataLocation)[0]}/AriadnevShell`
+    readonly property url state: `${StandardPaths.standardLocations(StandardPaths.GenericStateLocation)[0]}/AriadnevShell`
+    readonly property url cache: `${StandardPaths.standardLocations(StandardPaths.GenericCacheLocation)[0]}/AriadnevShell`
+    readonly property url config: `${StandardPaths.standardLocations(StandardPaths.GenericConfigLocation)[0]}/AriadnevShell`
 
     readonly property url imagecache: `${cache}/imagecache`
 
@@ -121,7 +121,7 @@ Singleton {
     }
 
     function copyPathToClipboard(path: string): void {
-        Quickshell.execDetached([Proc.dmsBin, "cl", "copy", path]);
+        Quickshell.execDetached([Proc.advsBin, "cl", "copy", path]);
     }
 
     function resolveIconUrl(iconName: string): string {
@@ -141,7 +141,7 @@ Singleton {
 
     function getAppIcon(appId: string, desktopEntry: var): string {
         if (appId === "org.quickshell") {
-            return Qt.resolvedUrl("../assets/danklogo.svg");
+            return Qt.resolvedUrl("../assets/advlogo.svg");
         }
 
         const moddedId = moddedAppId(appId);
@@ -162,8 +162,8 @@ Singleton {
     }
 
     function getAppName(appId: string, desktopEntry: var): string {
-        if (appId === "org.quickshell" || appId === "com.danklinux.dms") {
-            return "dms";
+        if (appId === "org.quickshell" || appId === "dev.vchun.ariadnev") {
+            return "advs";
         }
 
         return desktopEntry && desktopEntry.name ? desktopEntry.name : appId;

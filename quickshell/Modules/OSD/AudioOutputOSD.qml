@@ -3,7 +3,7 @@ import qs.Common
 import qs.Services
 import qs.Widgets
 
-DankOSD {
+AdvOSD {
     id: root
 
     property string deviceName: ""
@@ -41,7 +41,7 @@ DankOSD {
         width: parent.width - Theme.spacingS * 2
         height: 40
 
-        DankIcon {
+        AdvIcon {
             id: iconItem
             width: Theme.iconSize
             height: Theme.iconSize

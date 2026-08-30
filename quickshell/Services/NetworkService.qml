@@ -120,40 +120,40 @@ Singleton {
 
     property var activeService: null
 
-    readonly property string socketPath: Quickshell.env("DMS_SOCKET")
+    readonly property string socketPath: Quickshell.env("ADVS_SOCKET")
 
     // Backend adoption must be state-checked here, not only edge-triggered below:
     // with staged shell loading this singleton can be instantiated after
-    // DMSNetworkService already resolved its capabilities, so the change signal
+    // ADVSNetworkService already resolved its capabilities, so the change signal
     // may never fire again.
     Component.onCompleted: {
         log.info("Initializing...");
         if (!socketPath || socketPath.length === 0) {
-            log.info("DMS_SOCKET not set, network backend unavailable");
+            log.info("ADVS_SOCKET not set, network backend unavailable");
             return;
         }
-        if (DMSNetworkService.networkAvailable) {
-            log.info("Network capability already available, using DMSNetworkService");
-            useDMSService();
+        if (ADVSNetworkService.networkAvailable) {
+            log.info("Network capability already available, using ADVSNetworkService");
+            useADVSService();
             return;
         }
-        log.debug("DMS_SOCKET found, waiting for capabilities...");
+        log.debug("ADVS_SOCKET found, waiting for capabilities...");
     }
 
     Connections {
-        target: DMSNetworkService
+        target: ADVSNetworkService
 
         function onNetworkAvailableChanged() {
-            if (!activeService && DMSNetworkService.networkAvailable) {
-                log.info("Network capability detected, using DMSNetworkService");
-                useDMSService();
+            if (!activeService && ADVSNetworkService.networkAvailable) {
+                log.info("Network capability detected, using ADVSNetworkService");
+                useADVSService();
             }
         }
     }
 
-    function useDMSService() {
-        activeService = DMSNetworkService;
-        log.info("Switched to DMSNetworkService, networkAvailable:", networkAvailable);
+    function useADVSService() {
+        activeService = ADVSNetworkService;
+        log.info("Switched to ADVSNetworkService, networkAvailable:", networkAvailable);
         connectSignals();
     }
 

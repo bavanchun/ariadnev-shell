@@ -8,15 +8,15 @@ import (
 	"testing"
 	"time"
 
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/server/models"
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/server/network"
+	"github.com/bavanchun/ariadnev-shell/core/internal/server/models"
+	"github.com/bavanchun/ariadnev-shell/core/internal/server/network"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )
 
 func TestGetSocketPath(t *testing.T) {
 	path := GetSocketPath()
-	assert.Contains(t, path, "danklinux-")
+	assert.Contains(t, path, "ariadnev-")
 	assert.Contains(t, path, ".sock")
 	assert.Contains(t, path, fmt.Sprintf("%d", os.Getpid()))
 }

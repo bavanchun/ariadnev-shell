@@ -23,7 +23,7 @@ Row {
         radius: (Theme.iconSize + Theme.spacingS * 2) / 2
         color: iconArea.containsMouse ? Theme.primaryHover : Theme.withAlpha(Theme.primary, 0)
 
-        DankRipple {
+        AdvRipple {
             id: iconRipple
             cornerRadius: parent.radius
         }
@@ -43,7 +43,7 @@ Row {
             }
         }
 
-        DankIcon {
+        AdvIcon {
             anchors.centerIn: parent
             name: AudioService.volumeIconName(defaultSink)
             size: Theme.iconSize
@@ -51,7 +51,7 @@ Row {
         }
     }
 
-    DankSlider {
+    AdvSlider {
         id: volumeSlider
 
         readonly property real actualVolumePercent: defaultSink?.audio ? Math.round(defaultSink.audio.volume * 100) : 0

@@ -1,7 +1,7 @@
 package blur
 
 import (
-	wlhelpers "github.com/AvengeMedia/DankMaterialShell/core/internal/wayland/client"
+	wlhelpers "github.com/bavanchun/ariadnev-shell/core/internal/wayland/client"
 	client "github.com/AvengeMedia/dankgo/wayland/client"
 )
 

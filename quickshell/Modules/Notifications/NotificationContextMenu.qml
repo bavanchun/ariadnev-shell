@@ -75,7 +75,7 @@ PanelWindow {
         blurRadius: Theme.cornerRadius
     }
 
-    WlrLayershell.namespace: "dms:notification-context-menu"
+    WlrLayershell.namespace: "advs:notification-context-menu"
     WlrLayershell.layer: WlrLayershell.Overlay
     WlrLayershell.exclusiveZone: -1
     WlrLayershell.keyboardFocus: WlrKeyboardFocus.None

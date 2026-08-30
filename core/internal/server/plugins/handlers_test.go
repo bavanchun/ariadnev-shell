@@ -4,9 +4,9 @@ import (
 	"encoding/json"
 	"testing"
 
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/mocks/net"
-	coreplugins "github.com/AvengeMedia/DankMaterialShell/core/internal/plugins"
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/server/models"
+	"github.com/bavanchun/ariadnev-shell/core/internal/mocks/net"
+	coreplugins "github.com/bavanchun/ariadnev-shell/core/internal/plugins"
+	"github.com/bavanchun/ariadnev-shell/core/internal/server/models"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/mock"
 )
@@ -167,7 +167,7 @@ func TestHandleSearchMissingQuery(t *testing.T) {
 func TestSortPluginInfoByFirstParty(t *testing.T) {
 	plugins := []PluginInfo{
 		{Name: "third-party", Repo: "https://github.com/other/test"},
-		{Name: "first-party", Repo: "https://github.com/AvengeMedia/test"},
+		{Name: "first-party", Repo: "https://github.com/bavanchun/test"},
 	}
 
 	SortPluginInfoByFirstParty(plugins)
@@ -204,13 +204,13 @@ func TestNormalizeScreenshotURL(t *testing.T) {
 	}{
 		{
 			name: "raw github url is unchanged",
-			raw:  "https://raw.githubusercontent.com/alcxyz/DankVault/main/docs/screenshot.png",
-			want: "https://raw.githubusercontent.com/alcxyz/DankVault/main/docs/screenshot.png",
+			raw:  "https://raw.githubusercontent.com/alcxyz/AdvVault/main/docs/screenshot.png",
+			want: "https://raw.githubusercontent.com/alcxyz/AdvVault/main/docs/screenshot.png",
 		},
 		{
 			name: "github blob url becomes raw content url",
-			raw:  "https://github.com/acmagn/DMS-UPS-Monitor/blob/main/assets/screenshot.png",
-			want: "https://raw.githubusercontent.com/acmagn/DMS-UPS-Monitor/main/assets/screenshot.png",
+			raw:  "https://github.com/acmagn/ADVS-UPS-Monitor/blob/main/assets/screenshot.png",
+			want: "https://raw.githubusercontent.com/acmagn/ADVS-UPS-Monitor/main/assets/screenshot.png",
 		},
 		{
 			name: "github raw url becomes raw content url",
@@ -238,13 +238,13 @@ func TestNormalizeScreenshotURL(t *testing.T) {
 
 func TestPluginInfoFromPluginIncludesScreenshot(t *testing.T) {
 	info := pluginInfoFromPlugin(coreplugins.Plugin{
-		ID:         "dankVault",
+		ID:         "advVault",
 		Name:       "Vault",
-		Repo:       "https://github.com/AvengeMedia/dms-plugins",
-		Screenshot: "https://github.com/AvengeMedia/dms-plugins/blob/master/DankNotepadModule/screenshot.png",
+		Repo:       "https://github.com/bavanchun/advs-plugins",
+		Screenshot: "https://github.com/bavanchun/advs-plugins/blob/master/AdvNotepadModule/screenshot.png",
 	})
 
-	assert.Equal(t, "https://raw.githubusercontent.com/AvengeMedia/dms-plugins/master/DankNotepadModule/screenshot.png", info.Screenshot)
+	assert.Equal(t, "https://raw.githubusercontent.com/bavanchun/advs-plugins/master/AdvNotepadModule/screenshot.png", info.Screenshot)
 	assert.True(t, info.FirstParty)
 }
 

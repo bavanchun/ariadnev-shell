@@ -1,6 +1,6 @@
 package screenshot
 
-import "github.com/AvengeMedia/DankMaterialShell/core/internal/wayland/shm"
+import "github.com/bavanchun/ariadnev-shell/core/internal/wayland/shm"
 
 type PixelFormat = shm.PixelFormat
 

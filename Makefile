@@ -1,8 +1,8 @@
-# Root Makefile for DankMaterialShell (DMS)
+# Root Makefile for AriadnevShell (ADVS)
 # Orchestrates building, installation, and systemd management
 
 # Build configuration
-BINARY_NAME=dms
+BINARY_NAME=advs
 CORE_DIR=core
 BUILD_DIR=$(CORE_DIR)/bin
 PREFIX ?= /usr/local
@@ -14,7 +14,7 @@ USER_HOME := $(if $(SUDO_USER),$(shell getent passwd $(SUDO_USER) | cut -d: -f6)
 SYSTEMD_USER_DIR=$(USER_HOME)/.config/systemd/user
 
 SHELL_DIR=quickshell
-SHELL_INSTALL_DIR=$(DATA_DIR)/quickshell/dms
+SHELL_INSTALL_DIR=$(DATA_DIR)/quickshell/ariadnev
 ASSETS_DIR=assets
 APPLICATIONS_DIR=$(DATA_DIR)/applications
 
@@ -41,11 +41,11 @@ clean:
 lint-qml:
 	@./quickshell/scripts/qmllint-entrypoints.sh
 
-# Pull the latest dank-qml-common and pin it everywhere it is consumed
+# Pull the latest ariadnev-qml-common and pin it everywhere it is consumed
 # (submodule pointer + nix flake input). Commit both in one change.
 update-common:
-	git submodule update --remote --merge dank-qml-common
-	nix --extra-experimental-features 'nix-command flakes' flake update dank-qml-common
+	git submodule update --remote --merge ariadnev-qml-common
+	nix --extra-experimental-features 'nix-command flakes' flake update ariadnev-qml-common
 
 # Installation targets
 install-bin:
@@ -55,7 +55,7 @@ install-bin:
 
 install-shell:
 	@echo "Installing shell files to $(SHELL_INSTALL_DIR)..."
-	@test -e $(SHELL_DIR)/DankCommon/Widgets/DankIcon.qml || { echo "DankCommon missing: run git submodule update --init"; exit 1; }
+	@test -e $(SHELL_DIR)/AdvCommon/Widgets/AdvIcon.qml || { echo "AdvCommon missing: run git submodule update --init"; exit 1; }
 	@mkdir -p $(SHELL_INSTALL_DIR)
 	@cp -rL $(SHELL_DIR)/* $(SHELL_INSTALL_DIR)/
 	@rm -rf $(SHELL_INSTALL_DIR)/.git* $(SHELL_INSTALL_DIR)/.github
@@ -66,35 +66,35 @@ install-completions:
 	@mkdir -p $(DATA_DIR)/bash-completion/completions
 	@mkdir -p $(DATA_DIR)/zsh/site-functions
 	@mkdir -p $(DATA_DIR)/fish/vendor_completions.d
-	@$(BUILD_DIR)/$(BINARY_NAME) completion bash > $(DATA_DIR)/bash-completion/completions/dms 2>/dev/null || true
-	@$(BUILD_DIR)/$(BINARY_NAME) completion zsh > $(DATA_DIR)/zsh/site-functions/_dms 2>/dev/null || true
-	@$(BUILD_DIR)/$(BINARY_NAME) completion fish > $(DATA_DIR)/fish/vendor_completions.d/dms.fish 2>/dev/null || true
+	@$(BUILD_DIR)/$(BINARY_NAME) completion bash > $(DATA_DIR)/bash-completion/completions/advs 2>/dev/null || true
+	@$(BUILD_DIR)/$(BINARY_NAME) completion zsh > $(DATA_DIR)/zsh/site-functions/_advs 2>/dev/null || true
+	@$(BUILD_DIR)/$(BINARY_NAME) completion fish > $(DATA_DIR)/fish/vendor_completions.d/advs.fish 2>/dev/null || true
 	@echo "Shell completions installed"
 
 install-systemd:
 ifneq ($(shell uname),Linux)
-	@echo "Skipping systemd user service (non-Linux); start the shell from your compositor config with 'dms run'"
+	@echo "Skipping systemd user service (non-Linux); start the shell from your compositor config with 'advs run'"
 else
 	@echo "Installing systemd user service..."
 	@mkdir -p $(SYSTEMD_USER_DIR)
 	@if [ -n "$(SUDO_USER)" ]; then chown -R $(SUDO_USER):"$(id -gn $SUDO_USER)" $(SYSTEMD_USER_DIR); fi
-	@sed 's|/usr/bin/dms|$(PREFIX)/bin/dms|g' $(ASSETS_DIR)/systemd/dms.service > $(SYSTEMD_USER_DIR)/dms.service
-	@chmod 644 $(SYSTEMD_USER_DIR)/dms.service
-	@if [ -n "$(SUDO_USER)" ]; then chown $(SUDO_USER):"$(id -gn $SUDO_USER)" $(SYSTEMD_USER_DIR)/dms.service; fi
-	@echo "Systemd service installed to $(SYSTEMD_USER_DIR)/dms.service"
+	@sed 's|/usr/bin/advs|$(PREFIX)/bin/advs|g' $(ASSETS_DIR)/systemd/advs.service > $(SYSTEMD_USER_DIR)/advs.service
+	@chmod 644 $(SYSTEMD_USER_DIR)/advs.service
+	@if [ -n "$(SUDO_USER)" ]; then chown $(SUDO_USER):"$(id -gn $SUDO_USER)" $(SYSTEMD_USER_DIR)/advs.service; fi
+	@echo "Systemd service installed to $(SYSTEMD_USER_DIR)/advs.service"
 endif
 
 install-icon:
 	@echo "Installing icon..."
-	@install -D -m 644 $(ASSETS_DIR)/danklogo.svg $(ICON_DIR)/danklogo.svg
+	@install -D -m 644 $(ASSETS_DIR)/advlogo.svg $(ICON_DIR)/advlogo.svg
 	@gtk-update-icon-cache -q $(DATA_DIR)/icons/hicolor 2>/dev/null || true
 	@echo "Icon installed"
 
 install-desktop:
 	@echo "Installing desktop entries..."
-	@install -D -m 644 $(ASSETS_DIR)/dms-open.desktop $(APPLICATIONS_DIR)/dms-open.desktop
-	@install -D -m 644 $(ASSETS_DIR)/com.danklinux.dms.desktop $(APPLICATIONS_DIR)/com.danklinux.dms.desktop
-	@install -D -m 644 $(ASSETS_DIR)/com.danklinux.dms.notepad.desktop $(APPLICATIONS_DIR)/com.danklinux.dms.notepad.desktop
+	@install -D -m 644 $(ASSETS_DIR)/advs-open.desktop $(APPLICATIONS_DIR)/advs-open.desktop
+	@install -D -m 644 $(ASSETS_DIR)/dev.vchun.ariadnev.desktop $(APPLICATIONS_DIR)/dev.vchun.ariadnev.desktop
+	@install -D -m 644 $(ASSETS_DIR)/dev.vchun.ariadnev.notepad.desktop $(APPLICATIONS_DIR)/dev.vchun.ariadnev.notepad.desktop
 	@update-desktop-database -q $(APPLICATIONS_DIR) 2>/dev/null || true
 	@echo "Desktop entries installed"
 
@@ -102,7 +102,7 @@ install: install-bin install-shell install-completions install-systemd install-i
 	@echo ""
 	@echo "Installation complete!"
 	@echo ""
-	@echo "=== Cheers, the DMS Team! ==="
+	@echo "=== Cheers, the ADVS Team! ==="
 
 # Uninstallation targets
 uninstall-bin:
@@ -117,28 +117,28 @@ uninstall-shell:
 
 uninstall-completions:
 	@echo "Removing shell completions..."
-	@rm -f $(DATA_DIR)/bash-completion/completions/dms
-	@rm -f $(DATA_DIR)/zsh/site-functions/_dms
-	@rm -f $(DATA_DIR)/fish/vendor_completions.d/dms.fish
+	@rm -f $(DATA_DIR)/bash-completion/completions/advs
+	@rm -f $(DATA_DIR)/zsh/site-functions/_advs
+	@rm -f $(DATA_DIR)/fish/vendor_completions.d/advs.fish
 	@echo "Shell completions removed"
 
 uninstall-systemd:
 	@echo "Removing systemd user service..."
-	@rm -f $(SYSTEMD_USER_DIR)/dms.service
+	@rm -f $(SYSTEMD_USER_DIR)/advs.service
 	@echo "Systemd service removed"
-	@echo "Note: Stop/disable service manually if running: systemctl --user stop dms"
+	@echo "Note: Stop/disable service manually if running: systemctl --user stop advs"
 
 uninstall-icon:
 	@echo "Removing icon..."
-	@rm -f $(ICON_DIR)/danklogo.svg
+	@rm -f $(ICON_DIR)/advlogo.svg
 	@gtk-update-icon-cache -q $(DATA_DIR)/icons/hicolor 2>/dev/null || true
 	@echo "Icon removed"
 
 uninstall-desktop:
 	@echo "Removing desktop entries..."
-	@rm -f $(APPLICATIONS_DIR)/dms-open.desktop
-	@rm -f $(APPLICATIONS_DIR)/com.danklinux.dms.desktop
-	@rm -f $(APPLICATIONS_DIR)/com.danklinux.dms.notepad.desktop
+	@rm -f $(APPLICATIONS_DIR)/advs-open.desktop
+	@rm -f $(APPLICATIONS_DIR)/dev.vchun.ariadnev.desktop
+	@rm -f $(APPLICATIONS_DIR)/dev.vchun.ariadnev.notepad.desktop
 	@update-desktop-database -q $(APPLICATIONS_DIR) 2>/dev/null || true
 	@echo "Desktop entries removed"
 
@@ -151,7 +151,7 @@ help:
 	@echo "Available targets:"
 	@echo ""
 	@echo "Build:"
-	@echo "  all (default)        - Build the DMS binary"
+	@echo "  all (default)        - Build the ADVS binary"
 	@echo "  build                - Same as 'all'"
 	@echo "  clean                - Clean build artifacts"
 	@echo "  lint-qml             - Run qmllint on shell entrypoints using the Quickshell tooling VFS"
@@ -175,6 +175,6 @@ help:
 	@echo "  uninstall-desktop    - Remove only desktop entry"
 	@echo ""
 	@echo "Usage:"
-	@echo "  sudo make install              - Build and install DMS"
-	@echo "  sudo make uninstall            - Remove DMS"
-	@echo "  systemctl --user enable --now dms  - Enable and start service"
+	@echo "  sudo make install              - Build and install ADVS"
+	@echo "  sudo make uninstall            - Remove ADVS"
+	@echo "  systemctl --user enable --now advs  - Enable and start service"

@@ -40,7 +40,7 @@ func Send(n Notification) (uint32, error) {
 	}
 
 	if n.AppName == "" {
-		n.AppName = "DMS"
+		n.AppName = "ADVS"
 	}
 	if n.Timeout == 0 {
 		n.Timeout = 5000

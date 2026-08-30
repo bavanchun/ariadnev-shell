@@ -4,7 +4,7 @@ import qs.Common
 import qs.Services
 import qs.Widgets
 
-DankFloatingWindow {
+AdvFloatingWindow {
     id: root
 
     property var editingRule: null
@@ -465,7 +465,7 @@ DankFloatingWindow {
 
         if (isEditMode) {
             const ruleJson = JSON.stringify(ruleData);
-            Proc.runCommand("update-windowrule", [Proc.dmsBin, "config", "windowrules", "update", compositor, editingRule.id, ruleJson], (output, exitCode) => {
+            Proc.runCommand("update-windowrule", [Proc.advsBin, "config", "windowrules", "update", compositor, editingRule.id, ruleJson], (output, exitCode) => {
                 root.submitting = false;
                 if (exitCode !== 0)
                     return;
@@ -478,7 +478,7 @@ DankFloatingWindow {
             });
         } else {
             const ruleJson = JSON.stringify(ruleData);
-            Proc.runCommand("add-windowrule", [Proc.dmsBin, "config", "windowrules", "add", compositor, ruleJson], (output, exitCode) => {
+            Proc.runCommand("add-windowrule", [Proc.advsBin, "config", "windowrules", "add", compositor, ruleJson], (output, exitCode) => {
                 root.submitting = false;
                 if (exitCode !== 0)
                     return;
@@ -529,7 +529,7 @@ DankFloatingWindow {
             border.width: 2
             anchors.verticalCenter: parent.verticalCenter
 
-            DankIcon {
+            AdvIcon {
                 anchors.centerIn: parent
                 name: parent.parent.indeterminate ? "remove" : "check"
                 size: 12
@@ -677,7 +677,7 @@ DankFloatingWindow {
                 }
             }
 
-            DankActionButton {
+            AdvActionButton {
                 id: closeBtn
                 anchors.right: parent.right
                 iconName: "close"
@@ -687,7 +687,7 @@ DankFloatingWindow {
             }
         }
 
-        DankFlickable {
+        AdvFlickable {
             id: flickable
             anchors.top: header.bottom
             anchors.left: parent.left
@@ -706,7 +706,7 @@ DankFloatingWindow {
 
                 InputField {
                     hasFocus: nameInput.activeFocus
-                    DankTextField {
+                    AdvTextField {
                         id: nameInput
                         anchors.fill: parent
                         font.pixelSize: Theme.fontSizeSmall
@@ -723,7 +723,7 @@ DankFloatingWindow {
 
                 InputField {
                     hasFocus: appIdInput.activeFocus
-                    DankTextField {
+                    AdvTextField {
                         id: appIdInput
                         anchors.fill: parent
                         font.pixelSize: Theme.fontSizeSmall
@@ -741,7 +741,7 @@ DankFloatingWindow {
                     InputField {
                         width: addTitleBtn.visible ? parent.width - addTitleBtn.width - Theme.spacingS : parent.width
                         hasFocus: titleInput.activeFocus
-                        DankTextField {
+                        AdvTextField {
                             id: titleInput
                             anchors.fill: parent
                             font.pixelSize: Theme.fontSizeSmall
@@ -752,7 +752,7 @@ DankFloatingWindow {
                         }
                     }
 
-                    DankActionButton {
+                    AdvActionButton {
                         id: addTitleBtn
                         width: root.inputFieldHeight
                         height: root.inputFieldHeight
@@ -790,7 +790,7 @@ DankFloatingWindow {
                         InputField {
                             width: (parent.width - removeMatchBtn.width - Theme.spacingS * 2) / 2
                             hasFocus: extraAppId.activeFocus
-                            DankTextField {
+                            AdvTextField {
                                 id: extraAppId
                                 anchors.fill: parent
                                 font.pixelSize: Theme.fontSizeSmall
@@ -806,7 +806,7 @@ DankFloatingWindow {
                         InputField {
                             width: (parent.width - removeMatchBtn.width - Theme.spacingS * 2) / 2
                             hasFocus: extraTitle.activeFocus
-                            DankTextField {
+                            AdvTextField {
                                 id: extraTitle
                                 anchors.fill: parent
                                 font.pixelSize: Theme.fontSizeSmall
@@ -819,7 +819,7 @@ DankFloatingWindow {
                             }
                         }
 
-                        DankActionButton {
+                        AdvActionButton {
                             id: removeMatchBtn
                             width: root.inputFieldHeight
                             height: root.inputFieldHeight
@@ -844,7 +844,7 @@ DankFloatingWindow {
                         anchors.verticalCenter: parent.verticalCenter
                         spacing: Theme.spacingS
 
-                        DankIcon {
+                        AdvIcon {
                             name: "add"
                             size: 18
                             color: Theme.primary
@@ -1009,7 +1009,7 @@ DankFloatingWindow {
                         InputField {
                             width: parent.width
                             hasFocus: outputInput.activeFocus
-                            DankTextField {
+                            AdvTextField {
                                 id: outputInput
                                 anchors.fill: parent
                                 font.pixelSize: Theme.fontSizeSmall
@@ -1036,7 +1036,7 @@ DankFloatingWindow {
                         InputField {
                             width: parent.width
                             hasFocus: workspaceInput.activeFocus
-                            DankTextField {
+                            AdvTextField {
                                 id: workspaceInput
                                 anchors.fill: parent
                                 font.pixelSize: Theme.fontSizeSmall
@@ -1069,7 +1069,7 @@ DankFloatingWindow {
                         InputField {
                             width: parent.width
                             hasFocus: columnWidthInput.activeFocus
-                            DankTextField {
+                            AdvTextField {
                                 id: columnWidthInput
                                 anchors.fill: parent
                                 font.pixelSize: Theme.fontSizeSmall
@@ -1096,7 +1096,7 @@ DankFloatingWindow {
                         InputField {
                             width: parent.width
                             hasFocus: windowHeightInput.activeFocus
-                            DankTextField {
+                            AdvTextField {
                                 id: windowHeightInput
                                 anchors.fill: parent
                                 font.pixelSize: Theme.fontSizeSmall
@@ -1125,7 +1125,7 @@ DankFloatingWindow {
                         anchors.verticalCenter: parent.verticalCenter
                     }
 
-                    DankSlider {
+                    AdvSlider {
                         id: opacitySlider
                         wheelEnabled: false
                         width: parent.width - 100
@@ -1177,7 +1177,7 @@ DankFloatingWindow {
                             horizontalAlignment: Text.AlignLeft
                         }
 
-                        DankDropdown {
+                        AdvDropdown {
                             id: blockOutDropdown
                             width: parent.width
                             dropdownWidth: parent.width
@@ -1199,7 +1199,7 @@ DankFloatingWindow {
                             horizontalAlignment: Text.AlignLeft
                         }
 
-                        DankDropdown {
+                        AdvDropdown {
                             id: columnDisplayDropdown
                             width: parent.width
                             dropdownWidth: parent.width
@@ -1221,7 +1221,7 @@ DankFloatingWindow {
                         anchors.verticalCenter: parent.verticalCenter
                     }
 
-                    DankSlider {
+                    AdvSlider {
                         id: scrollFactorSlider
                         wheelEnabled: false
                         width: parent.width - 120
@@ -1244,7 +1244,7 @@ DankFloatingWindow {
                         anchors.verticalCenter: parent.verticalCenter
                     }
 
-                    DankSlider {
+                    AdvSlider {
                         id: cornerRadiusSlider
                         wheelEnabled: false
                         width: parent.width - 130
@@ -1303,7 +1303,7 @@ DankFloatingWindow {
                         anchors.verticalCenter: parent.verticalCenter
                     }
 
-                    DankSlider {
+                    AdvSlider {
                         id: noiseSlider
                         wheelEnabled: false
                         width: parent.width - 130
@@ -1326,7 +1326,7 @@ DankFloatingWindow {
                         anchors.verticalCenter: parent.verticalCenter
                     }
 
-                    DankSlider {
+                    AdvSlider {
                         id: saturationSlider
                         wheelEnabled: false
                         width: parent.width - 130
@@ -1372,7 +1372,7 @@ DankFloatingWindow {
                         InputField {
                             width: parent.width
                             hasFocus: floatingXInput.activeFocus
-                            DankTextField {
+                            AdvTextField {
                                 id: floatingXInput
                                 anchors.fill: parent
                                 font.pixelSize: Theme.fontSizeSmall
@@ -1399,7 +1399,7 @@ DankFloatingWindow {
                         InputField {
                             width: parent.width
                             hasFocus: floatingYInput.activeFocus
-                            DankTextField {
+                            AdvTextField {
                                 id: floatingYInput
                                 anchors.fill: parent
                                 font.pixelSize: Theme.fontSizeSmall
@@ -1423,7 +1423,7 @@ DankFloatingWindow {
                             horizontalAlignment: Text.AlignLeft
                         }
 
-                        DankDropdown {
+                        AdvDropdown {
                             id: floatingRelativeDropdown
                             width: parent.width
                             dropdownWidth: parent.width
@@ -1458,7 +1458,7 @@ DankFloatingWindow {
                         InputField {
                             width: parent.width
                             hasFocus: minWidthInput.activeFocus
-                            DankTextField {
+                            AdvTextField {
                                 id: minWidthInput
                                 anchors.fill: parent
                                 font.pixelSize: Theme.fontSizeSmall
@@ -1485,7 +1485,7 @@ DankFloatingWindow {
                         InputField {
                             width: parent.width
                             hasFocus: maxWidthInput.activeFocus
-                            DankTextField {
+                            AdvTextField {
                                 id: maxWidthInput
                                 anchors.fill: parent
                                 font.pixelSize: Theme.fontSizeSmall
@@ -1512,7 +1512,7 @@ DankFloatingWindow {
                         InputField {
                             width: parent.width
                             hasFocus: minHeightInput.activeFocus
-                            DankTextField {
+                            AdvTextField {
                                 id: minHeightInput
                                 anchors.fill: parent
                                 font.pixelSize: Theme.fontSizeSmall
@@ -1539,7 +1539,7 @@ DankFloatingWindow {
                         InputField {
                             width: parent.width
                             hasFocus: maxHeightInput.activeFocus
-                            DankTextField {
+                            AdvTextField {
                                 id: maxHeightInput
                                 anchors.fill: parent
                                 font.pixelSize: Theme.fontSizeSmall
@@ -1624,7 +1624,7 @@ DankFloatingWindow {
                         InputField {
                             width: parent.width
                             hasFocus: moveXInput.activeFocus
-                            DankTextField {
+                            AdvTextField {
                                 id: moveXInput
                                 anchors.fill: parent
                                 font.pixelSize: Theme.fontSizeSmall
@@ -1651,7 +1651,7 @@ DankFloatingWindow {
                         InputField {
                             width: parent.width
                             hasFocus: moveYInput.activeFocus
-                            DankTextField {
+                            AdvTextField {
                                 id: moveYInput
                                 anchors.fill: parent
                                 font.pixelSize: Theme.fontSizeSmall
@@ -1678,7 +1678,7 @@ DankFloatingWindow {
                         InputField {
                             width: parent.width
                             hasFocus: sizeWInput.activeFocus
-                            DankTextField {
+                            AdvTextField {
                                 id: sizeWInput
                                 anchors.fill: parent
                                 font.pixelSize: Theme.fontSizeSmall
@@ -1705,7 +1705,7 @@ DankFloatingWindow {
                         InputField {
                             width: parent.width
                             hasFocus: sizeHInput.activeFocus
-                            DankTextField {
+                            AdvTextField {
                                 id: sizeHInput
                                 anchors.fill: parent
                                 font.pixelSize: Theme.fontSizeSmall
@@ -1738,7 +1738,7 @@ DankFloatingWindow {
                         InputField {
                             width: parent.width
                             hasFocus: monitorInput.activeFocus
-                            DankTextField {
+                            AdvTextField {
                                 id: monitorInput
                                 anchors.fill: parent
                                 font.pixelSize: Theme.fontSizeSmall
@@ -1765,7 +1765,7 @@ DankFloatingWindow {
                         InputField {
                             width: parent.width
                             hasFocus: hyprWorkspaceInput.activeFocus
-                            DankTextField {
+                            AdvTextField {
                                 id: hyprWorkspaceInput
                                 anchors.fill: parent
                                 font.pixelSize: Theme.fontSizeSmall
@@ -1830,7 +1830,7 @@ DankFloatingWindow {
                         InputField {
                             width: parent.width
                             hasFocus: mangoTagsInput.activeFocus
-                            DankTextField {
+                            AdvTextField {
                                 id: mangoTagsInput
                                 anchors.fill: parent
                                 font.pixelSize: Theme.fontSizeSmall
@@ -1857,7 +1857,7 @@ DankFloatingWindow {
                         InputField {
                             width: parent.width
                             hasFocus: mangoMonitorInput.activeFocus
-                            DankTextField {
+                            AdvTextField {
                                 id: mangoMonitorInput
                                 anchors.fill: parent
                                 font.pixelSize: Theme.fontSizeSmall
@@ -1890,7 +1890,7 @@ DankFloatingWindow {
                         InputField {
                             width: parent.width
                             hasFocus: mangoSizeInput.activeFocus
-                            DankTextField {
+                            AdvTextField {
                                 id: mangoSizeInput
                                 anchors.fill: parent
                                 font.pixelSize: Theme.fontSizeSmall

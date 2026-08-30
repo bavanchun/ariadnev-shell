@@ -2,10 +2,10 @@ import QtQuick
 import qs.Common
 import qs.Widgets
 
-DankPopout {
+AdvPopout {
     id: root
 
-    layerNamespace: "dms:plugins:" + layerNamespacePlugin
+    layerNamespace: "advs:plugins:" + layerNamespacePlugin
 
     property var triggerScreen: null
     property Component pluginContent: null

@@ -22,7 +22,7 @@ Rectangle {
         anchors.centerIn: parent
         spacing: Theme.spacingXXS
 
-        DankIcon {
+        AdvIcon {
             name: root.iconName
             size: 11
             color: root.tone

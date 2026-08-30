@@ -6,7 +6,7 @@ import qs.Widgets
 import Quickshell.Services.Mpris
 import Quickshell.Widgets
 
-DankOSD {
+AdvOSD {
     id: root
 
     readonly property bool useVertical: isVerticalLayout
@@ -279,7 +279,7 @@ DankOSD {
                     color: prevButton.containsMouse ? Theme.surfaceTextHover : "transparent"
                     opacity: (root.player?.canGoPrevious ?? false) ? 1 : 0.3
 
-                    DankIcon {
+                    AdvIcon {
                         anchors.centerIn: parent
                         name: "skip_previous"
                         size: Theme.iconSize - 10
@@ -307,7 +307,7 @@ DankOSD {
                     anchors.verticalCenter: parent.verticalCenter
                     color: "transparent"
 
-                    DankIcon {
+                    AdvIcon {
                         anchors.centerIn: parent
                         name: root._displayIcon
                         size: Theme.iconSize
@@ -335,7 +335,7 @@ DankOSD {
                     color: nextButton.containsMouse ? Theme.surfaceTextHover : "transparent"
                     opacity: (root.player?.canGoNext ?? false) ? 1 : 0.3
 
-                    DankIcon {
+                    AdvIcon {
                         anchors.centerIn: parent
                         name: "skip_next"
                         size: Theme.iconSize - 10
@@ -407,7 +407,7 @@ DankOSD {
                 anchors.centerIn: parent
                 y: gap
 
-                DankIcon {
+                AdvIcon {
                     anchors.centerIn: parent
                     name: root._displayIcon
                     size: Theme.iconSize

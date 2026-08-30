@@ -12,7 +12,7 @@ PluginComponent {
         Row {
             spacing: Theme.spacingXS
 
-            DankIcon {
+            AdvIcon {
                 name: "verified_user"
                 size: root.iconSize
                 color: Theme.primary
@@ -29,7 +29,7 @@ PluginComponent {
     }
 
     verticalBarPill: Component {
-        DankIcon {
+        AdvIcon {
             name: "verified_user"
             size: root.iconSize
             color: Theme.primary

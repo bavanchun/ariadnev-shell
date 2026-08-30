@@ -9,7 +9,7 @@ import (
 func TestMangoWCParseAxisBindToScrollKey(t *testing.T) {
 	tmpDir := t.TempDir()
 	cfg := filepath.Join(tmpDir, "config.conf")
-	content := "axisbind=SUPER,UP,spawn,dms ipc call test\n"
+	content := "axisbind=SUPER,UP,spawn,advs ipc call test\n"
 	if err := os.WriteFile(cfg, []byte(content), 0o644); err != nil {
 		t.Fatal(err)
 	}
@@ -172,13 +172,13 @@ func TestMangoWCGetKeybindAtLine(t *testing.T) {
 		},
 		{
 			name: "bindl_flag",
-			line: "bindl=SUPER+ALT,l,spawn,dms ipc call lock lock",
+			line: "bindl=SUPER+ALT,l,spawn,advs ipc call lock lock",
 			expected: &MangoWCKeyBinding{
 				Mods:    []string{"SUPER", "ALT"},
 				Key:     "l",
 				Command: "spawn",
-				Params:  "dms ipc call lock lock",
-				Comment: "dms ipc call lock lock",
+				Params:  "advs ipc call lock lock",
+				Comment: "advs ipc call lock lock",
 			},
 		},
 		{
@@ -194,26 +194,26 @@ func TestMangoWCGetKeybindAtLine(t *testing.T) {
 		},
 		{
 			name:             "preceding_comment",
-			line:             "bind=SUPER+SHIFT,S,spawn,dms screenshot",
+			line:             "bind=SUPER+SHIFT,S,spawn,advs screenshot",
 			precedingComment: "Screenshot: Interactive",
 			expected: &MangoWCKeyBinding{
 				Mods:    []string{"SUPER", "SHIFT"},
 				Key:     "S",
 				Command: "spawn",
-				Params:  "dms screenshot",
+				Params:  "advs screenshot",
 				Comment: "Screenshot: Interactive",
 			},
 		},
 		{
 			name:             "section_header_not_description",
-			line:             "bind=none,XF86AudioRaiseVolume,spawn,dms ipc call audio increment 3",
+			line:             "bind=none,XF86AudioRaiseVolume,spawn,advs ipc call audio increment 3",
 			precedingComment: "=== Audio Controls ===",
 			expected: &MangoWCKeyBinding{
 				Mods:    []string{},
 				Key:     "XF86AudioRaiseVolume",
 				Command: "spawn",
-				Params:  "dms ipc call audio increment 3",
-				Comment: "dms ipc call audio increment 3",
+				Params:  "advs ipc call audio increment 3",
+				Comment: "advs ipc call audio increment 3",
 			},
 		},
 		{
@@ -495,8 +495,8 @@ func TestMangoWCRealWorldConfig(t *testing.T) {
 
 	content := `# Application Launchers
 bind=Alt,t,spawn,kitty
-bind=Alt,space,spawn,dms ipc call spotlight toggle
-bind=Alt,v,spawn,dms ipc call clipboard toggle
+bind=Alt,space,spawn,advs ipc call spotlight toggle
+bind=Alt,v,spawn,advs ipc call clipboard toggle
 
 # exit
 bind=ALT+SHIFT,e,quit

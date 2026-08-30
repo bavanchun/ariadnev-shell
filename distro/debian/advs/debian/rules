@@ -1,0 +1,84 @@
+#!/usr/bin/make -f
+
+DEB_VERSION := $(shell dpkg-parsechangelog -S Version)
+UPSTREAM_VERSION := $(shell echo $(DEB_VERSION) | sed 's/-[^-]*$$//')
+DEB_HOST_ARCH := $(shell dpkg-architecture -qDEB_HOST_ARCH)
+
+%:
+	dh $@
+
+override_dh_installsystemd:
+	dh_installsystemd --name=advs
+
+override_dh_auto_build:
+	if [ "$(DEB_HOST_ARCH)" = "amd64" ]; then \
+		if [ -f advs-distropkg-amd64.gz ]; then \
+			gunzip -c advs-distropkg-amd64.gz > advs; \
+		elif [ -f ../SOURCES/advs-distropkg-amd64.gz ]; then \
+			gunzip -c ../SOURCES/advs-distropkg-amd64.gz > advs; \
+		elif [ -f ../../SOURCES/advs-distropkg-amd64.gz ]; then \
+			gunzip -c ../../SOURCES/advs-distropkg-amd64.gz > advs; \
+		else \
+			echo "ERROR: advs-distropkg-amd64.gz not found!" && exit 1; \
+		fi \
+	elif [ "$(DEB_HOST_ARCH)" = "arm64" ]; then \
+		if [ -f advs-distropkg-arm64.gz ]; then \
+			gunzip -c advs-distropkg-arm64.gz > advs; \
+		elif [ -f ../SOURCES/advs-distropkg-arm64.gz ]; then \
+			gunzip -c ../SOURCES/advs-distropkg-arm64.gz > advs; \
+		elif [ -f ../../SOURCES/advs-distropkg-arm64.gz ]; then \
+			gunzip -c ../../SOURCES/advs-distropkg-arm64.gz > advs; \
+		else \
+			echo "ERROR: advs-distropkg-arm64.gz not found!" && exit 1; \
+		fi \
+	else \
+		echo "Unsupported architecture: $(DEB_HOST_ARCH)" && exit 1; \
+	fi
+	chmod +x advs
+
+	# Extract source if needed
+	if [ ! -d AriadnevShell-$(UPSTREAM_VERSION) ]; then \
+		if [ -f ../SOURCES/advs-source.tar.gz ]; then \
+			tar -xzf ../SOURCES/advs-source.tar.gz; \
+		elif [ -f advs-source.tar.gz ]; then \
+			tar -xzf advs-source.tar.gz; \
+		fi; \
+	fi
+	# Rename directory to match expected version
+	SOURCE_DIR=$$(find . -maxdepth 1 -type d -name "AriadnevShell-*" ! -name "AriadnevShell-$(UPSTREAM_VERSION)" | head -n1); \
+	if [ -n "$$SOURCE_DIR" ]; then \
+		echo "Renaming $$SOURCE_DIR to AriadnevShell-$(UPSTREAM_VERSION)"; \
+		mv "$$SOURCE_DIR" AriadnevShell-$(UPSTREAM_VERSION); \
+	fi
+
+
+override_dh_auto_install:
+	install -Dm755 advs debian/advs/usr/bin/advs
+
+	mkdir -p debian/advs/usr/share/quickshell/ariadnev debian/advs/usr/lib/systemd/user
+	# Ensure directory has correct version name for install step
+	SOURCE_DIR=$$(find . -maxdepth 1 -type d -name "AriadnevShell-*" ! -name "AriadnevShell-$(UPSTREAM_VERSION)" | head -n1); \
+	if [ -n "$$SOURCE_DIR" ]; then \
+		echo "Renaming $$SOURCE_DIR to AriadnevShell-$(UPSTREAM_VERSION) for install"; \
+		mv "$$SOURCE_DIR" AriadnevShell-$(UPSTREAM_VERSION); \
+	fi
+	if [ -d AriadnevShell-$(UPSTREAM_VERSION) ]; then \
+		cp -rL AriadnevShell-$(UPSTREAM_VERSION)/quickshell/* debian/advs/usr/share/quickshell/ariadnev/; \
+		install -Dm644 AriadnevShell-$(UPSTREAM_VERSION)/assets/systemd/advs.service debian/advs/usr/lib/systemd/user/advs.service; \
+		install -Dm644 AriadnevShell-$(UPSTREAM_VERSION)/assets/advs-open.desktop debian/advs/usr/share/applications/advs-open.desktop; \
+		install -Dm644 AriadnevShell-$(UPSTREAM_VERSION)/assets/dev.vchun.ariadnev.desktop debian/advs/usr/share/applications/dev.vchun.ariadnev.desktop; \
+		install -Dm644 AriadnevShell-$(UPSTREAM_VERSION)/assets/dev.vchun.ariadnev.notepad.desktop debian/advs/usr/share/applications/dev.vchun.ariadnev.notepad.desktop; \
+		install -Dm644 AriadnevShell-$(UPSTREAM_VERSION)/assets/advlogo.svg debian/advs/usr/share/icons/hicolor/scalable/apps/advlogo.svg; \
+	else \
+		echo "ERROR: AriadnevShell-$(UPSTREAM_VERSION) directory not found!" && \
+		echo "Contents of current directory:" && ls -la && \
+		exit 1; \
+	fi
+
+	rm -rf debian/advs/usr/share/quickshell/ariadnev/core \
+		debian/advs/usr/share/quickshell/ariadnev/distro
+
+override_dh_auto_clean:
+	rm -f advs
+	rm -rf AriadnevShell-$(UPSTREAM_VERSION)
+	dh_auto_clean

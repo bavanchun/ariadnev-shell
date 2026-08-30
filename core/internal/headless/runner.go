@@ -6,11 +6,11 @@ import (
 	"os"
 	"strings"
 
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/config"
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/deps"
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/distros"
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/privesc"
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/utils"
+	"github.com/bavanchun/ariadnev-shell/core/internal/config"
+	"github.com/bavanchun/ariadnev-shell/core/internal/deps"
+	"github.com/bavanchun/ariadnev-shell/core/internal/distros"
+	"github.com/bavanchun/ariadnev-shell/core/internal/privesc"
+	"github.com/bavanchun/ariadnev-shell/core/internal/utils"
 )
 
 // ErrConfirmationRequired is returned when --yes is not set and the user
@@ -45,9 +45,9 @@ type Config struct {
 	ReplaceConfigs    []string // specific configs to deploy (e.g. "niri", "ghostty")
 	ReplaceConfigsAll bool     // deploy/replace all configurations
 	Yes               bool
-	DankSearch        bool // install danksearch and enable its user service
-	DankCalendar      bool // install dankcalendar
-	DmsGreeter        bool // install dms-greeter
+	AdvSearch        bool // install advsearch and enable its user service
+	AdvCalendar      bool // install advcalendar
+	AdvsGreeter        bool // install advs-greeter
 }
 
 // Runner orchestrates unattended (headless) installation.
@@ -235,29 +235,29 @@ func (r *Runner) Run() error {
 		useSystemd = false
 	}
 
-	// 9. Greeter setup (if dms-greeter was included)
-	if !disabledItems["dms-greeter"] && r.depExists(dependencies, "dms-greeter") {
-		fmt.Fprintln(os.Stdout, "Configuring DMS greeter...")
+	// 9. Greeter setup (if advs-greeter was included)
+	if !disabledItems["advs-greeter"] && r.depExists(dependencies, "advs-greeter") {
+		fmt.Fprintln(os.Stdout, "Configuring ADVS greeter...")
 		logFunc := func(line string) {
 			r.log(line)
 			fmt.Fprintf(os.Stdout, "  greeter: %s\n", line)
 		}
-		if err := utils.RunDmsGreeterInstall(sudoPassword, logFunc); err != nil {
+		if err := utils.RunAdvsGreeterInstall(sudoPassword, logFunc); err != nil {
 			// Non-fatal, matching TUI behavior
 			fmt.Fprintf(os.Stderr, "Warning: greeter setup issue (non-fatal): %v\n", err)
 		}
 	}
 
-	// 9b. danksearch service setup (if danksearch was included)
-	if useSystemd && !disabledItems["danksearch"] && r.depExists(dependencies, "danksearch") {
-		fmt.Fprintln(os.Stdout, "Enabling danksearch service...")
+	// 9b. advsearch service setup (if advsearch was included)
+	if useSystemd && !disabledItems["advsearch"] && r.depExists(dependencies, "advsearch") {
+		fmt.Fprintln(os.Stdout, "Enabling advsearch service...")
 		logFunc := func(line string) {
 			r.log(line)
-			fmt.Fprintf(os.Stdout, "  danksearch: %s\n", line)
+			fmt.Fprintf(os.Stdout, "  advsearch: %s\n", line)
 		}
 		if err := distros.SetupDsearchService(context.Background(), logFunc); err != nil {
 			// Non-fatal, matching greeter behavior
-			fmt.Fprintf(os.Stderr, "Warning: danksearch service setup issue (non-fatal): %v\n", err)
+			fmt.Fprintf(os.Stderr, "Warning: advsearch service setup issue (non-fatal): %v\n", err)
 		}
 	}
 
@@ -365,8 +365,8 @@ func (r *Runner) applyGitVariants(dependencies []deps.Dependency, hasGitVariant 
 }
 
 func findDepFold(dependencies []deps.Dependency, lowerName string) *deps.Dependency {
-	if lowerName == "dms" {
-		lowerName = "dms (dankmaterialshell)"
+	if lowerName == "advs" {
+		lowerName = "advs (advmaterialshell)"
 	}
 	for i := range dependencies {
 		if strings.ToLower(dependencies[i].Name) == lowerName {
@@ -391,23 +391,23 @@ func (r *Runner) buildDisabledItems(dependencies []deps.Dependency) (map[string]
 	}
 
 	// Dedicated flags resolve before include/exclude
-	if r.cfg.DankSearch {
-		if !r.depExists(dependencies, "danksearch") {
-			return nil, fmt.Errorf("--danksearch: not available on this distribution")
+	if r.cfg.AdvSearch {
+		if !r.depExists(dependencies, "advsearch") {
+			return nil, fmt.Errorf("--advsearch: not available on this distribution")
 		}
-		delete(disabledItems, "danksearch")
+		delete(disabledItems, "advsearch")
 	}
-	if r.cfg.DankCalendar {
-		if !r.depExists(dependencies, "dankcalendar") {
-			return nil, fmt.Errorf("--dankcalendar: not available on this distribution")
+	if r.cfg.AdvCalendar {
+		if !r.depExists(dependencies, "advcalendar") {
+			return nil, fmt.Errorf("--advcalendar: not available on this distribution")
 		}
-		delete(disabledItems, "dankcalendar")
+		delete(disabledItems, "advcalendar")
 	}
-	if r.cfg.DmsGreeter {
-		if !r.depExists(dependencies, "dms-greeter") {
-			return nil, fmt.Errorf("--dms-greeter: not available on this distribution")
+	if r.cfg.AdvsGreeter {
+		if !r.depExists(dependencies, "advs-greeter") {
+			return nil, fmt.Errorf("--advs-greeter: not available on this distribution")
 		}
-		delete(disabledItems, "dms-greeter")
+		delete(disabledItems, "advs-greeter")
 	}
 
 	// Process --include-deps (enable items that are disabled by default)
@@ -431,8 +431,8 @@ func (r *Runner) buildDisabledItems(dependencies []deps.Dependency) (map[string]
 		if !r.depExists(dependencies, name) {
 			return nil, fmt.Errorf("--exclude-deps: unknown dependency %q", name)
 		}
-		// Don't allow excluding DMS itself
-		if name == "dms (DankMaterialShell)" {
+		// Don't allow excluding ADVS itself
+		if name == "advs (AriadnevShell)" {
 			return nil, fmt.Errorf("--exclude-deps: cannot exclude required package %q", name)
 		}
 		disabledItems[name] = true
@@ -531,14 +531,14 @@ func (r *Runner) resolveSudoPassword() (string, error) {
 		return "", fmt.Errorf(
 			"sudo authentication required but no cached credentials found\n" +
 				"Options:\n" +
-				"  1. Run 'sudo -v' before dankinstall to cache credentials\n" +
+				"  1. Run 'sudo -v' before advinstall to cache credentials\n" +
 				"  2. Configure passwordless sudo for your user",
 		)
 	case privesc.ToolDoas:
 		return "", fmt.Errorf(
 			"doas authentication required but no cached credentials found\n" +
 				"Options:\n" +
-				"  1. Run 'doas true' before dankinstall to cache credentials (requires 'persist' in /etc/doas.conf)\n" +
+				"  1. Run 'doas true' before advinstall to cache credentials (requires 'persist' in /etc/doas.conf)\n" +
 				"  2. Configure a 'nopass' rule in /etc/doas.conf for your user",
 		)
 	case privesc.ToolRun0:

@@ -1,7 +1,7 @@
 package brightness
 
 import (
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/log"
+	"github.com/bavanchun/ariadnev-shell/core/internal/log"
 )
 
 func (m *Manager) initNative() {

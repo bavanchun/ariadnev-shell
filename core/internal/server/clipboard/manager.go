@@ -29,10 +29,10 @@ import (
 
 	bolt "go.etcd.io/bbolt"
 
-	clipboardstore "github.com/AvengeMedia/DankMaterialShell/core/internal/clipboard"
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/log"
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/proto/virtual_keyboard"
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/server/wlcontext"
+	clipboardstore "github.com/bavanchun/ariadnev-shell/core/internal/clipboard"
+	"github.com/bavanchun/ariadnev-shell/core/internal/log"
+	"github.com/bavanchun/ariadnev-shell/core/internal/proto/virtual_keyboard"
+	"github.com/bavanchun/ariadnev-shell/core/internal/server/wlcontext"
 	wlclient "github.com/AvengeMedia/dankgo/wayland/client"
 	"github.com/AvengeMedia/dankgo/wayland/ext_data_control"
 	"github.com/AvengeMedia/dankgo/wlclipboard"
@@ -1948,7 +1948,7 @@ func (m *Manager) EntryToFile(entry *Entry) string {
 		if err != nil {
 			return ""
 		}
-		clipDir := filepath.Join(cacheDir, "dms", "clipboard")
+		clipDir := filepath.Join(cacheDir, "advs", "clipboard")
 		if err := os.MkdirAll(clipDir, 0o755); err != nil {
 			return ""
 		}

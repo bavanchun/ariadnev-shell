@@ -12,8 +12,8 @@ import qs.Common
 import qs.Modals
 import qs.Services
 import qs.Widgets
-import qs.DankCommon.Session
-import "../../DankCommon/Common/LayoutCodes.js" as LayoutCodes
+import qs.AdvCommon.Session
+import "../../AdvCommon/Common/LayoutCodes.js" as LayoutCodes
 import "../../Common/KeyUtils.js" as KeyUtils
 
 Item {
@@ -132,8 +132,8 @@ Item {
         if (root.unlocking)
             return;
         lockerReadySent = true;
-        if (SessionService.loginctlAvailable && DMSService.apiVersion >= 2) {
-            DMSService.sendRequest("loginctl.lockerReady", null, resp => {
+        if (SessionService.loginctlAvailable && ADVSService.apiVersion >= 2) {
+            ADVSService.sendRequest("loginctl.lockerReady", null, resp => {
                 if (resp?.error)
                     log.warn("lockerReady failed:", resp.error);
                 else
@@ -245,7 +245,7 @@ Item {
         }
         asynchronous: true
 
-        sourceComponent: DankBackdrop {
+        sourceComponent: AdvBackdrop {
             screenName: root.screenName
         }
     }
@@ -593,7 +593,7 @@ Item {
                         anchors.centerIn: parent
                         spacing: Theme.spacingS
 
-                        DankIcon {
+                        AdvIcon {
                             name: "notifications"
                             size: Theme.iconSize
                             color: "white"
@@ -642,7 +642,7 @@ Item {
                                     width: parent.width
                                     spacing: Theme.spacingS
 
-                                    DankIcon {
+                                    AdvIcon {
                                         name: "notifications"
                                         size: Theme.iconSize - 4
                                         color: "white"
@@ -819,7 +819,7 @@ Item {
                 spacing: Theme.spacingL
                 Layout.fillWidth: true
 
-                DankCircularImage {
+                AdvCircularImage {
                     Layout.preferredWidth: 60
                     Layout.preferredHeight: 60
                     imageSource: {
@@ -852,7 +852,7 @@ Item {
                         width: 20
                         height: 20
 
-                        DankIcon {
+                        AdvIcon {
                             id: lockIcon
 
                             anchors.centerIn: parent
@@ -1268,7 +1268,7 @@ Item {
                         text: passwordDisplay.text.slice(0, passwordField.cursorPosition)
                     }
 
-                    DankTextCursor {
+                    AdvTextCursor {
                         id: passwordCursor
 
                         x: passwordDisplay.x + passwordCursorMetrics.advanceWidth + Math.min(0, passwordDisplay.width - passwordDisplay.implicitWidth)
@@ -1289,7 +1289,7 @@ Item {
                         }
                     }
 
-                    DankActionButton {
+                    AdvActionButton {
                         id: revealButton
 
                         anchors.right: virtualKeyboardButton.visible ? virtualKeyboardButton.left : (securityKeyButton.visible ? securityKeyButton.left : (enterButton.visible ? enterButton.left : (loadingSpinner.visible ? loadingSpinner.left : parent.right)))
@@ -1301,7 +1301,7 @@ Item {
                         enabled: visible
                         onClicked: parent.showPassword = !parent.showPassword
                     }
-                    DankActionButton {
+                    AdvActionButton {
                         id: securityKeyButton
 
                         anchors.right: enterButton.visible ? enterButton.left : (loadingSpinner.visible ? loadingSpinner.left : parent.right)
@@ -1314,7 +1314,7 @@ Item {
                         tooltipText: SettingsData.lockScreenSecurityKeyShortcutEnabled ? I18n.tr("Security key (%1)", "lock screen security key button tooltip with shortcut").arg(SettingsData.lockScreenSecurityKeyShortcut) : I18n.tr("Security key", "lock screen security key button tooltip")
                         onClicked: root.triggerSecurityKeyUnlock()
                     }
-                    DankActionButton {
+                    AdvActionButton {
                         id: virtualKeyboardButton
 
                         anchors.right: securityKeyButton.visible ? securityKeyButton.left : (enterButton.visible ? enterButton.left : (loadingSpinner.visible ? loadingSpinner.left : parent.right))
@@ -1345,7 +1345,7 @@ Item {
                         color: "transparent"
                         visible: !demoMode && (pam.passwd.active || root.unlocking)
 
-                        DankIcon {
+                        AdvIcon {
                             anchors.centerIn: parent
                             name: "check_circle"
                             size: 20
@@ -1416,7 +1416,7 @@ Item {
                         }
                     }
 
-                    DankActionButton {
+                    AdvActionButton {
                         id: enterButton
 
                         anchors.right: parent.right
@@ -1477,9 +1477,9 @@ Item {
             anchors.topMargin: Theme.spacingS
             anchors.horizontalCenter: passwordLayout.horizontalCenter
             spacing: Theme.spacingXS
-            opacity: DMSService.capsLockState ? 1 : 0
+            opacity: ADVSService.capsLockState ? 1 : 0
 
-            DankIcon {
+            AdvIcon {
                 name: "shift_lock"
                 size: 14
                 color: Theme.error
@@ -1540,7 +1540,7 @@ Item {
                         width: Theme.iconSize
                         height: Theme.iconSize
 
-                        DankIcon {
+                        AdvIcon {
                             name: "keyboard"
                             size: Theme.iconSize
                             color: "white"
@@ -1695,7 +1695,7 @@ Item {
                         visible: MprisController.activePlayer
                         opacity: (MprisController.activePlayer?.canGoPrevious ?? false) ? 1 : 0.3
 
-                        DankIcon {
+                        AdvIcon {
                             anchors.centerIn: parent
                             name: "skip_previous"
                             size: 12
@@ -1720,7 +1720,7 @@ Item {
                         color: MprisController.activePlayer?.playbackState === MprisPlaybackState.Playing ? Qt.rgba(255, 255, 255, 0.9) : Qt.rgba(255, 255, 255, 0.2)
                         visible: MprisController.activePlayer
 
-                        DankIcon {
+                        AdvIcon {
                             anchors.centerIn: parent
                             name: MprisController.activePlayer?.playbackState === MprisPlaybackState.Playing ? "pause" : "play_arrow"
                             size: 14
@@ -1745,7 +1745,7 @@ Item {
                         visible: MprisController.activePlayer
                         opacity: (MprisController.activePlayer?.canGoNext ?? false) ? 1 : 0.3
 
-                        DankIcon {
+                        AdvIcon {
                             anchors.centerIn: parent
                             name: "skip_next"
                             size: 12
@@ -1777,7 +1777,7 @@ Item {
                 visible: WeatherService.weather.available
                 anchors.verticalCenter: parent.verticalCenter
 
-                DankIcon {
+                AdvIcon {
                     name: WeatherService.getWeatherIcon(WeatherService.weather.wCode)
                     size: Theme.iconSize
                     color: "white"
@@ -1806,7 +1806,7 @@ Item {
                 anchors.verticalCenter: parent.verticalCenter
                 visible: NetworkService.networkAvailable || (BluetoothService.available && BluetoothService.enabled) || (AudioService.sink && AudioService.sink.audio)
 
-                DankIcon {
+                AdvIcon {
                     name: "screen_record"
                     size: Theme.iconSize - 2
                     color: NiriService.hasActiveCast ? "white" : Qt.rgba(255, 255, 255, 0.5)
@@ -1814,7 +1814,7 @@ Item {
                     visible: NiriService.hasCasts
                 }
 
-                DankIcon {
+                AdvIcon {
                     id: lockNetworkIcon
                     name: {
                         if (NetworkService.wifiToggling)
@@ -1835,13 +1835,13 @@ Item {
                     anchors.verticalCenter: parent.verticalCenter
                     visible: NetworkService.networkAvailable
 
-                    DankBlink {
+                    AdvBlink {
                         target: lockNetworkIcon
                         running: NetworkService.isWifiConnecting
                     }
                 }
 
-                DankIcon {
+                AdvIcon {
                     name: "vpn_lock"
                     size: Theme.iconSize - 2
                     color: "white"
@@ -1849,7 +1849,7 @@ Item {
                     visible: NetworkService.vpnAvailable && NetworkService.vpnConnected
                 }
 
-                DankIcon {
+                AdvIcon {
                     id: lockBluetoothIcon
                     name: "bluetooth"
                     size: Theme.iconSize - 2
@@ -1857,13 +1857,13 @@ Item {
                     anchors.verticalCenter: parent.verticalCenter
                     visible: BluetoothService.available && BluetoothService.enabled
 
-                    DankBlink {
+                    AdvBlink {
                         target: lockBluetoothIcon
                         running: BluetoothService.connecting
                     }
                 }
 
-                DankIcon {
+                AdvIcon {
                     name: AudioService.sinkVolumeIconName
                     size: Theme.iconSize - 2
                     color: (AudioService.sink && AudioService.sink.audio && (AudioService.sink.audio.muted || AudioService.sink.audio.volume === 0)) ? Qt.rgba(255, 255, 255, 0.5) : "white"
@@ -1885,7 +1885,7 @@ Item {
                 visible: BatteryService.batteryAvailable
                 anchors.verticalCenter: parent.verticalCenter
 
-                DankIcon {
+                AdvIcon {
                     name: {
                         if (BatteryService.isCharging) {
                             if (BatteryService.batteryLevel >= 90) {
@@ -1992,7 +1992,7 @@ Item {
             }
         }
 
-        DankActionButton {
+        AdvActionButton {
             anchors.bottom: parent.bottom
             anchors.left: parent.left
             anchors.margins: Theme.spacingXL

@@ -152,7 +152,7 @@ Item {
         }
     }
 
-    DankFlickable {
+    AdvFlickable {
         anchors.fill: parent
         clip: true
         contentHeight: mainColumn.height + Theme.spacingXL
@@ -189,13 +189,13 @@ Item {
                     Row {
                         spacing: Theme.spacingM
 
-                        DankButton {
+                        AdvButton {
                             text: I18n.tr("Add Widget")
                             iconName: "add"
                             onClicked: root.showWidgetBrowser()
                         }
 
-                        DankButton {
+                        AdvButton {
                             text: I18n.tr("Browse Plugins")
                             iconName: "store"
                             onClicked: root.showDesktopPluginBrowser()
@@ -231,7 +231,7 @@ Item {
                         spacing: Theme.spacingS
                         width: parent.width
 
-                        DankTextField {
+                        AdvTextField {
                             id: newGroupField
                             width: parent.width - addGroupBtn.width - Theme.spacingS
                             placeholderText: I18n.tr("New group name...")
@@ -246,7 +246,7 @@ Item {
                             }
                         }
 
-                        DankButton {
+                        AdvButton {
                             id: addGroupBtn
                             iconName: "add"
                             text: I18n.tr("Add")
@@ -283,7 +283,7 @@ Item {
                                     anchors.rightMargin: Theme.spacingS
                                     spacing: Theme.spacingS
 
-                                    DankIcon {
+                                    AdvIcon {
                                         name: "folder"
                                         size: Theme.iconSizeSmall
                                         color: Theme.surfaceText
@@ -296,7 +296,7 @@ Item {
                                         height: active ? 32 : 0
                                         anchors.verticalCenter: parent.verticalCenter
 
-                                        sourceComponent: DankTextField {
+                                        sourceComponent: AdvTextField {
                                             text: groupItem.modelData.name
                                             onAccepted: {
                                                 if (!text.trim())
@@ -328,7 +328,7 @@ Item {
                                         width: parent.width - Theme.iconSizeSmall - deleteGroupBtn.width - Theme.spacingS * 3
                                     }
 
-                                    DankActionButton {
+                                    AdvActionButton {
                                         id: deleteGroupBtn
                                         iconName: "delete"
                                         backgroundColor: Theme.withAlpha(Theme.error, 0.15)
@@ -448,7 +448,7 @@ Item {
                             radius: 20
                             color: Theme.primarySelected
 
-                            DankIcon {
+                            AdvIcon {
                                 anchors.centerIn: parent
                                 name: "drag_pan"
                                 size: Theme.iconSize
@@ -490,7 +490,7 @@ Item {
                             radius: 20
                             color: Theme.primarySelected
 
-                            DankIcon {
+                            AdvIcon {
                                 anchors.centerIn: parent
                                 name: "open_in_full"
                                 size: Theme.iconSize
@@ -532,7 +532,7 @@ Item {
                             radius: 20
                             color: Theme.primarySelected
 
-                            DankIcon {
+                            AdvIcon {
                                 anchors.centerIn: parent
                                 name: "drag_indicator"
                                 size: Theme.iconSize
@@ -592,7 +592,7 @@ Item {
                 anchors.centerIn: parent
                 spacing: Theme.spacingS
 
-                DankIcon {
+                AdvIcon {
                     name: (root.dragWidgetData && root.dragWidgetData.icon) ? root.dragWidgetData.icon : "widgets"
                     size: Theme.iconSize
                     color: Theme.primary

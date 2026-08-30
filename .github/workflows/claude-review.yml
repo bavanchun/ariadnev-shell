@@ -25,7 +25,7 @@ jobs:
           GH_TOKEN: ${{ secrets.CLAUDE_REVIEW_ORG_READ_TOKEN }}
           ORG: ${{ github.repository_owner }}
           USER: ${{ github.event.comment.user.login }}
-          TEAMS: dms-collaborators owners
+          TEAMS: advs-collaborators owners
         run: |
           allowed=false
           for team in $TEAMS; do
@@ -94,9 +94,9 @@ jobs:
 
             Flag only issues introduced by this PR:
             - Bugs: wrong logic, crashes, nil/undefined access, races, leaks (timers, connections, processes, handles), bad Go error handling, edge cases that will clearly be hit.
-            - QML: undefined refs, missing imports, binding loops, bindings that never update, handlers on the wrong object, raw Flickable/ListView/ScrollView instead of the Dank* wrappers.
+            - QML: undefined refs, missing imports, binding loops, bindings that never update, handlers on the wrong object, raw Flickable/ListView/ScrollView instead of the Adv* wrappers.
             - Security: command injection, path traversal, unsafe file permissions, secrets in code.
-            - CONTRIBUTING.md rules: user-facing strings in `I18n.tr()` with translator context, reuse existing terms from quickshell/translations/en.json; en.json and template.json must not be touched in a PR; mocks under core/internal/mocks/ are regenerated not hand-edited; new dank-qml-common contract properties need the matching library change.
+            - CONTRIBUTING.md rules: user-facing strings in `I18n.tr()` with translator context, reuse existing terms from quickshell/translations/en.json; en.json and template.json must not be touched in a PR; mocks under core/internal/mocks/ are regenerated not hand-edited; new ariadnev-qml-common contract properties need the matching library change.
             - Go: unformatted code, go.mod/go.sum out of sync with imports, tests that no longer compile.
 
             Don't flag style or naming, pre-existing issues, anything a linter or compiler catches, speculative input-dependent problems, missing tests or docs, or refactor ideas. Not sure it's real: don't post it.

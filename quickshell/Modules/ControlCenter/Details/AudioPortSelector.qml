@@ -193,7 +193,7 @@ Item {
                 width: parent.width
                 spacing: Theme.spacingM
 
-                DankIcon {
+                AdvIcon {
                     name: root.node ? AudioService.sinkIcon(root.node) : "speaker"
                     size: Theme.iconSize + 4
                     color: Theme.primary
@@ -302,7 +302,7 @@ Item {
                             }
                         }
 
-                        DankIcon {
+                        AdvIcon {
                             id: portCheck
                             name: "check"
                             size: Theme.iconSize - 4
@@ -313,7 +313,7 @@ Item {
                             visible: isCurrent
                         }
 
-                        DankRipple {
+                        AdvRipple {
                             id: portRipple
                             cornerRadius: parent.radius
                         }

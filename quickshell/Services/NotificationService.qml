@@ -1023,14 +1023,14 @@ Singleton {
     }
 
     function sendTestNotification(index) {
-        const notifications = [["Notification Position Test", "DMS test notification 1 of 3 ~ Hi there!", "preferences-system"], ["Second Test", "DMS Notification 2 of 3 ~ Check it out!", "applications-graphics"], ["Third Test", "DMS notification 3 of 3 ~ Enjoy!", "face-smile"]];
+        const notifications = [["Notification Position Test", "ADVS test notification 1 of 3 ~ Hi there!", "preferences-system"], ["Second Test", "ADVS Notification 2 of 3 ~ Check it out!", "applications-graphics"], ["Third Test", "ADVS notification 3 of 3 ~ Enjoy!", "face-smile"]];
 
         if (index < 0 || index >= notifications.length) {
             return;
         }
 
         const notif = notifications[index];
-        testNotificationProcess.command = ["notify-send", "-h", "int:transient:1", "-a", "DMS", "-i", notif[2], notif[0], notif[1]];
+        testNotificationProcess.command = ["notify-send", "-h", "int:transient:1", "-a", "ADVS", "-i", notif[2], notif[0], notif[1]];
         testNotificationProcess.running = true;
     }
 

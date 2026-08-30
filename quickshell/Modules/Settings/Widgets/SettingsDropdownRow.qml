@@ -6,7 +6,7 @@ import qs.Services
 import qs.Widgets
 import "../../../Common/QmlUtils.js" as QmlUtils
 
-DankDropdown {
+AdvDropdown {
     id: root
 
     LayoutMirroring.enabled: I18n.isRtl

@@ -10,7 +10,7 @@ import (
 	"github.com/yeqown/go-qrcode/writer/standard"
 )
 
-const textQRCodeTmpPrefix = "/tmp/dank-text-qrcode-"
+const textQRCodeTmpPrefix = "/tmp/adv-text-qrcode-"
 
 func generateTextQRCode(text string) ([2]string, error) {
 	qrc, err := qrcode.New(text)

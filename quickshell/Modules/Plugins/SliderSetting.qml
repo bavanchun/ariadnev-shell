@@ -54,7 +54,7 @@ Column {
         visible: root.description !== ""
     }
 
-    DankSlider {
+    AdvSlider {
         width: parent.width
         value: root.value
         minimum: root.minimum

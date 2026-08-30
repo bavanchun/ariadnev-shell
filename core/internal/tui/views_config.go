@@ -7,9 +7,9 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/config"
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/deps"
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/distros"
+	"github.com/bavanchun/ariadnev-shell/core/internal/config"
+	"github.com/bavanchun/ariadnev-shell/core/internal/deps"
+	"github.com/bavanchun/ariadnev-shell/core/internal/distros"
 	tea "github.com/charmbracelet/bubbletea"
 )
 
@@ -242,22 +242,22 @@ func (m Model) configReplacementNote() string {
 	switch configInfo.ConfigType {
 	case "Niri":
 		if m.useSystemdConfig() {
-			return "Replacing Niri writes the DMS Niri template and uses the user systemd dms service for shell autostart."
+			return "Replacing Niri writes the ADVS Niri template and uses the user systemd advs service for shell autostart."
 		}
-		return `Replacing Niri writes the DMS Niri template and starts DMS from Niri with spawn-at-startup "dms" "run".`
+		return `Replacing Niri writes the ADVS Niri template and starts ADVS from Niri with spawn-at-startup "advs" "run".`
 	case "Hyprland":
 		if m.useSystemdConfig() {
-			return "Replacing Hyprland writes the DMS Lua template and uses the user systemd dms service for shell autostart."
+			return "Replacing Hyprland writes the ADVS Lua template and uses the user systemd advs service for shell autostart."
 		}
-		return `Replacing Hyprland writes the DMS Lua template and starts DMS from Hyprland with hl.exec_cmd("dms run").`
+		return `Replacing Hyprland writes the ADVS Lua template and starts ADVS from Hyprland with hl.exec_cmd("advs run").`
 	case "Mango":
-		return "Replacing Mango writes the DMS Mango template and starts DMS from Mango with exec-once=dms run."
+		return "Replacing Mango writes the ADVS Mango template and starts ADVS from Mango with exec-once=advs run."
 	case "Ghostty":
-		return "Replacing Ghostty writes the DMS terminal defaults and theme include."
+		return "Replacing Ghostty writes the ADVS terminal defaults and theme include."
 	case "Kitty":
-		return "Replacing Kitty writes the DMS terminal defaults, theme include, and tab styling."
+		return "Replacing Kitty writes the ADVS terminal defaults, theme include, and tab styling."
 	case "Alacritty":
-		return "Replacing Alacritty writes the DMS terminal defaults and theme import."
+		return "Replacing Alacritty writes the ADVS terminal defaults and theme import."
 	default:
 		return ""
 	}

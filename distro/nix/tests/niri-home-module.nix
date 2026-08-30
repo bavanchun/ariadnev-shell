@@ -18,7 +18,7 @@ let
   };
 in
 pkgs.testers.runNixOSTest {
-  name = "dms-niri-home-module";
+  name = "advs-niri-home-module";
 
   nodes.machine = {
     ...
@@ -27,10 +27,10 @@ pkgs.testers.runNixOSTest {
       homeManagerNixosModule
     ];
 
-    users.users.danklinux = {
+    users.users.ariadnev = {
       isNormalUser = true;
       createHome = true;
-      home = "/home/danklinux";
+      home = "/home/ariadnev";
       extraGroups = [ "wheel" ];
     };
 
@@ -42,17 +42,17 @@ pkgs.testers.runNixOSTest {
       "/share/xdg-desktop-portal"
     ];
 
-    home-manager.users.danklinux = {
+    home-manager.users.ariadnev = {
       ...
     }: {
       imports = [
-        self.homeModules.dank-material-shell
+        self.homeModules.adv-material-shell
         niriFlake.homeModules.niri
         self.homeModules.niri
       ];
 
-      home.username = "danklinux";
-      home.homeDirectory = "/home/danklinux";
+      home.username = "ariadnev";
+      home.homeDirectory = "/home/ariadnev";
       home.stateVersion = "25.11";
 
       programs.niri = {
@@ -60,7 +60,7 @@ pkgs.testers.runNixOSTest {
         package = fakeNiri; # avoids niri from being compiled in the CI
       };
 
-      programs.dank-material-shell = {
+      programs.adv-material-shell = {
         enable = true;
         niri = {
           enableKeybinds = false;
@@ -75,10 +75,10 @@ pkgs.testers.runNixOSTest {
   testScript = ''
     machine.wait_for_unit("multi-user.target")
 
-    machine.succeed("su -- danklinux -c 'test -f ~/.config/niri/config.kdl'")
-    machine.succeed("su -- danklinux -c 'grep -F \"include optional=true \\\"dms/binds.kdl\\\"\" ~/.config/niri/config.kdl'")
-    machine.succeed("su -- danklinux -c 'grep -F \"include optional=true \\\"hm.kdl\\\"\" ~/.config/niri/config.kdl'")
-    machine.succeed("su -- danklinux -c 'grep -F \"spawn-at-startup\" ~/.config/niri/hm.kdl'")
-    machine.succeed("su -- danklinux -c 'grep -F \"\\\"dms\\\" \\\"run\\\"\" ~/.config/niri/hm.kdl'")
+    machine.succeed("su -- ariadnev -c 'test -f ~/.config/niri/config.kdl'")
+    machine.succeed("su -- ariadnev -c 'grep -F \"include optional=true \\\"advs/binds.kdl\\\"\" ~/.config/niri/config.kdl'")
+    machine.succeed("su -- ariadnev -c 'grep -F \"include optional=true \\\"hm.kdl\\\"\" ~/.config/niri/config.kdl'")
+    machine.succeed("su -- ariadnev -c 'grep -F \"spawn-at-startup\" ~/.config/niri/hm.kdl'")
+    machine.succeed("su -- ariadnev -c 'grep -F \"\\\"advs\\\" \\\"run\\\"\" ~/.config/niri/hm.kdl'")
   '';
 }

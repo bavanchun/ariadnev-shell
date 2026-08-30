@@ -517,7 +517,7 @@ Item {
         return null;
     }
 
-    DankTooltip {
+    AdvTooltip {
         id: dockTooltip
         targetScreen: dock.screen
     }

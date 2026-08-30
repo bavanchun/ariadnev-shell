@@ -51,8 +51,8 @@ Theme.surfaceContainerHigh
 Theme.surfaceContainerHighest
 ```
 
-> **Note:** Not every theme color is consumed by DMS's own UI. `surfaceContainerLowest`,
-> `surfaceContainerLow`, and `backgroundText` are currently unused by DMS components — they
+> **Note:** Not every theme color is consumed by ADVS's own UI. `surfaceContainerLowest`,
+> `surfaceContainerLow`, and `backgroundText` are currently unused by ADVS components — they
 > exist to complete the Material palette and are exported to matugen templates (VS Code,
 > KDE, Firefox, Zed, etc.). They're still safe to reference in plugins; they just aren't
 > relied on internally.
@@ -84,7 +84,7 @@ Theme.popupBackground()  // Popup background with opacity
 
 ### Icon with Text
 ```qml
-DankIcon {
+AdvIcon {
     name: "icon_name"
     color: Theme.onSurface
     font.pixelSize: Theme.iconSize

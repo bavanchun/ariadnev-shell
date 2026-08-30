@@ -6,7 +6,7 @@ import qs.Common
 import qs.Services
 import qs.Widgets
 
-DankFloatingWindow {
+AdvFloatingWindow {
     id: root
 
     property string searchQuery: ""
@@ -211,7 +211,7 @@ DankFloatingWindow {
                     anchors.verticalCenter: parent.verticalCenter
                     spacing: Theme.spacingM
 
-                    DankIcon {
+                    AdvIcon {
                         name: "add_circle"
                         size: Theme.iconSize
                         color: Theme.primary
@@ -233,7 +233,7 @@ DankFloatingWindow {
                     anchors.verticalCenter: parent.verticalCenter
                     spacing: Theme.spacingXS
 
-                    DankActionButton {
+                    AdvActionButton {
                         visible: windowControls.canMaximize
                         circular: false
                         iconName: root.maximized ? "fullscreen_exit" : "fullscreen"
@@ -242,7 +242,7 @@ DankFloatingWindow {
                         onClicked: windowControls.tryToggleMaximize()
                     }
 
-                    DankActionButton {
+                    AdvActionButton {
                         circular: false
                         iconName: "close"
                         iconSize: Theme.iconSize - 4
@@ -270,7 +270,7 @@ DankFloatingWindow {
                         wrapMode: Text.WordWrap
                     }
 
-                    DankTextField {
+                    AdvTextField {
                         id: searchField
                         width: parent.width
                         height: 48
@@ -301,7 +301,7 @@ DankFloatingWindow {
                         }
                     }
 
-                    DankListView {
+                    AdvListView {
                         id: widgetList
 
                         width: parent.width
@@ -336,7 +336,7 @@ DankFloatingWindow {
                                     color: Theme.primarySelected
                                     anchors.verticalCenter: parent.verticalCenter
 
-                                    DankIcon {
+                                    AdvIcon {
                                         anchors.centerIn: parent
                                         name: delegateRoot.modelData.icon || "widgets"
                                         size: Theme.iconSize
@@ -374,7 +374,7 @@ DankFloatingWindow {
                                                 anchors.centerIn: parent
                                                 spacing: Theme.spacingXXS
 
-                                                DankIcon {
+                                                AdvIcon {
                                                     name: "star"
                                                     size: 10
                                                     color: Theme.secondary
@@ -421,7 +421,7 @@ DankFloatingWindow {
                                     }
                                 }
 
-                                DankIcon {
+                                AdvIcon {
                                     name: "add"
                                     size: Theme.iconSize - 4
                                     color: Theme.primary

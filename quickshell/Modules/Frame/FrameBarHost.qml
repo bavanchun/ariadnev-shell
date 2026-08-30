@@ -2,11 +2,11 @@ pragma ComponentBehavior: Bound
 
 import QtQuick
 import qs.Common
-import qs.Modules.DankBar
+import qs.Modules.AdvBar
 import qs.Services
 
-// Renders the bar(s) inside the frame surface in connected mode: one DankBarBody per
-// active bar edge, positioned in the frame's cutout band. Reuses the existing DankBar
+// Renders the bar(s) inside the frame surface in connected mode: one AdvBarBody per
+// active bar edge, positioned in the frame's cutout band. Reuses the existing AdvBar
 // item (per bar config) as rootWindow so colour-picker, overview loader and widget
 // models are shared with the standalone path.
 Item {
@@ -29,7 +29,7 @@ Item {
                 continue;
             if (SettingsData.isIslandBarConfig(bc))
                 continue;
-            if (SettingsData.dankIslandOwnsEdge(host.targetScreen, SettingsData.positionToSide(bc.position ?? SettingsData.Position.Top)))
+            if (SettingsData.advIslandOwnsEdge(host.targetScreen, SettingsData.positionToSide(bc.position ?? SettingsData.Position.Top)))
                 continue;
             let edge = "top";
             switch (bc.position ?? 0) {
@@ -66,11 +66,11 @@ Item {
             required property var modelData
 
             readonly property string edge: modelData.edge
-            readonly property var dankBarItem: BarWidgetService.dankBarItems[modelData.barId] ?? null
-            readonly property var slotBarConfig: dankBarItem?.barConfig ?? SettingsData.getBarConfig(modelData.barId)
+            readonly property var advBarItem: BarWidgetService.advBarItems[modelData.barId] ?? null
+            readonly property var slotBarConfig: advBarItem?.barConfig ?? SettingsData.getBarConfig(modelData.barId)
 
             // Each bar spans its full edge (matching the standalone window extent) so
-            // DankBarContent's own adjacency margins inset it, rather than double-insetting
+            // AdvBarContent's own adjacency margins inset it, rather than double-insetting
             // against a pre-carved strip.
             x: edge === "right" ? host.frameWindow._windowRegionWidth - host.frameWindow.cutoutRightInset : 0
             y: edge === "bottom" ? host.frameWindow._windowRegionHeight - host.frameWindow.cutoutBottomInset : 0
@@ -97,16 +97,16 @@ Item {
 
             Loader {
                 anchors.fill: parent
-                active: slot.dankBarItem !== null && slot.slotBarConfig !== null
+                active: slot.advBarItem !== null && slot.slotBarConfig !== null
 
-                sourceComponent: DankBarBody {
+                sourceComponent: AdvBarBody {
                     hostWindow: host.frameWindow
                     modelData: host.targetScreen
-                    rootWindow: slot.dankBarItem
+                    rootWindow: slot.advBarItem
                     barConfig: slot.slotBarConfig
-                    leftWidgetsModel: slot.dankBarItem?.leftWidgetsModel ?? null
-                    centerWidgetsModel: slot.dankBarItem?.centerWidgetsModel ?? null
-                    rightWidgetsModel: slot.dankBarItem?.rightWidgetsModel ?? null
+                    leftWidgetsModel: slot.advBarItem?.leftWidgetsModel ?? null
+                    centerWidgetsModel: slot.advBarItem?.centerWidgetsModel ?? null
+                    rightWidgetsModel: slot.advBarItem?.rightWidgetsModel ?? null
 
                     Component.onCompleted: BarWidgetService.registerFrameBar(host.screenName, this)
                     Component.onDestruction: BarWidgetService.unregisterFrameBar(host.screenName, this)

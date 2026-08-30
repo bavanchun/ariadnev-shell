@@ -185,7 +185,7 @@ Item {
         return fallback;
     }
 
-    DankFlickable {
+    AdvFlickable {
         anchors.fill: parent
         clip: true
         contentHeight: mainColumn.height + Theme.spacingXL
@@ -479,7 +479,7 @@ Item {
                                     height: 1
                                 }
 
-                                DankActionButton {
+                                AdvActionButton {
                                     id: dndBypassRemoveBtn
                                     buttonSize: 28
                                     iconName: "delete"
@@ -505,7 +505,7 @@ Item {
                 expanded: false
 
                 headerActions: [
-                    DankActionButton {
+                    AdvActionButton {
                         buttonSize: 36
                         iconName: "restart_alt"
                         iconSize: 20
@@ -513,7 +513,7 @@ Item {
                         iconColor: Theme.surfaceVariantText
                         onClicked: SettingsData.resetNotificationRules()
                     },
-                    DankActionButton {
+                    AdvActionButton {
                         buttonSize: 36
                         iconName: "add"
                         iconSize: 20
@@ -572,7 +572,7 @@ Item {
                                         height: 1
                                     }
 
-                                    DankToggle {
+                                    AdvToggle {
                                         id: enableToggle
                                         width: 40
                                         height: 24
@@ -593,7 +593,7 @@ Item {
                                             color: deleteArea.containsMouse ? Theme.withAlpha(Theme.error, 0.2) : Theme.withAlpha(Theme.error, 0)
                                         }
 
-                                        DankIcon {
+                                        AdvIcon {
                                             anchors.centerIn: parent
                                             name: "delete"
                                             size: 18
@@ -620,7 +620,7 @@ Item {
                                         color: Theme.surfaceVariantText
                                     }
 
-                                    DankTextField {
+                                    AdvTextField {
                                         width: parent.width
                                         text: modelData.pattern || ""
                                         font.pixelSize: Theme.fontSizeSmall
@@ -643,7 +643,7 @@ Item {
                                             color: Theme.surfaceVariantText
                                         }
 
-                                        DankDropdown {
+                                        AdvDropdown {
                                             width: parent.width
                                             compactMode: true
                                             dropdownWidth: parent.width
@@ -664,7 +664,7 @@ Item {
                                             color: Theme.surfaceVariantText
                                         }
 
-                                        DankDropdown {
+                                        AdvDropdown {
                                             width: parent.width
                                             compactMode: true
                                             dropdownWidth: parent.width
@@ -684,7 +684,7 @@ Item {
                                             color: Theme.surfaceVariantText
                                         }
 
-                                        DankDropdown {
+                                        AdvDropdown {
                                             width: parent.width
                                             compactMode: true
                                             dropdownWidth: parent.width
@@ -705,7 +705,7 @@ Item {
                                             color: Theme.surfaceVariantText
                                         }
 
-                                        DankDropdown {
+                                        AdvDropdown {
                                             width: parent.width
                                             compactMode: true
                                             dropdownWidth: parent.width
@@ -734,7 +734,7 @@ Item {
                                         height: 1
                                     }
 
-                                    DankToggle {
+                                    AdvToggle {
                                         id: bypassDndToggle
                                         width: 40
                                         height: 24
@@ -797,7 +797,7 @@ Item {
                                     height: 1
                                 }
 
-                                DankButton {
+                                AdvButton {
                                     id: unmuteBtn
                                     text: I18n.tr("Unmute")
                                     backgroundColor: Theme.floatingWindowFieldColor
@@ -817,7 +817,7 @@ Item {
                                         color: mutedDeleteArea.containsMouse ? Theme.withAlpha(Theme.error, 0.2) : Theme.withAlpha(Theme.error, 0)
                                     }
 
-                                    DankIcon {
+                                    AdvIcon {
                                         anchors.centerIn: parent
                                         name: "delete"
                                         size: 18

@@ -9,8 +9,8 @@ import (
 )
 
 func TestLiveSeatKeymapResolution(t *testing.T) {
-	if os.Getenv("DMS_LIVE_TEST") == "" {
-		t.Skip("set DMS_LIVE_TEST=1 to run against the live compositor")
+	if os.Getenv("ADVS_LIVE_TEST") == "" {
+		t.Skip("set ADVS_LIVE_TEST=1 to run against the live compositor")
 	}
 
 	s, err := connectSession()
@@ -50,7 +50,7 @@ func TestLiveSeatKeymapResolution(t *testing.T) {
 		t.Fatalf("read keymap: %v", err)
 	}
 
-	if dump := os.Getenv("DMS_LIVE_DUMP"); dump != "" {
+	if dump := os.Getenv("ADVS_LIVE_DUMP"); dump != "" {
 		if err := os.WriteFile(dump, []byte(text), 0o644); err != nil {
 			t.Fatalf("dump keymap: %v", err)
 		}

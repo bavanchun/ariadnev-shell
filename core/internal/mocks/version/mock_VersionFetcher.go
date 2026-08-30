@@ -36,8 +36,8 @@ func (_m *MockVersionFetcher) EXPECT() *MockVersionFetcher_Expecter {
 }
 
 // GetCurrentVersion provides a mock function for the type MockVersionFetcher
-func (_mock *MockVersionFetcher) GetCurrentVersion(dmsPath string) (string, error) {
-	ret := _mock.Called(dmsPath)
+func (_mock *MockVersionFetcher) GetCurrentVersion(advsPath string) (string, error) {
+	ret := _mock.Called(advsPath)
 
 	if len(ret) == 0 {
 		panic("no return value specified for GetCurrentVersion")
@@ -46,15 +46,15 @@ func (_mock *MockVersionFetcher) GetCurrentVersion(dmsPath string) (string, erro
 	var r0 string
 	var r1 error
 	if returnFunc, ok := ret.Get(0).(func(string) (string, error)); ok {
-		return returnFunc(dmsPath)
+		return returnFunc(advsPath)
 	}
 	if returnFunc, ok := ret.Get(0).(func(string) string); ok {
-		r0 = returnFunc(dmsPath)
+		r0 = returnFunc(advsPath)
 	} else {
 		r0 = ret.Get(0).(string)
 	}
 	if returnFunc, ok := ret.Get(1).(func(string) error); ok {
-		r1 = returnFunc(dmsPath)
+		r1 = returnFunc(advsPath)
 	} else {
 		r1 = ret.Error(1)
 	}
@@ -67,12 +67,12 @@ type MockVersionFetcher_GetCurrentVersion_Call struct {
 }
 
 // GetCurrentVersion is a helper method to define mock.On call
-//   - dmsPath string
-func (_e *MockVersionFetcher_Expecter) GetCurrentVersion(dmsPath any) *MockVersionFetcher_GetCurrentVersion_Call {
-	return &MockVersionFetcher_GetCurrentVersion_Call{Call: _e.mock.On("GetCurrentVersion", dmsPath)}
+//   - advsPath string
+func (_e *MockVersionFetcher_Expecter) GetCurrentVersion(advsPath any) *MockVersionFetcher_GetCurrentVersion_Call {
+	return &MockVersionFetcher_GetCurrentVersion_Call{Call: _e.mock.On("GetCurrentVersion", advsPath)}
 }
 
-func (_c *MockVersionFetcher_GetCurrentVersion_Call) Run(run func(dmsPath string)) *MockVersionFetcher_GetCurrentVersion_Call {
+func (_c *MockVersionFetcher_GetCurrentVersion_Call) Run(run func(advsPath string)) *MockVersionFetcher_GetCurrentVersion_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		var arg0 string
 		if args[0] != nil {
@@ -90,14 +90,14 @@ func (_c *MockVersionFetcher_GetCurrentVersion_Call) Return(s string, err error)
 	return _c
 }
 
-func (_c *MockVersionFetcher_GetCurrentVersion_Call) RunAndReturn(run func(dmsPath string) (string, error)) *MockVersionFetcher_GetCurrentVersion_Call {
+func (_c *MockVersionFetcher_GetCurrentVersion_Call) RunAndReturn(run func(advsPath string) (string, error)) *MockVersionFetcher_GetCurrentVersion_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
 // GetLatestVersion provides a mock function for the type MockVersionFetcher
-func (_mock *MockVersionFetcher) GetLatestVersion(dmsPath string) (string, error) {
-	ret := _mock.Called(dmsPath)
+func (_mock *MockVersionFetcher) GetLatestVersion(advsPath string) (string, error) {
+	ret := _mock.Called(advsPath)
 
 	if len(ret) == 0 {
 		panic("no return value specified for GetLatestVersion")
@@ -106,15 +106,15 @@ func (_mock *MockVersionFetcher) GetLatestVersion(dmsPath string) (string, error
 	var r0 string
 	var r1 error
 	if returnFunc, ok := ret.Get(0).(func(string) (string, error)); ok {
-		return returnFunc(dmsPath)
+		return returnFunc(advsPath)
 	}
 	if returnFunc, ok := ret.Get(0).(func(string) string); ok {
-		r0 = returnFunc(dmsPath)
+		r0 = returnFunc(advsPath)
 	} else {
 		r0 = ret.Get(0).(string)
 	}
 	if returnFunc, ok := ret.Get(1).(func(string) error); ok {
-		r1 = returnFunc(dmsPath)
+		r1 = returnFunc(advsPath)
 	} else {
 		r1 = ret.Error(1)
 	}
@@ -127,12 +127,12 @@ type MockVersionFetcher_GetLatestVersion_Call struct {
 }
 
 // GetLatestVersion is a helper method to define mock.On call
-//   - dmsPath string
-func (_e *MockVersionFetcher_Expecter) GetLatestVersion(dmsPath any) *MockVersionFetcher_GetLatestVersion_Call {
-	return &MockVersionFetcher_GetLatestVersion_Call{Call: _e.mock.On("GetLatestVersion", dmsPath)}
+//   - advsPath string
+func (_e *MockVersionFetcher_Expecter) GetLatestVersion(advsPath any) *MockVersionFetcher_GetLatestVersion_Call {
+	return &MockVersionFetcher_GetLatestVersion_Call{Call: _e.mock.On("GetLatestVersion", advsPath)}
 }
 
-func (_c *MockVersionFetcher_GetLatestVersion_Call) Run(run func(dmsPath string)) *MockVersionFetcher_GetLatestVersion_Call {
+func (_c *MockVersionFetcher_GetLatestVersion_Call) Run(run func(advsPath string)) *MockVersionFetcher_GetLatestVersion_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		var arg0 string
 		if args[0] != nil {
@@ -150,7 +150,7 @@ func (_c *MockVersionFetcher_GetLatestVersion_Call) Return(s string, err error) 
 	return _c
 }
 
-func (_c *MockVersionFetcher_GetLatestVersion_Call) RunAndReturn(run func(dmsPath string) (string, error)) *MockVersionFetcher_GetLatestVersion_Call {
+func (_c *MockVersionFetcher_GetLatestVersion_Call) RunAndReturn(run func(advsPath string) (string, error)) *MockVersionFetcher_GetLatestVersion_Call {
 	_c.Call.Return(run)
 	return _c
 }

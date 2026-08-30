@@ -126,7 +126,7 @@ Item {
         id: deleteClassConfirm
     }
 
-    DankFlickable {
+    AdvFlickable {
         anchors.fill: parent
         clip: true
         contentHeight: mainColumn.height + Theme.spacingXL
@@ -159,7 +159,7 @@ Item {
                         width: parent.width
                         spacing: Theme.spacingM
 
-                        DankIcon {
+                        AdvIcon {
                             name: "print"
                             size: Theme.iconSize
                             color: Theme.primary
@@ -265,7 +265,7 @@ Item {
                         width: parent.width
                         spacing: Theme.spacingM
 
-                        DankIcon {
+                        AdvIcon {
                             name: "add_circle"
                             size: Theme.iconSize
                             color: Theme.primary
@@ -303,7 +303,7 @@ Item {
                             color: addPrinterToggleArea.containsMouse ? Theme.surfacePressed : Theme.withAlpha(Theme.surfacePressed, 0)
                             anchors.verticalCenter: parent.verticalCenter
 
-                            DankIcon {
+                            AdvIcon {
                                 anchors.centerIn: parent
                                 name: printerTab.showAddPrinter ? "expand_less" : "expand_more"
                                 size: 18
@@ -356,7 +356,7 @@ Item {
                                     anchors.centerIn: parent
                                     spacing: Theme.spacingXS
 
-                                    DankIcon {
+                                    AdvIcon {
                                         name: "search"
                                         size: 16
                                         color: !printerTab.manualEntryMode ? Theme.onPrimary : Theme.surfaceText
@@ -394,7 +394,7 @@ Item {
                                     anchors.centerIn: parent
                                     spacing: Theme.spacingXS
 
-                                    DankIcon {
+                                    AdvIcon {
                                         name: "edit"
                                         size: 16
                                         color: printerTab.manualEntryMode ? Theme.onPrimary : Theme.surfaceText
@@ -442,7 +442,7 @@ Item {
                                     anchors.verticalCenter: parent.verticalCenter
                                 }
 
-                                DankDropdown {
+                                AdvDropdown {
                                     id: deviceDropdown
                                     dropdownWidth: parent.width - 80 - scanDevicesBtn.width - Theme.spacingS * 2
                                     popupWidth: parent.width - 80 - scanDevicesBtn.width - Theme.spacingS * 2
@@ -464,7 +464,7 @@ Item {
                                     }
                                 }
 
-                                DankActionButton {
+                                AdvActionButton {
                                     id: scanDevicesBtn
                                     iconName: "refresh"
                                     buttonSize: 32
@@ -520,7 +520,7 @@ Item {
                                     anchors.verticalCenter: parent.verticalCenter
                                 }
 
-                                DankTextField {
+                                AdvTextField {
                                     width: parent.width - 80 - Theme.spacingS
                                     placeholderText: I18n.tr("IP address or hostname", "Placeholder text for manual printer address input")
                                     text: printerTab.manualHost
@@ -545,7 +545,7 @@ Item {
                                     anchors.verticalCenter: parent.verticalCenter
                                 }
 
-                                DankTextField {
+                                AdvTextField {
                                     width: 80
                                     placeholderText: "631"
                                     text: printerTab.manualPort
@@ -570,7 +570,7 @@ Item {
                                     anchors.verticalCenter: parent.verticalCenter
                                 }
 
-                                DankDropdown {
+                                AdvDropdown {
                                     id: protocolDropdown
                                     dropdownWidth: 120
                                     popupWidth: 120
@@ -593,7 +593,7 @@ Item {
                                     height: 1
                                 }
 
-                                DankButton {
+                                AdvButton {
                                     text: printerTab.testingConnection ? I18n.tr("Testing...", "Button state while testing printer connection") : I18n.tr("Test Connection", "Button to test connection to a printer by IP address")
                                     iconName: printerTab.testingConnection ? "sync" : "lan"
                                     buttonHeight: 36
@@ -713,7 +713,7 @@ Item {
                                     anchors.verticalCenter: parent.verticalCenter
                                 }
 
-                                DankDropdown {
+                                AdvDropdown {
                                     id: ppdDropdown
                                     dropdownWidth: parent.width - 80 - refreshPpdsBtn.width - Theme.spacingS * 2
                                     popupWidth: parent.width - 80 - refreshPpdsBtn.width - Theme.spacingS * 2
@@ -745,7 +745,7 @@ Item {
                                     }
                                 }
 
-                                DankActionButton {
+                                AdvActionButton {
                                     id: refreshPpdsBtn
                                     iconName: "refresh"
                                     buttonSize: 32
@@ -776,7 +776,7 @@ Item {
                                     anchors.verticalCenter: parent.verticalCenter
                                 }
 
-                                DankTextField {
+                                AdvTextField {
                                     width: parent.width - 80 - Theme.spacingS
                                     placeholderText: I18n.tr("Printer name (no spaces)")
                                     text: printerTab.newPrinterName
@@ -797,7 +797,7 @@ Item {
                                     anchors.verticalCenter: parent.verticalCenter
                                 }
 
-                                DankTextField {
+                                AdvTextField {
                                     width: parent.width - 80 - Theme.spacingS
                                     placeholderText: I18n.tr("Optional location")
                                     text: printerTab.newPrinterLocation
@@ -818,7 +818,7 @@ Item {
                                     anchors.verticalCenter: parent.verticalCenter
                                 }
 
-                                DankTextField {
+                                AdvTextField {
                                     width: parent.width - 80 - Theme.spacingS
                                     placeholderText: I18n.tr("Optional description")
                                     text: printerTab.newPrinterInfo
@@ -833,7 +833,7 @@ Item {
                             spacing: Theme.spacingS
                             layoutDirection: Qt.RightToLeft
 
-                            DankButton {
+                            AdvButton {
                                 text: CupsService.creatingPrinter ? I18n.tr("Creating...") : I18n.tr("Create Printer")
                                 iconName: CupsService.creatingPrinter ? "sync" : "add"
                                 buttonHeight: 36
@@ -872,7 +872,7 @@ Item {
                         width: parent.width
                         spacing: Theme.spacingM
 
-                        DankIcon {
+                        AdvIcon {
                             name: "print"
                             size: Theme.iconSize
                             color: Theme.primary
@@ -907,7 +907,7 @@ Item {
                             }
                         }
 
-                        DankActionButton {
+                        AdvActionButton {
                             id: refreshBtn
                             iconName: "refresh"
                             buttonSize: 32
@@ -931,7 +931,7 @@ Item {
                             anchors.centerIn: parent
                             spacing: Theme.spacingS
 
-                            DankIcon {
+                            AdvIcon {
                                 name: "print_disabled"
                                 size: 32
                                 color: Theme.surfaceVariantText
@@ -997,7 +997,7 @@ Item {
                                             anchors.rightMargin: Theme.spacingS
                                             spacing: Theme.spacingS
 
-                                            DankIcon {
+                                            AdvIcon {
                                                 name: isStopped ? "print_disabled" : "print"
                                                 size: 20
                                                 color: isStopped ? Theme.error : (isIdle ? Theme.primary : Theme.warning)
@@ -1070,7 +1070,7 @@ Item {
                                                 radius: 14
                                                 color: expandBtn.containsMouse ? Theme.surfacePressed : Theme.withAlpha(Theme.surfacePressed, 0)
 
-                                                DankIcon {
+                                                AdvIcon {
                                                     anchors.centerIn: parent
                                                     name: isExpanded ? "expand_less" : "expand_more"
                                                     size: 18
@@ -1094,7 +1094,7 @@ Item {
                                                 radius: 14
                                                 color: deleteBtn.containsMouse ? Theme.errorHover : Theme.withAlpha(Theme.errorHover, 0)
 
-                                                DankIcon {
+                                                AdvIcon {
                                                     anchors.centerIn: parent
                                                     name: "delete"
                                                     size: 18
@@ -1241,7 +1241,7 @@ Item {
                                                             anchors.centerIn: parent
                                                             spacing: Theme.spacingXS
 
-                                                            DankIcon {
+                                                            AdvIcon {
                                                                 name: isStopped ? "play_arrow" : "pause"
                                                                 size: 16
                                                                 color: Theme.surfaceText
@@ -1281,7 +1281,7 @@ Item {
                                                             anchors.centerIn: parent
                                                             spacing: Theme.spacingXS
 
-                                                            DankIcon {
+                                                            AdvIcon {
                                                                 name: "description"
                                                                 size: 16
                                                                 color: Theme.surfaceText
@@ -1315,7 +1315,7 @@ Item {
                                                             anchors.centerIn: parent
                                                             spacing: Theme.spacingXS
 
-                                                            DankIcon {
+                                                            AdvIcon {
                                                                 name: printerData?.accepting ? "block" : "check_circle"
                                                                 size: 16
                                                                 color: Theme.surfaceText
@@ -1379,7 +1379,7 @@ Item {
                                                                 anchors.centerIn: parent
                                                                 spacing: Theme.spacingXS
 
-                                                                DankIcon {
+                                                                AdvIcon {
                                                                     name: "delete_sweep"
                                                                     size: 14
                                                                     color: purgeArea.containsMouse ? Theme.error : Theme.surfaceText
@@ -1433,7 +1433,7 @@ Item {
                                                                 anchors.verticalCenter: parent.verticalCenter
                                                                 spacing: Theme.spacingS
 
-                                                                DankIcon {
+                                                                AdvIcon {
                                                                     name: "description"
                                                                     size: 18
                                                                     color: Theme.surfaceVariantText
@@ -1481,7 +1481,7 @@ Item {
                                                                     color: holdJobBtn.containsMouse ? Theme.surfacePressed : Theme.withAlpha(Theme.surfacePressed, 0)
                                                                     visible: modelData.state === "pending"
 
-                                                                    DankIcon {
+                                                                    AdvIcon {
                                                                         anchors.centerIn: parent
                                                                         name: "pause"
                                                                         size: 14
@@ -1504,7 +1504,7 @@ Item {
                                                                     color: restartJobBtn.containsMouse ? Theme.surfacePressed : Theme.withAlpha(Theme.surfacePressed, 0)
                                                                     visible: modelData.state === "pending-held" || modelData.state === "completed" || modelData.state === "aborted"
 
-                                                                    DankIcon {
+                                                                    AdvIcon {
                                                                         anchors.centerIn: parent
                                                                         name: "replay"
                                                                         size: 14
@@ -1526,7 +1526,7 @@ Item {
                                                                     radius: 12
                                                                     color: cancelJobBtn.containsMouse ? Theme.errorHover : Theme.withAlpha(Theme.errorHover, 0)
 
-                                                                    DankIcon {
+                                                                    AdvIcon {
                                                                         anchors.centerIn: parent
                                                                         name: "close"
                                                                         size: 14
@@ -1575,7 +1575,7 @@ Item {
                         width: parent.width
                         spacing: Theme.spacingM
 
-                        DankIcon {
+                        AdvIcon {
                             name: "workspaces"
                             size: Theme.iconSize
                             color: Theme.primary
@@ -1605,7 +1605,7 @@ Item {
                             }
                         }
 
-                        DankActionButton {
+                        AdvActionButton {
                             id: refreshClassesBtn
                             iconName: "refresh"
                             buttonSize: 32
@@ -1644,7 +1644,7 @@ Item {
                                     anchors.verticalCenter: parent.verticalCenter
                                     spacing: Theme.spacingS
 
-                                    DankIcon {
+                                    AdvIcon {
                                         name: "workspaces"
                                         size: 20
                                         color: Theme.surfaceText
@@ -1682,7 +1682,7 @@ Item {
                                         radius: 14
                                         color: deleteClassBtn.containsMouse ? Theme.errorHover : Theme.withAlpha(Theme.errorHover, 0)
 
-                                        DankIcon {
+                                        AdvIcon {
                                             anchors.centerIn: parent
                                             name: "delete"
                                             size: 18

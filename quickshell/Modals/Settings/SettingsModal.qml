@@ -5,7 +5,7 @@ import qs.Modals.FileBrowser
 import qs.Services
 import qs.Widgets
 
-DankFloatingWindow {
+AdvFloatingWindow {
     id: settingsModal
 
     property var profileBrowser: profileBrowserLoader.item
@@ -218,7 +218,7 @@ DankFloatingWindow {
                     anchors.verticalCenter: parent.verticalCenter
                     spacing: Theme.spacingM
 
-                    DankActionButton {
+                    AdvActionButton {
                         visible: settingsModal.isCompactMode
                         circular: false
                         iconName: "menu"
@@ -230,7 +230,7 @@ DankFloatingWindow {
                         }
                     }
 
-                    DankIcon {
+                    AdvIcon {
                         name: "settings"
                         size: Theme.iconSize
                         color: Theme.primary
@@ -253,7 +253,7 @@ DankFloatingWindow {
                     anchors.topMargin: Theme.spacingM
                     spacing: Theme.spacingXS
 
-                    DankActionButton {
+                    AdvActionButton {
                         visible: windowControls.canMaximize
                         circular: false
                         iconName: settingsModal.maximized ? "fullscreen_exit" : "fullscreen"
@@ -262,7 +262,7 @@ DankFloatingWindow {
                         onClicked: windowControls.tryToggleMaximize()
                     }
 
-                    DankActionButton {
+                    AdvActionButton {
                         circular: false
                         iconName: "close"
                         iconSize: Theme.iconSize - 4
@@ -300,7 +300,7 @@ DankFloatingWindow {
                     anchors.rightMargin: Theme.spacingM
                     spacing: Theme.spacingM
 
-                    DankIcon {
+                    AdvIcon {
                         name: "info"
                         size: Theme.iconSize
                         color: Theme.warning
@@ -318,7 +318,7 @@ DankFloatingWindow {
                         wrapMode: Text.WordWrap
                     }
 
-                    DankButton {
+                    AdvButton {
                         id: copySettingsButton
 
                         visible: SettingsData._isReadOnly && SettingsData._hasUnsavedChanges
@@ -330,12 +330,12 @@ DankFloatingWindow {
                         horizontalPadding: Theme.spacingM
                         anchors.verticalCenter: parent.verticalCenter
                         onClicked: {
-                            Quickshell.execDetached(["dms", "cl", "copy", SettingsData.getCurrentSettingsJson()]);
+                            Quickshell.execDetached(["advs", "cl", "copy", SettingsData.getCurrentSettingsJson()]);
                             ToastService.showInfo(I18n.tr("Copied to clipboard"));
                         }
                     }
 
-                    DankButton {
+                    AdvButton {
                         id: copySessionButton
 
                         visible: SessionData._isReadOnly && SessionData._hasUnsavedChanges
@@ -347,7 +347,7 @@ DankFloatingWindow {
                         horizontalPadding: Theme.spacingM
                         anchors.verticalCenter: parent.verticalCenter
                         onClicked: {
-                            Quickshell.execDetached(["dms", "cl", "copy", SessionData.getCurrentSessionJson()]);
+                            Quickshell.execDetached(["advs", "cl", "copy", SessionData.getCurrentSessionJson()]);
                             ToastService.showInfo(I18n.tr("Copied to clipboard"));
                         }
                     }

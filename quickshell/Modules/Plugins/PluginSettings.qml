@@ -252,7 +252,7 @@ Item {
                     wrapMode: Text.WordWrap
                 }
 
-                DankToggle {
+                AdvToggle {
                     width: parent.width
                     text: I18n.tr("All displays")
                     checked: {
@@ -279,7 +279,7 @@ Item {
                     Repeater {
                         model: Quickshell.screens
 
-                        DankToggle {
+                        AdvToggle {
                             required property var modelData
                             width: parent.width
                             text: SettingsData.getScreenDisplayName(modelData)

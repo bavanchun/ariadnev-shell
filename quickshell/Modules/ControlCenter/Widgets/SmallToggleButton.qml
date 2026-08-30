@@ -51,7 +51,7 @@ Rectangle {
         }
     }
 
-    DankIcon {
+    AdvIcon {
         anchors.centerIn: parent
         name: iconName
         size: Theme.iconSize
@@ -60,7 +60,7 @@ Rectangle {
         onRotationCompleted: root.iconRotationCompleted()
     }
 
-    DankRipple {
+    AdvRipple {
         id: ripple
         cornerRadius: root.radius
     }

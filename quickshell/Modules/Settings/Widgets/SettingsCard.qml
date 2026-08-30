@@ -116,7 +116,7 @@ StyledRect {
                 anchors.verticalCenter: parent.verticalCenter
                 spacing: Theme.spacingM
 
-                DankIcon {
+                AdvIcon {
                     id: headerIcon
                     name: root.iconName
                     size: Theme.iconSize
@@ -146,7 +146,7 @@ StyledRect {
                 spacing: Theme.spacingXS
             }
 
-            DankIcon {
+            AdvIcon {
                 id: caretIcon
                 anchors.right: parent.right
                 anchors.verticalCenter: parent.verticalCenter

@@ -5,7 +5,7 @@ import qs.Common
 import qs.Services
 import qs.Widgets
 
-DankFloatingWindow {
+AdvFloatingWindow {
     id: root
     readonly property var log: Log.scoped("GreeterModal")
 
@@ -26,7 +26,7 @@ DankFloatingWindow {
     function loadCheatsheet() {
         const provider = KeybindsService.cheatsheetProvider;
         if (KeybindsService.cheatsheetAvailable && provider && !cheatsheetLoaded) {
-            cheatsheetProcess.command = ["dms", "keybinds", "show", provider];
+            cheatsheetProcess.command = ["advs", "keybinds", "show", provider];
             cheatsheetProcess.running = true;
         }
     }
@@ -192,7 +192,7 @@ DankFloatingWindow {
                             color: dotColor.value
                             anchors.verticalCenter: parent.verticalCenter
 
-                            DankColorAnimation {
+                            AdvColorAnimation {
                                 id: dotColor
                                 to: isActive ? Theme.primary : Theme.surfaceTextAlpha
                                 duration: Theme.shortDuration
@@ -214,7 +214,7 @@ DankFloatingWindow {
                 anchors.verticalCenter: parent.verticalCenter
                 spacing: Theme.spacingXS
 
-                DankActionButton {
+                AdvActionButton {
                     visible: windowControls.canMaximize
                     iconName: root.maximized ? "fullscreen_exit" : "fullscreen"
                     iconSize: Theme.iconSize - 4
@@ -222,13 +222,13 @@ DankFloatingWindow {
                     onClicked: windowControls.tryToggleMaximize()
                 }
 
-                DankActionButton {
+                AdvActionButton {
                     iconName: "close"
                     iconSize: Theme.iconSize - 4
                     iconColor: Theme.surfaceText
                     onClicked: root.skip()
 
-                    DankTooltip {
+                    AdvTooltip {
                         text: I18n.tr("Skip setup", "greeter skip button tooltip")
                     }
                 }
@@ -273,7 +273,7 @@ DankFloatingWindow {
                 anchors.verticalCenter: parent.verticalCenter
                 spacing: Theme.spacingM
 
-                DankButton {
+                AdvButton {
                     visible: root.currentPage < root.totalPages - 1
                     text: I18n.tr("Skip", "greeter skip button")
                     backgroundColor: "transparent"
@@ -281,7 +281,7 @@ DankFloatingWindow {
                     onClicked: root.skip()
                 }
 
-                DankButton {
+                AdvButton {
                     visible: root.currentPage > 0
                     text: I18n.tr("Back", "greeter back button")
                     iconName: "arrow_back"
@@ -290,7 +290,7 @@ DankFloatingWindow {
                     onClicked: root.prevPage()
                 }
 
-                DankButton {
+                AdvButton {
                     visible: root.currentPage < root.totalPages - 1
                     enabled: !(root.currentPage === 1 && pageLoader.item && pageLoader.item.isRunning)
                     text: root.currentPage === 0 ? I18n.tr("Get Started", "greeter first page button") : I18n.tr("Next", "greeter next button")
@@ -300,7 +300,7 @@ DankFloatingWindow {
                     onClicked: root.nextPage()
                 }
 
-                DankButton {
+                AdvButton {
                     visible: root.currentPage === root.totalPages - 1
                     text: I18n.tr("Finish", "greeter finish button")
                     iconName: "check"

@@ -7,12 +7,12 @@ import (
 	"strings"
 )
 
-// RunDmsGreeterInstall delegates greeter setup to the standalone dms-greeter
-// binary, which owns greetd configuration since the greeter moved out of DMS.
-func RunDmsGreeterInstall(sudoPassword string, logFunc func(string)) error {
-	binary, err := exec.LookPath("dms-greeter")
+// RunAdvsGreeterInstall delegates greeter setup to the standalone advs-greeter
+// binary, which owns greetd configuration since the greeter moved out of ADVS.
+func RunAdvsGreeterInstall(sudoPassword string, logFunc func(string)) error {
+	binary, err := exec.LookPath("advs-greeter")
 	if err != nil {
-		return fmt.Errorf("dms-greeter binary not found; install the dms-greeter package and run 'dms-greeter install'")
+		return fmt.Errorf("advs-greeter binary not found; install the advs-greeter package and run 'advs-greeter install'")
 	}
 
 	var cmd *exec.Cmd

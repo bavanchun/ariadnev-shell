@@ -8,11 +8,11 @@ PluginComponent {
     id: root
 
     Ref {
-        service: DMSNetworkService
+        service: ADVSNetworkService
     }
 
-    readonly property bool vpnActivating: DMSNetworkService.vpnIsBusy || DMSNetworkService.activeState === "activating"
-    readonly property bool vpnActivated: DMSNetworkService.connected && DMSNetworkService.activeState === "activated"
+    readonly property bool vpnActivating: ADVSNetworkService.vpnIsBusy || ADVSNetworkService.activeState === "activating"
+    readonly property bool vpnActivated: ADVSNetworkService.connected && ADVSNetworkService.activeState === "activated"
 
     ccWidgetIcon: "vpn_key"
     ccWidgetPrimaryText: I18n.tr("VPN")
@@ -21,14 +21,14 @@ PluginComponent {
             return I18n.tr("Connecting...");
         if (!vpnActivated)
             return I18n.tr("Disconnected");
-        const names = DMSNetworkService.activeNames || [];
+        const names = ADVSNetworkService.activeNames || [];
         if (names.length <= 1)
             return names[0] || I18n.tr("Connected");
         return names[0] + " +" + (names.length - 1);
     }
     ccWidgetIsActive: vpnActivated
 
-    onCcWidgetToggled: DMSNetworkService.toggleVpn()
+    onCcWidgetToggled: ADVSNetworkService.toggleVpn()
 
     ccDetailContent: Component {
         VpnDetailContent {

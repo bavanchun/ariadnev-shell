@@ -110,13 +110,13 @@ func TestNiriWritableProvider(t *testing.T) {
 		t.Errorf("Name() = %q, want niri", provider.Name())
 	}
 
-	expectedPath := filepath.Join(tmpDir, "dms", "windowrules.kdl")
+	expectedPath := filepath.Join(tmpDir, "advs", "windowrules.kdl")
 	if provider.GetOverridePath() != expectedPath {
 		t.Errorf("GetOverridePath() = %q, want %q", provider.GetOverridePath(), expectedPath)
 	}
 }
 
-func TestNiriSetAndLoadDMSRules(t *testing.T) {
+func TestNiriSetAndLoadADVSRules(t *testing.T) {
 	tmpDir := t.TempDir()
 	provider := NewNiriWritableProvider(tmpDir)
 
@@ -128,9 +128,9 @@ func TestNiriSetAndLoadDMSRules(t *testing.T) {
 		t.Fatalf("SetRule failed: %v", err)
 	}
 
-	rules, err := provider.LoadDMSRules()
+	rules, err := provider.LoadADVSRules()
 	if err != nil {
-		t.Fatalf("LoadDMSRules failed: %v", err)
+		t.Fatalf("LoadADVSRules failed: %v", err)
 	}
 
 	if len(rules) != 1 {
@@ -161,7 +161,7 @@ func TestNiriRemoveRule(t *testing.T) {
 		t.Fatalf("RemoveRule failed: %v", err)
 	}
 
-	rules, _ := provider.LoadDMSRules()
+	rules, _ := provider.LoadADVSRules()
 	if len(rules) != 1 {
 		t.Fatalf("expected 1 rule after removal, got %d", len(rules))
 	}
@@ -189,7 +189,7 @@ func TestNiriReorderRules(t *testing.T) {
 		t.Fatalf("ReorderRules failed: %v", err)
 	}
 
-	rules, _ := provider.LoadDMSRules()
+	rules, _ := provider.LoadADVSRules()
 	if len(rules) != 3 {
 		t.Fatalf("expected 3 rules, got %d", len(rules))
 	}
@@ -307,7 +307,7 @@ func TestFormatSizeProperty(t *testing.T) {
 	}
 }
 
-func TestNiriDMSRulesStatus(t *testing.T) {
+func TestNiriADVSRulesStatus(t *testing.T) {
 	tmpDir := t.TempDir()
 
 	config := `
@@ -325,12 +325,12 @@ window-rule {
 		t.Fatalf("ParseNiriWindowRules failed: %v", err)
 	}
 
-	if result.DMSStatus == nil {
-		t.Fatal("DMSStatus should not be nil")
+	if result.ADVSStatus == nil {
+		t.Fatal("ADVSStatus should not be nil")
 	}
 
-	if result.DMSStatus.Exists {
-		t.Error("DMSStatus.Exists should be false when dms rules file doesn't exist")
+	if result.ADVSStatus.Exists {
+		t.Error("ADVSStatus.Exists should be false when advs rules file doesn't exist")
 	}
 }
 
@@ -338,8 +338,8 @@ func TestNiriExcludesSurviveEditOfOtherRule(t *testing.T) {
 	tmpDir := t.TempDir()
 	provider := NewNiriWritableProvider(tmpDir)
 
-	dmsDir := filepath.Join(tmpDir, "dms")
-	if err := os.MkdirAll(dmsDir, 0755); err != nil {
+	advsDir := filepath.Join(tmpDir, "advs")
+	if err := os.MkdirAll(advsDir, 0755); err != nil {
 		t.Fatal(err)
 	}
 	existing := `// @id=thunderbird @name=Thunderbird
@@ -356,7 +356,7 @@ window-rule {
     open-floating true
 }
 `
-	if err := os.WriteFile(filepath.Join(dmsDir, "windowrules.kdl"), []byte(existing), 0644); err != nil {
+	if err := os.WriteFile(filepath.Join(advsDir, "windowrules.kdl"), []byte(existing), 0644); err != nil {
 		t.Fatal(err)
 	}
 
@@ -366,9 +366,9 @@ window-rule {
 		t.Fatalf("SetRule failed: %v", err)
 	}
 
-	rules, err := provider.LoadDMSRules()
+	rules, err := provider.LoadADVSRules()
 	if err != nil {
-		t.Fatalf("LoadDMSRules failed: %v", err)
+		t.Fatalf("LoadADVSRules failed: %v", err)
 	}
 	if len(rules) != 2 {
 		t.Fatalf("expected 2 rules, got %d", len(rules))

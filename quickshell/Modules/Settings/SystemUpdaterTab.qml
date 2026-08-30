@@ -55,7 +55,7 @@ Item {
         return 1800;
     }
 
-    DankFlickable {
+    AdvFlickable {
         anchors.fill: parent
         clip: true
         contentHeight: mainColumn.height + Theme.spacingXL
@@ -125,7 +125,7 @@ Item {
                             color: Theme.surfaceVariantText
                         }
 
-                        DankTextField {
+                        AdvTextField {
                             id: customIntervalField
                             width: parent.width
                             placeholderText: "30"
@@ -234,7 +234,7 @@ Item {
                         width: parent.width
                         spacing: Theme.spacingS
 
-                        DankTextField {
+                        AdvTextField {
                             id: newIgnoredPackageField
                             width: parent.width - addIgnoredBtn.width - Theme.spacingS
                             height: 36
@@ -244,7 +244,7 @@ Item {
                             onTextEdited: ignoredPackageError.visible = false
                         }
 
-                        DankActionButton {
+                        AdvActionButton {
                             id: addIgnoredBtn
                             buttonSize: 36
                             iconName: "add"
@@ -284,7 +284,7 @@ Item {
                                 radius: Theme.cornerRadius
                                 color: Theme.floatingWindowFieldColor
 
-                                DankIcon {
+                                AdvIcon {
                                     id: ignoredIcon
                                     anchors.left: parent.left
                                     anchors.leftMargin: Theme.spacingM
@@ -305,7 +305,7 @@ Item {
                                     elide: Text.ElideRight
                                 }
 
-                                DankActionButton {
+                                AdvActionButton {
                                     id: removeIgnoredBtn
                                     anchors.right: parent.right
                                     anchors.rightMargin: Theme.spacingXS
@@ -389,7 +389,7 @@ Item {
                             color: Theme.surfaceVariantText
                         }
 
-                        DankTextField {
+                        AdvTextField {
                             id: updaterCustomCommand
                             width: parent.width
                             placeholderText: "topgrade --no-retry"
@@ -434,7 +434,7 @@ Item {
                             color: Theme.surfaceVariantText
                         }
 
-                        DankTextField {
+                        AdvTextField {
                             id: updaterTerminalCustomClass
                             width: parent.width
                             placeholderText: "-T updater"

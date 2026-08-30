@@ -9,13 +9,13 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/keybinds"
+	"github.com/bavanchun/ariadnev-shell/core/internal/keybinds"
 	"github.com/sblinch/kdl-go/document"
 )
 
 type NiriProvider struct {
 	configDir        string
-	dmsBindsIncluded bool
+	advsBindsIncluded bool
 	parsed           bool
 }
 
@@ -60,7 +60,7 @@ func (n *NiriProvider) GetCheatSheet() (*keybinds.CheatSheet, error) {
 		return nil, fmt.Errorf("failed to parse niri config: %w", err)
 	}
 
-	n.dmsBindsIncluded = result.DMSBindsIncluded
+	n.advsBindsIncluded = result.ADVSBindsIncluded
 	n.parsed = true
 
 	categorizedBinds := make(map[string][]keybinds.Keybind)
@@ -71,28 +71,28 @@ func (n *NiriProvider) GetCheatSheet() (*keybinds.CheatSheet, error) {
 		Provider:         n.Name(),
 		ModKey:           result.ModKey,
 		Binds:            categorizedBinds,
-		DMSBindsIncluded: result.DMSBindsIncluded,
+		ADVSBindsIncluded: result.ADVSBindsIncluded,
 	}
 
-	if result.DMSStatus != nil {
-		sheet.DMSStatus = &keybinds.DMSBindsStatus{
-			Exists:          result.DMSStatus.Exists,
-			Included:        result.DMSStatus.Included,
-			IncludePosition: result.DMSStatus.IncludePosition,
-			TotalIncludes:   result.DMSStatus.TotalIncludes,
-			BindsAfterDMS:   result.DMSStatus.BindsAfterDMS,
-			Effective:       result.DMSStatus.Effective,
-			OverriddenBy:    result.DMSStatus.OverriddenBy,
-			StatusMessage:   result.DMSStatus.StatusMessage,
+	if result.ADVSStatus != nil {
+		sheet.ADVSStatus = &keybinds.ADVSBindsStatus{
+			Exists:          result.ADVSStatus.Exists,
+			Included:        result.ADVSStatus.Included,
+			IncludePosition: result.ADVSStatus.IncludePosition,
+			TotalIncludes:   result.ADVSStatus.TotalIncludes,
+			BindsAfterADVS:   result.ADVSStatus.BindsAfterADVS,
+			Effective:       result.ADVSStatus.Effective,
+			OverriddenBy:    result.ADVSStatus.OverriddenBy,
+			StatusMessage:   result.ADVSStatus.StatusMessage,
 		}
 	}
 
 	return sheet, nil
 }
 
-func (n *NiriProvider) HasDMSBindsIncluded() bool {
+func (n *NiriProvider) HasADVSBindsIncluded() bool {
 	if n.parsed {
-		return n.dmsBindsIncluded
+		return n.advsBindsIncluded
 	}
 
 	result, err := ParseNiriKeys(n.configDir)
@@ -100,9 +100,9 @@ func (n *NiriProvider) HasDMSBindsIncluded() bool {
 		return false
 	}
 
-	n.dmsBindsIncluded = result.DMSBindsIncluded
+	n.advsBindsIncluded = result.ADVSBindsIncluded
 	n.parsed = true
-	return n.dmsBindsIncluded
+	return n.advsBindsIncluded
 }
 
 func (n *NiriProvider) convertSection(section *NiriSection, subcategory string, categorizedBinds map[string][]keybinds.Keybind, conflicts map[string]*NiriKeyBinding) {
@@ -163,8 +163,8 @@ func (n *NiriProvider) convertKeybind(kb *NiriKeyBinding, subcategory string, co
 	keyStr := n.formatKey(kb)
 
 	source := "config"
-	if strings.Contains(kb.Source, "dms/binds.kdl") {
-		source = "dms-default"
+	if strings.Contains(kb.Source, "advs/binds.kdl") {
+		source = "advs-default"
 	}
 
 	bind := keybinds.Keybind{
@@ -180,7 +180,7 @@ func (n *NiriProvider) convertKeybind(kb *NiriKeyBinding, subcategory string, co
 		Repeat:          kb.Repeat,
 	}
 
-	if source == "dms-default" && conflicts != nil {
+	if source == "advs-default" && conflicts != nil {
 		if conflictKb, ok := conflicts[normalizeNiriBindKey(keyStr)]; ok {
 			bind.Conflict = &keybinds.Keybind{
 				Key:         keyStr,
@@ -226,7 +226,7 @@ func (n *NiriProvider) formatKey(kb *NiriKeyBinding) string {
 }
 
 func (n *NiriProvider) GetOverridePath() string {
-	return filepath.Join(n.configDir, "dms", "binds.kdl")
+	return filepath.Join(n.configDir, "advs", "binds.kdl")
 }
 
 func (n *NiriProvider) validateAction(action string) error {
@@ -256,7 +256,7 @@ func (n *NiriProvider) SetBind(key, action, description string, options map[stri
 	overridePath := n.GetOverridePath()
 
 	if err := os.MkdirAll(filepath.Dir(overridePath), 0o755); err != nil {
-		return fmt.Errorf("failed to create dms directory: %w", err)
+		return fmt.Errorf("failed to create advs directory: %w", err)
 	}
 
 	existingBinds, err := n.loadOverrideBinds()
@@ -530,7 +530,7 @@ func (n *NiriProvider) writeOverrideBinds(binds map[string]*overrideBind) error 
 
 func (n *NiriProvider) getBindSortPriority(action string) int {
 	switch {
-	case strings.HasPrefix(action, "spawn") && strings.Contains(action, "dms"):
+	case strings.HasPrefix(action, "spawn") && strings.Contains(action, "advs"):
 		return 0
 	case strings.Contains(action, "workspace"):
 		return 1
@@ -658,7 +658,7 @@ func (n *NiriProvider) isNumericArg(val string) bool {
 }
 
 func (n *NiriProvider) validateBindsContent(content string) error {
-	tmpFile, err := os.CreateTemp("", "dms-binds-*.kdl")
+	tmpFile, err := os.CreateTemp("", "advs-binds-*.kdl")
 	if err != nil {
 		return fmt.Errorf("failed to create temp file: %w", err)
 	}

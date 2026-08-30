@@ -40,7 +40,7 @@ Column {
         width: parent.width
         spacing: Theme.spacingS
 
-        DankTextField {
+        AdvTextField {
             id: wallpaperPathField
             width: parent.width - browseWallpaperButton.width - Theme.spacingS
             placeholderText: root.placeholderText
@@ -52,7 +52,7 @@ Column {
             }
         }
 
-        DankButton {
+        AdvButton {
             id: browseWallpaperButton
             text: I18n.tr("Browse")
             horizontalPadding: Theme.spacingL

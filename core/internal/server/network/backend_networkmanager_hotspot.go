@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"sort"
 
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/errdefs"
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/log"
+	"github.com/bavanchun/ariadnev-shell/core/internal/errdefs"
+	"github.com/bavanchun/ariadnev-shell/core/internal/log"
 	"github.com/Wifx/gonetworkmanager/v2"
 )
 
@@ -15,13 +15,13 @@ const (
 	nmWiFiDeviceCapFreq2GHz  uint32 = 0x00000200
 	nmWiFiDeviceCapFreq5GHz  uint32 = 0x00000400
 
-	dmsHotspotConnectionID = "DankMaterialShell Hotspot"
-	dmsHotspotStableID     = "dms-hotspot"
+	advsHotspotConnectionID = "AriadnevShell Hotspot"
+	advsHotspotStableID     = "advs-hotspot"
 )
 
 var _ HotspotBackend = (*NetworkManagerBackend)(nil)
 
-// ConfigureHotspot validates only DMS-owned constraints: SSID presence, band
+// ConfigureHotspot validates only ADVS-owned constraints: SSID presence, band
 // names, device capability, and the not-active guard. SSID byte-length and
 // WPA-PSK password policy are deliberately left to NetworkManager, whose
 // AddConnection/Update errors are returned to the caller; duplicating its
@@ -54,7 +54,7 @@ func (b *NetworkManagerBackend) ConfigureHotspot(req HotspotRequest) error {
 		return err
 	}
 
-	existing, existingSettings, err := b.findDMSHotspotConnection()
+	existing, existingSettings, err := b.findADVSHotspotConnection()
 	if err != nil {
 		return err
 	}
@@ -76,7 +76,7 @@ func (b *NetworkManagerBackend) ConfigureHotspot(req HotspotRequest) error {
 }
 
 func (b *NetworkManagerBackend) StartHotspot() error {
-	conn, settings, err := b.findDMSHotspotConnection()
+	conn, settings, err := b.findADVSHotspotConnection()
 	if err != nil {
 		return err
 	}
@@ -119,7 +119,7 @@ func (b *NetworkManagerBackend) StopHotspot() error {
 	b.hotspotPendingDevice = ""
 	b.stateMutex.Unlock()
 
-	active, err := b.findActiveDMSHotspotConnection()
+	active, err := b.findActiveADVSHotspotConnection()
 	if err != nil {
 		return err
 	}
@@ -140,7 +140,7 @@ func (b *NetworkManagerBackend) StopHotspot() error {
 }
 
 func (b *NetworkManagerBackend) GetHotspotSecrets() (string, error) {
-	conn, settings, err := b.findDMSHotspotConnection()
+	conn, settings, err := b.findADVSHotspotConnection()
 	if err != nil {
 		return "", err
 	}
@@ -185,10 +185,10 @@ func (b *NetworkManagerBackend) networkManagerSettings() (gonetworkmanager.Setti
 
 func buildHotspotSettings(req HotspotRequest, existing gonetworkmanager.ConnectionSettings) gonetworkmanager.ConnectionSettings {
 	connection := map[string]any{
-		"id":          dmsHotspotConnectionID,
+		"id":          advsHotspotConnectionID,
 		"type":        "802-11-wireless",
 		"autoconnect": false,
-		"stable-id":   dmsHotspotStableID,
+		"stable-id":   advsHotspotStableID,
 	}
 	if req.Device != "" {
 		connection["interface-name"] = req.Device
@@ -226,7 +226,7 @@ func buildHotspotSettings(req HotspotRequest, existing gonetworkmanager.Connecti
 	return settings
 }
 
-func (b *NetworkManagerBackend) findDMSHotspotConnection() (gonetworkmanager.Connection, gonetworkmanager.ConnectionSettings, error) {
+func (b *NetworkManagerBackend) findADVSHotspotConnection() (gonetworkmanager.Connection, gonetworkmanager.ConnectionSettings, error) {
 	settingsMgr, err := b.networkManagerSettings()
 	if err != nil {
 		return nil, nil, err
@@ -242,7 +242,7 @@ func (b *NetworkManagerBackend) findDMSHotspotConnection() (gonetworkmanager.Con
 		if err != nil {
 			continue
 		}
-		if isDMSHotspotConnection(connSettings) {
+		if isADVSHotspotConnection(connSettings) {
 			return conn, connSettings, nil
 		}
 	}
@@ -250,7 +250,7 @@ func (b *NetworkManagerBackend) findDMSHotspotConnection() (gonetworkmanager.Con
 	return nil, nil, nil
 }
 
-func (b *NetworkManagerBackend) findActiveDMSHotspotConnection() (gonetworkmanager.ActiveConnection, error) {
+func (b *NetworkManagerBackend) findActiveADVSHotspotConnection() (gonetworkmanager.ActiveConnection, error) {
 	nm := b.nmConn.(gonetworkmanager.NetworkManager)
 	activeConns, err := nm.GetPropertyActiveConnections()
 	if err != nil {
@@ -272,7 +272,7 @@ func (b *NetworkManagerBackend) findActiveDMSHotspotConnection() (gonetworkmanag
 		if err != nil {
 			continue
 		}
-		if isDMSHotspotConnection(settings) {
+		if isADVSHotspotConnection(settings) {
 			return active, nil
 		}
 	}
@@ -280,14 +280,14 @@ func (b *NetworkManagerBackend) findActiveDMSHotspotConnection() (gonetworkmanag
 	return nil, nil
 }
 
-func isDMSHotspotConnection(settings gonetworkmanager.ConnectionSettings) bool {
+func isADVSHotspotConnection(settings gonetworkmanager.ConnectionSettings) bool {
 	connMeta, _, ok := wifiConnectionSettings(settings)
 	if !ok || !isAPModeWiFiConnection(settings) {
 		return false
 	}
 
 	stableID, _ := connMeta["stable-id"].(string)
-	return stableID == dmsHotspotStableID
+	return stableID == advsHotspotStableID
 }
 
 func wifiConnectionSettings(settings gonetworkmanager.ConnectionSettings) (map[string]any, map[string]any, bool) {
@@ -322,12 +322,12 @@ func isClientWiFiConnection(settings gonetworkmanager.ConnectionSettings) bool {
 	return ok && !isAPModeWiFiConnection(settings)
 }
 
-// activeDMSHotspotDevicePaths returns only the devices hosting the DMS-owned
+// activeADVSHotspotDevicePaths returns only the devices hosting the ADVS-owned
 // hotspot, unlike activeAPModeWiFiDevicePaths which matches any AP-mode
 // connection (as the client-state isolation requires).
-func (b *NetworkManagerBackend) activeDMSHotspotDevicePaths() map[string]bool {
+func (b *NetworkManagerBackend) activeADVSHotspotDevicePaths() map[string]bool {
 	paths := make(map[string]bool)
-	active, err := b.findActiveDMSHotspotConnection()
+	active, err := b.findActiveADVSHotspotConnection()
 	if err != nil || active == nil {
 		return paths
 	}
@@ -406,9 +406,9 @@ func (b *NetworkManagerBackend) getAPCapableWiFiDevice(deviceName string, band s
 	}
 	sort.Strings(deviceNames)
 
-	dmsHotspotDevicePaths := b.activeDMSHotspotDevicePaths()
+	advsHotspotDevicePaths := b.activeADVSHotspotDevicePaths()
 
-	// Rank 0: already hosting the DMS hotspot (keep it where it is). Radios
+	// Rank 0: already hosting the ADVS hotspot (keep it where it is). Radios
 	// hosting foreign AP-mode connections must not get this preference and
 	// rank as busy through their Activated state instead.
 	// Rank 1: genuinely disconnected, so starting the AP disturbs nothing.
@@ -416,7 +416,7 @@ func (b *NetworkManagerBackend) getAPCapableWiFiDevice(deviceName string, band s
 	// Rank 3: carrying an active connection; only used as a last resort.
 	// Rank 4: unavailable, failed, or unknown; activation is unlikely to succeed.
 	rankDevice := func(devInfo *wifiDeviceInfo) int {
-		if len(dmsHotspotDevicePaths) > 0 && dmsHotspotDevicePaths[string(devInfo.device.GetPath())] {
+		if len(advsHotspotDevicePaths) > 0 && advsHotspotDevicePaths[string(devInfo.device.GetPath())] {
 			return 0
 		}
 		state, err := devInfo.device.GetPropertyState()
@@ -603,7 +603,7 @@ func (b *NetworkManagerBackend) updateHotspotState() error {
 		}
 	}
 
-	_, settings, err := b.findDMSHotspotConnection()
+	_, settings, err := b.findADVSHotspotConnection()
 	if err != nil {
 		return err
 	}
@@ -612,7 +612,7 @@ func (b *NetworkManagerBackend) updateHotspotState() error {
 	enabled := false
 	activating := false
 	if configured {
-		active, err := b.findActiveDMSHotspotConnection()
+		active, err := b.findActiveADVSHotspotConnection()
 		if err != nil {
 			return err
 		}

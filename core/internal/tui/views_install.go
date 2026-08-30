@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/deps"
-	"github.com/AvengeMedia/DankMaterialShell/core/internal/distros"
+	"github.com/bavanchun/ariadnev-shell/core/internal/deps"
+	"github.com/bavanchun/ariadnev-shell/core/internal/distros"
 	tea "github.com/charmbracelet/bubbletea"
 	"github.com/charmbracelet/lipgloss"
 )
@@ -120,15 +120,15 @@ func (m Model) viewInstallingPackages() string {
 	return b.String()
 }
 
-func dmsPackageName(distroID string, dependencies []deps.Dependency) string {
+func advsPackageName(distroID string, dependencies []deps.Dependency) string {
 	config, ok := distros.Registry[distroID]
 	if !ok {
-		return "dms"
+		return "advs"
 	}
 
 	var isGit bool
 	for _, dep := range dependencies {
-		if dep.Name == "dms (DankMaterialShell)" {
+		if dep.Name == "advs (AriadnevShell)" {
 			isGit = dep.Variant == deps.VariantGit
 			break
 		}
@@ -137,16 +137,16 @@ func dmsPackageName(distroID string, dependencies []deps.Dependency) string {
 	switch config.Family {
 	case distros.FamilyArch:
 		if isGit {
-			return "dms-shell-git"
+			return "ariadnev-shell-git"
 		}
-		return "dms-shell"
+		return "ariadnev-shell"
 	case distros.FamilyFedora, distros.FamilyUbuntu, distros.FamilyDebian, distros.FamilySUSE, distros.FamilyVoid:
 		if isGit {
-			return "dms-git"
+			return "ariadnev-shell-git"
 		}
-		return "dms"
+		return "advs"
 	default:
-		return "dms"
+		return "advs"
 	}
 }
 
@@ -156,9 +156,9 @@ func uninstallCommand(distroID string, dependencies []deps.Dependency) string {
 		return ""
 	}
 	if config.Family == distros.FamilyGentoo {
-		return "sudo emerge --deselect gui-apps/dankmaterialshell && sudo emerge --depclean gui-apps/dankmaterialshell"
+		return "sudo emerge --deselect gui-apps/advmaterialshell && sudo emerge --depclean gui-apps/advmaterialshell"
 	}
-	pkg := dmsPackageName(distroID, dependencies)
+	pkg := advsPackageName(distroID, dependencies)
 	switch config.Family {
 	case distros.FamilyArch:
 		return "sudo pacman -Rs " + pkg
@@ -193,7 +193,7 @@ func (m Model) viewInstallComplete() string {
 		"• Window manager and dependencies installed",
 		"• Terminal and development tools configured",
 		"• Configuration files deployed with backups",
-		"• System optimized for DankMaterialShell",
+		"• System optimized for AriadnevShell",
 	}
 
 	for _, item := range accomplishments {
@@ -214,7 +214,7 @@ func (m Model) viewInstallComplete() string {
 			loginHint = "If you do not have a greeter, from a TTY run: dbus-run-session mango"
 		}
 	} else {
-		// mango launches DMS via `exec-once=dms run` (not a systemd session target)
+		// mango launches ADVS via `exec-once=advs run` (not a systemd session target)
 		switch wm {
 		case deps.WindowManagerNiri:
 			loginHint = "If you do not have a greeter, login with \"niri-session\""
@@ -238,19 +238,19 @@ func (m Model) viewInstallComplete() string {
 	if !m.useSystemdConfig() {
 		switch wm {
 		case deps.WindowManagerNiri:
-			b.WriteString(labelStyle.Render("  Disable autostart: ") + cmdStyle.Render(`remove spawn-at-startup "dms" "run" from ~/.config/niri/config.kdl`) + "\n")
+			b.WriteString(labelStyle.Render("  Disable autostart: ") + cmdStyle.Render(`remove spawn-at-startup "advs" "run" from ~/.config/niri/config.kdl`) + "\n")
 		case deps.WindowManagerHyprland:
-			b.WriteString(labelStyle.Render("  Disable autostart: ") + cmdStyle.Render(`remove hl.exec_cmd("dms run") from ~/.config/hypr/hyprland.lua`) + "\n")
+			b.WriteString(labelStyle.Render("  Disable autostart: ") + cmdStyle.Render(`remove hl.exec_cmd("advs run") from ~/.config/hypr/hyprland.lua`) + "\n")
 		case deps.WindowManagerMango:
-			b.WriteString(labelStyle.Render("  Disable autostart: ") + cmdStyle.Render("remove 'exec-once=dms run' from ~/.config/mango/config.conf") + "\n")
+			b.WriteString(labelStyle.Render("  Disable autostart: ") + cmdStyle.Render("remove 'exec-once=advs run' from ~/.config/mango/config.conf") + "\n")
 		}
-		b.WriteString(labelStyle.Render("  View logs:         ") + cmdStyle.Render("quickshell --path ~/.config/quickshell/dms log") + "\n")
+		b.WriteString(labelStyle.Render("  View logs:         ") + cmdStyle.Render("quickshell --path ~/.config/quickshell/ariadnev log") + "\n")
 	} else if wm == deps.WindowManagerMango {
-		b.WriteString(labelStyle.Render("  Disable autostart: ") + cmdStyle.Render("remove 'exec-once=dms run' from ~/.config/mango/config.conf") + "\n")
-		b.WriteString(labelStyle.Render("  View logs:         ") + cmdStyle.Render("qs -p ~/.config/quickshell/dms log") + "\n")
+		b.WriteString(labelStyle.Render("  Disable autostart: ") + cmdStyle.Render("remove 'exec-once=advs run' from ~/.config/mango/config.conf") + "\n")
+		b.WriteString(labelStyle.Render("  View logs:         ") + cmdStyle.Render("qs -p ~/.config/quickshell/ariadnev log") + "\n")
 	} else {
-		b.WriteString(labelStyle.Render("  Disable autostart: ") + cmdStyle.Render("systemctl --user disable dms") + "\n")
-		b.WriteString(labelStyle.Render("  View logs:         ") + cmdStyle.Render("journalctl --user -u dms") + "\n")
+		b.WriteString(labelStyle.Render("  Disable autostart: ") + cmdStyle.Render("systemctl --user disable advs") + "\n")
+		b.WriteString(labelStyle.Render("  View logs:         ") + cmdStyle.Render("journalctl --user -u advs") + "\n")
 	}
 
 	if m.osInfo != nil {

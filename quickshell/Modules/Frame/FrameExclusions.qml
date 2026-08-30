@@ -96,7 +96,7 @@ Scope {
         property bool anchorLeft: false
         property bool anchorRight: false
 
-        WlrLayershell.namespace: "dms:frame-exclusion"
+        WlrLayershell.namespace: "advs:frame-exclusion"
         WlrLayershell.layer: WlrLayer.Top
         exclusiveZone: exclusionSize
         color: "transparent"
