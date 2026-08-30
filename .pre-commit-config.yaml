@@ -12,6 +12,7 @@ repos:
         entry: shellcheck -e SC2164 -e SC2001 -e SC2012 -e SC2317
         language: system
         types: [shell]
+        exclude: (^|/)PKGBUILD$  # biến PKGBUILD do makepkg đọc, không phải script
   - repo: local
     hooks:
       - id: go-mod-tidy
