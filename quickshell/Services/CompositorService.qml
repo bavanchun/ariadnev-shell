@@ -936,6 +936,10 @@ Singleton {
         Qt.callLater(applyAdvsWindowFloatingRule);
     }
 
+    function isLegacyConfigOutput(output) {
+        return String(output ?? "").includes("legacy conf configs are read-only");
+    }
+
     function applyAdvsWindowFloatingRule() {
         if (!compositorDetected || (!isNiri && !isHyprland && !isMango))
             return;
@@ -943,7 +947,10 @@ Singleton {
         if (!floating) {
             Proc.runCommand("advs-windowrule-float-remove", [Proc.advsBin, "config", "windowrules", "remove", compositor, "advs-floating-windows"], (output, exitCode) => {
                 if (exitCode !== 0) {
-                    log.warn("failed to remove ADVS floating window rule", exitCode, output);
+                    if (isLegacyConfigOutput(output))
+                        log.info("ADVS floating window rule not managed: Hyprland legacy .conf in use");
+                    else
+                        log.warn("failed to remove ADVS floating window rule", exitCode, output);
                     return;
                 }
                 if (isMango)
@@ -964,7 +971,10 @@ Singleton {
         });
         Proc.runCommand("advs-windowrule-float-add", [Proc.advsBin, "config", "windowrules", "add", compositor, ruleJson], (output, exitCode) => {
             if (exitCode !== 0) {
-                log.warn("failed to add ADVS floating window rule", exitCode, output);
+                if (isLegacyConfigOutput(output))
+                    log.info("ADVS floating window rule not managed: Hyprland legacy .conf in use, add it manually or migrate to Lua");
+                else
+                    log.warn("failed to add ADVS floating window rule", exitCode, output);
                 return;
             }
             if (isNiri)

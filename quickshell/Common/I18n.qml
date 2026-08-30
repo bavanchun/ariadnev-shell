@@ -134,7 +134,7 @@ Singleton {
         }
 
         _resolvedLocale = "en";
-        _fallbackToEnglish();
+        _fallbackToEnglish(_lang === "en");
     }
 
     function useLocale(localeTag, fileUrl) {
@@ -146,11 +146,14 @@ Singleton {
         localeApplied();
     }
 
-    function _fallbackToEnglish() {
+    function _fallbackToEnglish(expected) {
         _selectedPath = "";
         translationsLoaded = false;
         translations = ({});
-        log.warn("Falling back to built-in English strings");
+        if (expected)
+            log.info("I18n: locale is English, using built-in strings");
+        else
+            log.warn("Falling back to built-in English strings");
         localeApplied();
     }
 
