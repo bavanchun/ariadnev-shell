@@ -17,7 +17,7 @@ go_ldflags="-X main.Version=${version}"
 short_desc="AriadnevShell — Material 3 desktop shell for Wayland"
 maintainer="bavanchun <bavanchun.US@gmail.com>"
 license="MIT"
-homepage="https://ariadnev.vchun.dev"
+homepage="https://github.com/bavanchun/ariadnev-shell"
 changelog="https://github.com/bavanchun/ariadnev-shell/releases"
 distfiles="https://github.com/bavanchun/ariadnev-shell/releases/download/v${version}/advs-source.tar.gz"
 checksum=14f2678d6a15223ba069d1b8c8a21a5564b735d190c231f62ed44fd8bf48677c

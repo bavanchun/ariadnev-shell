@@ -46,7 +46,7 @@ pkgs.testers.runNixOSTest {
       ...
     }: {
       imports = [
-        self.homeModules.adv-material-shell
+        self.homeModules.ariadnev-shell
         niriFlake.homeModules.niri
         self.homeModules.niri
       ];
@@ -60,7 +60,7 @@ pkgs.testers.runNixOSTest {
         package = fakeNiri; # avoids niri from being compiled in the CI
       };
 
-      programs.adv-material-shell = {
+      programs.ariadnev-shell = {
         enable = true;
         niri = {
           enableKeybinds = false;

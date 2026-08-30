@@ -244,10 +244,10 @@ func (m Model) viewInstallComplete() string {
 		case deps.WindowManagerMango:
 			b.WriteString(labelStyle.Render("  Disable autostart: ") + cmdStyle.Render("remove 'exec-once=advs run' from ~/.config/mango/config.conf") + "\n")
 		}
-		b.WriteString(labelStyle.Render("  View logs:         ") + cmdStyle.Render("quickshell --path ~/.config/quickshell/ariadnev log") + "\n")
+		b.WriteString(labelStyle.Render("  View logs:         ") + cmdStyle.Render("quickshell --path ~/.config/quickshell/advs log") + "\n")
 	} else if wm == deps.WindowManagerMango {
 		b.WriteString(labelStyle.Render("  Disable autostart: ") + cmdStyle.Render("remove 'exec-once=advs run' from ~/.config/mango/config.conf") + "\n")
-		b.WriteString(labelStyle.Render("  View logs:         ") + cmdStyle.Render("qs -p ~/.config/quickshell/ariadnev log") + "\n")
+		b.WriteString(labelStyle.Render("  View logs:         ") + cmdStyle.Render("qs -p ~/.config/quickshell/advs log") + "\n")
 	} else {
 		b.WriteString(labelStyle.Render("  Disable autostart: ") + cmdStyle.Render("systemctl --user disable advs") + "\n")
 		b.WriteString(labelStyle.Render("  View logs:         ") + cmdStyle.Render("journalctl --user -u advs") + "\n")

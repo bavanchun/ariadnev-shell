@@ -13,8 +13,9 @@ import (
 )
 
 const (
-	VoidADVSRepo       = "https://void.ariadnev.vchun.dev/advs/current"
-	VoidAdvLinuxRepo = "https://void.ariadnev.vchun.dev/ariadnev/current"
+	// Upstream DMS repo: no AriadnevShell XBPS repo exists yet, so Void users must build from distro/void/srcpkgs.
+	VoidADVSRepo      = "https://void.danklinux.com/dms/current"
+	VoidDankLinuxRepo = "https://void.danklinux.com/danklinux/current"
 	VoidHyprlandRepo  = "https://mirror.black-hole.dev/x86_64"
 
 	voidRunitSvDir      = "/etc/sv"
@@ -178,12 +179,12 @@ func (v *VoidDistribution) GetPackageMappingWithVariants(wm deps.WindowManager, 
 		"elogind":                {Name: "elogind", Repository: RepoTypeSystem},
 		"mesa-dri":               {Name: "mesa-dri", Repository: RepoTypeSystem},
 
-		"quickshell":              {Name: "quickshell", Repository: RepoTypeSystem},
-		"matugen":                 {Name: "matugen", Repository: RepoTypeSystem},
+		"quickshell":           {Name: "quickshell", Repository: RepoTypeSystem},
+		"matugen":              {Name: "matugen", Repository: RepoTypeSystem},
 		"advs (AriadnevShell)": v.getAdvsMapping(variants["advs (AriadnevShell)"]),
-		"advs-greeter":             {Name: "advs-greeter", Repository: RepoTypeXBPS, RepoURL: VoidADVSRepo},
-		"danksearch":              {Name: "danksearch", Repository: RepoTypeXBPS, RepoURL: VoidAdvLinuxRepo},
-		"dankcalendar":            {Name: "dankcalendar", Repository: RepoTypeXBPS, RepoURL: VoidAdvLinuxRepo},
+		"advs-greeter":         {Name: "advs-greeter", Repository: RepoTypeXBPS, RepoURL: VoidADVSRepo},
+		"danksearch":           {Name: "danksearch", Repository: RepoTypeXBPS, RepoURL: VoidDankLinuxRepo},
+		"dankcalendar":         {Name: "dankcalendar", Repository: RepoTypeXBPS, RepoURL: VoidDankLinuxRepo},
 	}
 
 	switch wm {
@@ -476,7 +477,7 @@ func (v *VoidDistribution) xbpsRepoName(repoURL string) string {
 	switch repoURL {
 	case VoidADVSRepo:
 		return "advs"
-	case VoidAdvLinuxRepo:
+	case VoidDankLinuxRepo:
 		return "ariadnev"
 	case VoidHyprlandRepo:
 		return "hyprland"

@@ -8,7 +8,7 @@ let
   inherit (lib) types;
   path = [
     "programs"
-    "adv-material-shell"
+    "ariadnev-shell"
   ];
   jsonFormat = pkgs.formats.json { };
   builtInRemovedMsg = "This is now built-in in ADVS and doesn't need additional dependencies.";
@@ -24,7 +24,7 @@ in
     ./advs-rename.nix
   ];
 
-  options.programs.adv-material-shell = {
+  options.programs.ariadnev-shell = {
     enable = lib.mkEnableOption "AriadnevShell";
     package = lib.mkPackageOption advsPkgs "ariadnev-shell" {
       extraDescription = "The AriadnevShell package to use (defaults to be built from source)";
@@ -35,7 +35,7 @@ in
       restartIfChanged = lib.mkOption {
         type = types.bool;
         default = true;
-        description = "Auto-restart advs.service when adv-material-shell changes";
+        description = "Auto-restart advs.service when ariadnev-shell changes";
       };
     };
 

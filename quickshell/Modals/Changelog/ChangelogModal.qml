@@ -129,7 +129,7 @@ AdvFloatingWindow {
                     iconName: "open_in_new"
                     backgroundColor: Theme.surfaceContainerHighest
                     textColor: Theme.surfaceText
-                    onClicked: Qt.openUrlExternally("https://ariadnev.vchun.dev/blog/v1-5-release")
+                    onClicked: Qt.openUrlExternally("https://github.com/bavanchun/ariadnev-shell/releases")
                 }
 
                 AdvButton {

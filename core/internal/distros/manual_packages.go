@@ -448,7 +448,7 @@ func (m *ManualPackageInstaller) installAriadnevShell(ctx context.Context, varia
 		m.logError("Failed to install ADVS binary", err)
 	}
 
-	advsPath := filepath.Join(os.Getenv("HOME"), ".config/quickshell/ariadnev")
+	advsPath := filepath.Join(os.Getenv("HOME"), ".config/quickshell/advs")
 
 	if _, err := os.Stat(advsPath); os.IsNotExist(err) {
 		progressChan <- InstallProgressMsg{
@@ -501,7 +501,7 @@ func (m *ManualPackageInstaller) installAriadnevShell(ctx context.Context, varia
 		Progress:    0.90,
 		Step:        "Updating AriadnevShell...",
 		IsComplete:  false,
-		CommandInfo: "Updating ~/.config/quickshell/ariadnev",
+		CommandInfo: "Updating ~/.config/quickshell/advs",
 	}
 
 	fetchCmd := exec.CommandContext(ctx, "git", "-C", advsPath, "fetch", "origin", "--tags", "--force")

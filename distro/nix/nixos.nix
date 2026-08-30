@@ -5,7 +5,7 @@
   ...
 }@args:
 let
-  cfg = config.programs.adv-material-shell;
+  cfg = config.programs.ariadnev-shell;
   common = import ./common.nix {
     inherit
       config
@@ -18,12 +18,12 @@ in
   imports = [
     (import ./options.nix args)
   ];
-  options.programs.adv-material-shell.systemd.target = lib.mkOption {
+  options.programs.ariadnev-shell.systemd.target = lib.mkOption {
     type = lib.types.str;
     description = "Systemd target to bind to.";
     default = "graphical-session.target";
   };
-  options.programs.adv-material-shell.lockscreen.securityKey = {
+  options.programs.ariadnev-shell.lockscreen.securityKey = {
     enable = lib.mkEnableOption "FIDO2/U2F security key unlock for the ADVS lock screen via a dedicated advshell-u2f PAM service";
     package = lib.mkPackageOption pkgs "pam_u2f" { };
     moduleArgs = lib.mkOption {

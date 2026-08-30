@@ -45,9 +45,9 @@ type Config struct {
 	ReplaceConfigs    []string // specific configs to deploy (e.g. "niri", "ghostty")
 	ReplaceConfigsAll bool     // deploy/replace all configurations
 	Yes               bool
-	AdvSearch        bool // install danksearch and enable its user service
+	AdvSearch         bool // install danksearch and enable its user service
 	DankCalendar      bool // install dankcalendar
-	AdvsGreeter        bool // install advs-greeter
+	AdvsGreeter       bool // install advs-greeter
 }
 
 // Runner orchestrates unattended (headless) installation.
@@ -366,7 +366,7 @@ func (r *Runner) applyGitVariants(dependencies []deps.Dependency, hasGitVariant 
 
 func findDepFold(dependencies []deps.Dependency, lowerName string) *deps.Dependency {
 	if lowerName == "advs" {
-		lowerName = "advs (advmaterialshell)"
+		lowerName = "advs (ariadnevshell)"
 	}
 	for i := range dependencies {
 		if strings.ToLower(dependencies[i].Name) == lowerName {

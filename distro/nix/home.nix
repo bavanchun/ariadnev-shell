@@ -5,7 +5,7 @@
   ...
 }@args:
 let
-  cfg = config.programs.adv-material-shell;
+  cfg = config.programs.ariadnev-shell;
   jsonFormat = pkgs.formats.json { };
   common = import ./common.nix {
     inherit
@@ -26,28 +26,28 @@ in
     (import ./options.nix args)
     (lib.mkRemovedOptionModule [
       "programs"
-      "adv-material-shell"
+      "ariadnev-shell"
       "enableNightMode"
     ] "Night mode is now always available")
     (lib.mkRemovedOptionModule [
       "programs"
-      "adv-material-shell"
+      "ariadnev-shell"
       "default"
       "settings"
-    ] "Default settings have been removed and been replaced with programs.adv-material-shell.settings")
+    ] "Default settings have been removed and been replaced with programs.ariadnev-shell.settings")
     (lib.mkRemovedOptionModule [
       "programs"
-      "adv-material-shell"
+      "ariadnev-shell"
       "default"
       "session"
-    ] "Default session has been removed and been replaced with programs.adv-material-shell.session")
+    ] "Default session has been removed and been replaced with programs.ariadnev-shell.session")
     (lib.mkRenamedOptionModule
-      [ "programs" "adv-material-shell" "enableSystemd" ]
-      [ "programs" "adv-material-shell" "systemd" "enable" ]
+      [ "programs" "ariadnev-shell" "enableSystemd" ]
+      [ "programs" "ariadnev-shell" "systemd" "enable" ]
     )
   ];
 
-  options.programs.adv-material-shell = {
+  options.programs.ariadnev-shell = {
     settings = lib.mkOption {
       type = jsonFormat.type;
       default = { };

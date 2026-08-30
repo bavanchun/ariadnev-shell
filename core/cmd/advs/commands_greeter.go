@@ -53,19 +53,11 @@ func greeterPackageInstallHint() string {
 	}
 
 	switch config.Family {
-	case distros.FamilyDebian:
-		return "Install with 'sudo apt install advs-greeter' (requires AdvLinux OBS repo — see https://ariadnev.vchun.dev/docs/advgreeter/installation#debian)"
-	case distros.FamilySUSE:
-		return "Install with 'sudo zypper install advs-greeter' (requires AdvLinux OBS repo — see https://ariadnev.vchun.dev/docs/advgreeter/installation#opensuse)"
-	case distros.FamilyUbuntu:
-		return "Install with 'sudo apt install advs-greeter' (requires ppa:bavanchun/ariadnev: sudo add-apt-repository ppa:bavanchun/ariadnev)"
-	case distros.FamilyFedora:
-		return "Install with 'sudo dnf install advs-greeter' (requires COPR: sudo dnf copr enable bavanchun/ariadnev)"
 	case distros.FamilyArch:
-		return "Install from AUR with 'paru -S greetd-advs-greeter-bin' or 'yay -S greetd-advs-greeter-bin'"
+		return "Build and install the package from source: git clone https://github.com/bavanchun/ariadnev-greeter && cd ariadnev-greeter/distro/arch && makepkg -si"
 	case distros.FamilyVoid:
-		return "Install with 'sudo xbps-install -S advs-greeter' (requires ADVS XBPS repo: echo 'repository=https://void.ariadnev.vchun.dev/advs/current' | sudo tee /etc/xbps.d/advs.conf)"
+		return "No AriadnevShell XBPS repo exists yet; build from https://github.com/bavanchun/ariadnev-greeter (distro/void)"
 	default:
-		return "Install the advs-greeter package for your distribution"
+		return "No AriadnevShell package repo exists yet for this distribution; build from source: https://github.com/bavanchun/ariadnev-greeter"
 	}
 }

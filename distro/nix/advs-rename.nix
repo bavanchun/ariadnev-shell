@@ -4,11 +4,11 @@
     (lib.mkRenamedOptionModule
       [
         "programs"
-        "advMaterialShell"
+        "ariadnevShell"
       ]
       [
         "programs"
-        "adv-material-shell"
+        "ariadnev-shell"
       ]
     )
   ];

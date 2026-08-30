@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://ariadnev.vchun.dev/schemas/plugin.json",
+  "$id": "https://danklinux.com/schemas/plugin.json",
   "title": "AriadnevShell Plugin Manifest",
   "description": "Schema for AriadnevShell plugin.json manifest files",
   "type": "object",

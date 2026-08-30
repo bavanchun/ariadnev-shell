@@ -2,7 +2,7 @@
   "name": "advs-theme",
   "displayName": "ADVS - AriadnevShell Theme",
   "description": "Dynamic theme using matugen & adv16 terminal colors - auto-updated by AriadnevShell",
-  "publisher": "AdvLinux",
+  "publisher": "Ariadnev",
   "version": "0.0.3",
   "icon": "advlogo.png",
   "engines": {

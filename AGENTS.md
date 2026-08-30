@@ -4,7 +4,7 @@ ADVS is an open-source, MIT-licensed desktop shell for Wayland compositors on li
 
 ## Repo Structure:
 
-There are 2 main apps in the repo, they are designed to operate together. Additionally there is a ariadnev-qml-common submodule which contains common QML widgets, like a shared library, that is leveraged by other quickshell apps in the Adv Desktop suite.
+There are 2 main apps in the repo, they are designed to operate together. Additionally there is a ariadnev-qml-common submodule which contains common QML widgets, like a shared library, that is leveraged by other quickshell apps in the Ariadnev suite.
 
 There is a GO module (dankgo) that is used by core for certain common go functionality.
 

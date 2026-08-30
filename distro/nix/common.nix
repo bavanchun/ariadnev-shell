@@ -5,7 +5,7 @@
   ...
 }:
 let
-  cfg = config.programs.adv-material-shell;
+  cfg = config.programs.ariadnev-shell;
 in
 {
   packages = [

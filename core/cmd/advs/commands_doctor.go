@@ -160,7 +160,7 @@ func (c category) String() string {
 
 const (
 	checkNameMaxLength = 21
-	doctorDocsURL      = "https://ariadnev.vchun.dev/docs/advmaterialshell/cli-doctor"
+	doctorDocsURL      = "https://danklinux.com/docs/dankmaterialshell/cli-doctor"
 )
 
 type checkResult struct {

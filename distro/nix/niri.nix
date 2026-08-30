@@ -3,13 +3,13 @@
   lib,
   ...
 }: let
-  cfg = config.programs.adv-material-shell;
+  cfg = config.programs.ariadnev-shell;
 in {
   imports = [
     ./advs-rename.nix
   ];
 
-  options.programs.adv-material-shell = {
+  options.programs.ariadnev-shell = {
     niri = {
       enableKeybinds = lib.mkEnableOption "AriadnevShell niri keybinds";
       enableSpawn = lib.mkEnableOption "AriadnevShell niri spawn-at-startup";

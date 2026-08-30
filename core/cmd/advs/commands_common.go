@@ -27,7 +27,7 @@ var ipcCmd = &cobra.Command{
   advs ipc call <target> <function> [args...]   invoke a command
   advs ipc list                                 list all targets and functions
 
-Full reference: https://ariadnev.vchun.dev/docs/advmaterialshell/keybinds-ipc`,
+Full reference: https://danklinux.com/docs/dankmaterialshell/keybinds-ipc`,
 	ValidArgsFunction: func(cmd *cobra.Command, args []string, toComplete string) ([]string, cobra.ShellCompDirective) {
 		return getShellIPCCompletions(args, toComplete), cobra.ShellCompDirectiveNoFileComp
 	},
@@ -243,9 +243,9 @@ var baseVersionRe = regexp.MustCompile(`^([\d.]+)`)
 
 // Installed UI trees, for builds without an embedded UI.
 var shellVersionPaths = []string{
-	"/usr/share/quickshell/ariadnev/VERSION",
-	"/usr/local/share/quickshell/ariadnev/VERSION",
-	"/etc/xdg/quickshell/ariadnev/VERSION",
+	"/usr/share/quickshell/advs/VERSION",
+	"/usr/local/share/quickshell/advs/VERSION",
+	"/etc/xdg/quickshell/advs/VERSION",
 }
 
 func getBaseVersion() string {

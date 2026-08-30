@@ -36,14 +36,14 @@ pkgs.testers.runNixOSTest {
       ...
     }: {
       imports = [
-        self.homeModules.adv-material-shell
+        self.homeModules.ariadnev-shell
       ];
 
       home.username = "ariadnev";
       home.homeDirectory = "/home/ariadnev";
       home.stateVersion = "25.11";
 
-      programs.adv-material-shell = {
+      programs.ariadnev-shell = {
         enable = true;
         systemd = {
           enable = true;

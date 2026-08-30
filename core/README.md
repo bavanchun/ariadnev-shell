@@ -152,7 +152,7 @@ go run github.com/AvengeMedia/dankgo/cmd/go-wayland-scanner@latest \
 **Interactive (TUI):**
 
 ```bash
-curl -fsSL https://install.ariadnev.vchun.dev | sh
+git clone https://github.com/bavanchun/ariadnev-shell && cd ariadnev-shell/distro/arch && makepkg -si
 ```
 
 **Headless (unattended):**
@@ -160,9 +160,9 @@ curl -fsSL https://install.ariadnev.vchun.dev | sh
 Headless mode requires cached credentials or a passwordless rule for your privilege escalation tool (sudo, doas, or run0). With sudo, run `sudo -v` first:
 
 ```bash
-sudo -v && curl -fsSL https://install.ariadnev.vchun.dev | sh -s -- -c niri -t ghostty -y
-sudo -v && curl -fsSL https://install.ariadnev.vchun.dev | sh -s -- -c hyprland -t kitty --advs-greeter -y
-sudo -v && curl -fsSL https://install.ariadnev.vchun.dev | sh -s -- -c niri -t ghostty --git-deps niri,quickshell --all-features -y
+sudo -v && advinstall -c niri -t ghostty -y
+sudo -v && advinstall -c hyprland -t kitty --advs-greeter -y
+sudo -v && advinstall -c niri -t ghostty --git-deps niri,quickshell --all-features -y
 ```
 
 | Flag | Short | Description |
@@ -225,6 +225,6 @@ Most packages available in standard repos. Minimal building required.
 Uses Portage with GURU overlay. Automatically configures USE flags. Variable success depending on system configuration.
 
 **Void Linux**
-Uses XBPS with the ADVS and AdvLinux self-hosted repositories.
+Uses XBPS. No AriadnevShell binary repo exists yet; build from `distro/void/srcpkgs`.
 
 See installer output for distribution-specific details during installation.

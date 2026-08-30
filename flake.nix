@@ -183,7 +183,7 @@
 
               meta = {
                 description = "Desktop shell for wayland compositors built with Quickshell & GO";
-                homepage = "https://ariadnev.vchun.dev";
+                homepage = "https://github.com/bavanchun/ariadnev-shell";
                 changelog = "https://github.com/bavanchun/ariadnev-shell/releases/tag/v${version}";
                 license = pkgs.lib.licenses.mit;
                 mainProgram = "advs";
@@ -202,29 +202,26 @@
         system: pkgs: {
           ariadnev-shell = mkAdvsShell pkgs;
           default = self.packages.${system}.ariadnev-shell;
-          quickshell = builtins.warn "adv-material-shell: the package Quickshell is not included in the ADVS flake anymore. We recommend you to use the one from nixos-unstable branch of Nixpkgs or the upstream flake." pkgs.quickshell;
+          quickshell = builtins.warn "ariadnev-shell: the package Quickshell is not included in the ADVS flake anymore. We recommend you to use the one from nixos-unstable branch of Nixpkgs or the upstream flake." pkgs.quickshell;
         }
       );
 
       lib = { inherit mkAdvsShell buildAdvsPkgs; };
 
-      homeModules.adv-material-shell = mkModuleWithAdvsPkgs ./distro/nix/home.nix;
+      homeModules.ariadnev-shell = mkModuleWithAdvsPkgs ./distro/nix/home.nix;
 
-      homeModules.default = self.homeModules.adv-material-shell;
+      homeModules.default = self.homeModules.ariadnev-shell;
 
       homeModules.niri = import ./distro/nix/niri.nix;
 
-      homeModules.advMaterialShell.default = builtins.warn "adv-material-shell: flake output `homeModules.advMaterialShell.default` has been renamed to `homeModules.adv-material-shell`" self.homeModules.adv-material-shell;
 
-      homeModules.advMaterialShell.niri = builtins.warn "adv-material-shell: flake output `homeModules.advMaterialShell.niri` has been renamed to `homeModules.niri`" self.homeModules.niri;
 
-      nixosModules.adv-material-shell = mkModuleWithAdvsPkgs ./distro/nix/nixos.nix;
+      nixosModules.ariadnev-shell = mkModuleWithAdvsPkgs ./distro/nix/nixos.nix;
 
-      nixosModules.default = self.nixosModules.adv-material-shell;
+      nixosModules.default = self.nixosModules.ariadnev-shell;
 
-      nixosModules.greeter = builtins.warn "adv-material-shell: the greeter moved to the adv-greeter repo; use `inputs.adv-greeter.nixosModules.default` and `programs.advs-greeter` (https://github.com/AvengeMedia/dank-greeter)" { };
+      nixosModules.greeter = builtins.warn "ariadnev-shell: the greeter lives in the ariadnev-greeter repo; use `inputs.ariadnev-greeter.nixosModules.default` and `programs.advs-greeter` (https://github.com/bavanchun/ariadnev-greeter)" { };
 
-      nixosModules.advMaterialShell = builtins.warn "adv-material-shell: flake output `nixosModules.advMaterialShell` has been renamed to `nixosModules.adv-material-shell`" self.nixosModules.adv-material-shell;
 
       devShells = forEachSystem (
         system: pkgs:

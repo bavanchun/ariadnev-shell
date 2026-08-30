@@ -22,7 +22,7 @@ import (
 
 const (
 	forceQuickshellGit = false
-	forceADVSGit        = false
+	forceADVSGit       = false
 )
 
 // BaseDistribution provides common functionality for all distributions
@@ -114,7 +114,7 @@ func (b *BaseDistribution) detectDankCalendar() deps.Dependency {
 }
 
 func (b *BaseDistribution) detectADVS() deps.Dependency {
-	advsPath := filepath.Join(os.Getenv("HOME"), ".config/quickshell/ariadnev")
+	advsPath := filepath.Join(os.Getenv("HOME"), ".config/quickshell/advs")
 
 	status := deps.StatusMissing
 	currentVersion := ""

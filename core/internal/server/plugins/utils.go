@@ -23,12 +23,15 @@ func pluginInfoFromPlugin(plugin coreplugins.Plugin) PluginInfo {
 		Dependencies: plugin.Dependencies,
 		FirstParty:   isFirstPartyRepo(plugin.Repo),
 		Featured:     plugin.Featured,
-		RequiresADVS:  plugin.RequiresADVS,
+		RequiresADVS: plugin.RequiresADVS,
 	}
 }
 
+// isFirstPartyRepo reports whether a plugin is maintained by AriadnevShell or by
+// upstream DankMaterialShell, whose plugin registry ADVS still consumes.
 func isFirstPartyRepo(repo string) bool {
-	return strings.HasPrefix(repo, "https://github.com/bavanchun")
+	return strings.HasPrefix(repo, "https://github.com/bavanchun/") ||
+		strings.HasPrefix(repo, "https://github.com/AvengeMedia/")
 }
 
 func normalizeScreenshotURL(raw string) string {

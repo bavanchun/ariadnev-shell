@@ -36,7 +36,7 @@ integrations, and desktop widgets. Plugins are QML components discovered from
   *.js               # Optional: JavaScript utilities
 ```
 
-**Plugin registry:** Community plugins are available at https://plugins.ariadnev.vchun.dev/
+**Plugin registry:** Community plugins are available at https://plugins.danklinux.com/
 
 **Five plugin types:**
 

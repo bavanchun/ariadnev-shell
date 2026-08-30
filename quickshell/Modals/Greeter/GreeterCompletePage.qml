@@ -315,13 +315,13 @@ Item {
                             hoverEnabled: true
                             cursorShape: Qt.PointingHandCursor
                             onClicked: {
-                                let url = "https://ariadnev.vchun.dev/docs/advmaterialshell/keybinds-ipc";
+                                let url = "https://danklinux.com/docs/dankmaterialshell/keybinds-ipc";
                                 if (CompositorService.isNiri)
-                                    url = "https://ariadnev.vchun.dev/docs/advmaterialshell/compositors#advs-keybindings";
+                                    url = "https://danklinux.com/docs/dankmaterialshell/compositors#advs-keybindings";
                                 else if (CompositorService.isHyprland)
-                                    url = "https://ariadnev.vchun.dev/docs/advmaterialshell/compositors#advs-keybindings-1";
+                                    url = "https://danklinux.com/docs/dankmaterialshell/compositors#advs-keybindings-1";
                                 else if (CompositorService.isMango)
-                                    url = "https://ariadnev.vchun.dev/docs/advmaterialshell/compositors#advs-keybindings-2";
+                                    url = "https://danklinux.com/docs/dankmaterialshell/compositors#advs-keybindings-2";
                                 Qt.openUrlExternally(url);
                             }
                         }
@@ -467,7 +467,7 @@ Item {
                         iconName: "menu_book"
                         title: I18n.tr("Docs", "greeter documentation link")
                         isExternal: true
-                        onClicked: Qt.openUrlExternally("https://ariadnev.vchun.dev/docs")
+                        onClicked: Qt.openUrlExternally("https://danklinux.com/docs")
                     }
 
                     GreeterQuickLink {
@@ -475,7 +475,7 @@ Item {
                         iconName: "extension"
                         title: I18n.tr("Plugins", "greeter plugins link")
                         isExternal: true
-                        onClicked: Qt.openUrlExternally("https://ariadnev.vchun.dev/plugins")
+                        onClicked: Qt.openUrlExternally("https://danklinux.com/plugins")
                     }
 
                     GreeterQuickLink {
@@ -483,7 +483,7 @@ Item {
                         iconName: "palette"
                         title: I18n.tr("Themes", "greeter themes link")
                         isExternal: true
-                        onClicked: Qt.openUrlExternally("https://ariadnev.vchun.dev/plugins?tab=themes")
+                        onClicked: Qt.openUrlExternally("https://danklinux.com/plugins?tab=themes")
                     }
                 }
             }

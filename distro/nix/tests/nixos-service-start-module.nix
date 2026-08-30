@@ -14,7 +14,7 @@ pkgs.testers.runNixOSTest {
 
   nodes.machine = {
     imports = [
-      self.nixosModules.adv-material-shell
+      self.nixosModules.ariadnev-shell
     ];
 
     users.users.ariadnev = {
@@ -23,7 +23,7 @@ pkgs.testers.runNixOSTest {
       extraGroups = [ "wheel" ];
     };
 
-    programs.adv-material-shell = {
+    programs.ariadnev-shell = {
       enable = true;
       package = fakeAdvs;
       systemd = {

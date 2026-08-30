@@ -16,7 +16,7 @@ advs ipc          # same
 advs ipc --help   # same, plus usage text
 ```
 
-Live listing requires ADVS to be running. If listing fails, use this document or the [Keybinds & IPC docs](https://ariadnev.vchun.dev/docs/advmaterialshell/keybinds-ipc) as an offline reference.
+Live listing requires ADVS to be running. If listing fails, use this document or the [Keybinds & IPC docs](https://danklinux.com/docs/dankmaterialshell/keybinds-ipc) as an offline reference.
 
 ## Target: `audio`
 
@@ -824,7 +824,7 @@ In-shell color picker modal for theme and settings color selection.
 - `toggle` - Toggle color picker modal visibility
 - `toggleInstant` - Toggle color picker modal visibility without animation on hide
 
-**Note:** This controls the in-shell modal. To pick a pixel from the screen via CLI, use `advs color pick` instead (see [Color Picker CLI](https://ariadnev.vchun.dev/docs/advmaterialshell/cli-color-picker)).
+**Note:** This controls the in-shell modal. To pick a pixel from the screen via CLI, use `advs color pick` instead (see [Color Picker CLI](https://danklinux.com/docs/dankmaterialshell/cli-color-picker)).
 
 **Examples:**
 ```bash

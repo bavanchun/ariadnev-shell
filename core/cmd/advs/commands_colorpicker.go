@@ -25,7 +25,7 @@ var colorCmd = &cobra.Command{
 This is the screen eyedropper CLI. To open the in-shell color modal, use:
   advs ipc call color-picker toggle
 
-See: https://ariadnev.vchun.dev/docs/advmaterialshell/keybinds-ipc`,
+See: https://danklinux.com/docs/dankmaterialshell/keybinds-ipc`,
 }
 
 var colorPickCmd = &cobra.Command{

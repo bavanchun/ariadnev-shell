@@ -2,7 +2,7 @@
 Type=Application
 Name=ADVS Notepad
 GenericName=Text Editor
-Comment=Quick notes and text files in the adv desktop shell
+Comment=Quick notes and text files in AriadnevShell
 Exec=advs ipc call notepad openFile %f
 Icon=advlogo
 Terminal=false

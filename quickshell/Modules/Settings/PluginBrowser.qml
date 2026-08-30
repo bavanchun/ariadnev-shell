@@ -25,7 +25,7 @@ AdvFloatingWindow {
     property var availableLetters: []
     property string detailPluginId: ""
 
-    readonly property string previewApiBase: "https://api.ariadnev.vchun.dev/previews/"
+    readonly property string previewApiBase: "https://api.danklinux.com/previews/"
     readonly property var detailPlugin: resolveDetailPlugin(detailPluginId, allPlugins)
     readonly property bool activeCategorySort: normalizedSortMode(SessionData.pluginBrowserSortMode) === "category"
     readonly property bool showCategoryFilters: activeCategorySort && categoryFilterOptions.length > 1

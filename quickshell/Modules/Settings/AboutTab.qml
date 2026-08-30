@@ -272,10 +272,10 @@ Item {
                             iconSize: 18
                             backgroundColor: Theme.surfaceTextHover
                             textColor: Theme.surfaceText
-                            onClicked: Qt.openUrlExternally("https://ariadnev.vchun.dev/docs")
+                            onClicked: Qt.openUrlExternally("https://danklinux.com/docs")
                             onHoveredChanged: {
                                 if (hovered)
-                                    resourceTooltip.show(resourceButtonsRow.compactMode ? I18n.tr("Docs") + " - ariadnev.vchun.dev/docs" : "ariadnev.vchun.dev/docs", docsButton, 0, 0, "bottom");
+                                    resourceTooltip.show(resourceButtonsRow.compactMode ? I18n.tr("Docs") + " - danklinux.com/docs" : "danklinux.com/docs", docsButton, 0, 0, "bottom");
                                 else
                                     resourceTooltip.hide();
                             }
@@ -288,10 +288,10 @@ Item {
                             iconSize: 18
                             backgroundColor: Theme.surfaceTextHover
                             textColor: Theme.surfaceText
-                            onClicked: Qt.openUrlExternally("https://plugins.ariadnev.vchun.dev")
+                            onClicked: Qt.openUrlExternally("https://plugins.danklinux.com")
                             onHoveredChanged: {
                                 if (hovered)
-                                    resourceTooltip.show(resourceButtonsRow.compactMode ? I18n.tr("Plugins") + " - plugins.ariadnev.vchun.dev" : "plugins.ariadnev.vchun.dev", pluginsButton, 0, 0, "bottom");
+                                    resourceTooltip.show(resourceButtonsRow.compactMode ? I18n.tr("Plugins") + " - plugins.danklinux.com" : "plugins.danklinux.com", pluginsButton, 0, 0, "bottom");
                                 else
                                     resourceTooltip.hide();
                             }

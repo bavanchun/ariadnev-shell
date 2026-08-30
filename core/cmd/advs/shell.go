@@ -227,7 +227,7 @@ func printIPCHelpFailure(err error) {
 		fmt.Printf("  %v\n", err)
 	}
 	fmt.Println()
-	fmt.Println("  Full docs:  https://ariadnev.vchun.dev/docs/advmaterialshell/keybinds-ipc")
+	fmt.Println("  Full docs:  https://danklinux.com/docs/dankmaterialshell/keybinds-ipc")
 	fmt.Println("  Try:        advs ipc call <target> <function>")
 }
 

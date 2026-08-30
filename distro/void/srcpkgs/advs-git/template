@@ -24,7 +24,7 @@ go_ldflags="-X main.Version=${version}"
 short_desc="AriadnevShell — Material 3 desktop shell for Wayland (git variant)"
 maintainer="bavanchun <bavanchun.US@gmail.com>"
 license="MIT"
-homepage="https://ariadnev.vchun.dev"
+homepage="https://github.com/bavanchun/ariadnev-shell"
 # CI populates distfiles/checksum dynamically; these are placeholders.
 distfiles="https://github.com/bavanchun/ariadnev-shell/archive/refs/tags/v${version}.tar.gz"
 checksum=badbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadb

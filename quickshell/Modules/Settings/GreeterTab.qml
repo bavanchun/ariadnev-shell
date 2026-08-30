@@ -654,7 +654,7 @@ Item {
                 }
 
                 StyledText {
-                    text: I18n.tr("Installation and PAM setup are documented in the ") + "<a href=\"https://ariadnev.vchun.dev/docs/advgreeter/installation\" style=\"text-decoration:none; color:" + Theme.primary + ";\">AdvGreeter docs.</a> "
+                    text: I18n.tr("Installation and PAM setup are documented in the ") + "<a href=\"https://danklinux.com/docs/advgreeter/installation\" style=\"text-decoration:none; color:" + Theme.primary + ";\">AdvGreeter docs.</a> "
                     textFormat: Text.RichText
                     font.pixelSize: Theme.fontSizeSmall
                     color: Theme.surfaceVariantText

@@ -17,7 +17,7 @@ This is a ADVS maintained repo for VoidLinux until these packages are officially
 ### Using the Self-Hosted Repositories
 
 We serve both stable release and development packages from Cloudflare R2 at
-`void.ariadnev.vchun.dev`.
+`void.danklinux.com`.
 
 > **Repository migration:** the former GitHub Pages repositories will be
 > frozen for 14 days at cutover. Their retirement date will be announced when
@@ -29,8 +29,8 @@ We serve both stable release and development packages from Cloudflare R2 at
 Create configuration files in `/etc/xbps.d/` pointing to our repositories (needed for both stable and git/nightly variants):
 
 ```sh
-echo "repository=https://void.ariadnev.vchun.dev/advs/current" | sudo tee /etc/xbps.d/advs.conf
-echo "repository=https://void.ariadnev.vchun.dev/ariadnev/current" | sudo tee /etc/xbps.d/ariadnev.conf
+echo "repository=https://void.danklinux.com/dms/current" | sudo tee /etc/xbps.d/advs.conf
+echo "repository=https://void.danklinux.com/danklinux/current" | sudo tee /etc/xbps.d/ariadnev.conf
 ```
 
 #### 2. Install ADVS

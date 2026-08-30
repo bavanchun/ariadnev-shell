@@ -4,7 +4,7 @@ Create widgets for AdvBar and Control Center using dynamically-loaded QML compon
 
 ## Plugin Registry
 
-Browse and discover community plugins at **https://plugins.ariadnev.vchun.dev/**
+Browse and discover community plugins at **https://plugins.danklinux.com/**
 
 ## Overview
 
@@ -688,7 +688,7 @@ QtObject {
             }
             done({
                 title: I18n.tr("boregard is required"),
-                details: I18n.tr("Install it from https://ariadnev.vchun.dev, then re-enable this plugin.")
+                details: I18n.tr("Install it from https://github.com/bavanchun/ariadnev-shell, then re-enable this plugin.")
             })
         })
     }
