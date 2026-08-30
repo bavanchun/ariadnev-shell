@@ -1,6 +1,6 @@
 # Maintainer: VChun <hoangbavan4478@gmail.com>
 pkgname=ariadnev-shell
-pkgver=1.6.0.ariadnev.1
+pkgver=1.6.0.ariadnev.2
 pkgrel=1
 pkgdesc="AriadnevShell (ADVS) — Wayland desktop shell built on Quickshell and Go"
 arch=('x86_64' 'aarch64')
@@ -22,7 +22,7 @@ optdepends=(
 # cùng tồn tại được. Chỉ được BẬT một systemd unit tại một thời điểm, vì cả
 # hai đều giữ BusName=org.freedesktop.Notifications.
 # pkgver của Arch không được chứa dấu '-', nên tag git để riêng.
-_tag="v1.6.0-ariadnev.1"
+_tag="v1.6.0-ariadnev.2"
 source=("$pkgname::git+$url.git#tag=$_tag"
         "git+https://github.com/bavanchun/ariadnev-qml-common.git")
 sha256sums=('SKIP' 'SKIP')
