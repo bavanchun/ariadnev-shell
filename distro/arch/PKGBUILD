@@ -36,8 +36,11 @@ prepare() {
 
 build() {
   cd "$srcdir/$pkgname"
-  export CGO_ENABLED=0
-  export GOFLAGS="-trimpath -mod=readonly -modcacherw"
+  # KHÔNG export GOFLAGS ở đây. core/Makefile đã đặt GOFLAGS=-ldflags="-s -w"
+  # như biến make; nếu GOFLAGS có sẵn trong môi trường thì make sẽ xuất lại
+  # giá trị đó KÈM dấu nháy cho tiến trình go con, và go chết với
+  #   go: parsing $GOFLAGS: unknown flag -w"
+  # Makefile vốn đã tự đặt -s -w và CGO_ENABLED=0 nên không cần thêm gì.
   make build
 }
 
@@ -47,6 +50,13 @@ package() {
   # cài tay, sai cho package. Bỏ target đó, tự đặt unit vào /usr/lib.
   make PREFIX=/usr DESTDIR="$pkgdir" \
        install-bin install-shell install-completions install-icon install-desktop
+
+  # install-desktop chay update-desktop-database va install-icon chay
+  # gtk-update-icon-cache, ca hai sinh file cache NGAY TRONG $pkgdir. Package
+  # khong duoc ship cache do he thong sinh — pacman se bao "conflicting files"
+  # vi mimeinfo.cache da thuoc ve filesystem. Xoa di, pacman hook tu sinh lai.
+  rm -f "$pkgdir/usr/share/applications/mimeinfo.cache"
+  rm -f "$pkgdir/usr/share/icons/hicolor/icon-theme.cache"
 
   install -Dm644 assets/systemd/advs.service \
     "$pkgdir/usr/lib/systemd/user/advs.service"
